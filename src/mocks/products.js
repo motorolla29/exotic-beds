@@ -1,7 +1,7 @@
 const PRODUCTS = [
   {
     id: 1,
-    type: 'bed',
+    category: 'beds',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -12,7 +12,7 @@ const PRODUCTS = [
   },
   {
     id: 2,
-    type: 'bed',
+    category: 'beds',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -21,7 +21,7 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    type: 'bed',
+    category: 'beds',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -30,7 +30,7 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    type: 'sofa',
+    category: 'sofas',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -39,7 +39,7 @@ const PRODUCTS = [
   },
   {
     id: 5,
-    type: 'sofa',
+    category: 'sofas',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -49,7 +49,7 @@ const PRODUCTS = [
   },
   {
     id: 6,
-    type: 'sofa',
+    category: 'sofas',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -58,7 +58,7 @@ const PRODUCTS = [
   },
   {
     id: 7,
-    type: 'armchair',
+    category: 'armchairs',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -68,7 +68,7 @@ const PRODUCTS = [
   },
   {
     id: 8,
-    type: 'armchair',
+    category: 'armchairs',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -78,7 +78,7 @@ const PRODUCTS = [
   },
   {
     id: 9,
-    type: 'armchair',
+    category: 'armchairs',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -87,7 +87,7 @@ const PRODUCTS = [
   },
   {
     id: 10,
-    type: 'poofs',
+    category: 'poofs',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -96,7 +96,7 @@ const PRODUCTS = [
   },
   {
     id: 11,
-    type: 'poofs',
+    category: 'poofs',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -105,7 +105,7 @@ const PRODUCTS = [
   },
   {
     id: 12,
-    type: 'poofs',
+    category: 'poofs',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -114,7 +114,7 @@ const PRODUCTS = [
   },
   {
     id: 13,
-    type: 'kids',
+    category: 'kids',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -123,7 +123,7 @@ const PRODUCTS = [
   },
   {
     id: 14,
-    type: 'kids',
+    category: 'kids',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',
@@ -132,7 +132,7 @@ const PRODUCTS = [
   },
   {
     id: 15,
-    type: 'kids',
+    category: 'kids',
     title: 'blabla',
     description: 'blablabla',
     photo: 'url',

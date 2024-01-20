@@ -7,7 +7,7 @@ const addProductToCart = (state, action) => {
     newProducts = state.cartProducts.slice();
     newProducts[productIndex].quantity++;
   } else {
-    const item = state.products.find((item) => item.id === id);
+    const item = state.products.find((item) => item.id === action.payload);
     const newCartProduct = {
       id: item.id,
       type: item.type,
@@ -69,7 +69,7 @@ const toggleProductInLovelist = (state, action) => {
   if (productIndex !== -1) {
     newProducts = state.items.slice();
   } else {
-    const item = state.products.find((item) => item.id === id);
+    const item = state.products.find((item) => item.id === action.payload);
     const newLovelistProduct = {
       id: item.id,
       type: item.type,
