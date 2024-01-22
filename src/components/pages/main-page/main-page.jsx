@@ -4,10 +4,10 @@ import './main-page.sass';
 
 const MainPage = () => {
   return (
-    <div className="main-page">
+    <>
       <Tabs />
-      <div>MainPage</div>
-    </div>
+      <div className="main-page">MainPage</div>
+    </>
   );
 };
 
