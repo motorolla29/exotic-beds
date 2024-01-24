@@ -12,33 +12,23 @@ const Tabs = () => {
   return (
     <div className="tabs">
       <NavLink className="tabs_link" to="/beds">
-        <div className="tabs_link_svg">
-          <BedIcon />
-        </div>
+        <BedIcon className="tabs_link_bed" />
         <p className="tabs_link_title">Beds</p>
       </NavLink>
       <NavLink className="tabs_link" to="/sofas">
-        <div className="tabs_link_svg">
-          <SofaIcon />
-        </div>
+        <SofaIcon className="tabs_link_sofa" />
         <p className="tabs_link_title">Sofas</p>
       </NavLink>
       <NavLink className="tabs_link" to="/armchairs">
-        <div className="tabs_link_svg">
-          <ArmchairIcon />
-        </div>
+        <ArmchairIcon className="tabs_link_armchair" />
         <p className="tabs_link_title">Armchairs</p>
       </NavLink>
       <NavLink className="tabs_link" to="/kids">
-        <div className="tabs_link_svg">
-          <CribIcon />
-        </div>
+        <CribIcon className="tabs_link_crib" />
         <p className="tabs_link_title">Kids</p>
       </NavLink>
       <NavLink className="tabs_link" to="/poofs">
-        <div className="tabs_link_svg">
-          <PoofIcon />
-        </div>
+        <PoofIcon className="tabs_link_poof" />
         <p className="tabs_link_title">Poofs</p>
       </NavLink>
     </div>

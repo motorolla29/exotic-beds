@@ -13,7 +13,7 @@ import { ReactComponent as ApplePayIcon } from '../../images/payment-options-ico
 import { ReactComponent as AmericanExpressIcon } from '../../images/payment-options-icons/8365-american-express_102492.svg';
 import { ReactComponent as PayPalIcon } from '../../images/payment-options-icons/Paypal-39_icon-icons.com_60555.svg';
 
-import { ReactComponent as StoreFinderIcon } from '../../images/ui-icons/2849828-interface-location-map-multimedia-pin-place-pointer_107962.svg';
+import { ReactComponent as StoreFinderIcon } from '../../images/ui-icons/pin-icon.svg';
 
 import './footer.sass';
 
