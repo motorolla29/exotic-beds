@@ -11,20 +11,22 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header_content">
-        <div className="header_content_search-form_container">
-          <form className="header_content_search-form">
-            <button type="submit" className="header_content_search-form_button">
+        <div className="header_content_left-side">
+          <Link className="header_content_left-side_logo" to="/">
+            <img alt="logo" src="/logo/EB-LOGO-HD.png" />
+          </Link>
+          <form className="header_content_left-side_search-form">
+            <button
+              type="submit"
+              className="header_content_left-side_search-form_button"
+            >
               <SearchIcon />
             </button>
             <input
               type="text"
-              className="header_content_search-form_input"
+              className="header_content_left-side_search-form_input"
             ></input>
           </form>
-        </div>
-
-        <div className="header_content_logo">
-          <Link to="/">Logo</Link>
         </div>
         <div className="header_content_nav">
           <Link to="/store-finder" className="header_content_nav_store-finder">
