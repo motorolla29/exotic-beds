@@ -1,4 +1,4 @@
-const addProductToCart = (state, action) => {
+const getCartWithAddedProduct = (state, action) => {
   let newProducts = {};
   const productIndex = state.cartProducts.findIndex(
     (product) => product.id === action.payload
@@ -23,13 +23,10 @@ const addProductToCart = (state, action) => {
     newProducts = [...state.cartProducts, newCartProduct];
   }
 
-  return {
-    ...state,
-    cartProducts: newProducts,
-  };
+  return newProducts;
 };
 
-const increaseProductAmountInCart = (state, action) => {
+const getCartWithIncreasedProduct = (state, action) => {
   let newProducts = {};
   const productIndex = state.cartProducts.findIndex(
     (product) => product.id === action.payload
@@ -37,13 +34,10 @@ const increaseProductAmountInCart = (state, action) => {
   newProducts = state.cartProducts.slice();
   newProducts[productIndex].quantity++;
 
-  return {
-    ...state,
-    cartProducts: newProducts,
-  };
+  return newProducts;
 };
 
-const decreaseProductAmountInCart = (state, action) => {
+const getCartWithDecreasedProduct = (state, action) => {
   let newProducts = state.cartProducts.slice();
   const productIndex = state.cartProducts.findIndex(
     (product) => product.id === action.payload
@@ -55,13 +49,10 @@ const decreaseProductAmountInCart = (state, action) => {
     newProducts[productIndex].quantity--;
   }
 
-  return {
-    ...state,
-    cartProducts: newProducts,
-  };
+  return newProducts;
 };
 
-const toggleProductInLovelist = (state, action) => {
+const updateLovelist = (state, action) => {
   let newProducts = {};
   const productIndex = state.lovelistProducts.findIndex(
     (product) => product.id === action.payload
@@ -84,15 +75,12 @@ const toggleProductInLovelist = (state, action) => {
     newProducts = [...state.lovelistProducts, newLovelistProduct];
   }
 
-  return {
-    ...state,
-    lovelistProducts: newProducts,
-  };
+  return newProducts;
 };
 
 export {
-  addProductToCart,
-  increaseProductAmountInCart,
-  decreaseProductAmountInCart,
-  toggleProductInLovelist,
+  getCartWithAddedProduct,
+  getCartWithIncreasedProduct,
+  getCartWithDecreasedProduct,
+  updateLovelist,
 };

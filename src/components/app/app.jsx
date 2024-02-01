@@ -18,19 +18,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
-          <Route path="beds" element={<CatalogPage category="beds" />} />
-          <Route path="beds/:id" element={<ProductPage />} />
-          <Route path="sofas" element={<CatalogPage category="sofas" />} />
-          <Route path="sofas/:id" element={<ProductPage />} />
+          <Route path=":id" element={<ProductPage />} />
+          <Route path="beds" element={<CatalogPage category="Beds" />} />
+          <Route path="sofas" element={<CatalogPage category="Sofas" />} />
           <Route
             path="armchairs"
-            element={<CatalogPage category="armchairs" />}
+            element={<CatalogPage category="Armchairs" />}
           />
-          <Route path="armchairs/:id" element={<ProductPage />} />
-          <Route path="poofs" element={<CatalogPage category="poofs" />} />
-          <Route path="poofs/:id" element={<ProductPage />} />
-          <Route path="kids" element={<CatalogPage category="kids" />} />
-          <Route path="kids/:id" element={<ProductPage />} />
+          <Route path="poofs" element={<CatalogPage category="Poofs" />} />
+          <Route path="kids" element={<CatalogPage category="Kids" />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="my-lovelist" element={<LovelistPage />} />

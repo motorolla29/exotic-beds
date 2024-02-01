@@ -1,0 +1,24 @@
+.breadcrumbs
+    display: flex
+    column-gap: 2em
+    font-size: 20px
+
+    &_item
+        position: relative
+        font-size: 1em
+        font-weight: 600
+        color: #004757
+
+
+        &:not(&:first-child)::before
+            content: ''
+            position: absolute
+            width: 0.25em
+            height: 0.25em
+            border-bottom: 0.1em solid
+            border-left: 0.1em solid
+            color: #004757
+            transform: translateY(-50%) rotate(225deg)
+            top: 0.8em
+            left: -1.2em
+

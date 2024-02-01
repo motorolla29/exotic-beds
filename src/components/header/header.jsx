@@ -10,48 +10,41 @@ import './header.sass';
 const Header = () => {
   return (
     <div className="header">
-      <div className="header_content">
-        <div className="header_content_left-side">
-          <Link className="header_content_left-side_logo" to="/">
-            <img alt="logo" src="/logo/EB-LOGO-HD.png" />
-          </Link>
-          <form className="header_content_left-side_search-form">
-            <button
-              type="submit"
-              className="header_content_left-side_search-form_button"
-            >
-              <SearchIcon />
-            </button>
-            <input
-              type="text"
-              className="header_content_left-side_search-form_input"
-            ></input>
-          </form>
-        </div>
-        <div className="header_content_nav">
-          <Link to="/store-finder" className="header_content_nav_store-finder">
-            <div className="header_content_nav_store-finder_icon">
-              <PinIcon />
-            </div>
-            <p className="header_content_nav_lovelist_title">Find a store</p>
-          </Link>
-          <Link to="/my-lovelist" className="header_content_nav_lovelist">
-            <div className="header_content_nav_lovelist_icon">
-              <HeartIcon />
-              <span className="header_content_nav_lovelist_icon_counter">
-                3
-              </span>
-            </div>
-            <p className="header_content_nav_lovelist_title">My lovelist</p>
-          </Link>
-          <Link to="/cart" className="header_content_nav_basket">
-            <div className="header_content_nav_basket_icon">
-              <BasketIcon />
-              <span className="header_content_nav_basket_icon_counter">1</span>
-            </div>
-            <p className="header_content_nav_lovelist_title">My basket</p>
-          </Link>
-        </div>
+      <div className="header_left-side">
+        <Link className="header_left-side_logo" to="/">
+          <img alt="logo" src="/logo/EB-LOGO-HD.png" />
+        </Link>
+        <form className="header_left-side_search-form">
+          <button type="submit" className="header_left-side_search-form_button">
+            <SearchIcon />
+          </button>
+          <input
+            type="text"
+            className="header_left-side_search-form_input"
+          ></input>
+        </form>
+      </div>
+      <div className="header_nav">
+        <Link to="/store-finder" className="header_nav_store-finder">
+          <div className="header_nav_store-finder_icon">
+            <PinIcon />
+          </div>
+          <p className="header_nav_lovelist_title">Find a store</p>
+        </Link>
+        <Link to="/my-lovelist" className="header_nav_lovelist">
+          <div className="header_nav_lovelist_icon">
+            <HeartIcon />
+            <span className="header_nav_lovelist_icon_counter">3</span>
+          </div>
+          <p className="header_nav_lovelist_title">My lovelist</p>
+        </Link>
+        <Link to="/cart" className="header_nav_basket">
+          <div className="header_nav_basket_icon">
+            <BasketIcon />
+            <span className="header_nav_basket_icon_counter">1</span>
+          </div>
+          <p className="header_nav_lovelist_title">My basket</p>
+        </Link>
       </div>
     </div>
   );
