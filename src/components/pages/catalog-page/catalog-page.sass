@@ -1,0 +1,61 @@
+.catalog-page
+    margin: 2em 0
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    font-size: 15px
+
+.catalog-item
+    margin: 2em
+    border-radius: 1em
+    background: #eefef6
+    font-size: 15px
+    box-shadow: 0px 0px 4em -0.8em #4F4A57
+
+    &:hover
+        box-shadow: 0px 0px 6em -1.6em #004757
+
+    &_visual
+        position: relative
+        width: 18em
+
+        a
+            display: flex
+
+        &_image
+            border-top-left-radius: 1em
+            border-top-right-radius: 1em
+            width: 100%
+            
+        
+        &_top-rated
+            position: absolute
+            opacity: 0.8
+            bottom: 1em
+            right: 1em
+            width: 4em
+
+        &_sale
+            position: absolute
+            top: -1.2em
+            left: 1em
+            width: 5em
+
+        &_new
+            position: absolute
+            top: -0.5em
+            right: -0.49em
+            width: 5em
+
+    &_info
+        margin: 0.6em
+
+        &_stars
+
+        &_title
+            font-size: 1em
+            font-weight: 700
+            margin-top: 1em
+
+        &_price
+            margin-top: 1em

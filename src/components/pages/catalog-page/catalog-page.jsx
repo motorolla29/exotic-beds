@@ -16,28 +16,49 @@ const CatalogPage = ({ category }) => {
   );
 
   return (
-    <div className="catalog-page">
+    <>
       <Tabs />
-      <Breadcrumbs category={category} />
-      {products.map((it) => {
-        return (
-          <div key={it.id} className="catalog-item">
-            <Link to={`/${it.id}`}>
-              <img
-                alt="product_picture"
-                className="catalog-item_image"
-                src={it.photo}
-              />
-            </Link>
-            <Link to={`/${it.id}`}>
-              <p className="catalog-item_title">{it.title}</p>
-            </Link>
-            <p className="catalog-item_price">{it.price}</p>
-            <button></button>
-          </div>
-        );
-      })}
-    </div>
+      <Breadcrumbs />
+      <div className="catalog-page">
+        {products.map((it) => {
+          return (
+            <div key={it.id} className="catalog-item">
+              <div className="catalog-item_visual">
+                <Link to={`/${it.id}`}>
+                  <img
+                    className="catalog-item_visual_image"
+                    alt="product_picture"
+                    src={it.photo}
+                  />
+                </Link>
+                <img
+                  alt="new"
+                  src="/catalog-card-icons/new.png"
+                  className="catalog-item_visual_new"
+                />
+                <img
+                  alt="top"
+                  src="/catalog-card-icons/top-rated.png"
+                  className="catalog-item_visual_top-rated"
+                />
+                <img
+                  alt="sale"
+                  src="/catalog-card-icons/sale.png"
+                  className="catalog-item_visual_sale"
+                />
+              </div>
+              <div className="catalog-item_info">
+                <div>stars</div>
+                <Link className="catalog-item_info_title" to={`/${it.id}`}>
+                  {it.title}
+                </Link>
+                <div className="catalog-item_info_price">€{it.price}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

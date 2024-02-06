@@ -30,7 +30,7 @@ const PRODUCTS = [
   },
   {
     id: 'blabla4',
-    category: 'sofas',
+    category: 'beds',
     title: 'blabla4',
     description: 'blablabla4',
     photo: '/catalog/_37294321-0b37-448b-a9a6-98aa6abaf29b.jpg',
@@ -39,7 +39,7 @@ const PRODUCTS = [
   },
   {
     id: 'blabla5',
-    category: 'sofas',
+    category: 'beds',
     title: 'blabla5',
     description: 'blablabla5',
     photo: '/catalog/_4e1ca439-9291-4bdc-b611-d7f6c86d400e.jpg',
@@ -49,10 +49,10 @@ const PRODUCTS = [
   },
   {
     id: 'blabla6',
-    category: 'sofas',
+    category: 'beds',
     title: 'blabla6',
     description: 'blablabla6',
-    photo: '/catalog/_5acb8a9e-73c0-4ae2-9f70-6d8d411d9baa.jpg',
+    photo: '/catalog/_7a9d7e59-ae0e-48e0-a5f3-91769b700fe2.jpg',
     price: 1999,
     rating: 4.5,
   },
