@@ -34,14 +34,14 @@ const decreaseProductAmountInCart = createAction(
 );
 
 const changeCartTotalCount = createAction(
-  `TOGGLE_PRODUCT_IN_LOVELIST`,
+  `CHANGE_CART_TOTAL_COUNT`,
   (productId) => ({
     payload: productId,
   })
 );
 
 const toggleProductInLovelist = createAction(
-  `CHANGE_CART_TOTAL_COUNT`,
+  `TOGGLE_PRODUCT_IN_LOVELIST`,
   (productId) => ({
     payload: productId,
   })

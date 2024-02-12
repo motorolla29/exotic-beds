@@ -10,7 +10,7 @@
 
     &_info
         color: #4F4A57
-        background: #eefef65c
+        background: linear-gradient(to left, #eefef60f, #eefef65e) 
         height: fit-content
         width: 50%
         border-radius: 2em
@@ -68,6 +68,7 @@
         &_ui
             display: flex
             margin-top: 2em
+            margin-bottom: 1em
 
             &_to-cart-button
                 opacity: 0.8
@@ -81,13 +82,16 @@
                 border-radius: 2em
                 outline: none
                 border: none
+                transition: transform 0.1s ease
 
                 &:hover
                     opacity: 0.9
+                &:active
+                    transform: scale(0.97)
             
 
             &_lovelist-button
-                opacity: 0.4
+                opacity: 0.6
                 display: flex
                 align-items: center
                 justify-content: center
@@ -101,12 +105,15 @@
                 background: #eefef6
                 border: none
                 border-radius: 50%
+                transition: transform 0.2s ease
 
                 &:hover
-                    opacity: 0.8
+                    opacity: 0.4
+                &:active
+                    opacity: 0.6
 
                 svg
-                    transform: translateY(0.2em)
+                    transform: translateY(0.16em)
                     stroke: red
                     stroke-width: 1em
                     width: 50%

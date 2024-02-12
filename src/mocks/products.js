@@ -18,6 +18,7 @@ const PRODUCTS = [
     photo: '/catalog/_0d2ee24c-3e85-4a0d-8c62-65232db76619.jpg',
     price: 2999,
     rating: 4.5,
+    availableQuantity: 4,
   },
   {
     id: 'blabla3',
@@ -27,6 +28,7 @@ const PRODUCTS = [
     photo: '/catalog/_01a37cf5-f0cb-479d-ba27-f6e83c0d9225.jpg',
     price: 1999,
     rating: 4.0,
+    availableQuantity: 4,
   },
   {
     id: 'blabla4',
@@ -36,6 +38,7 @@ const PRODUCTS = [
     photo: '/catalog/_37294321-0b37-448b-a9a6-98aa6abaf29b.jpg',
     price: 9999,
     rating: 4.1,
+    availableQuantity: 4,
   },
   {
     id: 'blabla5',
@@ -46,6 +49,7 @@ const PRODUCTS = [
     price: 5999,
     sale: 3999,
     rating: 4.3,
+    availableQuantity: 4,
   },
   {
     id: 'blabla6',
@@ -55,6 +59,7 @@ const PRODUCTS = [
     photo: '/catalog/_7a9d7e59-ae0e-48e0-a5f3-91769b700fe2.jpg',
     price: 1999,
     rating: 4.5,
+    availableQuantity: 4,
   },
   {
     id: 'blabla7',
@@ -65,6 +70,7 @@ const PRODUCTS = [
     price: 999,
     sale: 799,
     rating: 4.0,
+    availableQuantity: 4,
   },
   {
     id: 'blabla8',
@@ -75,6 +81,7 @@ const PRODUCTS = [
     price: 1999,
     sale: 1299,
     rating: 4.8,
+    availableQuantity: 4,
   },
   {
     id: 'blabla9',
@@ -84,6 +91,7 @@ const PRODUCTS = [
     photo: '/catalog/_5acb8a9e-73c0-4ae2-9f70-6d8d411d9baa.jpg',
     price: 2999,
     rating: 4.6,
+    availableQuantity: 4,
   },
   {
     id: 'blabla10',
@@ -93,6 +101,7 @@ const PRODUCTS = [
     photo: '/catalog/_e6a4f3c7-38e4-4fd3-958a-b19ab34b3af4.jpg',
     price: 299,
     rating: 4.1,
+    availableQuantity: 4,
   },
   {
     id: 'blabla11',
@@ -102,6 +111,7 @@ const PRODUCTS = [
     photo: '/catalog/_369ecb2e-aee1-4e72-b828-2473c611c383.jpg',
     price: 299,
     rating: 4.2,
+    availableQuantity: 4,
   },
   {
     id: 'blabla12',
@@ -111,6 +121,7 @@ const PRODUCTS = [
     photo: '/catalog/_ef0941f7-9105-4ac4-bd7a-907e470e7099.jpg',
     price: 499,
     rating: 4.7,
+    availableQuantity: 4,
   },
   {
     id: 'blabla13',
@@ -120,6 +131,7 @@ const PRODUCTS = [
     photo: '/catalog/_650dbf17-93ee-46a0-bdc8-8d60b629b977.jpg',
     price: 999,
     rating: 4.9,
+    availableQuantity: 4,
   },
   {
     id: 'blabla14',
@@ -129,6 +141,7 @@ const PRODUCTS = [
     photo: '/catalog/_6d6b5827-c624-4772-ae5d-9e72eff2f534.jpg',
     price: 1999,
     rating: 4.4,
+    availableQuantity: 4,
   },
   {
     id: 'blabla15',
@@ -138,6 +151,7 @@ const PRODUCTS = [
     photo: '/catalog/_0cd73490-1a81-45e3-a6b6-be6165770677.jpg',
     price: 1599,
     rating: 4.8,
+    availableQuantity: 4,
   },
 ];
 

@@ -10,7 +10,7 @@ const RatingStars = ({ id, rating }) => (
           y="0"
           width="100%"
           height="100%"
-          fill="grey"
+          fill="#303030"
         />
       </mask>
       <symbol viewBox="0 0 32 32" id="star">

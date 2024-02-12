@@ -5,7 +5,7 @@ const getCartWithAddedProduct = (state, action) => {
   );
   if (productIndex !== -1) {
     newProducts = state.cartProducts.slice();
-    newProducts[productIndex].quantity++;
+    newProducts[productIndex].quantityInCart++;
   } else {
     const item = state.products.find((item) => item.id === action.payload);
     const newCartProduct = {
@@ -32,7 +32,7 @@ const getCartWithIncreasedProduct = (state, action) => {
     (product) => product.id === action.payload
   );
   newProducts = state.cartProducts.slice();
-  newProducts[productIndex].quantity++;
+  newProducts[productIndex].quantityInCart++;
 
   return newProducts;
 };
@@ -42,23 +42,23 @@ const getCartWithDecreasedProduct = (state, action) => {
   const productIndex = state.cartProducts.findIndex(
     (product) => product.id === action.payload
   );
-  if (newProducts[productIndex].quantity === 1) {
+  if (newProducts[productIndex].quantityInCart === 1) {
     newProducts.filter((product) => product.id !== action.payload);
   } else {
     newProducts = state.cartProducts.slice();
-    newProducts[productIndex].quantity--;
+    newProducts[productIndex].quantityInCart--;
   }
 
   return newProducts;
 };
 
 const updateLovelist = (state, action) => {
-  let newProducts = {};
+  let newProducts = [];
   const productIndex = state.lovelistProducts.findIndex(
     (product) => product.id === action.payload
   );
   if (productIndex !== -1) {
-    newProducts = state.items.slice();
+    state.lovelistProducts.filter((product) => product.id !== action.payload);
   } else {
     const item = state.products.find((item) => item.id === action.payload);
     const newLovelistProduct = {

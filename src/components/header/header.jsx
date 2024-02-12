@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { ReactComponent as SearchIcon } from '../../images/ui-icons/search-icon.svg';
 import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon.svg';
@@ -8,6 +9,14 @@ import { ReactComponent as PinIcon } from '../../images/ui-icons/pin-icon.svg';
 import './header.sass';
 
 const Header = () => {
+  const lovelistLength = useSelector((state) => state.lovelistProducts.length);
+  const basketLength = useSelector((state) => {
+    return state.cartProducts.reduce(
+      (acc, currentValue) => acc + currentValue.quantityInCart,
+      0
+    );
+  });
+
   return (
     <div className="header">
       <div className="header_left-side">
@@ -34,14 +43,22 @@ const Header = () => {
         <Link to="/my-lovelist" className="header_nav_lovelist">
           <div className="header_nav_lovelist_icon">
             <HeartIcon />
-            <span className="header_nav_lovelist_icon_counter">3</span>
+            {lovelistLength ? (
+              <span className="header_nav_lovelist_icon_counter">
+                {lovelistLength}
+              </span>
+            ) : null}
           </div>
           <p className="header_nav_lovelist_title">My lovelist</p>
         </Link>
         <Link to="/cart" className="header_nav_basket">
           <div className="header_nav_basket_icon">
             <BasketIcon />
-            <span className="header_nav_basket_icon_counter">1</span>
+            {basketLength ? (
+              <span className="header_nav_basket_icon_counter">
+                {basketLength}
+              </span>
+            ) : null}
           </div>
           <p className="header_nav_lovelist_title">My basket</p>
         </Link>

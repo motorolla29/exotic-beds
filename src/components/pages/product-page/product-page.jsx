@@ -1,5 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addProductToCart } from '../../../store/action';
+import { toggleProductInLovelist } from '../../../store/action';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import RatingStars from '../../rating-stars/rating-stars';
@@ -9,8 +12,12 @@ import './product-page.sass';
 const ProductPage = () => {
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+
   const products = useSelector((state) => state.products);
+  const lovedProducts = useSelector((state) => state.lovelistProducts);
   const product = products.find((it) => it.id === id);
+  const isLoved = lovedProducts.find((it) => it.id === id);
 
   return (
     <>
@@ -63,12 +70,14 @@ const ProductPage = () => {
           )}
           <div className="product-page_info_ui">
             <button
+              onClick={() => dispatch(addProductToCart(product.id))}
               className="product-page_info_ui_to-cart-button"
               title="Add to basket"
             >
               Add to basket
             </button>
             <button
+              onClick={() => dispatch(toggleProductInLovelist(product.id))}
               className="product-page_info_ui_lovelist-button"
               title="Add to lovelist"
             >
@@ -76,7 +85,7 @@ const ProductPage = () => {
                 width="10%"
                 height="10%"
                 viewBox="0 0 676 608"
-                fill="none"
+                fill={isLoved ? 'red' : 'none'}
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g>
