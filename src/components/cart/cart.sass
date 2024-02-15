@@ -1,0 +1,100 @@
+@import 'src/variables'
+    
+.cart
+    &_shadow
+        position: fixed
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        background: rgba(0, 0, 0, 0.5)
+        z-index: 100
+    &_widget
+        position: fixed
+        overflow: hidden
+        top: 0
+        right: 0
+        width: 40em
+        height: 100%
+        border-top-left-radius: 2em
+        background: $main-color-white
+        z-index: 101
+
+        &_widget-inner
+            padding: 2em
+
+            &_header
+                display: flex
+                justify-content: space-between
+                align-items: flex-start
+
+                &_title
+                    font-size: 0.8em
+                    h1
+                        color: $main-color-grey
+                    p
+                        color: $main-color-turquoise
+                        margin-top: 1em
+                        font-size: 1.4em
+                        font-weight: 600
+
+                &_close
+                    position: relative
+                    width: 2em
+                    height: 2em
+                    opacity: 1
+                    cursor: pointer
+                    &:hover
+                        opacity: 0.6
+                    &::before, &::after
+                        content: ''
+                        position: absolute
+                        top: 50%
+                        left: 0
+                        width: 100%
+                        height: 2px
+                        background: $main-color-grey
+                    &::before
+                        transform: rotate(45deg)
+                    &::after
+                        transform: rotate(-45deg)
+                    
+                        
+
+            &_controls
+
+.cart-item
+
+    &_photo
+        width: 2em
+
+        img
+            width: 100%
+
+    &_body
+
+        &_info
+
+            &_title
+
+            &_price
+
+                &_last
+
+                &_first
+
+        &_ui
+
+            &_lovelist
+
+            &_right-side
+
+                &_remove
+
+                &_conter
+
+                    &_minus
+
+                    &_plus
+
+                    &_input

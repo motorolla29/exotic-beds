@@ -8,6 +8,10 @@ const productsAreLoaded = createAction(`PRODUCTS_LOADED`, (bool) => ({
   payload: bool,
 }));
 
+const setIsCartOpen = createAction(`SET_IS_CART_OPEN`, (bool) => ({
+  payload: bool,
+}));
+
 const addProductToCart = createAction(`ADD_PRODUCT_TO_CART`, (productId) => ({
   payload: productId,
 }));
@@ -54,6 +58,7 @@ const changeCategory = createAction(`CHANGE_CATEGORY`, (category) => ({
 export {
   loadProducts,
   productsAreLoaded,
+  setIsCartOpen,
   addProductToCart,
   removeProductFromCart,
   increaseProductAmountInCart,

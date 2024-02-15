@@ -1,3 +1,4 @@
+@import 'src/variables'
 .product-page
     margin: 2em 0
     display: flex
@@ -9,7 +10,7 @@
             width: 100%
 
     &_info
-        color: #4F4A57
+        color: $main-color-grey
         background: linear-gradient(to left, #eefef60f, #eefef65e) 
         height: fit-content
         width: 50%
@@ -44,7 +45,7 @@
             font-weight: 600
 
         &_price
-            color: #004757
+            color: $main-color-turquoise
             margin-top: 1em
 
             &_final
@@ -52,16 +53,16 @@
                 font-weight: 900
 
             &_first
-                color:#4F4A57
+                color:$main-color-grey
                 font-weight: 300
                 margin-left: 1em
                 font-size: 1.6em
                 text-decoration: line-through
-                text-decoration-color: #004757
+                text-decoration-color: $main-color-turquoise
 
             &_save
                 opacity: 1
-                color: #cc0000
+                color: $red-color
                 font-weight: 600
                 font-size: 1em
         
@@ -74,11 +75,11 @@
                 opacity: 0.8
                 cursor: pointer
                 font-weight: 600
-                color: #e9d5be
+                color: $biscuit-color
                 font-size: 1em
                 width: 12em
                 height: 4em
-                background: #004757
+                background: $main-color-turquoise
                 border-radius: 2em
                 outline: none
                 border: none

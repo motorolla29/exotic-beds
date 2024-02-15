@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsCartOpen } from '../../store/action';
 
 import { ReactComponent as SearchIcon } from '../../images/ui-icons/search-icon.svg';
 import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon.svg';
@@ -9,6 +10,7 @@ import { ReactComponent as PinIcon } from '../../images/ui-icons/pin-icon.svg';
 import './header.sass';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
   const basketLength = useSelector((state) => {
     return state.cartProducts.reduce(
@@ -51,7 +53,11 @@ const Header = () => {
           </div>
           <p className="header_nav_lovelist_title">My lovelist</p>
         </Link>
-        <Link to="/cart" className="header_nav_basket">
+        <Link
+          to="#cart"
+          onClick={() => dispatch(setIsCartOpen(true))}
+          className="header_nav_basket"
+        >
           <div className="header_nav_basket_icon">
             <BasketIcon />
             {basketLength ? (

@@ -1,3 +1,5 @@
+@import 'src/variables'
+
 .footer
     padding: 0 5vw
     font-size: 15px
@@ -5,7 +7,7 @@
     flex-direction: column
     align-items: center
     justify-content: center
-    background: linear-gradient(to top,#e9d5be 25%, #c3d3b5)
+    background: linear-gradient(to top, $biscuit-color 25%, #c3d3b5)
 
     &_first-level
         margin-top: 1em
@@ -47,7 +49,7 @@
                 margin: 0 0.6em
                 width: 2em
                 height: 2em
-                fill: #cc0000
+                fill: $red-color
                 transition: 0.4s ease
 
             &_signature
@@ -82,7 +84,7 @@
                 width: 4em
 
     &_line
-        background-color: #000
+        background-color: $main-color-turquoise
         width: 100%
         margin: 1em
         height: 0.01em

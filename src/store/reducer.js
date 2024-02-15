@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   loadProducts,
   productsAreLoaded,
+  setIsCartOpen,
   addProductToCart,
   removeProductFromCart,
   increaseProductAmountInCart,
@@ -24,6 +25,7 @@ import PRODUCTS from '../mocks/products';
 const initialState = {
   products: PRODUCTS,
   productsAreLoaded: false,
+  isCartOpen: false,
   category: null,
   sortType: null,
   cartProducts: [],
@@ -38,6 +40,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(productsAreLoaded, (state, action) => {
       state.products = action.payload;
+    })
+    .addCase(setIsCartOpen, (state, action) => {
+      state.isCartOpen = action.payload;
     })
     .addCase(addProductToCart, (state, action) => {
       state.cartProducts = getCartWithAddedProduct(state, action);

@@ -1,3 +1,5 @@
+@import 'src/variables'
+
 .catalog-page
 
 .catalog
@@ -12,10 +14,10 @@
     width: 18em
     border-radius: 1em
     background: #eefef6
-    box-shadow: 0px 0px 4em -0.8em #4F4A57
+    box-shadow: 0px 0px 4em -0.8em $main-color-grey
 
     &:hover
-        box-shadow: 0px 0px 6em -1.6em #004757
+        box-shadow: 0px 0px 6em -1.6em $main-color-turquoise
 
     &_visual
         position: relative
@@ -76,10 +78,12 @@
         &_title
             font-size: 1em
             font-weight: 700
-            padding-bottom: 1em
-            border-bottom: 1px solid
-
+            margin-bottom: 1em
+            &:hover
+                color: $main-color-grey
+                
         &_price
+            border-top: 1px solid
             padding-top: 1em
 
             &_final
@@ -88,16 +92,16 @@
 
             &_first
                 opacity: 0.8
-                color: #4F4A57
+                color: $main-color-grey
                 font-weight: 600
                 margin-left: 0.6em
                 font-size: 1em
                 text-decoration: line-through
-                text-decoration-color: #cc0000
+                text-decoration-color: $red-color
 
             &_save
                 opacity: 1
-                color: #cc0000
+                color: $red-color
                 font-weight: 600
                 margin-left: 0.6em
                 font-size: 1em

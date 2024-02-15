@@ -4,6 +4,7 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 
 import './layout.sass';
+import Cart from '../cart/cart';
 
 const Layout = () => {
   return (
@@ -11,6 +12,7 @@ const Layout = () => {
       <Header />
       <div className="content">
         <Outlet />
+        <Cart />
       </div>
       <Footer />
     </div>
