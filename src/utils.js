@@ -58,7 +58,9 @@ const updateLovelist = (state, action) => {
     (product) => product.id === action.payload
   );
   if (productIndex !== -1) {
-    state.lovelistProducts.filter((product) => product.id !== action.payload);
+    newProducts = state.lovelistProducts.filter(
+      (product) => product.id !== action.payload
+    );
   } else {
     const item = state.products.find((item) => item.id === action.payload);
     const newLovelistProduct = {
@@ -78,9 +80,46 @@ const updateLovelist = (state, action) => {
   return newProducts;
 };
 
+const countTheBasket = (state) => {
+  let items = 0;
+  let subtotal = 0;
+  let savings = 0;
+  let delivery = 0;
+  let total = 0;
+
+  state.cartProducts.forEach((item) => {
+    items += item.price * item.quantity;
+
+    if (item.sale) {
+      subtotal += item.price * item.quantity;
+      savings += (item.price - item.sale) * item.quantity;
+      total += item.sale * item.quantity;
+    } else {
+      subtotal += item.price * item.quantity;
+      total += item.price * item.quantity;
+    }
+  });
+
+  if (total > 2000) {
+    delivery = 'FREE';
+  } else if (total < 2000) {
+    total += 500;
+    delivery = 500;
+  }
+
+  return {
+    items: items,
+    subtotal: subtotal,
+    delivery: delivery,
+    savings: savings,
+    total: total,
+  };
+};
+
 export {
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
   getCartWithDecreasedProduct,
   updateLovelist,
+  countTheBasket,
 };

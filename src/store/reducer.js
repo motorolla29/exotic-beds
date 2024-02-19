@@ -18,6 +18,7 @@ import {
   getCartWithIncreasedProduct,
   getCartWithDecreasedProduct,
   updateLovelist,
+  countTheBasket,
 } from '../utils';
 
 import PRODUCTS from '../mocks/products';
@@ -30,7 +31,7 @@ const initialState = {
   sortType: null,
   cartProducts: [],
   lovelistProducts: [],
-  cartAmount: 0,
+  cartSummary: {},
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -59,11 +60,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.cartProducts = getCartWithDecreasedProduct(state, action);
     })
     .addCase(changeCartTotalCount, (state) => {
-      let count = 0;
-      state.cartProducts.map(
-        (item) => (count += (item.sale || item.price) * item.quantity)
-      );
-      state.cartAmount = count;
+      state.cartSummary = countTheBasket(state);
     })
     .addCase(toggleProductInLovelist, (state, action) => {
       state.lovelistProducts = updateLovelist(state, action);

@@ -35,6 +35,7 @@
                     p
                         color: $main-color-turquoise
                         margin-top: 1em
+                        margin-bottom: 1em
                         font-size: 1.4em
                         font-weight: 600
 
@@ -58,43 +59,103 @@
                         transform: rotate(45deg)
                     &::after
                         transform: rotate(-45deg)
-                    
-                        
 
-            &_controls
+            &_summary
 
-.cart-item
+                &_title
+                    font-size: 1.6em
+                    font-weight: 900
+                    padding: 1em 0
+                    border-top: 1px solid $main-color-turquoise
 
-    &_photo
-        width: 2em
+                &_total, &_order-total
+                    display: flex
+                    justify-content: space-between
+                    color: $main-color-grey
+                    margin-bottom: 1em
+                    font-size: 1em
+                    font-weight: 600
 
-        img
-            width: 100%
+                &_order-total
+                    color: $main-color-turquoise
+                    font-size: 1.4em
+                    font-weight: 600
+                    margin-bottom: 0
+                    padding: 1em 0
+                    border-top: 1px dashed $main-color-turquoise
 
-    &_body
+            &_promocode
+                display: flex
+                flex-direction: column
+                align-items: center
 
-        &_info
-
-            &_title
-
-            &_price
-
-                &_last
-
-                &_first
-
-        &_ui
-
-            &_lovelist
-
-            &_right-side
-
-                &_remove
-
-                &_conter
-
-                    &_minus
-
-                    &_plus
+                &_title
+                    color: $main-color-grey
+                    font-weight: 700
+                
+                &_body
+                    display: flex
+                    align-items: center
+                    margin-top: 1em
+                    font-size: 1.4em
 
                     &_input
+                        padding: 0.2em 0.4em
+                        font-size: 1em
+                        color: $main-color-grey
+                        margin: 0 1em
+                        width: 6em
+                        height: 2em
+                        border-radius: 0.2em
+                        border: $main-color-biscuit solid 1px 
+                        outline-color: #004757ae
+
+                    &_button
+                        color: $main-color-grey
+                        font-weight: 400
+                        font-size: 0.6em
+                        background:  $main-color-biscuit
+                        margin: 0 1em
+                        width: 5em
+                        height: 3em
+                        cursor: pointer
+                        border: $main-color-grey solid 1px
+                        border-radius: 2em
+                        outline: none
+                        transition: transform 0.1s ease
+                        &:hover
+                            opacity: 0.8
+                        &:active
+                            transform: scale(0.95)
+            
+            &_checkout
+                display: flex
+                justify-content: center
+                position: sticky
+
+                &_button
+                    margin-top: 4em
+                    opacity: 0.8
+                    cursor: pointer
+                    font-weight: 600
+                    color: $main-color-biscuit
+                    font-size: 1em
+                    width: 12em
+                    height: 4em
+                    background: $main-color-turquoise
+                    border-radius: 0.4em
+                    border: none
+                    transition: transform 0.1s ease
+
+                    &:hover
+                        outline: $main-color-biscuit solid 0.2em
+                        
+                    &:active
+                        opacity: 0.9
+                
+
+                        
+                            
+
+                &_controls
+
