@@ -11,7 +11,7 @@ import LovelistPage from '../pages/lovelist-page/lovelist-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 
 import './app.sass';
-import { setIsCartOpen } from '../../store/action';
+import { cartOpen } from '../../store/action';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,6 @@ const App = () => {
           <Route path="login" element={<LoginPage />} />
           <Route path="my-lovelist" element={<LovelistPage />} />
           <Route path="store-finder" element={<StoreFinderPage />} />
-          <Route path="#cart" action={() => dispatch(setIsCartOpen(true))} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

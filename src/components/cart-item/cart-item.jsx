@@ -6,7 +6,7 @@ import {
   decreaseProductAmountInCart,
   increaseProductAmountInCart,
   removeProductFromCart,
-  setIsCartOpen,
+  cartOpen,
   toggleProductInLovelist,
 } from '../../store/action';
 
@@ -17,17 +17,14 @@ const CartItem = ({ item }) => {
 
   return (
     <div className="cart-item" key={item.id}>
-      <Link onClick={() => dispatch(setIsCartOpen(false))} to={`/${item.id}`}>
+      <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.id}`}>
         <div className="cart-item_photo">
           <img alt="img" src={item.photo} />
         </div>
       </Link>
       <div className="cart-item_body">
         <div className="cart-item_body_info">
-          <Link
-            onClick={() => dispatch(setIsCartOpen(false))}
-            to={`/${item.id}`}
-          >
+          <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.id}`}>
             <div className="cart-item_body_info_title">{item.title}</div>
           </Link>
           {item.sale ? (

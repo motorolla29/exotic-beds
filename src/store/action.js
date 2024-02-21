@@ -8,7 +8,7 @@ const productsAreLoaded = createAction(`PRODUCTS_LOADED`, (bool) => ({
   payload: bool,
 }));
 
-const setIsCartOpen = createAction(`SET_IS_CART_OPEN`, (bool) => ({
+const cartOpen = createAction(`SET_IS_CART_OPEN`, (bool) => ({
   payload: bool,
 }));
 
@@ -37,13 +37,6 @@ const decreaseProductAmountInCart = createAction(
   })
 );
 
-const changeCartTotalCount = createAction(
-  `CHANGE_CART_TOTAL_COUNT`,
-  (productId) => ({
-    payload: productId,
-  })
-);
-
 const toggleProductInLovelist = createAction(
   `TOGGLE_PRODUCT_IN_LOVELIST`,
   (productId) => ({
@@ -58,12 +51,11 @@ const changeCategory = createAction(`CHANGE_CATEGORY`, (category) => ({
 export {
   loadProducts,
   productsAreLoaded,
-  setIsCartOpen,
+  cartOpen,
   addProductToCart,
   removeProductFromCart,
   increaseProductAmountInCart,
   decreaseProductAmountInCart,
-  changeCartTotalCount,
   toggleProductInLovelist,
   changeCategory,
 };

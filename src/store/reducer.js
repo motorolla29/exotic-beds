@@ -3,12 +3,11 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   loadProducts,
   productsAreLoaded,
-  setIsCartOpen,
+  cartOpen,
   addProductToCart,
   removeProductFromCart,
   increaseProductAmountInCart,
   decreaseProductAmountInCart,
-  changeCartTotalCount,
   toggleProductInLovelist,
   changeCategory,
 } from './action';
@@ -18,7 +17,6 @@ import {
   getCartWithIncreasedProduct,
   getCartWithDecreasedProduct,
   updateLovelist,
-  countTheBasket,
 } from '../utils';
 
 import PRODUCTS from '../mocks/products';
@@ -29,9 +27,39 @@ const initialState = {
   isCartOpen: false,
   category: null,
   sortType: null,
-  cartProducts: [],
+  cartProducts: [
+    {
+      id: 'blabla3',
+      title: 'blabla3',
+      description: 'blablabla3',
+      photo: '/catalog/_01a37cf5-f0cb-479d-ba27-f6e83c0d9225.jpg',
+      price: 1999,
+      rating: 4,
+      availableQuantity: 4,
+      quantityInCart: 1,
+    },
+    {
+      id: 'blabla15',
+      title: 'blabla15',
+      description: 'blablabla15',
+      photo: '/catalog/_0cd73490-1a81-45e3-a6b6-be6165770677.jpg',
+      price: 1599,
+      rating: 4.8,
+      availableQuantity: 4,
+      quantityInCart: 1,
+    },
+    {
+      id: 'blabla12',
+      title: 'blabla12',
+      description: 'blablabla132',
+      photo: '/catalog/_ef0941f7-9105-4ac4-bd7a-907e470e7099.jpg',
+      price: 499,
+      rating: 4.7,
+      availableQuantity: 4,
+      quantityInCart: 1,
+    },
+  ],
   lovelistProducts: [],
-  cartSummary: {},
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -42,7 +70,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(productsAreLoaded, (state, action) => {
       state.products = action.payload;
     })
-    .addCase(setIsCartOpen, (state, action) => {
+    .addCase(cartOpen, (state, action) => {
       state.isCartOpen = action.payload;
     })
     .addCase(addProductToCart, (state, action) => {
@@ -58,9 +86,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(decreaseProductAmountInCart, (state, action) => {
       state.cartProducts = getCartWithDecreasedProduct(state, action);
-    })
-    .addCase(changeCartTotalCount, (state) => {
-      state.cartSummary = countTheBasket(state);
     })
     .addCase(toggleProductInLovelist, (state, action) => {
       state.lovelistProducts = updateLovelist(state, action);

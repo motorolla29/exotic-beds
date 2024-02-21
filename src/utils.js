@@ -80,23 +80,23 @@ const updateLovelist = (state, action) => {
   return newProducts;
 };
 
-const countTheBasket = (state) => {
+const countTheBasket = (products) => {
   let items = 0;
   let subtotal = 0;
   let savings = 0;
   let delivery = 0;
   let total = 0;
 
-  state.cartProducts.forEach((item) => {
-    items += item.price * item.quantity;
+  products.forEach((item) => {
+    items += item.price * item.quantityInCart;
 
     if (item.sale) {
-      subtotal += item.price * item.quantity;
-      savings += (item.price - item.sale) * item.quantity;
-      total += item.sale * item.quantity;
+      subtotal += item.price * item.quantityInCart;
+      savings += (item.price - item.sale) * item.quantityInCart;
+      total += item.sale * item.quantityInCart;
     } else {
-      subtotal += item.price * item.quantity;
-      total += item.price * item.quantity;
+      subtotal += item.price * item.quantityInCart;
+      total += item.price * item.quantityInCart;
     }
   });
 
