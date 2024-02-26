@@ -116,10 +116,17 @@ const countTheBasket = (products) => {
   };
 };
 
+const getUcFirstNoDashStr = (str) => {
+  if (!str) return str;
+
+  return str[0].toUpperCase() + str.replace(/-/g, ' ').slice(1);
+};
+
 export {
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
   getCartWithDecreasedProduct,
   updateLovelist,
   countTheBasket,
+  getUcFirstNoDashStr,
 };

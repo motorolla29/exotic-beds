@@ -1,107 +1,18 @@
 @import 'src/variables'
 
 .catalog-page
+    display: flex
+    margin-top: 2em
+
+.catalog-container
+    flex-grow: grow
+
+    &_title
 
 .catalog
+    
     margin: 2em 0
     display: flex
     flex-wrap: wrap
 
-.catalog-item
-    font-size: 14px
-    margin-right: 1.6em
-    margin-bottom: 1.6em
-    width: 18em
-    border-radius: 1em
-    background: #eefef6
-    box-shadow: 0px 0px 4em -0.8em $main-color-grey
 
-    &:hover
-        box-shadow: 0px 0px 6em -1.6em $main-color-turquoise
-
-    &_visual
-        position: relative
-        width: 100%
-
-        a
-            display: flex
-
-        &_image
-            border-top-left-radius: 1em
-            border-top-right-radius: 1em
-            width: 100%
-            
-        
-        &_top-rated
-            position: absolute
-            opacity: 0.7
-            bottom: 1em
-            right: 1em
-            width: 4em
-
-        &_sale
-            position: absolute
-            top: -1.2em
-            left: 1em
-            width: 5em
-
-        &_new
-            position: absolute
-            top: -0.5em
-            right: -0.5em
-            width: 5em
-
-    &_info
-        padding: 1em 0.6em
-
-        &_rating
-            display: flex
-            flex-direction: row
-            padding-bottom: 1em
-
-            &_stars
-                display: flex
-                width: 8em
-
-                svg
-                    width: 100%
-                    height: auto
-                    
-            &_mark
-                font-size: 1em
-                font-weight: 300
-                font-style: italic
-                margin-left: 1em
-                align-self: flex-end
-
-
-        &_title
-            font-size: 1em
-            font-weight: 700
-            margin-bottom: 1em
-            &:hover
-                color: $main-color-grey
-                
-        &_price
-            border-top: 1px solid
-            padding-top: 1em
-
-            &_final
-                font-size: 1.2em
-                font-weight: 900
-
-            &_first
-                opacity: 0.8
-                color: $main-color-grey
-                font-weight: 600
-                margin-left: 0.6em
-                font-size: 1em
-                text-decoration: line-through
-                text-decoration-color: $main-color-red
-
-            &_save
-                opacity: 1
-                color: $main-color-red
-                font-weight: 600
-                margin-left: 0.6em
-                font-size: 1em

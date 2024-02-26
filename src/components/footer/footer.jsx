@@ -19,58 +19,62 @@ import './footer.sass';
 
 function Footer() {
   return (
-    <div className="footer">
-      <div className="footer_first-level">
-        <div className="footer_first-level_socials">
-          <Link to="">
-            <FacebookIcon />
-          </Link>
-          <Link to="">
-            <TwitterIcon />
-          </Link>
-          <Link to="">
-            <InstagramIcon />
-          </Link>
-          <Link to="">
-            <PinterestIcon />
-          </Link>
-          <Link to="">
-            <YoutubeIcon />
-          </Link>
-        </div>
-        <Link
-          to="/store-finder"
-          className="footer_first-level_store-finder-link"
-        >
-          <StoreFinderIcon />
-          <div className="footer_first-level_store-finder-link_signature">
-            <p className="footer_first-level_store-finder-link_signature_title">
-              Visit a store
-            </p>
-            <p className="footer_first-level_store-finder-link_signature_subtitle">
-              Over 100 stores nationwide
-            </p>
+    <div className="footer-container">
+      <div className="footer">
+        <div className="footer_first-level">
+          <div className="footer_first-level_socials">
+            <Link to="">
+              <FacebookIcon />
+            </Link>
+            <Link to="">
+              <TwitterIcon />
+            </Link>
+            <Link to="">
+              <InstagramIcon />
+            </Link>
+            <Link to="">
+              <PinterestIcon />
+            </Link>
+            <Link to="">
+              <YoutubeIcon />
+            </Link>
           </div>
-        </Link>
-      </div>
-
-      <div className="footer_line" />
-      <div className="footer_second-level">
-        <div className="footer_second-level_ways-to-pay">
-          <p className="footer_second-level_ways-to-pay_title">Ways to pay:</p>
-          <VisaIcon />
-          <MastercardIcon />
-          <GooglePayIcon />
-          <ApplePayIcon />
-          <AmericanExpressIcon />
-          <PayPalIcon />
+          <Link
+            to="/store-finder"
+            className="footer_first-level_store-finder-link"
+          >
+            <StoreFinderIcon />
+            <div className="footer_first-level_store-finder-link_signature">
+              <p className="footer_first-level_store-finder-link_signature_title">
+                Visit a store
+              </p>
+              <p className="footer_first-level_store-finder-link_signature_subtitle">
+                Over 100 stores nationwide
+              </p>
+            </div>
+          </Link>
         </div>
-      </div>
 
-      <div className="footer_line" />
+        <div className="footer_line" />
+        <div className="footer_second-level">
+          <div className="footer_second-level_ways-to-pay">
+            <p className="footer_second-level_ways-to-pay_title">
+              Ways to pay:
+            </p>
+            <VisaIcon />
+            <MastercardIcon />
+            <GooglePayIcon />
+            <ApplePayIcon />
+            <AmericanExpressIcon />
+            <PayPalIcon />
+          </div>
+        </div>
 
-      <div className="footer_copyright">
-        © 2024 Designed and developed by Motorolla29
+        <div className="footer_line" />
+
+        <div className="footer_copyright">
+          © 2024 Designed and developed by Motorolla29
+        </div>
       </div>
     </div>
   );

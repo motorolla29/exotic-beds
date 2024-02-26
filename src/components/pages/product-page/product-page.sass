@@ -1,10 +1,11 @@
 @import 'src/variables'
+
 .product-page
     margin: 2em 0
     display: flex
 
     &_visual
-        width: 44%
+        width: 50%
         img
             border-radius: 2em
             width: 100%
@@ -14,7 +15,7 @@
         color: $main-color-grey
         background: linear-gradient(to left, #eefef60f, #eefef65e) 
         height: fit-content
-        width: 56%
+        width: 50%
         border-radius: 2em
         margin-left: 2em
         padding: 1em 2em 
@@ -72,7 +73,7 @@
             margin-top: 2em
             margin-bottom: 1em
 
-            &_to-cart-button
+            &_add-to-cart-button, &_open-cart-button
                 opacity: 0.8
                 cursor: pointer
                 font-weight: 600
@@ -85,11 +86,13 @@
                 outline: none
                 border: none
                 transition: transform 0.1s ease
-
                 &:hover
                     opacity: 0.9
                 &:active
                     transform: scale(0.97)
+
+            &_open-cart-button
+                background: $main-color-grey
             
 
             &_lovelist-button
@@ -107,7 +110,6 @@
                 background: #eefef6
                 border: none
                 border-radius: 50%
-                transition: transform 0.2s ease
 
                 &:hover
                     opacity: 0.4
@@ -115,8 +117,8 @@
                     opacity: 0.6
 
                 svg
-                    transform: translateY(0.16em)
-                    stroke: $main-color-red
+                    transform: translateY(0.06em)
+                    stroke: red
                     stroke-width: 1em
                     width: 50%
                     height: auto

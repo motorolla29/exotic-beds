@@ -1,24 +1,37 @@
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+import { getUcFirstNoDashStr } from '../../utils';
 
 import './breadcrumbs.sass';
 
-const Breadcrumbs = ({ product }) => {
-  const category = useSelector((state) => state.category);
+const Breadcrumbs = ({ category }) => {
+  const location = useLocation();
+
+  const matchedRoutes = location.pathname
+    .split('/')
+    .filter(Boolean)
+    .map((route) => decodeURIComponent(route));
 
   return (
     <div className="breadcrumbs">
-      <NavLink to="/" className="breadcrumbs_item">
+      <Link className="breadcrumbs_item" to="/">
         Home
-      </NavLink>
+      </Link>
       {category ? (
-        <NavLink to={`/${category.toLowerCase()}`} className="breadcrumbs_item">
-          {category}
-        </NavLink>
+        <Link className="breadcrumbs_item" to={`/${category}`}>
+          {getUcFirstNoDashStr(category)}
+        </Link>
       ) : null}
-      {product ? (
-        <NavLink className="breadcrumbs_item">{product.title}</NavLink>
-      ) : null}
+      {matchedRoutes.map((route) => (
+        <Link
+          className="breadcrumbs_item"
+          key={route}
+          to={`/${encodeURIComponent(route)}`}
+        >
+          {getUcFirstNoDashStr(route)}
+        </Link>
+      ))}
     </div>
   );
 };

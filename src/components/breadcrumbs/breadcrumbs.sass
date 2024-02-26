@@ -11,7 +11,11 @@
         font-weight: 600
         color: $main-color-turquoise
 
-        &:hover
+        &:not(&:last-child):hover
+            text-decoration: underline
+
+        &:last-child
+            cursor: default
             color: $main-color-grey
 
         &:not(&:first-child)::before

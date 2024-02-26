@@ -1,7 +1,15 @@
-import './love-list.sass';
+import CatalogItem from '../catalog-item/catalog-item';
 
-function LoveList() {
-  return <div className="love-list">lovelist</div>;
-}
+import './lovelist.sass';
 
-export default LoveList;
+const Lovelist = ({ items }) => {
+  return (
+    <div className="lovelist">
+      {items.map((it) => (
+        <CatalogItem key={it.id} item={it} />
+      ))}
+    </div>
+  );
+};
+
+export default Lovelist;

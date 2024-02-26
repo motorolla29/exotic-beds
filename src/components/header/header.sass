@@ -1,12 +1,19 @@
 @import 'src/variables'
 
+.header-container
+    display: flex
+    justify-content: center
+    background: linear-gradient(to bottom, $main-color-white 35%, #aad8c2)
+
 .header
-    padding: 1em 5vw 3em 5vw
+    user-select: none
+    width: 100%
+    max-width: 1620px
+    padding: 1em 2vw 2em 2vw
     display: flex
     justify-content: space-between
     align-items: center
     font-size: 15px
-    background: linear-gradient(to bottom, $main-color-white 35%, #aad8c2)
 
     &_left-side
         display: flex
@@ -41,7 +48,7 @@
                 background: none
                 transition: 0.4s ease-out
                 &:focus
-                    width: 10em
+                    width: 8em
         &_logo
             margin-right: 5em
             width: 8em

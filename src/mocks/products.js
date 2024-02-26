@@ -23,7 +23,7 @@ const PRODUCTS = [
   {
     id: 'blabla3',
     category: 'beds',
-    title: 'blabla3',
+    title: 'blabla3 blabla3 blabla3 blabla3 blabla3 blabla3',
     description: 'blablabla3',
     photo: '/catalog/_01a37cf5-f0cb-479d-ba27-f6e83c0d9225.jpg',
     price: 1999,
@@ -60,6 +60,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4.5,
     availableQuantity: 4,
+    new: true,
   },
   {
     id: 'blabla7',
@@ -92,6 +93,7 @@ const PRODUCTS = [
     price: 2999,
     rating: 4.6,
     availableQuantity: 4,
+    new: true,
   },
   {
     id: 'blabla10',
@@ -122,6 +124,7 @@ const PRODUCTS = [
     price: 499,
     rating: 4.7,
     availableQuantity: 4,
+    new: true,
   },
   {
     id: 'blabla13',
@@ -152,6 +155,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 4.8,
     availableQuantity: 4,
+    new: true,
   },
 ];
 
