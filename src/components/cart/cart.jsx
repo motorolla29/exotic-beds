@@ -2,11 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { cartOpen } from '../../store/action';
+import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
-import CartEmpty from '../cart-empty/cart-empty';
+import { scrollController } from '../../utils';
 
 import './cart.sass';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -19,9 +21,9 @@ const Cart = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('no-scroll');
+      scrollController.disabledScroll();
     } else {
-      document.body.classList.remove('no-scroll');
+      scrollController.enabledScroll();
     }
   }, [isOpen]);
 
@@ -34,7 +36,10 @@ const Cart = () => {
         />
         <div className="cart_widget">
           <div className="cart_widget_widget-inner">
-            <div className="cart_widget_widget-inner_scroll-container">
+            <OverlayScrollbarsComponent
+              className="cart_widget_widget-inner_scroll-container"
+              defer
+            >
               <div className="cart_widget_widget-inner_header">
                 <div className="cart_widget_widget-inner_header_title">
                   <h1>
@@ -109,7 +114,7 @@ const Cart = () => {
               ) : (
                 <CartEmpty />
               )}
-            </div>
+            </OverlayScrollbarsComponent>
           </div>
         </div>
       </div>
