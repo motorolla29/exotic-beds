@@ -1,13 +1,20 @@
 import { useSelector } from 'react-redux';
+import { useMemo, useRef } from 'react';
 
 import Lovelist from '../../lovelist/lovelist';
+import LovelistEmpty from '../../lovelist-empty/lovelist-empty';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 
 import './lovelist-page.sass';
-import LovelistEmpty from '../../lovelist-empty/lovelist-empty';
 
 const LovelistPage = () => {
   const lovedProducts = useSelector((state) => state.lovelistProducts);
+  const displayedLovelistItems = useRef();
+
+  useMemo(() => {
+    displayedLovelistItems.current = structuredClone(lovedProducts);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -20,7 +27,11 @@ const LovelistPage = () => {
             {lovedProducts.length === 1 ? 'product' : 'products'})
           </span>
         </h1>
-        {lovedProducts ? <Lovelist items={lovedProducts} /> : <LovelistEmpty />}
+        {displayedLovelistItems.current.length ? (
+          <Lovelist items={displayedLovelistItems.current} />
+        ) : (
+          <LovelistEmpty />
+        )}
       </div>
     </>
   );

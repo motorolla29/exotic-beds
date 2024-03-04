@@ -59,7 +59,7 @@ const initialState = {
       quantityInCart: 1,
     },
   ],
-  lovelistProducts: PRODUCTS,
+  lovelistProducts: [],
 };
 
 const reducer = createReducer(initialState, (builder) => {

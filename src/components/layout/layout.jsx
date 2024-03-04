@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { OverlayScrollbars } from 'overlayscrollbars';
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -19,19 +19,19 @@ const Layout = () => {
     },
   };
 
+  OverlayScrollbars(document.body, mainScrollConfig);
+
   return (
-    <OverlayScrollbarsComponent options={mainScrollConfig} defer>
-      <div className="layout">
-        <Header />
-        <div className="main-container">
-          <div className="main">
-            <Outlet />
-            <Cart />
-          </div>
+    <div className="layout">
+      <Header />
+      <div className="main-container">
+        <div className="main">
+          <Outlet />
+          <Cart />
         </div>
-        <Footer />
       </div>
-    </OverlayScrollbarsComponent>
+      <Footer />
+    </div>
   );
 };
 

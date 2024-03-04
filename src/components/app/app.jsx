@@ -10,6 +10,7 @@ import LovelistPage from '../pages/lovelist-page/lovelist-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 
 import './app.sass';
+import SearchPage from '../pages/search-page/search-page';
 
 const App = () => {
   return (
@@ -26,9 +27,10 @@ const App = () => {
           />
           <Route path="poofs" element={<CatalogPage category="poofs" />} />
           <Route path="kids" element={<CatalogPage category="kids" />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route path="search" element={<SearchPage />} />
           <Route path="my-lovelist" element={<LovelistPage />} />
           <Route path="store-finder" element={<StoreFinderPage />} />
+          <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

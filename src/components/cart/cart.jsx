@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import { cartOpen } from '../../store/action';
 import CartEmpty from '../cart-empty/cart-empty';
@@ -8,7 +9,6 @@ import { countTheBasket } from '../../utils';
 import { scrollController } from '../../utils';
 
 import './cart.sass';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const Cart = () => {
   const dispatch = useDispatch();

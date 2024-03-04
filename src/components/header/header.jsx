@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartOpen } from '../../store/action';
 
@@ -11,6 +11,7 @@ import './header.sass';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
   const basketLength = useSelector((state) => {
     return state.cartProducts.reduce(
@@ -19,6 +20,16 @@ const Header = () => {
     );
   });
 
+  const formHandleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const query = form.search.value;
+    if (query) {
+      navigate(`/search?q=${query}`);
+    }
+  };
+
   return (
     <div className="header-container">
       <div className="header">
@@ -26,7 +37,10 @@ const Header = () => {
           <Link className="header_left-side_logo" to="/">
             <img alt="logo" src="/logo/EB-LOGO-HD.png" />
           </Link>
-          <form className="header_left-side_search-form">
+          <form
+            onSubmit={formHandleSubmit}
+            className="header_left-side_search-form"
+          >
             <button
               type="submit"
               className="header_left-side_search-form_button"
@@ -34,7 +48,8 @@ const Header = () => {
               <SearchIcon />
             </button>
             <input
-              type="text"
+              type="search"
+              name="search"
               className="header_left-side_search-form_input"
             ></input>
           </form>

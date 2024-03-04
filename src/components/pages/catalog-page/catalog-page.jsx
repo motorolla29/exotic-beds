@@ -1,20 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { changeCategory } from '../../../store/action';
+import { useSelector } from 'react-redux';
+
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
 import CatalogFilters from '../../catalog-filters/catalog-filters';
-import CatalogItem from '../../catalog-item/catalog-item';
+import Catalog from '../../catalog/catalog';
 import { getUcFirstNoDashStr } from '../../../utils';
 
 import './catalog-page.sass';
+import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
 
 const CatalogPage = ({ category }) => {
-  const dispatch = useDispatch();
-
-  dispatch(changeCategory(category));
-
-  const products = useSelector((state) => state.products).filter(
-    (it) => it.category === category
+  const products = useSelector((state) =>
+    state.products.filter((it) => it.category === category)
   );
 
   return (
@@ -27,11 +24,8 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
-          <div className="catalog">
-            {products.map((it) => {
-              return <CatalogItem key={it.id} item={it} />;
-            })}
-          </div>
+          <CatalogTopToolbar />
+          <Catalog products={products} />
         </div>
       </div>
     </>

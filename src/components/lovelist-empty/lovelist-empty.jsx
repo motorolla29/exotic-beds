@@ -16,7 +16,7 @@ const LovelistEmpty = () => {
         <span>
           Click{' '}
           {
-            <button className="catalog-item_ui_lovelist-button">
+            <button className="catalog-item_info_ui_lovelist-button">
               <HeartIcon />
             </button>
           }{' '}

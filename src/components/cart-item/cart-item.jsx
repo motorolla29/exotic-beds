@@ -67,11 +67,9 @@ const CartItem = ({ item }) => {
               >
                 -
               </span>
-              <input
-                className="cart-item_body_ui_right-side_counter_input"
-                value={item.quantityInCart}
-                disabled
-              />
+              <span className="cart-item_body_ui_right-side_counter_value">
+                {item.quantityInCart}
+              </span>
               <span
                 onClick={() => dispatch(increaseProductAmountInCart(item.id))}
                 className="cart-item_body_ui_right-side_counter_plus"
