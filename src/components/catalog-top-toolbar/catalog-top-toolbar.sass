@@ -3,24 +3,35 @@
 
 .top-toolbar
     display: flex
+    align-items: center
     margin-top: 0.5em
 
+    select
+        background: $main-color-green-light
+        color: $main-color-grey
+        border: 1px solid $main-color-grey
+        border-radius: 0.25em
+        padding: 0 0.4em
+        height: 2em
+        margin-left: 0.5em
+        outline: none
+
     &_items-counter
-        border-right: 1px solid $main-color-turquoise
+        border-right: 1px solid $main-color-green-light
         padding-right: 1em
 
     &_items-limiter
         display: flex
+        align-items: center
         margin-left: 1em
 
         &_control
 
-            &_options 
-                margin-left: 0.5em
+            &_options
 
     &_sorter
         display: flex
+        align-items: center
         margin-left: 1em
 
         &_options
-            margin-left: 0.5em
