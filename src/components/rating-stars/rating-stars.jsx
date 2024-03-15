@@ -1,6 +1,6 @@
 import './rating-stars.sass';
 
-const RatingStars = ({ id, rating }) => (
+const RatingStars = ({ id = 0, rating, maskColor }) => (
   <svg width="10%" height="10%" viewBox="0 0 160 32">
     <defs>
       <mask id={id}>
@@ -10,7 +10,7 @@ const RatingStars = ({ id, rating }) => (
           y="0"
           width="100%"
           height="100%"
-          fill="#303030"
+          fill={maskColor || '#303030'}
         />
       </mask>
       <symbol viewBox="0 0 32 32" id="star">

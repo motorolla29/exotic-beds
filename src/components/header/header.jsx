@@ -1,8 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartOpen } from '../../store/action';
 
-import { ReactComponent as SearchIcon } from '../../images/ui-icons/search-icon.svg';
+import { cartOpen } from '../../store/action';
+import HeaderSearchPanel from '../header-search-panel/header-serach-panel';
+
 import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon.svg';
 import { ReactComponent as HeartIcon } from '../../images/ui-icons/heart-icon.svg';
 import { ReactComponent as PinIcon } from '../../images/ui-icons/pin-icon.svg';
@@ -11,7 +12,7 @@ import './header.sass';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
   const basketLength = useSelector((state) => {
     return state.cartProducts.reduce(
@@ -20,16 +21,6 @@ const Header = () => {
     );
   });
 
-  const formHandleSubmit = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const query = form.search.value;
-    if (query) {
-      navigate(`/search?q=${query}`);
-    }
-  };
-
   return (
     <div className="header-container">
       <div className="header">
@@ -37,22 +28,7 @@ const Header = () => {
           <Link className="header_left-side_logo" to="/">
             <img alt="logo" src="/logo/EB-LOGO-HD.png" />
           </Link>
-          <form
-            onSubmit={formHandleSubmit}
-            className="header_left-side_search-form"
-          >
-            <button
-              type="submit"
-              className="header_left-side_search-form_button"
-            >
-              <SearchIcon />
-            </button>
-            <input
-              type="search"
-              name="search"
-              className="header_left-side_search-form_input"
-            ></input>
-          </form>
+          <HeaderSearchPanel />
         </div>
         <div className="header_nav">
           <Link to="/store-finder" className="header_nav_store-finder">

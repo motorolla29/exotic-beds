@@ -1,0 +1,194 @@
+//////////////////////////////////////////custom checkbox///////////////////////////////////////////////////////
+/* Base for label styling */
+.main-checkbox:not(:checked),
+.main-checkbox:checked 
+    position: absolute
+    z-index: -999
+    opacity: 0
+    
+.main-checkbox:not(:checked) + label,
+.main-checkbox:checked + label
+    position: relative
+    padding-left: 1.75em
+    font-size: 1.05em
+    line-height: 1.7
+    cursor: pointer
+
+/* checkbox aspect */
+.main-checkbox:not(:checked) + label:before,
+.main-checkbox:checked + label:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    width: 1.2em
+    height: 1.2em
+    border: 1px solid #aaa
+    background: $main-color-white-transparent
+    border-radius: .2em
+    box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 $main-color-turquoise
+    -webkit-transition: all .275s
+    transition: all .275s
+
+
+/* checked mark aspect */
+.main-checkbox:not(:checked) + label:after,
+.main-checkbox:checked + label:after 
+    content: '✓'
+    position: absolute
+    top: .6em
+    left: .3em
+    font-size: 1em
+    color: $main-color-turquoise
+    line-height: 0
+    -webkit-transition: all .2s
+    transition: all .2s
+
+
+/* checked mark aspect changes */
+.main-checkbox:not(:checked) + label:after 
+    opacity: 0
+    -webkit-transform: scale(0) rotate(45deg)
+    transform: scale(0) rotate(45deg)
+
+
+.main-checkbox:checked + label:after 
+    opacity: 1
+    -webkit-transform: scale(1) rotate(0)
+    transform: scale(1) rotate(0)
+
+
+/* Disabled checkbox */
+.main-checkbox:disabled:not(:checked) + label:before,
+.main-checkbox:disabled:checked + label:before 
+    box-shadow: none
+    border-color: #bbb
+    background-color: #e9e9e9
+
+
+.main-checkbox:disabled:checked + label:after 
+    color: #777
+
+
+.main-checkbox:disabled + label 
+    color: #aaa
+
+
+/* Accessibility */
+.main-checkbox:checked:focus + label:before,
+.main-checkbox:not(:checked):focus + label:before 
+    box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 4px $main-color-white-transparent
+
+///////////////////////////////////////////////////custom radio//////////////////////////////////////////////////////
+
+/* для элемента input c type="radio" */
+.main-radio>input 
+    position: absolute
+    z-index: -999
+    opacity: 0
+    
+
+/* для элемента label связанного с .main-radio */
+.main-radio>span 
+    display: inline-flex
+    align-items: center
+    user-select: none
+    
+
+/* создание в label псевдоэлемента  before со следующими стилями */
+.main-radio>span::before 
+    content: ''
+    display: inline-block
+    width: 1em
+    height: 1em
+    flex-shrink: 0
+    flex-grow: 0
+    border: 1px solid #adb5bd
+    border-radius: 50%
+    margin-right: 0.5em
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: 50% 50%
+    
+
+/* стили при наведении курсора на радио */
+.main-radio>input:not(:disabled):not(:checked)+span:hover::before 
+    border-color: #15635278
+    
+
+/* стили для активной радиокнопки (при нажатии на неё) */
+.main-radio>input:not(:disabled):active+span::before 
+    background-color: #0047572e
+    border-color: #00475734
+    
+
+/* стили для радиокнопки, находящейся в фокусе */
+.main-radio>input:focus+span::before 
+    box-shadow: 0 0 0 0.2rem #0047573f
+    
+
+/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+.main-radio>input:focus:not(:checked)+span::before 
+    border-color: #0047573f
+    
+
+/* стили для радиокнопки, находящейся в состоянии checked */
+.main-radio>input:checked+span::before 
+    border-color: #004757bc
+    background-color: #004757bc
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")
+    
+
+/* стили для радиокнопки, находящейся в состоянии disabled */
+.main-radio>input:disabled+span::before 
+    background-color: #e9ecef
+    
+///////////////////////////////////////////////////custom switch//////////////////////////////////////////////////////
+
+.main-switch 
+  display: inline-block
+  height: 1.4em
+  position: relative
+  width: 2.4em
+
+
+.main-switch input 
+  display: none
+
+
+.main-slider 
+  background-color: #ccc
+  bottom: 0
+  cursor: pointer
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  transition: .4s
+
+
+.main-slider:before 
+  background-color: $main-color-white
+  bottom: 0.2em
+  left: 0.2em
+  content: ""
+  height: 1em
+  position: absolute
+  transition: .4s
+  width: 1em
+
+
+input:checked + .main-slider 
+  background-color: $main-color-turquoise-transparent
+
+
+input:checked + .main-slider:before 
+  transform: translateX(1em)
+
+
+.main-slider.round 
+  border-radius: 1em
+
+
+.main-slider.round:before 
+  border-radius: 50%

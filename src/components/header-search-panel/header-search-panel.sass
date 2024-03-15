@@ -1,0 +1,35 @@
+@import 'src/styles/variables'
+
+.header-search-form
+    display: flex
+    align-items: flex-end
+    border-bottom: 0.2em solid
+    padding-bottom: 0.6em  
+        
+    &_button
+        font-size: 15px
+        border: none
+        background: none
+        cursor: pointer
+        width: 1.6em
+        height: 1.6em
+        svg
+            fill: $main-color-turquoise
+            width: 1.6em
+            height: 1.6em
+    &_input
+        height: 100%
+        font-size: 1.4em
+        font-weight: 600
+        color: $main-color-turquoise
+        width: 5em
+        padding-left: 0.5em
+        outline: none
+        border: none
+        background: none
+        transition: 0.4s ease-out
+        &::-webkit-search-cancel-button
+            -webkit-appearance: none
+                
+        &:focus
+            width: 10em

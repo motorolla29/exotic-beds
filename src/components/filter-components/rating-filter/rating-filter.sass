@@ -1,0 +1,22 @@
+@import 'src/styles/variables'
+
+.rating-filter
+    &_options
+        &_option
+            display: flex
+            margin: 0.75em 0
+            color: $main-color-grey
+
+            &:last-child label
+                font-weight: 600
+
+            label
+                cursor: pointer
+                flex-grow: 1
+
+            svg
+                position: relative
+                width: 8em
+                margin-right: 0.5em
+
+                &_amount

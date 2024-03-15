@@ -1,4 +1,5 @@
-@import 'src/variables'
+@import 'src/styles/variables'
+@import 'src/styles/custom-ui'
 
 *
     margin: 0
@@ -19,85 +20,4 @@ h1
 a
     text-decoration: none
     color: $main-color-turquoise
-
-    
-/* Base for label styling */
-.main-checkbox:not(:checked),
-.main-checkbox:checked 
-    position: absolute
-    z-index: -999
-    opacity: 0
-    
-.main-checkbox:not(:checked) + label,
-.main-checkbox:checked + label
-    position: relative
-    padding-left: 1.75em
-    font-size: 1.05em
-    line-height: 1.7
-    cursor: pointer
-
-/* checkbox aspect */
-.main-checkbox:not(:checked) + label:before,
-.main-checkbox:checked + label:before
-    content: ''
-    position: absolute
-    left: 0
-    top: 0
-    width: 1.2em
-    height: 1.2em
-    border: 1px solid #aaa
-    background: $main-color-white-transparent
-    border-radius: .2em
-    box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 $main-color-turquoise
-    -webkit-transition: all .275s
-    transition: all .275s
-
-
-/* checked mark aspect */
-.main-checkbox:not(:checked) + label:after,
-.main-checkbox:checked + label:after 
-    content: '✓'
-    position: absolute
-    top: .6em
-    left: .3em
-    font-size: 1em
-    color: $main-color-turquoise
-    line-height: 0
-    -webkit-transition: all .2s
-    transition: all .2s
-
-
-/* checked mark aspect changes */
-.main-checkbox:not(:checked) + label:after 
-    opacity: 0
-    -webkit-transform: scale(0) rotate(45deg)
-    transform: scale(0) rotate(45deg)
-
-
-.main-checkbox:checked + label:after 
-    opacity: 1
-    -webkit-transform: scale(1) rotate(0)
-    transform: scale(1) rotate(0)
-
-
-/* Disabled checkbox */
-.main-checkbox:disabled:not(:checked) + label:before,
-.main-checkbox:disabled:checked + label:before 
-    box-shadow: none
-    border-color: #bbb
-    background-color: #e9e9e9
-
-
-.main-checkbox:disabled:checked + label:after 
-    color: #777
-
-
-.main-checkbox:disabled + label 
-    color: #aaa
-
-
-/* Accessibility */
-.main-checkbox:checked:focus + label:before,
-.main-checkbox:not(:checked):focus + label:before 
-    box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 4px $main-color-white-transparent
 
