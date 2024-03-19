@@ -44,10 +44,6 @@ const toggleProductInLovelist = createAction(
   })
 );
 
-const changeCategory = createAction(`CHANGE_CATEGORY`, (category) => ({
-  payload: category,
-}));
-
 export {
   loadProducts,
   productsAreLoaded,
@@ -57,5 +53,4 @@ export {
   increaseProductAmountInCart,
   decreaseProductAmountInCart,
   toggleProductInLovelist,
-  changeCategory,
 };

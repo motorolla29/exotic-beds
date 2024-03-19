@@ -1,62 +1,57 @@
 @import 'src/styles/variables'
 
-.price-filter
+.price-filter-inputs
+    display: flex
+    justify-content: space-between
+    margin: 0.5em 0
+    
+    &_container
+        display: flex
+        flex-direction: column
+        align-items: flex-start
 
     &_title
+        color: $main-color-grey
+        font-size: 1em
+        padding-bottom: 0.2em
+
+    &_number
+        outline: none
+        background-color: $main-color-white-transparent
+        text-align: center
+        width: 8em
+        border: 1px solid $main-color-white
+        border-radius: 3px
+        font-weight: 600
+        font-size: 1em
+        color: $main-color-turquoise
+        padding: 0.5em
+        -moz-appearance: textfield
+        &::-webkit-inner-spin-button
+            -webkit-appearance: none
+            
+
+.price-filter .slider-box
+    display: grid
+    padding: 1em 0
+    width: 100%
+
+.price-filter .slider
+    justify-self: center
+    width: 94%
+    color: $main-color-turquoise
+
+    & .MuiSlider-thumb
+        color: $main-color-white
+        border: 2px solid $main-color-turquoise
+        &:hover, &.Mui-focusVisible
+            box-shadow: 0 0 0 6px #00475717
+        &:active, &.Mui-active
+            box-shadow: 0 0 0 10px #00475717
+            
+
+    & .MuiSlider-valueLabelOpen
+        display: none
     
-    &_scrolling
-
-        &_container
-            display: flex
-            justify-content: space-between
-            margin-bottom: 2em
-
-            &_number
-                outline: none
-                background-color: $main-color-white-transparent
-                text-align: center
-                width: 8em
-                border: 1px solid $main-color-white
-                border-radius: 3px
-                font-weight: 600
-                font-size: 1em
-                color: $main-color-turquoise
-                padding: 0.5em
-                -moz-appearance: textfield
-                &::-webkit-inner-spin-button
-                    -webkit-appearance: none
-                        
-                &_container
-                    display: flex
-                    flex-direction: column
-                    align-items: flex-start
-
-                &_title
-                    color: $main-color-grey
-                    font-size: 0.8em
-                    padding-bottom: 0.2em
-
-
-
-        &_line
-            position: relative
-            display: flex
-            height: 0.2em
-            background: $main-color-turquoise
-            margin-bottom: 2em
-
-            &_thumb-left, &_thumb-right
-                position: absolute
-                outline: none
-                width: 1.5em
-                height: 1.5em
-                background: $main-color-white
-                border-radius: 50%
-                border: 5px solid $main-color-turquoise
-                cursor: pointer
-                top: -0.6em
-                transition: 0.2s ease
-                &:hover
-                    transform: scale(1.2)
-            &_thumb-right
-                right: 0
+        
+    

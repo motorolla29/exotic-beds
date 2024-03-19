@@ -9,7 +9,6 @@ import {
   increaseProductAmountInCart,
   decreaseProductAmountInCart,
   toggleProductInLovelist,
-  changeCategory,
 } from './action';
 
 import {
@@ -25,7 +24,6 @@ const initialState = {
   products: PRODUCTS,
   productsAreLoaded: false,
   isCartOpen: false,
-  category: null,
   sortType: null,
   cartProducts: [
     {
@@ -89,9 +87,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(toggleProductInLovelist, (state, action) => {
       state.lovelistProducts = updateLovelist(state, action);
-    })
-    .addCase(changeCategory, (state, action) => {
-      state.category = action.payload;
     });
 });
 

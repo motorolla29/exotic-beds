@@ -1,8 +1,11 @@
+import { useSearchParams } from 'react-router-dom';
 import { PRODUCT_SERIES } from '../../../const';
 
 import './series-filter.sass';
 
 const SeriesFilter = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   return (
     <div className="series-filter">
       <div className="series-filter_options">
@@ -12,6 +15,8 @@ const SeriesFilter = () => {
               <input
                 id={`series-${series}`}
                 type="checkbox"
+                checked={searchParams.has('series', { series })}
+                onChange={(evt) => searchParams.append('series', { series })}
                 className="main-checkbox series-filter_options_option_input"
               ></input>
               <label htmlFor={`series-${series}`} />
