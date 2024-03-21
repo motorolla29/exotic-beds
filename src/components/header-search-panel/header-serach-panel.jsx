@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { ReactComponent as SearchIcon } from '../../images/ui-icons/search-icon.svg';
@@ -23,6 +23,10 @@ const HeaderSearchPanel = () => {
       navigate(`/search?q=${query}`);
     }
   };
+
+  useEffect(() => {
+    setSearch(q);
+  }, [q]);
 
   return (
     <form onSubmit={formHandleSubmit} className="header-search-form">

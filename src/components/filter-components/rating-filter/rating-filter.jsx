@@ -1,8 +1,17 @@
+import { useSearchParams } from 'react-router-dom';
+
 import RatingStars from '../../rating-stars/rating-stars';
 
 import './rating-filter.sass';
 
 const RatingFilter = () => {
+  const [searchParams, setSearchparams] = useSearchParams();
+
+  const onRatingInputChange = (evt) => {
+    searchParams.set('minRating', evt.target.value);
+    setSearchparams(searchParams);
+  };
+
   return (
     <div className="rating-filter">
       <div className="rating-filter_options">
@@ -11,7 +20,9 @@ const RatingFilter = () => {
             <input
               type="radio"
               name="rating"
-              value="4+"
+              value="4"
+              checked={searchParams.has('minRating', '4')}
+              onChange={onRatingInputChange}
               className="main-radio"
             ></input>
             <span>
@@ -26,7 +37,9 @@ const RatingFilter = () => {
             <input
               type="radio"
               name="rating"
-              value="3+"
+              value="3"
+              checked={searchParams.has('minRating', '3')}
+              onChange={onRatingInputChange}
               className="main-radio"
             ></input>
             <span>
@@ -41,7 +54,9 @@ const RatingFilter = () => {
             <input
               type="radio"
               name="rating"
-              value="2+"
+              value="2"
+              checked={searchParams.has('minRating', '2')}
+              onChange={onRatingInputChange}
               className="main-radio"
             ></input>
             <span>
@@ -56,7 +71,9 @@ const RatingFilter = () => {
             <input
               type="radio"
               name="rating"
-              value="1+"
+              value="1"
+              checked={searchParams.has('minRating', '1')}
+              onChange={onRatingInputChange}
               className="main-radio"
             ></input>
             <span>
@@ -71,7 +88,9 @@ const RatingFilter = () => {
             <input
               type="radio"
               name="rating"
-              value="all"
+              value="0"
+              checked={searchParams.has('minRating', 'all')}
+              onChange={onRatingInputChange}
               className="main-radio"
             ></input>
             <span>Doesn't matter</span>

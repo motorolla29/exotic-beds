@@ -16,6 +16,12 @@ const FilterSwitchers = () => {
   const [isSale, setIsSale] = useState(searchParams.has('sale'));
   const [isNew, setIsNew] = useState(searchParams.has('new'));
 
+  useEffect(() => {
+    setIsTopRated(searchParams.has('top-rated'));
+    setIsSale(searchParams.has('sale'));
+    setIsNew(searchParams.has('new'));
+  }, [searchParams]);
+
   const onInputTopRatedSwitcherHandler = (evt) => {
     setIsTopRated(evt.target.checked);
     setInputNameToUrlParamsBool(evt, searchParams);

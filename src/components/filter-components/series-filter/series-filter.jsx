@@ -15,8 +15,14 @@ const SeriesFilter = () => {
               <input
                 id={`series-${series}`}
                 type="checkbox"
-                checked={searchParams.has('series', { series })}
-                onChange={(evt) => searchParams.append('series', { series })}
+                name={series}
+                checked={searchParams.has('series', `${series}`)}
+                onChange={(evt) => {
+                  searchParams.has('series', `${series}`)
+                    ? searchParams.delete('series', `${evt.target.name}`)
+                    : searchParams.append('series', `${evt.target.name}`);
+                  setSearchParams(searchParams);
+                }}
                 className="main-checkbox series-filter_options_option_input"
               ></input>
               <label htmlFor={`series-${series}`} />
