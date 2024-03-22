@@ -6,16 +6,22 @@ import Select from '@mui/material/Select';
 
 import './catalog-top-toolbar.sass';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const CatalogTopToolbar = () => {
-  const [limit, setLimit] = useState(24);
-  const [sort, setSort] = useState('relevance');
+  const [serachParams, setSearchParams] = useSearchParams();
+  const [limit, setLimit] = useState(serachParams.get('limit') || 24);
+  const [sort, setSort] = useState(serachParams.get('sortBy') || 'relevance');
 
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
+    serachParams.set('limit', event.target.value);
+    setSearchParams(serachParams);
   };
   const handleSortChange = (event) => {
     setSort(event.target.value);
+    serachParams.set('sortBy', event.target.value);
+    setSearchParams(serachParams);
   };
 
   return (
@@ -63,10 +69,10 @@ const CatalogTopToolbar = () => {
               onChange={handleSortChange}
             >
               <MenuItem value={'relevance'}>Most relevant</MenuItem>
-              <MenuItem value={'price-asc'}>Price - Low to high</MenuItem>
-              <MenuItem value={'price-desc'}>Price - High to low</MenuItem>
+              <MenuItem value={'price_asc'}>Price - Low to high</MenuItem>
+              <MenuItem value={'price_desc'}>Price - High to low</MenuItem>
               <MenuItem value={'rating'}>Top rated first</MenuItem>
-              <MenuItem value={'new'}>New first</MenuItem>
+              <MenuItem value={'recent'}>New first</MenuItem>
               <MenuItem value={'discount'}>% discount</MenuItem>
             </Select>
           </FormControl>
