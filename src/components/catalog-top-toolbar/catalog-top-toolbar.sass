@@ -6,32 +6,67 @@
     align-items: center
     margin-top: 0.5em
 
-    select
-        background: $main-color-green-light
-        color: $main-color-grey
-        border: 1px solid $main-color-grey
-        border-radius: 0.25em
-        padding: 0 0.4em
-        height: 2em
-        margin-left: 0.5em
-        outline: none
-
-    &_items-counter
-        border-right: 1px solid $main-color-green-light
+    &_counter
+        border-right: 1px solid $main-color-turquoise-transparent
         padding-right: 1em
 
-    &_items-limiter
+    &_limiter
         display: flex
         align-items: center
         margin-left: 1em
 
+        &_box
+
         &_control
 
-            &_options
+            &_label
+
+            &_select
+                min-width: 5em
+
 
     &_sorter
         display: flex
         align-items: center
         margin-left: 1em
 
-        &_options
+        &_box
+
+        &_control
+
+            &_label
+                
+            &_select
+                min-width: 12em
+
+                
+    & .MuiBox-root
+        & .MuiFormControl-root
+
+            & .MuiFormLabel-root 
+                color: $main-color-grey // цвет лейбла
+
+                &.Mui-focused 
+                    color: $main-color-turquoise // цвет лейбла на фокусе
+
+            & .MuiInputBase-colorPrimary 
+                color: $main-color-turquoise // цвет текста в инпуте      
+
+            & .MuiInputBase-root
+
+                &:hover
+                    & .MuiOutlinedInput-notchedOutline
+                        border-color: $main-color-grey // цвет бордера при наведении
+
+                & .MuiOutlinedInput-notchedOutline
+                    border-color: $main-color-grey-transparent // цвет бордера
+
+            & .Mui-focused .MuiOutlinedInput-notchedOutline
+                border-color: $main-color-turquoise // цвет бордера в фокусе    
+
+.MuiPopover-root .MuiPaper-root
+    background-color: $main-color-green-light // цвет бэкграунда попапа
+            
+                
+        
+            

@@ -6,14 +6,16 @@ import FilterSwitchers from '../filter-components/filter-switchers/filter-switch
 
 import './catalog-filters.sass';
 
-const CatalogFilters = () => {
+const CatalogFilters = ({ filteredProducts, category }) => {
   return (
     <div className="catalog-filters">
       <h3 className="catalog-filters_main-title">Filter By</h3>
-      <div className="catalog-filters_filter">
-        <h5 className="catalog-filters_filter_title">Category</h5>
-        <CategoryFilter />
-      </div>
+      {category ? null : (
+        <div className="catalog-filters_filter">
+          <h5 className="catalog-filters_filter_title">Category</h5>
+          <CategoryFilter />
+        </div>
+      )}
       <div className="catalog-filters_filter">
         <h5 className="catalog-filters_filter_title">Price, €</h5>
         <PriceFilter />

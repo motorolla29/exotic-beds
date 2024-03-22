@@ -10,22 +10,24 @@ import './catalog-page.sass';
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
 
 const CatalogPage = ({ category }) => {
-  const products = useSelector((state) =>
-    state.products.filter((it) => it.category === category)
-  );
+  const products = useSelector((state) => state.products);
+  const filteredProducts = products.filter((it) => it.category === category);
 
   return (
     <>
       <Tabs />
       <Breadcrumbs />
       <div className="catalog-page">
-        <CatalogFilters />
+        <CatalogFilters
+          filteredProducts={filteredProducts}
+          category={category}
+        />
         <div className="catalog-container">
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
           <CatalogTopToolbar />
-          <Catalog products={products} />
+          <Catalog products={filteredProducts} />
         </div>
       </div>
     </>
