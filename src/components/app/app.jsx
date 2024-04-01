@@ -25,7 +25,7 @@ const App = () => {
             path="armchairs"
             element={<CatalogPage category="armchairs" />}
           />
-          <Route path="poofs" element={<CatalogPage category="poofs" />} />
+          <Route path="poufs" element={<CatalogPage category="poufs" />} />
           <Route path="kids" element={<CatalogPage category="kids" />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="my-lovelist" element={<LovelistPage />} />

@@ -1,4 +1,4 @@
-const PRODUCT_CATEGORIES = ['Beds', 'Sofas', 'Armchairs', 'Kids', 'Poofs'];
+const PRODUCT_CATEGORIES = ['Beds', 'Sofas', 'Armchairs', 'Kids', 'Poufs'];
 
 const PRODUCT_SERIES = [
   'Classic',
