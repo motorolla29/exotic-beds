@@ -5,6 +5,10 @@ import PriceFilter from '../filter-components/price-filter/price-filter';
 import RatingFilter from '../filter-components/rating-filter/rating-filter';
 import SeriesFilter from '../filter-components/series-filter/series-filter';
 import FilterSwitchers from '../filter-components/filter-switchers/filter-switchers';
+import {
+  findCheapestProductObj,
+  findMostExpensiveProductObj,
+} from '../../utils';
 
 import './catalog-filters.sass';
 
@@ -33,41 +37,6 @@ const CatalogFilters = ({ products, category }) => {
     setSearchParams(searchParams);
   };
 
-  const cheapestProductObj = products.reduce((x, y) => {
-    if (x.sale && y.sale && x.sale < y.sale) {
-      return x;
-    }
-    if (x.sale && !y.sale && x.sale < y.price) {
-      return x;
-    }
-    if (!x.sale && y.sale && x.price < y.sale) {
-      return x;
-    }
-    if (!x.sale && !y.sale && x.price < y.price) {
-      return x;
-    }
-    return y;
-  });
-
-  const mostExpensiveProductObj = products.reduce((x, y) => {
-    if (x.sale && y.sale && x.sale > y.sale) {
-      return x;
-    }
-    if (x.sale && !y.sale && x.sale > y.price) {
-      return x;
-    }
-    if (!x.sale && y.sale && x.price > y.sale) {
-      return x;
-    }
-    if (!x.sale && !y.sale && x.price > y.price) {
-      return x;
-    }
-    return y;
-  });
-
-  console.log(cheapestProductObj);
-  console.log(mostExpensiveProductObj);
-
   return (
     <div className="catalog-filters-container">
       <div className="catalog-filters">
@@ -92,17 +61,17 @@ const CatalogFilters = ({ products, category }) => {
         <div className="catalog-filters_filter">
           <h5 className="catalog-filters_filter_title">Price, €</h5>
           <PriceFilter
-            minPrice={cheapestProductObj.price}
-            maxPrice={mostExpensiveProductObj.price}
+            minPrice={findCheapestProductObj(products).price}
+            maxPrice={findMostExpensiveProductObj(products).price}
           />
         </div>
         <div className="catalog-filters_filter">
           <h5 className="catalog-filters_filter_title">Rating</h5>
-          <RatingFilter />
+          <RatingFilter products={products} />
         </div>
         <div className="catalog-filters_filter">
           <h5 className="catalog-filters_filter_title">Series</h5>
-          <SeriesFilter />
+          <SeriesFilter products={products} />
         </div>
         <FilterSwitchers />
       </div>

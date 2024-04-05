@@ -1,30 +1,44 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
 import CatalogFilters from '../../catalog-filters/catalog-filters';
 import Catalog from '../../catalog/catalog';
-import { getUcFirstNoDashStr, sortProducts } from '../../../utils';
+import {
+  findCheapestProductObj,
+  findMostExpensiveProductObj,
+  getUcFirstNoDashStr,
+  sortProducts,
+} from '../../../utils';
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
+import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 
 import './catalog-page.sass';
-import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
+  const [page, setPage] = useState(
+    searchParams.has('page') ? +searchParams.get('page') : 1
+  );
+  const products = useSelector((state) => state.products);
+  const highestPrice =
+    findMostExpensiveProductObj(products).sale ||
+    findMostExpensiveProductObj(products).price;
+  const lowestPrice =
+    findCheapestProductObj(products).sale ||
+    findCheapestProductObj(products).price;
 
-  const minPrice = +searchParams.get('minPrice') || 0;
-  const maxPrice = +searchParams.get('maxPrice') || 10000;
+  const minPrice = +searchParams.get('minPrice') || lowestPrice;
+  const maxPrice = +searchParams.get('maxPrice') || highestPrice;
   const minRating = +searchParams.get('minRating') || 0;
   const seriesArray = searchParams.getAll('series');
   const topRated = searchParams.get('top-rated');
   const onSale = searchParams.get('sale');
   const isNew = searchParams.get('new');
-  const limit = searchParams.get('limit');
+  const limit = searchParams.get('limit') || 24;
   const sort = searchParams.get('sortBy');
-
-  const products = useSelector((state) => state.products);
 
   const currentCategoryProducts = products.filter(
     (it) => it.category === category
@@ -51,7 +65,10 @@ const CatalogPage = ({ category }) => {
 
   const sortedProducts = sortProducts(filteredProducts, sort);
 
-  // const limitedSortedProducts
+  const limitedSortedProducts = sortedProducts.slice(
+    (page - 1) * limit,
+    page * limit
+  );
 
   return (
     <>
@@ -66,10 +83,23 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
-          <CatalogTopToolbar />
-          <CatalogPagination />
-          <Catalog products={sortedProducts} />
-          <CatalogPagination />
+          <CatalogTopToolbar
+            sortedProducts={sortedProducts}
+            limitedSortedProducts={limitedSortedProducts}
+          />
+          <CatalogPagination
+            page={page}
+            setPage={setPage}
+            products={sortedProducts}
+            limit={limit}
+          />
+          <Catalog products={limitedSortedProducts} />
+          <CatalogPagination
+            page={page}
+            setPage={setPage}
+            products={sortedProducts}
+            limit={limit}
+          />
         </div>
       </div>
     </>

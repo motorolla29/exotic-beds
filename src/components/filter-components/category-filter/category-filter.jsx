@@ -4,12 +4,16 @@ import { PRODUCT_CATEGORIES } from '../../../const';
 
 import './category-filter.sass';
 
-const CategoryFilter = () => {
+const CategoryFilter = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
     <div className="category-filter">
       <div className="category-filter_options">
         {PRODUCT_CATEGORIES.map((category) => {
+          const count = products.filter(
+            (it) => it.category.toLowerCase() === category.toLowerCase()
+          ).length;
+
           return (
             <div key={category} className="category-filter_options_option">
               <input
@@ -25,12 +29,12 @@ const CategoryFilter = () => {
                 }}
                 className="main-checkbox category-filter_options_option_input"
               ></input>
-              <label htmlFor={`category-${category}`}> </label>
+              <label htmlFor={`category-${category}`}></label>
               <span className="category-filter_options_option_name">
                 {category}
               </span>
               <span className="category-filter_options_option_amount">
-                (15)
+                ({count})
               </span>
             </div>
           );

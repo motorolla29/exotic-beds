@@ -5,28 +5,42 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 import './catalog-top-toolbar.sass';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const CatalogTopToolbar = () => {
-  const [serachParams, setSearchParams] = useSearchParams();
-  const [limit, setLimit] = useState(serachParams.get('limit') || 24);
-  const [sort, setSort] = useState(serachParams.get('sortBy') || 'relevance');
+const CatalogTopToolbar = ({ sortedProducts, limitedSortedProducts }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page') || 1;
+  const [limit, setLimit] = useState(searchParams.get('limit') || 24);
+  const [sort, setSort] = useState(searchParams.get('sortBy') || 'relevance');
 
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
-    serachParams.set('limit', event.target.value);
-    setSearchParams(serachParams);
+    searchParams.set('limit', event.target.value);
+    setSearchParams(searchParams);
   };
   const handleSortChange = (event) => {
     setSort(event.target.value);
-    serachParams.set('sortBy', event.target.value);
-    setSearchParams(serachParams);
+    searchParams.set('sortBy', event.target.value);
+    setSearchParams(searchParams);
   };
+
+  useEffect(() => {
+    setLimit(searchParams.get('limit') || 24);
+    setSort(searchParams.get('sortBy') || 'relevance');
+  }, [searchParams]);
 
   return (
     <div className="top-toolbar">
-      <div className="top-toolbar_counter">Items 1 - 24 of 647</div>
+      <div className="top-toolbar_counter">
+        Items {(page - 1) * limit + 1} -{' '}
+        {sortedProducts.length -
+          (sortedProducts.length -
+            (+page === Math.ceil(sortedProducts.length / limit)
+              ? sortedProducts.length
+              : limitedSortedProducts.length * page))}{' '}
+        of {sortedProducts.length}
+      </div>
       <div className="top-toolbar_limiter">
         <Box className="top-toolbar_limiter_box">
           <FormControl className="top-toolbar_limiter_control" size="small">

@@ -3,13 +3,19 @@ import { PRODUCT_SERIES } from '../../../const';
 
 import './series-filter.sass';
 
-const SeriesFilter = () => {
+const SeriesFilter = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <div className="series-filter">
       <div className="series-filter_options">
         {PRODUCT_SERIES.map((series) => {
+          const count = products.filter((it) =>
+            it.title.toLowerCase().includes(`${series.toLowerCase()} series`)
+          ).length;
+
+          console.log(count);
+
           return (
             <div key={series} className="series-filter_options_option">
               <input
@@ -29,7 +35,9 @@ const SeriesFilter = () => {
               <span className="series-filter_options_option_name">
                 {series}
               </span>
-              <span className="series-filter_options_option_amount">(15)</span>
+              <span className="series-filter_options_option_amount">
+                ({count})
+              </span>
             </div>
           );
         })}

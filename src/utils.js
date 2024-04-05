@@ -210,6 +210,40 @@ const sortProducts = (products, sortBy) => {
   return sortedProducts;
 };
 
+const findCheapestProductObj = (products) =>
+  products.reduce((x, y) => {
+    if (x.sale && y.sale && x.sale < y.sale) {
+      return x;
+    }
+    if (x.sale && !y.sale && x.sale < y.price) {
+      return x;
+    }
+    if (!x.sale && y.sale && x.price < y.sale) {
+      return x;
+    }
+    if (!x.sale && !y.sale && x.price < y.price) {
+      return x;
+    }
+    return y;
+  });
+
+const findMostExpensiveProductObj = (products) =>
+  products.reduce((x, y) => {
+    if (x.sale && y.sale && x.sale > y.sale) {
+      return x;
+    }
+    if (x.sale && !y.sale && x.sale > y.price) {
+      return x;
+    }
+    if (!x.sale && y.sale && x.price > y.sale) {
+      return x;
+    }
+    if (!x.sale && !y.sale && x.price > y.price) {
+      return x;
+    }
+    return y;
+  });
+
 const setIdByTitle = (data) => {
   data.forEach((it) => (it.id = it.title.replace(/[-\s]/g, '-')));
   return data;
@@ -225,4 +259,6 @@ export {
   scrollController,
   debounce,
   sortProducts,
+  findCheapestProductObj,
+  findMostExpensiveProductObj,
 };
