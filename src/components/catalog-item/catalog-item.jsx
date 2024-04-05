@@ -57,7 +57,7 @@ const CatalogItem = ({ item }) => {
             <RatingStars id={item.id} rating={item.rating} />
           </div>
           <span className="catalog-item_info_rating_mark">
-            Rating: {item.rating}
+            Rating: {item.rating.toFixed(1)}
           </span>
         </div>
 

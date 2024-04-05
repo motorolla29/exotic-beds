@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -9,12 +9,19 @@ function valuetext(value) {
   return `€${value}`;
 }
 
-const PriceFilter = () => {
+const PriceFilter = ({ minPrice, maxPrice }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [rangeValue, setRangeValue] = useState([
-    searchParams.get('minPrice') || 0,
-    searchParams.get('maxPrice') || 100,
+    searchParams.get('minPrice') || minPrice,
+    searchParams.get('maxPrice') || maxPrice,
   ]);
+
+  useEffect(() => {
+    setRangeValue([
+      searchParams.get('minPrice') || minPrice,
+      searchParams.get('maxPrice') || maxPrice,
+    ]);
+  }, [searchParams, minPrice, maxPrice]);
 
   const handleRangeChange = (evt, newValue) => {
     setRangeValue(newValue);
@@ -25,14 +32,14 @@ const PriceFilter = () => {
     let max = +maxValue;
     let value = +currentValue;
 
-    if (min < 0) {
-      min = 0;
-    } else if (min > 100) {
+    if (min < minPrice) {
+      min = minPrice;
+    } else if (min > maxPrice) {
       min = max;
-    } else if (max < 0) {
+    } else if (max < minPrice) {
       max = min;
-    } else if (max > 100) {
-      max = 100;
+    } else if (max > maxPrice) {
+      max = maxPrice;
     } else if (value === min && value > max) {
       max = min;
     } else if (value === max && value < min) {
@@ -63,14 +70,14 @@ const PriceFilter = () => {
 
     setRangeValue([+rangeValue[0], +rangeValue[1]]);
 
-    if (minValue < 0) {
-      setRangeValue([0, maxValue]);
-    } else if (minValue > 100) {
+    if (minValue < minPrice) {
+      setRangeValue([minPrice, maxValue]);
+    } else if (minValue > maxPrice) {
       setRangeValue([maxValue, rangeValue[1]]);
-    } else if (maxValue < 0) {
+    } else if (maxValue < minPrice) {
       setRangeValue([minValue, minValue]);
-    } else if (maxValue > 100) {
-      setRangeValue([minValue, 100]);
+    } else if (maxValue > maxPrice) {
+      setRangeValue([minValue, maxPrice]);
     } else if (value === minValue && value > maxValue) {
       setRangeValue([minValue, minValue]);
     } else if (value === maxValue && value < minValue) {
@@ -87,6 +94,7 @@ const PriceFilter = () => {
           <span className="price-filter-inputs_title">From</span>
           <input
             type="number"
+            min={minPrice}
             onChange={onInputMinPriceChange}
             onBlur={(evt) => handleBlur(evt.target.value)}
             onKeyDown={(evt) => {
@@ -107,6 +115,7 @@ const PriceFilter = () => {
           <span className="price-filter-inputs_title">To</span>
           <input
             type="number"
+            max={maxPrice}
             onChange={onInputMaxPriceChange}
             onBlur={(evt) => handleBlur(evt.target.value)}
             onKeyDown={(evt) => {
@@ -126,6 +135,8 @@ const PriceFilter = () => {
       </div>
       <Box className="slider-box">
         <Slider
+          min={minPrice}
+          max={maxPrice}
           className="slider"
           getAriaLabel={() => 'Price range'}
           value={rangeValue}

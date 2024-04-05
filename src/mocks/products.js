@@ -1,6 +1,6 @@
 const PRODUCTS = [
   {
-    id: '',
+    id: 'Shrek-Series-Huge-Double-Bed',
     category: 'beds',
     title: 'Shrek Series Huge Double Bed',
     description:
@@ -12,7 +12,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Luxury-Crab-Bed',
     category: 'beds',
     title: 'Sea Series Luxury Crab Bed',
     description:
@@ -23,7 +23,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Biscuit-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Biscuit Fluffy Cat Bed',
     description:
@@ -34,7 +34,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Grey-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Grey Fluffy Cat Bed',
     description:
@@ -45,7 +45,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Purple-Yellow-Plush-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Purple-Yellow Plush Cat Bed',
     description:
@@ -56,7 +56,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Sea-Series-Shark-Double-Bed',
     category: 'beds',
     title: 'Sea Series Shark Double Bed',
     description:
@@ -67,7 +67,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Blackout-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Blackout Fluffy Cat Bed',
     description: 'Go to the dark side, buy a blackout cat...',
@@ -78,29 +78,29 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Classic-Series-Grey-Cat-Bed-Rounded',
     category: 'beds',
     title: 'Classic Series Grey Cat Bed Rounded',
     description:
       'You can sleep on this one with your whole family, huge size for reasonable money and, as always, a classic Exotic Beds design',
     photo: '/catalog/_1a75a127-08cd-4c94-89ca-809920a5c0da.jpg',
     price: 12999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Green-Pepe-Frog-Bed',
     category: 'beds',
     title: 'Green Pepe Frog Bed',
     description:
       'Exactly that Pepe the frog from memes, stretched on a wooden frame with an excellent economy class mattress',
     photo: '/catalog/_1bb92e43-d080-4b69-b2c6-8ed59f8607e2.jpg',
     price: 3999,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Green-Pepe-Frog-Bed-V2',
     category: 'beds',
     title: 'Green Pepe Frog Bed V2',
     description:
@@ -111,7 +111,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Koala-Ottoman-Bed',
     category: 'beds',
     title: 'Koala Ottoman Bed',
     description:
@@ -122,7 +122,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Sea-Series-Lilac-Stingray-Ottoman-Bed',
     category: 'beds',
     title: 'Sea Series Lilac Stingray Ottoman Bed',
     description:
@@ -133,7 +133,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Classic-Series-Purple-Yellow-Plush-Cat-Bed-V2',
     category: 'beds',
     title: 'Classic Series Purple-Yellow Plush Cat Bed V2',
     description:
@@ -144,7 +144,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'White-Cat-Fluffy-Bed',
     category: 'beds',
     title: 'White Cat Fluffy Bed',
     description: 'Three-headed fluffy white cat is looking for its owner',
@@ -154,7 +154,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Fluffy-Closing-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Fluffy Closing Bed',
     description: 'For fans of the game and style in general',
@@ -164,7 +164,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Classic-Series-White-And-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Classic Series White And Fluffy Cat Bed',
     description:
@@ -175,7 +175,7 @@ const PRODUCTS = [
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Classic-Series-Pink-And-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Pink And Fluffy Cat Bed',
     description:
@@ -187,18 +187,18 @@ const PRODUCTS = [
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Ginger-White-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Ginger White Fluffy Cat Bed',
     description: 'As always, maximum comfort and high quality at low prices',
     photo: '/catalog/_2db027f0-568f-46e9-8b48-3768c7173a74.jpg',
     price: 4999,
     sale: 3999,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Plush-Shark-Bed',
     category: 'beds',
     title: 'Sea Series Plush Shark Bed',
     description: 'An update especially for shark lovers in our sea series...',
@@ -208,7 +208,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Beige-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Beige Fluffy Cat Bed',
     description:
@@ -220,7 +220,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Car-Series-Luxury-American-Retro-Cadillac',
     category: 'beds',
     title: 'Car Series Luxury American Retro Cadillac',
     description:
@@ -231,7 +231,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Fluffy-White-Teddy-Bear-Bed',
     category: 'beds',
     title: 'Fluffy White Teddy Bear Bed',
     description:
@@ -243,7 +243,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Sea-Series-Luxury-Huge-Coral-Bed',
     category: 'beds',
     title: 'Sea Series Luxury Huge Coral Bed',
     description:
@@ -254,7 +254,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Koala-Plush-Bed-Rounded',
     category: 'beds',
     title: 'Koala Plush Bed Rounded',
     description:
@@ -265,7 +265,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Grey-Elephant-Soft-Double-Bed',
     category: 'beds',
     title: 'Grey Elephant Soft Double Bed',
     description:
@@ -277,7 +277,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Lychee-Styled-Eco-Double-Bed',
     category: 'beds',
     title: 'Lychee Styled Eco Double Bed',
     description:
@@ -288,7 +288,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Plush-Grey-Cat-Bed',
     category: 'beds',
     title: 'Plush Grey Cat Bed',
     description:
@@ -299,7 +299,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Ottoman-Bed',
     category: 'beds',
     title: 'Totoro Series Ottoman Bed',
     description:
@@ -310,18 +310,18 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Classic-Series-Violet-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Violet Fluffy Cat Bed',
     description:
       'Topseller 2023 for your attention. quality, comfort, durability - these are the key indicators that our team achieves when producing all our beds, including the classic series =)',
     photo: '/catalog/_4d3cb65d-4442-4391-bb01-fffb9bdc0467.jpg',
     price: 6599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Bubbled-Plush-Light-Grey-Cat-Bed',
     category: 'beds',
     title: 'Bubbled Plush Light Grey Cat Bed',
     description:
@@ -333,7 +333,7 @@ const PRODUCTS = [
     availableQuantity: 10,
   },
   {
-    id: '',
+    id: 'Pink-Fluffy-Owl-Bed',
     category: 'beds',
     title: 'Pink Fluffy Owl Bed',
     description:
@@ -344,7 +344,7 @@ const PRODUCTS = [
     availableQuantity: 18,
   },
   {
-    id: '',
+    id: 'Classic-Series-Six-Legged-Coffee-Colored-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Six-Legged Coffee-Colored Cat Bed',
     description:
@@ -355,7 +355,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Fluffy-Max-Light-Grey-White-Cat-Bed',
     category: 'beds',
     title: 'Fluffy-Max Light-Grey-White Cat Bed',
     description: "This bad boy is so fluffy you'll drown in his fur =)",
@@ -366,7 +366,7 @@ const PRODUCTS = [
     availableQuantity: 10,
   },
   {
-    id: '',
+    id: 'Grey-Owl-Double-Bed',
     category: 'beds',
     title: 'Grey Owl Double Bed',
     description:
@@ -377,7 +377,7 @@ const PRODUCTS = [
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Classic-Series-Ginger-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Ginger Cat Bed',
     description:
@@ -385,11 +385,11 @@ const PRODUCTS = [
     photo: '/catalog/_6ca6cfeb-2a33-4c29-95f2-89c25cfc2d39.jpg',
     price: 5299,
     sale: 4999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Budget-Grey-Shark-Bed',
     category: 'beds',
     title: 'Sea Series Budget Grey Shark Bed',
     description:
@@ -400,29 +400,29 @@ const PRODUCTS = [
     availableQuantity: 67,
   },
   {
-    id: '',
+    id: 'Grey-Fluffy-Mouse-Bed',
     category: 'beds',
     title: 'Grey Fluffy Mouse Bed',
     description:
       'This fluffy rodent is made only from environmentally friendly and high-quality materials. As always, very fluffy and soft. We wish you that other rodents do not bother you in the house while you sleep on our mouse bed',
     photo: '/catalog/_6f53237a-ca1a-4de3-9456-0b06456bb68a.jpg',
     price: 6999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Lux-Coral-Garden-Bedroom-Set',
     category: 'beds',
     title: 'Sea Series Lux Coral Garden Bedroom Set',
     description:
       'You feel like a little fish somewhere in the Maldives while you sleep on such a piece of art. Lots of handmade corals indistinguishable from real ones and LED lighting framed. The price is steep, but believe me, you will get full quality for the money',
     photo: '/catalog/_7c407b73-8f29-4063-b7d7-d19b11571b18.jpg',
     price: 29999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Sea-Series-Grey-Pink-Shell-Bed',
     category: 'beds',
     title: 'Sea Series Grey Pink Shell Bed',
     description:
@@ -433,18 +433,18 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Yellow-Pink-Ottoman-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Yellow Pink Ottoman Cat Bed',
     description:
       'This king size ottoman in the classic cat fluffy look will be a wonderful sleeping place and will last for many years. Fits perfectly into an interior with light beige pink or gray tones',
     photo: '/catalog/_7d7c79cf-d5bd-4806-a7da-f0b698804668.jpg',
-    price: 7999,
-    rating: 5999,
+    price: 6299,
+    rating: 4.9,
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Orange-Grey-Cat-Bed-Rounded',
     category: 'beds',
     title: 'Orange Grey Cat Bed Rounded',
     description:
@@ -455,17 +455,18 @@ const PRODUCTS = [
     availableQuantity: 24,
   },
   {
-    id: '',
+    id: 'White-Black-Teddy-Bear-Bed',
     category: 'beds',
     title: 'White Black Teddy Bear Bed',
     description:
       'Teddy bear is a symbol of kindness, warmth and comfort. They are loved by children of all ages and adults, they are hugged tightly and given to those closest to them. These soft bundles of tenderness have long ceased to be simple toys. So is our teddy bear bed. This is not just a bed, but an indicator of our love and care for customers',
     photo: '/catalog/_8a627ed2-587f-4abb-907f-e82b89244e6c.jpg',
     price: 5999,
+    rating: 5.0,
     availableQuantity: 9,
   },
   {
-    id: '',
+    id: 'Wood-Round-Framed-Mouse-Bed',
     category: 'beds',
     title: 'Wood Round Framed Mouse Bed',
     description:
@@ -476,7 +477,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Violet-Stingray-Rounded-Ottoman',
     category: 'beds',
     title: 'Sea Series Violet Stingray Rounded Ottoman',
     description:
@@ -487,7 +488,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Real-Pink-Eared-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Real Pink-Eared Cat Bed',
     description:
@@ -499,7 +500,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Huge-Stuffed-Mouse-Head-Tsar-Bed',
     category: 'beds',
     title: 'Huge Stuffed Mouse Head Tsar Bed',
     description:
@@ -510,7 +511,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Orange-Light-Bedroom-Set',
     category: 'beds',
     title: 'Cyberpunk Series Orange Light Bedroom Set',
     description:
@@ -521,7 +522,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Classic-Series-Grey-Matting-Fabric-Kitten-Bed',
     category: 'beds',
     title: 'Classic Series Grey Matting Fabric Kitten Bed',
     description:
@@ -532,7 +533,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Huge-360-Rounded-Cat-Bed',
     category: 'beds',
     title: 'Huge 360 Rounded Cat Bed',
     description:
@@ -544,7 +545,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Fluffy-White-Owl-Bed',
     category: 'beds',
     title: 'Fluffy White Owl Bed',
     description:
@@ -555,7 +556,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Realistic-White-Cat-Bed',
     category: 'beds',
     title: 'Realistic White Cat Bed',
     description:
@@ -566,7 +567,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Bright-Orange-Giraffe-Bed',
     category: 'beds',
     title: 'Bright Orange Giraffe Bed',
     description:
@@ -577,30 +578,29 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Classic-Series-Beige-Double-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Beige Double Cat Bed',
     description:
       'Collapsible shelves stylized as paws, a super comfortable mattress, and soft fluffy upholstery. Everything you expect from the classic series is right here',
     photo: '/catalog/_39f28391-194d-4df2-a3c8-65395f65e597.jpg',
-    price: 6999,
     price: 6199,
     rating: 4.7,
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Simple-White-Fluffy-Bed',
     category: 'beds',
     title: 'Simple White Fluffy Bed',
     description:
       "I understand that you are accustomed to the exotic in our store, that's why it's called that. But in our super customer-oriented store there should be something for people who value simplicity without exoticism, which is why this model is presented here",
     photo: '/catalog/_41ed66f0-93dd-4625-b783-1dd18af1a75f.jpg',
     price: 1999,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Movieman-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Movieman Bed',
     description:
@@ -611,7 +611,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Simple-Worm-Styled-LED-Bed',
     category: 'beds',
     title: 'Simple Worm Styled LED Bed',
     description:
@@ -634,7 +634,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Realistic-Black-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Realistic Black Cat Bed',
     description:
@@ -646,18 +646,18 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Yellow-Fluffy-Duckling-Bed',
     category: 'beds',
     title: 'Yellow Fluffy Duckling Bed',
     description:
       'A four-legged duckling that will touch the hearts of any child or adult. Suitable for interiors in pastel shades',
     photo: '/catalog/_047b88fa-ae33-4336-873c-2505302ee2c1.jpg',
     price: 5599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 17,
   },
   {
-    id: '',
+    id: 'King-Size-Peacock-Bed',
     category: 'beds',
     title: 'King-Size Peacock Bed',
     description:
@@ -665,11 +665,11 @@ const PRODUCTS = [
     photo: '/catalog/_49e3e10d-6a3a-4d4f-a1c1-d9d2348ac8fc.jpg',
     price: 4999,
     sale: 4499,
-    rating: 3.0,
+    rating: 3,
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Car-Series-Turquoise-Retro-Cadillac-Bed',
     category: 'beds',
     title: 'Car Series Turquoise Retro Cadillac Bed',
     description:
@@ -680,7 +680,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Pastel-Orange-Coral-Garden-Bed',
     category: 'beds',
     title: 'Sea Series Pastel Orange Coral Garden Bed',
     description:
@@ -691,7 +691,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Pastel-Orange-Giraffe-Bed',
     category: 'beds',
     title: 'Pastel Orange Giraffe Bed',
     description:
@@ -702,7 +702,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Grey-Orange-Turtle',
     category: 'beds',
     title: 'Sea Series Grey Orange Turtle',
     description:
@@ -713,29 +713,29 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Burgundy-Eco-Leather-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Burgundy Eco Leather Cat Bed',
     description:
       'This piece of the classic series is covered with eco leather in dark burgundy color, equipped with a mattress and four removable legs also',
     photo: '/catalog/_72cac68c-98a4-4c9b-8d56-6887129b3afa.jpg',
     price: 3199,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Classic-Series-Light-Grey-Orange-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Light Grey Orange Cat Bed',
     description:
       'This classic cat smiles just like we do when we see our dear customers in the store. As always, high detailed quality and high-tech materials',
     photo: '/catalog/_72f9d574-00f4-44a0-9e83-4bd56ab1c824.jpg',
     price: 4999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 55,
   },
   {
-    id: '',
+    id: 'Car-Series-Ginger-Luxury-Retromobile-Bed',
     category: 'beds',
     title: 'Car Series Ginger Luxury Retromobile Bed',
     description:
@@ -746,7 +746,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Realistic-Pink-Fluffy-Piggy-Bed',
     category: 'beds',
     title: 'Realistic Pink Fluffy Piggy Bed',
     description:
@@ -757,29 +757,29 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Ginger-White-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Ginger White Cat Bed',
     description:
       "A classic representative of our store. Last year's topseller and just a cute cat bed for your attention. Only environmental materials are used in the assembly. Covered with soft plush and twistable eyes - shelves where you can hide anything in every sense",
     photo: '/catalog/_088ef251-8628-470c-826f-2865a0a49b65.jpg',
     price: 4999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 78,
   },
   {
-    id: '',
+    id: 'Pastel-Orange-Ottoman-Giraffe-Bed',
     category: 'beds',
     title: 'Pastel Orange Ottoman Giraffe Bed',
     description:
       'This cute fluffy giraffe in pastel colors will be a great sleeping place for you or your children due to its universal size. high quality workmanship and a fantastically soft mattress',
     photo: '/catalog/_98b04bed-02e0-462b-a7d7-ec79e2b69a2b.jpg',
     price: 3999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'Classic-Series-Beige-Leather-Cat',
     category: 'beds',
     title: 'Classic Series Beige Leather Cat',
     description:
@@ -790,7 +790,7 @@ const PRODUCTS = [
     availableQuantity: 21,
   },
   {
-    id: '',
+    id: 'Realistic-Ginger-White-Squirrel-Bed',
     category: 'beds',
     title: 'Realistic Ginger White Squirrel Bed',
     description:
@@ -801,7 +801,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Ottoman-Penguin-Bed',
     category: 'beds',
     title: 'Ottoman Penguin Bed',
     description:
@@ -812,7 +812,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Car-Series-Black-Retro-Cadillac-Bed',
     category: 'beds',
     title: 'Car Series Black Retro Cadillac Bed',
     description:
@@ -823,7 +823,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-White-Grey-Large-Cat-Bed',
     category: 'beds',
     title: 'Classic Series White Grey Large Cat Bed',
     description:
@@ -834,18 +834,18 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Sea-Series-Coral-Grey-Turtle-Bed',
     category: 'beds',
     title: 'Sea Series Coral Grey Turtle Bed',
     description:
       'The only thing this sea turtle wants is to quickly end up in your bedroom and warm you up with comfort every day. The only thing we want is for our customers to be satisfied and come back again and again for new purchases =)',
     photo: '/catalog/_382c2b4f-9ac0-40c8-bbb5-b6b6a74b072b.jpg',
     price: 4199,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Classic-Series-Violet-Pink-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Violet Pink Cat Bed',
     description:
@@ -857,7 +857,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Sea-Series-Anemones-Coral-Bed',
     category: 'beds',
     title: 'Sea Series Anemones Coral Bed',
     description:
@@ -869,7 +869,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-White-Shell-Bed',
     category: 'beds',
     title: 'Sea Series White Shell Bed',
     description:
@@ -880,7 +880,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Sea-Series-Luxurious-Coral-Bed',
     category: 'beds',
     title: 'Sea Series Luxurious Coral Bed',
     description:
@@ -891,7 +891,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Black-Massage-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Black Massage Bed',
     description:
@@ -902,7 +902,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'White-Rabbit-Bed',
     category: 'beds',
     title: 'White Rabbit Bed',
     description:
@@ -914,7 +914,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'White-Grey-Cat-Bed',
     category: 'beds',
     title: 'White Grey Cat Bed',
     description:
@@ -925,7 +925,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Huge-Grey-Figure-Cat-Bed',
     category: 'beds',
     title: 'Huge Grey Figure Cat Bed',
     description:
@@ -937,18 +937,18 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Huge-Ceramics-Head-Mouse-Bed',
     category: 'beds',
     title: 'Huge Ceramics Head Mouse Bed',
     description:
       'This luxurious huge bed in the Baroque style has the main argument that will distinguish it from thousands of similar ones that you could order for your castle - it is a huge mouse face soldered into the headboard - our exoticism which is the distinctive feature of the brand',
     photo: '/catalog/_949dfeb8-5653-4e75-aaa5-d3dcf7f55310.jpg',
     price: 18999,
-    rating: 1.0,
+    rating: 1,
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Biscuit-Pug-Dog-Bed',
     category: 'beds',
     title: 'Biscuit Pug Dog Bed',
     description:
@@ -959,7 +959,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Yellow-Brown-Renaissance-Crocodile-Bed',
     category: 'beds',
     title: 'Yellow Brown Renaissance Crocodile Bed',
     description:
@@ -970,17 +970,17 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Sponge-Bob-Series-Square-Bed',
     category: 'beds',
     title: 'Sponge Bob Series Square Bed',
     description: 'A themed bed for fans of the famous cartoon',
     photo: '/catalog/_2775cd74-6e5d-4060-bc0c-d2dd3476de49.jpg',
     price: 4499,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Beige-Cat-Bed',
     category: 'beds',
     title: 'Beige Cat Bed',
     description:
@@ -991,7 +991,7 @@ const PRODUCTS = [
     availableQuantity: 35,
   },
   {
-    id: '',
+    id: 'Huge-Green-Pepe-Frog-Statue-Bed',
     category: 'beds',
     title: 'Huge Green Pepe Frog Statue Bed',
     description:
@@ -1002,7 +1002,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Super-Fluffy-Light-Grey-Mouse-Bed',
     category: 'beds',
     title: 'Super Fluffy Light Grey Mouse Bed',
     description:
@@ -1013,7 +1013,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Large-Ottoman-Koala-Bed',
     category: 'beds',
     title: 'Large Ottoman Koala Bed',
     description:
@@ -1025,7 +1025,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Shrek-Series-Cat-Bed',
     category: 'beds',
     title: 'Shrek Series Cat Bed',
     description:
@@ -1036,7 +1036,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Dark-Oad-Crocodile-Bed',
     category: 'beds',
     title: 'Dark Oad Crocodile Bed',
     description:
@@ -1047,7 +1047,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Chipboard-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Chipboard Bed',
     description:
@@ -1058,7 +1058,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Sea-Series-Green-White-Turtle-Bed',
     category: 'beds',
     title: 'Sea Series Green White Turtle Bed',
     description:
@@ -1069,18 +1069,18 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Yellow-Pikachu-Bed',
     category: 'beds',
     title: 'Pokemon Series Yellow Pikachu Bed',
     description:
       'Pokemon is a popular anime based on the video game series of the same name, which is part of the Pokemon line of media products, which comes from the English word Pocket Monster. This bed essentially represents the main Pokemon from the series - Pikachu',
     photo: '/catalog/_18594e46-e55e-47cb-85d9-52be50ae013b.jpg',
     price: 4199,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Grey-Pink-Mouse-Bed',
     category: 'beds',
     title: 'Grey Pink Mouse Bed',
     description:
@@ -1091,7 +1091,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Bachelor-Bedroom-Set',
     category: 'beds',
     title: 'Cyberpunk Series Bachelor Bedroom Set',
     description:
@@ -1102,18 +1102,18 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Soft-Grey-Koala-Bed',
     category: 'beds',
     title: 'Soft Grey Koala Bed',
     description:
       "Yes, I'm a beast in bed. Or rather, a koala. I can sleep 22 hours a day. If this anecdote is about you, this bed will suit you, it is so comfortable that you want to sleep in it all day long",
     photo: '/catalog/_68006e37-ee1b-48de-b622-e7c09e316aef.jpg',
     price: 4599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 15,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Standard-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Standard Bed',
     description:
@@ -1124,7 +1124,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Party-Maker-Bedroom-Set',
     category: 'beds',
     title: 'Cyberpunk Series Party Maker Bedroom Set',
     description:
@@ -1135,7 +1135,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Hot-Pink-Slowpoke-Bed',
     category: 'beds',
     title: 'Pokemon Series Hot Pink Slowpoke Bed',
     description:
@@ -1146,18 +1146,18 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'White-Budget-Cat-Bed',
     category: 'beds',
     title: 'White Budget Cat Bed',
     description:
       'A budget bed in the shape of a white cat. Simple and tasteful',
     photo: '/catalog/_370508f3-69a3-4bee-8743-a6ce27230caa.jpg',
     price: 3499,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Budget-Giraffe-Bed',
     category: 'beds',
     title: 'Budget Giraffe Bed',
     description:
@@ -1168,7 +1168,7 @@ const PRODUCTS = [
     availableQuantity: 33,
   },
   {
-    id: '',
+    id: 'Sea-Series-Plush-Blue-Shark-Bed',
     category: 'beds',
     title: 'Sea Series Plush Blue Shark Bed',
     description:
@@ -1179,7 +1179,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Beige-Hidden-Cat-Bed',
     category: 'beds',
     title: 'Beige Hidden Cat Bed',
     description:
@@ -1190,7 +1190,7 @@ const PRODUCTS = [
     availableQuantity: 39,
   },
   {
-    id: '',
+    id: 'Ligth-Grey-Comfort-Teddy-Bed',
     category: 'beds',
     title: 'Ligth Grey Comfort Teddy Bed',
     description:
@@ -1201,7 +1201,7 @@ const PRODUCTS = [
     availableQuantity: 37,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Alarm-Clock-Bedroom-Set',
     category: 'beds',
     title: 'Cyberpunk Series Alarm Clock Bedroom Set',
     description:
@@ -1212,29 +1212,29 @@ const PRODUCTS = [
     availableQuantity: 61,
   },
   {
-    id: '',
+    id: 'Classic-Series-Bright-Orange-Rounded-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Bright Orange Rounded Cat Bed',
     description:
       'This is the brightest representative of our classic series. Bright orange color, round shape, softest mattress, meticulous design and highest quality',
     photo: '/catalog/_7801865c-c980-47f6-9db1-0eae93c6132e.jpg',
     price: 5399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 79,
   },
   {
-    id: '',
+    id: 'Simple-Grey-Koala-Bed',
     category: 'beds',
     title: 'Simple Grey Koala Bed',
     description:
       'A simple cozy bed in the shape of a small animal from Australia that loves eucalyptus',
     photo: '/catalog/_37648438-366f-46cd-8e13-ca66ae9d2698.jpg',
     price: 3199,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 61,
   },
   {
-    id: '',
+    id: 'Light-Beige-Hidden-Cat-Bed',
     category: 'beds',
     title: 'Light Beige Hidden Cat Bed',
     description:
@@ -1245,7 +1245,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'White-Long-Eared-Rabbit-Bed',
     category: 'beds',
     title: 'White Long-Eared Rabbit Bed',
     description:
@@ -1257,7 +1257,7 @@ const PRODUCTS = [
     availableQuantity: 67,
   },
   {
-    id: '',
+    id: 'Classic-Series-Beige-Rounded-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Beige Rounded Cat Bed',
     description:
@@ -1268,7 +1268,7 @@ const PRODUCTS = [
     availableQuantity: 44,
   },
   {
-    id: '',
+    id: 'Huge-Statue-Penguin-Bed',
     category: 'beds',
     title: 'Huge Statue Penguin Bed',
     description:
@@ -1280,7 +1280,7 @@ const PRODUCTS = [
     availableQuantity: 16,
   },
   {
-    id: '',
+    id: 'Sea-Series-Light-Blue-Shark-Bed',
     category: 'beds',
     title: 'Sea Series Light Blue Shark Bed',
     description:
@@ -1291,7 +1291,7 @@ const PRODUCTS = [
     availableQuantity: 98,
   },
   {
-    id: '',
+    id: 'Three-Legged-Zebra-Bear-Bed',
     category: 'beds',
     title: 'Three-Legged Zebra Bear Bed',
     description:
@@ -1302,7 +1302,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Inverted-Nose-Zebra-Bed',
     category: 'beds',
     title: 'Inverted Nose Zebra Bed',
     description:
@@ -1313,7 +1313,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Grey-Cat-Bed',
     category: 'beds',
     title: 'Grey Cat Bed',
     description:
@@ -1324,18 +1324,18 @@ const PRODUCTS = [
     availableQuantity: 65,
   },
   {
-    id: '',
+    id: 'Tailed-Ash-Rounded-Cat-Bed',
     category: 'beds',
     title: 'Tailed Ash Rounded Cat Bed',
     description:
       'This round cat bed has a very soft long tail with which you can sleep cuddled',
     photo: '/catalog/_a316587f-8795-44d5-a1a1-ac41230ba4a1.jpg',
     price: 4199,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 10,
   },
   {
-    id: '',
+    id: 'Hugging-White-Cat-Bed',
     category: 'beds',
     title: 'Hugging White Cat Bed',
     description:
@@ -1346,7 +1346,7 @@ const PRODUCTS = [
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Fluffy-Classic-Zebra-Bed',
     category: 'beds',
     title: 'Fluffy Classic Zebra Bed',
     description:
@@ -1357,7 +1357,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Violet-Stingray-Bed',
     category: 'beds',
     title: 'Violet Stingray Bed',
     description:
@@ -1369,7 +1369,7 @@ const PRODUCTS = [
     availableQuantity: 33,
   },
   {
-    id: '',
+    id: 'White-Ship-Bed',
     category: 'beds',
     title: 'White Ship Bed',
     description: 'Single bed stylized as a white fluffy lamb',
@@ -1379,7 +1379,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Green-White-Smiling-Frog-Bed',
     category: 'beds',
     title: 'Green White Smiling Frog Bed',
     description:
@@ -1390,18 +1390,18 @@ const PRODUCTS = [
     availableQuantity: 9,
   },
   {
-    id: '',
+    id: 'White-Teddy-Bear-Bed',
     category: 'beds',
     title: 'White Teddy Bear Bed',
     description:
       'The classic teddy bear, the favorite of many children and girls, has been transformed into a bed and has appeared on the shelves of our stores to quickly move into your bedroom',
     photo: '/catalog/_afd97e84-8734-4fc9-a77d-9aadd7bf9f24.jpg',
     price: 4299,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 44,
   },
   {
-    id: '',
+    id: 'Classic-Series-Plush-White-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Plush White Cat Bed',
     description:
@@ -1412,7 +1412,7 @@ const PRODUCTS = [
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Disco-Bass-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Disco Bass Bed',
     description:
@@ -1423,7 +1423,7 @@ const PRODUCTS = [
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Car-Series-White-Luxurious-President-Caddilac-Bed',
     category: 'beds',
     title: 'Car Series White Luxurious President Caddilac Bed',
     description:
@@ -1434,7 +1434,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Romantic-Bed',
     category: 'beds',
     title: 'Cyberpunk Series Romantic Bed',
     description:
@@ -1445,7 +1445,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Huge-Realistic-Soft-Head-Mouse-Bed',
     category: 'beds',
     title: 'Huge Realistic Soft Head Mouse Bed',
     description:
@@ -1456,7 +1456,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Budget-Blue-Shark-Bed',
     category: 'beds',
     title: 'Sea Series Budget Blue Shark Bed',
     description:
@@ -1467,7 +1467,7 @@ const PRODUCTS = [
     availableQuantity: 54,
   },
   {
-    id: '',
+    id: 'White-Soft-Teddy-Bear-Bed',
     category: 'beds',
     title: 'White Soft Teddy Bear Bed',
     description:
@@ -1478,7 +1478,7 @@ const PRODUCTS = [
     availableQuantity: 76,
   },
   {
-    id: '',
+    id: 'Car-Series-Toasted-Lincoln-Bed',
     category: 'beds',
     title: 'Car Series Toasted Lincoln Bed',
     description:
@@ -1489,7 +1489,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Newlyweds-Peacock-Nest-Bed',
     category: 'beds',
     title: 'Newlyweds Peacock Nest Bed',
     description: "Cozy and beautiful like a peacock's tail nest for newlyweds",
@@ -1499,18 +1499,18 @@ const PRODUCTS = [
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'Fluffy-White-Rabbit-Bed',
     category: 'beds',
     title: 'Fluffy White Rabbit Bed',
     description:
       'The softest, most comfortable mattress, viewed in a frame, made in the shape of a soft fleecy rabbit. What could be more comfortable?',
     photo: '/catalog/_b239b960-49b7-4e5a-aa2c-af99fffc1ebd.jpg',
     price: 3899,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Squere-Shark-The-Bed',
     category: 'beds',
     title: 'Squere Shark The Bed',
     description:
@@ -1521,7 +1521,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Cocoa-Plush-Bed',
     category: 'beds',
     title: 'Classic Series Cocoa Plush Bed',
     description:
@@ -1532,7 +1532,7 @@ const PRODUCTS = [
     availableQuantity: 30,
   },
   {
-    id: '',
+    id: 'Car-Series-Classic-Wooden-Lincoln-Bed',
     category: 'beds',
     title: 'Car Series Classic Wooden Lincoln Bed',
     description:
@@ -1543,7 +1543,7 @@ const PRODUCTS = [
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Realistic-White-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Realistic White Fluffy Cat Bed',
     description:
@@ -1555,7 +1555,7 @@ const PRODUCTS = [
     availableQuantity: 64,
   },
   {
-    id: '',
+    id: 'Classic-Series-Grey-Rounded-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Grey Rounded Cat Bed',
     description:
@@ -1566,7 +1566,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Lilac-Manta-Ray-Bed',
     category: 'beds',
     title: 'Sea Series Lilac Manta Ray Bed',
     description:
@@ -1577,7 +1577,7 @@ const PRODUCTS = [
     availableQuantity: 47,
   },
   {
-    id: '',
+    id: 'Fluffy-Lumpy-Light-Beige-Cat-Bed',
     category: 'beds',
     title: 'Fluffy Lumpy Light Beige Cat Bed',
     description:
@@ -1589,7 +1589,7 @@ const PRODUCTS = [
     availableQuantity: 19,
   },
   {
-    id: '',
+    id: 'Simple-Wooden-Ghost-Bed',
     category: 'beds',
     title: 'Simple Wooden Ghost Bed',
     description:
@@ -1600,7 +1600,7 @@ const PRODUCTS = [
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'White-Blue-Bubbled-Pineapple-Bed',
     category: 'beds',
     title: 'White Blue Bubbled Pineapple Bed',
     description:
@@ -1611,7 +1611,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Realistic-Light-Beige-Fluffy-Cat-Bed',
     category: 'beds',
     title: 'Realistic Light Beige Fluffy Cat Bed',
     description:
@@ -1622,7 +1622,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Polar-Zebra-Bed',
     category: 'beds',
     title: 'Polar Zebra Bed',
     description:
@@ -1633,7 +1633,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Light-Beige-Coral-Rounded-Mouse-Bed',
     category: 'beds',
     title: 'Light Beige Coral Rounded Mouse Bed',
     description:
@@ -1644,7 +1644,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Classic-Series-Cartoon-Grey-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Cartoon Grey Cat Bed',
     description:
@@ -1655,7 +1655,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Light-Biscuit-Orange-Giraffe-Bed',
     category: 'beds',
     title: 'Light Biscuit Orange Giraffe Bed',
     description:
@@ -1666,7 +1666,7 @@ const PRODUCTS = [
     availableQuantity: 75,
   },
   {
-    id: '',
+    id: 'Light-Biscuit-Green-Frog-Bed',
     category: 'beds',
     title: 'Light Biscuit Green Frog Bed',
     description:
@@ -1677,18 +1677,18 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Light-Biscuit-Burgundy-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Light Biscuit Burgundy Cat Bed',
     description:
       'Cutie in our classic version. As always, unique original design and the highest quality',
     photo: '/catalog/_cd7e8d42-6da5-4efa-ba6e-6a57339429b7.jpg',
     price: 3999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 54,
   },
   {
-    id: '',
+    id: 'Classic-Series-White-Cat-Bedroom-Set',
     category: 'beds',
     title: 'Classic Series White Cat Bedroom Set',
     description:
@@ -1699,7 +1699,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Thematic-Bed',
     category: 'beds',
     title: 'Totoro Series Thematic Bed',
     description:
@@ -1710,7 +1710,7 @@ const PRODUCTS = [
     availableQuantity: 65,
   },
   {
-    id: '',
+    id: 'White-Soft-Light-Biscuit-Teddy-Bear-Bed',
     category: 'beds',
     title: 'White Soft Light Biscuit Teddy Bear Bed',
     description:
@@ -1721,7 +1721,7 @@ const PRODUCTS = [
     availableQuantity: 37,
   },
   {
-    id: '',
+    id: 'Classic-Series-Light-Beige-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Light Beige Cat Bed',
     description:
@@ -1733,7 +1733,7 @@ const PRODUCTS = [
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Hairy-Frog-Bed',
     category: 'beds',
     title: 'Hairy Frog Bed',
     description:
@@ -1744,7 +1744,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Double-Peacock-Bed',
     category: 'beds',
     title: 'Double Peacock Bed',
     description:
@@ -1755,7 +1755,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Biscuit-Orange-Cat-Bed',
     category: 'beds',
     title: 'Biscuit Orange Cat Bed',
     description:
@@ -1766,7 +1766,7 @@ const PRODUCTS = [
     availableQuantity: 64,
   },
   {
-    id: '',
+    id: 'Wide-Luxurious-Peacock-Bed',
     category: 'beds',
     title: 'Wide Luxurious Peacock Bed',
     description:
@@ -1777,40 +1777,40 @@ const PRODUCTS = [
     availableQuantity: 9,
   },
   {
-    id: '',
+    id: 'Huge-Luxurious-Round-Shell-Bed',
     category: 'beds',
     title: 'Huge Luxurious Round Shell Bed',
     description:
       'This is a huge round shell bed equipped with a closing mechanism that will allow you to close yourself and breathe peacefully thanks to high technologies in materials and manufacturing. Upholstery made of soft flock and genuine leather under the cover and a mattress in the softest down frame',
     photo: '/catalog/_d25f166a-fcf5-4e30-88ec-9912175cfdac.jpg',
     price: 5999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 56,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Triangular-Party-Maker-Bedroom-Set',
     category: 'beds',
     title: 'Cyberpunk Series Triangular Party Maker Bedroom Set',
     description:
       'For those who like to make noise and annoy their neighbors instead of sleeping. This set of the future is equipped with a bunch of all possible twisters and skewers for everything, perhaps giving special sound effects, some of which are even useless and mounted for beauty. However, a powerful central bass speaker will blow up your custom apartment dance floor as powerfully as your neighbor’s butts',
     photo: '/catalog/_d47c3199-2242-4d60-aa2a-f7afbf3e3dd5.jpg',
     price: 3599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Cute-Ghost-Double-Bed',
     category: 'beds',
     title: 'Cute Ghost Double Bed',
     description:
       'This bed is stylized as a small indoor ghost. How can something like this scare instead of touch?',
     photo: '/catalog/_d57f7a11-acaf-47a5-a239-93cf126f907f.jpg',
     price: 2199,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Grey-Spotted-Cat-Bed',
     category: 'beds',
     title: 'Grey Spotted Cat Bed',
     description:
@@ -1821,7 +1821,7 @@ const PRODUCTS = [
     availableQuantity: 51,
   },
   {
-    id: '',
+    id: 'Complaining-Pug-Bed',
     category: 'beds',
     title: 'Complaining Pug Bed',
     description:
@@ -1832,7 +1832,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Light-Grey-Orange-Eared-Cat-Bed',
     category: 'beds',
     title: 'Light Grey Orange-Eared Cat Bed',
     description:
@@ -1843,7 +1843,7 @@ const PRODUCTS = [
     availableQuantity: 8,
   },
   {
-    id: '',
+    id: 'Yellow-Fluffy-Pineapple-Bed',
     category: 'beds',
     title: 'Yellow Fluffy Pineapple Bed',
     description:
@@ -1854,18 +1854,18 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Pink-Grey-Owl-Bed',
     category: 'beds',
     title: 'Pink Grey Owl Bed',
     description:
       "This owl is a masterpiece of our craftsmen. Handmade, all the details are worked out in detail, only high-quality materials. Buy it, you won't regret it",
     photo: '/catalog/_de372e19-fbcc-4dc9-be33-b47c8e142055.jpg',
     price: 3699,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 70,
   },
   {
-    id: '',
+    id: 'White-Bubbled-Rabbear-Bed',
     category: 'beds',
     title: 'White Bubbled Rabbear Bed',
     description:
@@ -1876,29 +1876,29 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Creamy-Green-Pineapple-Bed',
     category: 'beds',
     title: 'Creamy Green Pineapple Bed',
     description:
       "For lovers of the popular exotic fruit, chicken and coconut's best friend - pineapple. In a light beige bubbly body with green tops",
     photo: '/catalog/_dee534d5-e128-4f0a-bd35-b7c71739df50.jpg',
     price: 2599,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Car-Series-Luxurious-President-Lincoln-Bed',
     category: 'beds',
     title: 'Car Series Luxurious President Lincoln Bed',
     description:
       'The utmost luxury is impossible to imagine. A shiny Lincoln body with a huge, luxurious headboard and the softest mattress. The batch was made for the White House, but due to demand, it is now available to anyone who wants it, although for a lot of money',
     photo: '/catalog/_e0eea067-99af-455c-ba5c-6586a8c19b16.jpg',
     price: 19999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 59,
   },
   {
-    id: '',
+    id: 'Classic-Series-Coffee-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Coffee Cat Bed',
     description:
@@ -1909,7 +1909,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Regular-Lavender-Eco-Leather-Bed',
     category: 'beds',
     title: 'Regular Lavender Eco Leather Bed',
     description:
@@ -1920,7 +1920,7 @@ const PRODUCTS = [
     availableQuantity: 90,
   },
   {
-    id: '',
+    id: 'Classic-Series-White-Ginger-Eared-Cat-Bed',
     category: 'beds',
     title: 'Classic Series White Ginger-Eared Cat Bed',
     description:
@@ -1931,7 +1931,7 @@ const PRODUCTS = [
     availableQuantity: 31,
   },
   {
-    id: '',
+    id: 'Classic-Series-Grey-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Grey Cat Bed',
     description:
@@ -1943,7 +1943,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Creamy-Mouse-Nose-Bed',
     category: 'beds',
     title: 'Creamy Mouse Nose Bed',
     description:
@@ -1954,7 +1954,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Grey-White-Pink-Eared-Cat-Bed',
     category: 'beds',
     title: 'Grey White Pink-Eared Cat Bed',
     description:
@@ -1966,7 +1966,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Classic-Series-White-Pink-Cat-Bed',
     category: 'beds',
     title: 'Classic Series White Pink Cat Bed',
     description:
@@ -1977,7 +1977,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Orange-Highlight-Bedroom-Set',
     category: 'beds',
     title: 'Cyberpunk Series Orange Highlight Bedroom Set',
     description:
@@ -1988,7 +1988,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-MRI-Complex-Bed-Set',
     category: 'beds',
     title: 'Cyberpunk Series MRI Complex Bed Set',
     description:
@@ -1999,7 +1999,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Creamy-Orange-Cat-Bed',
     category: 'beds',
     title: 'Creamy Orange Cat Bed',
     description:
@@ -2010,7 +2010,7 @@ const PRODUCTS = [
     availableQuantity: 41,
   },
   {
-    id: '',
+    id: 'Tall-Creamy-Rabbit-Bed',
     category: 'beds',
     title: 'Tall Creamy Rabbit Bed',
     description:
@@ -2018,11 +2018,11 @@ const PRODUCTS = [
     photo: '/catalog/_ee64a76a-ed90-433c-8aae-06e1dff865b3.jpg',
     price: 4599,
     sale: 4099,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Mobile-Cubic-Bedroom',
     category: 'beds',
     title: 'Cyberpunk Series Mobile Cubic Bedroom',
     description:
@@ -2033,7 +2033,7 @@ const PRODUCTS = [
     availableQuantity: 16,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Rounded-Ottoman-Bed',
     category: 'beds',
     title: 'Totoro Series Rounded Ottoman Bed',
     description:
@@ -2044,7 +2044,7 @@ const PRODUCTS = [
     availableQuantity: 33,
   },
   {
-    id: '',
+    id: 'White-Ginger-Corgi-Bed',
     category: 'beds',
     title: 'White Ginger Corgi Bed',
     description:
@@ -2055,7 +2055,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Classic-Series-Grey-White-Rounded-Cat-Bed',
     category: 'beds',
     title: 'Classic Series Grey White Rounded Cat Bed',
     description:
@@ -2066,7 +2066,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Stitch-Series-Thematic-Bed',
     category: 'beds',
     title: 'Stitch Series Thematic Bed',
     description:
@@ -2077,18 +2077,18 @@ const PRODUCTS = [
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Biscuit-Teddy-Bear-Bed',
     category: 'beds',
     title: 'Biscuit Teddy Bear Bed',
     description:
       'A bed in the shape of a bear in a delicate biscuit color. Due to its universal dimensions, this is an excellent sleeping place for both children and adults',
     photo: '/catalog/_fc5af8bb-d051-4b8e-9103-f60b2626f142.jpg',
     price: 2699,
-    rating: 3.0,
+    rating: 3,
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Soft-Yellow-Plush-Cat-Bed',
     category: 'beds',
     title: 'Soft Yellow Plush Cat Bed',
     description:
@@ -2099,7 +2099,7 @@ const PRODUCTS = [
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Stitch-Series-Ottoman-Bed',
     category: 'beds',
     title: 'Stitch Series Ottoman Bed',
     description:
@@ -2110,11 +2110,11 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Creamy-Biscuit-Owl-Bed',
     category: 'beds',
-    title:
+    title: 'Creamy Biscuit Owl Bed',
+    description:
       'Gorgeous beautiful owl in your bedroom. Only high-quality materials, soft upholstery and a thick, practical mattress. This bed is worth it...',
-    description: 'Creamy Biscuit Owl Bed',
     photo: '/catalog/_ac25c9e4-74db-4ad9-b828-a8b373983f68.jpg',
     price: 2899,
     sale: 2699,
@@ -2122,9 +2122,9 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Stitch-Series-Ottoman-Bed-V2',
     category: 'beds',
-    title: 'Stitch Series Ottoman Bed',
+    title: 'Stitch Series Ottoman Bed V2',
     description:
       'Stitch was created by the evil genius Jumba Jookieba, who named him "Experiment 626". It was created from the genes of the most powerful and dangerous creatures in the galaxy, which were connected together with electricity to begin the formation of molecules and the process of creating a body. Our ottoman bed in the form of this cute creature is also a kind of experiment that has incorporated the best materials that have no analogues in softness and practicality.',
     photo: '/catalog/_0b72ad45-23df-4146-a27d-f5cc01143e76.jpg',
@@ -2133,7 +2133,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Luxurious-Lavender-Coral-Garden-Sofa',
     category: 'sofas',
     title: 'Sea Series Luxurious Lavender Coral Garden Sofa',
     description:
@@ -2144,7 +2144,7 @@ const PRODUCTS = [
     availableQuantity: 14,
   },
   {
-    id: '',
+    id: 'Sea-Series-Coral-Pink-Colored-Crab-Sofa',
     category: 'sofas',
     title: 'Sea Series Coral Pink Colored Crab Sofa',
     description:
@@ -2155,7 +2155,7 @@ const PRODUCTS = [
     availableQuantity: 53,
   },
   {
-    id: '',
+    id: 'Raspberry-Marmalade-Sofa',
     category: 'sofas',
     title: 'Raspberry Marmalade Sofa',
     description:
@@ -2166,7 +2166,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Matting-Light-Grey-Cat-Divan',
     category: 'sofas',
     title: 'Matting Light Grey Cat Divan',
     description:
@@ -2177,7 +2177,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Violet-Cat-Sofa',
     category: 'sofas',
     title: 'Classic Series Violet Cat Sofa',
     description:
@@ -2188,18 +2188,18 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Sea-Series-White-Dolphin-Sofa',
     category: 'sofas',
     title: 'Sea Series White Dolphin Sofa',
     description:
       'Fluffy soft sofa in the shape of a white dolphin. The design is thought out to the smallest detail. Fits perfectly into any Art Nouveau apartment',
     photo: '/catalog/_4e1ca439-9291-4bdc-b611-d7f6c86d400e.jpg',
     price: 2299,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 76,
   },
   {
-    id: '',
+    id: 'Light-Creamy-Banana-Corner-Sofa',
     category: 'sofas',
     title: 'Light Creamy Banana Corner Sofa',
     description:
@@ -2210,18 +2210,18 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'White-Sheep-Wool-Sofa',
     category: 'sofas',
     title: 'White Sheep Wool Sofa',
     description:
       "Sofa made of natural sheep wool. So fluffy it looks like it hasn't been cut since birth until old age",
     photo: '/catalog/_5fda611b-b0df-4555-9a2b-d568f6fccddb.jpg',
     price: 1399,
-    rating: 3.0,
+    rating: 3,
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Trader-Sofa',
     category: 'sofas',
     title: 'Cyberpunk Series Trader Sofa',
     description:
@@ -2232,7 +2232,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Big-Smug-Frog-Sofa',
     category: 'sofas',
     title: 'Big Smug Frog Sofa',
     description:
@@ -2243,7 +2243,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-White-Brown-Owl-Sofa',
     category: 'sofas',
     title: 'Classic White Brown Owl Sofa',
     description:
@@ -2254,7 +2254,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Sea-Series-Light-Beige-Stingray-Sofa',
     category: 'sofas',
     title: 'Sea Series Light Beige Stingray Sofa',
     description:
@@ -2265,7 +2265,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Black-Caviar-Sofa',
     category: 'sofas',
     title: 'Black Caviar Sofa',
     description:
@@ -2276,7 +2276,7 @@ const PRODUCTS = [
     availableQuantity: 76,
   },
   {
-    id: '',
+    id: 'Sea-Series-Luxurious-Lavender-Coral-Garden-Sofa-V2',
     category: 'sofas',
     title: 'Sea Series Luxurious Lavender Coral Garden Sofa V2',
     description:
@@ -2287,7 +2287,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Light-Beige-Stingray-Sofa-V2',
     category: 'sofas',
     title: 'Sea Series Light Beige Stingray Sofa V2',
     description:
@@ -2298,7 +2298,7 @@ const PRODUCTS = [
     availableQuantity: 56,
   },
   {
-    id: '',
+    id: 'Sea-Series-Light-Beige-Octopus-Sofa',
     category: 'sofas',
     title: 'Sea Series Light Beige Octopus Sofa',
     description:
@@ -2310,7 +2310,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Sea-Series-Orange-Bottom-Grey-Stingray-Sofa',
     category: 'sofas',
     title: 'Sea Series Orange Bottom Grey Stingray Sofa',
     description:
@@ -2321,7 +2321,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Lavender-Coral-Garden-Sofa-With-Pouf',
     category: 'sofas',
     title: 'Sea Series Lavender Coral Garden Sofa With Pouf',
     description:
@@ -2332,7 +2332,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Fluffy-White-Cat-Sofa',
     category: 'sofas',
     title: 'Classic Series Fluffy White Cat Sofa',
     description:
@@ -2344,18 +2344,18 @@ const PRODUCTS = [
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'Sea-Series-White-Stingray-Sofa',
     category: 'sofas',
     title: 'Sea Series White Stingray Sofa',
     description:
       'Dedicated to lovers of sea reptiles. Sofa stylized as a stingray. Very comfortable and soft like other items in our store',
     photo: '/catalog/_21e3ab52-c812-4053-bc46-1e2e698548fb.jpg',
     price: 1799,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Dragonfruit-Sofa',
     category: 'sofas',
     title: 'Dragonfruit Sofa',
     description:
@@ -2366,7 +2366,7 @@ const PRODUCTS = [
     availableQuantity: 44,
   },
   {
-    id: '',
+    id: 'Soft-Orange-Giraffe-Sofa',
     category: 'sofas',
     title: 'Soft Orange Giraffe Sofa',
     description:
@@ -2374,11 +2374,11 @@ const PRODUCTS = [
     photo: '/catalog/_76cdb5ad-c9e7-40bf-9bd6-fa5989661158.jpg',
     price: 1999,
     sale: 1599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Light-Beige-Pug-Sofa',
     category: 'sofas',
     title: 'Light Beige Pug Sofa',
     description:
@@ -2390,7 +2390,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Pastel-Orange-Eco-Leather-Crab-Sofa',
     category: 'sofas',
     title: 'Sea Series Pastel Orange Eco Leather Crab Sofa',
     description:
@@ -2402,7 +2402,7 @@ const PRODUCTS = [
     availableQuantity: 54,
   },
   {
-    id: '',
+    id: 'Sea-Series-Gigantic-Whale-Shark-Sofa',
     category: 'sofas',
     title: 'Sea Series Gigantic Whale Shark Sofa',
     description:
@@ -2410,11 +2410,11 @@ const PRODUCTS = [
     photo: '/catalog/_450bf8a7-0a34-413f-b80e-3a823e14368d.jpg',
     price: 6599,
     sale: 5999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'White-Plush-Toothy-Dolphin-Sofa',
     category: 'sofas',
     title: 'White Plush Toothy Dolphin Sofa',
     description:
@@ -2426,7 +2426,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Biscuit-Mushroom-Sofa',
     category: 'sofas',
     title: 'Biscuit Mushroom Sofa',
     description:
@@ -2437,7 +2437,7 @@ const PRODUCTS = [
     availableQuantity: 42,
   },
   {
-    id: '',
+    id: 'Ashy-Iguana-Statue-Sofa',
     category: 'sofas',
     title: 'Ashy Iguana Statue Sofa',
     description:
@@ -2449,7 +2449,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Beige-Crocodile-Sofa',
     category: 'sofas',
     title: 'Beige Crocodile Sofa',
     description:
@@ -2461,7 +2461,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Party-Maker-Sofa',
     category: 'sofas',
     title: 'Cyberpunk Series Party Maker Sofa',
     description:
@@ -2472,7 +2472,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Light-Beige-Frog-Sofa',
     category: 'sofas',
     title: 'Light Beige Frog Sofa',
     description:
@@ -2484,7 +2484,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Bubbled-Ashy-Cat-Eared-Sofa',
     category: 'sofas',
     title: 'Bubbled Ashy Cat Eared Sofa',
     description:
@@ -2492,12 +2492,11 @@ const PRODUCTS = [
     photo: '/catalog/_37294321-0b37-448b-a9a6-98aa6abaf29b.jpg',
     price: 1599,
     sale: 1399,
-    rating: 3.0,
+    rating: 3,
     availableQuantity: 5,
   },
-
   {
-    id: '',
+    id: 'Beige-Green-Mushroom-Sofa',
     category: 'sofas',
     title: 'Beige Green Mushroom Sofa',
     description:
@@ -2508,7 +2507,7 @@ const PRODUCTS = [
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'Mustard-Yoda-Sofa',
     category: 'sofas',
     title: 'Mustard Yoda Sofa',
     description:
@@ -2519,7 +2518,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Pink-Bubbled-Teddy-Bear-Sofa',
     category: 'sofas',
     title: 'Pink Bubbled Teddy Bear Sofa',
     description:
@@ -2529,9 +2528,8 @@ const PRODUCTS = [
     rating: 3.9,
     availableQuantity: 4,
   },
-
   {
-    id: '',
+    id: 'Sea-Series-Whale-Shark-Sofa',
     category: 'sofas',
     title: 'Sea Series Whale Shark Sofa',
     description:
@@ -2543,7 +2541,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Mustard-Plush-Pineapple-Sofa',
     category: 'sofas',
     title: 'Mustard Plush Pineapple Sofa',
     description:
@@ -2554,7 +2552,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Green-Yoda-Sofa',
     category: 'sofas',
     title: 'Green Yoda Sofa',
     description:
@@ -2565,7 +2563,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Creamy-Beige-Yoda-Sofa',
     category: 'sofas',
     title: 'Creamy Beige Yoda Sofa',
     description:
@@ -2573,11 +2571,11 @@ const PRODUCTS = [
     photo: '/catalog/_b4662585-59d0-4a3e-aae6-cd27f33ce915.jpg',
     price: 2299,
     sale: 1999,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Creamed-Yellow-Banana',
     category: 'sofas',
     title: 'Creamed Yellow Banana',
     description:
@@ -2588,7 +2586,7 @@ const PRODUCTS = [
     availableQuantity: 53,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Slowpoke',
     category: 'sofas',
     title: 'Pokemon Series Slowpoke',
     description:
@@ -2599,7 +2597,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Light-Mustard-Crocodile-Sofa',
     category: 'sofas',
     title: 'Light Mustard Crocodile Sofa',
     description:
@@ -2610,7 +2608,7 @@ const PRODUCTS = [
     availableQuantity: 56,
   },
   {
-    id: '',
+    id: 'Dragonfruit-Sofa-V2',
     category: 'sofas',
     title: 'Dragonfruit Sofa V2',
     description:
@@ -2621,7 +2619,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Fluffy-Violet-Eared-Cat-Sofa',
     category: 'sofas',
     title: 'Fluffy Violet Eared Cat Sofa',
     description:
@@ -2632,18 +2630,18 @@ const PRODUCTS = [
     availableQuantity: 67,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Massage-Sofa',
     category: 'sofas',
     title: 'Cyberpunk Series Massage Sofa',
     description:
       'Massage from 2077 looks something like this. A sofa with 200 different massage modes from relaxing to acupuncture. All displays and panels with settings included',
     photo: '/catalog/_cbab7c90-e41d-4516-9841-018775c10016.jpg',
     price: 3399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Matting-Creamy-Pug-Sofa',
     category: 'sofas',
     title: 'Matting Creamy Pug Sofa',
     description:
@@ -2654,7 +2652,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Sea-Series-Eco-Leather-Shrimp-Sofa',
     category: 'sofas',
     title: 'Sea Series Eco Leather Shrimp Sofa',
     description:
@@ -2665,7 +2663,7 @@ const PRODUCTS = [
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Light-Green-Hippopotamus-Sofa',
     category: 'sofas',
     title: 'Light Green Hippopotamus Sofa',
     description:
@@ -2676,7 +2674,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Raspberry-Leather-Sofa',
     category: 'sofas',
     title: 'Raspberry Leather Sofa',
     description:
@@ -2684,11 +2682,11 @@ const PRODUCTS = [
     photo: '/catalog/_f97e6c83-adf5-4e7a-974d-0699e3e1deae.jpg',
     price: 2499,
     sale: 1499,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Classic-Series-Light-Beige-Cat-Sofa',
     category: 'sofas',
     title: 'Classic Series Light Beige Cat Sofa',
     description:
@@ -2699,7 +2697,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Fluffy-Grey-Wolf-Sofa',
     category: 'sofas',
     title: 'Fluffy Grey Wolf Sofa',
     description:
@@ -2710,18 +2708,18 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Original-Hipster-Sofa',
     category: 'sofas',
     title: 'Cyberpunk Series Original Hipster Sofa',
     description:
       "Perhaps the future has no future. Just another thing for Instagram photos with bright lighting and nothing more, but you can sit on it. There is no functionality here, just a beautiful thing for a lot of money. But it has a category of consumers. Let's not say anything about quality",
     photo: '/catalog/_fe927d98-545b-4d8d-bd26-aa9cedacb8da.jpg',
     price: 6999,
-    rating: 3.0,
+    rating: 3,
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Light-Beige-Teddy-Bear-Armchair',
     category: 'armchairs',
     title: 'Light Beige Teddy Bear Armchair',
     description:
@@ -2732,7 +2730,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Light-Grey-Koala-Armchair',
     category: 'armchairs',
     title: 'Light Grey Koala Armchair',
     description:
@@ -2740,11 +2738,11 @@ const PRODUCTS = [
     photo: '/catalog/_4d31800f-1646-4035-8890-dce151536274.jpg',
     price: 1399,
     sale: 999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Black-Caviar-Armchair',
     category: 'armchairs',
     title: 'Black Caviar Armchair',
     description:
@@ -2755,7 +2753,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Soft-Light-Beige-Bear-Armchair',
     category: 'armchairs',
     title: 'Soft Light Beige Bear Armchair',
     description:
@@ -2767,7 +2765,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Bubbled-Creamy-Beige-Bear-Armchair',
     category: 'armchairs',
     title: 'Bubbled Creamy Beige Bear Armchair',
     description:
@@ -2778,7 +2776,7 @@ const PRODUCTS = [
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'White-Leather-Pineapple-Armchair',
     category: 'armchairs',
     title: 'White Leather Pineapple Armchair',
     description:
@@ -2790,7 +2788,7 @@ const PRODUCTS = [
     availableQuantity: 22,
   },
   {
-    id: '',
+    id: 'Raspberry-Candy-Red-Armchair',
     category: 'armchairs',
     title: 'Raspberry Candy Red Armchair',
     description:
@@ -2802,7 +2800,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Eggplant-Armchair',
     category: 'armchairs',
     title: 'Eggplant Armchair',
     description:
@@ -2814,18 +2812,18 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'White-Pink-Baby-Sperm-Whale-Chair',
     category: 'armchairs',
     title: 'White Pink Baby Sperm Whale Chair',
     description:
       'A chair stylized as a baby sperm whale. Unusual unique design, high quality materials, excellent price. What else do you need to place an order?',
     photo: '/catalog/_123f47e8-02b2-4d50-b3ad-fcdaf70a7df4.jpg',
     price: 999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Beige-Koala-Armchair',
     category: 'armchairs',
     title: 'Beige Koala Armchair',
     description:
@@ -2836,7 +2834,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Flock-Green-Frog-Chair',
     category: 'armchairs',
     title: 'Flock Green Frog Chair',
     description:
@@ -2847,7 +2845,7 @@ const PRODUCTS = [
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'Light-Coral-Grey-Rounded-Shrimp-Chair',
     category: 'armchairs',
     title: 'Light Coral Grey Rounded Shrimp Chair',
     description:
@@ -2859,7 +2857,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Lavender-Pink-Candy-Chair',
     category: 'armchairs',
     title: 'Lavender Pink Candy Chair',
     description:
@@ -2870,7 +2868,7 @@ const PRODUCTS = [
     availableQuantity: 34,
   },
   {
-    id: '',
+    id: 'Turquoise-Peacock-Armchair',
     category: 'armchairs',
     title: 'Turquoise Peacock Armchair',
     description: 'A chair in the shape of a chic turquoise peacock tail',
@@ -2880,7 +2878,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Furry-Raccoon-Armchair',
     category: 'armchairs',
     title: 'Furry Raccoon Armchair',
     description:
@@ -2892,7 +2890,7 @@ const PRODUCTS = [
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Matting-Beige-Mushroom-Armchair',
     category: 'armchairs',
     title: 'Matting Beige Mushroom Armchair',
     description:
@@ -2903,18 +2901,18 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Ginger-Beige-Cat-Armchair',
     category: 'armchairs',
     title: 'Classic Series Ginger Beige Cat Armchair',
     description:
       'Our classic design. Ginger beige color. The softest flock. Very worthy model',
     photo: '/catalog/_c8c4b60d-52ce-4c98-baae-4879c04478db.jpg',
     price: 1599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Ashy-Eared-Armchair',
     category: 'armchairs',
     title: 'Ashy Eared Armchair',
     description:
@@ -2925,7 +2923,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Classic-Series-Dark-Grey-Cat-Armchair',
     category: 'armchairs',
     title: 'Classic Series Dark Grey Cat Armchair',
     description:
@@ -2936,7 +2934,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Pastel-Orange-Shrimp-Chair',
     category: 'armchairs',
     title: 'Pastel Orange Shrimp Chair',
     description:
@@ -2948,18 +2946,18 @@ const PRODUCTS = [
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Light-Pink-Slow-Poke-Chair',
     category: 'armchairs',
     title: 'Pokemon Series Light Pink Slow Poke Chair',
     description:
       "This chair is made in the shape of one of the cutest and slowest creatures. No, it's not a koala or a sloth. This is a slowpok!",
     photo: '/catalog/_dcf99425-f683-49d6-9dd5-42e8e2b9f6cc.jpg',
     price: 1299,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Large-Koala-Armchair',
     category: 'armchairs',
     title: 'Large Koala Armchair',
     description:
@@ -2970,7 +2968,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Black-Caviar-Armchair-V2',
     category: 'armchairs',
     title: 'Black Caviar Armchair V2',
     description:
@@ -2981,7 +2979,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Lavender-Coral-Chair',
     category: 'armchairs',
     title: 'Sea Series Lavender Coral Chair',
     description:
@@ -2992,7 +2990,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Grey-Double-Mouse-Chair',
     category: 'armchairs',
     title: 'Grey Double Mouse Chair',
     description:
@@ -3002,9 +3000,8 @@ const PRODUCTS = [
     rating: 2.3,
     availableQuantity: 4,
   },
-
   {
-    id: '',
+    id: 'Classic-Series-Violet-Yellow-Cat-Crib',
     category: 'kids',
     title: 'Classic Series Violet Yellow Cat Crib',
     description:
@@ -3015,18 +3012,18 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Dragonfruit-Teenage-Bed',
     category: 'kids',
     title: 'Dragonfruit Teenage Bed',
     description:
       'This bed in the form of dragonfruit is relatively small in size so it is suitable for teenagers',
     photo: '/catalog/_0f82f7ba-66bd-44ff-bf96-62dfe8093231.jpg',
     price: 1299,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Lavender-Kid-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Lavender Kid Cat Bed',
     description:
@@ -3037,7 +3034,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: "Rounded-Green-Baby's-Frog-Crib",
     category: 'kids',
     title: "Rounded Green Baby's Frog Crib",
     description:
@@ -3045,11 +3042,11 @@ const PRODUCTS = [
     photo: '/catalog/_4cef8356-4dcc-4031-b229-b81c93f17807.jpg',
     price: 1099,
     sale: 899,
-    rating: 3.0,
+    rating: 3,
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: "Claassic-Series-Lavender-Baby's-Cat-Crib",
     category: 'kids',
     title: "Claassic Series Lavender Baby's Cat Crib",
     description:
@@ -3060,7 +3057,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Green-Teenage-Smiling-Frog-Bed',
     category: 'kids',
     title: 'Green Teenage Smiling Frog Bed',
     description:
@@ -3071,7 +3068,7 @@ const PRODUCTS = [
     availableQuantity: 36,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Kids-Turquoise-Pikachu-Bed',
     category: 'kids',
     title: 'Pokemon Series Kids Turquoise Pikachu Bed',
     description:
@@ -3082,7 +3079,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: "Beige-Baby's-Fluffy-Spider-Crib",
     category: 'kids',
     title: "Beige Baby's Fluffy Spider Crib",
     description:
@@ -3094,7 +3091,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Flock-Violet-Kids-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Flock Violet Kids Cat Bed',
     description:
@@ -3105,18 +3102,18 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Light-Orange-Kids-Giraffe-Bed',
     category: 'kids',
     title: 'Light Orange Kids Giraffe Bed',
     description:
       'Such a bed in the shape of this handsome guy from the African savannah will appeal to any child... Do you love your child and want to buy him a comfortable and unique bed that no one else will have? We give you this chance',
     photo: '/catalog/_6a549851-9bdc-4043-9381-c5b9c1c3b5ae.jpg',
     price: 1599,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: "White-Baby's-Ship-Bed",
     category: 'kids',
     title: "White Baby's Ship Bed",
     description:
@@ -3127,7 +3124,7 @@ const PRODUCTS = [
     availableQuantity: 8,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Kids-Yellow-Pikachu-Bed',
     category: 'kids',
     title: 'Pokemon Series Kids Yellow Pikachu Bed',
     description:
@@ -3138,7 +3135,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Violet-Kids-Ottoman-Cat-Bed',
     category: 'kids',
     title: 'Violet Kids Ottoman Cat Bed',
     description:
@@ -3149,7 +3146,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Green-Kids-Frog-Face-Bed',
     category: 'kids',
     title: 'Green Kids Frog Face Bed',
     description:
@@ -3160,28 +3157,28 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Kids-Corgi-Bed',
     category: 'kids',
     title: 'Kids Corgi Bed',
     description:
       'A bed in the shape of a cute corgi dog will definitely make your child happy if you give him one',
     photo: '/catalog/_8b68972f-7b07-4eb3-aa68-bfddf1132f77.jpg',
     price: 1399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Red-Round-Ottoman-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Red Round Ottoman Cat Bed',
     description: "Round children's bed ottoman with a cat's face",
     photo: '/catalog/_8d423ce6-6a37-44d8-a574-97580d9e7878.jpg',
-    price: 3.4,
+    price: 999,
     rating: 3.3,
     availableQuantity: 12,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Pink-Violet-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Pink Violet Cat Bed',
     description:
@@ -3192,7 +3189,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Kids-Slowpoke-Soft-Bag',
     category: 'kids',
     title: 'Pokemon Series Kids Slowpoke Soft Bag',
     description:
@@ -3203,7 +3200,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Red-Pink-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Red Pink Cat Bed',
     description:
@@ -3214,7 +3211,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Shrek-Series-Kids-Cartoon-Thematic-Bed',
     category: 'kids',
     title: 'Shrek Series Kids Cartoon Thematic Bed',
     description:
@@ -3225,7 +3222,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Matting-Grey-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Matting Grey Cat Bed',
     description:
@@ -3236,7 +3233,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Grey-Soft-Kids-Koala-Bed',
     category: 'kids',
     title: 'Grey Soft Kids Koala Bed',
     description:
@@ -3247,7 +3244,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Plush-Violet-Yellow-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Plush Violet Yellow Cat Bed',
     description:
@@ -3258,7 +3255,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Kids-Pink-Dragonite-Bed',
     category: 'kids',
     title: 'Pokemon Series Kids Pink Dragonite Bed',
     description: 'Bed in the shape of a cute Pokemon Dragonite in pink',
@@ -3268,7 +3265,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Kids-Soft-Pink-Shell-Bed',
     category: 'kids',
     title: 'Sea Series Kids Soft Pink Shell Bed',
     description:
@@ -3279,17 +3276,17 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Light-Beige-Mustard-Kids-Giraffe-Bed',
     category: 'kids',
     title: 'Light Beige Mustard Kids Giraffe Bed',
     description: "Children's bed in the shape of a soft cute giraffe",
     photo: '/catalog/_68a4071f-05f4-426a-b97a-4582d21d5496.jpg',
     price: 1499,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 48,
   },
   {
-    id: '',
+    id: 'Soft-Creamy-Kids-Cat-Paws-Bed',
     category: 'kids',
     title: 'Soft Creamy Kids Cat Paws Bed',
     description: "Soft baby crib with mini poufs in the shape of cat's paws",
@@ -3300,7 +3297,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Violet-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Violet Cat Bed',
     description:
@@ -3311,7 +3308,7 @@ const PRODUCTS = [
     availableQuantity: 51,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Kids-Light-Lilac-Orange-Dragonite-Sofa',
     category: 'kids',
     title: 'Pokemon Series Kids Light Lilac Orange Dragonite Sofa',
     description:
@@ -3323,7 +3320,7 @@ const PRODUCTS = [
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Light-Beige-Fluffy-Kids-Cat-Bed',
     category: 'kids',
     title: 'Light Beige Fluffy Kids Cat Bed',
     description:
@@ -3335,7 +3332,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Violet-Bright-Pink-Cat-Crib',
     category: 'kids',
     title: 'Classic Series Kids Violet Bright Pink Cat Crib',
     description:
@@ -3347,7 +3344,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Corgi-Kids-Frameless-Sofa',
     category: 'kids',
     title: 'Corgi Kids Frameless Sofa',
     description:
@@ -3355,11 +3352,11 @@ const PRODUCTS = [
     photo: '/catalog/_313c625d-8ae0-46ef-bb67-57b945b8c296.jpg',
     price: 1199,
     sale: 999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 32,
   },
   {
-    id: '',
+    id: 'Green-Frog-Kids-Bed',
     category: 'kids',
     title: 'Green Frog Kids Bed',
     description:
@@ -3370,7 +3367,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Soft-Fluffy-Bubbled-Kids-Ship-Style-Bed',
     category: 'kids',
     title: 'Soft Fluffy Bubbled Kids Ship Style Bed',
     description:
@@ -3382,7 +3379,7 @@ const PRODUCTS = [
     availableQuantity: 44,
   },
   {
-    id: '',
+    id: 'Soft-Fluffy-Bubbled-Kids-Mouse-Style-Bed',
     category: 'kids',
     title: 'Soft Fluffy Bubbled Kids Mouse Style Bed',
     description:
@@ -3394,7 +3391,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Sponge-Bob-Series-Kids-Patrick-The-Starfish-Bed',
     category: 'kids',
     title: 'Sponge Bob Series Kids Patrick The Starfish Bed',
     description:
@@ -3405,7 +3402,7 @@ const PRODUCTS = [
     availableQuantity: 45,
   },
   {
-    id: '',
+    id: 'Green-Rounded-Kids-Frog-Eyed-Crib',
     category: 'kids',
     title: 'Green Rounded Kids Frog Eyed Crib',
     description: "Round children's bed with frog eyes",
@@ -3415,7 +3412,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Sponge-Bob-Series-Kids-Patrick-The-Starfish-Bed-V2',
     category: 'kids',
     title: 'Sponge Bob Series Kids Patrick The Starfish Bed V2',
     description:
@@ -3426,7 +3423,7 @@ const PRODUCTS = [
     availableQuantity: 55,
   },
   {
-    id: '',
+    id: 'Lavender-Kids-Cat-Bed',
     category: 'kids',
     title: 'Lavender Kids Cat Bed',
     description:
@@ -3437,18 +3434,18 @@ const PRODUCTS = [
     availableQuantity: 33,
   },
   {
-    id: '',
+    id: "Children's-Mouse-Bed",
     category: 'kids',
     title: "Children's Mouse Bed",
     description:
       "Children's bed in the shape of a cute little mouse. Rest assured the child would be happy to receive a gift in the form of such a nice bed",
     photo: '/catalog/_17632c75-671b-4d31-b770-52d17a6ad649.jpg',
     price: 1399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 52,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Kids-Standard-Bed',
     category: 'kids',
     title: 'Cyberpunk Series Kids Standard Bed',
     description:
@@ -3459,7 +3456,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Kids-Corgi-Bed-V2',
     category: 'kids',
     title: 'Kids Corgi Bed V2',
     description:
@@ -3470,7 +3467,7 @@ const PRODUCTS = [
     availableQuantity: 9,
   },
   {
-    id: '',
+    id: 'Teenage-Giraffe-Bed',
     category: 'kids',
     title: 'Teenage Giraffe Bed',
     description:
@@ -3481,7 +3478,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Kids-Frameless-Bed',
     category: 'kids',
     title: 'Totoro Series Kids Frameless Bed',
     description:
@@ -3492,7 +3489,7 @@ const PRODUCTS = [
     availableQuantity: 54,
   },
   {
-    id: '',
+    id: 'Corgi-Kids-Frameless-Sofa-V2',
     category: 'kids',
     title: 'Corgi Kids Frameless Sofa V2',
     description:
@@ -3504,7 +3501,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Pink-Cat-Crib',
     category: 'kids',
     title: 'Classic Series Kids Pink Cat Crib',
     description:
@@ -3515,7 +3512,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: "Yellow-Children's-Jake-The-Dog-Bed",
     category: 'kids',
     title: "Yellow Children's Jake The Dog Bed",
     description:
@@ -3526,7 +3523,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Dragonfruit-Kids-Bed',
     category: 'kids',
     title: 'Dragonfruit Kids Bed',
     description:
@@ -3538,7 +3535,7 @@ const PRODUCTS = [
     availableQuantity: 57,
   },
   {
-    id: '',
+    id: 'Beige-Portable-Bear-Crib',
     category: 'kids',
     title: 'Beige Portable Bear Crib',
     description:
@@ -3549,29 +3546,29 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Stitch-Series-Kids-Bed',
     category: 'kids',
     title: 'Stitch Series Kids Bed',
     description:
       "Children's bed in the form of a cute little monster from the cartoon -  Stitch",
     photo: '/catalog/_b3dceca7-f117-4988-97d7-acf6bf396144.jpg',
     price: 1299,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Sponge-Bob-Series-Kids-Patrick-The-Starfish-Bed-V3',
     category: 'kids',
     title: 'Sponge Bob Series Kids Patrick The Starfish Bed V3',
     description:
       "Another version of a children's bed in the form of Patrick from SpongeBob cartoon",
     photo: '/catalog/_b7d6bc6e-d01d-4c07-852c-17da7604b220.jpg',
     price: 1199,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 30,
   },
   {
-    id: '',
+    id: 'Pink-Flock-Kids-Cat-Eyed-Bed',
     category: 'kids',
     title: 'Pink Flock Kids Cat Eyed Bed',
     description:
@@ -3582,7 +3579,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Violet-Cat-Bed-V2',
     category: 'kids',
     title: 'Classic Series Kids Violet Cat Bed V2',
     description:
@@ -3594,7 +3591,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Round-Grey-Koala-Crib',
     category: 'kids',
     title: 'Round Grey Koala Crib',
     description:
@@ -3605,7 +3602,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Light-Beige-Plush-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Light Beige Plush Cat Bed',
     description:
@@ -3616,7 +3613,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'White-Ginger-Kids-Cat-Bed',
     category: 'kids',
     title: 'White Ginger Kids Cat Bed',
     description:
@@ -3627,7 +3624,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Lilac-Pink--Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Lilac Pink  Cat Bed',
     description:
@@ -3638,7 +3635,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Flock-Pink-Violet-Cat-Bed-',
     category: 'kids',
     title: 'Classic Series Kids Flock Pink Violet Cat Bed ',
     description:
@@ -3650,7 +3647,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Grey-Plush-Kids-Cat-Bed',
     category: 'kids',
     title: 'Grey Plush Kids Cat Bed',
     description:
@@ -3662,18 +3659,18 @@ const PRODUCTS = [
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Fluffy-Pink-Kids-Piggy-Bed',
     category: 'kids',
     title: 'Fluffy Pink Kids Piggy Bed',
     description:
       'A kids bed in the shape of a fluffy piggy snout. Very original and unusual',
     photo: '/catalog/_d3803767-5c39-4214-afb8-5de96848f92d.jpg',
     price: 1399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Pink-Kids-Four-Eyed-Cat-Bed',
     category: 'kids',
     title: 'Pink Kids Four-Eyed Cat Bed',
     description:
@@ -3684,7 +3681,7 @@ const PRODUCTS = [
     availableQuantity: 22,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Kids-Ottoman-Pikachu-Bed',
     category: 'kids',
     title: 'Pokemon Series Kids Ottoman Pikachu Bed',
     description:
@@ -3695,7 +3692,7 @@ const PRODUCTS = [
     availableQuantity: 51,
   },
   {
-    id: '',
+    id: 'Classic-Series-Kids-Grey-Bubbled-Cat-Bed',
     category: 'kids',
     title: 'Classic Series Kids Grey Bubbled Cat Bed',
     description:
@@ -3706,7 +3703,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Fluffy-Grey-Kids-Mouse-Bed',
     category: 'kids',
     title: 'Fluffy Grey Kids Mouse Bed',
     description:
@@ -3717,18 +3714,18 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Pastel-Yellow-Kids-Duckling-Bed',
     category: 'kids',
     title: 'Pastel Yellow Kids Duckling Bed',
     description:
       "Children's bed in the shape of a cute duckling in light yellow pastel color. A very successful and unique model. Hurry up to order as there will never be one exactly like it again",
     photo: '/catalog/_ed721c5c-b168-4ee3-bf54-de59b629d37d.jpg',
     price: 1499,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Lilac-Kids-Cat-Bed',
     category: 'kids',
     title: 'Lilac Kids Cat Bed',
     description:
@@ -3739,7 +3736,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Bright-Red-Kids-Cat-Bed',
     category: 'kids',
     title: 'Bright Red Kids Cat Bed',
     description:
@@ -3751,18 +3748,18 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Sea-Series-Pink-Fluffy-Octopus-Pouf',
     category: 'poufs',
     title: 'Sea Series Pink Fluffy Octopus Pouf',
     description:
       'Fluffy pouf in the shape of an octopus. An excellent addition to our sea series beds',
     photo: '/catalog/_2b7d11ee-e012-4d26-a281-7cd54ed45932.jpg',
     price: 399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 41,
   },
   {
-    id: '',
+    id: 'Pug-Muzzle-Pouf',
     category: 'poufs',
     title: 'Pug Muzzle Pouf',
     description: 'Pouf in the shape of a pug muzzle with paws',
@@ -3773,7 +3770,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Exotic-Fruit-Pouf',
     category: 'poufs',
     title: 'Exotic Fruit Pouf',
     description: 'Pouf in the shape of some exotic fruit',
@@ -3783,7 +3780,7 @@ const PRODUCTS = [
     availableQuantity: 43,
   },
   {
-    id: '',
+    id: 'Pug-Pouf',
     category: 'poufs',
     title: 'Pug Pouf',
     description: 'Pouf in the shape of a pug',
@@ -3794,7 +3791,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Fluffy-Owl-Pouf',
     category: 'poufs',
     title: 'Fluffy Owl Pouf',
     description: 'Pouf in the shape of little owl. Very cute',
@@ -3805,18 +3802,18 @@ const PRODUCTS = [
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Car-Series-Retromobile-Pouf',
     category: 'poufs',
     title: 'Car Series Retromobile Pouf',
     description:
       'Pouf made in the shape of an old retro car. Will go well with beds from the same series',
     photo: '/catalog/_12d90154-b667-4568-b964-b5e073f62cf5.jpg',
     price: 399,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Plush-Beige-Owl-Pouf',
     category: 'poufs',
     title: 'Plush Beige Owl Pouf',
     description:
@@ -3824,11 +3821,11 @@ const PRODUCTS = [
     photo: '/catalog/_22a24b14-941b-456c-86b9-c924b9973fe8.jpg',
     price: 399,
     sale: 349,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Mysterious-Pokemon-Poof',
     category: 'poufs',
     title: 'Pokemon Series Mysterious Pokemon Poof',
     description:
@@ -3839,7 +3836,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Beige-Velvet-Crocodile-Pouf',
     category: 'poufs',
     title: 'Beige Velvet Crocodile Pouf',
     description:
@@ -3850,7 +3847,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Classic-Series-Creamy-White-Cat-Pouf',
     category: 'poufs',
     title: 'Classic Series Creamy White Cat Pouf',
     description:
@@ -3861,7 +3858,7 @@ const PRODUCTS = [
     availableQuantity: 54,
   },
   {
-    id: '',
+    id: 'Furry-Mysterious-Pouf',
     category: 'poufs',
     title: 'Furry Mysterious Pouf',
     description: 'Pouf representing a mysterious hairy creature :)',
@@ -3871,7 +3868,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Corgi-Pouf',
     category: 'poufs',
     title: 'Corgi Pouf',
     description:
@@ -3883,7 +3880,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Data-Processor-Pouf',
     category: 'poufs',
     title: 'Cyberpunk Series Data Processor Pouf',
     description:
@@ -3894,17 +3891,17 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Exotic-Fruit-Pouf-V2',
     category: 'poufs',
     title: 'Exotic Fruit Pouf V2',
     description: 'Another pouf in the shape of a mysterious exotic fruit',
     photo: '/catalog/_8574bd70-949a-46a8-b16f-f88bf21b618f.jpg',
     price: 399,
-    rating: 4.0,
+    rating: 4,
     availableQuantity: 84,
   },
   {
-    id: '',
+    id: 'Standard-Beige-Fluffy-Pouf',
     category: 'poufs',
     title: 'Standard Beige Fluffy Pouf',
     description:
@@ -3916,7 +3913,7 @@ const PRODUCTS = [
     availableQuantity: 8,
   },
   {
-    id: '',
+    id: 'Car-Series-Retromobile-Pouf-V2',
     category: 'poufs',
     title: 'Car Series Retromobile Pouf V2',
     description: 'Another example for connoisseurs of old classic cars',
@@ -3926,7 +3923,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Natural-Octopus-Pouf',
     category: 'poufs',
     title: 'Sea Series Natural Octopus Pouf',
     description:
@@ -3937,7 +3934,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Pug-Muzzle-Pouf-V2',
     category: 'poufs',
     title: 'Pug Muzzle Pouf V2',
     description:
@@ -3948,7 +3945,7 @@ const PRODUCTS = [
     availableQuantity: 6,
   },
   {
-    id: '',
+    id: 'Sea-Series-Plush-Yellow-Starfish-Pouf',
     category: 'poufs',
     title: 'Sea Series Plush Yellow Starfish Pouf',
     description:
@@ -3960,7 +3957,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Plush-Grey-Owl-Pouf',
     category: 'poufs',
     title: 'Plush Grey Owl Pouf',
     description: 'Plush pouf in the shape of an owl. This one is in grey',
@@ -3970,7 +3967,7 @@ const PRODUCTS = [
     availableQuantity: 23,
   },
   {
-    id: '',
+    id: 'Sea-Series-Light-Beige-Starfish-Pouf',
     category: 'poufs',
     title: 'Sea Series Light Beige Starfish Pouf',
     description:
@@ -3981,7 +3978,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Plush-Pumpkin-Pouf',
     category: 'poufs',
     title: 'Plush Pumpkin Pouf',
     description:
@@ -3993,7 +3990,7 @@ const PRODUCTS = [
     availableQuantity: 3,
   },
   {
-    id: '',
+    id: 'Knitted-Socks-Pouf',
     category: 'poufs',
     title: 'Knitted Socks Pouf',
     description: 'Pouf in the style of knitted socks with a fluffy ball',
@@ -4003,7 +4000,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Pouf',
     category: 'poufs',
     title: 'Totoro Series Pouf',
     description: 'Pouf in the form of the anime character Totoro',
@@ -4013,7 +4010,7 @@ const PRODUCTS = [
     availableQuantity: 64,
   },
   {
-    id: '',
+    id: 'Chocolate-Framed-Pouf',
     category: 'poufs',
     title: 'Chocolate Framed Pouf',
     description: 'Chocolate-colored pouf framed in gilded metal',
@@ -4024,7 +4021,7 @@ const PRODUCTS = [
     availableQuantity: 7,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Powerbank-Pouf',
     category: 'poufs',
     title: 'Cyberpunk Series Powerbank Pouf',
     description:
@@ -4035,18 +4032,18 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Pouf-V2',
     category: 'poufs',
     title: 'Totoro Series Pouf V2',
     description:
       'Totoro (Japanese: トトロ) is the guardian of the forest, a large, furry, gray creature. Another version of the pouf in its shape',
     photo: '/catalog/_d8523c46-b3fa-4c8c-81bf-cf9666af38a4.jpg',
     price: 349,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Totoro-Series-Pouf-V3',
     category: 'poufs',
     title: 'Totoro Series Pouf V3',
     description:
@@ -4058,7 +4055,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Gorilla-The-Pouf',
     category: 'poufs',
     title: 'Gorilla The Pouf',
     description: 'Pouf in the shape of a black rugged gorilla',
@@ -4068,7 +4065,7 @@ const PRODUCTS = [
     availableQuantity: 63,
   },
   {
-    id: '',
+    id: 'Cyberpunk-Series-Soviet-Pouf',
     category: 'poufs',
     title: 'Cyberpunk Series Soviet Pouf',
     description:
@@ -4079,7 +4076,7 @@ const PRODUCTS = [
     availableQuantity: 2,
   },
   {
-    id: '',
+    id: 'Pastel-Orange-Exotic-Fruit-Pouf',
     category: 'poufs',
     title: 'Pastel Orange Exotic Fruit Pouf',
     description:
@@ -4090,7 +4087,7 @@ const PRODUCTS = [
     availableQuantity: 11,
   },
   {
-    id: '',
+    id: 'Realistic-Corgi-Pouf',
     category: 'poufs',
     title: 'Realistic Corgi Pouf',
     description:
@@ -4102,7 +4099,7 @@ const PRODUCTS = [
     availableQuantity: 5,
   },
   {
-    id: '',
+    id: 'Pokemon-Series-Mysterious-Pokemon-Poof-V2',
     category: 'poufs',
     title: 'Pokemon Series Mysterious Pokemon Poof V2',
     description:
@@ -4113,7 +4110,7 @@ const PRODUCTS = [
     availableQuantity: 1,
   },
   {
-    id: '',
+    id: 'Sea-Series-Coral-Pouf',
     category: 'poufs',
     title: 'Sea Series Coral Pouf',
     description:
@@ -4124,7 +4121,7 @@ const PRODUCTS = [
     availableQuantity: 4,
   },
   {
-    id: '',
+    id: 'Matting-Abstract-Pouf',
     category: 'poufs',
     title: 'Matting Abstract Pouf',
     description:

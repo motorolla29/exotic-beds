@@ -5,7 +5,7 @@ import './catalog.sass';
 const Catalog = ({ products }) => {
   return (
     <div className="catalog">
-      {products.map((it) => {
+      {products?.map((it) => {
         return <CatalogItem key={it.id} item={it} />;
       })}
     </div>

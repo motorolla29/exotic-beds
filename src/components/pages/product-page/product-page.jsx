@@ -43,7 +43,7 @@ const ProductPage = () => {
             </div>
 
             <span className="product-page_info_rating_mark">
-              {product.rating}
+              {product.rating.toFixed(1)}
             </span>
           </div>
 

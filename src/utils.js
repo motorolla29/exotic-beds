@@ -161,6 +161,60 @@ const debounce = (fn, wait) => {
   };
 };
 
+const sortProducts = (products, sortBy) => {
+  let sortedProducts;
+
+  switch (sortBy) {
+    case 'relevance':
+      sortedProducts = products;
+      break;
+    case 'price_asc':
+      sortedProducts = products.sort(
+        (a, b) => (a.sale || a.price) - (b.sale || b.price)
+      );
+      break;
+    case 'price_desc':
+      sortedProducts = products.sort(
+        (a, b) => (b.sale || b.price) - (a.sale || a.price)
+      );
+      break;
+    case 'rating':
+      sortedProducts = products.sort((a, b) => b.rating - a.rating);
+      break;
+    case 'recent':
+      sortedProducts = products.sort((a, b) => {
+        if (a.isNew && !b.isNew) {
+          return -1;
+        }
+        if (!a.isNew && b.isNew) {
+          return 1;
+        }
+        return 0;
+      });
+      break;
+    case 'discount':
+      sortedProducts = products.sort((a, b) => {
+        if (a.sale && !b.sale) {
+          return -1;
+        }
+        if (!a.sale && b.sale) {
+          return 1;
+        }
+        return 0;
+      });
+      break;
+    default:
+      sortedProducts = products;
+  }
+
+  return sortedProducts;
+};
+
+const setIdByTitle = (data) => {
+  data.forEach((it) => (it.id = it.title.replace(/[-\s]/g, '-')));
+  return data;
+};
+
 export {
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
@@ -170,4 +224,5 @@ export {
   getUcFirstNoDashStr,
   scrollController,
   debounce,
+  sortProducts,
 };

@@ -89,7 +89,7 @@ const RatingFilter = () => {
               type="radio"
               name="rating"
               value="0"
-              checked={searchParams.has('minRating', 'all')}
+              checked={searchParams.has('minRating', '0')}
               onChange={onRatingInputChange}
               className="main-radio"
             ></input>

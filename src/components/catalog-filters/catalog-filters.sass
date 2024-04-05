@@ -1,5 +1,10 @@
 @import 'src/styles/variables'
     
+.catalog-filters-container
+    position: relative
+    min-width: 20em
+    margin-right: 2em
+
 .catalog-filters
     border-radius: 2em
     margin-right: 2em
@@ -11,7 +16,13 @@
     width: 20em
     min-width: 20em
 
-    &_main-title
+    &_header
+        display: flex
+        justify-content: space-between
+        min-height: 4em
+
+        
+        &_main-title
         position: relative
         padding-left: 2.5em
         padding-bottom: 1.5em
@@ -21,6 +32,25 @@
             content: url('../../images/ui-icons/filter.svg')
             width: 1.5em
             left: 0
+
+        &_clear-button
+            cursor: pointer
+            padding: 0.5em
+            background: none
+            border: 1px solid $main-color-grey-transparent
+            border-radius: 1em
+            color: $main-color-grey
+            font-size: 1em
+            font-weight: 600
+
+            &:hover
+                color: $main-color-turquoise
+                border-color: $main-color-turquoise
+            
+            &:active
+                opacity: 0.8
+
+    
             
     &_filter
         &_title
