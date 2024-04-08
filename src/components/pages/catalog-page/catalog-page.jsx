@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
@@ -14,6 +14,7 @@ import {
 } from '../../../utils';
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
+import CatalogEmpty from '../../catalog-empty/catalog-empty';
 
 import './catalog-page.sass';
 
@@ -22,6 +23,11 @@ const CatalogPage = ({ category }) => {
   const [page, setPage] = useState(
     searchParams.has('page') ? +searchParams.get('page') : 1
   );
+
+  useEffect(() => {
+    setPage(1);
+  }, [category]);
+
   const products = useSelector((state) => state.products);
   const highestPrice =
     findMostExpensiveProductObj(products).sale ||
@@ -83,23 +89,30 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
-          <CatalogTopToolbar
-            sortedProducts={sortedProducts}
-            limitedSortedProducts={limitedSortedProducts}
-          />
-          <CatalogPagination
-            page={page}
-            setPage={setPage}
-            products={sortedProducts}
-            limit={limit}
-          />
-          <Catalog products={limitedSortedProducts} />
-          <CatalogPagination
-            page={page}
-            setPage={setPage}
-            products={sortedProducts}
-            limit={limit}
-          />
+
+          {sortedProducts.length ? (
+            <>
+              <CatalogTopToolbar
+                sortedProducts={sortedProducts}
+                limitedSortedProducts={limitedSortedProducts}
+              />
+              <CatalogPagination
+                page={page}
+                setPage={setPage}
+                products={sortedProducts}
+                limit={limit}
+              />
+              <Catalog products={limitedSortedProducts} />
+              <CatalogPagination
+                page={page}
+                setPage={setPage}
+                products={sortedProducts}
+                limit={limit}
+              />
+            </>
+          ) : (
+            <CatalogEmpty />
+          )}
         </div>
       </div>
     </>

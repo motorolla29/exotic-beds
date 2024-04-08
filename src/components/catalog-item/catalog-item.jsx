@@ -11,7 +11,7 @@ import {
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
 
-const CatalogItem = ({ item }) => {
+const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
 
   const basketItems = useSelector((state) => state.cartProducts);
@@ -20,7 +20,7 @@ const CatalogItem = ({ item }) => {
   const isLoved = lovedProducts.find((it) => it.id === item.id);
 
   return (
-    <div key={item.id} className="catalog-item">
+    <div key={item.id} className={`catalog-item ${size}`}>
       <div className="catalog-item_visual">
         <Link to={`/${item.id}`}>
           <img

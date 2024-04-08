@@ -1,3 +1,12 @@
+@import 'src/styles/variables'
+    
 .catalog-pagination 
     margin-top: 1.5em
     margin-bottom: 0.5em
+
+    & .MuiButtonBase-root
+        color: $main-color-turquoise
+
+        &.MuiPaginationItem-root.Mui-selected
+            color: $main-color-white
+            background-color: $main-color-turquoise-transparent

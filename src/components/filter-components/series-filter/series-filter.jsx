@@ -14,30 +14,32 @@ const SeriesFilter = ({ products }) => {
             it.title.toLowerCase().includes(`${series.toLowerCase()} series`)
           ).length;
 
-          console.log(count);
-
           return (
-            <div key={series} className="series-filter_options_option">
-              <input
-                id={`series-${series}`}
-                type="checkbox"
-                name={series}
-                checked={searchParams.has('series', `${series}`)}
-                onChange={(evt) => {
-                  searchParams.has('series', `${series}`)
-                    ? searchParams.delete('series', `${evt.target.name}`)
-                    : searchParams.append('series', `${evt.target.name}`);
-                  setSearchParams(searchParams);
-                }}
-                className="main-checkbox series-filter_options_option_input"
-              ></input>
-              <label htmlFor={`series-${series}`} />
-              <span className="series-filter_options_option_name">
-                {series}
-              </span>
-              <span className="series-filter_options_option_amount">
-                ({count})
-              </span>
+            <div key={series}>
+              {count ? (
+                <div className="series-filter_options_option">
+                  <input
+                    id={`series-${series}`}
+                    type="checkbox"
+                    name={series}
+                    checked={searchParams.has('series', `${series}`)}
+                    onChange={(evt) => {
+                      searchParams.has('series', `${series}`)
+                        ? searchParams.delete('series', `${evt.target.name}`)
+                        : searchParams.append('series', `${evt.target.name}`);
+                      setSearchParams(searchParams);
+                    }}
+                    className="main-checkbox series-filter_options_option_input"
+                  ></input>
+                  <label htmlFor={`series-${series}`} />
+                  <span className="series-filter_options_option_name">
+                    {series}
+                  </span>
+                  <span className="series-filter_options_option_amount">
+                    ({count})
+                  </span>
+                </div>
+              ) : null}
             </div>
           );
         })}

@@ -1,0 +1,47 @@
+@import 'src/styles/variables'
+    
+.catalog-empty
+    user-select: none
+    margin-top: 50px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    align-self: center
+    width: 30em
+    height: 10em
+    color: $main-color-turquoise
+    border-radius: 2em
+    background: $main-color-white-transparent
+    padding: 0 3em
+
+    &_description
+        position: relative
+        color: $main-color-grey
+        text-align: center
+        font-size: 1em
+        margin-bottom: 1em
+        padding: 0 1em
+
+        &::before
+            position: absolute
+            content: url('../../images/ui-icons/filter.svg')
+            width: 1em
+            left: 0
+    
+    &_clear-filters
+        cursor: pointer
+        padding: 0.5em
+        background: none
+        border: 1px solid $main-color-grey-transparent
+        border-radius: 1em
+        color: $main-color-grey
+        font-size: 1em
+        font-weight: 600
+
+        &:hover
+            color: $main-color-turquoise
+            border-color: $main-color-turquoise
+            
+        &:active
+            opacity: 0.8

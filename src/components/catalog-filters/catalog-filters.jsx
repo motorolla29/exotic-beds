@@ -55,7 +55,7 @@ const CatalogFilters = ({ products, category }) => {
         {category ? null : (
           <div className="catalog-filters_filter">
             <h5 className="catalog-filters_filter_title">Category</h5>
-            <CategoryFilter />
+            <CategoryFilter products={products} />
           </div>
         )}
         <div className="catalog-filters_filter">

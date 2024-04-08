@@ -169,20 +169,20 @@ const sortProducts = (products, sortBy) => {
       sortedProducts = products;
       break;
     case 'price_asc':
-      sortedProducts = products.sort(
-        (a, b) => (a.sale || a.price) - (b.sale || b.price)
-      );
+      sortedProducts = products
+        .slice()
+        .sort((a, b) => (a.sale || a.price) - (b.sale || b.price));
       break;
     case 'price_desc':
-      sortedProducts = products.sort(
-        (a, b) => (b.sale || b.price) - (a.sale || a.price)
-      );
+      sortedProducts = products
+        .slice()
+        .sort((a, b) => (b.sale || b.price) - (a.sale || a.price));
       break;
     case 'rating':
-      sortedProducts = products.sort((a, b) => b.rating - a.rating);
+      sortedProducts = products.slice().sort((a, b) => b.rating - a.rating);
       break;
     case 'recent':
-      sortedProducts = products.sort((a, b) => {
+      sortedProducts = products.slice().sort((a, b) => {
         if (a.isNew && !b.isNew) {
           return -1;
         }
@@ -193,7 +193,7 @@ const sortProducts = (products, sortBy) => {
       });
       break;
     case 'discount':
-      sortedProducts = products.sort((a, b) => {
+      sortedProducts = products.slice().sort((a, b) => {
         if (a.sale && !b.sale) {
           return -1;
         }

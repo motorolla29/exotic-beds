@@ -5,8 +5,8 @@ import './lovelist.sass';
 const Lovelist = ({ items }) => {
   return (
     <div className="lovelist">
-      {items.map((it) => (
-        <CatalogItem key={it.id} item={it} />
+      {items?.map((it) => (
+        <CatalogItem key={it.id} item={it} size="medium" />
       ))}
     </div>
   );
