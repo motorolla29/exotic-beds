@@ -1,0 +1,40 @@
+@import 'src/styles/variables'
+    
+.logo-spinner
+    display: flex
+    align-items: center
+    flex-direction: column
+
+    &_shadow
+        display: flex
+        align-items: center
+        justify-content: center
+        position: fixed
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        background: #4f4a57ac
+        z-index: 10
+    &_svg
+        opacity: 0.75
+        height: auto
+
+
+    &_loader
+        &.large
+            span
+                border: 8px solid $main-color-turquoise
+        &.medium
+            span
+                border: 6px solid $main-color-turquoise
+        &.small
+            span
+                border: 4px solid $main-color-turquoise
+
+
+
+    
+
+
+    

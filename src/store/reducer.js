@@ -22,7 +22,7 @@ import PRODUCTS from '../mocks/products';
 
 const initialState = {
   products: PRODUCTS,
-  productsAreLoaded: false,
+  productsAreLoaded: true,
   isCartOpen: false,
   sortType: null,
   cartProducts: [],
