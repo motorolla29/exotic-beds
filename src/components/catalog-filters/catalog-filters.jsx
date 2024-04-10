@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import StickyBox from 'react-sticky-box';
 
 import CategoryFilter from '../filter-components/category-filter/category-filter';
 import PriceFilter from '../filter-components/price-filter/price-filter';
@@ -38,44 +39,42 @@ const CatalogFilters = ({ products, category }) => {
   };
 
   return (
-    <div className="catalog-filters-container">
-      <div className="catalog-filters">
-        <div className="catalog-filters_header">
-          <h3 className="catalog-filters_header_main-title">Filter By</h3>
-          {isFilterParams ? (
-            <button
-              onClick={onClearButtonHandler}
-              className="catalog-filters_header_clear-button"
-            >
-              {' '}
-              Clear all
-            </button>
-          ) : null}
-        </div>
-        {category ? null : (
-          <div className="catalog-filters_filter">
-            <h5 className="catalog-filters_filter_title">Category</h5>
-            <CategoryFilter products={products} />
-          </div>
-        )}
-        <div className="catalog-filters_filter">
-          <h5 className="catalog-filters_filter_title">Price, €</h5>
-          <PriceFilter
-            minPrice={findCheapestProductObj(products).price}
-            maxPrice={findMostExpensiveProductObj(products).price}
-          />
-        </div>
-        <div className="catalog-filters_filter">
-          <h5 className="catalog-filters_filter_title">Rating</h5>
-          <RatingFilter products={products} />
-        </div>
-        <div className="catalog-filters_filter">
-          <h5 className="catalog-filters_filter_title">Series</h5>
-          <SeriesFilter products={products} />
-        </div>
-        <FilterSwitchers />
+    <StickyBox className="catalog-filters" offsetTop={20} offsetBottom={20}>
+      <div className="catalog-filters_header">
+        <h3 className="catalog-filters_header_main-title">Filter By</h3>
+        {isFilterParams ? (
+          <button
+            onClick={onClearButtonHandler}
+            className="catalog-filters_header_clear-button"
+          >
+            {' '}
+            Clear all
+          </button>
+        ) : null}
       </div>
-    </div>
+      {category ? null : (
+        <div className="catalog-filters_filter">
+          <h5 className="catalog-filters_filter_title">Category</h5>
+          <CategoryFilter products={products} />
+        </div>
+      )}
+      <div className="catalog-filters_filter">
+        <h5 className="catalog-filters_filter_title">Price, €</h5>
+        <PriceFilter
+          minPrice={findCheapestProductObj(products).price}
+          maxPrice={findMostExpensiveProductObj(products).price}
+        />
+      </div>
+      <div className="catalog-filters_filter">
+        <h5 className="catalog-filters_filter_title">Rating</h5>
+        <RatingFilter products={products} />
+      </div>
+      <div className="catalog-filters_filter">
+        <h5 className="catalog-filters_filter_title">Series</h5>
+        <SeriesFilter products={products} />
+      </div>
+      <FilterSwitchers />
+    </StickyBox>
   );
 };
 
