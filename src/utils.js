@@ -244,10 +244,10 @@ const findMostExpensiveProductObj = (products) =>
     return y;
   });
 
-const setIdByTitle = (data) => {
-  data.forEach((it) => (it.id = it.title.replace(/[-\s]/g, '-')));
-  return data;
-};
+// const setIdByTitle = (data) => {
+//   data.forEach((it) => (it.id = it.title.replace(/[-\s]/g, '-')));
+//   return data;
+// };
 
 export {
   getCartWithAddedProduct,

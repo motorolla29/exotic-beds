@@ -23,7 +23,7 @@ const CatalogPagination = ({ products, limit, page, setPage }) => {
     } else {
       setPage(page);
     }
-  }, [products, limit, page]);
+  }, [products, limit, page, setPage, searchParams, setSearchParams]);
 
   return (
     <div className="catalog-pagination">

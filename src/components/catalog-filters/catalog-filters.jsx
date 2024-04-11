@@ -38,6 +38,11 @@ const CatalogFilters = ({ products, category }) => {
     setSearchParams(searchParams);
   };
 
+  const onTitleClickHandler = (e) => {
+    e.target.nextElementSibling.classList.contains('hidden')
+      ? e.target.nextElementSibling.classList.remove('hidden')
+      : e.target.nextElementSibling.classList.add('hidden');
+  };
   return (
     <StickyBox className="catalog-filters" offsetTop={20} offsetBottom={20}>
       <div className="catalog-filters_header">
@@ -54,23 +59,43 @@ const CatalogFilters = ({ products, category }) => {
       </div>
       {category ? null : (
         <div className="catalog-filters_filter">
-          <h5 className="catalog-filters_filter_title">Category</h5>
+          <h5
+            className="catalog-filters_filter_title"
+            onClick={onTitleClickHandler}
+          >
+            Category
+          </h5>
           <CategoryFilter products={products} />
         </div>
       )}
       <div className="catalog-filters_filter">
-        <h5 className="catalog-filters_filter_title">Price, €</h5>
+        <h5
+          className="catalog-filters_filter_title"
+          onClick={onTitleClickHandler}
+        >
+          Price, €
+        </h5>
         <PriceFilter
           minPrice={findCheapestProductObj(products).price}
           maxPrice={findMostExpensiveProductObj(products).price}
         />
       </div>
       <div className="catalog-filters_filter">
-        <h5 className="catalog-filters_filter_title">Rating</h5>
+        <h5
+          className="catalog-filters_filter_title"
+          onClick={onTitleClickHandler}
+        >
+          Rating
+        </h5>
         <RatingFilter products={products} />
       </div>
       <div className="catalog-filters_filter">
-        <h5 className="catalog-filters_filter_title">Series</h5>
+        <h5
+          className="catalog-filters_filter_title"
+          onClick={onTitleClickHandler}
+        >
+          Series
+        </h5>
         <SeriesFilter products={products} />
       </div>
       <FilterSwitchers />
