@@ -39,6 +39,9 @@ const CatalogFilters = ({ products, category }) => {
   };
 
   const onTitleClickHandler = (e) => {
+    e.target.classList.contains('hidden')
+      ? e.target.classList.remove('hidden')
+      : e.target.classList.add('hidden');
     e.target.nextElementSibling.classList.contains('hidden')
       ? e.target.nextElementSibling.classList.remove('hidden')
       : e.target.nextElementSibling.classList.add('hidden');

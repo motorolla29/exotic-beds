@@ -1,0 +1,67 @@
+@import 'src/styles/variables'
+    
+.store-finder
+    height: 100%
+    display: flex
+    flex-direction: column
+
+    &_header
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        &_title
+            user-select: none
+            font-size: 4em
+            font-weight: 900
+            color: $main-color-turquoise-transparent 
+        &_subtitle
+            font-size: 1em
+            color: $main-color-grey
+
+        &_finder
+            margin: 1em 0
+
+    &_locator
+        height: 500px
+        padding-bottom: 1em
+        max-height: 100%
+        display: flex
+        
+        &_list
+            border-top-left-radius: 2em
+            border-bottom-left-radius: 2em
+            height: 100%
+            width: 30%
+            background: $main-color-green-light
+            padding: 1em
+            max-height: 500px
+            overflow-y: scroll
+
+            &_header
+                padding-bottom: 1em
+                border-bottom: 1px solid $main-color-grey-transparent
+
+                &_counter
+                    color: $main-color-grey
+                    font-weight: 600
+
+
+        &_map
+            height: 100%
+            flex-grow: 1
+
+.maplibregl-map
+    border-top-right-radius: 2em
+    border-bottom-right-radius: 2em
+    width: 100%
+    height: auto
+
+
+.store-info-item
+    margin: 0.5em 0
+    min-height: 5em
+    padding: 0.5em
+    background-color: $main-color-white
+    border: 1px solid $main-color-grey-transparent
+    border-radius: 1em

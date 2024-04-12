@@ -48,10 +48,15 @@
             
     &_filter
         &_title
+            user-select: none
             position: relative
             padding: 1em 0
-            border-top: 1px solid $main-color-green-light
+            border-bottom: 1px solid #4f4a5717
             cursor: pointer
+
+            &:hover
+                color: $main-color-grey
+                border-color: #4f4a574a
 
             &::after
                 position: absolute
@@ -60,9 +65,21 @@
                 height: 0.4em
                 border-right: 1px solid $main-color-grey
                 border-bottom: 1px solid $main-color-grey
-                transform: rotate(45deg)
+                transform: rotate(225deg)
                 right: 0.5em
-                top: 40%
-                
-        & .hidden
+                top: 50%
+                transition: transform 0.2s ease-out
+
+            &.hidden::after
+                position: absolute
+                content: ""
+                width: 0.4em
+                height: 0.4em
+                border-right: 1px solid $main-color-grey
+                border-bottom: 1px solid $main-color-grey
+                transform: rotate(45deg) 
+                right: 0.5em
+                top: 50%
+
+        & .hidden ~ div.hidden
             display: none
