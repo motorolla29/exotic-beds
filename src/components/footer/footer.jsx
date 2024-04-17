@@ -49,7 +49,7 @@ function Footer() {
                 Visit a store
               </p>
               <p className="footer_first-level_store-finder-link_signature_subtitle">
-                Over 100 stores nationwide
+                Over 100 stores worldwide
               </p>
             </div>
           </Link>

@@ -1,0 +1,60 @@
+@import 'src/styles/variables'
+
+.store-info-item
+    margin-top: 0.5em
+    min-height: 5em
+    padding: 0.5em
+    color: $main-color-grey
+    background-color: $main-color-white
+    border: 1px solid $main-color-grey-transparent
+    border-radius: 1em
+
+    &_name
+        display: flex
+        justify-content: space-between
+        color: $main-color-turquoise
+        font-weight: 600
+        padding-bottom: 0.2em
+
+    &_address
+        font-weight: 400
+
+    &_work
+        padding: 0.5em 0
+
+        &_status
+            color: green
+            font-weight: 600
+            padding-right: 0.5em
+
+        &_description
+            padding-left: 0.5em
+
+        &_calendar
+
+    &_links
+        margin: 0.5em 0
+
+        &_directions
+            opacity: 0.7
+            margin-right: 0.5em
+            background: $main-color-turquoise
+            color: $main-color-white
+            border: 1px solid $main-color-turquoise-transparent
+            border-radius: 1em
+            padding: 0.25em 1em 
+
+            &:hover
+                opacity: 0.8
+                
+
+        &_details
+            margin-left: 0.5em
+            border: 1px solid $main-color-grey-transparent
+            color: $main-color-grey
+            border-radius: 1em
+            padding: 0.25em 1em
+
+            &:hover
+                border-color: $main-color-grey
+                

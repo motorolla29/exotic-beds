@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import Map from 'react-map-gl/maplibre';
 
+import StoreInfoItem from '../store-info-item/store-info-item';
+
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './store-finder.sass';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const StoreFinder = () => {
   return (
@@ -16,26 +19,20 @@ const StoreFinder = () => {
         <div className="store-finder_header_finder">find</div>
       </div>
       <div className="store-finder_locator">
-        <div className="store-finder_locator_list">
+        <OverlayScrollbarsComponent className="store-finder_locator_list">
           <div className="store-finder_locator_list_header">
             <p className="store-finder_locator_list_header_counter">
               10 Stores Near You
             </p>
           </div>
-          <div className="store-info-items">
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
-            <div className="store-info-item">item</div>
+          <div className="store-finder_locator_list_store-info-items">
+            <StoreInfoItem />
+            <StoreInfoItem />
+            <StoreInfoItem />
+            <StoreInfoItem />
+            <StoreInfoItem />
           </div>
-        </div>
+        </OverlayScrollbarsComponent>
         <div className="store-finder_locator_map">
           <Map
             initialViewState={{
