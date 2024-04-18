@@ -22,6 +22,11 @@
     &_work
         padding: 0.5em 0
 
+        svg
+            width: 1em
+            height: auto
+            margin-left: 1em
+
         &_status
             color: green
             font-weight: 600
@@ -31,6 +36,22 @@
             padding-left: 0.5em
 
         &_calendar
+            padding-top: 0.5em
+            &_table
+                &_row
+                    background: $main-color-green-light
+                    &_day-data
+                        padding: 0 0.5em
+
+                    &_hrs-data
+
+                        & .start-hrs, & .end-hrs
+                            padding: 0 0.25em
+
+                        &.active
+                            & .start-hrs, & .end-hrs
+                                color: $main-color-green-light
+                                background: $main-color-turquoise-transparent
 
     &_links
         margin: 0.5em 0

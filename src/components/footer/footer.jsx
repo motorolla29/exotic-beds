@@ -23,19 +23,19 @@ function Footer() {
       <div className="footer">
         <div className="footer_first-level">
           <div className="footer_first-level_socials">
-            <Link to="">
+            <Link to="#">
               <FacebookIcon />
             </Link>
-            <Link to="">
+            <Link to="#">
               <TwitterIcon />
             </Link>
-            <Link to="">
+            <Link to="#">
               <InstagramIcon />
             </Link>
-            <Link to="">
+            <Link to="#">
               <PinterestIcon />
             </Link>
-            <Link to="">
+            <Link to="#">
               <YoutubeIcon />
             </Link>
           </div>

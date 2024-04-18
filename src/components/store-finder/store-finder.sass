@@ -29,6 +29,7 @@
         display: flex
         
         &_list
+            position: relative
             -webkit-box-shadow: -1px 0px 10px 0px rgba(0,0,0,0.2)
             -moz-box-shadow: -1px 0px 10px 0px rgba(0,0,0,0.2)
             box-shadow: -1px 0px 10px 0px rgba(0,0,0,0.2)
@@ -37,15 +38,27 @@
             height: 100%
             width: 30%
             background: $main-color-green-light
-            padding: 1em
+            padding: 0em 1.5em 1em 1em
             max-height: 500px
+
+            & .os-theme-dark // scrollbar styles
+                --os-handle-interactive-area-offset: 10px
+                --os-handle-bg: #00475799
+                --os-handle-bg-hover: #004757cc 
+                --os-handle-bg-active: #004757
 
             &_store-info-items
                 padding-top: 0.5em
 
             &_header
+                position: sticky
+                top: 0
+                margin-right: -2px
+                background: $main-color-green-light
+                padding-top: 1em
                 padding-bottom: 1em
                 border-bottom: 1px solid $main-color-grey-transparent
+                z-index: 10
 
                 &_counter
                     color: $main-color-grey
@@ -56,8 +69,13 @@
             height: 100%
             flex-grow: 1
 
-.maplibregl-map
+    
+
+
+.maplibregl-map // styles for map
     border-top-right-radius: 2em
     border-bottom-right-radius: 2em
     width: 100%
     height: auto
+
+    

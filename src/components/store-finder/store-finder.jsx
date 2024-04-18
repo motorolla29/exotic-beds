@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Map from 'react-map-gl/maplibre';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import StoreInfoItem from '../store-info-item/store-info-item';
 
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './store-finder.sass';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const StoreFinder = () => {
   return (
@@ -19,7 +19,7 @@ const StoreFinder = () => {
         <div className="store-finder_header_finder">find</div>
       </div>
       <div className="store-finder_locator">
-        <OverlayScrollbarsComponent className="store-finder_locator_list">
+        <OverlayScrollbarsComponent className="store-finder_locator_list" defer>
           <div className="store-finder_locator_list_header">
             <p className="store-finder_locator_list_header_counter">
               10 Stores Near You

@@ -8,9 +8,9 @@ import LoginPage from '../pages/login-page/login-page';
 import StoreFinderPage from '../pages/store-finder-page/store-finder-page';
 import LovelistPage from '../pages/lovelist-page/lovelist-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
+import SearchPage from '../pages/search-page/search-page';
 
 import './app.sass';
-import SearchPage from '../pages/search-page/search-page';
 
 const App = () => {
   return (
