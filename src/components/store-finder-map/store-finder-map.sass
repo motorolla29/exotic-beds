@@ -1,0 +1,45 @@
+@import 'src/styles/variables'
+    
+.maplibregl-map // styles for map
+    border-top-right-radius: 2em
+    border-bottom-right-radius: 2em
+    width: 100%
+    height: auto
+    & .maplibregl-marker
+        cursor: pointer
+
+.store-finder-popup
+
+    &_name
+        padding-bottom: 5px
+
+    &_address
+        padding-bottom: 5px
+
+    &_work
+        color: $main-color-grey
+
+        &_status
+            color: green
+            padding-right: 5px
+
+        &_description
+            padding-left: 5px
+
+    & .maplibregl-popup-content // тело попапа
+        background: $main-color-white
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3)
+        border-radius: 10px
+        & .maplibregl-popup-close-button // крестик попапа
+            font-size: 20px
+            color: $main-color-grey-transparent
+            right: 7px
+            &:hover
+                color: $main-color-grey
+                background-color: transparent
+        
+    &.maplibregl-popup-anchor-bottom .maplibregl-popup-tip // указатель попапа
+        border-top-color: $main-color-white
+
+    
+

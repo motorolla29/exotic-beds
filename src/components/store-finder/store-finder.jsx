@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import Map from 'react-map-gl/maplibre';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
+import StoreFinderMap from '../store-finder-map/store-finder-map';
 import StoreInfoItem from '../store-info-item/store-info-item';
 
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -34,16 +33,7 @@ const StoreFinder = () => {
           </div>
         </OverlayScrollbarsComponent>
         <div className="store-finder_locator_map">
-          <Map
-            initialViewState={{
-              longitude: -122.4,
-              latitude: 37.8,
-              zoom: 14,
-            }}
-            mapStyle={
-              'https://api.maptiler.com/maps/streets/style.json?key=JiORwzpLecOFb1wih0mU'
-            }
-          />
+          <StoreFinderMap />
         </div>
       </div>
     </div>

@@ -21,19 +21,30 @@
 
     &_work
         padding: 0.5em 0
+        &_info
+            display: flex
+            align-items: center
+            width: fit-content
+            cursor: pointer
 
-        svg
-            width: 1em
-            height: auto
-            margin-left: 1em
+            &_status
+                color: green
+                font-weight: 600
+                padding-right: 0.5em
 
-        &_status
-            color: green
-            font-weight: 600
-            padding-right: 0.5em
+            &_description
+                padding-left: 0.5em
 
-        &_description
-            padding-left: 0.5em
+            svg
+                align-self: center
+                transform: translateY(2px)
+                width: 1em
+                height: auto
+                margin-left: 0.5em
+                fill: $main-color-grey
+
+            svg.active
+                transform: scale(1, -1)
 
         &_calendar
             padding-top: 0.5em
