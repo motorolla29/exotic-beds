@@ -1,5 +1,11 @@
 {
   "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
   "features": [
     {
       "type": "Feature",
@@ -524,32 +530,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "20c0a5b2-5c1b-4d1f-bac5-1b80ee30189e",
-        "name": "Exotic Beds",
-        "address": "Lenina St, 22",
-        "postCode": "394000",
-        "city": "Voronezh",
-        "region": "Voronezh Oblast",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "09:30", "close": "19:30" },
-          "Tuesday": { "open": "09:30", "close": "19:30" },
-          "Wednesday": { "open": "09:30", "close": "19:30" },
-          "Thursday": { "open": "09:30", "close": "19:30" },
-          "Friday": { "open": "09:30", "close": "19:30" },
-          "Saturday": { "open": "10:00", "close": "18:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [39.1955, 51.6592]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "524f8753-8a60-4a3c-9814-1b2224b15e05",
         "name": "Exotic Beds",
         "address": "Lenina St, 15",
@@ -571,32 +551,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [48.017, 56.6344]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "a2e7a1c5-3e33-4d2d-9148-017fb1373c29",
-        "name": "Exotic Beds",
-        "address": "Lenina St, 10",
-        "postCode": "443099",
-        "city": "Samara",
-        "region": "Samara Oblast",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "09:30", "close": "20:00" },
-          "Tuesday": { "open": "09:30", "close": "20:00" },
-          "Wednesday": { "open": "09:30", "close": "20:00" },
-          "Thursday": { "open": "09:30", "close": "20:00" },
-          "Friday": { "open": "09:30", "close": "20:00" },
-          "Saturday": { "open": "10:00", "close": "18:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [50.127, 53.195]
       }
     },
     {
@@ -628,162 +582,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "1737c77d-3cbf-4a1b-ba5c-7ec68d028374",
-        "name": "Exotic Beds",
-        "address": "Lenina St, 1",
-        "postCode": "396000",
-        "city": "Tambov",
-        "region": "Tambov Oblast",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "09:00", "close": "19:00" },
-          "Tuesday": { "open": "09:00", "close": "19:00" },
-          "Wednesday": { "open": "09:00", "close": "19:00" },
-          "Thursday": { "open": "09:00", "close": "19:00" },
-          "Friday": { "open": "09:00", "close": "19:00" },
-          "Saturday": { "open": "10:00", "close": "17:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [39.872, 52.7263]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "3b6bfb38-f3d8-4a35-af3e-d1c9b66cfe9f",
-        "name": "Exotic Beds",
-        "address": "Mira Ave, 20",
-        "postCode": "630007",
-        "city": "Novosibirsk",
-        "region": "Novosibirsk Oblast",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "09:00", "close": "19:00" },
-          "Tuesday": { "open": "09:00", "close": "19:00" },
-          "Wednesday": { "open": "09:00", "close": "19:00" },
-          "Thursday": { "open": "09:00", "close": "19:00" },
-          "Friday": { "open": "09:00", "close": "19:00" },
-          "Saturday": { "open": "10:00", "close": "17:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [82.9279, 55.0263]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "3b3dab97-38a5-4c89-a2ab-5df92e36f9fd",
-        "name": "Exotic Beds Store",
-        "address": "Svobody St, 14",
-        "postCode": "644043",
-        "city": "Omsk",
-        "region": "Omsk Oblast",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "10:00", "close": "19:00" },
-          "Tuesday": { "open": "10:00", "close": "19:00" },
-          "Wednesday": { "open": "10:00", "close": "19:00" },
-          "Thursday": { "open": "10:00", "close": "19:00" },
-          "Friday": { "open": "10:00", "close": "19:00" },
-          "Saturday": { "open": "10:00", "close": "18:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [73.3697, 54.9902]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "74f3b48f-4e43-4a85-93e7-eb632c997eb2",
-        "name": "Exotic Beds",
-        "address": "Lenina St, 15",
-        "postCode": "360000",
-        "city": "Maikop",
-        "region": "Republic of Adygea",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "09:30", "close": "18:30" },
-          "Tuesday": { "open": "09:30", "close": "18:30" },
-          "Wednesday": { "open": "09:30", "close": "18:30" },
-          "Thursday": { "open": "09:30", "close": "18:30" },
-          "Friday": { "open": "09:30", "close": "18:30" },
-          "Saturday": { "open": "10:00", "close": "16:00" },
-          "Sunday": { "open": "Closed", "close": "Closed" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [40.0988, 44.6139]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "5c24d6e0-801b-4e9d-8a09-4fcd5021c875",
-        "name": "Exotic Beds",
-        "address": "Pushkina St, 12",
-        "postCode": "610000",
-        "city": "Kirov",
-        "region": "Kirov Oblast",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "10:00", "close": "20:00" },
-          "Tuesday": { "open": "10:00", "close": "20:00" },
-          "Wednesday": { "open": "10:00", "close": "20:00" },
-          "Thursday": { "open": "10:00", "close": "20:00" },
-          "Friday": { "open": "10:00", "close": "20:00" },
-          "Saturday": { "open": "10:00", "close": "18:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [49.6704, 58.6036]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "f3d35f39-4a22-4a4f-a42c-547154df940d",
-        "name": "Exotic Beds",
-        "address": "Komsomolskaya St, 7",
-        "postCode": "350063",
-        "city": "Krasnodar",
-        "region": "Krasnodar Krai",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "09:00", "close": "19:00" },
-          "Tuesday": { "open": "09:00", "close": "19:00" },
-          "Wednesday": { "open": "09:00", "close": "19:00" },
-          "Thursday": { "open": "09:00", "close": "19:00" },
-          "Friday": { "open": "09:00", "close": "19:00" },
-          "Saturday": { "open": "10:00", "close": "17:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [38.9714, 45.0295]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "20c0a5b2-5c1b-4d1f-bac5-1b80ee30189e",
         "name": "Exotic Beds",
         "address": "Lenina St, 22",
@@ -805,32 +603,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [39.1955, 51.6592]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "524f8753-8a60-4a3c-9814-1b2224b15e05",
-        "name": "Exotic Beds",
-        "address": "Lenina St, 15",
-        "postCode": "424000",
-        "city": "Yoshkar-Ola",
-        "region": "Mari El Republic",
-        "country": "Russia",
-        "countryCode": "RU",
-        "workCalendar": {
-          "Monday": { "open": "10:00", "close": "20:00" },
-          "Tuesday": { "open": "10:00", "close": "20:00" },
-          "Wednesday": { "open": "10:00", "close": "20:00" },
-          "Thursday": { "open": "10:00", "close": "20:00" },
-          "Friday": { "open": "10:00", "close": "20:00" },
-          "Saturday": { "open": "10:00", "close": "18:00" },
-          "Sunday": { "open": "11:00", "close": "16:00" }
-        }
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [48.017, 56.6344]
       }
     },
     {

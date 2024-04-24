@@ -25,21 +25,41 @@ const StoreFinderMap = () => {
 
   const onMapClick = (event) => {
     const feature = event.features[0];
-    const clusterId = feature?.properties?.cluster_id;
-
-    const mapboxSource = mapRef.current.getSource('stores');
-
-    mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err) {
+    if (feature) {
+      if (feature.layer.id === 'unclustered-point') {
+        setPopupInfo({
+          ...feature.properties,
+          longitude: feature.geometry.coordinates[0],
+          latitude: feature.geometry.coordinates[1],
+        });
         return;
       }
+      if (feature.layer.id === 'clusters') {
+        const clusterId = feature.properties.cluster_id;
 
-      mapRef.current.easeTo({
-        center: feature.geometry.coordinates,
-        zoom,
-        duration: 500,
-      });
-    });
+        const mapboxSource = mapRef.current.getSource('stores');
+
+        (async function () {
+          const zoom = await mapboxSource.getClusterExpansionZoom(clusterId);
+          if (!zoom) {
+            return;
+          }
+          mapRef.current.easeTo({
+            center: feature.geometry.coordinates,
+            zoom: zoom,
+            duration: 500,
+          });
+        })();
+      }
+    }
+  };
+  const onMapMouseMove = (event) => {
+    const feature = event.features[0];
+    if (feature) {
+      mapRef.current.getCanvas().style.cursor = 'pointer';
+    } else {
+      mapRef.current.getCanvas().style.cursor = '';
+    }
   };
 
   return (
@@ -53,8 +73,9 @@ const StoreFinderMap = () => {
         'https://api.maptiler.com/maps/streets/style.json?key=JiORwzpLecOFb1wih0mU'
       }
       attributionControl={false}
-      interactiveLayerIds={[clusterLayer.id]}
+      interactiveLayerIds={['clusters', 'unclustered-point']}
       onClick={onMapClick}
+      onMouseMove={onMapMouseMove}
       ref={mapRef}
     >
       <Source
@@ -65,8 +86,43 @@ const StoreFinderMap = () => {
         clusterMaxZoom={14}
         clusterRadius={50}
       >
-        <Layer {...clusterLayer} />
-        <Layer {...clusterCountLayer} />
+        <Layer
+          id="clusters"
+          type="circle"
+          source="stores"
+          filter={['has', 'point_count']}
+          paint={{
+            'circle-color': [
+              'step',
+              ['get', 'point_count'],
+              '#51bbd6',
+              100,
+              '#f1f075',
+              750,
+              '#f28cb1',
+            ],
+            'circle-radius': [
+              'step',
+              ['get', 'point_count'],
+              20,
+              100,
+              30,
+              750,
+              40,
+            ],
+          }}
+        />
+        <Layer
+          id="cluster-count"
+          type="symbol"
+          source="stores"
+          filter={['has', 'point_count']}
+          layout={{
+            'text-field': '{point_count_abbreviated}',
+            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+            'text-size': 12,
+          }}
+        />
         <Layer
           id="unclustered-point"
           type="circle"
@@ -78,9 +134,7 @@ const StoreFinderMap = () => {
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff',
           }}
-        >
-          <MapPin />
-        </Layer>
+        />
       </Source>
       {/* <Marker
         longitude={37.38720655414402}
@@ -100,15 +154,18 @@ const StoreFinderMap = () => {
 
       {popupInfo && (
         <Popup
-          longitude={37.38720655414402}
-          latitude={55.811490987502005}
+          longitude={popupInfo.longitude}
+          latitude={popupInfo.latitude}
           anchor="bottom"
           className="store-finder-popup"
           onClose={() => setPopupInfo(null)}
         >
           <div>
             <h3 className="store-finder-popup_name">{popupInfo.name}</h3>
-            <p className="store-finder-popup_address">{popupInfo.address}</p>
+            <p className="store-finder-popup_address">
+              {popupInfo.address}, {popupInfo.city}, {popupInfo.region},{' '}
+              {popupInfo.postCode}, {popupInfo.countryCode}
+            </p>
             <div className="store-finder-popup_work">
               <span className="store-finder-popup_work_status">Open</span>•
               <span className="store-finder-popup_work_description">
