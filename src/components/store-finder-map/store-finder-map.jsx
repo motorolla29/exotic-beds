@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
   NavigationControl,
   GeolocateControl,
@@ -9,7 +9,6 @@ import {
 } from 'react-map-gl/maplibre';
 import { Map, Source, Layer } from 'react-map-gl/maplibre';
 
-import MapPin from '../map-pin/map-pin';
 import {
   clusterLayer,
   clusterCountLayer,
@@ -20,8 +19,15 @@ import stores from '../../mocks/stores.geojson';
 import './store-finder-map.sass';
 
 const StoreFinderMap = () => {
-  const mapRef = useRef(null);
+  const mapRef = useRef();
   const [popupInfo, setPopupInfo] = useState(null);
+  const onMapLoad = useCallback(() => {
+    const mapPin = new Image();
+    mapPin.src = '/logo/EB-LOGO-NO-TEXT.svg';
+    mapPin.onload = function (e) {
+      mapRef.current.addImage('logo', e.target);
+    };
+  }, []);
 
   const onMapClick = (event) => {
     const feature = event.features[0];
@@ -74,6 +80,7 @@ const StoreFinderMap = () => {
       }
       attributionControl={false}
       interactiveLayerIds={['clusters', 'unclustered-point']}
+      onLoad={onMapLoad}
       onClick={onMapClick}
       onMouseMove={onMapMouseMove}
       ref={mapRef}
@@ -92,6 +99,7 @@ const StoreFinderMap = () => {
           source="stores"
           filter={['has', 'point_count']}
           paint={{
+            'circle-opacity': 0.8,
             'circle-color': [
               'step',
               ['get', 'point_count'],
@@ -125,14 +133,13 @@ const StoreFinderMap = () => {
         />
         <Layer
           id="unclustered-point"
-          type="circle"
+          type="symbol"
           source="stores"
           filter={['!', ['has', 'point_count']]}
-          paint={{
-            'circle-color': '#11b4da',
-            'circle-radius': 4,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff',
+          layout={{
+            'icon-image': 'logo',
+            'icon-anchor': 'top',
+            'icon-size': 0.25,
           }}
         />
       </Source>
