@@ -1,13 +1,14 @@
 import { useCallback, useRef, useState } from 'react';
 import {
+  Map,
+  Source,
+  Layer,
+  Popup,
   NavigationControl,
   GeolocateControl,
   FullscreenControl,
   AttributionControl,
-  Marker,
-  Popup,
 } from 'react-map-gl/maplibre';
-import { Map, Source, Layer } from 'react-map-gl/maplibre';
 
 import {
   clusterLayer,
@@ -93,71 +94,10 @@ const StoreFinderMap = () => {
         clusterMaxZoom={14}
         clusterRadius={50}
       >
-        <Layer
-          id="clusters"
-          type="circle"
-          source="stores"
-          filter={['has', 'point_count']}
-          paint={{
-            'circle-opacity': 0.8,
-            'circle-color': [
-              'step',
-              ['get', 'point_count'],
-              '#51bbd6',
-              100,
-              '#f1f075',
-              750,
-              '#f28cb1',
-            ],
-            'circle-radius': [
-              'step',
-              ['get', 'point_count'],
-              20,
-              100,
-              30,
-              750,
-              40,
-            ],
-          }}
-        />
-        <Layer
-          id="cluster-count"
-          type="symbol"
-          source="stores"
-          filter={['has', 'point_count']}
-          layout={{
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 12,
-          }}
-        />
-        <Layer
-          id="unclustered-point"
-          type="symbol"
-          source="stores"
-          filter={['!', ['has', 'point_count']]}
-          layout={{
-            'icon-image': 'logo',
-            'icon-anchor': 'top',
-            'icon-size': 0.25,
-          }}
-        />
+        <Layer {...clusterLayer} />
+        <Layer {...clusterCountLayer} />
+        <Layer {...unclusteredPointLayer} />
       </Source>
-      {/* <Marker
-        longitude={37.38720655414402}
-        latitude={55.811490987502005}
-        anchor="top"
-        onClick={(e) => {
-          e.originalEvent.stopPropagation();
-          setPopupInfo({
-            name: 'Exotic Beds Main Store',
-            address:
-              'MKAD, 66th kilometer, vl2, Krasnogorsk, Moscow region, 143402',
-          });
-        }}
-      >
-        <MapPin />
-      </Marker> */}
 
       {popupInfo && (
         <Popup

@@ -6,6 +6,8 @@ import { useState } from 'react';
 const StoreInfoItem = () => {
   const [workCalendarVisible, setWorkCalendarVisible] = useState(false);
 
+  const dayNumber = new Date().getDay();
+
   const onWorkInfoClickHandler = () =>
     setWorkCalendarVisible(!workCalendarVisible);
 
@@ -50,7 +52,11 @@ const StoreInfoItem = () => {
                   <td className="store-info-item_work_calendar_table_row_day-data">
                     Monday
                   </td>
-                  <td className="store-info-item_work_calendar_table_row_hrs-data">
+                  <td
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 1 ? 'active' : 'null'
+                    }`}
+                  >
                     <span>
                       <span className="start-hrs">10:00</span>
                       <span className="delimiter"> - </span>
@@ -62,7 +68,11 @@ const StoreInfoItem = () => {
                   <td className="store-info-item_work_calendar_table_row_day-data">
                     Tuesday
                   </td>
-                  <td className="store-info-item_work_calendar_table_row_hrs-data">
+                  <td
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 2 ? 'active' : 'null'
+                    }`}
+                  >
                     <span>
                       <span className="start-hrs">10:00</span>
                       <span className="delimiter"> - </span>
@@ -74,7 +84,11 @@ const StoreInfoItem = () => {
                   <td className="store-info-item_work_calendar_table_row_day-data">
                     Wednesday
                   </td>
-                  <td className="store-info-item_work_calendar_table_row_hrs-data">
+                  <td
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 3 ? 'active' : 'null'
+                    }`}
+                  >
                     <span>
                       <span className="start-hrs">10:00</span>
                       <span className="delimiter"> - </span>
@@ -86,7 +100,11 @@ const StoreInfoItem = () => {
                   <td className="store-info-item_work_calendar_table_row_day-data">
                     Thursday
                   </td>
-                  <td className="store-info-item_work_calendar_table_row_hrs-data">
+                  <td
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 4 ? 'active' : 'null'
+                    }`}
+                  >
                     <span>
                       <span className="start-hrs">10:00</span>
                       <span className="delimiter"> - </span>
@@ -99,7 +117,9 @@ const StoreInfoItem = () => {
                     Friday
                   </td>
                   <td
-                    className={`store-info-item_work_calendar_table_row_hrs-data ${'active'}`}
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 5 ? 'active' : 'null'
+                    }`}
                   >
                     <span>
                       <span className="start-hrs">10:00</span>
@@ -112,7 +132,11 @@ const StoreInfoItem = () => {
                   <td className="store-info-item_work_calendar_table_row_day-data">
                     Saturday
                   </td>
-                  <td className="store-info-item_work_calendar_table_row_hrs-data">
+                  <td
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 6 ? 'active' : 'null'
+                    }`}
+                  >
                     <span>
                       <span className="start-hrs">10:00</span>
                       <span className="delimiter"> - </span>
@@ -124,7 +148,11 @@ const StoreInfoItem = () => {
                   <td className="store-info-item_work_calendar_table_row_day-data">
                     Sunday
                   </td>
-                  <td className="store-info-item_work_calendar_table_row_hrs-data">
+                  <td
+                    className={`store-info-item_work_calendar_table_row_hrs-data ${
+                      dayNumber === 0 ? 'active' : 'null'
+                    }`}
+                  >
                     <span>
                       <span className="start-hrs">10:00</span>
                       <span className="delimiter"> - </span>
