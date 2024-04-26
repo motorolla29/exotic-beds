@@ -44,6 +44,10 @@ const toggleProductInLovelist = createAction(
   })
 );
 
+const setMapViewState = createAction('SET_MAP_VIEW_STATE', (viewState) => ({
+  payload: viewState,
+}));
+
 export {
   loadProducts,
   productsAreLoaded,
@@ -53,4 +57,5 @@ export {
   increaseProductAmountInCart,
   decreaseProductAmountInCart,
   toggleProductInLovelist,
+  setMapViewState,
 };

@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useRef, useState } from 'react';
 import {
   Map,
@@ -10,6 +11,7 @@ import {
   AttributionControl,
 } from 'react-map-gl/maplibre';
 
+import { setMapViewState } from '../../store/action';
 import {
   clusterLayer,
   clusterCountLayer,
@@ -21,6 +23,10 @@ import './store-finder-map.sass';
 
 const StoreFinderMap = () => {
   const mapRef = useRef();
+  const dispatch = useDispatch();
+
+  const viewState = useSelector((state) => state.mapViewState);
+
   const [popupInfo, setPopupInfo] = useState(null);
   const onMapLoad = useCallback(() => {
     const mapPin = new Image();
@@ -30,6 +36,9 @@ const StoreFinderMap = () => {
     };
   }, []);
 
+  const onMapMove = (event) => {
+    dispatch(setMapViewState(event.viewState));
+  };
   const onMapClick = (event) => {
     const feature = event.features[0];
     if (feature) {
@@ -71,16 +80,13 @@ const StoreFinderMap = () => {
 
   return (
     <Map
-      initialViewState={{
-        longitude: 37.676535192388165,
-        latitude: 55.75839021438042,
-        zoom: 8,
-      }}
+      {...viewState}
       mapStyle={
         'https://api.maptiler.com/maps/streets/style.json?key=JiORwzpLecOFb1wih0mU'
       }
       attributionControl={false}
       interactiveLayerIds={['clusters', 'unclustered-point']}
+      onMove={onMapMove}
       onLoad={onMapLoad}
       onClick={onMapClick}
       onMouseMove={onMapMouseMove}

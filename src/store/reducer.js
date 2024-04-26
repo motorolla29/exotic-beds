@@ -9,6 +9,7 @@ import {
   increaseProductAmountInCart,
   decreaseProductAmountInCart,
   toggleProductInLovelist,
+  setMapViewState,
 } from './action';
 
 import {
@@ -681,6 +682,7 @@ const initialState = {
       availableQuantity: 32,
     },
   ],
+  mapViewState: { latitude: 37.8, longitude: -122.4, zoom: 14 },
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -710,6 +712,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(toggleProductInLovelist, (state, action) => {
       state.lovelistProducts = updateLovelist(state, action);
+    })
+    .addCase(setMapViewState, (state, action) => {
+      state.mapViewState = action.payload;
     });
 });
 
