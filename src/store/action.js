@@ -48,6 +48,13 @@ const setMapViewState = createAction('SET_MAP_VIEW_STATE', (viewState) => ({
   payload: viewState,
 }));
 
+const setNearStoresCenter = createAction(
+  'SET_NEAR_STORES_CENTER',
+  (coords) => ({
+    payload: coords,
+  })
+);
+
 export {
   loadProducts,
   productsAreLoaded,
@@ -58,4 +65,5 @@ export {
   decreaseProductAmountInCart,
   toggleProductInLovelist,
   setMapViewState,
+  setNearStoresCenter,
 };

@@ -1,10 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import getDistance from 'geolib/es/getDistance';
 
 import './store-info-item.sass';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const StoreInfoItem = () => {
+const StoreInfoItem = ({ item }) => {
   const [workCalendarVisible, setWorkCalendarVisible] = useState(false);
+  const centerCoords = useSelector((state) => state.nearStoresCenter);
+  const storeDistance = getDistance(
+    {
+      latitude: item.geometry.coordinates[1],
+      longitude: item.geometry.coordinates[0],
+    },
+    centerCoords
+  );
 
   const dayNumber = new Date().getDay();
 
@@ -14,12 +24,13 @@ const StoreInfoItem = () => {
   return (
     <div className="store-info-item">
       <div className="store-info-item_name">
-        <p>Exotic Beds Store</p>
-        <p>328.3 km</p>
+        <p>{item.properties.name}</p>
+        <p>{(storeDistance / 1000).toFixed(2)} km</p>
       </div>
-      <p className="store-info-item_address">Ruhlander Str. 100A</p>
+      <p className="store-info-item_address">{item.properties.address}</p>
       <p className="store-info-item_address">
-        Schwarzheide, Sachsen, 01987, DE
+        {item.properties.city}, {item.properties.country},{' '}
+        {item.properties.postCode}
       </p>
       <div className="store-info-item_work">
         <div

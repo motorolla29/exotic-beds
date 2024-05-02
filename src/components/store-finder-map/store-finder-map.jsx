@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
+  useMap,
   Map,
   Source,
   Layer,
@@ -10,6 +11,9 @@ import {
   FullscreenControl,
   AttributionControl,
 } from 'react-map-gl/maplibre';
+import maplibregl from 'maplibre-gl';
+import { GeocodingControl } from '@maptiler/geocoding-control/react';
+import { createMapLibreGlMapController } from '@maptiler/geocoding-control/maplibregl-controller';
 
 import { setMapViewState } from '../../store/action';
 import {
@@ -17,17 +21,25 @@ import {
   clusterCountLayer,
   unclusteredPointLayer,
 } from '../../map-layers';
-import stores from '../../mocks/stores.geojson';
+import stores from '../../mocks/stores.json';
 
+import '@maptiler/geocoding-control/style.css';
 import './store-finder-map.sass';
 
 const StoreFinderMap = () => {
   const mapRef = useRef();
   const dispatch = useDispatch();
 
+  const API_KEY = 'JiORwzpLecOFb1wih0mU';
+
+  // const { storeFinderMap } = useMap();
+
   const viewState = useSelector((state) => state.mapViewState);
 
-  const [popupInfo, setPopupInfo] = useState(null);
+  const [popupInfo, setPopupInfo] = useState();
+
+  // const [mapController, setMapController] = useState();
+
   const onMapLoad = useCallback(() => {
     const mapPin = new Image();
     mapPin.src = '/logo/EB-LOGO-NO-TEXT.svg';
@@ -63,7 +75,8 @@ const StoreFinderMap = () => {
           mapRef.current.easeTo({
             center: feature.geometry.coordinates,
             zoom: zoom,
-            duration: 500,
+            essential: true,
+            duration: 1000,
           });
         })();
       }
@@ -78,12 +91,21 @@ const StoreFinderMap = () => {
     }
   };
 
+  // useEffect(() => {
+  //   if (!mapRef.current) {
+  //     return;
+  //   }
+  //   console.log(storeFinderMap);
+  //   storeFinderMap.addControl(new maplibregl.NavigationControl(), 'top-right');
+  //   setMapController(createMapLibreGlMapController(storeFinderMap, maplibregl));
+  //   console.log(mapController);
+  // }, []);
+
   return (
     <Map
       {...viewState}
-      mapStyle={
-        'https://api.maptiler.com/maps/streets/style.json?key=JiORwzpLecOFb1wih0mU'
-      }
+      id="storeFinderMap"
+      mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${API_KEY}`}
       attributionControl={false}
       interactiveLayerIds={['clusters', 'unclustered-point']}
       onMove={onMapMove}
@@ -111,7 +133,9 @@ const StoreFinderMap = () => {
           latitude={popupInfo.latitude}
           anchor="bottom"
           className="store-finder-popup"
-          onClose={() => setPopupInfo(null)}
+          onClose={() => {
+            setPopupInfo(null);
+          }}
         >
           <div>
             <h3 className="store-finder-popup_name">{popupInfo.name}</h3>
@@ -128,8 +152,28 @@ const StoreFinderMap = () => {
           </div>
         </Popup>
       )}
+      <div
+        style={{ position: 'absolute', top: '10px', left: '10px' }}
+        className="geocoding"
+      >
+        <GeocodingControl
+          apiKey={API_KEY}
+          // mapController={mapController}
+          // onPick={(e) => console.log(e)}
+        />
+      </div>
       <NavigationControl showCompass={false} />
-      <GeolocateControl showAccuracyCircle={false} />
+      <GeolocateControl
+        showAccuracyCircle={false}
+        onGeolocate={(e) => {
+          mapRef.current.easeTo({
+            center: [e.coords.longitude, e.coords.latitude],
+            zoom: 10,
+            essential: true,
+            duration: 2000,
+          });
+        }}
+      />
       <FullscreenControl />
       <AttributionControl
         customAttribution="Map design by motorolla29"

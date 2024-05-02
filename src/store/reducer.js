@@ -10,6 +10,7 @@ import {
   decreaseProductAmountInCart,
   toggleProductInLovelist,
   setMapViewState,
+  setNearStoresCenter,
 } from './action';
 
 import {
@@ -682,7 +683,12 @@ const initialState = {
       availableQuantity: 32,
     },
   ],
-  mapViewState: { latitude: 37.8, longitude: -122.4, zoom: 14 },
+  mapViewState: {
+    latitude: 52.8,
+    longitude: 58.4,
+    zoom: 3,
+  },
+  nearStoresCenter: { latitude: 55.751244, longitude: 37.618423 },
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -715,6 +721,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setMapViewState, (state, action) => {
       state.mapViewState = action.payload;
+    })
+    .addCase(setNearStoresCenter, (state, action) => {
+      state.nearStoresCenter = action.payload;
     });
 });
 
