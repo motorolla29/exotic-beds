@@ -15,18 +15,20 @@ import maplibregl from 'maplibre-gl';
 import { GeocodingControl } from '@maptiler/geocoding-control/react';
 import { createMapLibreGlMapController } from '@maptiler/geocoding-control/maplibregl-controller';
 
-import { setMapViewState } from '../../store/action';
+import { setMapViewState, setNearStoresCenter } from '../../store/action';
 import {
   clusterLayer,
   clusterCountLayer,
   unclusteredPointLayer,
 } from '../../map-layers';
 import stores from '../../mocks/stores.json';
+import { getStoreWorkStatus } from '../../utils';
+import { getStoreWorkDescription } from '../../utils';
 
 import '@maptiler/geocoding-control/style.css';
 import './store-finder-map.sass';
 
-const StoreFinderMap = () => {
+const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
   const mapRef = useRef();
   const dispatch = useDispatch();
 
@@ -35,8 +37,6 @@ const StoreFinderMap = () => {
   // const { storeFinderMap } = useMap();
 
   const viewState = useSelector((state) => state.mapViewState);
-
-  const [popupInfo, setPopupInfo] = useState();
 
   // const [mapController, setMapController] = useState();
 
@@ -51,37 +51,7 @@ const StoreFinderMap = () => {
   const onMapMove = (event) => {
     dispatch(setMapViewState(event.viewState));
   };
-  const onMapClick = (event) => {
-    const feature = event.features[0];
-    if (feature) {
-      if (feature.layer.id === 'unclustered-point') {
-        setPopupInfo({
-          ...feature.properties,
-          longitude: feature.geometry.coordinates[0],
-          latitude: feature.geometry.coordinates[1],
-        });
-        return;
-      }
-      if (feature.layer.id === 'clusters') {
-        const clusterId = feature.properties.cluster_id;
 
-        const mapboxSource = mapRef.current.getSource('stores');
-
-        (async function () {
-          const zoom = await mapboxSource.getClusterExpansionZoom(clusterId);
-          if (!zoom) {
-            return;
-          }
-          mapRef.current.easeTo({
-            center: feature.geometry.coordinates,
-            zoom: zoom,
-            essential: true,
-            duration: 1000,
-          });
-        })();
-      }
-    }
-  };
   const onMapMouseMove = (event) => {
     const feature = event.features[0];
     if (feature) {
@@ -127,15 +97,14 @@ const StoreFinderMap = () => {
         <Layer {...unclusteredPointLayer} />
       </Source>
 
-      {popupInfo && (
+      {showPopup && popupInfo && (
         <Popup
           longitude={popupInfo.longitude}
           latitude={popupInfo.latitude}
           anchor="bottom"
           className="store-finder-popup"
-          onClose={() => {
-            setPopupInfo(null);
-          }}
+          closeOnClick={false}
+          onClose={() => setShowPopup(false)}
         >
           <div>
             <h3 className="store-finder-popup_name">{popupInfo.name}</h3>
@@ -144,9 +113,21 @@ const StoreFinderMap = () => {
               {popupInfo.postCode}, {popupInfo.countryCode}
             </p>
             <div className="store-finder-popup_work">
-              <span className="store-finder-popup_work_status">Open</span>•
+              <span
+                className={`store-finder-popup_work_status ${
+                  getStoreWorkStatus(popupInfo.workCalendar)
+                    ? 'opened'
+                    : 'closed'
+                }`}
+              >
+                {getStoreWorkStatus(popupInfo.workCalendar) ? 'Open' : 'Closed'}
+              </span>
+              •
               <span className="store-finder-popup_work_description">
-                Closes at 21:00
+                {getStoreWorkDescription(
+                  getStoreWorkStatus(popupInfo.workCalendar),
+                  popupInfo.workCalendar
+                )}
               </span>
             </div>
           </div>
@@ -166,6 +147,12 @@ const StoreFinderMap = () => {
       <GeolocateControl
         showAccuracyCircle={false}
         onGeolocate={(e) => {
+          dispatch(
+            setNearStoresCenter({
+              latitude: e.coords.latitude,
+              longitude: e.coords.longitude,
+            })
+          );
           mapRef.current.easeTo({
             center: [e.coords.longitude, e.coords.latitude],
             zoom: 12,

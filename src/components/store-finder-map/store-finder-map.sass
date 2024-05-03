@@ -20,8 +20,11 @@
         color: $main-color-grey
 
         &_status
-            color: green
             padding-right: 5px
+            &.opened
+                color: green
+            &.closed
+                color: $main-color-red
 
         &_description
             padding-left: 5px

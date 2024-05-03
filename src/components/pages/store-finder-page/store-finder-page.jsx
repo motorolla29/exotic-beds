@@ -1,3 +1,4 @@
+import { MapProvider } from 'react-map-gl/maplibre';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import StoreFinder from '../../store-finder/store-finder';
 
@@ -7,7 +8,9 @@ const StoreFinderPage = () => {
   return (
     <div className="store-finder-page">
       <Breadcrumbs />
-      <StoreFinder />
+      <MapProvider>
+        <StoreFinder />
+      </MapProvider>
     </div>
   );
 };

@@ -6,8 +6,14 @@
     padding: 0.5em
     color: $main-color-grey
     background-color: $main-color-white
-    border: 1px solid $main-color-grey-transparent
+    border: 1px solid #4f4a574e
     border-radius: 1em
+    cursor: pointer
+    &:hover
+        border-color: #4f4a5787
+    &.active
+        border: 3px solid $main-color-turquoise-transparent
+        background: #e7fff3d3
 
     &_name
         display: flex

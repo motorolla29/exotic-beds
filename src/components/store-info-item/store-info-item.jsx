@@ -8,8 +8,9 @@ import { getStoreWorkDescription } from '../../utils';
 
 import './store-info-item.sass';
 
-const StoreInfoItem = ({ item }) => {
+const StoreInfoItem = ({ item, activeStoreId, onStoreItemClick }) => {
   const [workCalendarVisible, setWorkCalendarVisible] = useState(false);
+
   const centerCoords = useSelector((state) => state.nearStoresCenter);
   const storeDistance = getDistance(
     {
@@ -23,11 +24,18 @@ const StoreInfoItem = ({ item }) => {
 
   const storeWorkStatus = getStoreWorkStatus(item.properties.workCalendar);
 
-  const onWorkInfoClickHandler = () =>
+  const onWorkInfoClickHandler = (e) => {
+    e.stopPropagation();
     setWorkCalendarVisible(!workCalendarVisible);
+  };
 
   return (
-    <div className="store-info-item">
+    <div
+      onClick={onStoreItemClick}
+      className={`store-info-item ${
+        activeStoreId === item.properties.id ? 'active' : ''
+      }`}
+    >
       <div className="store-info-item_name">
         <p>{item.properties.name}</p>
         <p>{(storeDistance / 1000).toFixed(2)} km</p>
@@ -47,7 +55,7 @@ const StoreInfoItem = ({ item }) => {
               storeWorkStatus ? 'opened' : 'closed'
             }`}
           >
-            {storeWorkStatus ? 'Open' : 'Close'}
+            {storeWorkStatus ? 'Opened' : 'Closed'}
           </span>
           •
           <span className="store-info-item_work_info_description">
@@ -220,8 +228,22 @@ const StoreInfoItem = ({ item }) => {
         ) : null}
       </div>
       <div className="store-info-item_links">
-        <Link className="store-info-item_links_directions">Get Directions</Link>
-        <Link className="store-info-item_links_details">View Details</Link>
+        <Link
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="store-info-item_links_directions"
+        >
+          Get Directions
+        </Link>
+        <Link
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="store-info-item_links_details"
+        >
+          View Details
+        </Link>
       </div>
     </div>
   );

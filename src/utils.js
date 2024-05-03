@@ -248,7 +248,7 @@ const getStoreWorkStatus = (calendar) => {
   const day = new Date().getDay();
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
-  const time = +String(hours).concat(String(minutes));
+  const time = hours * 100 + minutes;
   switch (day) {
     case 0:
       if (
@@ -322,7 +322,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
   const day = new Date().getDay();
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
-  const time = +String(hours).concat(String(minutes));
+  const time = hours * 100 + minutes;
   switch (day) {
     case 0:
       if (isOpen) {
@@ -333,7 +333,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Sunday.open}`;
         }
         if (time > +calendar.Sunday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Monday.open}`;
+          return `Opens at ${calendar.Monday.open} tomorrow`;
         }
       }
       break;
@@ -346,7 +346,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Monday.open}`;
         }
         if (time > +calendar.Monday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Tuesday.open}`;
+          return `Opens at ${calendar.Tuesday.open} tomorrow`;
         }
       }
       break;
@@ -359,7 +359,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Tuesday.open}`;
         }
         if (time > +calendar.Tuesday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Wednesday.open}`;
+          return `Opens at ${calendar.Wednesday.open} tomorrow`;
         }
       }
       break;
@@ -372,7 +372,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Wednesday.open}`;
         }
         if (time > +calendar.Wednesday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Thursday.open}`;
+          return `Opens at ${calendar.Thursday.open} tomorrow`;
         }
       }
       break;
@@ -385,7 +385,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Thursday.open}`;
         }
         if (time > +calendar.Thursday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Friday.open}`;
+          return `Opens at ${calendar.Friday.open} tomorrow`;
         }
       }
       break;
@@ -398,7 +398,7 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Friday.open}`;
         }
         if (time > +calendar.Friday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Saturday.open}`;
+          return `Opens at ${calendar.Saturday.open} tomorrow`;
         }
       }
       break;
@@ -411,12 +411,12 @@ const getStoreWorkDescription = (isOpen, calendar) => {
           return `Opens at ${calendar.Saturday.open}`;
         }
         if (time > +calendar.Saturday.open.replace(/[^0-9]/g, '')) {
-          return `Opens at ${calendar.Sunday.open}`;
+          return `Opens at ${calendar.Sunday.open} tomorrow`;
         }
       }
       break;
     default:
-      return 0;
+      return 'Closed';
   }
 };
 
