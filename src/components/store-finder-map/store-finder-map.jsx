@@ -168,7 +168,7 @@ const StoreFinderMap = () => {
         onGeolocate={(e) => {
           mapRef.current.easeTo({
             center: [e.coords.longitude, e.coords.latitude],
-            zoom: 10,
+            zoom: 12,
             essential: true,
             duration: 2000,
           });

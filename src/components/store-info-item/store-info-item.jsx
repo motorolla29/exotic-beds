@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import getDistance from 'geolib/es/getDistance';
 
+import { getStoreWorkStatus } from '../../utils';
+import { getStoreWorkDescription } from '../../utils';
+
 import './store-info-item.sass';
-import { useSelector } from 'react-redux';
 
 const StoreInfoItem = ({ item }) => {
   const [workCalendarVisible, setWorkCalendarVisible] = useState(false);
@@ -17,6 +20,8 @@ const StoreInfoItem = ({ item }) => {
   );
 
   const dayNumber = new Date().getDay();
+
+  const storeWorkStatus = getStoreWorkStatus(item.properties.workCalendar);
 
   const onWorkInfoClickHandler = () =>
     setWorkCalendarVisible(!workCalendarVisible);
@@ -37,9 +42,19 @@ const StoreInfoItem = ({ item }) => {
           className="store-info-item_work_info"
           onClick={onWorkInfoClickHandler}
         >
-          <span className="store-info-item_work_info_status">Open</span>•
+          <span
+            className={`store-info-item_work_info_status ${
+              storeWorkStatus ? 'opened' : 'closed'
+            }`}
+          >
+            {storeWorkStatus ? 'Open' : 'Close'}
+          </span>
+          •
           <span className="store-info-item_work_info_description">
-            Closes at 21:00
+            {getStoreWorkDescription(
+              storeWorkStatus,
+              item.properties.workCalendar
+            )}
           </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,9 +84,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Monday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Monday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>
@@ -85,9 +104,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Tuesday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Tuesday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>
@@ -101,9 +124,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Wednesday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Wednesday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>
@@ -117,9 +144,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Thursday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Thursday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>
@@ -133,9 +164,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Friday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Friday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>
@@ -149,9 +184,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Saturday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Saturday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>
@@ -165,9 +204,13 @@ const StoreInfoItem = ({ item }) => {
                     }`}
                   >
                     <span>
-                      <span className="start-hrs">10:00</span>
+                      <span className="start-hrs">
+                        {item.properties.workCalendar.Sunday.open}
+                      </span>
                       <span className="delimiter"> - </span>
-                      <span className="end-hrs">21:00</span>
+                      <span className="end-hrs">
+                        {item.properties.workCalendar.Sunday.close}
+                      </span>
                     </span>
                   </td>
                 </tr>

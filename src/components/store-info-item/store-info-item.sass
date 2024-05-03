@@ -28,9 +28,12 @@
             cursor: pointer
 
             &_status
-                color: green
                 font-weight: 600
                 padding-right: 0.5em
+                &.opened
+                    color: green
+                &.closed
+                    color: $main-color-red
 
             &_description
                 padding-left: 0.5em
