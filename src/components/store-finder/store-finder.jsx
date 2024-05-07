@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useMap } from 'react-map-gl/maplibre';
 import getDistance from 'geolib/es/getDistance';
 import { GeocodingControl } from '@maptiler/geocoding-control/react';
 
+import { setNearStoresCenter } from '../../store/action';
 import StoreFinderMap from '../store-finder-map/store-finder-map';
 import StoreInfoItem from '../store-info-item/store-info-item';
 import { MAPTILER_API_KEY } from '../../const';
@@ -15,6 +16,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import './store-finder.sass';
 
 const StoreFinder = () => {
+  const dispatch = useDispatch();
   const centerCoords = useSelector((state) => state.nearStoresCenter);
   const [activeStore, setActiveStore] = useState();
   const [popupInfo, setPopupInfo] = useState();
@@ -63,6 +65,24 @@ const StoreFinder = () => {
     })
     .slice(0, 10);
 
+  const onGeocoderItemPick = (event) => {
+    if (event) {
+      console.log({ latitude: event.center[1], longitude: event.center[0] });
+      storeFinderMap.flyTo({
+        center: { lat: event.center[1], lng: event.center[0] },
+        zoom: 10,
+        essential: true,
+        duration: 2000,
+      });
+      dispatch(
+        setNearStoresCenter({
+          latitude: event.center[1],
+          longitude: event.center[0],
+        })
+      );
+    }
+  };
+
   const onMapClick = (event) => {
     const feature = event.features[0];
     if (feature) {
@@ -109,7 +129,7 @@ const StoreFinder = () => {
       <div className="store-finder_geocoder">
         <GeocodingControl
           apiKey={MAPTILER_API_KEY}
-          onSelect={(e) => console.log(e)}
+          onPick={onGeocoderItemPick}
         />
       </div>
       <div className="store-finder_locator">

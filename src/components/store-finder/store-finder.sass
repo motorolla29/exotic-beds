@@ -18,15 +18,31 @@
         justify-content: center
         padding-bottom: 1.5em
 
-        & form.svelte-zh3kmv
+        & form.svelte-zh3kmv ///////////Перезапись стилей для классов геокодера////////////
             background: none
             box-shadow: none
             outline: 1px solid $main-color-grey-transparent
 
-        & form.svelte-zh3kmv:focus-within
-            outline: 2px solid $main-color-turquoise-transparent
+            & ul.svelte-zh3kmv.svelte-zh3kmv, div.error.svelte-zh3kmv.svelte-zh3kmv, div.no-results.svelte-zh3kmv.svelte-zh3kmv
+                background-color: $main-color-green-light // цвет фона выпадающего списка
+                border-radius: 10px
+                & li.svelte-ltkwvy
+                    & .secondary // доп к первой строке li выпадающего списка
+                        color: #4f4a577a
+                    & .line2.svelte-ltkwvy // вторая строка li выпадающего списка
+                        color: #4f4a57d8
 
-        & form.svelte-zh3kmv, & form.svelte-zh3kmv:focus-within, & form.svelte-zh3kmv:hover
+            & li.selected.svelte-ltkwvy
+                background-color: #dbf5e4bb // бэкгроунд места при наведении
+                
+            & li.selected.svelte-ltkwvy .primary.svelte-ltkwvy
+                color: $main-color-turquoise // цвет места при наведении
+                
+
+        & form.svelte-zh3kmv:focus-within
+            outline: 2px solid $main-color-turquoise-transparent // аутлайн формы
+
+        & form.svelte-zh3kmv, & form.svelte-zh3kmv:focus-within, & form.svelte-zh3kmv:hover // свойства формы
             width: 26em
             max-width: 75vw
             border-radius: 20px
@@ -46,14 +62,15 @@
                     font-weight: 600
                     
                 & .search-button.svelte-zh3kmv
-                    svg
+                    svg // значок лупы
                         width: 1.6em
                         height: 1.6em
 
                 & .clear-button-container
                     &:hover
-                        & svg.svelte-en2qvf
+                        & svg.svelte-en2qvf // крестик инпута
                             fill: $main-color-turquoise
+    ///////////////////////////////////////////////////////////////////////////////////////
 
     &_locator
         height: 615px
