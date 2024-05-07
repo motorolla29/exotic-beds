@@ -21,13 +21,7 @@ const StoreFinder = () => {
   const [activeStore, setActiveStore] = useState();
   const [popupInfo, setPopupInfo] = useState();
   const [showPopup, setShowPopup] = useState(false);
-  const [userPosition, setUserPosition] = useState();
   const { storeFinderMap } = useMap();
-
-  navigator.geolocation.getCurrentPosition(
-    (pos) => setUserPosition(pos.coords),
-    (err) => setUserPosition(null)
-  );
 
   const storesSortedByProximity = stores.features
     .sort(function (a, b) {
@@ -168,7 +162,6 @@ const StoreFinder = () => {
                   key={it.properties.id}
                   item={it}
                   activeStoreId={activeStore?.properties.id}
-                  userPosition={userPosition}
                 />
               );
             })}
