@@ -21,7 +21,13 @@ const StoreFinder = () => {
   const [activeStore, setActiveStore] = useState();
   const [popupInfo, setPopupInfo] = useState();
   const [showPopup, setShowPopup] = useState(false);
+  const [userPosition, setUserPosition] = useState();
   const { storeFinderMap } = useMap();
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => setUserPosition(pos.coords),
+    (err) => setUserPosition(null)
+  );
 
   const storesSortedByProximity = stores.features
     .sort(function (a, b) {
@@ -67,7 +73,6 @@ const StoreFinder = () => {
 
   const onGeocoderItemPick = (event) => {
     if (event) {
-      console.log({ latitude: event.center[1], longitude: event.center[0] });
       storeFinderMap.flyTo({
         center: { lat: event.center[1], lng: event.center[0] },
         zoom: 10,
@@ -163,6 +168,7 @@ const StoreFinder = () => {
                   key={it.properties.id}
                   item={it}
                   activeStoreId={activeStore?.properties.id}
+                  userPosition={userPosition}
                 />
               );
             })}

@@ -8,7 +8,12 @@ import { getStoreWorkDescription } from '../../utils';
 
 import './store-info-item.sass';
 
-const StoreInfoItem = ({ item, activeStoreId, onStoreItemClick }) => {
+const StoreInfoItem = ({
+  item,
+  activeStoreId,
+  onStoreItemClick,
+  userPosition,
+}) => {
   const [workCalendarVisible, setWorkCalendarVisible] = useState(false);
 
   const centerCoords = useSelector((state) => state.nearStoresCenter);
@@ -229,6 +234,12 @@ const StoreInfoItem = ({ item, activeStoreId, onStoreItemClick }) => {
       </div>
       <div className="store-info-item_links">
         <Link
+          to={`https://www.google.com/maps/dir/${
+            userPosition ? userPosition.latitude : ''
+          }${userPosition ? ',' : ''}${
+            userPosition ? userPosition.longitude : ''
+          }/${item.geometry.coordinates[1]},${item.geometry.coordinates[0]}`}
+          target="blank"
           onClick={(e) => {
             e.stopPropagation();
           }}
