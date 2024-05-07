@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useMap } from 'react-map-gl/maplibre';
 import getDistance from 'geolib/es/getDistance';
+import { GeocodingControl } from '@maptiler/geocoding-control/react';
 
 import StoreFinderMap from '../store-finder-map/store-finder-map';
 import StoreInfoItem from '../store-info-item/store-info-item';
-
+import { MAPTILER_API_KEY } from '../../const';
 import stores from '../../mocks/stores';
 
+import '@maptiler/geocoding-control/style.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './store-finder.sass';
 
@@ -103,13 +105,12 @@ const StoreFinder = () => {
 
   return (
     <div className="store-finder">
-      <div className="store-finder_header">
-        <h1 className="store-finder_header_title">Find our Exotic store</h1>
-        <p className="store-finder_header_subtitle">
-          We have more than 100 stores around the world, find the nearest one
-          and come visit
-        </p>
-        <div className="store-finder_header_finder">find</div>
+      <h1 className="store-finder_header">Find our Exotic store</h1>
+      <div className="store-finder_geocoder">
+        <GeocodingControl
+          apiKey={MAPTILER_API_KEY}
+          onSelect={(e) => console.log(e)}
+        />
       </div>
       <div className="store-finder_locator">
         <OverlayScrollbarsComponent className="store-finder_locator_list" defer>

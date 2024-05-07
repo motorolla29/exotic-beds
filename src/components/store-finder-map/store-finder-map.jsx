@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
-  useMap,
   Map,
   Source,
   Layer,
@@ -11,9 +10,6 @@ import {
   FullscreenControl,
   AttributionControl,
 } from 'react-map-gl/maplibre';
-import maplibregl from 'maplibre-gl';
-import { GeocodingControl } from '@maptiler/geocoding-control/react';
-import { createMapLibreGlMapController } from '@maptiler/geocoding-control/maplibregl-controller';
 
 import { setMapViewState, setNearStoresCenter } from '../../store/action';
 import {
@@ -24,21 +20,15 @@ import {
 import stores from '../../mocks/stores.json';
 import { getStoreWorkStatus } from '../../utils';
 import { getStoreWorkDescription } from '../../utils';
+import { MAPTILER_API_KEY } from '../../const';
 
-import '@maptiler/geocoding-control/style.css';
 import './store-finder-map.sass';
 
 const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
   const mapRef = useRef();
   const dispatch = useDispatch();
 
-  const API_KEY = 'JiORwzpLecOFb1wih0mU';
-
-  // const { storeFinderMap } = useMap();
-
   const viewState = useSelector((state) => state.mapViewState);
-
-  // const [mapController, setMapController] = useState();
 
   const onMapLoad = useCallback(() => {
     const mapPin = new Image();
@@ -61,21 +51,11 @@ const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (!mapRef.current) {
-  //     return;
-  //   }
-  //   console.log(storeFinderMap);
-  //   storeFinderMap.addControl(new maplibregl.NavigationControl(), 'top-right');
-  //   setMapController(createMapLibreGlMapController(storeFinderMap, maplibregl));
-  //   console.log(mapController);
-  // }, []);
-
   return (
     <Map
       {...viewState}
       id="storeFinderMap"
-      mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${API_KEY}`}
+      mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`}
       attributionControl={false}
       interactiveLayerIds={['clusters', 'unclustered-point']}
       onMove={onMapMove}
@@ -133,16 +113,7 @@ const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
           </div>
         </Popup>
       )}
-      <div
-        style={{ position: 'absolute', top: '10px', left: '10px' }}
-        className="geocoding"
-      >
-        <GeocodingControl
-          apiKey={API_KEY}
-          // mapController={mapController}
-          // onPick={(e) => console.log(e)}
-        />
-      </div>
+
       <NavigationControl showCompass={false} />
       <GeolocateControl
         showAccuracyCircle={false}

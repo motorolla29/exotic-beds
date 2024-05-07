@@ -6,24 +6,57 @@
     flex-direction: column
 
     &_header
+        padding-bottom: 0.2em
+        text-align: center
+        user-select: none
+        font-size: 3.5em
+        font-weight: 900
+        color: $main-color-turquoise-transparent
+    
+    &_geocoder
         display: flex
-        flex-direction: column
-        align-items: center
+        justify-content: center
+        padding-bottom: 1.5em
 
-        &_title
-            user-select: none
-            font-size: 4em
-            font-weight: 900
-            color: $main-color-turquoise-transparent 
-        &_subtitle
-            font-size: 1em
-            color: $main-color-grey
+        & form.svelte-zh3kmv
+            background: none
+            box-shadow: none
+            outline: 1px solid $main-color-grey-transparent
 
-        &_finder
-            margin: 1em 0
+        & form.svelte-zh3kmv:focus-within
+            outline: 2px solid $main-color-turquoise-transparent
+
+        & form.svelte-zh3kmv, & form.svelte-zh3kmv:focus-within, & form.svelte-zh3kmv:hover
+            width: 26em
+            max-width: 75vw
+            border-radius: 20px
+
+        
+
+            & .input-group.svelte-zh3kmv
+                gap: 0.75em 
+                padding-inline: 1em
+
+                &:focus-within
+                    outline: none
+
+                & input.svelte-zh3kmv
+                    height: 3em
+                    font-size: 1em
+                    font-weight: 600
+                    
+                & .search-button.svelte-zh3kmv
+                    svg
+                        width: 1.6em
+                        height: 1.6em
+
+                & .clear-button-container
+                    &:hover
+                        & svg.svelte-en2qvf
+                            fill: $main-color-turquoise
 
     &_locator
-        height: 500px
+        height: 615px
         padding-bottom: 1em
         max-height: 100%
         display: flex
@@ -39,7 +72,7 @@
             width: 30%
             background: $main-color-green-light
             padding: 0em 1.5em 1em 1em
-            max-height: 500px
+            max-height: 615px
 
             & .os-theme-dark // scrollbar styles
                 --os-handle-interactive-area-offset: 10px
