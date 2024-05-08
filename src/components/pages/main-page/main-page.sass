@@ -1,4 +1,72 @@
+@import 'src/styles/variables'
+    
 .main-page
     display: flex
+    flex-direction: column
     justify-content: center
     
+
+.promo-swiper
+    border-radius: 25px
+    aspect-ratio: 3 / 1
+    width: 100%
+
+    & .swiper-slide 
+        text-align: center
+        font-size: 18px
+        background: #fff
+
+        /* Center slide text vertically */
+        display: flex
+        justify-content: center
+        align-items: center
+
+.highest-rated-items-block
+    margin: 1em 0
+    &_title
+        color: $main-color-burgundy
+        text-align: center
+        padding-bottom: 0.5em
+        & span
+            color: $main-color-turquoise
+
+.highest-rated-items-swiper
+    width: 100%
+    height: 200px
+
+    & .swiper-slide 
+        text-align: center
+        font-size: 18px
+        background: #fff
+
+        /* Center slide text vertically */
+        display: flex
+        justify-content: center
+        align-items: center
+
+
+.promo-sales
+    padding-top: 0.5em
+    display: flex
+    justify-content: space-between
+    min-width: 100%
+
+    &_main
+        border-radius: 25px
+        aspect-ratio: 2 / 1
+        background: #fff
+        width: 79.2%
+    &_secondary
+        border-radius: 25px
+        aspect-ratio: 1 / 2
+        background: #a2a2a2
+        width: 19.8%
+    
+.sales-items-block
+    margin: 1em 0
+    &_title
+        color: $main-color-grey
+        text-align: center
+        padding-bottom: 0.5em
+        & span
+            color: $main-color-red
