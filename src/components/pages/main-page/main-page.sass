@@ -32,17 +32,16 @@
 
 .highest-rated-items-swiper
     width: 100%
-    height: 200px
+    height: fit-content
 
     & .swiper-slide 
-        text-align: center
-        font-size: 18px
-        background: #fff
-
-        /* Center slide text vertically */
         display: flex
         justify-content: center
         align-items: center
+        margin: 1em 0
+
+        & .catalog-item
+            margin: 0
 
 
 .promo-sales
@@ -70,3 +69,27 @@
         padding-bottom: 0.5em
         & span
             color: $main-color-red
+
+.sale-items-swiper
+    & .slick-slide
+        padding: 0 2em
+        display: flex
+        align-items: center
+        justify-content: center
+
+    & .slick-arrow // стрелки слайдера карусели
+        width: 50px
+        height: 50px
+        z-index: 10
+        &::before
+            display: block
+            color: $main-color-grey-transparent
+            font-size: 35px
+        
+
+    & .catalog-item
+        margin: 2em 0
+        box-shadow: 0px 0px 2em -0.4em $main-color-grey
+        &:hover
+            box-shadow: 0px 0px 2em -0.4em $main-color-turquoise
+        

@@ -194,11 +194,20 @@ const sortProducts = (products, sortBy) => {
       break;
     case 'discount':
       sortedProducts = products.slice().sort((a, b) => {
-        if (a.sale && !b.sale) {
+        if (!a.sale && !b.sale) {
+          return 0;
+        }
+        if (!a.sale) {
+          return 1;
+        }
+        if (!b.sale) {
           return -1;
         }
-        if (!a.sale && b.sale) {
+        if (a.price - a.sale < b.price - b.sale) {
           return 1;
+        }
+        if (a.price - a.sale > b.price - b.sale) {
+          return -1;
         }
         return 0;
       });
