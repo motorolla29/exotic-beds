@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
 import Slider from 'react-slick';
 
 import Tabs from '../../tabs/tabs';
@@ -50,27 +50,18 @@ const MainPage = () => {
           <h1 className="highest-rated-items-block_title">
             Check our highest rated <span>exotic furniture</span>
           </h1>
-          <Swiper
-            modules={[Navigation]}
-            navigation
-            slidesPerView={4}
-            spaceBetween={20}
-            loop={true}
-            className="highest-rated-items-swiper"
+          <Slider
+            dots={true}
+            infinite={true}
+            slidesToShow={5}
+            className="highest-rated-items-carousel"
           >
             {highestRatedProducts.map((it) => {
-              return (
-                <SwiperSlide key={it.id}>
-                  <CatalogItem item={it} />
-                </SwiperSlide>
-              );
+              return <CatalogItem key={it.id} item={it} />;
             })}
-          </Swiper>
+          </Slider>
         </div>
-        <div className="promo-sales">
-          <div className="promo-sales_main" />
-          <div className="promo-sales_secondary" />
-        </div>
+        <div className="promo-sales"></div>
         <div className="sales-items-block">
           <h1 className="sales-items-block_title">
             Hurry to buy at <span>epic sales</span>
@@ -79,10 +70,10 @@ const MainPage = () => {
             dots={true}
             infinite={true}
             slidesToShow={5}
-            className="sale-items-swiper"
+            className="sale-items-carousel"
           >
             {saleProducts.map((it) => {
-              return <CatalogItem item={it} />;
+              return <CatalogItem ket={it.id} item={it} />;
             })}
           </Slider>
         </div>
