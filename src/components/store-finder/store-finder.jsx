@@ -9,7 +9,7 @@ import { setNearStoresCenter } from '../../store/action';
 import StoreFinderMap from '../store-finder-map/store-finder-map';
 import StoreInfoItem from '../store-info-item/store-info-item';
 import { MAPTILER_API_KEY } from '../../const';
-import stores from '../../mocks/stores';
+import stores from '../../mocks/exotic-beds-stores';
 
 import '@maptiler/geocoding-control/style.css';
 import 'maplibre-gl/dist/maplibre-gl.css';

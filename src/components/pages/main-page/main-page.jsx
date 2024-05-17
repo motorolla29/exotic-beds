@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
+import { EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Slider from 'react-slick';
 
 import Tabs from '../../tabs/tabs';
@@ -37,7 +37,8 @@ const MainPage = () => {
           }}
           effect={'fade'}
           loop={true}
-          modules={[EffectFade, Autoplay, Pagination]}
+          modules={[EffectFade, Autoplay, Pagination, Navigation]}
+          navigation
           className="promo-swiper"
         >
           <SwiperSlide>Slide 1</SwiperSlide>
@@ -73,7 +74,7 @@ const MainPage = () => {
             className="sale-items-carousel"
           >
             {saleProducts.map((it) => {
-              return <CatalogItem ket={it.id} item={it} />;
+              return <CatalogItem key={it.id} item={it} />;
             })}
           </Slider>
         </div>

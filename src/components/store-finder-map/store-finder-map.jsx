@@ -17,7 +17,7 @@ import {
   clusterCountLayer,
   unclusteredPointLayer,
 } from '../../map-layers';
-import stores from '../../mocks/stores.json';
+import stores from '../../mocks/exotic-beds-stores.json';
 import { getStoreWorkStatus } from '../../utils';
 import { getStoreWorkDescription } from '../../utils';
 import { MAPTILER_API_KEY } from '../../const';
