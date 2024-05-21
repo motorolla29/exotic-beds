@@ -10,22 +10,55 @@
     border-radius: 25px
     aspect-ratio: 3 / 1
     width: 100%
+    & .swiper-pagination
+        & .swiper-pagination-bullet
+            background: #c4e2cf
+            opacity: 0.6
+        & .swiper-pagination-bullet-active-main
+            background: #c4e2cf
+            opacity: 1
+    & .swiper-button-prev, .swiper-button-next
+        color: #c4e2cf
+        opacity: 0.6
+        &:hover
+            opacity: 0.8
 
     & .swiper-slide 
         text-align: center
         font-size: 18px
-        background: #fff
         display: flex
         justify-content: center
         align-items: center
+        
+        &.slide-1
+            background: url("/images/promo/3.png")
+            background-size: cover
+        &.slide-2
+            background: url("/images/promo/5.png")
+            background-size: cover
+        &.slide-3
+            background: url("/images/promo/2.png")
+            background-size: cover
+        &.slide-4
+            background: url("/images/promo/1.png")
+            background-size: cover
+        &.slide-5
+            background: url("/images/promo/4.png")
+            background-size: cover
+        &.slide-6
+            background: url("/images/promo/6.png")
+            background-size: cover
+            
 
 
 .promo-sales // promo picture with sales
     margin: 2em 0 1em 0
     min-width: 100%
     aspect-ratio: 2.5 / 1
-    background: #fff
+    background: url("/images/promo/0.png")
+    background-size: cover
     border-radius: 25px
+
     
 .highest-rated-items-block, .sales-items-block // carousel sliders containers
     display: flex
@@ -76,3 +109,24 @@
         &:hover
             box-shadow: 0px 0px 20px -4px $main-color-turquoise-transparent
         
+@media (max-width: 1320px) 
+    .sale-items-carousel, .highest-rated-items-carousel
+        & .catalog-item
+            font-size: 12px
+@media (max-width: 992px) 
+    .highest-rated-items-block, .sales-items-block
+        font-size: 12px
+    .sale-items-carousel, .highest-rated-items-carousel
+        & .catalog-item
+            font-size: 10px
+@media (max-width: 580px) 
+    .highest-rated-items-block, .sales-items-block
+        font-size: 10px
+    .sale-items-carousel, .highest-rated-items-carousel
+        & .catalog-item
+            font-size: 8px
+@media (max-width: 480px) 
+    .sale-items-carousel, .highest-rated-items-carousel
+        & .catalog-item
+            font-size: 6px
+

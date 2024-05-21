@@ -65,6 +65,8 @@ const StoreFinder = () => {
     })
     .slice(0, 10);
 
+  console.log(stores.features.length);
+
   const onGeocoderItemPick = (event) => {
     if (event) {
       storeFinderMap.flyTo({

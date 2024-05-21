@@ -3,8 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Slider from 'react-slick';
 
+import CatalogItem from '../../catalog-item/catalog-item';
 import Tabs from '../../tabs/tabs';
 import { sortProducts } from '../../../utils';
+import useWindowSize from '../../../hooks/use-window-size';
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -14,14 +16,29 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import './main-page.sass';
-import CatalogItem from '../../catalog-item/catalog-item';
 
 const MainPage = () => {
   const products = useSelector((state) => state.products);
   const highestRatedProducts = sortProducts(products, 'rating').slice(0, 10);
   const saleProducts = sortProducts(products, 'discount').slice(0, 10);
 
-  console.log(highestRatedProducts);
+  const [ww, wh] = useWindowSize();
+
+  const getSlidesQty = (ww) => {
+    if (ww >= 1600) {
+      return 5;
+    }
+    if ((ww < 1600) & (ww >= 1200)) {
+      return 4;
+    }
+    if ((ww < 1200) & (ww >= 768)) {
+      return 3;
+    }
+    if (ww < 768) {
+      return 2;
+    }
+    return 2;
+  };
 
   return (
     <>
@@ -29,7 +46,7 @@ const MainPage = () => {
       <div className="main-page">
         <Swiper
           autoplay={{
-            delay: 5000,
+            delay: 7500,
             disableOnInteraction: false,
           }}
           pagination={{
@@ -41,20 +58,21 @@ const MainPage = () => {
           navigation
           className="promo-swiper"
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide className="slide-1" />
+          <SwiperSlide className="slide-2" />
+          <SwiperSlide className="slide-3" />
+          <SwiperSlide className="slide-4" />
+          <SwiperSlide className="slide-5" />
+          <SwiperSlide className="slide-6" />
         </Swiper>
         <div className="highest-rated-items-block">
           <h1 className="highest-rated-items-block_title">
             Check our highest rated <span>exotic furniture</span>
           </h1>
           <Slider
-            dots={true}
+            dots={ww > 480 ? true : false}
             infinite={true}
-            slidesToShow={5}
+            slidesToShow={getSlidesQty(ww)}
             className="highest-rated-items-carousel"
           >
             {highestRatedProducts.map((it) => {
@@ -68,9 +86,9 @@ const MainPage = () => {
             Hurry to buy at <span>epic sales</span>
           </h1>
           <Slider
-            dots={true}
+            dots={ww > 480 ? true : false}
             infinite={true}
-            slidesToShow={5}
+            slidesToShow={getSlidesQty(ww)}
             className="sale-items-carousel"
           >
             {saleProducts.map((it) => {

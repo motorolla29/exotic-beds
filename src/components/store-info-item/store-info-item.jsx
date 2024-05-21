@@ -52,10 +52,10 @@ const StoreInfoItem = ({ item, activeStoreId, onStoreItemClick }) => {
         >
           <span
             className={`store-info-item_work_info_status ${
-              storeWorkStatus ? 'opened' : 'closed'
+              storeWorkStatus ? 'open' : 'closed'
             }`}
           >
-            {storeWorkStatus ? 'Opened' : 'Closed'}
+            {storeWorkStatus ? 'Open' : 'Closed'}
           </span>
           •
           <span className="store-info-item_work_info_description">
