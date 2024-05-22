@@ -14,6 +14,8 @@ import {
   sortProducts,
 } from '../../../utils';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
+import SearchPanel from '../../search-panel/search-panel';
+import useWindowSize from '../../../hooks/use-window-size';
 
 import './search-page.sass';
 
@@ -26,6 +28,8 @@ const SearchPage = () => {
   const searchQuery = searchParams.get('q').toLowerCase() || '';
 
   const searchArray = searchQuery.split(' ');
+
+  const [ww, wh] = useWindowSize();
 
   const products = useSelector((state) => state.products);
   const highestPrice =
@@ -82,6 +86,7 @@ const SearchPage = () => {
 
   return (
     <>
+      {ww < 768 ? <SearchPanel /> : null}
       <Tabs />
       <Breadcrumbs />
       <div className="search-page">

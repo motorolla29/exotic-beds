@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { cartOpen } from '../../store/action';
 import HeaderSearchPanel from '../header-search-panel/header-serach-panel';
+import useWindowSize from '../../hooks/use-window-size';
 
 import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon.svg';
 import { ReactComponent as HeartIcon } from '../../images/ui-icons/heart-icon.svg';
@@ -21,6 +22,8 @@ const Header = () => {
     );
   });
 
+  const [ww, wh] = useWindowSize();
+
   return (
     <div className="header-container">
       <div className="header">
@@ -28,14 +31,16 @@ const Header = () => {
           <Link className="header_left-side_logo" to="/">
             <img alt="logo" src="/logo/EB-LOGO-HD.png" />
           </Link>
-          <HeaderSearchPanel />
+          {ww >= 768 ? <HeaderSearchPanel /> : null}
         </div>
         <div className="header_nav">
           <Link to="/store-finder" className="header_nav_store-finder">
             <div className="header_nav_store-finder_icon">
               <PinIcon />
             </div>
-            <p className="header_nav_lovelist_title">Find a store</p>
+            <p className="header_nav_lovelist_title">
+              {ww >= 768 ? 'Find a store' : 'Stores'}
+            </p>
           </Link>
           <Link to="/my-lovelist" className="header_nav_lovelist">
             <div className="header_nav_lovelist_icon">
@@ -46,7 +51,9 @@ const Header = () => {
                 </span>
               ) : null}
             </div>
-            <p className="header_nav_lovelist_title">My lovelist</p>
+            <p className="header_nav_lovelist_title">
+              {ww >= 768 ? 'My lovelist' : 'Lovelist'}
+            </p>
           </Link>
           <div
             onClick={() => dispatch(cartOpen(true))}
@@ -60,7 +67,9 @@ const Header = () => {
                 </span>
               ) : null}
             </div>
-            <p className="header_nav_lovelist_title">My basket</p>
+            <p className="header_nav_lovelist_title">
+              {ww >= 768 ? 'My basket' : 'Basket'}
+            </p>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import CatalogItem from '../../catalog-item/catalog-item';
 import Tabs from '../../tabs/tabs';
 import { sortProducts } from '../../../utils';
 import useWindowSize from '../../../hooks/use-window-size';
+import SearchPanel from '../../search-panel/search-panel';
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -42,6 +43,7 @@ const MainPage = () => {
 
   return (
     <>
+      {ww < 768 ? <SearchPanel /> : null}
       <Tabs />
       <div className="main-page">
         <Swiper

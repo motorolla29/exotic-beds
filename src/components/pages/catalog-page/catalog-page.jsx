@@ -15,6 +15,8 @@ import {
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 import CatalogEmpty from '../../catalog-empty/catalog-empty';
+import SearchPanel from '../../search-panel/search-panel';
+import useWindowSize from '../../../hooks/use-window-size';
 
 import './catalog-page.sass';
 
@@ -23,6 +25,8 @@ const CatalogPage = ({ category }) => {
   const [page, setPage] = useState(
     searchParams.has('page') ? +searchParams.get('page') : 1
   );
+
+  const [ww, wh] = useWindowSize();
 
   useEffect(() => {
     setPage(1);
@@ -78,6 +82,7 @@ const CatalogPage = ({ category }) => {
 
   return (
     <>
+      {ww < 768 ? <SearchPanel /> : null}
       <Tabs />
       <Breadcrumbs />
       <div className="catalog-page">

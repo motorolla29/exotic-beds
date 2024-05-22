@@ -1,0 +1,40 @@
+@import 'src/styles/variables'
+
+.search-form
+    margin-bottom: 1em
+    display: flex
+    align-items: flex-end
+    border: 0.15em solid
+    border-radius: 2em
+    padding: 0.4em 0
+        
+    &_button
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: 15px
+        border: none
+        background: none
+        cursor: pointer
+        width: 1.4em
+        height: 1.4em
+        margin: 0 1em
+        svg
+            fill: $main-color-turquoise
+            width: 100%
+            height: auto
+    &_input
+        height: 100%
+        font-size: 1em
+        font-weight: 600
+        color: $main-color-grey
+        width: 100%
+        padding-left: 1em
+        outline: none
+        border: none
+        background: none
+        &::placeholder
+            color: $main-color-grey-transparent
+        &::-webkit-search-cancel-button
+            -webkit-appearance: none
+                
