@@ -684,9 +684,9 @@ const initialState = {
     },
   ],
   mapViewState: {
-    latitude: 52.8,
-    longitude: 58.4,
-    zoom: 3,
+    latitude: 47.321788,
+    longitude: 8.397063,
+    zoom: 1.9,
   },
   nearStoresCenter: { latitude: 55.751244, longitude: 37.618423 },
 };
