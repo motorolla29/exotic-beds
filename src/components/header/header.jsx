@@ -31,7 +31,7 @@ const Header = () => {
           <Link className="header_left-side_logo" to="/">
             <img alt="logo" src="/logo/EB-LOGO-HD.png" />
           </Link>
-          {ww >= 768 ? <HeaderSearchPanel /> : null}
+          {ww > 768 ? <HeaderSearchPanel /> : null}
         </div>
         <div className="header_nav">
           <Link to="/store-finder" className="header_nav_store-finder">
@@ -39,7 +39,7 @@ const Header = () => {
               <PinIcon />
             </div>
             <p className="header_nav_lovelist_title">
-              {ww >= 768 ? 'Find a store' : 'Stores'}
+              {ww > 768 ? 'Find a store' : 'Stores'}
             </p>
           </Link>
           <Link to="/my-lovelist" className="header_nav_lovelist">
@@ -52,7 +52,7 @@ const Header = () => {
               ) : null}
             </div>
             <p className="header_nav_lovelist_title">
-              {ww >= 768 ? 'My lovelist' : 'Lovelist'}
+              {ww > 768 ? 'My lovelist' : 'Lovelist'}
             </p>
           </Link>
           <div
@@ -68,7 +68,7 @@ const Header = () => {
               ) : null}
             </div>
             <p className="header_nav_lovelist_title">
-              {ww >= 768 ? 'My basket' : 'Basket'}
+              {ww > 768 ? 'My basket' : 'Basket'}
             </p>
           </div>
         </div>

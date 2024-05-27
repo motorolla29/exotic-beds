@@ -10,6 +10,7 @@ import StoreFinderMap from '../store-finder-map/store-finder-map';
 import StoreInfoItem from '../store-info-item/store-info-item';
 import { MAPTILER_API_KEY } from '../../const';
 import stores from '../../mocks/exotic-beds-stores';
+import useWindowSize from '../../hooks/use-window-size';
 
 import '@maptiler/geocoding-control/style.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -22,6 +23,7 @@ const StoreFinder = () => {
   const [popupInfo, setPopupInfo] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const { storeFinderMap } = useMap();
+  const [ww, wh] = useWindowSize();
 
   const storesSortedByProximity = stores.features
     .sort(function (a, b) {
@@ -131,6 +133,15 @@ const StoreFinder = () => {
           onPick={onGeocoderItemPick}
         />
       </div>
+      {ww < 768 ? (
+        <div className="store-finder_map-to-list-switcher">
+          <div className="store-finder_map-to-list-switcher_map active">
+            Map
+          </div>
+          <div className="store-finder_map-to-list-switcher_list">List</div>
+        </div>
+      ) : null}
+
       <div className="store-finder_locator">
         <OverlayScrollbarsComponent className="store-finder_locator_list" defer>
           <div className="store-finder_locator_list_header">
