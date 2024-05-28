@@ -129,12 +129,19 @@
             font-size: 1.25em
             border: 2px solid $main-color-green-light
             border-bottom: none
+            cursor: pointer
+            user-select: none
+            &:hover
+                box-shadow: 0px 0px 25px -8px $main-color-turquoise
+                -webkit-box-shadow: 0px 0px 25px -8px $main-color-turquoise
+                -moz-box-shadow: 0px 0px 25px -8px $main-color-turquoise
             &.active
                 color: $main-color-green-light
                 background-color: $main-color-turquoise-transparent
                 box-shadow: 0px 0px 25px -8px $main-color-turquoise
                 -webkit-box-shadow: 0px 0px 25px -8px $main-color-turquoise
                 -moz-box-shadow: 0px 0px 25px -8px $main-color-turquoise
+        
             
         &_map
             border-right: 1px solid $main-color-green-light

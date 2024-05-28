@@ -24,6 +24,7 @@ const StoreFinder = () => {
   const [showPopup, setShowPopup] = useState(false);
   const { storeFinderMap } = useMap();
   const [ww, wh] = useWindowSize();
+  const [locatorView, setLocatorView] = useState('map');
 
   const storesSortedByProximity = stores.features
     .sort(function (a, b) {
@@ -133,59 +134,78 @@ const StoreFinder = () => {
           onPick={onGeocoderItemPick}
         />
       </div>
-      {ww < 768 ? (
+      {ww <= 768 ? (
         <div className="store-finder_map-to-list-switcher">
-          <div className="store-finder_map-to-list-switcher_map active">
+          <div
+            onClick={() => setLocatorView('map')}
+            className={`store-finder_map-to-list-switcher_map ${
+              locatorView === 'map' ? 'active' : ''
+            }`}
+          >
             Map
           </div>
-          <div className="store-finder_map-to-list-switcher_list">List</div>
+          <div
+            onClick={() => setLocatorView('list')}
+            className={`store-finder_map-to-list-switcher_list ${
+              locatorView === 'list' ? 'active' : ''
+            }`}
+          >
+            List
+          </div>
         </div>
       ) : null}
 
       <div className="store-finder_locator">
-        <OverlayScrollbarsComponent className="store-finder_locator_list" defer>
-          <div className="store-finder_locator_list_header">
-            <p className="store-finder_locator_list_header_counter">
-              {storesSortedByProximity.length} Stores Near You
-            </p>
+        {ww >= 768 || locatorView === 'list' ? (
+          <OverlayScrollbarsComponent
+            className="store-finder_locator_list"
+            defer
+          >
+            <div className="store-finder_locator_list_header">
+              <p className="store-finder_locator_list_header_counter">
+                {storesSortedByProximity.length} Stores Near You
+              </p>
+            </div>
+            <div className="store-finder_locator_list_store-info-items">
+              {storesSortedByProximity.map((it) => {
+                return (
+                  <StoreInfoItem
+                    onStoreItemClick={() => {
+                      setActiveStore(it);
+                      storeFinderMap?.flyTo({
+                        center: [
+                          it.geometry.coordinates[0],
+                          it.geometry.coordinates[1],
+                        ],
+                        zoom: 16,
+                        essential: true,
+                        duration: 2000,
+                      });
+                      setPopupInfo({
+                        ...it.properties,
+                        longitude: it.geometry.coordinates[0],
+                        latitude: it.geometry.coordinates[1],
+                      });
+                    }}
+                    key={it.properties.id}
+                    item={it}
+                    activeStoreId={activeStore?.properties.id}
+                  />
+                );
+              })}
+            </div>
+          </OverlayScrollbarsComponent>
+        ) : null}
+        {ww >= 768 || locatorView === 'map' ? (
+          <div className="store-finder_locator_map">
+            <StoreFinderMap
+              onMapClick={onMapClick}
+              popupInfo={popupInfo}
+              showPopup={showPopup}
+              setShowPopup={setShowPopup}
+            />
           </div>
-          <div className="store-finder_locator_list_store-info-items">
-            {storesSortedByProximity.map((it) => {
-              return (
-                <StoreInfoItem
-                  onStoreItemClick={() => {
-                    setActiveStore(it);
-                    storeFinderMap.flyTo({
-                      center: [
-                        it.geometry.coordinates[0],
-                        it.geometry.coordinates[1],
-                      ],
-                      zoom: 16,
-                      essential: true,
-                      duration: 2000,
-                    });
-                    setPopupInfo({
-                      ...it.properties,
-                      longitude: it.geometry.coordinates[0],
-                      latitude: it.geometry.coordinates[1],
-                    });
-                  }}
-                  key={it.properties.id}
-                  item={it}
-                  activeStoreId={activeStore?.properties.id}
-                />
-              );
-            })}
-          </div>
-        </OverlayScrollbarsComponent>
-        <div className="store-finder_locator_map">
-          <StoreFinderMap
-            onMapClick={onMapClick}
-            popupInfo={popupInfo}
-            showPopup={showPopup}
-            setShowPopup={setShowPopup}
-          />
-        </div>
+        ) : null}
       </div>
     </div>
   );
