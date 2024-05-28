@@ -1,12 +1,16 @@
 @import 'src/styles/variables'
 
 .search-form
+    margin-top: 1rem
     margin-bottom: 1em
     display: flex
     align-items: flex-end
-    border: 0.15em solid
+    border: 2px solid $main-color-turquoise-transparent
     border-radius: 2em
     padding: 0.4em 0
+    &:has(&_input:focus)
+        border: 2px solid $main-color-turquoise
+        
         
     &_button
         display: flex

@@ -82,7 +82,7 @@ const CatalogPage = ({ category }) => {
 
   return (
     <>
-      {ww < 768 ? <SearchPanel /> : null}
+      {ww <= 768 ? <SearchPanel /> : null}
       <Tabs />
       <Breadcrumbs />
       <div className="catalog-page">

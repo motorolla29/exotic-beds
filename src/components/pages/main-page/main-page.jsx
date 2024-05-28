@@ -43,7 +43,7 @@ const MainPage = () => {
 
   return (
     <>
-      {ww < 768 ? <SearchPanel /> : null}
+      {ww <= 768 ? <SearchPanel /> : null}
       <Tabs />
       <div className="main-page">
         <Swiper

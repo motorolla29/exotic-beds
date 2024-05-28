@@ -164,6 +164,8 @@
 
 
 @media (max-width: 768px) 
+    .store-finder
+        font-size: 12px
     .store-finder_locator_map
         & .maplibregl-map
             border-radius: 2em
@@ -173,3 +175,12 @@
         & .os-theme-dark
             --os-padding-axis: 2em
 
+@media (max-width: 480px) 
+    .store-finder
+        font-size: 10px
+        &_header
+            font-size: 3em
+
+@media (max-width: 320px) 
+    .store-finder
+        font-size: 8px

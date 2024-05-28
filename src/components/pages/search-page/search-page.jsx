@@ -86,7 +86,7 @@ const SearchPage = () => {
 
   return (
     <>
-      {ww < 768 ? <SearchPanel /> : null}
+      {ww <= 768 ? <SearchPanel /> : null}
       <Tabs />
       <Breadcrumbs />
       <div className="search-page">
