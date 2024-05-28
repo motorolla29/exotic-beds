@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Slider from 'react-slick';
@@ -22,7 +23,7 @@ const MainPage = () => {
   const products = useSelector((state) => state.products);
   const highestRatedProducts = sortProducts(products, 'rating').slice(0, 10);
   const saleProducts = sortProducts(products, 'discount').slice(0, 10);
-
+  const navigate = useNavigate();
   const [ww, wh] = useWindowSize();
 
   const getSlidesQty = (ww) => {
@@ -60,12 +61,30 @@ const MainPage = () => {
           navigation
           className="promo-swiper"
         >
-          <SwiperSlide className="slide-1" />
-          <SwiperSlide className="slide-2" />
-          <SwiperSlide className="slide-3" />
-          <SwiperSlide className="slide-4" />
-          <SwiperSlide className="slide-5" />
-          <SwiperSlide className="slide-6" />
+          <SwiperSlide
+            onClick={() => navigate('/beds?new=true')}
+            className="slide-1"
+          />
+          <SwiperSlide
+            onClick={() => navigate('/search?q=classic%20series')}
+            className="slide-2"
+          />
+          <SwiperSlide
+            onClick={() => navigate('/search?q=teddy%20bear')}
+            className="slide-3"
+          />
+          <SwiperSlide
+            onClick={() => navigate('/search?q=cyberpunk%20series')}
+            className="slide-4"
+          />
+          <SwiperSlide
+            onClick={() => navigate('/search?q=sea%20series')}
+            className="slide-5"
+          />
+          <SwiperSlide
+            onClick={() => navigate('/search?q=sponge%20bob')}
+            className="slide-6"
+          />
         </Swiper>
         <div className="highest-rated-items-block">
           <h1 className="highest-rated-items-block_title">
@@ -82,7 +101,9 @@ const MainPage = () => {
             })}
           </Slider>
         </div>
-        <div className="promo-sales"></div>
+        <Link to={'/beds?sale=true'}>
+          <div className="promo-sales"></div>
+        </Link>
         <div className="sales-items-block">
           <h1 className="sales-items-block_title">
             Hurry to buy at <span>epic sales</span>
