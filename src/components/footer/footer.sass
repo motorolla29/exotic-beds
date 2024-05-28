@@ -79,6 +79,7 @@
             display: flex
             align-items: center
             flex-direction: row
+            flex-wrap: wrap
 
             &_title
                 font-weight: 600
@@ -99,9 +100,14 @@
         font-weight: 400
         margin-bottom: 1em
 
-@media (max-width: 992px) 
+
+@media (max-width: 1200px) 
     .footer
         font-size: 14px
+
+@media (max-width: 992px) 
+    .footer
+        font-size: 13px
 
 @media (max-width: 768px) 
     .footer
@@ -110,3 +116,7 @@
 @media (max-width: 480px) 
     .footer
         font-size: 10px
+
+@media (max-width: 320px) 
+    .footer
+        font-size: 8px

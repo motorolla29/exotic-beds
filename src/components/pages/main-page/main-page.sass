@@ -52,7 +52,7 @@
 
 
 .promo-sales // promo picture with sales
-    margin: 2em 0 1em 0
+    margin: 1em 0 1em 0
     min-width: 100%
     aspect-ratio: 2.5 / 1
     background: url("/images/promo/0.png")
@@ -84,6 +84,7 @@
 
 .sale-items-carousel, .highest-rated-items-carousel // products carousel sliders
     width: calc( 100% - 100px )
+    margin-bottom: 3em
     & .slick-slide
         padding: 0 2em
         display: flex
@@ -110,23 +111,54 @@
             box-shadow: 0px 0px 20px -4px $main-color-turquoise-transparent
         
 @media (max-width: 1320px) 
+    .highest-rated-items-block, .sales-items-block
+        font-size: 14px
     .sale-items-carousel, .highest-rated-items-carousel
         & .catalog-item
             font-size: 12px
+
 @media (max-width: 992px) 
     .highest-rated-items-block, .sales-items-block
         font-size: 12px
     .sale-items-carousel, .highest-rated-items-carousel
         & .catalog-item
             font-size: 10px
+
 @media (max-width: 580px) 
     .highest-rated-items-block, .sales-items-block
         font-size: 10px
     .sale-items-carousel, .highest-rated-items-carousel
         & .catalog-item
             font-size: 8px
+        & .slick-arrow::before
+            font-size: 30px
+
 @media (max-width: 480px) 
+    .highest-rated-items-block, .sales-items-block
+        font-size: 8px
     .sale-items-carousel, .highest-rated-items-carousel
+        width: calc( 100% - 50px )
+        margin-bottom: 0
+        & .slick-prev // левая стрелка
+            left: -25px
+        & .slick-next // правая стрелка
+            right: -25px
         & .catalog-item
             font-size: 6px
+        & .slick-arrow::before
+            font-size: 20px
+
+@media (max-width: 360px) 
+    .highest-rated-items-block, .sales-items-block
+        font-size: 8px
+    .sale-items-carousel, .highest-rated-items-carousel
+        width: calc( 100% - 20px )
+        & .slick-prev // левая стрелка
+            left: -10px
+        & .slick-next // правая стрелка
+            right: -10px
+        & .catalog-item
+            font-size: 4px
+        & .slick-arrow::before
+            font-size: 20px
 
