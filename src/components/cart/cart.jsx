@@ -112,7 +112,9 @@ const Cart = () => {
                   </div>
                 </div>
               ) : (
-                <CartEmpty />
+                <div className="cart_widget_widget-inner_scroll-inner-empty">
+                  <CartEmpty />
+                </div>
               )}
             </OverlayScrollbarsComponent>
           </div>
