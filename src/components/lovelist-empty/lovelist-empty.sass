@@ -1,15 +1,17 @@
 @import 'src/styles/variables'
 
 .lovelist-empty
+    width: 32em
+    height: 12em
     display: flex
     align-self: center
+    justify-content: center
     flex-direction: column
     align-items: center
     margin-top: 50px
     color: $main-color-grey
     background: $main-color-white-transparent
     border-radius: 2em
-    padding: 3em 6em
 
     &_title
         margin-bottom: 0.8em
@@ -41,3 +43,23 @@
                 
                 &:hover
                     opacity: 1
+
+@media (max-width: 1200px) 
+    .lovelist-empty
+        font-size: 14px
+
+@media (max-width: 992px) 
+    .lovelist-empty
+        font-size: 13px
+
+@media (max-width: 768px) 
+    .lovelist-empty
+        font-size: 12px
+
+@media (max-width: 480px) 
+    .lovelist-empty
+        font-size: 10px
+
+@media (max-width: 320px) 
+    .lovelist-empty
+        font-size: 8px

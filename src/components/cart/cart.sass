@@ -17,6 +17,7 @@
         top: 0
         right: 0
         width: 40em
+        max-width: 100%
         height: 100%
         border-top-left-radius: 2em
         background: $main-color-white
@@ -29,12 +30,12 @@
             &_scroll-container
                 position: relative
                 height: 100vh
-                width: 40em
+                max-width: 40em
                 width: calc(100% + 2em)
             
             &_scroll-inner
                 padding-top: 8em
-                width: 36em
+                max-width: 36em
                 
             &_header
                 position: fixed
@@ -173,3 +174,41 @@
                     &:active
                         opacity: 0.9
 
+@media (max-width: 1200px) 
+    .cart
+        font-size: 14px
+
+@media (max-width: 992px) 
+    .cart
+        font-size: 13px
+
+@media (max-width: 768px) 
+    .cart
+        font-size: 12px
+
+@media (max-width: 480px) 
+    .cart
+        font-size: 10px
+        &_widget
+            width: 100%
+            border-radius: 0
+            
+            &_widget-inner
+                width: 100%
+                &_header
+                    position: fixed
+                    width: 100vw
+                    right: 0
+                    padding-left: 2em
+                    padding-right: 2em
+                    
+                &_scroll-inner
+                    min-width: 100%
+                    max-width: 100%
+                    padding-right: 2em
+                &_scroll-container
+                    min-width: calc( 100% + 2em )
+            
+@media (max-width: 320px) 
+    .cart
+        font-size: 8px
