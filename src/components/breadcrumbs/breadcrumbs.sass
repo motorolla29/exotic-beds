@@ -7,18 +7,18 @@
 
     &_item
         position: relative
-        font-size: 1em
         font-weight: 600
         color: $main-color-turquoise
-
-        &:not(&:last-child):hover
+        &:hover
             text-decoration: underline
 
-        &:last-child
+        &_last
+            position: relative
+            font-weight: 600
             cursor: default
             color: $main-color-grey
 
-        &:not(&:first-child)::before
+        &:not(&:first-child)::before, &_last::before
             content: ''
             position: absolute
             width: 0.25em

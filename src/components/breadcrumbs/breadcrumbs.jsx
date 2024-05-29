@@ -23,7 +23,7 @@ const Breadcrumbs = ({ category }) => {
           {getUcFirstNoDashStr(category)}
         </Link>
       ) : null}
-      {matchedRoutes.map((route) => (
+      {matchedRoutes.slice(0, -1).map((route) => (
         <Link
           className="breadcrumbs_item"
           key={route}
@@ -32,6 +32,9 @@ const Breadcrumbs = ({ category }) => {
           {getUcFirstNoDashStr(route)}
         </Link>
       ))}
+      <span className="breadcrumbs_item_last">
+        {getUcFirstNoDashStr(matchedRoutes.slice(-1).toString())}
+      </span>
     </div>
   );
 };
