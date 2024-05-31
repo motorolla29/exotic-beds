@@ -5,10 +5,21 @@
     display: flex
 
     &_visual
+        user-select: none
         width: 50%
         img
             border-radius: 2em
             width: 100%
+            
+        & .iiz.product-page_image
+            border-radius: 2em
+        & .iiz__btn
+            background: $main-color-white-transparent
+            width: 3em
+            height: 3em
+            bottom: 1.5em
+            right: 1.5em
+            border-radius: 50%
 
     &_info
         font-size: 14px
@@ -145,7 +156,7 @@
         &_info
             width: 100%
             margin: 1em 0 0 0
-            
+
 @media (max-width: 480px) 
     .product-page
         font-size: 12px

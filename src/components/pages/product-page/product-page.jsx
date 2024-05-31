@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addProductToCart, cartOpen } from '../../../store/action';
 import { toggleProductInLovelist } from '../../../store/action';
-
+import InnerImageZoom from 'react-inner-image-zoom';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import RatingStars from '../../rating-stars/rating-stars';
-
-import './product-page.sass';
 import HeartIcon from '../../heart-icon/heart-icon';
+
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import './product-page.sass';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -29,7 +30,9 @@ const ProductPage = () => {
       <Breadcrumbs category={product.category} />
       <div className="product-page">
         <div className="product-page_visual">
-          <img
+          <InnerImageZoom
+            fullscreenOnMobile={true}
+            hideCloseButton={true}
             className="product-page_image"
             alt="product_picture"
             src={product.photo}
