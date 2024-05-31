@@ -87,10 +87,12 @@ const CatalogPage = ({ category }) => {
       <Tabs />
       <Breadcrumbs />
       <div className="catalog-page">
-        <CatalogFilters
-          products={currentCategoryProducts}
-          category={category}
-        />
+        {ww > 768 ? (
+          <CatalogFilters
+            products={currentCategoryProducts}
+            category={category}
+          />
+        ) : null}
         <div className="catalog-container">
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}

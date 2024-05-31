@@ -66,19 +66,19 @@ const MainPage = () => {
             className="slide-1"
           />
           <SwiperSlide
-            onClick={() => navigate('/search?q=classic%20series')}
+            onClick={() => navigate('/beds?series=Classic')}
             className="slide-2"
           />
           <SwiperSlide
-            onClick={() => navigate('/search?q=teddy%20bear')}
+            onClick={() => navigate('/search?q=bear')}
             className="slide-3"
           />
           <SwiperSlide
-            onClick={() => navigate('/search?q=cyberpunk%20series')}
+            onClick={() => navigate('/beds?series=Cyberpunk')}
             className="slide-4"
           />
           <SwiperSlide
-            onClick={() => navigate('/search?q=sea%20series')}
+            onClick={() => navigate('/beds?series=Sea')}
             className="slide-5"
           />
           <SwiperSlide

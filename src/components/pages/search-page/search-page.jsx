@@ -84,6 +84,8 @@ const SearchPage = () => {
     page * limit
   );
 
+  window.scrollTo(0, 0);
+
   return (
     <>
       {ww <= 768 ? <SearchPanel /> : null}

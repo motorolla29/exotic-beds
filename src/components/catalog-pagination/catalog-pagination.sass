@@ -10,3 +10,24 @@
         &.MuiPaginationItem-root.Mui-selected
             color: $main-color-green-light
             background-color: $main-color-turquoise-transparent
+
+@media (max-width: 480px) 
+    .catalog-pagination
+        & .MuiButtonBase-root
+            line-height: 1
+            min-width: 35px
+            height: 35px
+        & .MuiPagination-ul 
+            display: flex
+            justify-content: center
+
+@media (max-width: 320px)
+    .catalog-pagination
+        & .MuiButtonBase-root
+            line-height: 1
+            min-width: 30px
+            height: 30px
+        & .MuiPagination-ul 
+            display: flex
+            justify-content: center
+    

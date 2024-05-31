@@ -6,38 +6,54 @@
     align-items: center
     margin-top: 0.5em
 
+    
+
     &_counter
         border-right: 1px solid $main-color-turquoise-transparent
         padding-right: 1em
-
-    &_limiter
+        
+    &_panel
+        flex-grow: 1
         display: flex
-        align-items: center
-        margin-left: 1em
+        justify-content: space-between
+        
+        &_sorting
+            display: flex
+            &_limiter
+                display: flex
+                align-items: center
+                margin-left: 1em
 
-        &_box
+                &_box
 
-        &_control
+                &_control
 
-            &_label
+                    &_label
 
-            &_select
-                min-width: 5em
+                    &_select
+                        min-width: 5em
 
 
-    &_sorter
-        display: flex
-        align-items: center
-        margin-left: 1em
+            &_sorter
+                display: flex
+                align-items: center
+                margin-left: 1em
 
-        &_box
+                &_box
 
-        &_control
+                &_control
 
-            &_label
+                    &_label
                 
-            &_select
-                min-width: 12em
+                    &_select
+                        min-width: 12em
+
+        &_filter
+            display: flex
+            align-items: center
+            justify-content: center
+
+    
 
                 
     & .MuiBox-root
@@ -71,6 +87,28 @@
         &.MuiMenuItem-root
             color: $main-color-turquoise // цвет текста в опциях попапа
             
-                
-        
-            
+@media (max-width: 480px) 
+    .top-toolbar
+        & .MuiBox-root
+            & .MuiInputBase-root
+                font-size: 0.5rem
+                & .MuiSvgIcon-root
+                    font-size: 0.75rem
+            & .MuiFormControl-root
+                & .MuiFormLabel-root 
+                    font-size: 0.5rem
+                    line-height: 2.875
+
+@media (max-width: 768px) 
+    .top-toolbar
+        display: block
+        &_counter
+            padding-bottom: 1.5em
+            border: none
+        &_panel
+            &_sorting
+                &_limiter
+                    margin-left: 0 
+@media (max-width: 320px) 
+    .top-toolbar
+        font-size: 8px
