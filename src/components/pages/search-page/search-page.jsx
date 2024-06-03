@@ -92,7 +92,7 @@ const SearchPage = () => {
       <Tabs />
       <Breadcrumbs />
       <div className="search-page">
-        {sortedProducts.length ? (
+        {sortedProducts.length && ww > 768 ? (
           <CatalogFilters products={foundedProducts} />
         ) : null}
         <div className="catalog-container">
@@ -102,6 +102,7 @@ const SearchPage = () => {
           {sortedProducts.length ? (
             <>
               <CatalogTopToolbar
+                products={foundedProducts}
                 sortedProducts={sortedProducts}
                 limitedSortedProducts={limitedSortedProducts}
               />

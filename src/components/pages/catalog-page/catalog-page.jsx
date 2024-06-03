@@ -101,6 +101,8 @@ const CatalogPage = ({ category }) => {
           {sortedProducts.length ? (
             <>
               <CatalogTopToolbar
+                products={currentCategoryProducts}
+                category={category}
                 sortedProducts={sortedProducts}
                 limitedSortedProducts={limitedSortedProducts}
               />

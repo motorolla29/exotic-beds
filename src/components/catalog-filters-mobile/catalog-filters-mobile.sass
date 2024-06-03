@@ -1,0 +1,118 @@
+@import 'src/styles/variables'
+    
+.catalog-filters-mobile
+    position: absolute
+    top: 0
+    left: 0
+    min-height: 100%
+    max-height: 100%
+    z-index: 999
+    padding: 2em 
+    flex-direction: column
+    background: $main-color-green-light
+    height: fit-content
+    width: 100%
+
+    &_header
+        display: flex
+        justify-content: space-between
+        min-height: 4em
+
+        
+        &_main-title
+        position: relative
+        padding-left: 2.5em
+        padding-bottom: 1.5em
+
+        &::before
+            position: absolute
+            content: url('../../images/ui-icons/filter.svg')
+            width: 1.5em
+            left: 0
+
+        &_clear-button
+            cursor: pointer
+            padding: 0.5em
+            background: none
+            border: 1px solid $main-color-grey-transparent
+            border-radius: 1em
+            color: $main-color-grey
+            font-size: 1em
+            font-weight: 600
+
+            &:hover
+                color: $main-color-turquoise
+                border-color: $main-color-turquoise
+            
+            &:active
+                opacity: 0.8
+
+    
+            
+    &_filter
+
+        &_title
+            user-select: none
+            position: relative
+            padding: 1em 0
+            border-bottom: 1px solid #4f4a5717
+            cursor: pointer
+
+            &:hover
+                color: $main-color-grey
+                border-color: #4f4a574a
+
+            &::after
+                position: absolute
+                content: ""
+                width: 0.4em
+                height: 0.4em
+                border-right: 1px solid $main-color-grey
+                border-bottom: 1px solid $main-color-grey
+                transform: rotate(225deg)
+                right: 0.5em
+                top: 50%
+                transition: transform 0.2s ease-out
+
+            &.hidden::after
+                position: absolute
+                content: ""
+                width: 0.4em
+                height: 0.4em
+                border-right: 1px solid $main-color-grey
+                border-bottom: 1px solid $main-color-grey
+                transform: rotate(45deg) 
+                right: 0.5em
+                top: 50%
+
+        & .hidden ~ div.hidden
+            display: none
+
+    &_show-products-button
+        margin: 2em 0 1em 0
+        display: flex
+        justify-content: center
+        button
+            opacity: 0.8
+            cursor: pointer
+            display: flex
+            justify-content: center
+            align-items: center
+            background: $main-color-turquoise
+            color: $main-color-biscuit
+            outline: none
+            border: none
+            border-radius: 2em
+            height: 4em
+            width: 14em
+            &:hover
+                opacity: 0.6
+
+
+@media (max-width: 480px)
+    .catalog-filters-mobile_show-products-button button
+        font-size: 12px
+
+@media (max-width: 320px)
+    .catalog-filters-mobile_show-products-button button
+        font-size: 10px

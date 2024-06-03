@@ -1,19 +1,30 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import useWindowSize from '../../hooks/use-window-size';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import CatalogFiltersMobile from '../catalog-filters-mobile/catalog-filters-mobile';
+import useWindowSize from '../../hooks/use-window-size';
+import { scrollController } from '../../utils';
+
+import { ReactComponent as FiltersIcon } from '../../images/ui-icons/filters-icon.svg';
+
 import './catalog-top-toolbar.sass';
 
-const CatalogTopToolbar = ({ sortedProducts, limitedSortedProducts }) => {
+const CatalogTopToolbar = ({
+  products,
+  category,
+  sortedProducts,
+  limitedSortedProducts,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 1;
   const [limit, setLimit] = useState(searchParams.get('limit') || 24);
   const [sort, setSort] = useState(searchParams.get('sortBy') || 'relevance');
+  const [filtersVisible, setFiltersVisible] = useState(false);
   const [ww, wh] = useWindowSize();
 
   const handleLimitChange = (event) => {
@@ -103,7 +114,29 @@ const CatalogTopToolbar = ({ sortedProducts, limitedSortedProducts }) => {
             </Box>
           </div>
         </div>
-        {ww <= 768 ? <div className="top-toolbar_panel_filter">+</div> : null}
+        {ww <= 768 ? (
+          <div
+            onClick={() => {
+              setFiltersVisible(true);
+              window.scrollTo(0, 0);
+              scrollController.disabledScroll();
+            }}
+            className="top-toolbar_panel_filter"
+          >
+            <FiltersIcon />
+          </div>
+        ) : null}
+        {ww <= 768 && filtersVisible ? (
+          <CatalogFiltersMobile
+            closeFilters={() => {
+              setFiltersVisible(false);
+              scrollController.enabledScroll();
+            }}
+            products={products}
+            category={category}
+            sortedProducts={sortedProducts}
+          />
+        ) : null}
       </div>
     </div>
   );

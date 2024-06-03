@@ -9,6 +9,7 @@ import Cart from '../cart/cart';
 import 'overlayscrollbars/overlayscrollbars.css';
 import './layout.sass';
 import LogoSpinner from '../logo-spinner/logo-spinner';
+import { cartOpen } from '../../store/action';
 
 const Layout = () => {
   const cartOpen = useSelector((state) => state.isCartOpen);
