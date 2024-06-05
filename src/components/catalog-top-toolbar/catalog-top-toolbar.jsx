@@ -19,6 +19,7 @@ const CatalogTopToolbar = ({
   category,
   sortedProducts,
   limitedSortedProducts,
+  noFilter,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 1;
@@ -114,7 +115,7 @@ const CatalogTopToolbar = ({
             </Box>
           </div>
         </div>
-        {ww <= 768 ? (
+        {ww <= 768 && !noFilter ? (
           <div
             onClick={() => {
               setFiltersVisible(true);

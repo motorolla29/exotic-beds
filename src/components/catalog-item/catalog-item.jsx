@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 import RatingStars from '../rating-stars/rating-stars';
+import { randomInteger } from '../../utils';
 
 import './catalog-item.sass';
 import {
@@ -19,8 +21,21 @@ const CatalogItem = ({ item, size = '' }) => {
   const isInBasket = basketItems.find((it) => it.id === item.id);
   const isLoved = lovedProducts.find((it) => it.id === item.id);
 
+  const initialStateVariants = [
+    { opacity: 0, x: -25 },
+    { opacity: 0, x: 25 },
+    { opacity: 0, y: -25 },
+    { opacity: 0, y: 25 },
+  ];
+
   return (
-    <div key={item.id} className={`catalog-item ${size}`}>
+    <motion.div
+      initial={initialStateVariants[randomInteger(0, 3)]}
+      animate={{ opacity: 1, x: 0, y: 0 }}
+      transition={{ duration: 0.5 }}
+      key={item.id}
+      className={`catalog-item ${size}`}
+    >
       <div className="catalog-item_visual">
         <Link to={`/${item.id}`}>
           <img
@@ -104,7 +119,7 @@ const CatalogItem = ({ item, size = '' }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

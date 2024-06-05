@@ -53,6 +53,7 @@ const LovelistPage = () => {
             <CatalogTopToolbar
               sortedProducts={sortedProducts}
               limitedSortedProducts={limitedSortedProducts}
+              noFilter
             />
             <CatalogPagination
               page={page}

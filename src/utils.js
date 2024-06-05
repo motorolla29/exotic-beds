@@ -429,6 +429,12 @@ const getStoreWorkDescription = (isOpen, calendar) => {
   }
 };
 
+const randomInteger = (min, max) => {
+  // случайное число от min до (max+1)
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+};
+
 // const setIdByTitle = (data) => {
 //   data.forEach((it) => (it.id = it.title.replace(/[-\s]/g, '-')));
 //   return data;
@@ -448,4 +454,5 @@ export {
   findMostExpensiveProductObj,
   getStoreWorkStatus,
   getStoreWorkDescription,
+  randomInteger,
 };

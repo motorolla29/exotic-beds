@@ -43,7 +43,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.products = action.payload;
     })
     .addCase(productsAreLoaded, (state, action) => {
-      state.products = action.payload;
+      state.productsAreLoaded = action.payload;
     })
     .addCase(cartOpen, (state, action) => {
       state.isCartOpen = action.payload;
