@@ -10,7 +10,6 @@ import {
   FullscreenControl,
   AttributionControl,
 } from 'react-map-gl/maplibre';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { setMapViewState, setNearStoresCenter } from '../../store/action';
 import {

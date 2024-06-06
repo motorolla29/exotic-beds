@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import App from './components/app/app';
 
+import '@fontsource/inter';
 import './index.sass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

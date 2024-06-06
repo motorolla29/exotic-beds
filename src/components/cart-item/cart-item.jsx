@@ -9,10 +9,11 @@ import {
   toggleProductInLovelist,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
+import { ResponsiveModal } from '../confirmation-modal/confirmation-modal';
 
 import './cart-item.sass';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, setItemId, setModalOpen }) => {
   const dispatch = useDispatch();
   const lovedProducts = useSelector((state) => state.lovelistProducts);
   const isLoved = lovedProducts.find((it) => it.id === item.id);
@@ -55,7 +56,10 @@ const CartItem = ({ item }) => {
           </div>
           <div className="cart-item_body_ui_right-side">
             <span
-              onClick={() => dispatch(removeProductFromCart(item.id))}
+              onClick={() => {
+                setItemId(item.id);
+                setModalOpen(true);
+              }}
               className="cart-item_body_ui_right-side_remove"
             >
               Remove

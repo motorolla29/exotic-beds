@@ -9,6 +9,8 @@
         cursor: pointer
 
 .store-finder-popup
+    animation-duration: 0.5s
+    animation-name: arise
 
     &_name
         padding-bottom: 5px
@@ -43,3 +45,10 @@
         
     &.maplibregl-popup-anchor-bottom .maplibregl-popup-tip // указатель попапа
         border-top-color: $main-color-white
+
+@keyframes arise 
+    0% 
+        opacity: 0
+    100%
+        opacity: 1
+  
