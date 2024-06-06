@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { AnimatePresence } from 'framer-motion';
 
 import CatalogFiltersMobile from '../catalog-filters-mobile/catalog-filters-mobile';
 import useWindowSize from '../../hooks/use-window-size';
@@ -127,6 +128,8 @@ const CatalogTopToolbar = ({
             <FiltersIcon />
           </div>
         ) : null}
+      </div>
+      <AnimatePresence>
         {ww <= 768 && filtersVisible ? (
           <CatalogFiltersMobile
             closeFilters={() => {
@@ -138,7 +141,7 @@ const CatalogTopToolbar = ({
             sortedProducts={sortedProducts}
           />
         ) : null}
-      </div>
+      </AnimatePresence>
     </div>
   );
 };

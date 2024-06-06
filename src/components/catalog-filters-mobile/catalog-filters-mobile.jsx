@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { motion } from 'framer-motion';
 
 import CategoryFilter from '../filter-components/category-filter/category-filter';
 import PriceFilter from '../filter-components/price-filter/price-filter';
@@ -52,68 +53,79 @@ const CatalogFiltersMobile = ({
       : e.target.nextElementSibling.classList.add('hidden');
   };
   return (
-    <OverlayScrollbarsComponent className="catalog-filters-mobile">
-      <div className="catalog-filters-mobile_header">
-        <h3 className="catalog-filters-mobile_header_main-title">Filter By</h3>
-        {isFilterParams ? (
-          <button
-            onClick={onClearButtonHandler}
-            className="catalog-filters-mobile_header_clear-button"
-          >
-            {' '}
-            Clear all
-          </button>
-        ) : null}
-      </div>
-      {category ? null : (
-        <div className="catalog-filters-mobile_filter">
-          <h5
-            className="catalog-filters-mobile_filter_title"
-            onClick={onTitleClickHandler}
-          >
-            Category
-          </h5>
-          <CategoryFilter products={products} />
-        </div>
-      )}
-      <div className="catalog-filters-mobile_filter">
-        <h5
-          className="catalog-filters-mobile_filter_title"
-          onClick={onTitleClickHandler}
+    <motion.div exit={{ opacity: 0 }}>
+      <OverlayScrollbarsComponent className="catalog-filters-mobile">
+        <motion.div
+          key="filters"
+          initial={{ y: 150 }}
+          animate={{ y: 0 }}
+          exit={{ y: -200, opacity: 0, transition: 'easeOut' }}
         >
-          Price, €
-        </h5>
-        <PriceFilter
-          minPrice={findCheapestProductObj(products).price}
-          maxPrice={findMostExpensiveProductObj(products).price}
-        />
-      </div>
-      <div className="catalog-filters-mobile_filter">
-        <h5
-          className="catalog-filters-mobile_filter_title"
-          onClick={onTitleClickHandler}
-        >
-          Rating
-        </h5>
-        <RatingFilter products={products} />
-      </div>
-      <div className="catalog-filters-mobile_filter">
-        <h5
-          className="catalog-filters-mobile_filter_title"
-          onClick={onTitleClickHandler}
-        >
-          Series
-        </h5>
-        <SeriesFilter products={products} />
-      </div>
-      <FilterSwitchers />
-      <div className="catalog-filters-mobile_show-products-button">
-        <button onClick={closeFilters}>
-          Show {sortedProducts.length}{' '}
-          {sortedProducts.length === 1 ? 'product' : 'products'}
-        </button>
-      </div>{' '}
-    </OverlayScrollbarsComponent>
+          <div className="catalog-filters-mobile_header">
+            <h3 className="catalog-filters-mobile_header_main-title">
+              Filter By
+            </h3>
+            {isFilterParams ? (
+              <button
+                onClick={onClearButtonHandler}
+                className="catalog-filters-mobile_header_clear-button"
+              >
+                {' '}
+                Clear all
+              </button>
+            ) : null}
+          </div>
+          {category ? null : (
+            <div className="catalog-filters-mobile_filter">
+              <h5
+                className="catalog-filters-mobile_filter_title"
+                onClick={onTitleClickHandler}
+              >
+                Category
+              </h5>
+              <CategoryFilter products={products} />
+            </div>
+          )}
+          <div className="catalog-filters-mobile_filter">
+            <h5
+              className="catalog-filters-mobile_filter_title"
+              onClick={onTitleClickHandler}
+            >
+              Price, €
+            </h5>
+            <PriceFilter
+              minPrice={findCheapestProductObj(products).price}
+              maxPrice={findMostExpensiveProductObj(products).price}
+            />
+          </div>
+          <div className="catalog-filters-mobile_filter">
+            <h5
+              className="catalog-filters-mobile_filter_title"
+              onClick={onTitleClickHandler}
+            >
+              Rating
+            </h5>
+            <RatingFilter products={products} />
+          </div>
+          <div className="catalog-filters-mobile_filter">
+            <h5
+              className="catalog-filters-mobile_filter_title"
+              onClick={onTitleClickHandler}
+            >
+              Series
+            </h5>
+            <SeriesFilter products={products} />
+          </div>
+          <FilterSwitchers />
+          <div className="catalog-filters-mobile_show-products-button">
+            <button onClick={closeFilters}>
+              Show {sortedProducts.length}{' '}
+              {sortedProducts.length === 1 ? 'product' : 'products'}
+            </button>
+          </div>{' '}
+        </motion.div>
+      </OverlayScrollbarsComponent>
+    </motion.div>
   );
 };
 
