@@ -87,6 +87,8 @@ const StoreFinder = () => {
 
   const onMapClick = (event) => {
     const feature = event.features[0];
+    setShowPopup(false);
+    setPopupInfo(null);
     if (feature) {
       if (feature.layer.id === 'unclustered-point') {
         setShowPopup(true);

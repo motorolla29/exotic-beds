@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import {
   Map,
   Source,
@@ -10,6 +10,7 @@ import {
   FullscreenControl,
   AttributionControl,
 } from 'react-map-gl/maplibre';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { setMapViewState, setNearStoresCenter } from '../../store/action';
 import {
@@ -86,30 +87,26 @@ const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
           closeOnClick={false}
           onClose={() => setShowPopup(false)}
         >
-          <div>
-            <h3 className="store-finder-popup_name">{popupInfo.name}</h3>
-            <p className="store-finder-popup_address">
-              {popupInfo.address}, {popupInfo.city}, {popupInfo.region},{' '}
-              {popupInfo.postCode}, {popupInfo.countryCode}
-            </p>
-            <div className="store-finder-popup_work">
-              <span
-                className={`store-finder-popup_work_status ${
-                  getStoreWorkStatus(popupInfo.workCalendar)
-                    ? 'opened'
-                    : 'closed'
-                }`}
-              >
-                {getStoreWorkStatus(popupInfo.workCalendar) ? 'Open' : 'Closed'}
-              </span>
-              •
-              <span className="store-finder-popup_work_description">
-                {getStoreWorkDescription(
-                  getStoreWorkStatus(popupInfo.workCalendar),
-                  popupInfo.workCalendar
-                )}
-              </span>
-            </div>
+          <h3 className="store-finder-popup_name">{popupInfo.name}</h3>
+          <p className="store-finder-popup_address">
+            {popupInfo.address}, {popupInfo.city}, {popupInfo.region},{' '}
+            {popupInfo.postCode}, {popupInfo.countryCode}
+          </p>
+          <div className="store-finder-popup_work">
+            <span
+              className={`store-finder-popup_work_status ${
+                getStoreWorkStatus(popupInfo.workCalendar) ? 'opened' : 'closed'
+              }`}
+            >
+              {getStoreWorkStatus(popupInfo.workCalendar) ? 'Open' : 'Closed'}
+            </span>
+            •
+            <span className="store-finder-popup_work_description">
+              {getStoreWorkDescription(
+                getStoreWorkStatus(popupInfo.workCalendar),
+                popupInfo.workCalendar
+              )}
+            </span>
           </div>
         </Popup>
       )}

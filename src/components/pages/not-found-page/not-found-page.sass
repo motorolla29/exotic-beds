@@ -1,0 +1,47 @@
+@import 'src/styles/variables'
+    
+.not-found
+    font-family: "Debussy"
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    &_title
+        font-weight: 600
+        font-size: 6em
+    &_subtitle
+        text-align: center
+        font-size: 4em 
+        margin-bottom: 0.25em
+    &_link
+        cursor: pointer
+        text-decoration: underline
+        font-size: 2em
+        &:hover
+            color: $main-color-grey
+
+@font-face 
+  font-family: "Debussy"
+  src: "../../fonts/debussy.ttf" 
+
+@media (max-width: 1200px) 
+    .not-found
+        font-size: 14px
+
+@media (max-width: 992px) 
+    .not-found
+        font-size: 12px
+
+@media (max-width: 768px) 
+    .not-found
+        font-size: 10px
+        padding-bottom: 1rem
+
+@media (max-width: 480px) 
+    .not-found
+        font-size: 8px
+
+@media (max-width: 320px) 
+    .not-found
+        font-size: 6px
