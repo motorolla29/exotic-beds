@@ -4,14 +4,18 @@ import { motion } from 'framer-motion';
 
 import RatingStars from '../rating-stars/rating-stars';
 import { randomInteger } from '../../utils';
-
-import './catalog-item.sass';
 import {
   addProductToCart,
   cartOpen,
+  setSnackbar,
   toggleProductInLovelist,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
+import AddShoppingCartRounded from '@mui/icons-material/AddShoppingCartRounded';
+import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
+import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
+
+import './catalog-item.sass';
 
 const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
@@ -104,7 +108,16 @@ const CatalogItem = ({ item, size = '' }) => {
           ) : (
             <button
               className="catalog-item_info_ui_add-to-cart-button"
-              onClick={() => dispatch(addProductToCart(item.id))}
+              onClick={() => {
+                dispatch(addProductToCart(item.id));
+                dispatch(
+                  setSnackbar({
+                    open: true,
+                    decorator: <AddShoppingCartRounded />,
+                    text: 'Product added to basket',
+                  })
+                );
+              }}
               title="Add to basket"
             >
               Add to basket
@@ -112,7 +125,24 @@ const CatalogItem = ({ item, size = '' }) => {
           )}
           <button
             className="catalog-item_info_ui_lovelist-button"
-            onClick={() => dispatch(toggleProductInLovelist(item.id))}
+            onClick={() => {
+              dispatch(toggleProductInLovelist(item.id));
+              isLoved
+                ? dispatch(
+                    setSnackbar({
+                      open: true,
+                      decorator: <HeartBrokenOutlined />,
+                      text: 'Product is not loved anymore :(',
+                    })
+                  )
+                : dispatch(
+                    setSnackbar({
+                      open: true,
+                      decorator: <FavoriteBorderOutlined />,
+                      text: 'Product is loved now :)',
+                    })
+                  );
+            }}
             title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
           >
             <HeartIcon isLoved={isLoved} />

@@ -11,6 +11,7 @@ import {
   toggleProductInLovelist,
   setMapViewState,
   setNearStoresCenter,
+  setSnackbar,
 } from './action';
 
 import {
@@ -35,6 +36,11 @@ const initialState = {
     zoom: 1.9,
   },
   nearStoresCenter: { latitude: 55.751244, longitude: 37.618423 },
+  snackbar: {
+    open: false,
+    text: '',
+    decorator: null,
+  },
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -75,6 +81,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setNearStoresCenter, (state, action) => {
       state.nearStoresCenter = action.payload;
+    })
+    .addCase(setSnackbar, (state, action) => {
+      state.snackbar = action.payload;
     });
 });
 

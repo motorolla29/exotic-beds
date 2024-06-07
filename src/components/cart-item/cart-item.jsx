@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   decreaseProductAmountInCart,
   increaseProductAmountInCart,
-  removeProductFromCart,
   cartOpen,
   toggleProductInLovelist,
+  setSnackbar,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
-import { ResponsiveModal } from '../confirmation-modal/confirmation-modal';
+import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
+import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 
 import './cart-item.sass';
 
@@ -49,7 +50,24 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
         </div>
         <div className="cart-item_body_ui">
           <div
-            onClick={() => dispatch(toggleProductInLovelist(item.id))}
+            onClick={() => {
+              dispatch(toggleProductInLovelist(item.id));
+              isLoved
+                ? dispatch(
+                    setSnackbar({
+                      open: true,
+                      decorator: <HeartBrokenOutlined />,
+                      text: 'Product is not loved anymore :(',
+                    })
+                  )
+                : dispatch(
+                    setSnackbar({
+                      open: true,
+                      decorator: <FavoriteBorderOutlined />,
+                      text: 'Product is loved now :)',
+                    })
+                  );
+            }}
             className="cart-item_body_ui_lovelist"
           >
             <HeartIcon isLoved={isLoved} />

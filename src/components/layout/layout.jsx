@@ -5,11 +5,11 @@ import { OverlayScrollbars } from 'overlayscrollbars';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Cart from '../cart/cart';
+import LogoSpinner from '../logo-spinner/logo-spinner';
+import { MainSnackbar } from '../main-snackbar/main-snackbar';
 
 import 'overlayscrollbars/overlayscrollbars.css';
 import './layout.sass';
-import LogoSpinner from '../logo-spinner/logo-spinner';
-import { cartOpen } from '../../store/action';
 
 const Layout = () => {
   const cartOpen = useSelector((state) => state.isCartOpen);
@@ -31,6 +31,7 @@ const Layout = () => {
           <Outlet />
           <Cart />
           <LogoSpinner />
+          <MainSnackbar />
         </div>
       </div>
       <Footer />

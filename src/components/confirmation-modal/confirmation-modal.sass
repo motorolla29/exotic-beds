@@ -4,11 +4,15 @@
     
     & .MuiModalDialog-root
         border-radius: 20px
-        background-color: $main-color-white
+        background-color: $main-color-green-light
         color: $main-color-turquoise
+        & .MuiDialogContent-root
+            color: $main-color-grey
         & .MuiButton-root
             border-radius: 20px
             &.MuiButton-colorDanger
                 color: $main-color-white
             &.MuiButton-colorNeutral
                 color: $main-color-grey
+                &:hover
+                    background: $main-color-white-transparent

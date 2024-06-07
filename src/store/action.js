@@ -55,6 +55,10 @@ const setNearStoresCenter = createAction(
   })
 );
 
+const setSnackbar = createAction('SET_SNACKBAR', (options) => ({
+  payload: options,
+}));
+
 export {
   loadProducts,
   productsAreLoaded,
@@ -66,4 +70,5 @@ export {
   toggleProductInLovelist,
   setMapViewState,
   setNearStoresCenter,
+  setSnackbar,
 };

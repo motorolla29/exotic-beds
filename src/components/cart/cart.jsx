@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import RemoveShoppingCartRounded from '@mui/icons-material/RemoveShoppingCartRounded';
 
-import { cartOpen, removeProductFromCart } from '../../store/action';
+import {
+  cartOpen,
+  removeProductFromCart,
+  setSnackbar,
+} from '../../store/action';
 import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
@@ -156,7 +161,16 @@ const Cart = () => {
         yesBtnText="Yes, remove it"
         noBtnText="Cancel"
         itemId={itemId}
-        action={() => dispatch(removeProductFromCart(itemId))}
+        action={() => {
+          dispatch(removeProductFromCart(itemId));
+          dispatch(
+            setSnackbar({
+              open: true,
+              decorator: <RemoveShoppingCartRounded />,
+              text: 'Product removed from basket',
+            })
+          );
+        }}
       />
     </>
   );

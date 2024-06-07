@@ -1,7 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import AddShoppingCartRounded from '@mui/icons-material/AddShoppingCartRounded';
+import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
+import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 
-import { addProductToCart, cartOpen } from '../../../store/action';
+import { addProductToCart, cartOpen, setSnackbar } from '../../../store/action';
 import { toggleProductInLovelist } from '../../../store/action';
 import InnerImageZoom from 'react-inner-image-zoom';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
@@ -96,7 +99,16 @@ const ProductPage = () => {
                 </button>
               ) : (
                 <button
-                  onClick={() => dispatch(addProductToCart(product.id))}
+                  onClick={() => {
+                    dispatch(addProductToCart(product.id));
+                    dispatch(
+                      setSnackbar({
+                        open: true,
+                        decorator: <AddShoppingCartRounded />,
+                        text: 'Product added to basket',
+                      })
+                    );
+                  }}
                   className="product-page_info_ui_add-to-cart-button"
                   title="Add to basket"
                 >
@@ -105,7 +117,24 @@ const ProductPage = () => {
               )}
 
               <button
-                onClick={() => dispatch(toggleProductInLovelist(product.id))}
+                onClick={() => {
+                  dispatch(toggleProductInLovelist(product.id));
+                  isLoved
+                    ? dispatch(
+                        setSnackbar({
+                          open: true,
+                          decorator: <HeartBrokenOutlined />,
+                          text: 'Product is not loved anymore :(',
+                        })
+                      )
+                    : dispatch(
+                        setSnackbar({
+                          open: true,
+                          decorator: <FavoriteBorderOutlined />,
+                          text: 'Product is loved now :)',
+                        })
+                      );
+                }}
                 className="product-page_info_ui_lovelist-button"
                 title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
               >
