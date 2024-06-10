@@ -13,7 +13,8 @@ import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
 import { scrollController } from '../../utils';
-import { ConfirmationModal } from '../confirmation-modal/confirmation-modal';
+import ConfirmationModal from '../confirmation-modal/confirmation-modal';
+import { PROMOCODES } from '../../data/promocodes';
 
 import './cart.sass';
 
@@ -27,6 +28,22 @@ const Cart = () => {
     (acc, currentValue) => acc + currentValue.quantityInCart,
     0
   );
+  const [promocodeInput, setPromocodeInput] = useState('');
+  const [promocodeStatus, setPromocodeStatus] = useState(null);
+  const [promocode, setPromocode] = useState('2024');
+  const onApplyPromocodeClick = () => {
+    if (Object.keys(PROMOCODES).includes(promocodeInput)) {
+      setPromocode(promocodeInput);
+      setPromocodeStatus('valid');
+    } else {
+      setPromocodeStatus('invalid');
+    }
+  };
+  const onCancelPromocodeClick = () => {
+    setPromocode(null);
+    setPromocodeStatus(null);
+    setPromocodeInput('');
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -116,13 +133,54 @@ const Cart = () => {
                             {countTheBasket(cartItems).delivery}
                           </span>
                         </div>
+                        {promocode ? (
+                          <div className="cart_widget_widget-inner_summary_total">
+                            <span>
+                              Promocode ({' '}
+                              <span
+                                style={{
+                                  color: '#004757',
+                                  textDecoration: 'underline red wavy',
+                                }}
+                              >
+                                {promocode}
+                              </span>{' '}
+                              )
+                            </span>
+                            <span>
+                              - €
+                              {(
+                                countTheBasket(cartItems).total *
+                                PROMOCODES[promocode]
+                              ).toFixed(2)}
+                            </span>
+                          </div>
+                        ) : null}
                         <div className="cart_widget_widget-inner_summary_total">
                           <span>Total savings:</span>
-                          <span>€{countTheBasket(cartItems).savings}</span>
+                          <span>
+                            €
+                            {(
+                              countTheBasket(cartItems).savings +
+                              (promocode
+                                ? countTheBasket(cartItems).total *
+                                  PROMOCODES[promocode]
+                                : 0)
+                            ).toFixed(2)}
+                          </span>
                         </div>
                         <div className="cart_widget_widget-inner_summary_order-total">
                           <span>Order total:</span>
-                          <span>€{countTheBasket(cartItems).total}</span>
+                          <span>
+                            €
+                            {(
+                              countTheBasket(cartItems).total -
+                              (promocode
+                                ? countTheBasket(cartItems).total *
+                                  PROMOCODES[promocode]
+                                : 0)
+                            ).toFixed(2)}
+                          </span>
                         </div>
                       </div>
                       <div className="cart_widget_widget-inner_promocode">
@@ -130,10 +188,40 @@ const Cart = () => {
                           If you have a promo code enter it here:
                         </span>
                         <div className="cart_widget_widget-inner_promocode_body">
-                          <input className="cart_widget_widget-inner_promocode_body_input"></input>
-                          <button className="cart_widget_widget-inner_promocode_body_button">
-                            Apply
-                          </button>
+                          <div className="cart_widget_widget-inner_promocode_body_input-container">
+                            <input
+                              value={promocodeInput}
+                              disabled={promocode}
+                              onChange={(e) =>
+                                setPromocodeInput(e.target.value)
+                              }
+                              className={`cart_widget_widget-inner_promocode_body_input ${promocodeStatus}`}
+                            />
+                            {promocodeStatus ? (
+                              <span
+                                className={`cart_widget_widget-inner_promocode_body_status ${promocodeStatus}`}
+                              >
+                                {promocodeStatus === 'valid'
+                                  ? 'Promocode applied'
+                                  : 'Invalid promocode'}
+                              </span>
+                            ) : null}
+                          </div>
+                          {promocode ? (
+                            <button
+                              onClick={onCancelPromocodeClick}
+                              className="cart_widget_widget-inner_promocode_body_button"
+                            >
+                              Cancel
+                            </button>
+                          ) : (
+                            <button
+                              onClick={onApplyPromocodeClick}
+                              className="cart_widget_widget-inner_promocode_body_button"
+                            >
+                              Apply
+                            </button>
+                          )}
                         </div>
                       </div>
                       <div className="cart_widget_widget-inner_checkout">

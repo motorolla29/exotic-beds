@@ -21,7 +21,7 @@ import {
   updateLovelist,
 } from '../utils';
 
-import PRODUCTS from '../mocks/products';
+import PRODUCTS from '../data/products';
 
 const initialState = {
   products: PRODUCTS,

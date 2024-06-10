@@ -58,7 +58,7 @@ const MainPage = () => {
           effect={'fade'}
           loop={true}
           modules={[EffectFade, Autoplay, Pagination, Navigation]}
-          navigation
+          navigation={ww > 768 ? true : false}
           className="promo-swiper"
         >
           <SwiperSlide

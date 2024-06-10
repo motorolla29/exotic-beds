@@ -89,7 +89,7 @@
                     font-size: 1.6em
                     font-weight: 900
                     padding: 1em 0
-                    border-top: 1px solid $main-color-turquoise
+                    border-top: 1px solid #0047573a
 
                 &_total, &_order-total
                     display: flex
@@ -105,13 +105,13 @@
                     font-weight: 600
                     margin-bottom: 0
                     padding: 1em 0
-                    border-top: 1px dashed $main-color-turquoise
+                    border-top: 1px solid #0047573a
 
             &_promocode
                 display: flex
                 flex-direction: column
                 align-items: center
-                margin: 1em 0
+                margin: 1em 0 2em 0
 
                 &_title
                     color: $main-color-grey
@@ -123,16 +123,40 @@
                     margin-top: 1em
                     font-size: 1.4em
 
+                    &_input-container
+                        display: grid
+                        position: relative
+                        width: 8em
+                        height: 2em
+                        margin: 0 1em
                     &_input
                         padding: 0.2em 0.4em
                         font-size: 1em
                         color: $main-color-grey
-                        margin: 0 1em
-                        width: 6em
-                        height: 2em
-                        border-radius: 0.2em
+                        width: 100%
+                        height: 100%
+                        border-radius: 0.25em
                         border: #00475747 solid 1px 
                         outline-color: #004757ae
+                        &.invalid
+                            border-color: red
+
+                    &_status
+                        width: 100%
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        position: absolute
+                        text-align: center
+                        font-weight: 600
+                        font-size: 0.60em
+                        padding: 0.25em 0
+                        left: 0%
+                        top: 100%
+                        &.valid
+                            color: green
+                        &.invalid
+                            color: red
 
                     &_button
                         color: $main-color-grey
