@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimate } from 'framer-motion';
 import RemoveShoppingCartRounded from '@mui/icons-material/RemoveShoppingCartRounded';
 
 import {
@@ -30,13 +30,28 @@ const Cart = () => {
   );
   const [promocodeInput, setPromocodeInput] = useState('');
   const [promocodeStatus, setPromocodeStatus] = useState(null);
-  const [promocode, setPromocode] = useState('2024');
+  const [promocode, setPromocode] = useState(null);
+  const [scope, animate] = useAnimate();
+
   const onApplyPromocodeClick = () => {
     if (Object.keys(PROMOCODES).includes(promocodeInput)) {
       setPromocode(promocodeInput);
       setPromocodeStatus('valid');
     } else {
       setPromocodeStatus('invalid');
+      animate(
+        '.cart_widget_widget-inner_promocode_body_status',
+        {
+          marginLeft: [0, -8, 0, 6, 0, -4, 0, 2, 0],
+        },
+        {
+          transition: {
+            duration: 0.9,
+            ease: 'easeInOut',
+            times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
+          },
+        }
+      );
     }
   };
   const onCancelPromocodeClick = () => {
@@ -57,7 +72,7 @@ const Cart = () => {
     <>
       <AnimatePresence>
         {isOpen && (
-          <div className="cart">
+          <div className="cart" ref={scope}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -190,22 +205,26 @@ const Cart = () => {
                         <div className="cart_widget_widget-inner_promocode_body">
                           <div className="cart_widget_widget-inner_promocode_body_input-container">
                             <input
-                              value={promocodeInput}
+                              value={promocode ? promocode : promocodeInput}
                               disabled={promocode}
                               onChange={(e) =>
                                 setPromocodeInput(e.target.value)
                               }
                               className={`cart_widget_widget-inner_promocode_body_input ${promocodeStatus}`}
                             />
-                            {promocodeStatus ? (
-                              <span
-                                className={`cart_widget_widget-inner_promocode_body_status ${promocodeStatus}`}
-                              >
-                                {promocodeStatus === 'valid'
-                                  ? 'Promocode applied'
-                                  : 'Invalid promocode'}
-                              </span>
-                            ) : null}
+
+                            <span
+                              style={{
+                                visibility: promocodeStatus
+                                  ? 'visible'
+                                  : 'hidden',
+                              }}
+                              className={`cart_widget_widget-inner_promocode_body_status ${promocodeStatus}`}
+                            >
+                              {promocodeStatus === 'valid'
+                                ? 'Promocode applied'
+                                : 'Invalid promocode'}
+                            </span>
                           </div>
                           {promocode ? (
                             <button
