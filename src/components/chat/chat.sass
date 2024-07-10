@@ -1,0 +1,140 @@
+@import 'src/styles/variables'
+    
+.chat
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 75px
+    height: 75px
+    border-radius: 50%
+    position: fixed
+    right: 45px
+    bottom: 35px
+    background: #eefef6c9
+    z-index: 2
+    svg.cross-icon
+        width: 40%
+        height: 40%
+    svg.chat-icon
+        width: 55%
+        height: 55%
+
+.contacts-container
+    cursor: default
+    display: flex
+    border-radius: 20px
+    flex-direction: column
+    align-items: center
+    width: 300px
+    height: 450px
+    background: #dddddd
+    position: absolute
+    margin-bottom: 20px
+    bottom: 100%
+    right: 0
+    box-shadow: 0px 0px 20px -6px rgba(0,0,0,1)
+    -webkit-box-shadow: 0px 0px 20px -6px rgba(0,0,0,1)
+    -moz-box-shadow: 0px 0px 20px -6px rgba(0,0,0,1)
+
+    & .logo
+        margin-top: 10px
+        width: 100px
+        height: auto
+
+    & .title
+        user-select: none
+        font-family: "Debussy"
+        font-weight: 400
+    & .contact-form
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        &_name-input, &_email-input, &_message-input
+            background: white
+            border-radius: 10px
+            width: 250px
+            padding: 5px
+            font-size: 14px
+            color: $main-color-turquoise
+            margin-top: 10px
+            border: none
+            outline: 1px solid $main-color-grey-transparent
+            &:focus
+                outline: 2px solid $main-color-turquoise-transparent
+            &.valid
+                outline: 2px solid #00c11d
+
+            &.invalid 
+                outline: 2px solid red
+
+
+        &_name-input
+        &_email-input
+        &_message-input
+            resize: none
+            height: 120px
+
+        &_error
+            color: red
+            width: 250px
+            font-size: 12px
+        &_submit-button
+            cursor: pointer
+            display: flex
+            align-content: center
+            justify-content: center
+            width: 80px
+            padding: 10px
+            margin-top: 20px
+            border-radius: 20px
+            outline: none
+            border: none
+            font-size: 14px
+            font-weight: 600
+            background: #4d8490 
+            color: #dddddd
+            &:hover
+                opacity: 0.8
+            &:active:not(:disabled)
+                transform: scale(0.97)
+            &:disabled
+                cursor: default
+            &.disabled
+                opacity: 0.2
+    & .form-succeeded-sent
+        margin-top: 10px
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        svg
+            width: 90px
+            height: auto
+
+        &_title
+            font-family: "Debussy"
+            color: $main-color-grey
+        &_description
+            font-size: 0.9em
+            font-weight: 600
+            margin-top: 15px
+            text-align: center
+            width: 80%
+                
+
+@media (max-width: 768px)
+    .chat
+        width: 55px
+        height: 55px
+        right: 35px
+        bottom: 25px
+@keyframes scale-arise
+    0%
+        opacity: 0
+        transform: scale(0.8)
+    100%
+        opacity: 0
+        transform: scale(1)
+        
