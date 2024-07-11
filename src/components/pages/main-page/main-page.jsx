@@ -66,7 +66,7 @@ const MainPage = () => {
             className="slide-1"
           />
           <SwiperSlide
-            onClick={() => navigate('/beds?series=Classic')}
+            onClick={() => navigate('/store-finder')}
             className="slide-2"
           />
           <SwiperSlide
@@ -84,6 +84,10 @@ const MainPage = () => {
           <SwiperSlide
             onClick={() => navigate('/search?q=sponge%20bob')}
             className="slide-6"
+          />
+          <SwiperSlide
+            onClick={() => navigate('/beds?series=Classic')}
+            className="slide-7"
           />
         </Swiper>
         <div className="highest-rated-items-block">
