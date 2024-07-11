@@ -23,7 +23,7 @@ const Chat = () => {
 
   const onNameChange = (e) => {
     e.target.value ? setNameFilled(true) : setNameFilled(false);
-    if (/^[a-zA-Z][a-zA-Z0-9-]{3,}$/.test(e.target.value)) {
+    if (/^[а-яА-ЯёЁa-zA-Z0-9-]{3,}$/.test(e.target.value)) {
       setNameValid(true);
     } else {
       setNameValid(false);
@@ -43,7 +43,7 @@ const Chat = () => {
   };
   const onMessageChange = (e) => {
     e.target.value ? setMessageFilled(true) : setMessageFilled(false);
-    if (/^[a-zA-Z][a-zA-Z0-9-]{10,}$/.test(e.target.value)) {
+    if (/^[а-яА-ЯёЁa-zA-Z0-9-]{10,}$/.test(e.target.value)) {
       setMessageValid(true);
     } else {
       setMessageValid(false);
