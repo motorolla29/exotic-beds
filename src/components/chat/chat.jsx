@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import { ReactComponent as CrossIcon } from '../../images/ui-icons/cross-icon.svg';
 import { ReactComponent as ChatIcon } from '../../images/ui-icons/chat-icon.svg';
-import { AnimatePresence, easeInOut, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import useSound from 'use-sound';
 import uvedomlenie from '../../sounds/uvedomlenie14.mp3';
 import { ReactComponent as Logo } from '../../images/logo/EB-LOGO-NO-TEXT.svg';
@@ -78,14 +78,13 @@ const Chat = () => {
   });
 
   const onWindowClickHandler = (e) => {
-    console.log(e.target);
     if (chatRef.current && !chatRef.current.contains(e.target))
       setChatOpen(false);
   };
 
   useEffect(() => {
     play();
-  }, [play, interacted]);
+  }, [interacted]);
 
   useEffect(() => {
     window.addEventListener('mousedown', onWindowClickHandler);
@@ -136,6 +135,7 @@ const Chat = () => {
               {state.succeeded ? (
                 <div className="form-succeeded-sent">
                   <CheckmarkIconMotion
+                    className="form-succeeded-sent_icon"
                     initial={{ opacity: 0, scale: 0.75 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, ease: 'easeInOut' }}
@@ -237,7 +237,7 @@ const Chat = () => {
                     </span>
                   )}
                   <motion.button
-                    initial={{ y: 100 }}
+                    initial={{ y: 90 }}
                     animate={{ y: 0 }}
                     transition={{
                       type: 'spring',

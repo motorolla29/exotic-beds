@@ -14,7 +14,6 @@ import './layout.sass';
 
 const Layout = () => {
   const cartOpen = useSelector((state) => state.isCartOpen);
-  const location = useLocation();
 
   const mainScrollConfig = {
     scrollbars: {
@@ -34,7 +33,7 @@ const Layout = () => {
           <Cart />
           <LogoSpinner />
           <MainSnackbar />
-          {location.pathname !== '/store-finder' ? <Chat /> : null}
+          <Chat />
         </div>
       </div>
       <Footer />
