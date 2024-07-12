@@ -47,7 +47,7 @@ const CatalogItem = ({ item, size = '' }) => {
             alt="product_picture"
             src={item.photo}
           />
-          {item.new ? (
+          {item.isNew ? (
             <img
               alt="new"
               src="/catalog-card-icons/new.png"

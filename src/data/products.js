@@ -10,6 +10,7 @@ const PRODUCTS = [
     sale: 7999,
     rating: 3.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Luxury-Crab-Bed',
@@ -21,6 +22,7 @@ const PRODUCTS = [
     price: 7999,
     rating: 4.5,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Biscuit-Fluffy-Cat-Bed',
@@ -32,6 +34,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.9,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Grey-Fluffy-Cat-Bed',
@@ -43,6 +46,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Purple-Yellow-Plush-Cat-Bed',
@@ -54,6 +58,7 @@ const PRODUCTS = [
     price: 6999,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Shark-Double-Bed',
@@ -65,6 +70,7 @@ const PRODUCTS = [
     price: 8999,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Blackout-Fluffy-Cat-Bed',
@@ -76,6 +82,7 @@ const PRODUCTS = [
     sale: 4999,
     rating: 4.2,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Grey-Cat-Bed-Rounded',
@@ -87,6 +94,7 @@ const PRODUCTS = [
     price: 12999,
     rating: 5,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Green-Pepe-Frog-Bed',
@@ -98,6 +106,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Green-Pepe-Frog-Bed-V2',
@@ -109,6 +118,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.2,
     availableQuantity: 2,
+    isNew: true,
   },
   {
     id: 'Koala-Ottoman-Bed',
@@ -120,6 +130,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.8,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Lilac-Stingray-Ottoman-Bed',
@@ -131,6 +142,7 @@ const PRODUCTS = [
     price: 9999,
     rating: 4.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Purple-Yellow-Plush-Cat-Bed-V2',
@@ -142,6 +154,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.4,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'White-Cat-Fluffy-Bed',
@@ -152,6 +165,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 3.3,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Fluffy-Closing-Bed',
@@ -162,6 +176,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 2.1,
     availableQuantity: 1,
+    isNew: true,
   },
   {
     id: 'Classic-Series-White-And-Fluffy-Cat-Bed',
@@ -173,6 +188,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.9,
     availableQuantity: 12,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Pink-And-Fluffy-Cat-Bed',
@@ -185,6 +201,7 @@ const PRODUCTS = [
     sale: 5999,
     rating: 4.9,
     availableQuantity: 12,
+    isNew: true,
   },
   {
     id: 'Ginger-White-Fluffy-Cat-Bed',
@@ -196,6 +213,7 @@ const PRODUCTS = [
     sale: 3999,
     rating: 4,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Plush-Shark-Bed',
@@ -206,6 +224,7 @@ const PRODUCTS = [
     price: 6999,
     rating: 4.7,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Beige-Fluffy-Cat-Bed',
@@ -218,6 +237,7 @@ const PRODUCTS = [
     sale: 5999,
     rating: 4.1,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Car-Series-Luxury-American-Retro-Cadillac',
@@ -229,6 +249,7 @@ const PRODUCTS = [
     price: 9999,
     rating: 4.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Fluffy-White-Teddy-Bear-Bed',
@@ -241,6 +262,7 @@ const PRODUCTS = [
     sale: 5999,
     rating: 4.8,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Luxury-Huge-Coral-Bed',
@@ -252,6 +274,7 @@ const PRODUCTS = [
     price: 19999,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Koala-Plush-Bed-Rounded',
@@ -263,6 +286,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 4.6,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Grey-Elephant-Soft-Double-Bed',
@@ -275,6 +299,7 @@ const PRODUCTS = [
     sale: 8199,
     rating: 4.1,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Lychee-Styled-Eco-Double-Bed',
@@ -286,6 +311,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 3.1,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Plush-Grey-Cat-Bed',
@@ -297,6 +323,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Totoro-Series-Ottoman-Bed',
@@ -308,6 +335,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.9,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Violet-Fluffy-Cat-Bed',
@@ -319,6 +347,7 @@ const PRODUCTS = [
     price: 6599,
     rating: 5,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Bubbled-Plush-Light-Grey-Cat-Bed',
@@ -331,6 +360,7 @@ const PRODUCTS = [
     sale: 3999,
     rating: 4.2,
     availableQuantity: 10,
+    isNew: false,
   },
   {
     id: 'Pink-Fluffy-Owl-Bed',
@@ -342,6 +372,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 4.4,
     availableQuantity: 18,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Six-Legged-Coffee-Colored-Cat-Bed',
@@ -353,6 +384,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.8,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Fluffy-Max-Light-Grey-White-Cat-Bed',
@@ -364,6 +396,7 @@ const PRODUCTS = [
     sale: 4599,
     rating: 4.2,
     availableQuantity: 10,
+    isNew: true,
   },
   {
     id: 'Grey-Owl-Double-Bed',
@@ -375,6 +408,7 @@ const PRODUCTS = [
     price: 6999,
     rating: 3.9,
     availableQuantity: 12,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Ginger-Cat-Bed',
@@ -387,6 +421,7 @@ const PRODUCTS = [
     sale: 4999,
     rating: 5,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Budget-Grey-Shark-Bed',
@@ -398,6 +433,7 @@ const PRODUCTS = [
     price: 2499,
     rating: 4.9,
     availableQuantity: 67,
+    isNew: false,
   },
   {
     id: 'Grey-Fluffy-Mouse-Bed',
@@ -409,6 +445,7 @@ const PRODUCTS = [
     price: 6999,
     rating: 5,
     availableQuantity: 1,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Lux-Coral-Garden-Bedroom-Set',
@@ -420,6 +457,7 @@ const PRODUCTS = [
     price: 29999,
     rating: 5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Grey-Pink-Shell-Bed',
@@ -431,6 +469,7 @@ const PRODUCTS = [
     price: 3599,
     rating: 4.5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Yellow-Pink-Ottoman-Cat-Bed',
@@ -442,6 +481,7 @@ const PRODUCTS = [
     price: 6299,
     rating: 4.9,
     availableQuantity: 12,
+    isNew: true,
   },
   {
     id: 'Orange-Grey-Cat-Bed-Rounded',
@@ -453,6 +493,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 4.5,
     availableQuantity: 24,
+    isNew: true,
   },
   {
     id: 'White-Black-Teddy-Bear-Bed',
@@ -462,8 +503,9 @@ const PRODUCTS = [
       'Teddy bear is a symbol of kindness, warmth and comfort. They are loved by children of all ages and adults, they are hugged tightly and given to those closest to them. These soft bundles of tenderness have long ceased to be simple toys. So is our teddy bear bed. This is not just a bed, but an indicator of our love and care for customers',
     photo: '/catalog/_8a627ed2-587f-4abb-907f-e82b89244e6c.jpg',
     price: 5999,
-    rating: 5.0,
+    rating: 5,
     availableQuantity: 9,
+    isNew: false,
   },
   {
     id: 'Wood-Round-Framed-Mouse-Bed',
@@ -475,6 +517,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 4.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Violet-Stingray-Rounded-Ottoman',
@@ -486,6 +529,7 @@ const PRODUCTS = [
     price: 3799,
     rating: 3.7,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Real-Pink-Eared-Cat-Bed',
@@ -498,6 +542,7 @@ const PRODUCTS = [
     sale: 7899,
     rating: 4.1,
     availableQuantity: 5,
+    isNew: true,
   },
   {
     id: 'Huge-Stuffed-Mouse-Head-Tsar-Bed',
@@ -509,6 +554,7 @@ const PRODUCTS = [
     price: 9099,
     rating: 2.8,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Orange-Light-Bedroom-Set',
@@ -520,6 +566,7 @@ const PRODUCTS = [
     price: 12999,
     rating: 4.2,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Grey-Matting-Fabric-Kitten-Bed',
@@ -531,6 +578,7 @@ const PRODUCTS = [
     price: 3599,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Huge-360-Rounded-Cat-Bed',
@@ -543,6 +591,7 @@ const PRODUCTS = [
     sale: 10199,
     rating: 2.3,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Fluffy-White-Owl-Bed',
@@ -554,6 +603,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 4.6,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Realistic-White-Cat-Bed',
@@ -565,6 +615,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 1.3,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Bright-Orange-Giraffe-Bed',
@@ -576,6 +627,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 4.9,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Beige-Double-Cat-Bed',
@@ -587,6 +639,7 @@ const PRODUCTS = [
     price: 6199,
     rating: 4.7,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Simple-White-Fluffy-Bed',
@@ -598,6 +651,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Movieman-Bed',
@@ -609,6 +663,7 @@ const PRODUCTS = [
     price: 8999,
     rating: 3.1,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Simple-Worm-Styled-LED-Bed',
@@ -621,6 +676,7 @@ const PRODUCTS = [
     sale: 2899,
     rating: 1.6,
     availableQuantity: 6,
+    isNew: true,
   },
   {
     id: '',
@@ -632,6 +688,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Realistic-Black-Cat-Bed',
@@ -644,6 +701,7 @@ const PRODUCTS = [
     sale: 3999,
     rating: 3.2,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Yellow-Fluffy-Duckling-Bed',
@@ -655,6 +713,7 @@ const PRODUCTS = [
     price: 5599,
     rating: 5,
     availableQuantity: 17,
+    isNew: false,
   },
   {
     id: 'King-Size-Peacock-Bed',
@@ -667,6 +726,7 @@ const PRODUCTS = [
     sale: 4499,
     rating: 3,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Car-Series-Turquoise-Retro-Cadillac-Bed',
@@ -678,6 +738,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.7,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Pastel-Orange-Coral-Garden-Bed',
@@ -689,6 +750,7 @@ const PRODUCTS = [
     price: 8999,
     rating: 4.4,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Pastel-Orange-Giraffe-Bed',
@@ -700,6 +762,7 @@ const PRODUCTS = [
     price: 4399,
     rating: 4.6,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Grey-Orange-Turtle',
@@ -711,6 +774,7 @@ const PRODUCTS = [
     price: 3899,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Burgundy-Eco-Leather-Cat-Bed',
@@ -722,6 +786,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 5,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Light-Grey-Orange-Cat-Bed',
@@ -733,6 +798,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 5,
     availableQuantity: 55,
+    isNew: false,
   },
   {
     id: 'Car-Series-Ginger-Luxury-Retromobile-Bed',
@@ -744,6 +810,7 @@ const PRODUCTS = [
     price: 11999,
     rating: 4.8,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Realistic-Pink-Fluffy-Piggy-Bed',
@@ -755,6 +822,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 2.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Ginger-White-Cat-Bed',
@@ -766,6 +834,7 @@ const PRODUCTS = [
     price: 4999,
     rating: 5,
     availableQuantity: 78,
+    isNew: false,
   },
   {
     id: 'Pastel-Orange-Ottoman-Giraffe-Bed',
@@ -777,6 +846,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 5,
     availableQuantity: 34,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Beige-Leather-Cat',
@@ -788,6 +858,7 @@ const PRODUCTS = [
     price: 5199,
     rating: 4.6,
     availableQuantity: 21,
+    isNew: false,
   },
   {
     id: 'Realistic-Ginger-White-Squirrel-Bed',
@@ -799,6 +870,7 @@ const PRODUCTS = [
     price: 3599,
     rating: 2.5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Ottoman-Penguin-Bed',
@@ -810,6 +882,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.3,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Car-Series-Black-Retro-Cadillac-Bed',
@@ -821,6 +894,7 @@ const PRODUCTS = [
     price: 5699,
     rating: 3.2,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Classic-Series-White-Grey-Large-Cat-Bed',
@@ -832,6 +906,7 @@ const PRODUCTS = [
     price: 6599,
     rating: 4.8,
     availableQuantity: 7,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Coral-Grey-Turtle-Bed',
@@ -843,6 +918,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Violet-Pink-Cat-Bed',
@@ -855,6 +931,7 @@ const PRODUCTS = [
     sale: 3999,
     rating: 3.9,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Anemones-Coral-Bed',
@@ -867,6 +944,7 @@ const PRODUCTS = [
     sale: 6599,
     rating: 4.1,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-White-Shell-Bed',
@@ -878,6 +956,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 3.4,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Luxurious-Coral-Bed',
@@ -889,6 +968,7 @@ const PRODUCTS = [
     price: 8199,
     rating: 4.5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Black-Massage-Bed',
@@ -900,6 +980,7 @@ const PRODUCTS = [
     price: 6599,
     rating: 4.1,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'White-Rabbit-Bed',
@@ -912,6 +993,7 @@ const PRODUCTS = [
     sale: 3999,
     rating: 4.2,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'White-Grey-Cat-Bed',
@@ -923,6 +1005,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 4.7,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Huge-Grey-Figure-Cat-Bed',
@@ -935,6 +1018,7 @@ const PRODUCTS = [
     sale: 10999,
     rating: 3.8,
     availableQuantity: 1,
+    isNew: true,
   },
   {
     id: 'Huge-Ceramics-Head-Mouse-Bed',
@@ -946,6 +1030,7 @@ const PRODUCTS = [
     price: 18999,
     rating: 1,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Biscuit-Pug-Dog-Bed',
@@ -957,6 +1042,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.2,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Yellow-Brown-Renaissance-Crocodile-Bed',
@@ -968,6 +1054,7 @@ const PRODUCTS = [
     price: 7999,
     rating: 1.8,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Sponge-Bob-Series-Square-Bed',
@@ -978,6 +1065,7 @@ const PRODUCTS = [
     price: 4499,
     rating: 5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Beige-Cat-Bed',
@@ -989,6 +1077,7 @@ const PRODUCTS = [
     price: 2499,
     rating: 4.9,
     availableQuantity: 35,
+    isNew: false,
   },
   {
     id: 'Huge-Green-Pepe-Frog-Statue-Bed',
@@ -1000,6 +1089,7 @@ const PRODUCTS = [
     price: 9999,
     rating: 3.5,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Super-Fluffy-Light-Grey-Mouse-Bed',
@@ -1011,6 +1101,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.5,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Large-Ottoman-Koala-Bed',
@@ -1023,6 +1114,7 @@ const PRODUCTS = [
     sale: 6499,
     rating: 4.6,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Shrek-Series-Cat-Bed',
@@ -1034,6 +1126,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.1,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Dark-Oad-Crocodile-Bed',
@@ -1045,6 +1138,7 @@ const PRODUCTS = [
     price: 5199,
     rating: 1.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Chipboard-Bed',
@@ -1056,6 +1150,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 2.3,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Green-White-Turtle-Bed',
@@ -1067,6 +1162,7 @@ const PRODUCTS = [
     price: 2399,
     rating: 3.4,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Yellow-Pikachu-Bed',
@@ -1078,6 +1174,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 5,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Grey-Pink-Mouse-Bed',
@@ -1089,6 +1186,7 @@ const PRODUCTS = [
     price: 4099,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Bachelor-Bedroom-Set',
@@ -1100,6 +1198,7 @@ const PRODUCTS = [
     price: 6499,
     rating: 3.6,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Soft-Grey-Koala-Bed',
@@ -1111,6 +1210,7 @@ const PRODUCTS = [
     price: 4599,
     rating: 5,
     availableQuantity: 15,
+    isNew: true,
   },
   {
     id: 'Cyberpunk-Series-Standard-Bed',
@@ -1122,6 +1222,7 @@ const PRODUCTS = [
     price: 4799,
     rating: 4.2,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Party-Maker-Bedroom-Set',
@@ -1133,6 +1234,7 @@ const PRODUCTS = [
     price: 5499,
     rating: 4.3,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Hot-Pink-Slowpoke-Bed',
@@ -1144,6 +1246,7 @@ const PRODUCTS = [
     price: 3899,
     rating: 3.9,
     availableQuantity: 7,
+    isNew: true,
   },
   {
     id: 'White-Budget-Cat-Bed',
@@ -1155,6 +1258,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 4,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Budget-Giraffe-Bed',
@@ -1166,6 +1270,7 @@ const PRODUCTS = [
     price: 2999,
     rating: 4.8,
     availableQuantity: 33,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Plush-Blue-Shark-Bed',
@@ -1177,6 +1282,7 @@ const PRODUCTS = [
     price: 3399,
     rating: 4.5,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Beige-Hidden-Cat-Bed',
@@ -1188,6 +1294,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.8,
     availableQuantity: 39,
+    isNew: true,
   },
   {
     id: 'Ligth-Grey-Comfort-Teddy-Bed',
@@ -1199,6 +1306,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 3.9,
     availableQuantity: 37,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Alarm-Clock-Bedroom-Set',
@@ -1210,6 +1318,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 4.6,
     availableQuantity: 61,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Bright-Orange-Rounded-Cat-Bed',
@@ -1221,6 +1330,7 @@ const PRODUCTS = [
     price: 5399,
     rating: 5,
     availableQuantity: 79,
+    isNew: true,
   },
   {
     id: 'Simple-Grey-Koala-Bed',
@@ -1232,6 +1342,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 4,
     availableQuantity: 61,
+    isNew: false,
   },
   {
     id: 'Light-Beige-Hidden-Cat-Bed',
@@ -1243,6 +1354,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 4.3,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'White-Long-Eared-Rabbit-Bed',
@@ -1255,6 +1367,7 @@ const PRODUCTS = [
     sale: 3299,
     rating: 4.7,
     availableQuantity: 67,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Beige-Rounded-Cat-Bed',
@@ -1266,6 +1379,7 @@ const PRODUCTS = [
     price: 4399,
     rating: 4.9,
     availableQuantity: 44,
+    isNew: true,
   },
   {
     id: 'Huge-Statue-Penguin-Bed',
@@ -1278,6 +1392,7 @@ const PRODUCTS = [
     sale: 5499,
     rating: 3.2,
     availableQuantity: 16,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Light-Blue-Shark-Bed',
@@ -1289,6 +1404,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.6,
     availableQuantity: 98,
+    isNew: false,
   },
   {
     id: 'Three-Legged-Zebra-Bear-Bed',
@@ -1300,6 +1416,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 3.8,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Inverted-Nose-Zebra-Bed',
@@ -1311,6 +1428,7 @@ const PRODUCTS = [
     price: 3799,
     rating: 3.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Grey-Cat-Bed',
@@ -1322,6 +1440,7 @@ const PRODUCTS = [
     price: 3299,
     rating: 4.1,
     availableQuantity: 65,
+    isNew: true,
   },
   {
     id: 'Tailed-Ash-Rounded-Cat-Bed',
@@ -1333,6 +1452,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4,
     availableQuantity: 10,
+    isNew: true,
   },
   {
     id: 'Hugging-White-Cat-Bed',
@@ -1344,6 +1464,7 @@ const PRODUCTS = [
     price: 4399,
     rating: 4.1,
     availableQuantity: 11,
+    isNew: false,
   },
   {
     id: 'Fluffy-Classic-Zebra-Bed',
@@ -1355,6 +1476,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.2,
     availableQuantity: 23,
+    isNew: true,
   },
   {
     id: 'Violet-Stingray-Bed',
@@ -1367,6 +1489,7 @@ const PRODUCTS = [
     sale: 3499,
     rating: 4.5,
     availableQuantity: 33,
+    isNew: false,
   },
   {
     id: 'White-Ship-Bed',
@@ -1377,6 +1500,7 @@ const PRODUCTS = [
     price: 2099,
     rating: 3.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Green-White-Smiling-Frog-Bed',
@@ -1388,6 +1512,7 @@ const PRODUCTS = [
     price: 4599,
     rating: 4.7,
     availableQuantity: 9,
+    isNew: false,
   },
   {
     id: 'White-Teddy-Bear-Bed',
@@ -1399,6 +1524,7 @@ const PRODUCTS = [
     price: 4299,
     rating: 5,
     availableQuantity: 44,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Plush-White-Cat-Bed',
@@ -1410,6 +1536,7 @@ const PRODUCTS = [
     price: 4299,
     rating: 4.8,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Disco-Bass-Bed',
@@ -1421,6 +1548,7 @@ const PRODUCTS = [
     price: 4899,
     rating: 2.9,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Car-Series-White-Luxurious-President-Caddilac-Bed',
@@ -1432,6 +1560,7 @@ const PRODUCTS = [
     price: 7999,
     rating: 4.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Romantic-Bed',
@@ -1443,6 +1572,7 @@ const PRODUCTS = [
     price: 6699,
     rating: 4.7,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Huge-Realistic-Soft-Head-Mouse-Bed',
@@ -1454,6 +1584,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 3.1,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Budget-Blue-Shark-Bed',
@@ -1465,6 +1596,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 4.6,
     availableQuantity: 54,
+    isNew: false,
   },
   {
     id: 'White-Soft-Teddy-Bear-Bed',
@@ -1476,6 +1608,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 4.5,
     availableQuantity: 76,
+    isNew: false,
   },
   {
     id: 'Car-Series-Toasted-Lincoln-Bed',
@@ -1487,6 +1620,7 @@ const PRODUCTS = [
     price: 5199,
     rating: 4.8,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Newlyweds-Peacock-Nest-Bed',
@@ -1497,6 +1631,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 3.2,
     availableQuantity: 34,
+    isNew: true,
   },
   {
     id: 'Fluffy-White-Rabbit-Bed',
@@ -1508,6 +1643,7 @@ const PRODUCTS = [
     price: 3899,
     rating: 5,
     availableQuantity: 23,
+    isNew: true,
   },
   {
     id: 'Squere-Shark-The-Bed',
@@ -1519,6 +1655,7 @@ const PRODUCTS = [
     price: 3799,
     rating: 4.6,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Cocoa-Plush-Bed',
@@ -1530,6 +1667,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.8,
     availableQuantity: 30,
+    isNew: false,
   },
   {
     id: 'Car-Series-Classic-Wooden-Lincoln-Bed',
@@ -1541,6 +1679,7 @@ const PRODUCTS = [
     price: 5299,
     rating: 4.6,
     availableQuantity: 12,
+    isNew: false,
   },
   {
     id: 'Realistic-White-Fluffy-Cat-Bed',
@@ -1553,6 +1692,7 @@ const PRODUCTS = [
     sale: 3299,
     rating: 3.2,
     availableQuantity: 64,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Grey-Rounded-Cat-Bed',
@@ -1564,6 +1704,7 @@ const PRODUCTS = [
     price: 4299,
     rating: 4.7,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Lilac-Manta-Ray-Bed',
@@ -1575,6 +1716,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.9,
     availableQuantity: 47,
+    isNew: false,
   },
   {
     id: 'Fluffy-Lumpy-Light-Beige-Cat-Bed',
@@ -1587,6 +1729,7 @@ const PRODUCTS = [
     sale: 2999,
     rating: 2.1,
     availableQuantity: 19,
+    isNew: false,
   },
   {
     id: 'Simple-Wooden-Ghost-Bed',
@@ -1598,6 +1741,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 2.5,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'White-Blue-Bubbled-Pineapple-Bed',
@@ -1609,6 +1753,7 @@ const PRODUCTS = [
     price: 2999,
     rating: 2.9,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Realistic-Light-Beige-Fluffy-Cat-Bed',
@@ -1620,6 +1765,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 2.5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Polar-Zebra-Bed',
@@ -1631,6 +1777,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 4.5,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Light-Beige-Coral-Rounded-Mouse-Bed',
@@ -1642,6 +1789,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 4.7,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Cartoon-Grey-Cat-Bed',
@@ -1653,6 +1801,7 @@ const PRODUCTS = [
     price: 4299,
     rating: 4.7,
     availableQuantity: 6,
+    isNew: true,
   },
   {
     id: 'Light-Biscuit-Orange-Giraffe-Bed',
@@ -1664,6 +1813,7 @@ const PRODUCTS = [
     price: 3299,
     rating: 4.5,
     availableQuantity: 75,
+    isNew: false,
   },
   {
     id: 'Light-Biscuit-Green-Frog-Bed',
@@ -1675,6 +1825,7 @@ const PRODUCTS = [
     price: 3299,
     rating: 4.2,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Light-Biscuit-Burgundy-Cat-Bed',
@@ -1686,6 +1837,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 5,
     availableQuantity: 54,
+    isNew: false,
   },
   {
     id: 'Classic-Series-White-Cat-Bedroom-Set',
@@ -1697,6 +1849,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.4,
     availableQuantity: 43,
+    isNew: true,
   },
   {
     id: 'Totoro-Series-Thematic-Bed',
@@ -1708,6 +1861,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 4.5,
     availableQuantity: 65,
+    isNew: true,
   },
   {
     id: 'White-Soft-Light-Biscuit-Teddy-Bear-Bed',
@@ -1719,6 +1873,7 @@ const PRODUCTS = [
     price: 3399,
     rating: 4.8,
     availableQuantity: 37,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Light-Beige-Cat-Bed',
@@ -1731,6 +1886,7 @@ const PRODUCTS = [
     sale: 2999,
     rating: 3.3,
     availableQuantity: 11,
+    isNew: true,
   },
   {
     id: 'Hairy-Frog-Bed',
@@ -1742,6 +1898,7 @@ const PRODUCTS = [
     price: 2999,
     rating: 3.7,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Double-Peacock-Bed',
@@ -1753,6 +1910,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 2.6,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Biscuit-Orange-Cat-Bed',
@@ -1764,6 +1922,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 4.6,
     availableQuantity: 64,
+    isNew: false,
   },
   {
     id: 'Wide-Luxurious-Peacock-Bed',
@@ -1775,6 +1934,7 @@ const PRODUCTS = [
     price: 4399,
     rating: 4.7,
     availableQuantity: 9,
+    isNew: false,
   },
   {
     id: 'Huge-Luxurious-Round-Shell-Bed',
@@ -1786,6 +1946,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 5,
     availableQuantity: 56,
+    isNew: true,
   },
   {
     id: 'Cyberpunk-Series-Triangular-Party-Maker-Bedroom-Set',
@@ -1797,6 +1958,7 @@ const PRODUCTS = [
     price: 3599,
     rating: 5,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Cute-Ghost-Double-Bed',
@@ -1808,6 +1970,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Grey-Spotted-Cat-Bed',
@@ -1819,6 +1982,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 4.9,
     availableQuantity: 51,
+    isNew: true,
   },
   {
     id: 'Complaining-Pug-Bed',
@@ -1830,6 +1994,7 @@ const PRODUCTS = [
     price: 3399,
     rating: 4.5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Light-Grey-Orange-Eared-Cat-Bed',
@@ -1841,6 +2006,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 4.5,
     availableQuantity: 8,
+    isNew: false,
   },
   {
     id: 'Yellow-Fluffy-Pineapple-Bed',
@@ -1852,6 +2018,7 @@ const PRODUCTS = [
     price: 2699,
     rating: 3.9,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Pink-Grey-Owl-Bed',
@@ -1863,6 +2030,7 @@ const PRODUCTS = [
     price: 3699,
     rating: 5,
     availableQuantity: 70,
+    isNew: true,
   },
   {
     id: 'White-Bubbled-Rabbear-Bed',
@@ -1874,6 +2042,7 @@ const PRODUCTS = [
     price: 2899,
     rating: 3.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Creamy-Green-Pineapple-Bed',
@@ -1885,6 +2054,7 @@ const PRODUCTS = [
     price: 2599,
     rating: 4,
     availableQuantity: 7,
+    isNew: true,
   },
   {
     id: 'Car-Series-Luxurious-President-Lincoln-Bed',
@@ -1896,6 +2066,7 @@ const PRODUCTS = [
     price: 19999,
     rating: 5,
     availableQuantity: 59,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Coffee-Cat-Bed',
@@ -1907,6 +2078,7 @@ const PRODUCTS = [
     price: 3899,
     rating: 4.6,
     availableQuantity: 5,
+    isNew: true,
   },
   {
     id: 'Regular-Lavender-Eco-Leather-Bed',
@@ -1918,6 +2090,7 @@ const PRODUCTS = [
     price: 1699,
     rating: 2.2,
     availableQuantity: 90,
+    isNew: false,
   },
   {
     id: 'Classic-Series-White-Ginger-Eared-Cat-Bed',
@@ -1929,6 +2102,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.5,
     availableQuantity: 31,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Grey-Cat-Bed',
@@ -1941,6 +2115,7 @@ const PRODUCTS = [
     sale: 3999,
     rating: 4.9,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Creamy-Mouse-Nose-Bed',
@@ -1952,6 +2127,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 4.6,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Grey-White-Pink-Eared-Cat-Bed',
@@ -1964,6 +2140,7 @@ const PRODUCTS = [
     sale: 3399,
     rating: 4.7,
     availableQuantity: 7,
+    isNew: true,
   },
   {
     id: 'Classic-Series-White-Pink-Cat-Bed',
@@ -1975,6 +2152,7 @@ const PRODUCTS = [
     price: 3899,
     rating: 4.7,
     availableQuantity: 2,
+    isNew: true,
   },
   {
     id: 'Cyberpunk-Series-Orange-Highlight-Bedroom-Set',
@@ -1986,6 +2164,7 @@ const PRODUCTS = [
     price: 2899,
     rating: 3.4,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-MRI-Complex-Bed-Set',
@@ -1997,6 +2176,7 @@ const PRODUCTS = [
     price: 14999,
     rating: 3.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Creamy-Orange-Cat-Bed',
@@ -2008,6 +2188,7 @@ const PRODUCTS = [
     price: 3799,
     rating: 4.6,
     availableQuantity: 41,
+    isNew: false,
   },
   {
     id: 'Tall-Creamy-Rabbit-Bed',
@@ -2020,6 +2201,7 @@ const PRODUCTS = [
     sale: 4099,
     rating: 5,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Mobile-Cubic-Bedroom',
@@ -2031,6 +2213,7 @@ const PRODUCTS = [
     price: 13999,
     rating: 4.9,
     availableQuantity: 16,
+    isNew: false,
   },
   {
     id: 'Totoro-Series-Rounded-Ottoman-Bed',
@@ -2042,6 +2225,7 @@ const PRODUCTS = [
     price: 2999,
     rating: 4.5,
     availableQuantity: 33,
+    isNew: false,
   },
   {
     id: 'White-Ginger-Corgi-Bed',
@@ -2053,6 +2237,7 @@ const PRODUCTS = [
     price: 3399,
     rating: 4.9,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Grey-White-Rounded-Cat-Bed',
@@ -2064,6 +2249,7 @@ const PRODUCTS = [
     price: 3799,
     rating: 4.2,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Stitch-Series-Thematic-Bed',
@@ -2075,6 +2261,7 @@ const PRODUCTS = [
     price: 2399,
     rating: 4.2,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Biscuit-Teddy-Bear-Bed',
@@ -2086,6 +2273,7 @@ const PRODUCTS = [
     price: 2699,
     rating: 3,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Soft-Yellow-Plush-Cat-Bed',
@@ -2097,6 +2285,7 @@ const PRODUCTS = [
     price: 2699,
     rating: 3.1,
     availableQuantity: 12,
+    isNew: false,
   },
   {
     id: 'Stitch-Series-Ottoman-Bed',
@@ -2108,6 +2297,7 @@ const PRODUCTS = [
     price: 3499,
     rating: 3.2,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Creamy-Biscuit-Owl-Bed',
@@ -2120,6 +2310,7 @@ const PRODUCTS = [
     sale: 2699,
     rating: 3.1,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Stitch-Series-Ottoman-Bed-V2',
@@ -2131,6 +2322,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 3.3,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Luxurious-Lavender-Coral-Garden-Sofa',
@@ -2142,6 +2334,7 @@ const PRODUCTS = [
     price: 3199,
     rating: 4.8,
     availableQuantity: 14,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Coral-Pink-Colored-Crab-Sofa',
@@ -2153,6 +2346,7 @@ const PRODUCTS = [
     price: 2499,
     rating: 4.9,
     availableQuantity: 53,
+    isNew: true,
   },
   {
     id: 'Raspberry-Marmalade-Sofa',
@@ -2164,6 +2358,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 3.2,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Matting-Light-Grey-Cat-Divan',
@@ -2175,6 +2370,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.6,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Violet-Cat-Sofa',
@@ -2186,6 +2382,7 @@ const PRODUCTS = [
     price: 2099,
     rating: 4.3,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Sea-Series-White-Dolphin-Sofa',
@@ -2197,6 +2394,7 @@ const PRODUCTS = [
     price: 2299,
     rating: 5,
     availableQuantity: 76,
+    isNew: false,
   },
   {
     id: 'Light-Creamy-Banana-Corner-Sofa',
@@ -2208,6 +2406,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4.9,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'White-Sheep-Wool-Sofa',
@@ -2219,6 +2418,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 3,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Trader-Sofa',
@@ -2230,6 +2430,7 @@ const PRODUCTS = [
     price: 4199,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Big-Smug-Frog-Sofa',
@@ -2241,6 +2442,7 @@ const PRODUCTS = [
     price: 4499,
     rating: 4.8,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Classic-White-Brown-Owl-Sofa',
@@ -2252,6 +2454,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 3.9,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Light-Beige-Stingray-Sofa',
@@ -2263,6 +2466,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 4.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Black-Caviar-Sofa',
@@ -2274,6 +2478,7 @@ const PRODUCTS = [
     price: 9999,
     rating: 4.6,
     availableQuantity: 76,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Luxurious-Lavender-Coral-Garden-Sofa-V2',
@@ -2285,6 +2490,7 @@ const PRODUCTS = [
     price: 5999,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Light-Beige-Stingray-Sofa-V2',
@@ -2296,6 +2502,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4.9,
     availableQuantity: 56,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Light-Beige-Octopus-Sofa',
@@ -2308,6 +2515,7 @@ const PRODUCTS = [
     sale: 1799,
     rating: 4.6,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Orange-Bottom-Grey-Stingray-Sofa',
@@ -2319,6 +2527,7 @@ const PRODUCTS = [
     price: 1799,
     rating: 4.7,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Lavender-Coral-Garden-Sofa-With-Pouf',
@@ -2330,6 +2539,7 @@ const PRODUCTS = [
     price: 2399,
     rating: 3.8,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Fluffy-White-Cat-Sofa',
@@ -2342,6 +2552,7 @@ const PRODUCTS = [
     sale: 1999,
     rating: 4.9,
     availableQuantity: 34,
+    isNew: false,
   },
   {
     id: 'Sea-Series-White-Stingray-Sofa',
@@ -2353,6 +2564,7 @@ const PRODUCTS = [
     price: 1799,
     rating: 5,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Dragonfruit-Sofa',
@@ -2364,6 +2576,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 4.2,
     availableQuantity: 44,
+    isNew: false,
   },
   {
     id: 'Soft-Orange-Giraffe-Sofa',
@@ -2376,6 +2589,7 @@ const PRODUCTS = [
     sale: 1599,
     rating: 5,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Light-Beige-Pug-Sofa',
@@ -2388,6 +2602,7 @@ const PRODUCTS = [
     sale: 1699,
     rating: 4.3,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Pastel-Orange-Eco-Leather-Crab-Sofa',
@@ -2400,6 +2615,7 @@ const PRODUCTS = [
     sale: 1499,
     rating: 4.9,
     availableQuantity: 54,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Gigantic-Whale-Shark-Sofa',
@@ -2412,6 +2628,7 @@ const PRODUCTS = [
     sale: 5999,
     rating: 5,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'White-Plush-Toothy-Dolphin-Sofa',
@@ -2424,6 +2641,7 @@ const PRODUCTS = [
     sale: 1899,
     rating: 4.9,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Biscuit-Mushroom-Sofa',
@@ -2435,6 +2653,7 @@ const PRODUCTS = [
     price: 2599,
     rating: 3.1,
     availableQuantity: 42,
+    isNew: true,
   },
   {
     id: 'Ashy-Iguana-Statue-Sofa',
@@ -2447,6 +2666,7 @@ const PRODUCTS = [
     sale: 4299,
     rating: 4.2,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Beige-Crocodile-Sofa',
@@ -2459,6 +2679,7 @@ const PRODUCTS = [
     sale: 1799,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Cyberpunk-Series-Party-Maker-Sofa',
@@ -2470,6 +2691,7 @@ const PRODUCTS = [
     price: 2999,
     rating: 4.5,
     availableQuantity: 6,
+    isNew: true,
   },
   {
     id: 'Light-Beige-Frog-Sofa',
@@ -2482,6 +2704,7 @@ const PRODUCTS = [
     sale: 1999,
     rating: 4.1,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Bubbled-Ashy-Cat-Eared-Sofa',
@@ -2494,6 +2717,7 @@ const PRODUCTS = [
     sale: 1399,
     rating: 3,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Beige-Green-Mushroom-Sofa',
@@ -2505,6 +2729,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 2.1,
     availableQuantity: 34,
+    isNew: false,
   },
   {
     id: 'Mustard-Yoda-Sofa',
@@ -2516,6 +2741,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 3.4,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Pink-Bubbled-Teddy-Bear-Sofa',
@@ -2527,6 +2753,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 3.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Whale-Shark-Sofa',
@@ -2539,6 +2766,7 @@ const PRODUCTS = [
     sale: 3199,
     rating: 4.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Mustard-Plush-Pineapple-Sofa',
@@ -2550,6 +2778,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4.7,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Green-Yoda-Sofa',
@@ -2561,6 +2790,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 3.5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Creamy-Beige-Yoda-Sofa',
@@ -2573,6 +2803,7 @@ const PRODUCTS = [
     sale: 1999,
     rating: 4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Creamed-Yellow-Banana',
@@ -2584,6 +2815,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4.2,
     availableQuantity: 53,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Slowpoke',
@@ -2595,6 +2827,7 @@ const PRODUCTS = [
     price: 2299,
     rating: 3.5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Light-Mustard-Crocodile-Sofa',
@@ -2606,6 +2839,7 @@ const PRODUCTS = [
     price: 2199,
     rating: 3.9,
     availableQuantity: 56,
+    isNew: false,
   },
   {
     id: 'Dragonfruit-Sofa-V2',
@@ -2617,6 +2851,7 @@ const PRODUCTS = [
     price: 1699,
     rating: 4.9,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Fluffy-Violet-Eared-Cat-Sofa',
@@ -2628,6 +2863,7 @@ const PRODUCTS = [
     price: 2399,
     rating: 4.3,
     availableQuantity: 67,
+    isNew: true,
   },
   {
     id: 'Cyberpunk-Series-Massage-Sofa',
@@ -2639,6 +2875,7 @@ const PRODUCTS = [
     price: 3399,
     rating: 5,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Matting-Creamy-Pug-Sofa',
@@ -2650,6 +2887,7 @@ const PRODUCTS = [
     price: 1699,
     rating: 3.4,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Eco-Leather-Shrimp-Sofa',
@@ -2661,6 +2899,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 4.9,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Light-Green-Hippopotamus-Sofa',
@@ -2672,6 +2911,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 4.9,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Raspberry-Leather-Sofa',
@@ -2684,6 +2924,7 @@ const PRODUCTS = [
     sale: 1499,
     rating: 4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Light-Beige-Cat-Sofa',
@@ -2695,6 +2936,7 @@ const PRODUCTS = [
     price: 2399,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Fluffy-Grey-Wolf-Sofa',
@@ -2706,6 +2948,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 3.3,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Cyberpunk-Series-Original-Hipster-Sofa',
@@ -2717,6 +2960,7 @@ const PRODUCTS = [
     price: 6999,
     rating: 3,
     availableQuantity: 11,
+    isNew: false,
   },
   {
     id: 'Light-Beige-Teddy-Bear-Armchair',
@@ -2728,6 +2972,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 4.8,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Light-Grey-Koala-Armchair',
@@ -2740,6 +2985,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Black-Caviar-Armchair',
@@ -2751,6 +2997,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 3.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Soft-Light-Beige-Bear-Armchair',
@@ -2763,6 +3010,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 4.3,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Bubbled-Creamy-Beige-Bear-Armchair',
@@ -2774,6 +3022,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.2,
     availableQuantity: 34,
+    isNew: false,
   },
   {
     id: 'White-Leather-Pineapple-Armchair',
@@ -2786,6 +3035,7 @@ const PRODUCTS = [
     sale: 1399,
     rating: 3.6,
     availableQuantity: 22,
+    isNew: true,
   },
   {
     id: 'Raspberry-Candy-Red-Armchair',
@@ -2798,6 +3048,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Eggplant-Armchair',
@@ -2810,6 +3061,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.5,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'White-Pink-Baby-Sperm-Whale-Chair',
@@ -2821,6 +3073,7 @@ const PRODUCTS = [
     price: 999,
     rating: 5,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Beige-Koala-Armchair',
@@ -2832,6 +3085,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.6,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Flock-Green-Frog-Chair',
@@ -2843,6 +3097,7 @@ const PRODUCTS = [
     price: 899,
     rating: 3.9,
     availableQuantity: 34,
+    isNew: false,
   },
   {
     id: 'Light-Coral-Grey-Rounded-Shrimp-Chair',
@@ -2855,6 +3110,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 4.8,
     availableQuantity: 23,
+    isNew: true,
   },
   {
     id: 'Lavender-Pink-Candy-Chair',
@@ -2866,6 +3122,7 @@ const PRODUCTS = [
     price: 799,
     rating: 3.4,
     availableQuantity: 34,
+    isNew: true,
   },
   {
     id: 'Turquoise-Peacock-Armchair',
@@ -2876,6 +3133,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 3.2,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Furry-Raccoon-Armchair',
@@ -2888,6 +3146,7 @@ const PRODUCTS = [
     sale: 1099,
     rating: 3.4,
     availableQuantity: 12,
+    isNew: false,
   },
   {
     id: 'Matting-Beige-Mushroom-Armchair',
@@ -2899,6 +3158,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Ginger-Beige-Cat-Armchair',
@@ -2910,6 +3170,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 5,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Ashy-Eared-Armchair',
@@ -2921,6 +3182,7 @@ const PRODUCTS = [
     price: 999,
     rating: 3.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Dark-Grey-Cat-Armchair',
@@ -2932,6 +3194,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 4.9,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Pastel-Orange-Shrimp-Chair',
@@ -2944,6 +3207,7 @@ const PRODUCTS = [
     sale: 1199,
     rating: 4.9,
     availableQuantity: 32,
+    isNew: true,
   },
   {
     id: 'Pokemon-Series-Light-Pink-Slow-Poke-Chair',
@@ -2955,6 +3219,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 5,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Large-Koala-Armchair',
@@ -2966,6 +3231,7 @@ const PRODUCTS = [
     price: 1699,
     rating: 3.5,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Black-Caviar-Armchair-V2',
@@ -2977,6 +3243,7 @@ const PRODUCTS = [
     price: 3999,
     rating: 3.2,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Lavender-Coral-Chair',
@@ -2988,6 +3255,7 @@ const PRODUCTS = [
     price: 999,
     rating: 2.3,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Grey-Double-Mouse-Chair',
@@ -2999,6 +3267,7 @@ const PRODUCTS = [
     price: 1099,
     rating: 2.3,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Violet-Yellow-Cat-Crib',
@@ -3010,6 +3279,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Dragonfruit-Teenage-Bed',
@@ -3021,6 +3291,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 5,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Lavender-Kid-Cat-Bed',
@@ -3032,6 +3303,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.3,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: "Rounded-Green-Baby's-Frog-Crib",
@@ -3044,6 +3316,7 @@ const PRODUCTS = [
     sale: 899,
     rating: 3,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: "Claassic-Series-Lavender-Baby's-Cat-Crib",
@@ -3055,6 +3328,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.9,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Green-Teenage-Smiling-Frog-Bed',
@@ -3066,6 +3340,7 @@ const PRODUCTS = [
     price: 1999,
     rating: 3.3,
     availableQuantity: 36,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Kids-Turquoise-Pikachu-Bed',
@@ -3077,6 +3352,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: "Beige-Baby's-Fluffy-Spider-Crib",
@@ -3089,6 +3365,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 4.3,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Flock-Violet-Kids-Cat-Bed',
@@ -3100,6 +3377,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.9,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Light-Orange-Kids-Giraffe-Bed',
@@ -3111,6 +3389,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 5,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: "White-Baby's-Ship-Bed",
@@ -3122,6 +3401,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 4.8,
     availableQuantity: 8,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Kids-Yellow-Pikachu-Bed',
@@ -3133,6 +3413,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.7,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Violet-Kids-Ottoman-Cat-Bed',
@@ -3144,6 +3425,7 @@ const PRODUCTS = [
     price: 1599,
     rating: 4.7,
     availableQuantity: 6,
+    isNew: true,
   },
   {
     id: 'Green-Kids-Frog-Face-Bed',
@@ -3155,6 +3437,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 3.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Kids-Corgi-Bed',
@@ -3166,6 +3449,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 5,
     availableQuantity: 1,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Kids-Red-Round-Ottoman-Cat-Bed',
@@ -3176,6 +3460,7 @@ const PRODUCTS = [
     price: 999,
     rating: 3.3,
     availableQuantity: 12,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Pink-Violet-Cat-Bed',
@@ -3187,6 +3472,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 4.5,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Kids-Slowpoke-Soft-Bag',
@@ -3198,6 +3484,7 @@ const PRODUCTS = [
     price: 999,
     rating: 3.2,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Red-Pink-Cat-Bed',
@@ -3209,6 +3496,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.5,
     availableQuantity: 5,
+    isNew: true,
   },
   {
     id: 'Shrek-Series-Kids-Cartoon-Thematic-Bed',
@@ -3220,6 +3508,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 3.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Matting-Grey-Cat-Bed',
@@ -3231,6 +3520,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.5,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Grey-Soft-Kids-Koala-Bed',
@@ -3242,6 +3532,7 @@ const PRODUCTS = [
     price: 999,
     rating: 4.2,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Plush-Violet-Yellow-Cat-Bed',
@@ -3253,6 +3544,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 3.9,
     availableQuantity: 23,
+    isNew: true,
   },
   {
     id: 'Pokemon-Series-Kids-Pink-Dragonite-Bed',
@@ -3263,6 +3555,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 4.1,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Kids-Soft-Pink-Shell-Bed',
@@ -3274,6 +3567,7 @@ const PRODUCTS = [
     price: 999,
     rating: 4.9,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Light-Beige-Mustard-Kids-Giraffe-Bed',
@@ -3284,6 +3578,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 5,
     availableQuantity: 48,
+    isNew: false,
   },
   {
     id: 'Soft-Creamy-Kids-Cat-Paws-Bed',
@@ -3295,6 +3590,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.4,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Violet-Cat-Bed',
@@ -3306,6 +3602,7 @@ const PRODUCTS = [
     price: 1699,
     rating: 4.9,
     availableQuantity: 51,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Kids-Light-Lilac-Orange-Dragonite-Sofa',
@@ -3318,6 +3615,7 @@ const PRODUCTS = [
     sale: 899,
     rating: 4.3,
     availableQuantity: 11,
+    isNew: true,
   },
   {
     id: 'Light-Beige-Fluffy-Kids-Cat-Bed',
@@ -3330,6 +3628,7 @@ const PRODUCTS = [
     sale: 899,
     rating: 4.3,
     availableQuantity: 2,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Kids-Violet-Bright-Pink-Cat-Crib',
@@ -3342,6 +3641,7 @@ const PRODUCTS = [
     sale: 799,
     rating: 2.2,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Corgi-Kids-Frameless-Sofa',
@@ -3354,6 +3654,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 5,
     availableQuantity: 32,
+    isNew: false,
   },
   {
     id: 'Green-Frog-Kids-Bed',
@@ -3365,6 +3666,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 3.3,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Soft-Fluffy-Bubbled-Kids-Ship-Style-Bed',
@@ -3377,6 +3679,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 2.3,
     availableQuantity: 44,
+    isNew: false,
   },
   {
     id: 'Soft-Fluffy-Bubbled-Kids-Mouse-Style-Bed',
@@ -3389,6 +3692,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 4.2,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Sponge-Bob-Series-Kids-Patrick-The-Starfish-Bed',
@@ -3400,6 +3704,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.9,
     availableQuantity: 45,
+    isNew: false,
   },
   {
     id: 'Green-Rounded-Kids-Frog-Eyed-Crib',
@@ -3410,6 +3715,7 @@ const PRODUCTS = [
     price: 899,
     rating: 4.3,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Sponge-Bob-Series-Kids-Patrick-The-Starfish-Bed-V2',
@@ -3421,6 +3727,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.6,
     availableQuantity: 55,
+    isNew: false,
   },
   {
     id: 'Lavender-Kids-Cat-Bed',
@@ -3432,6 +3739,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.9,
     availableQuantity: 33,
+    isNew: true,
   },
   {
     id: "Children's-Mouse-Bed",
@@ -3443,6 +3751,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 5,
     availableQuantity: 52,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Kids-Standard-Bed',
@@ -3454,6 +3763,7 @@ const PRODUCTS = [
     price: 2399,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: true,
   },
   {
     id: 'Kids-Corgi-Bed-V2',
@@ -3465,6 +3775,7 @@ const PRODUCTS = [
     price: 1099,
     rating: 3.4,
     availableQuantity: 9,
+    isNew: false,
   },
   {
     id: 'Teenage-Giraffe-Bed',
@@ -3476,6 +3787,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Totoro-Series-Kids-Frameless-Bed',
@@ -3487,6 +3799,7 @@ const PRODUCTS = [
     price: 999,
     rating: 4.3,
     availableQuantity: 54,
+    isNew: false,
   },
   {
     id: 'Corgi-Kids-Frameless-Sofa-V2',
@@ -3499,6 +3812,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.5,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Classic-Series-Kids-Pink-Cat-Crib',
@@ -3510,6 +3824,7 @@ const PRODUCTS = [
     price: 899,
     rating: 4.2,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: "Yellow-Children's-Jake-The-Dog-Bed",
@@ -3521,6 +3836,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Dragonfruit-Kids-Bed',
@@ -3533,6 +3849,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.3,
     availableQuantity: 57,
+    isNew: false,
   },
   {
     id: 'Beige-Portable-Bear-Crib',
@@ -3544,6 +3861,7 @@ const PRODUCTS = [
     price: 599,
     rating: 4.4,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Stitch-Series-Kids-Bed',
@@ -3555,6 +3873,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4,
     availableQuantity: 3,
+    isNew: true,
   },
   {
     id: 'Sponge-Bob-Series-Kids-Patrick-The-Starfish-Bed-V3',
@@ -3566,6 +3885,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 5,
     availableQuantity: 30,
+    isNew: false,
   },
   {
     id: 'Pink-Flock-Kids-Cat-Eyed-Bed',
@@ -3577,6 +3897,7 @@ const PRODUCTS = [
     price: 1099,
     rating: 4.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Violet-Cat-Bed-V2',
@@ -3589,6 +3910,7 @@ const PRODUCTS = [
     sale: 1199,
     rating: 3.8,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Round-Grey-Koala-Crib',
@@ -3600,6 +3922,7 @@ const PRODUCTS = [
     price: 999,
     rating: 4.6,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Light-Beige-Plush-Cat-Bed',
@@ -3611,6 +3934,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 4.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'White-Ginger-Kids-Cat-Bed',
@@ -3622,6 +3946,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.1,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Lilac-Pink--Cat-Bed',
@@ -3633,6 +3958,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 4.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Flock-Pink-Violet-Cat-Bed-',
@@ -3645,6 +3971,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.4,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Grey-Plush-Kids-Cat-Bed',
@@ -3657,6 +3984,7 @@ const PRODUCTS = [
     sale: 1199,
     rating: 4.2,
     availableQuantity: 11,
+    isNew: false,
   },
   {
     id: 'Fluffy-Pink-Kids-Piggy-Bed',
@@ -3668,6 +3996,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 5,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Pink-Kids-Four-Eyed-Cat-Bed',
@@ -3679,6 +4008,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 4.9,
     availableQuantity: 22,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Kids-Ottoman-Pikachu-Bed',
@@ -3690,6 +4020,7 @@ const PRODUCTS = [
     price: 1299,
     rating: 3.9,
     availableQuantity: 51,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Kids-Grey-Bubbled-Cat-Bed',
@@ -3701,6 +4032,7 @@ const PRODUCTS = [
     price: 1399,
     rating: 3.8,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Fluffy-Grey-Kids-Mouse-Bed',
@@ -3712,6 +4044,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 4.1,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Pastel-Yellow-Kids-Duckling-Bed',
@@ -3723,6 +4056,7 @@ const PRODUCTS = [
     price: 1499,
     rating: 5,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Lilac-Kids-Cat-Bed',
@@ -3734,6 +4068,7 @@ const PRODUCTS = [
     price: 1199,
     rating: 3.9,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Bright-Red-Kids-Cat-Bed',
@@ -3746,6 +4081,7 @@ const PRODUCTS = [
     sale: 999,
     rating: 3.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Pink-Fluffy-Octopus-Pouf',
@@ -3757,6 +4093,7 @@ const PRODUCTS = [
     price: 399,
     rating: 5,
     availableQuantity: 41,
+    isNew: false,
   },
   {
     id: 'Pug-Muzzle-Pouf',
@@ -3768,6 +4105,7 @@ const PRODUCTS = [
     sale: 349,
     rating: 4.9,
     availableQuantity: 1,
+    isNew: true,
   },
   {
     id: 'Exotic-Fruit-Pouf',
@@ -3778,6 +4116,7 @@ const PRODUCTS = [
     price: 249,
     rating: 3.3,
     availableQuantity: 43,
+    isNew: false,
   },
   {
     id: 'Pug-Pouf',
@@ -3789,6 +4128,7 @@ const PRODUCTS = [
     sale: 349,
     rating: 4.7,
     availableQuantity: 1,
+    isNew: true,
   },
   {
     id: 'Fluffy-Owl-Pouf',
@@ -3800,6 +4140,7 @@ const PRODUCTS = [
     sale: 399,
     rating: 4.9,
     availableQuantity: 11,
+    isNew: false,
   },
   {
     id: 'Car-Series-Retromobile-Pouf',
@@ -3811,6 +4152,7 @@ const PRODUCTS = [
     price: 399,
     rating: 5,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Plush-Beige-Owl-Pouf',
@@ -3823,6 +4165,7 @@ const PRODUCTS = [
     sale: 349,
     rating: 4,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Mysterious-Pokemon-Poof',
@@ -3834,6 +4177,7 @@ const PRODUCTS = [
     price: 399,
     rating: 4.2,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Beige-Velvet-Crocodile-Pouf',
@@ -3845,6 +4189,7 @@ const PRODUCTS = [
     price: 499,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Classic-Series-Creamy-White-Cat-Pouf',
@@ -3856,6 +4201,7 @@ const PRODUCTS = [
     price: 399,
     rating: 4.2,
     availableQuantity: 54,
+    isNew: false,
   },
   {
     id: 'Furry-Mysterious-Pouf',
@@ -3866,6 +4212,7 @@ const PRODUCTS = [
     price: 249,
     rating: 3.4,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Corgi-Pouf',
@@ -3878,6 +4225,7 @@ const PRODUCTS = [
     sale: 449,
     rating: 3.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Data-Processor-Pouf',
@@ -3889,6 +4237,7 @@ const PRODUCTS = [
     price: 999,
     rating: 4.9,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Exotic-Fruit-Pouf-V2',
@@ -3899,6 +4248,7 @@ const PRODUCTS = [
     price: 399,
     rating: 4,
     availableQuantity: 84,
+    isNew: false,
   },
   {
     id: 'Standard-Beige-Fluffy-Pouf',
@@ -3911,6 +4261,7 @@ const PRODUCTS = [
     sale: 199,
     rating: 3.7,
     availableQuantity: 8,
+    isNew: false,
   },
   {
     id: 'Car-Series-Retromobile-Pouf-V2',
@@ -3921,6 +4272,7 @@ const PRODUCTS = [
     price: 449,
     rating: 4.8,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Natural-Octopus-Pouf',
@@ -3932,6 +4284,7 @@ const PRODUCTS = [
     price: 499,
     rating: 4.5,
     availableQuantity: 6,
+    isNew: false,
   },
   {
     id: 'Pug-Muzzle-Pouf-V2',
@@ -3943,6 +4296,7 @@ const PRODUCTS = [
     price: 349,
     rating: 4.3,
     availableQuantity: 6,
+    isNew: true,
   },
   {
     id: 'Sea-Series-Plush-Yellow-Starfish-Pouf',
@@ -3955,6 +4309,7 @@ const PRODUCTS = [
     sale: 249,
     rating: 4.5,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Plush-Grey-Owl-Pouf',
@@ -3965,6 +4320,7 @@ const PRODUCTS = [
     price: 399,
     rating: 4.1,
     availableQuantity: 23,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Light-Beige-Starfish-Pouf',
@@ -3976,6 +4332,7 @@ const PRODUCTS = [
     price: 299,
     rating: 3.4,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Plush-Pumpkin-Pouf',
@@ -3988,6 +4345,7 @@ const PRODUCTS = [
     sale: 299,
     rating: 3.3,
     availableQuantity: 3,
+    isNew: false,
   },
   {
     id: 'Knitted-Socks-Pouf',
@@ -3998,6 +4356,7 @@ const PRODUCTS = [
     price: 299,
     rating: 3.9,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Totoro-Series-Pouf',
@@ -4008,6 +4367,7 @@ const PRODUCTS = [
     price: 349,
     rating: 4.3,
     availableQuantity: 64,
+    isNew: false,
   },
   {
     id: 'Chocolate-Framed-Pouf',
@@ -4019,6 +4379,7 @@ const PRODUCTS = [
     sale: 299,
     rating: 3.9,
     availableQuantity: 7,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Powerbank-Pouf',
@@ -4030,6 +4391,7 @@ const PRODUCTS = [
     price: 699,
     rating: 4.9,
     availableQuantity: 5,
+    isNew: true,
   },
   {
     id: 'Totoro-Series-Pouf-V2',
@@ -4041,6 +4403,7 @@ const PRODUCTS = [
     price: 349,
     rating: 5,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Totoro-Series-Pouf-V3',
@@ -4053,6 +4416,7 @@ const PRODUCTS = [
     sale: 299,
     rating: 4.9,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Gorilla-The-Pouf',
@@ -4063,6 +4427,7 @@ const PRODUCTS = [
     price: 399,
     rating: 4.5,
     availableQuantity: 63,
+    isNew: false,
   },
   {
     id: 'Cyberpunk-Series-Soviet-Pouf',
@@ -4074,6 +4439,7 @@ const PRODUCTS = [
     price: 499,
     rating: 4.9,
     availableQuantity: 2,
+    isNew: false,
   },
   {
     id: 'Pastel-Orange-Exotic-Fruit-Pouf',
@@ -4085,6 +4451,7 @@ const PRODUCTS = [
     price: 249,
     rating: 3.3,
     availableQuantity: 11,
+    isNew: false,
   },
   {
     id: 'Realistic-Corgi-Pouf',
@@ -4097,6 +4464,7 @@ const PRODUCTS = [
     sale: 399,
     rating: 4.1,
     availableQuantity: 5,
+    isNew: false,
   },
   {
     id: 'Pokemon-Series-Mysterious-Pokemon-Poof-V2',
@@ -4108,6 +4476,7 @@ const PRODUCTS = [
     price: 399,
     rating: 3.4,
     availableQuantity: 1,
+    isNew: false,
   },
   {
     id: 'Sea-Series-Coral-Pouf',
@@ -4119,6 +4488,7 @@ const PRODUCTS = [
     price: 599,
     rating: 4.9,
     availableQuantity: 4,
+    isNew: false,
   },
   {
     id: 'Matting-Abstract-Pouf',
@@ -4130,6 +4500,7 @@ const PRODUCTS = [
     price: 499,
     rating: 4.9,
     availableQuantity: 10,
+    isNew: false,
   },
 ];
 
