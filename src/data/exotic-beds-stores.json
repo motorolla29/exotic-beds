@@ -24306,13 +24306,13 @@
         "country": "Spain",
         "countryCode": "ES",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24332,13 +24332,13 @@
         "country": "Spain",
         "countryCode": "ES",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24358,13 +24358,13 @@
         "country": "France",
         "countryCode": "FR",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24384,13 +24384,13 @@
         "country": "France",
         "countryCode": "FR",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24410,13 +24410,13 @@
         "country": "France",
         "countryCode": "FR",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24436,13 +24436,13 @@
         "country": "France",
         "countryCode": "FR",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24462,13 +24462,13 @@
         "country": "France",
         "countryCode": "FR",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24488,13 +24488,13 @@
         "country": "France",
         "countryCode": "FR",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24514,13 +24514,13 @@
         "country": "Germany",
         "countryCode": "DE",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24540,13 +24540,13 @@
         "country": "Slovakia",
         "countryCode": "SK",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24566,13 +24566,13 @@
         "country": "Slovakia",
         "countryCode": "SK",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24592,13 +24592,13 @@
         "country": "Slovakia",
         "countryCode": "SK",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24618,13 +24618,13 @@
         "country": "Hungary",
         "countryCode": "HU",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24644,13 +24644,13 @@
         "country": "Hungary",
         "countryCode": "HU",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24670,13 +24670,13 @@
         "country": "Romania",
         "countryCode": "RO",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24696,13 +24696,13 @@
         "country": "Moldova",
         "countryCode": "MD",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24722,13 +24722,13 @@
         "country": "Moldova",
         "countryCode": "MD",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
@@ -24748,13 +24748,13 @@
         "country": "Ukraine",
         "countryCode": "UA",
         "workCalendar": {
-          "monday": { "open": "09:00", "close": "18:00" },
-          "tuesday": { "open": "09:00", "close": "18:00" },
-          "wednesday": { "open": "09:00", "close": "18:00" },
-          "thursday": { "open": "09:00", "close": "18:00" },
-          "friday": { "open": "09:00", "close": "18:00" },
-          "saturday": { "open": "10:00", "close": "16:00" },
-          "sunday": { "open": "10:00", "close": "16:00" }
+          "Monday": { "open": "09:00", "close": "18:00" },
+          "Tuesday": { "open": "09:00", "close": "18:00" },
+          "Wednesday": { "open": "09:00", "close": "18:00" },
+          "Thursday": { "open": "09:00", "close": "18:00" },
+          "Friday": { "open": "09:00", "close": "18:00" },
+          "Saturday": { "open": "10:00", "close": "16:00" },
+          "Sunday": { "open": "10:00", "close": "16:00" }
         }
       },
       "geometry": {
