@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
@@ -84,7 +84,9 @@ const SearchPage = () => {
     page * limit
   );
 
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [limitedSortedProducts]);
 
   return (
     <>
