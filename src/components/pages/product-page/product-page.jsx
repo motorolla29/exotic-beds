@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import AddShoppingCartRounded from '@mui/icons-material/AddShoppingCartRounded';
@@ -13,7 +14,6 @@ import HeartIcon from '../../heart-icon/heart-icon';
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import './product-page.sass';
-import { useEffect } from 'react';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -34,7 +34,7 @@ const ProductPage = () => {
     }
   }, [navigate, product]);
 
-  window.scrollTo(0, 0);
+  useEffect(() => window.scrollTo(0, 0), [id]);
 
   return (
     product && (
