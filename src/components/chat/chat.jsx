@@ -44,7 +44,7 @@ const Chat = () => {
   };
   const onMessageChange = (e) => {
     e.target.value ? setMessageFilled(true) : setMessageFilled(false);
-    if (/^[а-яА-ЯёЁa-zA-Z0-9-]{10,}$/.test(e.target.value)) {
+    if (/^[\s\S]{10,}$/.test(e.target.value)) {
       setMessageValid(true);
     } else {
       setMessageValid(false);
