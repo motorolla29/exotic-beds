@@ -121,7 +121,6 @@ const CatalogTopToolbar = ({
             onClick={() => {
               setFiltersVisible(true);
               window.scrollTo(0, 0);
-              scrollController.disabledScroll();
             }}
             className="top-toolbar_panel_filter"
           >
@@ -134,7 +133,6 @@ const CatalogTopToolbar = ({
           <CatalogFiltersMobile
             closeFilters={() => {
               setFiltersVisible(false);
-              scrollController.enabledScroll();
             }}
             products={products}
             category={category}

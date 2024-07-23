@@ -34,8 +34,8 @@ const Cart = () => {
   const [scope, animate] = useAnimate();
 
   const onApplyPromocodeClick = () => {
-    if (Object.keys(PROMOCODES).includes(promocodeInput)) {
-      setPromocode(promocodeInput);
+    if (Object.keys(PROMOCODES).includes(promocodeInput.toLowerCase())) {
+      setPromocode(promocodeInput.toLowerCase());
       setPromocodeStatus('valid');
     } else {
       setPromocodeStatus('invalid');

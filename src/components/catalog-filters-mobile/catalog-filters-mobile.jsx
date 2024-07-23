@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion } from 'framer-motion';
@@ -10,6 +11,7 @@ import FilterSwitchers from '../filter-components/filter-switchers/filter-switch
 import {
   findCheapestProductObj,
   findMostExpensiveProductObj,
+  scrollController,
 } from '../../utils';
 
 import './catalog-filters-mobile.sass';
@@ -52,6 +54,13 @@ const CatalogFiltersMobile = ({
       ? e.target.nextElementSibling.classList.remove('hidden')
       : e.target.nextElementSibling.classList.add('hidden');
   };
+
+  useEffect(() => {
+    console.log('effect');
+    scrollController.disabledScroll();
+    return () => scrollController.enabledScroll();
+  });
+
   return (
     <motion.div exit={{ opacity: 0 }}>
       <OverlayScrollbarsComponent className="catalog-filters-mobile">
