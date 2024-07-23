@@ -13,6 +13,7 @@ import './chat.sass';
 
 const Chat = () => {
   const [state, handleSubmit] = useForm('moqggkvy');
+  const [sent, setSent] = useState(false);
 
   const [nameValid, setNameValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
@@ -102,7 +103,10 @@ const Chat = () => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: [0, 0.5, 1], scale: [0.5, 1.5, 1] }}
         transition={{ duration: 0.8, times: [0.2, 0.4, 0.6], type: 'easeIn' }}
-        onClick={() => setChatOpen(!chatOpen)}
+        onClick={() => {
+          setChatOpen(!chatOpen);
+          state.succeeded ? setSent(true) : setSent(false);
+        }}
         className="chat"
       >
         {chatOpen ? (
@@ -134,40 +138,54 @@ const Chat = () => {
               <h3 className="title">Contact Us</h3>
               {state.succeeded ? (
                 <div className="form-succeeded-sent">
-                  <CheckmarkIconMotion
-                    className="form-succeeded-sent_icon"
-                    initial={{ opacity: 0, scale: 0.75 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: 'easeInOut' }}
-                  />
-                  <motion.p
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      damping: 10,
-                      stiffness: 100,
-                      duration: 0.1,
-                      delay: 1,
-                    }}
-                    className="form-succeeded-sent_title"
-                  >
-                    Thank you for contacting us!
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      damping: 10,
-                      stiffness: 100,
-                      duration: 0.1,
-                      delay: 1.8,
-                    }}
-                    className="form-succeeded-sent_description"
-                  >
-                    We will give you feedback soon...
-                  </motion.p>
+                  {sent ? (
+                    <>
+                      <CheckmarkIcon className="form-succeeded-sent_icon" />
+                      <p className="form-succeeded-sent_title">
+                        Thank you for contacting us!
+                      </p>
+                      <p className="form-succeeded-sent_description">
+                        We will give you feedback soon...
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <CheckmarkIconMotion
+                        className="form-succeeded-sent_icon"
+                        initial={{ opacity: 0, scale: 0.75 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, ease: 'easeInOut' }}
+                      />
+                      <motion.p
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          type: 'spring',
+                          damping: 10,
+                          stiffness: 100,
+                          duration: 0.1,
+                          delay: 1,
+                        }}
+                        className="form-succeeded-sent_title"
+                      >
+                        Thank you for contacting us!
+                      </motion.p>
+                      <motion.p
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          type: 'spring',
+                          damping: 10,
+                          stiffness: 100,
+                          duration: 0.1,
+                          delay: 1.8,
+                        }}
+                        className="form-succeeded-sent_description"
+                      >
+                        We will give you feedback soon...
+                      </motion.p>
+                    </>
+                  )}
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
