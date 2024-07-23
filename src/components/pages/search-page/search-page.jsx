@@ -84,10 +84,6 @@ const SearchPage = () => {
     page * limit
   );
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [limitedSortedProducts]);
-
   return (
     <>
       {ww <= 768 ? <SearchPanel /> : null}
