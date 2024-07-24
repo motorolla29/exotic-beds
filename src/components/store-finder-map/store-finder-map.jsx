@@ -23,6 +23,7 @@ import { getStoreWorkDescription } from '../../utils';
 import { MAPTILER_API_KEY } from '../../const';
 
 import './store-finder-map.sass';
+import { Link } from 'react-router-dom';
 
 const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
   const mapRef = useRef();
@@ -106,6 +107,21 @@ const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
                 popupInfo.workCalendar
               )}
             </span>
+          </div>
+          <div className="store-finder-popup_links">
+            <Link
+              to={`https://maps.google.com?saddr=Current+Location&daddr=${popupInfo.latitude},${popupInfo.longitude}`}
+              target="blank"
+              className="store-finder-popup_links_directions"
+            >
+              Get Directions
+            </Link>
+            <Link
+              to={`/store-finder/${popupInfo.id}`}
+              className="store-finder-popup_links_details"
+            >
+              View Details
+            </Link>
           </div>
         </Popup>
       )}

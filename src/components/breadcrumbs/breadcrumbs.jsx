@@ -5,7 +5,7 @@ import { getUcFirstNoDashStr } from '../../utils';
 
 import './breadcrumbs.sass';
 
-const Breadcrumbs = ({ category }) => {
+const Breadcrumbs = ({ category, last }) => {
   const location = useLocation();
 
   const matchedRoutes = location.pathname
@@ -33,7 +33,7 @@ const Breadcrumbs = ({ category }) => {
         </Link>
       ))}
       <span className="breadcrumbs_item_last">
-        {getUcFirstNoDashStr(matchedRoutes.slice(-1).toString())}
+        {last ? last : getUcFirstNoDashStr(matchedRoutes.slice(-1).toString())}
       </span>
     </div>
   );

@@ -11,6 +11,7 @@ import NotFoundPage from '../pages/not-found-page/not-found-page';
 import SearchPage from '../pages/search-page/search-page';
 
 import './app.sass';
+import StorePage from '../pages/store-page/store-page';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="search" element={<SearchPage />} />
           <Route path="my-lovelist" element={<LovelistPage />} />
           <Route path="store-finder" element={<StoreFinderPage />} />
+          <Route path="store-finder/:id" element={<StorePage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="not-found" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />

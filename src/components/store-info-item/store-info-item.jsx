@@ -239,6 +239,7 @@ const StoreInfoItem = ({ item, activeStoreId, onStoreItemClick }) => {
           Get Directions
         </Link>
         <Link
+          to={`/store-finder/${item.properties.id}`}
           onClick={(e) => {
             e.stopPropagation();
           }}
