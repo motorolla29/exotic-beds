@@ -1,1 +1,35 @@
 @import 'src/styles/variables'
+
+.store-page
+    margin: 2em 0 4em 0
+    &_image
+        width: 100%
+        border-radius: 2em
+    &_info
+        &_header
+            margin: 1em 0
+            &_name
+                
+            &_work
+                &_status
+                &_description
+        &_body
+            padding: 1em 0
+            display: flex
+            flex-direction: row
+        
+            &_address
+                padding-right: 4em
+                &_directions_link
+
+            &_opening-hours
+                padding-right: 4em
+                display: flex
+                flex-direction: column
+            
+            &_map
+                flex-grow: 1
+                border-radius: 2em
+                min-height: 350px
+                background: $main-color-white-transparent
+    &_nearby-stores
