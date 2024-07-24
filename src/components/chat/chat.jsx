@@ -33,7 +33,7 @@ const Chat = () => {
   const onEmailChange = (e) => {
     e.target.value ? setEmailFilled(true) : setEmailFilled(false);
     if (
-      /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)+([a-z]{2,18})$/.test(
+      /^[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-zA-Z0-9]([-a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)+([a-zA-Z]{2,18})$/.test(
         e.target.value
       )
     ) {
