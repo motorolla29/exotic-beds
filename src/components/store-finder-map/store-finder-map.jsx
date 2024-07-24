@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Map,
   Source,
@@ -23,7 +24,6 @@ import { getStoreWorkDescription } from '../../utils';
 import { MAPTILER_API_KEY } from '../../const';
 
 import './store-finder-map.sass';
-import { Link } from 'react-router-dom';
 
 const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
   const mapRef = useRef();
