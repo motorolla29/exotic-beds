@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useMap } from 'react-map-gl/maplibre';
-import getDistance from 'geolib/es/getDistance';
 import { GeocodingControl } from '@maptiler/geocoding-control/react';
 
 import { setNearStoresCenter } from '../../store/action';
@@ -11,6 +10,7 @@ import StoreInfoItem from '../store-info-item/store-info-item';
 import { MAPTILER_API_KEY } from '../../const';
 import stores from '../../data/exotic-beds-stores';
 import useWindowSize from '../../hooks/use-window-size';
+import { sortStoresByProximity } from '../../utils';
 
 import '@maptiler/geocoding-control/style.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -26,47 +26,10 @@ const StoreFinder = () => {
   const [ww, wh] = useWindowSize();
   const [locatorView, setLocatorView] = useState('map');
 
-  const storesSortedByProximity = stores.features
-    .sort(function (a, b) {
-      if (
-        getDistance(
-          {
-            latitude: a.geometry.coordinates[1],
-            longitude: a.geometry.coordinates[0],
-          },
-          centerCoords
-        ) >
-        getDistance(
-          {
-            latitude: b.geometry.coordinates[1],
-            longitude: b.geometry.coordinates[0],
-          },
-          centerCoords
-        )
-      ) {
-        return 1;
-      }
-      if (
-        getDistance(
-          {
-            latitude: a.geometry.coordinates[1],
-            longitude: a.geometry.coordinates[0],
-          },
-          centerCoords
-        ) <
-        getDistance(
-          {
-            latitude: b.geometry.coordinates[1],
-            longitude: b.geometry.coordinates[0],
-          },
-          centerCoords
-        )
-      ) {
-        return -1;
-      }
-      return 0;
-    })
-    .slice(0, 10);
+  const storesSortedByProximity = sortStoresByProximity(
+    stores.features,
+    centerCoords
+  ).slice(0, 10);
 
   const onGeocoderItemPick = (event) => {
     if (event) {

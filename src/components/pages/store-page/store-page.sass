@@ -8,28 +8,57 @@
     &_info
         &_header
             margin: 1em 0
+            padding: 1em
+            border-radius: 2em
+            background: linear-gradient(to left, #ffffff00, $main-color-white-transparent)
             &_name
-                
+                font-family: "Debussy"
+                font-size: 2em
+                color: $main-color-grey
             &_work
+
                 &_status
+                    font-family: "Debussy"
+                    margin-right: 0.5em
+                    &.open
+                        color: green
+                    &.closed
+                        color: red
+                    
                 &_description
+                    margin-left: 0.5em
+                    font-family: "Debussy"
         &_body
             padding: 1em 0
             display: flex
             flex-direction: row
         
             &_address
-                padding-right: 4em
+                width: 35%
+                padding-right: 1em
                 &_directions_link
 
             &_opening-hours
-                padding-right: 4em
+                width: 35%
+                padding-right: 1em
                 display: flex
                 flex-direction: column
             
-            &_map
+            & .maplibregl-map // styles for map
                 flex-grow: 1
-                border-radius: 2em
-                min-height: 350px
-                background: $main-color-white-transparent
+                border-radius: 1em
+                min-height: 400px
+                height: auto
+                & .maplibregl-marker
+                    cursor: pointer
     &_nearby-stores
+        &_title
+            margin: 0.5em 0 1em 0
+        &_items
+            display: flex
+            justify-content: space-between
+            &_item
+                width: 32%
+                &_photo
+                    border-radius: 1em
+                    width: 100%

@@ -1,3 +1,5 @@
+import getDistance from 'geolib/es/getDistance';
+
 const getCartWithAddedProduct = (state, action) => {
   let newProducts = {};
   const productIndex = state.cartProducts.findIndex(
@@ -429,6 +431,48 @@ const getStoreWorkDescription = (isOpen, calendar) => {
   }
 };
 
+const sortStoresByProximity = (stores, coords) => {
+  return stores.sort(function (a, b) {
+    if (
+      getDistance(
+        {
+          latitude: a.geometry.coordinates[1],
+          longitude: a.geometry.coordinates[0],
+        },
+        coords
+      ) >
+      getDistance(
+        {
+          latitude: b.geometry.coordinates[1],
+          longitude: b.geometry.coordinates[0],
+        },
+        coords
+      )
+    ) {
+      return 1;
+    }
+    if (
+      getDistance(
+        {
+          latitude: a.geometry.coordinates[1],
+          longitude: a.geometry.coordinates[0],
+        },
+        coords
+      ) <
+      getDistance(
+        {
+          latitude: b.geometry.coordinates[1],
+          longitude: b.geometry.coordinates[0],
+        },
+        coords
+      )
+    ) {
+      return -1;
+    }
+    return 0;
+  });
+};
+
 const randomInteger = (min, max) => {
   // случайное число от min до (max+1)
   let rand = min + Math.random() * (max + 1 - min);
@@ -454,5 +498,6 @@ export {
   findMostExpensiveProductObj,
   getStoreWorkStatus,
   getStoreWorkDescription,
+  sortStoresByProximity,
   randomInteger,
 };
