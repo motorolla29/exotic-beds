@@ -1,17 +1,18 @@
+import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Map, { Marker, NavigationControl } from 'react-map-gl/maplibre';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import stores from '../../../data/exotic-beds-stores';
-
-import './store-page.sass';
 import {
   getStoreWorkDescription,
   getStoreWorkStatus,
   sortStoresByProximity,
 } from '../../../utils';
-import { useEffect, useRef } from 'react';
 import { MAPTILER_API_KEY } from '../../../const';
-import { useMap } from 'react-map-gl/maplibre';
+import { ReactComponent as MapPinIcon } from '../../../images/map-pin-icon.svg';
+import { ReactComponent as ClockIcon } from '../../../images/clock-icon.svg';
+
+import './store-page.sass';
 
 const StorePage = () => {
   const { id } = useParams();
@@ -25,6 +26,8 @@ const StorePage = () => {
   })
     .filter((it) => it.properties.id !== id)
     .slice(0, 3);
+
+  const dayNumber = new Date().getDay();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -72,27 +75,55 @@ const StorePage = () => {
           </div>
           <div className="store-page_info_body">
             <div className="store-page_info_body_address">
-              <h2>Store address</h2>
+              <h2>
+                <MapPinIcon />
+                Store address
+              </h2>
               <p>{store.properties.address}</p>
-              <p>{`${store.properties.city}, ${store.properties.postCode}, ${store.properties.countryCode}`}</p>
-              <Link
-                to={`https://maps.google.com?saddr=Current+Location&daddr=${store.geometry.coordinates[1]},${store.geometry.coordinates[0]}`}
-                target="blank"
-                className="store-page_info_body_address_directions-link"
-              >
-                Get Directions
-              </Link>
+              <p>{`${store.properties.city}, ${store.properties.country}, ${store.properties.postCode}`}</p>
+              <div className="store-page_info_body_address_directions-link">
+                <Link
+                  to={`https://maps.google.com?saddr=Current+Location&daddr=${store.geometry.coordinates[1]},${store.geometry.coordinates[0]}`}
+                  target="blank"
+                >
+                  Get Directions
+                </Link>
+              </div>
             </div>
 
             <div className="store-page_info_body_opening-hours">
-              <h2>Store opening hours</h2>
-              <span>{`Monday: ${store.properties.workCalendar.Monday.open} - ${store.properties.workCalendar.Monday.close}`}</span>
-              <span>{`Tuesday: ${store.properties.workCalendar.Tuesday.open} - ${store.properties.workCalendar.Tuesday.close}`}</span>
-              <span>{`Wednesday: ${store.properties.workCalendar.Wednesday.open} - ${store.properties.workCalendar.Wednesday.close}`}</span>
-              <span>{`Thursday: ${store.properties.workCalendar.Thursday.open} - ${store.properties.workCalendar.Thursday.close}`}</span>
-              <span>{`Friday: ${store.properties.workCalendar.Friday.open} - ${store.properties.workCalendar.Friday.close}`}</span>
-              <span>{`Saturday: ${store.properties.workCalendar.Saturday.open} - ${store.properties.workCalendar.Saturday.close}`}</span>
-              <span>{`Sunday: ${store.properties.workCalendar.Sunday.open} - ${store.properties.workCalendar.Sunday.close}`}</span>
+              <h2>
+                <ClockIcon />
+                Store opening hours
+              </h2>
+              <p className={`${dayNumber === 1 ? 'active' : ''}`}>
+                <span>Monday: </span>
+                {`${store.properties.workCalendar.Monday.open} - ${store.properties.workCalendar.Monday.close}`}
+              </p>
+              <p className={`${dayNumber === 2 ? 'active' : ''}`}>
+                <span>Tuesday: </span>
+                {`${store.properties.workCalendar.Tuesday.open} - ${store.properties.workCalendar.Tuesday.close}`}
+              </p>
+              <p className={`${dayNumber === 3 ? 'active' : ''}`}>
+                <span>Wednesday: </span>
+                {`${store.properties.workCalendar.Wednesday.open} - ${store.properties.workCalendar.Wednesday.close}`}
+              </p>
+              <p className={`${dayNumber === 4 ? 'active' : ''}`}>
+                <span>Thursday: </span>
+                {`${store.properties.workCalendar.Thursday.open} - ${store.properties.workCalendar.Thursday.close}`}
+              </p>
+              <p className={`${dayNumber === 5 ? 'active' : ''}`}>
+                <span>Friday: </span>
+                {`${store.properties.workCalendar.Friday.open} - ${store.properties.workCalendar.Friday.close}`}
+              </p>
+              <p className={`${dayNumber === 6 ? 'active' : ''}`}>
+                <span>Saturday: </span>
+                {`${store.properties.workCalendar.Saturday.open} - ${store.properties.workCalendar.Saturday.close}`}
+              </p>
+              <p className={`${dayNumber === 0 ? 'active' : ''}`}>
+                <span>Sunday: </span>
+                {`${store.properties.workCalendar.Sunday.open} - ${store.properties.workCalendar.Sunday.close}`}
+              </p>
             </div>
 
             <Map
@@ -145,12 +176,12 @@ const StorePage = () => {
                     />
                     <h3>{`${it.properties.name} ${it.properties.city}`}</h3>
                     <p>{it.properties.address}</p>
-                    <p>{`${it.properties.city}, ${it.properties.postCode}, ${it.properties.countryCode}`}</p>
+                    <p>{`${it.properties.country}, ${it.properties.city}, ${it.properties.postCode}`}</p>
                     <div className="store-page_nearby-stores_items_item_work">
                       <span
                         className={`store-page_nearby-stores_items_item_work_status ${
                           getStoreWorkStatus(it.properties.workCalendar)
-                            ? 'opened'
+                            ? 'open'
                             : 'closed'
                         }`}
                       >

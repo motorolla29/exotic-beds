@@ -46906,54 +46906,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "ecbc4bf0-fea2-45c3-8472-4a82dd2159c5",
-        "name": "Exotic Beds",
-        "address": "Zeil 1, Frankfurt am Main",
-        "postCode": "60313",
-        "city": "Frankfurt am Main",
-        "region": "Hesse",
-        "country": "Germany",
-        "countryCode": "DE",
-        "workCalendar": {
-          "Monday": {
-            "open": "09:00",
-            "close": "18:00"
-          },
-          "Tuesday": {
-            "open": "09:00",
-            "close": "18:00"
-          },
-          "Wednesday": {
-            "open": "09:00",
-            "close": "18:00"
-          },
-          "Thursday": {
-            "open": "09:00",
-            "close": "18:00"
-          },
-          "Friday": {
-            "open": "09:00",
-            "close": "18:00"
-          },
-          "Saturday": {
-            "open": "10:00",
-            "close": "16:00"
-          },
-          "Sunday": {
-            "open": "10:00",
-            "close": "14:00"
-          }
-        },
-        "photo": "/stores/7.png"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [8.682127, 50.114539]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "77406ed0-8dd8-43d4-a56d-6fcee414d9cf",
         "name": "Exotic Beds Store",
         "address": "Leutragraben 1, Jena",
