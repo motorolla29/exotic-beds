@@ -31,66 +31,69 @@
         &_body
             padding: 1em 0
             display: flex
+            justify-content: space-between
             flex-direction: row
-        
-            &_address
-                width: 25%
-                padding-right: 1em
-                h2
-                    margin-bottom: 0.5em
-                    display: flex
-                    svg
-                        margin-right: 0.2em
-                        width: 1em
-                        height: auto
-                p
-                    font-weight: 600
-                    color: $main-color-burgundy
 
-                &_directions-link
-                    margin: 1em 0
-                    a
-                        opacity: 0.7
-                        margin-right: 0.5em
-                        background: $main-color-turquoise
-                        color: $main-color-white
-                        border: 1px solid $main-color-turquoise-transparent
-                        border-radius: 1em
-                        padding: 0.25em 1em 
-
-                        &:hover
-                            opacity: 0.8
-
-
-            &_opening-hours
-                width: 35%
-                padding-right: 1em
+            &_details
                 display: flex
-                flex-direction: column
-                h2
-                    margin-bottom: 0.5em
-                    display: flex
-                    svg
-                        margin-right: 0.2em
-                        width: 1em
-                        height: auto
-                p
-                    width: fit-content
-                    padding: 0.2em 0.4em
-                    font-weight: 400
-                    color: $main-color-grey
-                    font-style: italic
-                    &.active
-                        border: 1px solid $main-color-turquoise
-                        border-radius: 1em
-                    span
+                min-width: 50%
+                &_address
+                    width: 45%
+                    padding-right: 1em
+                    h2
+                        margin-bottom: 0.5em
+                        display: flex
+                        svg
+                            margin-right: 0.2em
+                            width: 1em
+                            height: auto
+                    p
                         font-weight: 600
-                        font-style: normal
                         color: $main-color-burgundy
 
+                    &_directions-link
+                        margin: 1.5em 0
+                        a
+                            opacity: 0.7
+                            margin-right: 0.5em
+                            background: $main-color-turquoise
+                            color: $main-color-white
+                            border: 1px solid $main-color-turquoise-transparent
+                            border-radius: 1em
+                            padding: 0.25em 1em 
+
+                            &:hover
+                                opacity: 0.8
+
+
+                &_opening-hours
+                    width: 55%
+                    padding-right: 1em
+                    display: flex
+                    flex-direction: column
+                    h2
+                        margin-bottom: 0.5em
+                        display: flex
+                        svg
+                            margin-right: 0.2em
+                            width: 1em
+                            height: auto
+                    p
+                        width: fit-content
+                        padding: 0.2em 0.4em
+                        font-weight: 400
+                        color: $main-color-grey
+                        font-style: italic
+                        &.active
+                            border: 1px solid $main-color-turquoise
+                            border-radius: 1em
+                        span
+                            font-weight: 600
+                            font-style: normal
+                            color: $main-color-burgundy
             
             & .maplibregl-map // styles for map
-                flex-grow: 1
+                max-width: 50%
                 border-radius: 1em
                 min-height: 400px
                 height: auto
@@ -123,3 +126,92 @@
                     &_description
                         color: $main-color-burgundy
                         margin-left: 0.5em
+
+@media (max-width: 1200px)
+    .store-page
+        &_info
+            font-size: 14px
+            &_body
+                & .maplibregl-map
+                    min-height: 300px
+
+        &_nearby-stores
+            font-size: 14px
+
+        
+
+@media (max-width: 992px)
+    .store-page
+        &_info
+            font-size: 13px
+            &_body
+                padding: 0
+                flex-direction: column
+                &_details
+                    margin-top: 0.5em
+                    &_address
+                        padding: 0
+                        width: 45%
+                    &_opening-hours
+                        padding: 0
+                        width: 55%
+                & .maplibregl-map
+                    margin-top: 2em
+                    min-width: 100%
+        
+
+@media (max-width: 768px)
+    .store-page
+        &_info
+            font-size: 12px 
+        &_nearby-stores
+            &_title
+                font-size: 24px 
+            &_items
+                overflow-x: scroll
+                font-size: 14px
+                padding-bottom: 1em
+                &_item
+                    display: inline-block
+                    min-width: 250px
+                    &_photo
+                        white-space: nowrap
+                &_item:not(:last-child)
+                    margin-right: 1em
+
+@media (max-width: 480px) 
+    .store-page
+        &_info
+            font-size: 11px
+            &_body
+                & .maplibregl-map
+                    min-height: 200px
+        &_nearby-stores
+            &_title
+                font-size: 22px 
+            
+        
+@media (max-width: 390px) 
+    .store-page
+        &_info
+            &_body
+                &_details
+                    font-size: 12px
+                    flex-direction: column
+                    &_address, &_opening-hours
+                        width: 100%
+                        display: flex
+                        flex-direction: column
+                        align-items: center
+
+
+@media (max-width: 320px) 
+    .store-page
+        &_info
+            font-size: 10px
+            &_body
+                &_details
+                    font-size: 11px
+        &_nearby-stores
+            &_title
+                font-size: 20px

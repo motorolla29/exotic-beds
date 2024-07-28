@@ -74,56 +74,58 @@ const StorePage = () => {
             </div>
           </div>
           <div className="store-page_info_body">
-            <div className="store-page_info_body_address">
-              <h2>
-                <MapPinIcon />
-                Store address
-              </h2>
-              <p>{store.properties.address}</p>
-              <p>{`${store.properties.city}, ${store.properties.country}, ${store.properties.postCode}`}</p>
-              <div className="store-page_info_body_address_directions-link">
-                <Link
-                  to={`https://maps.google.com?saddr=Current+Location&daddr=${store.geometry.coordinates[1]},${store.geometry.coordinates[0]}`}
-                  target="blank"
-                >
-                  Get Directions
-                </Link>
+            <div className="store-page_info_body_details">
+              <div className="store-page_info_body_details_address">
+                <h2>
+                  <MapPinIcon />
+                  Store address
+                </h2>
+                <p>{store.properties.address}</p>
+                <p>{`${store.properties.city}, ${store.properties.country}, ${store.properties.postCode}`}</p>
+                <div className="store-page_info_body_details_address_directions-link">
+                  <Link
+                    to={`https://maps.google.com?saddr=Current+Location&daddr=${store.geometry.coordinates[1]},${store.geometry.coordinates[0]}`}
+                    target="blank"
+                  >
+                    Get Directions
+                  </Link>
+                </div>
               </div>
-            </div>
 
-            <div className="store-page_info_body_opening-hours">
-              <h2>
-                <ClockIcon />
-                Store opening hours
-              </h2>
-              <p className={`${dayNumber === 1 ? 'active' : ''}`}>
-                <span>Monday: </span>
-                {`${store.properties.workCalendar.Monday.open} - ${store.properties.workCalendar.Monday.close}`}
-              </p>
-              <p className={`${dayNumber === 2 ? 'active' : ''}`}>
-                <span>Tuesday: </span>
-                {`${store.properties.workCalendar.Tuesday.open} - ${store.properties.workCalendar.Tuesday.close}`}
-              </p>
-              <p className={`${dayNumber === 3 ? 'active' : ''}`}>
-                <span>Wednesday: </span>
-                {`${store.properties.workCalendar.Wednesday.open} - ${store.properties.workCalendar.Wednesday.close}`}
-              </p>
-              <p className={`${dayNumber === 4 ? 'active' : ''}`}>
-                <span>Thursday: </span>
-                {`${store.properties.workCalendar.Thursday.open} - ${store.properties.workCalendar.Thursday.close}`}
-              </p>
-              <p className={`${dayNumber === 5 ? 'active' : ''}`}>
-                <span>Friday: </span>
-                {`${store.properties.workCalendar.Friday.open} - ${store.properties.workCalendar.Friday.close}`}
-              </p>
-              <p className={`${dayNumber === 6 ? 'active' : ''}`}>
-                <span>Saturday: </span>
-                {`${store.properties.workCalendar.Saturday.open} - ${store.properties.workCalendar.Saturday.close}`}
-              </p>
-              <p className={`${dayNumber === 0 ? 'active' : ''}`}>
-                <span>Sunday: </span>
-                {`${store.properties.workCalendar.Sunday.open} - ${store.properties.workCalendar.Sunday.close}`}
-              </p>
+              <div className="store-page_info_body_details_opening-hours">
+                <h2>
+                  <ClockIcon />
+                  Store opening hours
+                </h2>
+                <p className={`${dayNumber === 1 ? 'active' : ''}`}>
+                  <span>Monday: </span>
+                  {`${store.properties.workCalendar.Monday.open} - ${store.properties.workCalendar.Monday.close}`}
+                </p>
+                <p className={`${dayNumber === 2 ? 'active' : ''}`}>
+                  <span>Tuesday: </span>
+                  {`${store.properties.workCalendar.Tuesday.open} - ${store.properties.workCalendar.Tuesday.close}`}
+                </p>
+                <p className={`${dayNumber === 3 ? 'active' : ''}`}>
+                  <span>Wednesday: </span>
+                  {`${store.properties.workCalendar.Wednesday.open} - ${store.properties.workCalendar.Wednesday.close}`}
+                </p>
+                <p className={`${dayNumber === 4 ? 'active' : ''}`}>
+                  <span>Thursday: </span>
+                  {`${store.properties.workCalendar.Thursday.open} - ${store.properties.workCalendar.Thursday.close}`}
+                </p>
+                <p className={`${dayNumber === 5 ? 'active' : ''}`}>
+                  <span>Friday: </span>
+                  {`${store.properties.workCalendar.Friday.open} - ${store.properties.workCalendar.Friday.close}`}
+                </p>
+                <p className={`${dayNumber === 6 ? 'active' : ''}`}>
+                  <span>Saturday: </span>
+                  {`${store.properties.workCalendar.Saturday.open} - ${store.properties.workCalendar.Saturday.close}`}
+                </p>
+                <p className={`${dayNumber === 0 ? 'active' : ''}`}>
+                  <span>Sunday: </span>
+                  {`${store.properties.workCalendar.Sunday.open} - ${store.properties.workCalendar.Sunday.close}`}
+                </p>
+              </div>
             </div>
 
             <Map
