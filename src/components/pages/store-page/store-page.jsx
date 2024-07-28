@@ -14,6 +14,7 @@ import { ReactComponent as ClockIcon } from '../../../images/clock-icon.svg';
 
 import './store-page.sass';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { OverlayScrollbars } from 'overlayscrollbars';
 
 const StorePage = () => {
   const { id } = useParams();
@@ -38,7 +39,12 @@ const StorePage = () => {
       essential: true,
       duration: 500,
     });
+
+    OverlayScrollbars(document.getElementById('nearby-stores-scrollbar'), {})
+      .elements()
+      .viewport.scroll(0, 0); // сброс скролла в блоке с ближайшими магазинами
   }, [id]);
+
   return (
     <>
       <Breadcrumbs
@@ -164,7 +170,7 @@ const StorePage = () => {
         </div>
         <div className="store-page_nearby-stores">
           <h1 className="store-page_nearby-stores_title">Nearby Stores</h1>
-          <OverlayScrollbarsComponent defer>
+          <OverlayScrollbarsComponent id="nearby-stores-scrollbar" defer>
             <div className="store-page_nearby-stores_items">
               {nearbyStores.map((it) => {
                 return (
