@@ -2,12 +2,12 @@
 
 .breadcrumbs
     display: flex
-    align-items: flex-start
     column-gap: 2em
     font-size: 14px
     height: 1em
 
     &_item
+        align-self: flex-start
         white-space: nowrap
         position: relative
         font-weight: 600
@@ -16,6 +16,7 @@
             text-decoration: underline
 
         &_last
+            align-self: flex-start
             position: relative
             font-weight: 600
             cursor: default
