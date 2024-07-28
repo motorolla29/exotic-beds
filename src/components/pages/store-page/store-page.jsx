@@ -13,6 +13,7 @@ import { ReactComponent as MapPinIcon } from '../../../images/map-pin-icon.svg';
 import { ReactComponent as ClockIcon } from '../../../images/clock-icon.svg';
 
 import './store-page.sass';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const StorePage = () => {
   const { id } = useParams();
@@ -163,47 +164,49 @@ const StorePage = () => {
         </div>
         <div className="store-page_nearby-stores">
           <h1 className="store-page_nearby-stores_title">Nearby Stores</h1>
-          <div className="store-page_nearby-stores_items">
-            {nearbyStores.map((it) => {
-              return (
-                <div
-                  key={it.properties.id}
-                  className="store-page_nearby-stores_items_item"
-                >
-                  <Link to={`/store-finder/${it.properties.id}`}>
-                    <img
-                      className="store-page_nearby-stores_items_item_photo"
-                      src={it.properties.photo}
-                      alt="store_photo"
-                    />
-                    <h3>{`${it.properties.name} ${it.properties.city}`}</h3>
-                    <p>{it.properties.address}</p>
-                    <p>{`${it.properties.country}, ${it.properties.city}, ${it.properties.postCode}`}</p>
-                    <div className="store-page_nearby-stores_items_item_work">
-                      <span
-                        className={`store-page_nearby-stores_items_item_work_status ${
-                          getStoreWorkStatus(it.properties.workCalendar)
-                            ? 'open'
-                            : 'closed'
-                        }`}
-                      >
-                        {getStoreWorkStatus(it.properties.workCalendar)
-                          ? 'Open'
-                          : 'Closed'}
-                      </span>
-                      •
-                      <span className="store-page_nearby-stores_items_item_work_description">
-                        {getStoreWorkDescription(
-                          getStoreWorkStatus(it.properties.workCalendar),
-                          it.properties.workCalendar
-                        )}
-                      </span>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
+          <OverlayScrollbarsComponent defer>
+            <div className="store-page_nearby-stores_items">
+              {nearbyStores.map((it) => {
+                return (
+                  <div
+                    key={it.properties.id}
+                    className="store-page_nearby-stores_items_item"
+                  >
+                    <Link to={`/store-finder/${it.properties.id}`}>
+                      <img
+                        className="store-page_nearby-stores_items_item_photo"
+                        src={it.properties.photo}
+                        alt="store_photo"
+                      />
+                      <h3>{`${it.properties.name} ${it.properties.city}`}</h3>
+                      <p>{it.properties.address}</p>
+                      <p>{`${it.properties.country}, ${it.properties.city}, ${it.properties.postCode}`}</p>
+                      <div className="store-page_nearby-stores_items_item_work">
+                        <span
+                          className={`store-page_nearby-stores_items_item_work_status ${
+                            getStoreWorkStatus(it.properties.workCalendar)
+                              ? 'open'
+                              : 'closed'
+                          }`}
+                        >
+                          {getStoreWorkStatus(it.properties.workCalendar)
+                            ? 'Open'
+                            : 'Closed'}
+                        </span>
+                        •
+                        <span className="store-page_nearby-stores_items_item_work_description">
+                          {getStoreWorkDescription(
+                            getStoreWorkStatus(it.properties.workCalendar),
+                            it.properties.workCalendar
+                          )}
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </OverlayScrollbarsComponent>
         </div>
       </div>
     </>

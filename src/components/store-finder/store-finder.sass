@@ -6,11 +6,12 @@
     flex-direction: column
 
     &_header
+        font-family: "Debussy"
         padding-bottom: 0.2em
         text-align: center
         user-select: none
         font-size: 3.5em
-        font-weight: 900
+        font-weight: 400
         color: $main-color-turquoise-transparent
     
     &_geocoder
@@ -166,6 +167,9 @@
 @media (max-width: 768px) 
     .store-finder
         font-size: 12px
+        &_header
+            padding: 0.4em 0 0.2em 0
+            font-size: 3em
     .store-finder_locator_map
         & .maplibregl-map
             border-radius: 2em
@@ -178,9 +182,7 @@
 @media (max-width: 480px) 
     .store-finder
         font-size: 10px
-        &_header
-            margin: 0.4em 0 0.2em 0
-            font-size: 3em
+        
 
 @media (max-width: 320px) 
     .store-finder
