@@ -3,8 +3,10 @@
 .store-page
     margin: 2em 0 4em 0
     &_image
+        aspect-ratio: 16/9
         width: 100%
         border-radius: 2em
+        background: #eefef625
     &_info
         &_header
             margin: 1em 0
@@ -110,8 +112,10 @@
                 &:hover
                     opacity: 0.85
                 &_photo
+                    aspect-ratio: 16/9
                     border-radius: 1em
                     width: 100%
+                    background: #eefef630
                 h3
                     padding-bottom: 0.2em
                     color: $main-color-grey
@@ -204,6 +208,10 @@
 @media (max-width: 390px) 
     .store-page
         &_info
+            &_header
+                text-align: center
+                background: linear-gradient(to bottom, #ffffff00, $main-color-white-transparent)
+
             &_body
                 &_details
                     font-size: 12px
