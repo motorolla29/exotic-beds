@@ -115,6 +115,7 @@ const CatalogItem = ({ item, size = '' }) => {
                     open: true,
                     decorator: <AddShoppingCartRounded />,
                     text: 'Product added to basket',
+                    id: item.id,
                   })
                 );
               }}
@@ -133,6 +134,7 @@ const CatalogItem = ({ item, size = '' }) => {
                       open: true,
                       decorator: <HeartBrokenOutlined />,
                       text: 'Product is not loved anymore :(',
+                      id: item.id,
                     })
                   )
                 : dispatch(
@@ -140,6 +142,7 @@ const CatalogItem = ({ item, size = '' }) => {
                       open: true,
                       decorator: <FavoriteBorderOutlined />,
                       text: 'Product is loved now :)',
+                      id: item.id,
                     })
                   );
             }}

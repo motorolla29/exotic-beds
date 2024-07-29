@@ -40,6 +40,7 @@ const initialState = {
     open: false,
     text: '',
     decorator: null,
+    id: null,
   },
 };
 

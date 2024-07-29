@@ -106,6 +106,7 @@ const ProductPage = () => {
                         open: true,
                         decorator: <AddShoppingCartRounded />,
                         text: 'Product added to basket',
+                        id: product.id,
                       })
                     );
                   }}
@@ -125,6 +126,7 @@ const ProductPage = () => {
                           open: true,
                           decorator: <HeartBrokenOutlined />,
                           text: 'Product is not loved anymore :(',
+                          id: product.id,
                         })
                       )
                     : dispatch(
@@ -132,6 +134,7 @@ const ProductPage = () => {
                           open: true,
                           decorator: <FavoriteBorderOutlined />,
                           text: 'Product is loved now :)',
+                          id: product.id,
                         })
                       );
                 }}
