@@ -679,9 +679,9 @@ const PRODUCTS = [
     isNew: true,
   },
   {
-    id: '',
+    id: 'Giant-Light-Beige-Snail-Bed',
     category: 'beds',
-    title: '',
+    title: 'Giant Light Beige Snail Bed',
     description:
       'Furniture trends in the form of high headboards designed by EB. This is a giant hairy snail, whose shell is made like a high headboard of a bed and its face is in front. However, you see everything for yourself, hurry up and place your order!',
     photo: '/catalog/_43ac2cc5-61d5-4c46-bca2-eab4e25db751.jpg',
@@ -2656,11 +2656,11 @@ const PRODUCTS = [
     isNew: true,
   },
   {
-    id: 'Ashy-Iguana-Statue-Sofa',
+    id: 'Ashy-Crocodile-Statue-Sofa',
     category: 'sofas',
-    title: 'Ashy Iguana Statue Sofa',
+    title: 'Ashy Crocodile Statue Sofa',
     description:
-      'This iguana looks like a work of art. All thanks to our craftsmen. The sofas themselves are the second reason why people prefer our products, the first is a unique art object that they represent',
+      'This crocodile looks like a work of art. All thanks to our craftsmen. The sofas themselves are the second reason why people prefer our products, the first is a unique art object that they represent',
     photo: '/catalog/_5279f908-1981-48c6-8f3e-c90af213397d.jpg',
     price: 5299,
     sale: 4299,
