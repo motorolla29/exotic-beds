@@ -29,6 +29,7 @@ const CatalogPagination = ({ products, limit, page, setPage }) => {
     <div className="catalog-pagination">
       <Stack spacing={2}>
         <Pagination
+          key={searchParams.toString()}
           count={Math.ceil(products.length / limit)}
           size="large"
           variant="outlined"
