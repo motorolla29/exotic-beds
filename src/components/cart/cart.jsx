@@ -275,6 +275,7 @@ const Cart = () => {
               open: true,
               decorator: <RemoveShoppingCartRounded />,
               text: 'Product removed from basket',
+              id: itemId,
             })
           );
         }}

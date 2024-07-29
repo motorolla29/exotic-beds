@@ -58,6 +58,7 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
                       open: true,
                       decorator: <HeartBrokenOutlined />,
                       text: 'Product is not loved anymore :(',
+                      id: item.id,
                     })
                   )
                 : dispatch(
@@ -65,6 +66,7 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
                       open: true,
                       decorator: <FavoriteBorderOutlined />,
                       text: 'Product is loved now :)',
+                      id: item.id,
                     })
                   );
             }}
