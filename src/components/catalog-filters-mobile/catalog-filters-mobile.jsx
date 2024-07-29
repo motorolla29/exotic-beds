@@ -56,7 +56,6 @@ const CatalogFiltersMobile = ({
   };
 
   useEffect(() => {
-    console.log('effect');
     scrollController.disabledScroll();
     return () => scrollController.enabledScroll();
   });
@@ -65,10 +64,14 @@ const CatalogFiltersMobile = ({
     <motion.div exit={{ opacity: 0 }}>
       <OverlayScrollbarsComponent className="catalog-filters-mobile">
         <motion.div
-          key="filters"
-          initial={{ y: 150 }}
-          animate={{ y: 0 }}
-          exit={{ y: -200, opacity: 0, transition: 'easeOut' }}
+          initial={{ y: 150, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            type: 'spring',
+            damping: 8,
+            stiffness: 80,
+          }}
+          exit={{ y: -150, opacity: 0, transition: 0 }}
         >
           <div className="catalog-filters-mobile_header">
             <h3 className="catalog-filters-mobile_header_main-title">
