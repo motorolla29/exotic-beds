@@ -496,9 +496,9 @@ const PRODUCTS = [
     isNew: true,
   },
   {
-    id: 'White-Black-Teddy-Bear-Bed',
+    id: 'Creamy-Beige-Teddy-Bear-Bed',
     category: 'beds',
-    title: 'White Black Teddy Bear Bed',
+    title: 'Creamy Beige Teddy Bear Bed',
     description:
       'Teddy bear is a symbol of kindness, warmth and comfort. They are loved by children of all ages and adults, they are hugged tightly and given to those closest to them. These soft bundles of tenderness have long ceased to be simple toys. So is our teddy bear bed. This is not just a bed, but an indicator of our love and care for customers',
     photo: '/catalog/_8a627ed2-587f-4abb-907f-e82b89244e6c.jpg',
