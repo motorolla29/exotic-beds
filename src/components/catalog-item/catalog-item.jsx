@@ -104,8 +104,10 @@ const CatalogItem = ({ item, size = '' }) => {
               onClick={() => dispatch(cartOpen(true))}
               title="Open cart"
             >
-              <BasketIcon />
-              <span>In the basket</span>
+              <span>
+                <BasketIcon />
+                In the basket
+              </span>
             </button>
           ) : (
             <button
@@ -123,8 +125,10 @@ const CatalogItem = ({ item, size = '' }) => {
               }}
               title="Add to basket"
             >
-              <BasketIcon />
-              <span>Add to basket</span>
+              <span>
+                <BasketIcon />
+                Add to basket
+              </span>
             </button>
           )}
           <button

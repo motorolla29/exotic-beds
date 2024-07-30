@@ -96,8 +96,10 @@ const ProductPage = () => {
                   className="product-page_info_ui_open-cart-button"
                   title="Open cart"
                 >
-                  <BasketIcon />
-                  <span>In the basket</span>
+                  <span>
+                    <BasketIcon />
+                    In the basket
+                  </span>
                 </button>
               ) : (
                 <button
@@ -115,8 +117,10 @@ const ProductPage = () => {
                   className="product-page_info_ui_add-to-cart-button"
                   title="Add to basket"
                 >
-                  <BasketIcon />
-                  <span>Add to basket</span>
+                  <span>
+                    <BasketIcon />
+                    Add to basket
+                  </span>
                 </button>
               )}
 
