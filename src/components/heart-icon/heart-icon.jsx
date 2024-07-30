@@ -2,8 +2,8 @@ const HeartIcon = ({ isLoved }) => (
   <svg
     width="10%"
     height="10%"
-    fill={isLoved ? 'red' : 'none'}
-    stroke={isLoved ? 'red' : 'grey'}
+    fill={isLoved ? '#cc0000' : 'none'}
+    stroke={isLoved ? '#cc0000' : 'none'}
     viewBox="0 0 708 640"
     xmlns="http://www.w3.org/2000/svg"
   >
