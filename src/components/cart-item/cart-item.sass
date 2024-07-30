@@ -59,6 +59,7 @@
             justify-content: space-between
 
             &_lovelist
+                opacity: 0.8
                 display: flex
                 align-items: center
                 justify-content: center
@@ -72,16 +73,20 @@
                 border: none
                 border-radius: 50%
                 transition: transform 0.2s ease
+
+                &.loved svg
+                    stroke: $main-color-red
                 
                 svg
-                    transform: translateY(0.06em)
+                    transform: translateY(0.08em)
+                    stroke: $main-color-grey
                     stroke-width: 1em
                     width: 50%
                     height: auto
 
                 &:hover
                     svg
-                        stroke: red
+                        stroke: $main-color-red
                                     
             &_right-side
                 display: flex

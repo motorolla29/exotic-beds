@@ -70,7 +70,7 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
                     })
                   );
             }}
-            className="cart-item_body_ui_lovelist"
+            className={`cart-item_body_ui_lovelist ${isLoved ? 'loved' : ''}`}
           >
             <HeartIcon isLoved={isLoved} />
           </div>
