@@ -84,6 +84,9 @@
             margin-bottom: 1em
 
             &_add-to-cart-button, &_open-cart-button
+                display: flex
+                justify-content: center
+                align-items: center
                 opacity: 0.8
                 cursor: pointer
                 font-weight: 600
@@ -100,6 +103,13 @@
                     opacity: 0.9
                 &:active
                     transform: scale(0.97)
+                span
+                    padding-left: 0.5em
+                svg
+                    fill: $main-color-biscuit
+                    width: 1.5em
+                    height: auto
+                    
 
             &_open-cart-button
                 background: $main-color-grey

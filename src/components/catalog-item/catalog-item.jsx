@@ -14,6 +14,7 @@ import HeartIcon from '../heart-icon/heart-icon';
 import AddShoppingCartRounded from '@mui/icons-material/AddShoppingCartRounded';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
+import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon-btn.svg';
 
 import './catalog-item.sass';
 
@@ -103,7 +104,8 @@ const CatalogItem = ({ item, size = '' }) => {
               onClick={() => dispatch(cartOpen(true))}
               title="Open cart"
             >
-              In the basket
+              <BasketIcon />
+              <span>In the basket</span>
             </button>
           ) : (
             <button
@@ -121,7 +123,8 @@ const CatalogItem = ({ item, size = '' }) => {
               }}
               title="Add to basket"
             >
-              Add to basket
+              <BasketIcon />
+              <span>Add to basket</span>
             </button>
           )}
           <button

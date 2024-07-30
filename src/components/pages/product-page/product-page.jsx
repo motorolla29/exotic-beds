@@ -11,6 +11,7 @@ import InnerImageZoom from 'react-inner-image-zoom';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import RatingStars from '../../rating-stars/rating-stars';
 import HeartIcon from '../../heart-icon/heart-icon';
+import { ReactComponent as BasketIcon } from '../../../images/ui-icons/basket-icon-btn.svg';
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import './product-page.sass';
@@ -95,7 +96,8 @@ const ProductPage = () => {
                   className="product-page_info_ui_open-cart-button"
                   title="Open cart"
                 >
-                  In the basket
+                  <BasketIcon />
+                  <span>In the basket</span>
                 </button>
               ) : (
                 <button
@@ -113,7 +115,8 @@ const ProductPage = () => {
                   className="product-page_info_ui_add-to-cart-button"
                   title="Add to basket"
                 >
-                  Add to basket
+                  <BasketIcon />
+                  <span>Add to basket</span>
                 </button>
               )}
 

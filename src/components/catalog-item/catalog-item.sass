@@ -110,6 +110,10 @@
             padding-top: 0.6em
 
             &_add-to-cart-button, &_open-cart-button
+                display: flex
+                justify-content: center
+                align-items: center
+                text-align: end
                 font-size: 0.8em
                 user-select: none
                 opacity: 0.8
@@ -127,6 +131,13 @@
                     opacity: 0.9
                 &:active
                     transform: scale(0.97)
+                span
+                    padding-left: 0.5em
+                svg 
+                    fill: $main-color-biscuit
+                    width: 1.5em
+                    height: auto
+                    
 
             &_open-cart-button
                 background: $main-color-grey
