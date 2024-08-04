@@ -27,6 +27,7 @@ const CategoryFilter = ({ products }) => {
                       searchParams.has('category', `${category}`)
                         ? searchParams.delete('category', `${evt.target.name}`)
                         : searchParams.append('category', `${evt.target.name}`);
+                      searchParams.set('page', 1);
                       setSearchParams(searchParams);
                     }}
                     className="main-checkbox category-filter_options_option_input"

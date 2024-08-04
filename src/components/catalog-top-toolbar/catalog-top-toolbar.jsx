@@ -9,7 +9,6 @@ import { AnimatePresence } from 'framer-motion';
 
 import CatalogFiltersMobile from '../catalog-filters-mobile/catalog-filters-mobile';
 import useWindowSize from '../../hooks/use-window-size';
-import { scrollController } from '../../utils';
 
 import { ReactComponent as FiltersIcon } from '../../images/ui-icons/filters-icon.svg';
 
@@ -32,11 +31,13 @@ const CatalogTopToolbar = ({
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
     searchParams.set('limit', event.target.value);
+    searchParams.set('page', 1);
     setSearchParams(searchParams);
   };
   const handleSortChange = (event) => {
     setSort(event.target.value);
     searchParams.set('sortBy', event.target.value);
+    searchParams.set('page', 1);
     setSearchParams(searchParams);
   };
 

@@ -9,6 +9,7 @@ const FilterSwitchers = () => {
     evt.target.checked
       ? searchParams.append(evt.target.name, true)
       : searchParams.delete(evt.target.name);
+    params.set('page', 1);
     setSearchParams(params);
   };
 

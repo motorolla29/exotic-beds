@@ -48,6 +48,7 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
 
     searchParams.set('minPrice', min);
     searchParams.set('maxPrice', max);
+    searchParams.set('page', 1);
     setSearchParams(searchParams);
   };
 

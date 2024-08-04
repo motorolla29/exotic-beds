@@ -27,6 +27,7 @@ const SeriesFilter = ({ products }) => {
                       searchParams.has('series', `${series}`)
                         ? searchParams.delete('series', `${evt.target.name}`)
                         : searchParams.append('series', `${evt.target.name}`);
+                      searchParams.set('page', 1);
                       setSearchParams(searchParams);
                     }}
                     className="main-checkbox series-filter_options_option_input"

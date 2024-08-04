@@ -9,6 +9,7 @@ const RatingFilter = ({ products }) => {
 
   const onRatingInputChange = (evt) => {
     searchParams.set('minRating', evt.target.value);
+    searchParams.set('page', 1);
     setSearchparams(searchParams);
   };
 
