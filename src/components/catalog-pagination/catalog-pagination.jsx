@@ -10,7 +10,11 @@ const CatalogPagination = ({ products, limit }) => {
   const handleChange = (event, value) => {
     searchParams.set('page', value);
     setSearchParams(searchParams);
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
