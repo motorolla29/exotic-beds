@@ -12,6 +12,8 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import './chat.sass';
 
 const Chat = () => {
+  const [play] = useSound(uvedomlenie);
+
   const [state, handleSubmit] = useForm('moqggkvy');
   const [sent, setSent] = useState(false);
 
@@ -21,6 +23,13 @@ const Chat = () => {
   const [nameFilled, setNameFilled] = useState(false);
   const [emailFilled, setEmailFilled] = useState(false);
   const [messageFilled, setMessageFilled] = useState(false);
+  const [interacted, setInteracted] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+  const chatRef = useRef();
+
+  const ChatIconMotion = motion(ChatIcon);
+  const CrossIconMotion = motion(CrossIcon);
+  const CheckmarkIconMotion = motion(CheckmarkIcon);
 
   const onNameChange = (e) => {
     e.target.value ? setNameFilled(true) : setNameFilled(false);
@@ -50,14 +59,12 @@ const Chat = () => {
       setMessageValid(false);
     }
   };
-
-  const [interacted, setInteracted] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
-  const chatRef = useRef();
-
-  const [play] = useSound(uvedomlenie);
   const onWindowInterationHandler = () => {
     setInteracted(true);
+  };
+  const onWindowClickHandler = (e) => {
+    if (chatRef.current && !chatRef.current.contains(e.target))
+      setChatOpen(false);
   };
 
   useEffect(() => {
@@ -78,11 +85,6 @@ const Chat = () => {
     };
   });
 
-  const onWindowClickHandler = (e) => {
-    if (chatRef.current && !chatRef.current.contains(e.target))
-      setChatOpen(false);
-  };
-
   useEffect(() => {
     play();
   }, [interacted]);
@@ -91,10 +93,6 @@ const Chat = () => {
     window.addEventListener('mousedown', onWindowClickHandler);
     return () => window.removeEventListener('mousedown', onWindowClickHandler);
   });
-
-  const ChatIconMotion = motion(ChatIcon);
-  const CrossIconMotion = motion(CrossIcon);
-  const CheckmarkIconMotion = motion(CheckmarkIcon);
 
   return (
     interacted && (
