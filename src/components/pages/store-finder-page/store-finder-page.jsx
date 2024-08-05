@@ -7,8 +7,9 @@ import './store-finder-page.sass';
 
 const StoreFinderPage = () => {
   window.scrollTo(0, 0);
-  const chat = document.querySelector('.chat');
+
   useEffect(() => {
+    const chat = document.querySelector('.chat-container');
     if (chat) {
       chat.style.cssText = 'visibility: hidden';
     }

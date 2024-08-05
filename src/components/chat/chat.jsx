@@ -86,7 +86,7 @@ const Chat = () => {
   });
 
   useEffect(() => {
-    play();
+    if (window.location.pathname !== '/store-finder') play();
   }, [interacted]);
 
   useEffect(() => {
@@ -95,205 +95,207 @@ const Chat = () => {
   });
 
   return (
-    interacted && (
-      <motion.div
-        ref={chatRef}
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: [0, 0.5, 1], scale: [0.5, 1.5, 1] }}
-        transition={{ duration: 0.8, times: [0.2, 0.4, 0.6], type: 'easeIn' }}
-        onClick={() => {
-          setChatOpen(!chatOpen);
-          state.succeeded ? setSent(true) : setSent(false);
-        }}
-        className="chat"
-      >
-        {chatOpen ? (
-          <CrossIconMotion
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, type: 'easeIn' }}
-            className="cross-icon"
-          />
-        ) : (
-          <ChatIconMotion
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, type: 'easeIn' }}
-            className="chat-icon"
-          />
-        )}
-
-        <AnimatePresence>
+    <div className="chat-container">
+      {interacted && (
+        <motion.div
+          ref={chatRef}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: [0, 0.5, 1], scale: [0.5, 1.5, 1] }}
+          transition={{ duration: 0.8, times: [0.2, 0.4, 0.6], type: 'easeIn' }}
+          onClick={() => {
+            setChatOpen(!chatOpen);
+            state.succeeded ? setSent(true) : setSent(false);
+          }}
+          className="chat"
+        >
           {chatOpen ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
+            <CrossIconMotion
+              initial={{ opacity: 0, scale: 0.6 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="contacts-container"
-            >
-              <Logo className="logo" />
-              <h3 className="title">Contact Us</h3>
-              {state.succeeded ? (
-                <div className="form-succeeded-sent">
-                  {sent ? (
-                    <>
-                      <CheckmarkIcon className="form-succeeded-sent_icon" />
-                      <p className="form-succeeded-sent_title">
-                        Thank you for contacting us!
-                      </p>
-                      <p className="form-succeeded-sent_description">
-                        We will give you feedback soon...
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <CheckmarkIconMotion
-                        className="form-succeeded-sent_icon"
-                        initial={{ opacity: 0, scale: 0.75 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, ease: 'easeInOut' }}
-                      />
-                      <motion.p
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          type: 'spring',
-                          damping: 10,
-                          stiffness: 100,
-                          duration: 0.1,
-                          delay: 1,
-                        }}
-                        className="form-succeeded-sent_title"
-                      >
-                        Thank you for contacting us!
-                      </motion.p>
-                      <motion.p
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          type: 'spring',
-                          damping: 10,
-                          stiffness: 100,
-                          duration: 0.1,
-                          delay: 1.8,
-                        }}
-                        className="form-succeeded-sent_description"
-                      >
-                        We will give you feedback soon...
-                      </motion.p>
-                    </>
-                  )}
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <motion.input
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      damping: 14,
-                      stiffness: 100,
-                      duration: 0.4,
-                    }}
-                    className={`contact-form_name-input ${
-                      nameFilled && nameValid ? 'valid' : ''
-                    } ${nameFilled && !nameValid ? 'invalid' : ''}`}
-                    onChange={onNameChange}
-                    name="name"
-                    placeholder="Your name"
-                  />
-                  {nameFilled && !nameValid && (
-                    <span className="contact-form_error">
-                      The name must consist of at least 3 letters
-                    </span>
-                  )}
-                  <motion.input
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      damping: 12,
-                      stiffness: 100,
-                      duration: 0.4,
-                      delay: 0.1,
-                    }}
-                    className={`contact-form_email-input ${
-                      emailFilled && emailValid ? 'valid' : ''
-                    } ${emailFilled && !emailValid ? 'invalid' : ''}`}
-                    onChange={onEmailChange}
-                    name="email"
-                    placeholder="Your email"
-                  />
-                  {emailFilled && !emailValid && (
-                    <span className="contact-form_error">
-                      Email must contain the @ sign and the domain name
-                    </span>
-                  )}
-                  <motion.textarea
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      damping: 10,
-                      stiffness: 100,
-                      duration: 0.4,
-                      delay: 0.2,
-                    }}
-                    className={`contact-form_message-input ${
-                      messageFilled && messageValid ? 'valid' : ''
-                    } ${messageFilled && !messageValid ? 'invalid' : ''}`}
-                    onChange={onMessageChange}
-                    name="message"
-                    placeholder="You can ask us any questions and we will contact you"
-                  />
-                  {messageFilled && !messageValid && (
-                    <span className="contact-form_error">
-                      Your question must be at least 10 letters long
-                    </span>
-                  )}
-                  <motion.button
-                    initial={{ y: 90 }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      damping: 8,
-                      stiffness: 100,
-                      duration: 0.4,
-                      delay: 0.3,
-                    }}
-                    className={`contact-form_submit-button ${
-                      !nameValid || !emailValid || !messageValid
-                        ? 'disabled'
-                        : ''
-                    }`}
-                    type="submit"
-                    disabled={
-                      state.submitting ||
-                      !nameValid ||
-                      !emailValid ||
-                      !messageValid
-                    }
-                  >
-                    {state.submitting ? (
-                      <BeatLoader
-                        className="contact-form_submit-button_loader"
-                        color="#e8e8e8 "
-                        size={8}
-                        speedMultiplier={0.75}
-                        margin={4}
-                      />
+              transition={{ duration: 0.3, type: 'easeIn' }}
+              className="cross-icon"
+            />
+          ) : (
+            <ChatIconMotion
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, type: 'easeIn' }}
+              className="chat-icon"
+            />
+          )}
+
+          <AnimatePresence>
+            {chatOpen ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="contacts-container"
+              >
+                <Logo className="logo" />
+                <h3 className="title">Contact Us</h3>
+                {state.succeeded ? (
+                  <div className="form-succeeded-sent">
+                    {sent ? (
+                      <>
+                        <CheckmarkIcon className="form-succeeded-sent_icon" />
+                        <p className="form-succeeded-sent_title">
+                          Thank you for contacting us!
+                        </p>
+                        <p className="form-succeeded-sent_description">
+                          We will give you feedback soon...
+                        </p>
+                      </>
                     ) : (
-                      'Send'
+                      <>
+                        <CheckmarkIconMotion
+                          className="form-succeeded-sent_icon"
+                          initial={{ opacity: 0, scale: 0.75 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 1, ease: 'easeInOut' }}
+                        />
+                        <motion.p
+                          initial={{ opacity: 0, y: 100 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            type: 'spring',
+                            damping: 10,
+                            stiffness: 100,
+                            duration: 0.1,
+                            delay: 1,
+                          }}
+                          className="form-succeeded-sent_title"
+                        >
+                          Thank you for contacting us!
+                        </motion.p>
+                        <motion.p
+                          initial={{ opacity: 0, y: 100 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            type: 'spring',
+                            damping: 10,
+                            stiffness: 100,
+                            duration: 0.1,
+                            delay: 1.8,
+                          }}
+                          className="form-succeeded-sent_description"
+                        >
+                          We will give you feedback soon...
+                        </motion.p>
+                      </>
                     )}
-                  </motion.button>
-                </form>
-              )}
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-      </motion.div>
-    )
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="contact-form">
+                    <motion.input
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: 'spring',
+                        damping: 14,
+                        stiffness: 100,
+                        duration: 0.4,
+                      }}
+                      className={`contact-form_name-input ${
+                        nameFilled && nameValid ? 'valid' : ''
+                      } ${nameFilled && !nameValid ? 'invalid' : ''}`}
+                      onChange={onNameChange}
+                      name="name"
+                      placeholder="Your name"
+                    />
+                    {nameFilled && !nameValid && (
+                      <span className="contact-form_error">
+                        The name must consist of at least 3 letters
+                      </span>
+                    )}
+                    <motion.input
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: 'spring',
+                        damping: 12,
+                        stiffness: 100,
+                        duration: 0.4,
+                        delay: 0.1,
+                      }}
+                      className={`contact-form_email-input ${
+                        emailFilled && emailValid ? 'valid' : ''
+                      } ${emailFilled && !emailValid ? 'invalid' : ''}`}
+                      onChange={onEmailChange}
+                      name="email"
+                      placeholder="Your email"
+                    />
+                    {emailFilled && !emailValid && (
+                      <span className="contact-form_error">
+                        Email must contain the @ sign and the domain name
+                      </span>
+                    )}
+                    <motion.textarea
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: 'spring',
+                        damping: 10,
+                        stiffness: 100,
+                        duration: 0.4,
+                        delay: 0.2,
+                      }}
+                      className={`contact-form_message-input ${
+                        messageFilled && messageValid ? 'valid' : ''
+                      } ${messageFilled && !messageValid ? 'invalid' : ''}`}
+                      onChange={onMessageChange}
+                      name="message"
+                      placeholder="You can ask us any questions and we will contact you"
+                    />
+                    {messageFilled && !messageValid && (
+                      <span className="contact-form_error">
+                        Your question must be at least 10 letters long
+                      </span>
+                    )}
+                    <motion.button
+                      initial={{ y: 90 }}
+                      animate={{ y: 0 }}
+                      transition={{
+                        type: 'spring',
+                        damping: 8,
+                        stiffness: 100,
+                        duration: 0.4,
+                        delay: 0.3,
+                      }}
+                      className={`contact-form_submit-button ${
+                        !nameValid || !emailValid || !messageValid
+                          ? 'disabled'
+                          : ''
+                      }`}
+                      type="submit"
+                      disabled={
+                        state.submitting ||
+                        !nameValid ||
+                        !emailValid ||
+                        !messageValid
+                      }
+                    >
+                      {state.submitting ? (
+                        <BeatLoader
+                          className="contact-form_submit-button_loader"
+                          color="#e8e8e8 "
+                          size={8}
+                          speedMultiplier={0.75}
+                          margin={4}
+                        />
+                      ) : (
+                        'Send'
+                      )}
+                    </motion.button>
+                  </form>
+                )}
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </motion.div>
+      )}
+    </div>
   );
 };
 
