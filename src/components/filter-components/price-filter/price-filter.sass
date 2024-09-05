@@ -1,35 +1,66 @@
 @import 'src/styles/variables'
 
-.price-filter-inputs
-    display: flex
-    justify-content: space-between
-    margin: 0.5em 0
-    
-    &_container
-        display: flex
-        flex-direction: column
-        align-items: flex-start
-
+.price-filter
     &_title
+        position: relative
+        padding: 1em 0
+        border-bottom: 1px solid #4f4a5717
+        cursor: pointer
         user-select: none
-        color: $main-color-grey
-        font-size: 1em
-        padding-bottom: 0.2em
+        &:hover
+            color: $main-color-grey
+            border-color: #4f4a574a
+        &::after
+            position: absolute
+            content: ""
+            width: 0.4em
+            height: 0.4em
+            border-right: 1px solid $main-color-grey
+            border-bottom: 1px solid $main-color-grey
+            transform: rotate(225deg)
+            right: 0.5em
+            top: 50%
+            transition: transform 0.2s ease-out
+        &.hidden::after
+            position: absolute
+            content: ""
+            width: 0.4em
+            height: 0.4em
+            border-right: 1px solid $main-color-grey
+            border-bottom: 1px solid $main-color-grey
+            transform: rotate(45deg) 
+            right: 0.5em
+            top: 50%
+    &_inputs
+        display: flex
+        justify-content: space-between
+        margin: 0.5em 0
+    
+        &_input-container
+            display: flex
+            flex-direction: column
+            align-items: flex-start
 
-    &_number
-        outline: none
-        background-color: $main-color-white-transparent
-        text-align: center
-        width: 8em
-        border: 1px solid $main-color-white
-        border-radius: 3px
-        font-weight: 600
-        font-size: 1em
-        color: $main-color-turquoise
-        padding: 0.5em
-        -moz-appearance: textfield
-        &::-webkit-inner-spin-button
-            -webkit-appearance: none
+            &_title
+                user-select: none
+                color: $main-color-grey
+                font-size: 1em
+                padding-bottom: 0.2em
+
+            &_number-input
+                outline: none
+                background-color: $main-color-white-transparent
+                text-align: center
+                width: 8em
+                border: 1px solid $main-color-white
+                border-radius: 3px
+                font-weight: 600
+                font-size: 1em
+                color: $main-color-turquoise
+                padding: 0.5em
+                -moz-appearance: textfield
+                &::-webkit-inner-spin-button
+                    -webkit-appearance: none
             
 
 .price-filter .slider-box

@@ -8,6 +8,7 @@ const CategoryFilter = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
     <div className="category-filter">
+      <h5 className="category-filter_title">Category</h5>
       <div className="category-filter_options">
         {PRODUCT_CATEGORIES.map((category) => {
           const count = products.filter(

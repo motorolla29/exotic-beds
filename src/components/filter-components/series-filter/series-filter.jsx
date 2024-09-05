@@ -8,6 +8,7 @@ const SeriesFilter = ({ products }) => {
 
   return (
     <div className="series-filter">
+      <h5 className="series-filter_title">Series</h5>
       <div className="series-filter_options">
         {PRODUCT_SERIES.map((series) => {
           const count = products.filter((it) =>

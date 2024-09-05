@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
@@ -21,9 +21,6 @@ import './search-page.sass';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
-  const [page, setPage] = useState(
-    searchParams.has('page') ? +searchParams.get('page') : 1
-  );
 
   const searchQuery = searchParams.get('q').toLowerCase() || '';
 
@@ -80,8 +77,8 @@ const SearchPage = () => {
   const sortedProducts = sortProducts(filteredProducts, sort);
 
   const limitedSortedProducts = sortedProducts.slice(
-    (page - 1) * limit,
-    page * limit
+    ((+searchParams.get('page') || 1) - 1) * limit,
+    (+searchParams.get('page') || 1) * limit
   );
 
   return (
@@ -104,19 +101,9 @@ const SearchPage = () => {
                 sortedProducts={sortedProducts}
                 limitedSortedProducts={limitedSortedProducts}
               />
-              <CatalogPagination
-                page={page}
-                setPage={setPage}
-                products={sortedProducts}
-                limit={limit}
-              />
+              <CatalogPagination products={sortedProducts} limit={limit} />
               <Catalog products={limitedSortedProducts} />
-              <CatalogPagination
-                page={page}
-                setPage={setPage}
-                products={sortedProducts}
-                limit={limit}
-              />
+              <CatalogPagination products={sortedProducts} limit={limit} />
             </>
           ) : (
             <SearchEmpty />

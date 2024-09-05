@@ -15,6 +15,7 @@ const RatingFilter = ({ products }) => {
 
   return (
     <div className="rating-filter">
+      <h5 className="rating-filter_title">Rating</h5>
       <div className="rating-filter_options">
         <div className="rating-filter_options_option">
           <label className="main-radio">

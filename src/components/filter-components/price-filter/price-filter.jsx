@@ -90,9 +90,12 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
 
   return (
     <div className="price-filter">
-      <div className="price-filter-inputs">
-        <div className="price-filter-inputs_container">
-          <span className="price-filter-inputs_title">From</span>
+      <h5 className="price-filter_title">Price, €</h5>
+      <div className="price-filter_inputs">
+        <div className="price-filter_inputs_input-container">
+          <span className="price-filter_inputs_input-container_title">
+            From
+          </span>
           <input
             type="number"
             min={minPrice}
@@ -109,11 +112,11 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
               }
             }}
             value={rangeValue[0]}
-            className="price-filter-inputs_number"
+            className="price-filter_inputs_input-container_number-input"
           />
         </div>
-        <div className="price-filter-inputs_container">
-          <span className="price-filter-inputs_title">To</span>
+        <div className="price-filter_inputs_input-container">
+          <span className="price-filter_inputs_input-container_title">To</span>
           <input
             type="number"
             max={maxPrice}
@@ -130,7 +133,7 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
               }
             }}
             value={rangeValue[1]}
-            className="price-filter-inputs_number"
+            className="price-filter_inputs_input-container_number-input"
           />
         </div>
       </div>
