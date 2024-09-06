@@ -65,21 +65,23 @@
 
 .price-filter .slider-box
     display: grid
-    padding: 1em 0
+    padding: 1em 1.25em
     width: 100%
 
 .price-filter .slider
     justify-self: center
-    width: 94%
+    width: 100%
     color: $main-color-turquoise
 
     & .MuiSlider-thumb
+        width: 1.25em
+        height: 1.25em
         color: $main-color-white
         border: 2px solid $main-color-turquoise
         &:hover, &.Mui-focusVisible
-            box-shadow: 0 0 0 6px #00475717
+            box-shadow: 0 0 0 0.4em #00475717
         &:active, &.Mui-active
-            box-shadow: 0 0 0 10px #00475717
+            box-shadow: 0 0 0 0.6em #00475717
             
 
     & .MuiSlider-valueLabelOpen
