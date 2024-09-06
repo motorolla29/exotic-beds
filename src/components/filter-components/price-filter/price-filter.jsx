@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import './price-filter.sass';
 
@@ -10,6 +11,7 @@ function valuetext(value) {
 }
 
 const PriceFilter = ({ minPrice, maxPrice }) => {
+  const [open, setOpen] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [rangeValue, setRangeValue] = useState([
     searchParams.get('minPrice') || minPrice,
@@ -90,66 +92,84 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
 
   return (
     <div className="price-filter">
-      <h5 className="price-filter_title">Price, €</h5>
-      <div className="price-filter_inputs">
-        <div className="price-filter_inputs_input-container">
-          <span className="price-filter_inputs_input-container_title">
-            From
-          </span>
-          <input
-            type="number"
-            min={minPrice}
-            onChange={onInputMinPriceChange}
-            onBlur={(evt) => handleBlur(evt.target.value)}
-            onKeyDown={(evt) => {
-              if (evt.key === 'Enter') {
-                handleBlur(evt.target.value);
-                setValidatedPriceRangeParams(
-                  evt.target.value,
-                  evt.target.value,
-                  rangeValue[1]
-                );
-              }
-            }}
-            value={rangeValue[0]}
-            className="price-filter_inputs_input-container_number-input"
-          />
-        </div>
-        <div className="price-filter_inputs_input-container">
-          <span className="price-filter_inputs_input-container_title">To</span>
-          <input
-            type="number"
-            max={maxPrice}
-            onChange={onInputMaxPriceChange}
-            onBlur={(evt) => handleBlur(evt.target.value)}
-            onKeyDown={(evt) => {
-              if (evt.key === 'Enter') {
-                handleBlur(evt.target.value);
-                setValidatedPriceRangeParams(
-                  evt.target.value,
-                  rangeValue[0],
-                  evt.target.value
-                );
-              }
-            }}
-            value={rangeValue[1]}
-            className="price-filter_inputs_input-container_number-input"
-          />
-        </div>
-      </div>
-      <Box className="slider-box">
-        <Slider
-          min={minPrice}
-          max={maxPrice}
-          className="slider"
-          getAriaLabel={() => 'Price range'}
-          value={rangeValue}
-          onChange={handleRangeChange}
-          onChangeCommitted={handleRangeChangeCommited}
-          valueLabelDisplay="auto"
-          getAriaValueText={valuetext}
-        />
-      </Box>
+      <h5
+        onClick={() => setOpen(!open)}
+        className={`price-filter_title ${open ? 'open' : 'hidden'}`}
+      >
+        Price, €
+      </h5>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            style={{ overflow: 'hidden' }}
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+          >
+            <div className="price-filter_inputs">
+              <div className="price-filter_inputs_input-container">
+                <span className="price-filter_inputs_input-container_title">
+                  From
+                </span>
+                <input
+                  type="number"
+                  min={minPrice}
+                  onChange={onInputMinPriceChange}
+                  onBlur={(evt) => handleBlur(evt.target.value)}
+                  onKeyDown={(evt) => {
+                    if (evt.key === 'Enter') {
+                      handleBlur(evt.target.value);
+                      setValidatedPriceRangeParams(
+                        evt.target.value,
+                        evt.target.value,
+                        rangeValue[1]
+                      );
+                    }
+                  }}
+                  value={rangeValue[0]}
+                  className="price-filter_inputs_input-container_number-input"
+                />
+              </div>
+              <div className="price-filter_inputs_input-container">
+                <span className="price-filter_inputs_input-container_title">
+                  To
+                </span>
+                <input
+                  type="number"
+                  max={maxPrice}
+                  onChange={onInputMaxPriceChange}
+                  onBlur={(evt) => handleBlur(evt.target.value)}
+                  onKeyDown={(evt) => {
+                    if (evt.key === 'Enter') {
+                      handleBlur(evt.target.value);
+                      setValidatedPriceRangeParams(
+                        evt.target.value,
+                        rangeValue[0],
+                        evt.target.value
+                      );
+                    }
+                  }}
+                  value={rangeValue[1]}
+                  className="price-filter_inputs_input-container_number-input"
+                />
+              </div>
+            </div>
+            <Box className="slider-box">
+              <Slider
+                min={minPrice}
+                max={maxPrice}
+                className="slider"
+                getAriaLabel={() => 'Price range'}
+                value={rangeValue}
+                onChange={handleRangeChange}
+                onChangeCommitted={handleRangeChangeCommited}
+                valueLabelDisplay="auto"
+                getAriaValueText={valuetext}
+              />
+            </Box>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

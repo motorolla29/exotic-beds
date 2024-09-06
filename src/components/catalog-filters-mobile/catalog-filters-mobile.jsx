@@ -87,47 +87,13 @@ const CatalogFiltersMobile = ({
               </button>
             ) : null}
           </div>
-          {category ? null : (
-            <div className="catalog-filters-mobile_filter">
-              <h5
-                className="catalog-filters-mobile_filter_title"
-                onClick={onTitleClickHandler}
-              >
-                Category
-              </h5>
-              <CategoryFilter products={products} />
-            </div>
-          )}
-          <div className="catalog-filters-mobile_filter">
-            <h5
-              className="catalog-filters-mobile_filter_title"
-              onClick={onTitleClickHandler}
-            >
-              Price, €
-            </h5>
-            <PriceFilter
-              minPrice={findCheapestProductObj(products).price}
-              maxPrice={findMostExpensiveProductObj(products).price}
-            />
-          </div>
-          <div className="catalog-filters-mobile_filter">
-            <h5
-              className="catalog-filters-mobile_filter_title"
-              onClick={onTitleClickHandler}
-            >
-              Rating
-            </h5>
-            <RatingFilter products={products} />
-          </div>
-          <div className="catalog-filters-mobile_filter">
-            <h5
-              className="catalog-filters-mobile_filter_title"
-              onClick={onTitleClickHandler}
-            >
-              Series
-            </h5>
-            <SeriesFilter products={products} />
-          </div>
+          {category ? null : <CategoryFilter products={products} />}
+          <PriceFilter
+            minPrice={findCheapestProductObj(products).price}
+            maxPrice={findMostExpensiveProductObj(products).price}
+          />
+          <RatingFilter products={products} />
+          <SeriesFilter products={products} />
           <FilterSwitchers />
           <div className="catalog-filters-mobile_show-products-button">
             <button onClick={closeFilters}>
