@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
@@ -23,7 +22,7 @@ import './catalog-page.sass';
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
 
-  const [ww, wh] = useWindowSize();
+  const [ww] = useWindowSize();
 
   const products = useSelector((state) => state.products);
   const highestPrice =

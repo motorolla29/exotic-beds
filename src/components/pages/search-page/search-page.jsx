@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
@@ -26,7 +25,7 @@ const SearchPage = () => {
 
   const searchArray = searchQuery.split(' ');
 
-  const [ww, wh] = useWindowSize();
+  const [ww] = useWindowSize();
 
   const products = useSelector((state) => state.products);
   const highestPrice =
