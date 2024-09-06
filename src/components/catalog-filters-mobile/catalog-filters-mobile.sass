@@ -1,6 +1,7 @@
 @import 'src/styles/variables'
     
 .catalog-filters-mobile
+    font-size: 16px
     position: absolute
     top: 0
     left: 0
@@ -110,10 +111,9 @@
                 opacity: 0.5
 
 
-@media (max-width: 480px)
+@media (max-width: 360px)
+    .catalog-filters-mobile
+        font-size: 14px
     .catalog-filters-mobile_show-products-button button
         font-size: 12px
-
-@media (max-width: 320px)
-    .catalog-filters-mobile_show-products-button button
-        font-size: 10px
+    
