@@ -23,21 +23,21 @@ function Footer() {
       <div className="footer">
         <div className="footer_first-level">
           <div className="footer_first-level_socials">
-            <Link to="#">
+            <div className="link-div">
               <FacebookIcon />
-            </Link>
-            <Link to="#">
+            </div>
+            <div className="link-div">
               <TwitterIcon />
-            </Link>
-            <Link to="#">
+            </div>
+            <div className="link-div">
               <InstagramIcon />
-            </Link>
-            <Link to="#">
+            </div>
+            <div className="link-div">
               <PinterestIcon />
-            </Link>
-            <Link to="#">
+            </div>
+            <div className="link-div">
               <YoutubeIcon />
-            </Link>
+            </div>
           </div>
           <Link
             to="/store-finder"

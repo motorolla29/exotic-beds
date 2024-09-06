@@ -21,14 +21,9 @@ import useWindowSize from '../../../hooks/use-window-size';
 import './catalog-page.sass';
 
 const CatalogPage = ({ category }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [ww, wh] = useWindowSize();
-
-  useEffect(() => {
-    searchParams.set('page', 1);
-    setSearchParams(searchParams);
-  }, [category]);
 
   const products = useSelector((state) => state.products);
   const highestPrice =
