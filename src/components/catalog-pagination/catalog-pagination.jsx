@@ -27,6 +27,8 @@ const CatalogPagination = ({ products, limit }) => {
           variant="outlined"
           page={+searchParams.get('page') || 1}
           onChange={handleChange}
+          hidePrevButton
+          hideNextButton
         />
       </Stack>
     </div>
