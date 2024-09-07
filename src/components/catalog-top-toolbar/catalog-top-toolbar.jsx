@@ -26,7 +26,7 @@ const CatalogTopToolbar = ({
   const [limit, setLimit] = useState(searchParams.get('limit') || 24);
   const [sort, setSort] = useState(searchParams.get('sortBy') || 'relevance');
   const [filtersVisible, setFiltersVisible] = useState(false);
-  const [ww, wh] = useWindowSize();
+  const [ww] = useWindowSize();
 
   const handleLimitChange = (event) => {
     setLimit(event.target.value);

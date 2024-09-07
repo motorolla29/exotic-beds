@@ -51,6 +51,16 @@ const CatalogFiltersMobile = ({
     return () => scrollController.enabledScroll();
   });
 
+  useEffect(() => {
+    window.addEventListener(
+      'popstate',
+      (e) => {
+        closeFilters();
+      },
+      { once: 'true' }
+    );
+  });
+
   return (
     <motion.div exit={{ opacity: 0 }}>
       <OverlayScrollbarsComponent className="catalog-filters-mobile">
