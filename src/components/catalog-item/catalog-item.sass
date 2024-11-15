@@ -159,7 +159,7 @@
                     opacity: 0.6
 
                 svg
-                    transform: translateY(0.16em)
+                    transform: translateY(0.16em) scale(0.99)
                     stroke: $main-color-red
                     stroke-width: 1em
                     width: 50%
@@ -180,23 +180,44 @@
 @media (max-width: 1000px) 
     .catalog-item
         font-size: 10px
-
-@media (max-width: 445px) 
+@media (max-width: 480px)
     .catalog-item
-        font-size: 9px
+        display: flex
+        flex-direction: column
+        margin-right: 1em
+        width: calc(50% - 1em)
+        &_visual
+            height: auto
+            aspect-ratio: 1/1
+            a
+                img
+                    object-fit: cover
+        &_info
+            display: flex
+            flex-direction: column
+            flex-grow: 1
+            &_title
+                margin-bottom: 0.25em
+                height: auto
+            &_price-with-ui-container
+                display: flex
+                flex-direction: column
+                flex-grow: 1
+                justify-content: space-between
+            &_ui
+                &_add-to-cart-button, &_open-cart-button
+                    width: auto
+                    flex-grow: 1
+                    padding: 0 0.5em
+                    margin-right: 1em
 
-@media (max-width: 407px) 
+@media (max-width: 360px) 
     .catalog-item
-        font-size: 8px
+        &_info
+            &_ui
+                &_add-to-cart-button
+                    span
+                        svg 
+                            margin: 0
 
-@media (max-width: 369px) 
-    .catalog-item
-        font-size: 7px
 
-@media (max-width: 331px) 
-    .catalog-item
-        font-size: 6px
-
-@media (max-width: 293px) 
-    .catalog-item
-        font-size: 5px

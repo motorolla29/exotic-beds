@@ -5,6 +5,7 @@ const HeartIcon = ({ isLoved }) => (
     fill={isLoved ? '#cc0000' : 'none'}
     stroke={isLoved ? '#cc0000' : 'none'}
     viewBox="0 0 708 640"
+    //style={{ transform: 'scale(0.99)' }}
     xmlns="http://www.w3.org/2000/svg"
   >
     <g>
