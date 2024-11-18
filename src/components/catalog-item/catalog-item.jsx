@@ -14,6 +14,8 @@ import HeartIcon from '../heart-icon/heart-icon';
 import AddShoppingCartRounded from '@mui/icons-material/AddShoppingCartRounded';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
+import { TbShoppingCart } from 'react-icons/tb';
+import { TbShoppingCartCheck } from 'react-icons/tb';
 import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon-btn.svg';
 import useWindowSize from '../../hooks/use-window-size';
 
@@ -122,7 +124,7 @@ const CatalogItem = ({ item, size = '' }) => {
                 title="Open cart"
               >
                 <span>
-                  <BasketIcon />
+                  <TbShoppingCartCheck />
                   {ww > 360 && 'In the basket'}
                 </span>
               </button>
@@ -143,7 +145,7 @@ const CatalogItem = ({ item, size = '' }) => {
                 title="Add to basket"
               >
                 <span>
-                  <BasketIcon />
+                  <TbShoppingCart />
                   {ww > 360 && 'Add to basket'}
                 </span>
               </button>

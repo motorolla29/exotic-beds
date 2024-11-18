@@ -135,37 +135,39 @@ const StorePage = () => {
               </div>
             </div>
 
-            <Map
-              ref={localStoreMapRef}
-              attributionControl={false}
-              initialViewState={{
-                longitude: store.geometry.coordinates[0],
-                latitude: store.geometry.coordinates[1],
-                zoom: 16,
-              }}
-              mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`}
-            >
-              <NavigationControl showCompass={false} />
-              <Marker
-                longitude={store.geometry.coordinates[0]}
-                latitude={store.geometry.coordinates[1]}
-                anchor="bottom"
-                onClick={() => {
-                  localStoreMapRef.current.easeTo({
-                    center: store.geometry.coordinates,
-                    zoom: 16,
-                    essential: true,
-                    duration: 1000,
-                  });
+            <div className="store-page_info_body_map-container">
+              <Map
+                ref={localStoreMapRef}
+                attributionControl={false}
+                initialViewState={{
+                  longitude: store.geometry.coordinates[0],
+                  latitude: store.geometry.coordinates[1],
+                  zoom: 16,
                 }}
+                mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`}
               >
-                <img
-                  style={{ width: '60px' }}
-                  src="/logo/EB-LOGO-NO-TEXT-HD.png"
-                  alt="logo_pin"
-                />
-              </Marker>
-            </Map>
+                <NavigationControl showCompass={false} />
+                <Marker
+                  longitude={store.geometry.coordinates[0]}
+                  latitude={store.geometry.coordinates[1]}
+                  anchor="bottom"
+                  onClick={() => {
+                    localStoreMapRef.current.easeTo({
+                      center: store.geometry.coordinates,
+                      zoom: 16,
+                      essential: true,
+                      duration: 1000,
+                    });
+                  }}
+                >
+                  <img
+                    style={{ width: '60px' }}
+                    src="/logo/EB-LOGO-NO-TEXT-HD.png"
+                    alt="logo_pin"
+                  />
+                </Marker>
+              </Map>
+            </div>
           </div>
         </div>
         <div className="store-page_nearby-stores">

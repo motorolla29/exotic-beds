@@ -61,6 +61,7 @@
                     height: 3em
                     font-size: 1em
                     font-weight: 600
+                    min-width: 100px
                     
                 & .search-button.svelte-zh3kmv
                     svg // значок лупы
@@ -181,9 +182,26 @@
 
 @media (max-width: 480px) 
     .store-finder
-        font-size: 10px
-        
+        &_header
+            font-size: 2.5em
+        &_geocoder
+            padding-top: 0.5em
+            padding-bottom: 1em
+        &_locator
+            max-height: 65vh
+            &_map
+                & .maplibregl-map
+                    border-radius: 15px
+            &_list
+                border-radius: 15px
+
+@media (max-width: 360px) 
+    .store-finder
+        &_locator
+            padding-left: 1em
+            padding-right: 1em
 
 @media (max-width: 320px) 
     .store-finder
-        font-size: 8px
+        &_header
+            font-size: 2em

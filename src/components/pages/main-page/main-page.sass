@@ -33,7 +33,7 @@
         display: flex
         justify-content: center
         align-items: center
-        
+        background-size: cover
         &.slide-1
             background: url("/images/promo/3.webp")
             background-size: cover
@@ -137,50 +137,55 @@
         &:after
             font-size: 32px
 
-@media (max-width: 580px) 
+@media (max-width: 600px) 
     .highest-rated-items-block, .sales-items-block
         font-size: 10px
     .sale-items-carousel, .highest-rated-items-carousel
+        width: calc(100% - 30px)
+        & .slick-prev // левая стрелка
+            left: -28px
+        & .slick-next // правая стрелка
+            right: -28px
         & .catalog-item
-            font-size: 8px
-            box-shadow: 0px 0px 12px 2px $main-color-grey-transparent
+            box-shadow: 0px 0px 8px 0px $main-color-grey-transparent
             &:hover
-                box-shadow: 0px 0px 26px -8px $main-color-turquoise-transparent
+                box-shadow: 0px 0px 14px -6px $main-color-turquoise-transparent
         & .slick-arrow::before
-            font-size: 30px
+            font-size: 24px
 
 @media (max-width: 480px) 
     .promo-swiper
         border-radius: 15px
         aspect-ratio: 4/3
         & .swiper-slide
-            
+            border-radius: 15px
+            border: 2px solid #ACD7C0
             &.slide-1
                 background: url("/images/promo/mobile/3.png")
-                background-size: contain
+                background-size: cover
             &.slide-2
                 background: url("/images/promo/mobile/7.png")
-                background-size: contain
+                background-size: cover
             &.slide-3
                 background: url("/images/promo/mobile/2.png")
-                background-size: contain
+                background-size: cover
             &.slide-4
                 background: url("/images/promo/mobile/1.png")
-                background-size: contain
+                background-size: cover
             &.slide-5
                 background: url("/images/promo/mobile/4.png")
-                background-size: contain
+                background-size: cover
             &.slide-6
                 background: url("/images/promo/mobile/6.png")
-                background-size: contain
+                background-size: cover
             &.slide-7
                 background: url("/images/promo/mobile/5.png")
-                background-size: contain
+                background-size: cover
     .promo-sales
         border-radius: 15px
         aspect-ratio: 418/659
         background: url("/images/promo/mobile/0.png")
-        background-size: contain
+        background-size: cover
 
     .highest-rated-items-block, .sales-items-block
         font-size: 8px
@@ -231,7 +236,13 @@
 
 @media (max-width: 360px) 
     .highest-rated-items-block, .sales-items-block
+        margin-top: 1em
     .sale-items-carousel, .highest-rated-items-carousel
+        width: calc(100% - 30px)
+        & .slick-prev // левая стрелка
+            left: -22px
+        & .slick-next // правая стрелка
+            right: -22px
         & .slick-slide
             padding: 0 4px
 
