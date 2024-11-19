@@ -2,11 +2,14 @@
 
 .store-page
     margin: 2em 0 4em 0
-    &_image
+    &_store-image
         aspect-ratio: 16/9
         width: 100%
         border-radius: 2em
+        overflow: hidden
         background: #eefef625
+        & .progressive-image.thumb
+            filter: blur(10px)
     &_info
         &_header
             margin: 1em 0
@@ -112,10 +115,11 @@
                 width: 32%
                 &:hover
                     opacity: 0.85
-                &_photo
+                &_image
                     aspect-ratio: 16/9
-                    border-radius: 1em
                     width: 100%
+                    border-radius: 1em
+                    overflow: hidden
                     background: #eefef630
                 h3
                     padding-bottom: 0.2em
@@ -190,14 +194,14 @@
                 &_item
                     display: inline-block
                     min-width: 250px
-                    &_photo
+                    &_image
                         white-space: nowrap
                 &_item:not(:last-child)
                     margin-right: 1em
 
 @media (max-width: 480px) 
     .store-page
-        &_image
+        &_store-image
             border-radius: 15px
         &_info
             font-size: 11px
@@ -231,6 +235,8 @@
                         display: flex
                         flex-direction: column
                         align-items: center
+                    &_address
+                        padding-right: 0
 
 
 @media (max-width: 360px) 
@@ -238,7 +244,7 @@
         &_info
             &_body
                 &_map-container
-                    padding: 0 1em
+                    padding: 0 1em 0 0
                 
 
 @media (max-width: 320px) 

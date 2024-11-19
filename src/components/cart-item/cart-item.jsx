@@ -13,6 +13,7 @@ import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 
 import './cart-item.sass';
+import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 
 const CartItem = ({ item, setItemId, setModalOpen }) => {
   const dispatch = useDispatch();
@@ -23,7 +24,11 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
     <div className="cart-item" key={item.id}>
       <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.id}`}>
         <div className="cart-item_photo">
-          <img alt="img" src={item.photo} />
+          <ProgressiveImageContainer
+            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${item.photo}?tr=w-20`}
+            src={`https://ik.imagekit.io/motorolla29/exotic-beds/${item.photo}?tr=w-150`}
+            alt="cart-item-image"
+          />
         </div>
       </Link>
       <div className="cart-item_body">

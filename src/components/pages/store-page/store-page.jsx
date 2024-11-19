@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Map, { Marker, NavigationControl } from 'react-map-gl/maplibre';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import { OverlayScrollbars } from 'overlayscrollbars';
+
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import stores from '../../../data/exotic-beds-stores';
 import {
@@ -9,12 +12,11 @@ import {
   sortStoresByProximity,
 } from '../../../utils';
 import { MAPTILER_API_KEY } from '../../../const';
+import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
 import { ReactComponent as MapPinIcon } from '../../../images/map-pin-icon.svg';
 import { ReactComponent as ClockIcon } from '../../../images/clock-icon.svg';
 
 import './store-page.sass';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { OverlayScrollbars } from 'overlayscrollbars';
 
 const StorePage = () => {
   const { id } = useParams();
@@ -43,7 +45,7 @@ const StorePage = () => {
     OverlayScrollbars(document.getElementById('nearby-stores-scrollbar'), {})
       .elements()
       .viewport.scroll(0, 0); // сброс скролла в блоке с ближайшими магазинами
-  }, [id]);
+  }, [store]);
 
   return (
     <>
@@ -51,11 +53,13 @@ const StorePage = () => {
         last={`${store.properties.name}, ${store.properties.address}, ${store.properties.city}`}
       />
       <div className="store-page">
-        <img
-          className="store-page_image"
-          src={store.properties.photo}
-          alt="store_photo"
-        />
+        <div className="store-page_store-image">
+          <ProgressiveImageContainer
+            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${store.properties.photo}?tr=w-60`}
+            src={`https://ik.imagekit.io/motorolla29/exotic-beds/${store.properties.photo}`}
+            alt="store-image"
+          />
+        </div>
         <div className="store-page_info">
           <div className="store-page_info_header">
             <p className="store-page_info_header_name">{`${store.properties.name} ${store.properties.city}`}</p>
@@ -181,11 +185,13 @@ const StorePage = () => {
                     className="store-page_nearby-stores_items_item"
                   >
                     <Link to={`/store-finder/${it.properties.id}`}>
-                      <img
-                        className="store-page_nearby-stores_items_item_photo"
-                        src={it.properties.photo}
-                        alt="store_photo"
-                      />
+                      <div className="store-page_nearby-stores_items_item_image">
+                        <ProgressiveImageContainer
+                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${it.properties.photo}?tr=w-40`}
+                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/${it.properties.photo}?tr=w-500`}
+                          alt="store-image"
+                        />
+                      </div>
                       <h3>{`${it.properties.name} ${it.properties.city}`}</h3>
                       <p>{it.properties.address}</p>
                       <p>{`${it.properties.country}, ${it.properties.city}, ${it.properties.postCode}`}</p>

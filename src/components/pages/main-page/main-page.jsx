@@ -24,7 +24,7 @@ const MainPage = () => {
   const highestRatedProducts = sortProducts(products, 'rating').slice(0, 10);
   const saleProducts = sortProducts(products, 'discount').slice(0, 10);
   const navigate = useNavigate();
-  const [ww, wh] = useWindowSize();
+  const [ww] = useWindowSize();
 
   const getSlidesQty = (ww) => {
     if (ww >= 1600) {

@@ -15,6 +15,7 @@ import { ReactComponent as BasketIcon } from '../../../images/ui-icons/basket-ic
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import './product-page.sass';
+import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -43,12 +44,11 @@ const ProductPage = () => {
         <Breadcrumbs category={product.category} />
         <div className="product-page">
           <div className="product-page_visual">
-            <InnerImageZoom
-              fullscreenOnMobile={true}
-              hideCloseButton={true}
-              className="product-page_image"
-              alt="product_picture"
-              src={product.photo}
+            <ProgressiveImageContainer
+              thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${product.photo}?tr=w-60`}
+              src={`https://ik.imagekit.io/motorolla29/exotic-beds/${product.photo}`}
+              alt="product-image"
+              withInnerZoom
             />
           </div>
           <div className="product-page_info">

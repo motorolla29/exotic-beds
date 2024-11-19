@@ -5,11 +5,17 @@
     display: flex
 
     &_visual
+        display: flex
+        position: relative
         user-select: none
         width: 48%
+        aspect-ratio: 1/1
+        background: $main-color-green-light
+        overflow: hidden
+        border-radius: 2em
         img
-            border-radius: 2em
             width: 100%
+            object-fit: contain
             
         & .iiz.product-page_image
             border-radius: 2em
@@ -152,25 +158,22 @@
 
 @media (max-width: 992px)
     .product-page
-        font-size: 12px
-        &_info
-            font-size: 10px
-
-@media (max-width: 768px) 
-    .product-page
+        margin-top: 1.5em
         flex-direction: column
-        font-size: 12px
         padding-bottom: 1rem
-        &_visual
-            width: 100%
         &_info
             background: linear-gradient(to left top, #eefef60f, #eefef65e) 
             width: 100%
             margin: 1em 0 0 0
+        &_visual
+            width: 100%
 
 @media (max-width: 480px) 
     .product-page
+        margin-top: 1em
         font-size: 12px
+        &_info
+            font-size: 10px
 
 @media (max-width: 320px) 
     .product-page

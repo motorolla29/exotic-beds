@@ -16,8 +16,9 @@ import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import { TbShoppingCart } from 'react-icons/tb';
 import { TbShoppingCartCheck } from 'react-icons/tb';
-import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon-btn.svg';
+//import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon-btn.svg';
 import useWindowSize from '../../hooks/use-window-size';
+import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 
 import './catalog-item.sass';
 
@@ -47,10 +48,10 @@ const CatalogItem = ({ item, size = '' }) => {
     >
       <div className="catalog-item_visual">
         <Link to={`/${item.id}`}>
-          <img
-            className="catalog-item_visual_image"
+          <ProgressiveImageContainer
             alt="product_picture"
-            src={item.photo}
+            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${item.photo}?tr=w-40`}
+            src={`https://ik.imagekit.io/motorolla29/exotic-beds/${item.photo}?tr=w-300`}
           />
           {ww > 360 && (
             <>
