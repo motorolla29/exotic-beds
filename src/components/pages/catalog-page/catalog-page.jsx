@@ -18,6 +18,7 @@ import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
 
 import './catalog-page.sass';
+import { useEffect } from 'react';
 
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
@@ -71,6 +72,10 @@ const CatalogPage = ({ category }) => {
     ((+searchParams.get('page') || 1) - 1) * limit,
     (+searchParams.get('page') || 1) * limit
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

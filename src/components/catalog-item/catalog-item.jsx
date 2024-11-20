@@ -58,21 +58,21 @@ const CatalogItem = ({ item, size = '' }) => {
               {item.isNew ? (
                 <img
                   alt="new"
-                  src="/catalog-card-icons/new.png"
+                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/new.png?tr=w-150"
                   className="catalog-item_visual_new"
                 />
               ) : null}
               {item.rating >= 4.7 ? (
                 <img
                   alt="top"
-                  src="/catalog-card-icons/top-rated.png"
+                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/top-rated.png?tr=w-100"
                   className="catalog-item_visual_top-rated"
                 />
               ) : null}
               {item.sale ? (
                 <img
                   alt="sale"
-                  src="/catalog-card-icons/sale.png"
+                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sale.png?tr=w-150"
                   className="catalog-item_visual_sale"
                 />
               ) : null}

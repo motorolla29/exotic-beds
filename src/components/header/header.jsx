@@ -29,7 +29,10 @@ const Header = () => {
       <div className="header">
         <div className="header_left-side">
           <Link className="header_left-side_logo" to="/">
-            <img alt="logo" src="/logo/EB-LOGO-HD.png" />
+            <img
+              alt="logo"
+              src="https://ik.imagekit.io/motorolla29/exotic-beds/logo/EB-LOGO-HD.png"
+            />
           </Link>
           {ww > 768 ? <HeaderSearchPanel /> : null}
         </div>

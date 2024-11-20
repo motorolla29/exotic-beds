@@ -166,7 +166,7 @@ const StorePage = () => {
                 >
                   <img
                     style={{ width: '60px' }}
-                    src="/logo/EB-LOGO-NO-TEXT-HD.png"
+                    src="https://ik.imagekit.io/motorolla29/exotic-beds/logo/EB-LOGO-NO-TEXT-HD.png"
                     alt="logo_pin"
                   />
                 </Marker>

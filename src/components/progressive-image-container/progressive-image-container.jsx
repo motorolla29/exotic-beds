@@ -1,51 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import useIntersectionObserver from '../../hooks/use-intersection-observer';
-
-import './progressive-image-container.sass';
 import InnerImageZoom from 'react-inner-image-zoom';
 
-const ProgressiveImage = ({ alt, thumb, src, withInnerZoom = false }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setIsLoaded(false);
-  }, [src]);
-  return (
-    <>
-      <img
-        className="progressive-image thumb"
-        alt={alt}
-        src={thumb}
-        style={{ visibility: isLoaded ? 'hidden' : 'visible' }}
-      />
-      {withInnerZoom ? (
-        <InnerImageZoom
-          fullscreenOnMobile={true}
-          hideCloseButton={true}
-          className="progressive-image full"
-          alt={alt}
-          src={src}
-        />
-      ) : (
-        <img
-          onLoad={() => {
-            setIsLoaded(true);
-          }}
-          className="progressive-image full"
-          style={{ opacity: isLoaded ? 1 : 0 }}
-          alt={alt}
-          src={src}
-        />
-      )}
-    </>
-  );
-};
+import './progressive-image-container.sass';
 
-const ProgressiveImageContainer = ({ alt, thumb, src, withInnerZoom }) => {
+const ProgressiveImageContainer = ({
+  alt,
+  thumb,
+  src,
+  withInnerZoom = false,
+}) => {
   const ref = useRef();
   const [isVisible, setIsVisible] = useState(false);
-  // useEffect(() => {
-  //   setIsVisible(false);
-  // }, [src]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(false);
+    //
+  }, [src]);
 
   useIntersectionObserver({
     target: ref,
@@ -59,13 +31,32 @@ const ProgressiveImageContainer = ({ alt, thumb, src, withInnerZoom }) => {
 
   return (
     <div ref={ref} className="progressive-image-container">
+      <img
+        className="progressive-image thumb"
+        alt={alt}
+        src={thumb}
+        style={{ visibility: isLoaded ? 'hidden' : 'visible' }}
+      />
       {isVisible && (
-        <ProgressiveImage
-          src={src}
-          thumb={thumb}
-          alt={alt}
-          withInnerZoom={withInnerZoom}
-        />
+        <>
+          {withInnerZoom ? (
+            <InnerImageZoom
+              fullscreenOnMobile={true}
+              hideCloseButton={true}
+              className="progressive-image full"
+              alt={alt}
+              src={src}
+            />
+          ) : (
+            <img
+              onLoad={() => setIsLoaded(true)}
+              className="progressive-image full"
+              style={{ opacity: isLoaded ? 1 : 0 }}
+              alt={alt}
+              src={src}
+            />
+          )}
+        </>
       )}
     </div>
   );
