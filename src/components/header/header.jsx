@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { cartOpen } from '../../store/action';
+import { cartOpen, signInModalOpen } from '../../store/action';
 import HeaderSearchPanel from '../header-search-panel/header-serach-panel';
 import useWindowSize from '../../hooks/use-window-size';
 
 import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon.svg';
 import { ReactComponent as HeartIcon } from '../../images/ui-icons/heart-icon.svg';
 import { ReactComponent as PinIcon } from '../../images/ui-icons/pin-icon.svg';
+import { ReactComponent as UserIcon } from '../../images/ui-icons/user-icon.svg';
 
 import './header.sass';
 
@@ -37,6 +38,15 @@ const Header = () => {
           {ww > 768 ? <HeaderSearchPanel /> : null}
         </div>
         <div className="header_nav">
+          <div className="header_nav_login">
+            <div
+              onClick={() => dispatch(signInModalOpen(true))}
+              className="header_nav_login_icon"
+            >
+              <UserIcon />
+            </div>
+            <p className="header_nav_login_title">Sign In</p>
+          </div>
           <Link to="/store-finder" className="header_nav_store-finder">
             <div className="header_nav_store-finder_icon">
               <PinIcon />

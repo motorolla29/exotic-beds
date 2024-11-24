@@ -12,6 +12,10 @@ const cartOpen = createAction(`SET_IS_CART_OPEN`, (bool) => ({
   payload: bool,
 }));
 
+const signInModalOpen = createAction(`SET_IS_SIGN_IN_MODAL_OPEN`, (bool) => ({
+  payload: bool,
+}));
+
 const addProductToCart = createAction(`ADD_PRODUCT_TO_CART`, (productId) => ({
   payload: productId,
 }));
@@ -63,6 +67,7 @@ export {
   loadProducts,
   productsAreLoaded,
   cartOpen,
+  signInModalOpen,
   addProductToCart,
   removeProductFromCart,
   increaseProductAmountInCart,
