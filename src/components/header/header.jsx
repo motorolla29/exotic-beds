@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { cartOpen, signInModalOpen } from '../../store/action';
+import { cartOpen, loginModalsOpen } from '../../store/action';
 import HeaderSearchPanel from '../header-search-panel/header-serach-panel';
 import useWindowSize from '../../hooks/use-window-size';
 
@@ -38,11 +38,11 @@ const Header = () => {
           {ww > 768 ? <HeaderSearchPanel /> : null}
         </div>
         <div className="header_nav">
-          <div className="header_nav_login">
-            <div
-              onClick={() => dispatch(signInModalOpen(true))}
-              className="header_nav_login_icon"
-            >
+          <div
+            onClick={() => dispatch(loginModalsOpen(true))}
+            className="header_nav_login"
+          >
+            <div className="header_nav_login_icon">
               <UserIcon />
             </div>
             <p className="header_nav_login_title">Sign In</p>

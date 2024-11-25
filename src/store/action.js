@@ -12,7 +12,7 @@ const cartOpen = createAction(`SET_IS_CART_OPEN`, (bool) => ({
   payload: bool,
 }));
 
-const signInModalOpen = createAction(`SET_IS_SIGN_IN_MODAL_OPEN`, (bool) => ({
+const loginModalsOpen = createAction(`SET_IS_LOGIN_MODALS_OPEN`, (bool) => ({
   payload: bool,
 }));
 
@@ -67,7 +67,7 @@ export {
   loadProducts,
   productsAreLoaded,
   cartOpen,
-  signInModalOpen,
+  loginModalsOpen,
   addProductToCart,
   removeProductFromCart,
   increaseProductAmountInCart,

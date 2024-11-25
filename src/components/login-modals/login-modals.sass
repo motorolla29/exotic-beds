@@ -1,0 +1,102 @@
+@import 'src/styles/variables'
+    
+.login-modals-shadow
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background: rgba(0, 0, 0, 0.5)
+    z-index: 1000
+    //min-height: fit-content
+.login-modals
+    //margin: 1em
+    overflow: scroll
+    min-height: fit-content
+    display: flex
+    overflow: hidden
+    width: 20em
+    max-width: 75vw
+    background: $main-color-white
+    border-radius: 1em
+    border: 2px solid $main-color-turquoise
+    z-index: 1001
+    &_sign-in-inner, &_registration-inner
+        width: 100%
+        padding: 1em 2em
+        text-align: center
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        h2
+            font-family: AnjaEliane, Debussy
+            font-weight: 400
+            margin-bottom: 1em
+        &_textfields
+            width: 100%
+            display: flex
+            flex-direction: column
+            & .MuiFormControl-root
+                margin-bottom: 1em
+                & .MuiInputBase-root.Mui-focused
+                    & .MuiOutlinedInput-notchedOutline
+                        border-color: $main-color-turquoise
+                & .MuiInputBase-root.Mui-error, & .MuiInputBase-root.Mui-error.Mui-focused
+                    & .MuiOutlinedInput-notchedOutline
+                        border-color: #d32f2f
+                & .MuiInputLabel-root.Mui-focused
+                    color: $main-color-turquoise
+                & .MuiInputLabel-root.Mui-error
+                    color: #d32f2f
+        &_sign-in-button, &_registration-button
+            display: flex
+            justify-content: center
+            align-items: center
+            font-weight: 600
+            cursor: pointer
+            padding: 0.5em 1em
+            min-width: fit-content
+            width: 80px
+            height: 40px
+            border: none
+            border-radius: 2em
+            background: $main-color-turquoise
+            color: $main-color-white
+            &:hover
+                opacity: 0.9
+            &:disabled
+                opacity: 0.5
+        > p
+            color: $main-color-grey
+            font-weight: 600
+            margin: 5px 0
+        > p.login-modals_sign-in-inner_to-register-switch
+            cursor: pointer
+            margin: 0
+            color: $main-color-turquoise
+            text-decoration: underline
+            &:hover
+                opacity: 0.9
+        
+    &_registration-inner
+        > p 
+            color: $main-color-grey
+            font-weight: 400
+            margin: 1em 0 0.75em 0
+        > p.login-modals_registration-inner_to-sign-in-switch
+            margin: 0
+            font-weight: 600
+            color: $main-color-turquoise
+            padding: 0.2em 0.8em 0.4em 0.8em
+            vertical-align: baseline
+            border: 1px solid $main-color-turquoise
+            border-radius: 2em
+            cursor: pointer
+            &:hover
+                opacity: 0.9
+        &_registration-button
+            width: 100px

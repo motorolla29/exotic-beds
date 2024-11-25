@@ -12,7 +12,7 @@ import {
   setMapViewState,
   setNearStoresCenter,
   setSnackbar,
-  signInModalOpen,
+  loginModalsOpen,
 } from './action';
 
 import {
@@ -28,7 +28,7 @@ const initialState = {
   products: PRODUCTS,
   productsAreLoaded: true,
   isCartOpen: false,
-  isSignInModalOpen: false,
+  isLoginModalsOpen: false,
   sortType: null,
   cartProducts: JSON.parse(localStorage.getItem('cart')) || [],
   lovelistProducts: JSON.parse(localStorage.getItem('lovelist')) || [],
@@ -57,8 +57,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(cartOpen, (state, action) => {
       state.isCartOpen = action.payload;
     })
-    .addCase(signInModalOpen, (state, action) => {
-      state.isSignInModalOpen = action.payload;
+    .addCase(loginModalsOpen, (state, action) => {
+      state.loginModalsOpen = action.payload;
     })
     .addCase(addProductToCart, (state, action) => {
       state.cartProducts = getCartWithAddedProduct(state, action);
