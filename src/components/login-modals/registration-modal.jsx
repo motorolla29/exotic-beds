@@ -1,68 +1,166 @@
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
+import { registration } from '../../api/userAPI';
+import { useDispatch } from 'react-redux';
+import { loginModalsOpen, setIsAuth, setUser } from '../../store/action';
 
 const RegistrationModal = ({ setRegistrated }) => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [confirmPassword, setConfirmPassword] = useState();
+  const dispatch = useDispatch();
+  const [continueClicked, setContinueClicked] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const [nameValid, setNameValid] = useState();
-  const [emailValid, setEmailValid] = useState();
-  const [passwordValid, setPasswordValid] = useState();
+  const [nameValid, setNameValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
+  const [confirmPasswordValid, setConfirmPasswordValid] = useState(true);
 
-  const [error, setError] = useState({});
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const onNameChange = (e) => {
+    nameError && setNameError(false);
+    setName(e.target.value);
+    if (/([а-яА-Яa-zA-Z_\s]+){2,}$/.test(e.target.value)) {
+      setNameValid(true);
+    } else {
+      setNameValid(false);
+    }
+  };
+  const onEmailChange = (e) => {
+    emailError && setEmailError(false);
+    setEmail(e.target.value);
+    if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(e.target.value)) {
+      setEmailValid(true);
+    } else {
+      setEmailValid(false);
+    }
+  };
+  const onPasswordChange = (e) => {
+    passwordError && setPasswordError(false);
+    setPassword(e.target.value);
+    if (/.{6,}$/.test(e.target.value)) {
+      setPasswordValid(true);
+    } else {
+      setPasswordValid(false);
+    }
+    if (e.target.value === confirmPassword) {
+      setConfirmPasswordValid(true);
+    } else {
+      setConfirmPasswordValid(false);
+    }
+  };
+  const onConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+    if (e.target.value === password) {
+      setConfirmPasswordValid(true);
+    } else {
+      setConfirmPasswordValid(false);
+    }
+  };
+
   const [loading, setLoading] = useState(false);
 
-  const signUpHandler = () => {};
+  const signUpHandler = async () => {
+    setContinueClicked(true);
+    setLoading(true);
+    try {
+      const user = await registration(name, email, password);
+      setLoading(false);
+      dispatch(setUser(user));
+      dispatch(setIsAuth(true));
+      //dispatch(loginModalsOpen(false));
+      console.log(user);
+    } catch (e) {
+      setLoading(false);
+      e.response.data.name && setEmailError(e.response.data.name);
+      e.response.data.email && setEmailError(e.response.data.email);
+      e.response.data.password && setEmailError(e.response.data.password);
+      console.log(e.response.data);
+    }
+  };
 
   return (
     <div className="login-modals_registration-inner">
       <h2>Create an account</h2>
       <div className="login-modals_registration-inner_textfields">
         <TextField
-          onChange={(e) => setName(e.target.value)}
+          required
+          onChange={onNameChange}
           value={name}
           fullWidth
-          id="outlined-basic"
           label="Name"
           variant="outlined"
           color="success"
-          error
-          helperText="Wrong name"
+          error={continueClicked && (nameError || !nameValid)}
+          helperText={
+            continueClicked && (nameError || !nameValid)
+              ? nameError || 'Minimum 2 alphabetic only characters'
+              : false
+          }
         />
         <TextField
-          onChange={(e) => setEmail(e.target.value)}
+          required
+          onChange={onEmailChange}
           value={email}
           fullWidth
-          id="outlined-basic"
           label="Email"
           variant="outlined"
-          error={error.email}
-          helperText={error.email}
+          error={continueClicked && (emailError || !emailValid)}
+          helperText={
+            continueClicked && (emailError || !emailValid)
+              ? emailError || 'Invalid email address'
+              : false
+          }
         />
         <TextField
-          onChange={(e) => setPassword(e.target.value)}
+          required
+          onChange={onPasswordChange}
           value={password}
           fullWidth
-          id="outlined-basic"
           label="Password"
           variant="outlined"
+          type="password"
+          error={continueClicked && (passwordError || !passwordValid)}
+          helperText={
+            continueClicked && (passwordError || !passwordValid)
+              ? passwordError || 'Password must be at least 6 characters long'
+              : false
+          }
         />
         <TextField
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          onChange={onConfirmPasswordChange}
           value={confirmPassword}
           fullWidth
-          id="outlined-basic"
           label="Confirm password"
           variant="outlined"
+          type="password"
+          error={continueClicked && !confirmPasswordValid}
+          helperText={
+            continueClicked && !confirmPasswordValid
+              ? 'Passwords do not match'
+              : false
+          }
         />
       </div>
       <button
         onClick={signUpHandler}
         className="login-modals_registration-inner_registration-button"
-        disabled={loading}
+        disabled={
+          loading ||
+          !name ||
+          !email ||
+          !password ||
+          !confirmPassword ||
+          nameError ||
+          emailError ||
+          passwordError
+        }
       >
         {loading ? <CircleLoader size={20} color="#C4E2CF" /> : 'Continue'}
       </button>

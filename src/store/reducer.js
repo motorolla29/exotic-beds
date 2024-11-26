@@ -1,6 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
+  setOverlayLoader,
+  setIsAuth,
+  setUser,
   loadProducts,
   productsAreLoaded,
   cartOpen,
@@ -25,6 +28,9 @@ import {
 import PRODUCTS from '../data/products';
 
 const initialState = {
+  overlayLoader: false,
+  isAuth: false,
+  user: {},
   products: PRODUCTS,
   productsAreLoaded: true,
   isCartOpen: false,
@@ -48,6 +54,15 @@ const initialState = {
 
 const reducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(setOverlayLoader, (state, action) => {
+      state.overlayLoader = action.payload;
+    })
+    .addCase(setIsAuth, (state, action) => {
+      state.isAuth = action.payload;
+    })
+    .addCase(setUser, (state, action) => {
+      state.user = action.payload;
+    })
     .addCase(loadProducts, (state, action) => {
       state.products = action.payload;
     })

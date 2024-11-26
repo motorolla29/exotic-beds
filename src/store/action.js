@@ -1,5 +1,17 @@
 import { createAction } from '@reduxjs/toolkit';
 
+const setOverlayLoader = createAction(`SET_OVERLAY_LOADER`, (bool) => ({
+  payload: bool,
+}));
+
+const setIsAuth = createAction(`SET_IS_AUTH`, (bool) => ({
+  payload: bool,
+}));
+
+const setUser = createAction(`SET_USER`, (user) => ({
+  payload: user,
+}));
+
 const loadProducts = createAction(`LOAD_PRODUCTS`, (products) => ({
   payload: products,
 }));
@@ -64,6 +76,9 @@ const setSnackbar = createAction('SET_SNACKBAR', (options) => ({
 }));
 
 export {
+  setOverlayLoader,
+  setIsAuth,
+  setUser,
   loadProducts,
   productsAreLoaded,
   cartOpen,
