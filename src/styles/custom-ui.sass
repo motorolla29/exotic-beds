@@ -196,3 +196,16 @@ input:checked + .main-slider:before
 
 .main-slider.round:before 
   border-radius: 50%
+
+body // стилизация текстового инпута из mui
+    & .MuiFormControl-root
+        & .MuiInputBase-root.Mui-focused
+            & .MuiOutlinedInput-notchedOutline
+                border-color: $main-color-turquoise
+        & .MuiInputBase-root.Mui-error, & .MuiInputBase-root.Mui-error.Mui-focused
+            & .MuiOutlinedInput-notchedOutline
+                border-color: #d32f2f
+        & .MuiInputLabel-root.Mui-focused
+            color: $main-color-turquoise
+        & .MuiInputLabel-root.Mui-error
+            color: #d32f2f

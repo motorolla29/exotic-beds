@@ -14,6 +14,8 @@ import './header.sass';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.isAuth);
+  const user = useSelector((state) => state.user);
 
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
   const basketLength = useSelector((state) => {
@@ -38,15 +40,24 @@ const Header = () => {
           {ww > 768 ? <HeaderSearchPanel /> : null}
         </div>
         <div className="header_nav">
-          <div
-            onClick={() => dispatch(loginModalsOpen(true))}
-            className="header_nav_login"
-          >
-            <div className="header_nav_login_icon">
-              <UserIcon />
+          {isAuth && user ? (
+            <Link to="/account" className="header_nav_account">
+              <div className="header_nav_account_icon">
+                {user.name.slice(0, 1).toUpperCase()}
+              </div>
+              <p className="header_nav_account_title">Account</p>
+            </Link>
+          ) : (
+            <div
+              onClick={() => dispatch(loginModalsOpen(true))}
+              className="header_nav_login"
+            >
+              <div className="header_nav_login_icon">
+                <UserIcon />
+              </div>
+              <p className="header_nav_login_title">Sign In</p>
             </div>
-            <p className="header_nav_login_title">Sign In</p>
-          </div>
+          )}
           <Link to="/store-finder" className="header_nav_store-finder">
             <div className="header_nav_store-finder_icon">
               <PinIcon />

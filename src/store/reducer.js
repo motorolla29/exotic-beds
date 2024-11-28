@@ -28,11 +28,10 @@ import {
 import PRODUCTS from '../data/products';
 
 const initialState = {
-  overlayLoader: false,
+  overlayLoader: true,
   isAuth: false,
   user: {},
   products: PRODUCTS,
-  productsAreLoaded: true,
   isCartOpen: false,
   isLoginModalsOpen: false,
   sortType: null,

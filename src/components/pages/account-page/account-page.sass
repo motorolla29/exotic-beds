@@ -1,0 +1,74 @@
+@import 'src/styles/variables'
+    
+.account-page
+    &_heading
+        margin: 2em 0 0 0
+        display: flex
+        &_photo-container
+            position: relative
+            svg
+                cursor: pointer
+                width: 1.5em
+                height: auto
+                position: absolute
+                bottom: 0.5em
+                right: 0em
+                fill: $main-color-turquoise
+                //padding: 0.5em
+                //border-radius: 50%
+                //fill: $main-color-green-light
+                //background: $main-color-turquoise
+                &:hover
+                    fill: $main-color-grey
+        &_photo
+            position: relative
+            
+            border-radius: 50%
+            border: 2px solid $main-color-green-light
+            overflow: hidden
+            width: 7em
+            height: 7em
+            background: $main-color-white-transparent
+            img
+                width: 100%
+                object-fit: cover
+            
+        &_title
+            margin: 0 0 0 2em
+            h1
+                margin: 0 0 0.5em 0
+            &_signout
+                cursor: pointer
+                width: fit-content
+                display: flex
+                align-items: center
+                span
+                    margin-left: 0.25em
+                    font-weight: 600
+                svg
+                    height: auto
+                    width: 1.5em
+                &:hover
+                    color: $main-color-grey
+    &_user-info
+        margin: 1em 0 2em 0
+        &_contact-details, &_personal-data
+            margin: 0 0 1em 0
+            h2
+                margin: 0 0 1em 0
+                    
+                
+    &_delete
+        width: fit-content
+        cursor: pointer
+        display: flex
+        align-items: center
+        color: $main-color-red
+        span
+            margin: 0 0 0 0.25em
+            font-weight: 600
+        svg
+            width: 1em
+            height: auto
+        &:hover
+            opacity: 0.6

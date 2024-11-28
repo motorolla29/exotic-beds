@@ -67,20 +67,20 @@ const RegistrationModal = ({ setRegistrated }) => {
 
   const signUpHandler = async () => {
     setContinueClicked(true);
-    setLoading(true);
-    try {
-      const user = await registration(name, email, password);
-      setLoading(false);
-      dispatch(setUser(user));
-      dispatch(setIsAuth(true));
-      //dispatch(loginModalsOpen(false));
-      console.log(user);
-    } catch (e) {
-      setLoading(false);
-      e.response.data.name && setEmailError(e.response.data.name);
-      e.response.data.email && setEmailError(e.response.data.email);
-      e.response.data.password && setEmailError(e.response.data.password);
-      console.log(e.response.data);
+    if ((nameValid, emailValid, passwordValid, confirmPasswordValid)) {
+      try {
+        setLoading(true);
+        const user = await registration(name, email, password);
+        setLoading(false);
+        dispatch(setUser(user));
+        dispatch(setIsAuth(true));
+        setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
+      } catch (e) {
+        setLoading(false);
+        e.response.data.name && setEmailError(e.response.data.name);
+        e.response.data.email && setEmailError(e.response.data.email);
+        e.response.data.password && setEmailError(e.response.data.password);
+      }
     }
   };
 

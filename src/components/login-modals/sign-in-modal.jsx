@@ -1,38 +1,43 @@
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
+import { login } from '../../api/userAPI';
+import { useDispatch } from 'react-redux';
+import { loginModalsOpen, setIsAuth, setUser } from '../../store/action';
 
-const SignInModal = ({ setRegistrated }) => {
+const SignInModal = ({ setSuccessSignIn, setRegistrated }) => {
+  const dispatch = useDispatch();
   const [signInClicked, setSignInClicked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const [emailValid, setEmailValid] = useState(true);
-  const [passwordValid, setPasswordValid] = useState(true);
 
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const onEmailChange = (e) => {
+    setEmailError(false);
     setEmail(e.target.value);
-    if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(e.target.value)) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
   };
   const onPasswordChange = (e) => {
+    setPasswordError(false);
     setPassword(e.target.value);
-    if (/.{6,}$/.test(e.target.value)) {
-      setPasswordValid(true);
-    } else {
-      setPasswordValid(false);
-    }
   };
 
-  const signInHandler = () => {
+  const signInHandler = async () => {
     setSignInClicked(true);
+    try {
+      setLoading(true);
+      const user = await login(email, password);
+      setLoading(false);
+      dispatch(setUser(user));
+      dispatch(setIsAuth(true));
+      setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
+    } catch (e) {
+      setLoading(false);
+      e.response.data.email && setEmailError(e.response.data.email);
+      e.response.data.password && setPasswordError(e.response.data.password);
+    }
   };
 
   return (

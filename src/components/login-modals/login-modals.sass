@@ -42,16 +42,6 @@
             flex-direction: column
             & .MuiFormControl-root
                 margin-bottom: 1em
-                & .MuiInputBase-root.Mui-focused
-                    & .MuiOutlinedInput-notchedOutline
-                        border-color: $main-color-turquoise
-                & .MuiInputBase-root.Mui-error, & .MuiInputBase-root.Mui-error.Mui-focused
-                    & .MuiOutlinedInput-notchedOutline
-                        border-color: #d32f2f
-                & .MuiInputLabel-root.Mui-focused
-                    color: $main-color-turquoise
-                & .MuiInputLabel-root.Mui-error
-                    color: #d32f2f
         &_sign-in-button, &_registration-button
             display: flex
             justify-content: center
@@ -103,3 +93,17 @@
                 opacity: 0.9
         &_registration-button
             width: 100px
+
+.success-div
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 6em
+    height: 6em
+    border-radius: 50%
+    background: $main-color-green-light
+    svg
+        fill: $main-color-turquoise
+        height: auto
+        width: 50%

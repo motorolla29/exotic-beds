@@ -30,7 +30,7 @@
     &_nav
         display: flex
         flex-direction: row
-        &_store-finder, &_lovelist, &_basket, &_login
+        &_store-finder, &_lovelist, &_basket, &_login, &_account
             text-align: center
             cursor: pointer
             display: flex
@@ -67,8 +67,19 @@
                 margin-top: 0.2em
                 font-weight: 600
                 font-size: 1em
-        &_login
+        &_login, &_account
             margin: 0
+        &_account
+            &_icon
+                display: flex
+                align-items: center
+                justify-content: center
+                outline: 2px solid $main-color-turquoise
+                background: #c4e2cfab
+                color: $main-color-turquoise
+                border-radius: 50%
+                font-weight: 600
+
 
 
 @media (max-width: 1200px) 

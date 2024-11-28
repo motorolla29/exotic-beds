@@ -9,7 +9,7 @@ import variables from '../../styles/variables.sass';
 import './logo-spinner.sass';
 
 const LogoSpinner = () => {
-  const loading = useSelector((state) => !state.productsAreLoaded);
+  const loading = useSelector((state) => state.overlayLoader);
 
   useEffect(() => {
     if (loading) {
