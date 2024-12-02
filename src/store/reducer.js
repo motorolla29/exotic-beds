@@ -7,23 +7,25 @@ import {
   loadProducts,
   productsAreLoaded,
   cartOpen,
-  addProductToCart,
-  removeProductFromCart,
-  increaseProductAmountInCart,
-  decreaseProductAmountInCart,
-  toggleProductInLovelist,
+  setCart,
+  // addProductToCart,
+  // removeProductFromCart,
+  // increaseProductAmountInCart,
+  // decreaseProductAmountInCart,
+  setLovelist,
+  // toggleProductInLovelist,
   setMapViewState,
   setNearStoresCenter,
   setSnackbar,
   loginModalsOpen,
 } from './action';
 
-import {
-  getCartWithAddedProduct,
-  getCartWithIncreasedProduct,
-  getCartWithDecreasedProduct,
-  updateLovelist,
-} from '../utils';
+// import {
+//   getCartWithAddedProduct,
+//   getCartWithIncreasedProduct,
+//   getCartWithDecreasedProduct,
+//   updateLovelist,
+// } from '../utils';
 
 import PRODUCTS from '../data/products';
 
@@ -35,8 +37,8 @@ const initialState = {
   isCartOpen: false,
   isLoginModalsOpen: false,
   sortType: null,
-  cartProducts: JSON.parse(localStorage.getItem('cart')) || [],
-  lovelistProducts: JSON.parse(localStorage.getItem('lovelist')) || [],
+  cartProducts: [],
+  lovelistProducts: [],
   mapViewState: {
     latitude: 47.321788,
     longitude: 8.397063,
@@ -74,28 +76,34 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(loginModalsOpen, (state, action) => {
       state.loginModalsOpen = action.payload;
     })
-    .addCase(addProductToCart, (state, action) => {
-      state.cartProducts = getCartWithAddedProduct(state, action);
-      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
+    .addCase(setCart, (state, action) => {
+      state.cartProducts = action.payload.slice();
     })
-    .addCase(removeProductFromCart, (state, action) => {
-      state.cartProducts = state.cartProducts.filter(
-        (product) => product.id !== action.payload
-      );
-      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
+    // .addCase(addProductToCart, (state, action) => {
+    //   state.cartProducts = getCartWithAddedProduct(state, action);
+    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
+    // })
+    // .addCase(removeProductFromCart, (state, action) => {
+    //   state.cartProducts = state.cartProducts.filter(
+    //     (product) => product.id !== action.payload
+    //   );
+    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
+    // })
+    // .addCase(increaseProductAmountInCart, (state, action) => {
+    //   state.cartProducts = getCartWithIncreasedProduct(state, action);
+    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
+    // })
+    // .addCase(decreaseProductAmountInCart, (state, action) => {
+    //   state.cartProducts = getCartWithDecreasedProduct(state, action);
+    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
+    // })
+    .addCase(setLovelist, (state, action) => {
+      state.lovelistProducts = action.payload.slice();
     })
-    .addCase(increaseProductAmountInCart, (state, action) => {
-      state.cartProducts = getCartWithIncreasedProduct(state, action);
-      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
-    })
-    .addCase(decreaseProductAmountInCart, (state, action) => {
-      state.cartProducts = getCartWithDecreasedProduct(state, action);
-      localStorage.setItem('cart', JSON.stringify(state.cartProducts));
-    })
-    .addCase(toggleProductInLovelist, (state, action) => {
-      state.lovelistProducts = updateLovelist(state, action);
-      localStorage.setItem('lovelist', JSON.stringify(state.lovelistProducts));
-    })
+    // .addCase(toggleProductInLovelist, (state, action) => {
+    //   state.lovelistProducts = updateLovelist(state, action);
+    //   localStorage.setItem('lovelist', JSON.stringify(state.lovelistProducts));
+    // })
     .addCase(setMapViewState, (state, action) => {
       state.mapViewState = action.payload;
     })

@@ -12,6 +12,14 @@ const setUser = createAction(`SET_USER`, (user) => ({
   payload: user,
 }));
 
+const setCart = createAction(`SET_CART`, (cart) => ({
+  payload: cart,
+}));
+
+const setLovelist = createAction(`SET_LOVELIST`, (lovelist) => ({
+  payload: lovelist,
+}));
+
 const loadProducts = createAction(`LOAD_PRODUCTS`, (products) => ({
   payload: products,
 }));
@@ -79,6 +87,8 @@ export {
   setOverlayLoader,
   setIsAuth,
   setUser,
+  setCart,
+  setLovelist,
   loadProducts,
   productsAreLoaded,
   cartOpen,

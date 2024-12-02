@@ -11,22 +11,45 @@ import SearchPage from '../pages/search-page/search-page';
 
 import './app.sass';
 import StorePage from '../pages/store-page/store-page';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { check } from '../../api/userAPI';
-import { setIsAuth, setOverlayLoader, setUser } from '../../store/action';
+import {
+  setCart,
+  setIsAuth,
+  setLovelist,
+  setOverlayLoader,
+  setUser,
+} from '../../store/action';
 import AccountPage from '../pages/account-page/account-page';
+import { getBasket } from '../../api/basketAPI';
+import { getLovelist } from '../../api/lovelistAPI';
 
 const App = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.isAuth);
 
   useEffect(() => {
     check()
-      .then((data) => {
-        dispatch(setUser(data));
+      .then((user) => {
+        dispatch(setUser(user));
         dispatch(setIsAuth(true));
+        getBasket()
+          .then((basket) => {
+            dispatch(setCart(basket));
+          })
+          .catch((err) => console.log(err.message));
+        getLovelist()
+          .then((lovelist) => setLovelist(lovelist))
+          .catch((err) => console.log(err.message));
       })
-      .catch((err) => console.log(err.message))
+      .catch((err) => {
+        console.log(err.message);
+        if (!isAuth) {
+          dispatch(setCart(JSON.parse(localStorage.getItem('cart'))) || []);
+          dispatch(setLovelist([]));
+        }
+      })
       .finally(() => dispatch(setOverlayLoader(false)));
   }, []);
 

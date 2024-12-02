@@ -6,7 +6,12 @@ import { useEffect, useState } from 'react';
 import { TbLogout2 } from 'react-icons/tb';
 import { MdAddAPhoto } from 'react-icons/md';
 import { ImBin } from 'react-icons/im';
-import { setIsAuth, setUser } from '../../../store/action';
+import {
+  setCart,
+  setIsAuth,
+  setLovelist,
+  setUser,
+} from '../../../store/action';
 import { useNavigate } from 'react-router-dom';
 
 const AccountPage = () => {
@@ -14,12 +19,14 @@ const AccountPage = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
 
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
-    if (user) {
+    if (user.name) {
       setName(user.name);
+    }
+    if (user.email) {
       setEmail(user.email);
     }
   }, [user]);
@@ -27,6 +34,8 @@ const AccountPage = () => {
   const onSignoutHandler = () => {
     dispatch(setIsAuth(false));
     dispatch(setUser({}));
+    dispatch(setCart(JSON.parse(localStorage.getItem('cart'))) || []);
+    dispatch(setLovelist([]));
     localStorage.removeItem('token');
     navigate('/');
   };

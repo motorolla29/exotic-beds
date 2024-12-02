@@ -20,12 +20,12 @@ const Header = () => {
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
   const basketLength = useSelector((state) => {
     return state.cartProducts.reduce(
-      (acc, currentValue) => acc + currentValue.quantityInCart,
+      (acc, currentValue) => acc + currentValue.quantity,
       0
     );
   });
 
-  const [ww, wh] = useWindowSize();
+  const [ww] = useWindowSize();
 
   return (
     <div className="header-container">

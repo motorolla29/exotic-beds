@@ -25,7 +25,7 @@ const Cart = () => {
   const isOpen = useSelector((state) => state.isCartOpen);
   const cartItems = useSelector((state) => state.cartProducts);
   const cartItemsTotal = cartItems.reduce(
-    (acc, currentValue) => acc + currentValue.quantityInCart,
+    (acc, currentValue) => acc + currentValue.quantity,
     0
   );
   const [promocodeInput, setPromocodeInput] = useState('');

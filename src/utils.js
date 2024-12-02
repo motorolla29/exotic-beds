@@ -7,7 +7,7 @@ const getCartWithAddedProduct = (state, action) => {
   );
   if (productIndex !== -1) {
     newProducts = state.cartProducts.slice();
-    newProducts[productIndex].quantityInCart++;
+    newProducts[productIndex].quantity++;
   } else {
     const item = state.products.find((item) => item.id === action.payload);
     const newCartProduct = {
@@ -20,7 +20,7 @@ const getCartWithAddedProduct = (state, action) => {
       sale: item.sale,
       rating: item.rating,
       availableQuantity: item.availableQuantity,
-      quantityInCart: 1,
+      quantity: 1,
     };
     newProducts = [...state.cartProducts, newCartProduct];
   }
@@ -34,7 +34,7 @@ const getCartWithIncreasedProduct = (state, action) => {
     (product) => product.id === action.payload
   );
   newProducts = state.cartProducts.slice();
-  newProducts[productIndex].quantityInCart++;
+  newProducts[productIndex].quantity++;
 
   return newProducts;
 };
@@ -44,11 +44,11 @@ const getCartWithDecreasedProduct = (state, action) => {
   const productIndex = state.cartProducts.findIndex(
     (product) => product.id === action.payload
   );
-  if (newProducts[productIndex].quantityInCart === 1) {
+  if (newProducts[productIndex].quantity === 1) {
     newProducts.filter((product) => product.id !== action.payload);
   } else {
     newProducts = state.cartProducts.slice();
-    newProducts[productIndex].quantityInCart--;
+    newProducts[productIndex].quantity--;
   }
 
   return newProducts;
@@ -90,15 +90,15 @@ const countTheBasket = (products) => {
   let total = 0;
 
   products.forEach((item) => {
-    items += item.price * item.quantityInCart;
+    items += item.price * item.quantity;
 
     if (item.sale) {
-      subtotal += item.price * item.quantityInCart;
-      savings += (item.price - item.sale) * item.quantityInCart;
-      total += item.sale * item.quantityInCart;
+      subtotal += item.price * item.quantity;
+      savings += (item.price - item.sale) * item.quantity;
+      total += item.sale * item.quantity;
     } else {
-      subtotal += item.price * item.quantityInCart;
-      total += item.price * item.quantityInCart;
+      subtotal += item.price * item.quantity;
+      total += item.price * item.quantity;
     }
   });
 

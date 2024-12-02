@@ -3,7 +3,15 @@ import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { login } from '../../api/userAPI';
 import { useDispatch } from 'react-redux';
-import { loginModalsOpen, setIsAuth, setUser } from '../../store/action';
+import {
+  loginModalsOpen,
+  setCart,
+  setIsAuth,
+  setLovelist,
+  setUser,
+} from '../../store/action';
+import { getBasket } from '../../api/basketAPI';
+import { getLovelist } from '../../api/lovelistAPI';
 
 const SignInModal = ({ setSuccessSignIn, setRegistrated }) => {
   const dispatch = useDispatch();
@@ -32,11 +40,17 @@ const SignInModal = ({ setSuccessSignIn, setRegistrated }) => {
       setLoading(false);
       dispatch(setUser(user));
       dispatch(setIsAuth(true));
-      setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
+      const basket = await getBasket();
+      const lovelist = await getLovelist();
+      dispatch(setCart(basket));
+      dispatch(setLovelist(lovelist));
     } catch (e) {
       setLoading(false);
-      e.response.data.email && setEmailError(e.response.data.email);
-      e.response.data.password && setPasswordError(e.response.data.password);
+      console.log(e.message);
+      e.response?.data.email && setEmailError(e.response.data.email);
+      e.response?.data.password && setPasswordError(e.response.data.password);
+    } finally {
+      setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
     }
   };
 

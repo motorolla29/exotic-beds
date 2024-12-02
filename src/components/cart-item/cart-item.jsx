@@ -39,16 +39,16 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
           {item.sale ? (
             <div className="cart-item_body_info_price">
               <span className="cart-item_body_info_price_last">
-                €{item.sale * item.quantityInCart}
+                €{item.sale * item.quantity}
               </span>
               <span className="cart-item_body_info_price_first">
-                €{item.price * item.quantityInCart}
+                €{item.price * item.quantity}
               </span>
             </div>
           ) : (
             <div className="cart-item_body_info_price">
               <span className="cart-item_body_info_price_last">
-                €{item.price * item.quantityInCart}
+                €{item.price * item.quantity}
               </span>
             </div>
           )}
@@ -97,7 +97,7 @@ const CartItem = ({ item, setItemId, setModalOpen }) => {
                 -
               </span>
               <span className="cart-item_body_ui_right-side_counter_value">
-                {item.quantityInCart}
+                {item.quantity}
               </span>
               <span
                 onClick={() => dispatch(increaseProductAmountInCart(item.id))}

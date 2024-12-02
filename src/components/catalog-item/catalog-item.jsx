@@ -5,26 +5,29 @@ import { motion } from 'framer-motion';
 import RatingStars from '../rating-stars/rating-stars';
 import { randomInteger } from '../../utils';
 import {
-  addProductToCart,
   cartOpen,
+  setCart,
   setSnackbar,
   toggleProductInLovelist,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
-import AddShoppingCartRounded from '@mui/icons-material/AddShoppingCartRounded';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import { TbShoppingCart } from 'react-icons/tb';
 import { TbShoppingCartCheck } from 'react-icons/tb';
-//import { ReactComponent as BasketIcon } from '../../images/ui-icons/basket-icon-btn.svg';
 import useWindowSize from '../../hooks/use-window-size';
 import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 
 import './catalog-item.sass';
+import { addToBasket } from '../../api/basketAPI';
+import { useState } from 'react';
 
 const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
   const [ww] = useWindowSize();
+
+  const isAuth = useSelector((state) => state.isAuth);
+  const [loading, setLoading] = useState(false);
 
   const basketItems = useSelector((state) => state.cartProducts);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
@@ -37,6 +40,29 @@ const CatalogItem = ({ item, size = '' }) => {
     { opacity: 0, y: -25 },
     { opacity: 0, y: 25 },
   ];
+  const onAddToCartHandler = () => {
+    if (isAuth) {
+      setLoading(true);
+      addToBasket(item)
+        .then((cart) => {
+          dispatch(setCart(cart));
+        })
+        .catch((err) => console.log(err.message));
+    } else {
+      const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
+      const localStorageCartItem = localStorageCart.find(
+        (it) => item.id === it.id
+      );
+      if (localStorageCartItem) {
+        localStorageCartItem.quantity++;
+      } else {
+        const cartItem = { ...item, quantity: 1 };
+        localStorageCart.push(cartItem);
+        localStorage.setItem('cart', JSON.stringify(localStorageCart));
+        dispatch(setCart(localStorageCart));
+      }
+    }
+  };
 
   return (
     <motion.div
@@ -132,17 +158,7 @@ const CatalogItem = ({ item, size = '' }) => {
             ) : (
               <button
                 className="catalog-item_info_ui_add-to-cart-button"
-                onClick={() => {
-                  dispatch(addProductToCart(item.id));
-                  dispatch(
-                    setSnackbar({
-                      open: true,
-                      decorator: <AddShoppingCartRounded />,
-                      text: 'Product added to basket',
-                      id: item.id,
-                    })
-                  );
-                }}
+                onClick={onAddToCartHandler}
                 title="Add to basket"
               >
                 <span>

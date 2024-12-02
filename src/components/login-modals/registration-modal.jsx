@@ -3,7 +3,15 @@ import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { registration } from '../../api/userAPI';
 import { useDispatch } from 'react-redux';
-import { loginModalsOpen, setIsAuth, setUser } from '../../store/action';
+import {
+  loginModalsOpen,
+  setCart,
+  setIsAuth,
+  setLovelist,
+  setUser,
+} from '../../store/action';
+import { getBasket } from '../../api/basketAPI';
+import { getLovelist } from '../../api/lovelistAPI';
 
 const RegistrationModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
@@ -74,12 +82,17 @@ const RegistrationModal = ({ setRegistrated }) => {
         setLoading(false);
         dispatch(setUser(user));
         dispatch(setIsAuth(true));
-        setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
+        const basket = await getBasket();
+        const lovelist = await getLovelist();
+        dispatch(setCart(basket));
+        dispatch(setLovelist(lovelist));
       } catch (e) {
         setLoading(false);
         e.response.data.name && setEmailError(e.response.data.name);
         e.response.data.email && setEmailError(e.response.data.email);
         e.response.data.password && setEmailError(e.response.data.password);
+      } finally {
+        setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
       }
     }
   };
