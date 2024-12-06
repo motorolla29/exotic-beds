@@ -64,8 +64,8 @@ const App = () => {
             console.log(err.message);
           });
       })
-      .catch((err) => console.log(err.message))
-      .finally(() => dispatch(setOverlayLoader(false)));
+      .then(() => dispatch(setOverlayLoader(false)))
+      .catch((err) => console.log(err.message));
   }, [isAuth, dispatch]);
 
   return (

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { DialogActions, DialogContent, DialogTitle, Divider } from '@mui/joy';
 import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';

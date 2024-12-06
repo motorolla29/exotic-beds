@@ -13,6 +13,7 @@ import './login-modals.sass';
 const LoginModals = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.isAuth);
+  const overlayLoading = useSelector((state) => state.overlayLoader);
   const isOpen = useSelector((state) => state.loginModalsOpen);
   const isCartOpen = useSelector((state) => state.isCartOpen);
   const [registrated, setRegistrated] = useState(true);
@@ -20,9 +21,9 @@ const LoginModals = () => {
   useEffect(() => {
     if (isOpen) {
       setRegistrated(true);
-      if (!isCartOpen) scrollController.disabledScroll();
+      if (!isCartOpen && !overlayLoading) scrollController.disabledScroll();
     } else {
-      if (!isCartOpen) scrollController.enabledScroll();
+      if (!isCartOpen && !overlayLoading) scrollController.enabledScroll();
     }
   }, [isOpen]);
 

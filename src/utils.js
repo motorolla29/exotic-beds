@@ -144,17 +144,6 @@ const scrollController = {
     window.scroll({ top: scrollController.scrollPosition });
     document.documentElement.style.scrollBehavior = '';
   },
-  disableScrollWithRetention() {
-    scrollController.scroll =
-      window.scrollY || document.documentElement.scrollTop;
-    document.body.style.setProperty('position', 'fixed');
-    document.body.style.setProperty('top', `${-scrollController.scroll}px`);
-  },
-  enableScrollWithRetention() {
-    document.body.style.removeProperty('position');
-    document.body.style.removeProperty('top');
-    window.scrollTo(0, scrollController.scroll);
-  },
 };
 
 const debounce = (fn, wait) => {

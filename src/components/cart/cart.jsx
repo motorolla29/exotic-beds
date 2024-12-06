@@ -14,6 +14,7 @@ import './cart.sass';
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const overlayLoading = useSelector((state) => state.overlayLoader);
   const isOpen = useSelector((state) => state.isCartOpen);
   const cartItems = useSelector((state) => state.cartProducts);
   const cartItemsTotal = cartItems.reduce(
@@ -53,10 +54,12 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    if (isOpen) {
-      scrollController.disabledScroll();
-    } else {
-      scrollController.enabledScroll();
+    if (!overlayLoading) {
+      if (isOpen) {
+        scrollController.disabledScroll();
+      } else {
+        scrollController.enabledScroll();
+      }
     }
   }, [isOpen]);
 
