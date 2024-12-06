@@ -8,8 +8,16 @@ const setIsAuth = createAction(`SET_IS_AUTH`, (bool) => ({
   payload: bool,
 }));
 
+const setProductsLoaded = createAction(`SET_PRODUCTS_LOADED`, (bool) => ({
+  payload: bool,
+}));
+
 const setUser = createAction(`SET_USER`, (user) => ({
   payload: user,
+}));
+
+const setProducts = createAction(`SET_PRODUCTS`, (data) => ({
+  payload: data,
 }));
 
 const setCart = createAction(`SET_CART`, (cart) => ({
@@ -36,30 +44,43 @@ const loginModalsOpen = createAction(`SET_IS_LOGIN_MODALS_OPEN`, (bool) => ({
   payload: bool,
 }));
 
-const addProductToCart = createAction(`ADD_PRODUCT_TO_CART`, (productId) => ({
-  payload: productId,
-}));
-
-const removeProductFromCart = createAction(
-  `REMOVE_PRODUCT_FROM_CART`,
-  (productId) => ({
-    payload: productId,
+const setNotificationModal = createAction(
+  `SET_NOTIFICATION_MODAL`,
+  (options) => ({
+    payload: options,
+  })
+);
+const setConfirmationModal = createAction(
+  `SET_CONFIRMATION_MODAL`,
+  (options) => ({
+    payload: options,
   })
 );
 
-const increaseProductAmountInCart = createAction(
-  `INCREASE_PRODUCT_AMOUNT_IN_CART`,
-  (productId) => ({
-    payload: productId,
-  })
-);
+// const addProductToCart = createAction(`ADD_PRODUCT_TO_CART`, (productId) => ({
+//   payload: productId,
+// }));
 
-const decreaseProductAmountInCart = createAction(
-  `DECREASE_PRODUCT_AMOUNT_IN_CART`,
-  (productId) => ({
-    payload: productId,
-  })
-);
+// const removeProductFromCart = createAction(
+//   `REMOVE_PRODUCT_FROM_CART`,
+//   (productId) => ({
+//     payload: productId,
+//   })
+// );
+
+// const increaseProductAmountInCart = createAction(
+//   `INCREASE_PRODUCT_AMOUNT_IN_CART`,
+//   (productId) => ({
+//     payload: productId,
+//   })
+// );
+
+// const decreaseProductAmountInCart = createAction(
+//   `DECREASE_PRODUCT_AMOUNT_IN_CART`,
+//   (productId) => ({
+//     payload: productId,
+//   })
+// );
 
 const toggleProductInLovelist = createAction(
   `TOGGLE_PRODUCT_IN_LOVELIST`,
@@ -86,17 +107,21 @@ const setSnackbar = createAction('SET_SNACKBAR', (options) => ({
 export {
   setOverlayLoader,
   setIsAuth,
+  setProductsLoaded,
   setUser,
+  setProducts,
   setCart,
   setLovelist,
   loadProducts,
   productsAreLoaded,
   cartOpen,
   loginModalsOpen,
-  addProductToCart,
-  removeProductFromCart,
-  increaseProductAmountInCart,
-  decreaseProductAmountInCart,
+  setNotificationModal,
+  setConfirmationModal,
+  // addProductToCart,
+  // removeProductFromCart,
+  // increaseProductAmountInCart,
+  // decreaseProductAmountInCart,
   toggleProductInLovelist,
   setMapViewState,
   setNearStoresCenter,

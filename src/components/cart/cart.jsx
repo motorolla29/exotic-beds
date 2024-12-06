@@ -2,26 +2,18 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion, AnimatePresence, useAnimate } from 'framer-motion';
-import RemoveShoppingCartRounded from '@mui/icons-material/RemoveShoppingCartRounded';
 
-import {
-  cartOpen,
-  removeProductFromCart,
-  setSnackbar,
-} from '../../store/action';
+import { cartOpen } from '../../store/action';
 import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
 import { scrollController } from '../../utils';
-import ConfirmationModal from '../confirmation-modal/confirmation-modal';
 import { PROMOCODES } from '../../data/promocodes';
 
 import './cart.sass';
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [itemId, setItemId] = useState(null);
   const isOpen = useSelector((state) => state.isCartOpen);
   const cartItems = useSelector((state) => state.cartProducts);
   const cartItemsTotal = cartItems.reduce(
@@ -117,14 +109,7 @@ const Cart = () => {
                   {cartItemsTotal ? (
                     <div className="cart_widget_widget-inner_scroll-inner">
                       {cartItems.map((item) => {
-                        return (
-                          <CartItem
-                            key={item.id}
-                            item={item}
-                            setItemId={setItemId}
-                            setModalOpen={setModalOpen}
-                          />
-                        );
+                        return <CartItem key={item.id} item={item} />;
                       })}
                       <div className="cart_widget_widget-inner_summary">
                         <div className="cart_widget_widget-inner_summary_title">
@@ -207,9 +192,11 @@ const Cart = () => {
                             <input
                               value={promocode ? promocode : promocodeInput}
                               disabled={promocode}
-                              onChange={(e) =>
-                                setPromocodeInput(e.target.value)
-                              }
+                              onChange={(e) => {
+                                setPromocodeStatus(null);
+                                setPromocodeInput(e.target.value);
+                              }}
+                              onBlur={() => {}}
                               className={`cart_widget_widget-inner_promocode_body_input ${promocodeStatus}`}
                             />
 
@@ -260,26 +247,6 @@ const Cart = () => {
           </div>
         )}
       </AnimatePresence>
-      <ConfirmationModal
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-        title="Confirmation"
-        description="Are you sure you want to remove this item from your cart?"
-        yesBtnText="Yes, remove it"
-        noBtnText="Cancel"
-        itemId={itemId}
-        action={() => {
-          dispatch(removeProductFromCart(itemId));
-          dispatch(
-            setSnackbar({
-              open: true,
-              decorator: <RemoveShoppingCartRounded />,
-              text: 'Product removed from basket',
-              id: itemId,
-            })
-          );
-        }}
-      />
     </>
   );
 };

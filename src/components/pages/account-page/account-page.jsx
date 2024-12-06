@@ -6,13 +6,18 @@ import { useEffect, useState } from 'react';
 import { TbLogout2 } from 'react-icons/tb';
 import { MdAddAPhoto } from 'react-icons/md';
 import { ImBin } from 'react-icons/im';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   setCart,
+  setConfirmationModal,
   setIsAuth,
   setLovelist,
+  setNotificationModal,
   setUser,
 } from '../../../store/action';
 import { useNavigate } from 'react-router-dom';
+import { deleteUser } from '../../../api/userAPI';
 
 const AccountPage = () => {
   const dispatch = useDispatch();
@@ -34,10 +39,47 @@ const AccountPage = () => {
   const onSignoutHandler = () => {
     dispatch(setIsAuth(false));
     dispatch(setUser({}));
-    dispatch(setCart(JSON.parse(localStorage.getItem('cart'))) || []);
+    dispatch(setCart(JSON.parse(localStorage.getItem('cart')) || []));
     dispatch(setLovelist([]));
     localStorage.removeItem('token');
     navigate('/');
+  };
+
+  const onDeleteAccountClick = () => {
+    dispatch(
+      setConfirmationModal({
+        open: true,
+        icon: <DeleteForeverIcon />,
+        title: 'Delete Account?',
+        description:
+          'Are you sure you want to delete your account? It will not be possible to restore it...',
+        yesBtnText: 'Confirm',
+        noBtnText: 'Cancel',
+        action: onDeleteAccountConfirm,
+      })
+    );
+  };
+  const onDeleteAccountConfirm = () => {
+    deleteUser()
+      .then((res) => {
+        navigate('/');
+        dispatch(setIsAuth(false));
+        dispatch(setUser({}));
+        localStorage.removeItem('token');
+        setTimeout(() => {
+          dispatch(
+            setNotificationModal({
+              open: true,
+              icon: <CheckCircleIcon />,
+              title: 'Successful Deletion',
+              description: 'You have successfully deleted your account',
+            })
+          );
+        });
+      }, 500)
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -86,7 +128,7 @@ const AccountPage = () => {
           />
         </div>
       </div>
-      <div className="account-page_delete">
+      <div onClick={onDeleteAccountClick} className="account-page_delete">
         <ImBin />
         <span>Delete my account</span>
       </div>

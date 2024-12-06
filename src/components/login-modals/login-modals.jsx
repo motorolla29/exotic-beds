@@ -14,14 +14,15 @@ const LoginModals = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.isAuth);
   const isOpen = useSelector((state) => state.loginModalsOpen);
+  const isCartOpen = useSelector((state) => state.isCartOpen);
   const [registrated, setRegistrated] = useState(true);
 
   useEffect(() => {
     if (isOpen) {
       setRegistrated(true);
-      scrollController.disabledScroll();
+      if (!isCartOpen) scrollController.disabledScroll();
     } else {
-      scrollController.enabledScroll();
+      if (!isCartOpen) scrollController.enabledScroll();
     }
   }, [isOpen]);
 

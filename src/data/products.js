@@ -5,7 +5,7 @@ const PRODUCTS = [
     title: 'Shrek Series Huge Double Bed',
     description:
       'Double bed in the shape of Shrek, 3 poufs included in the price',
-    photo: '/catalog/_00ba9850-f39f-4351-8a93-654c0ee6acfc.jpg',
+    photo: '_00ba9850-f39f-4351-8a93-654c0ee6acfc.jpg',
     price: 8999,
     sale: 7999,
     rating: 3.9,
@@ -18,7 +18,7 @@ const PRODUCTS = [
     title: 'Sea Series Luxury Crab Bed',
     description:
       'Dreamed of sleeping on a luxury fashionable crab freshly caught from the Mediterranean Sea? Your great chance',
-    photo: '/catalog/_0b919a1f-4bbc-46df-96af-7f026820ae9e.jpg',
+    photo: '_0b919a1f-4bbc-46df-96af-7f026820ae9e.jpg',
     price: 7999,
     rating: 4.5,
     availableQuantity: 2,
@@ -30,7 +30,7 @@ const PRODUCTS = [
     title: 'Classic Series Biscuit Fluffy Cat Bed',
     description:
       'This is a bed in the classic style of our production. This specimen is very fluffy, light beige in color, will fit perfectly into any interior',
-    photo: '/catalog/_0bdddcde-a8c1-40a1-b39a-2aacfe5c266f.jpg',
+    photo: '_0bdddcde-a8c1-40a1-b39a-2aacfe5c266f.jpg',
     price: 5999,
     rating: 4.9,
     availableQuantity: 5,
@@ -42,7 +42,7 @@ const PRODUCTS = [
     title: 'Classic Series Grey Fluffy Cat Bed',
     description:
       'This is a bed in the classic style of our production. This specimen is very fluffy, light beige in color, will fit perfectly into any interior',
-    photo: '/catalog/_0d2ee24c-3e85-4a0d-8c62-65232db76619.jpg',
+    photo: '_0d2ee24c-3e85-4a0d-8c62-65232db76619.jpg',
     price: 5999,
     rating: 4.9,
     availableQuantity: 3,
@@ -54,7 +54,7 @@ const PRODUCTS = [
     title: 'Classic Series Purple-Yellow Plush Cat Bed',
     description:
       'Classic designed by EB. This one is plush in purple-yellow colors',
-    photo: '/catalog/_0eb0ff32-908e-4f71-a6aa-45060c3ab6f3.jpg',
+    photo: '_0eb0ff32-908e-4f71-a6aa-45060c3ab6f3.jpg',
     price: 6999,
     rating: 4.9,
     availableQuantity: 2,
@@ -66,7 +66,7 @@ const PRODUCTS = [
     title: 'Sea Series Shark Double Bed',
     description:
       'Nostalgic for a vacation where you went diving with tiger sharks? How about sleeping on one of these every day and without risk...',
-    photo: '/catalog/_0fc4bb6c-6c82-472c-a938-98903ef0b872.jpg',
+    photo: '_0fc4bb6c-6c82-472c-a938-98903ef0b872.jpg',
     price: 8999,
     rating: 4.9,
     availableQuantity: 2,
@@ -77,7 +77,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Blackout Fluffy Cat Bed',
     description: 'Go to the dark side, buy a blackout cat...',
-    photo: '/catalog/_01a37cf5-f0cb-479d-ba27-f6e83c0d9225.jpg',
+    photo: '_01a37cf5-f0cb-479d-ba27-f6e83c0d9225.jpg',
     price: 5999,
     sale: 4999,
     rating: 4.2,
@@ -90,7 +90,7 @@ const PRODUCTS = [
     title: 'Classic Series Grey Cat Bed Rounded',
     description:
       'You can sleep on this one with your whole family, huge size for reasonable money and, as always, a classic Exotic Beds design',
-    photo: '/catalog/_1a75a127-08cd-4c94-89ca-809920a5c0da.jpg',
+    photo: '_1a75a127-08cd-4c94-89ca-809920a5c0da.jpg',
     price: 12999,
     rating: 5,
     availableQuantity: 1,
@@ -102,7 +102,7 @@ const PRODUCTS = [
     title: 'Green Pepe Frog Bed',
     description:
       'Exactly that Pepe the frog from memes, stretched on a wooden frame with an excellent economy class mattress',
-    photo: '/catalog/_1bb92e43-d080-4b69-b2c6-8ed59f8607e2.jpg',
+    photo: '_1bb92e43-d080-4b69-b2c6-8ed59f8607e2.jpg',
     price: 3999,
     rating: 4,
     availableQuantity: 6,
@@ -114,7 +114,7 @@ const PRODUCTS = [
     title: 'Green Pepe Frog Bed V2',
     description:
       'More detailed compared to the first Pepe version and improved by our team due to complaints about the sad appearance of the first',
-    photo: '/catalog/_1bb1483e-7dfa-4796-aff7-a4d1861492fe.jpg',
+    photo: '_1bb1483e-7dfa-4796-aff7-a4d1861492fe.jpg',
     price: 3999,
     rating: 4.2,
     availableQuantity: 2,
@@ -126,7 +126,7 @@ const PRODUCTS = [
     title: 'Koala Ottoman Bed',
     description:
       'This furry cutie from the south of Australia will fit perfectly into any interior of your bedroom',
-    photo: '/catalog/_1c19afaa-f9aa-4af8-8d20-48803502015b.jpg',
+    photo: '_1c19afaa-f9aa-4af8-8d20-48803502015b.jpg',
     price: 5999,
     rating: 4.8,
     availableQuantity: 3,
@@ -138,7 +138,7 @@ const PRODUCTS = [
     title: 'Sea Series Lilac Stingray Ottoman Bed',
     description:
       'Do you like to look at sea creatures but are afraid to touch them? Do not be afraid... Our stingray is plush and not poisonous',
-    photo: '/catalog/_1d4bc4a5-3bf1-4452-8e45-8ab485480107.jpg',
+    photo: '_1d4bc4a5-3bf1-4452-8e45-8ab485480107.jpg',
     price: 9999,
     rating: 4.9,
     availableQuantity: 1,
@@ -150,7 +150,7 @@ const PRODUCTS = [
     title: 'Classic Series Purple-Yellow Plush Cat Bed V2',
     description:
       'This one is smaller than the previous version but no less attractive',
-    photo: '/catalog/_1d854c27-0828-40b8-b07c-0ba84c2c8db9.jpg',
+    photo: '_1d854c27-0828-40b8-b07c-0ba84c2c8db9.jpg',
     price: 5999,
     rating: 4.4,
     availableQuantity: 5,
@@ -161,7 +161,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'White Cat Fluffy Bed',
     description: 'Three-headed fluffy white cat is looking for its owner',
-    photo: '/catalog/_1daa35e7-acd5-4b9a-82fb-a3130770aaf8.jpg',
+    photo: '_1daa35e7-acd5-4b9a-82fb-a3130770aaf8.jpg',
     price: 4999,
     rating: 3.3,
     availableQuantity: 3,
@@ -172,7 +172,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Cyberpunk Series Fluffy Closing Bed',
     description: 'For fans of the game and style in general',
-    photo: '/catalog/_1f74d70f-d7fd-49fe-9714-a951828d4720.jpg',
+    photo: '_1f74d70f-d7fd-49fe-9714-a951828d4720.jpg',
     price: 4999,
     rating: 2.1,
     availableQuantity: 1,
@@ -184,7 +184,7 @@ const PRODUCTS = [
     title: 'Classic Series White And Fluffy Cat Bed',
     description:
       'Our classic series for true connoisseurs of home cat comfort. Fluffy white version',
-    photo: '/catalog/_2a0edaa2-3865-4f31-9836-550580d1d2d9.jpg',
+    photo: '_2a0edaa2-3865-4f31-9836-550580d1d2d9.jpg',
     price: 5999,
     rating: 4.9,
     availableQuantity: 12,
@@ -196,7 +196,7 @@ const PRODUCTS = [
     title: 'Classic Series Pink And Fluffy Cat Bed',
     description:
       'Soft pink. Suitable for pastel colored interiors. Unique design and fantastic convenience as always',
-    photo: '/catalog/_2bc7ffe6-5a6b-4943-a7b0-3a970ff1ba82.jpg',
+    photo: '_2bc7ffe6-5a6b-4943-a7b0-3a970ff1ba82.jpg',
     price: 6999,
     sale: 5999,
     rating: 4.9,
@@ -208,7 +208,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Ginger White Fluffy Cat Bed',
     description: 'As always, maximum comfort and high quality at low prices',
-    photo: '/catalog/_2db027f0-568f-46e9-8b48-3768c7173a74.jpg',
+    photo: '_2db027f0-568f-46e9-8b48-3768c7173a74.jpg',
     price: 4999,
     sale: 3999,
     rating: 4,
@@ -220,7 +220,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Sea Series Plush Shark Bed',
     description: 'An update especially for shark lovers in our sea series...',
-    photo: '/catalog/_2ea3023f-84b4-427d-bf1e-8aa0f501d39b.jpg',
+    photo: '_2ea3023f-84b4-427d-bf1e-8aa0f501d39b.jpg',
     price: 6999,
     rating: 4.7,
     availableQuantity: 3,
@@ -232,7 +232,7 @@ const PRODUCTS = [
     title: 'Beige Fluffy Cat Bed',
     description:
       'New cat bed design by EB. Fluffy frame, double mattress and bed linen included',
-    photo: '/catalog/_2fcbab5d-6f1b-4ffd-9ba4-da3fb56fa300.jpg',
+    photo: '_2fcbab5d-6f1b-4ffd-9ba4-da3fb56fa300.jpg',
     price: 6999,
     sale: 5999,
     rating: 4.1,
@@ -245,7 +245,7 @@ const PRODUCTS = [
     title: 'Car Series Luxury American Retro Cadillac',
     description:
       "Immerse yourself in the American classics of the 1960s and fall asleep soundly. However, don't forget to turn off the engine...",
-    photo: '/catalog/_3a341ba7-b5ed-4acd-9012-2193eb688cb0.jpg',
+    photo: '_3a341ba7-b5ed-4acd-9012-2193eb688cb0.jpg',
     price: 9999,
     rating: 4.9,
     availableQuantity: 1,
@@ -257,7 +257,7 @@ const PRODUCTS = [
     title: 'Fluffy White Teddy Bear Bed',
     description:
       'For lovers of soft teddy bears. Soft mattress and themed soft toy included',
-    photo: '/catalog/_3b4918b4-d52a-40ff-94a0-029715cd3b49.jpg',
+    photo: '_3b4918b4-d52a-40ff-94a0-029715cd3b49.jpg',
     price: 6999,
     sale: 5999,
     rating: 4.8,
@@ -270,7 +270,7 @@ const PRODUCTS = [
     title: 'Sea Series Luxury Huge Coral Bed',
     description:
       "Bed made with handmade soft corals. It provides you with a unique opportunity to sleep in coral that looks no worse than what you could see in Indonesia, Egypt or French Polynesia... Don't worry, no coral was harmed during production",
-    photo: '/catalog/_3cf0e74c-3a88-4386-a1bb-b508da8b3e74.jpg',
+    photo: '_3cf0e74c-3a88-4386-a1bb-b508da8b3e74.jpg',
     price: 19999,
     rating: 4.9,
     availableQuantity: 2,
@@ -282,7 +282,7 @@ const PRODUCTS = [
     title: 'Koala Plush Bed Rounded',
     description:
       'Made for lovers of the cutest creatures living in Australia, by Exotic Beds with love',
-    photo: '/catalog/_3dd476fb-86a2-4125-b737-5984371d374b.jpg',
+    photo: '_3dd476fb-86a2-4125-b737-5984371d374b.jpg',
     price: 4999,
     rating: 4.6,
     availableQuantity: 4,
@@ -294,7 +294,7 @@ const PRODUCTS = [
     title: 'Grey Elephant Soft Double Bed',
     description:
       'the trunk sticks out as a great addition, serving as a cuddle pillow',
-    photo: '/catalog/_3e8d9630-ceb0-409d-8fe8-98e39835d41a.jpg',
+    photo: '_3e8d9630-ceb0-409d-8fe8-98e39835d41a.jpg',
     price: 8999,
     sale: 8199,
     rating: 4.1,
@@ -307,7 +307,7 @@ const PRODUCTS = [
     title: 'Lychee Styled Eco Double Bed',
     description:
       'An exotic fruit bed made of eco-leather, themed bedside tables emphasizing the interior design are included',
-    photo: '/catalog/_3fb30f3c-9cee-4310-974e-ec0e63c17e08.jpg',
+    photo: '_3fb30f3c-9cee-4310-974e-ec0e63c17e08.jpg',
     price: 3999,
     rating: 3.1,
     availableQuantity: 2,
@@ -319,7 +319,7 @@ const PRODUCTS = [
     title: 'Plush Grey Cat Bed',
     description:
       "Don't pass by this cutie. Gray color, soft plush, excellent quality, as always on EB. Set of pillows included",
-    photo: '/catalog/_4acb3d9a-5717-4f8d-bb51-c7060533e5e6.jpg',
+    photo: '_4acb3d9a-5717-4f8d-bb51-c7060533e5e6.jpg',
     price: 5999,
     rating: 4.9,
     availableQuantity: 2,
@@ -331,7 +331,7 @@ const PRODUCTS = [
     title: 'Totoro Series Ottoman Bed',
     description:
       "Totoro lovers will be delighted with this model, it will fit perfectly into both the bedroom and the children's room...",
-    photo: '/catalog/_4ba3be42-9fbe-4f4a-98a0-10909bc2a2d2.jpg',
+    photo: '_4ba3be42-9fbe-4f4a-98a0-10909bc2a2d2.jpg',
     price: 3999,
     rating: 4.9,
     availableQuantity: 23,
@@ -343,7 +343,7 @@ const PRODUCTS = [
     title: 'Classic Series Violet Fluffy Cat Bed',
     description:
       'Topseller 2023 for your attention. quality, comfort, durability - these are the key indicators that our team achieves when producing all our beds, including the classic series =)',
-    photo: '/catalog/_4d3cb65d-4442-4391-bb01-fffb9bdc0467.jpg',
+    photo: '_4d3cb65d-4442-4391-bb01-fffb9bdc0467.jpg',
     price: 6599,
     rating: 5,
     availableQuantity: 45,
@@ -355,7 +355,7 @@ const PRODUCTS = [
     title: 'Bubbled Plush Light Grey Cat Bed',
     description:
       'This bed is made from selected eco-friendly materials and will last you a long time and be comfortable to wear for many years to come...',
-    photo: '/catalog/_4daceee1-3636-47e0-b424-56ed4b0188f1.jpg',
+    photo: '_4daceee1-3636-47e0-b424-56ed4b0188f1.jpg',
     price: 5999,
     sale: 3999,
     rating: 4.2,
@@ -368,7 +368,7 @@ const PRODUCTS = [
     title: 'Pink Fluffy Owl Bed',
     description:
       'The owl is a symbol of silence, prudence, wisdom and vigilance. This means that this is a good choice that will serve you for many years and will delight you every day',
-    photo: '/catalog/_4dc2f679-431b-4e3b-a2f8-d7711c2a3632.jpg',
+    photo: '_4dc2f679-431b-4e3b-a2f8-d7711c2a3632.jpg',
     price: 4999,
     rating: 4.4,
     availableQuantity: 18,
@@ -380,7 +380,7 @@ const PRODUCTS = [
     title: 'Classic Series Six-Legged Coffee-Colored Cat Bed',
     description:
       "Don't be embarrassed by the fact that our cat has 6 paws. This is made for greater stability and strength, so you can do even the wildest things on this bed. You can buy with confidence",
-    photo: '/catalog/_5cf52d4a-1428-44ce-bde6-81eee90f2421.jpg',
+    photo: '_5cf52d4a-1428-44ce-bde6-81eee90f2421.jpg',
     price: 5999,
     rating: 4.8,
     availableQuantity: 7,
@@ -391,7 +391,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Fluffy-Max Light-Grey-White Cat Bed',
     description: "This bad boy is so fluffy you'll drown in his fur =)",
-    photo: '/catalog/_5df774e7-bf69-4e9f-8095-c67523515830.jpg',
+    photo: '_5df774e7-bf69-4e9f-8095-c67523515830.jpg',
     price: 4799,
     sale: 4599,
     rating: 4.2,
@@ -404,7 +404,7 @@ const PRODUCTS = [
     title: 'Grey Owl Double Bed',
     description:
       'The owl is a symbol of silence, prudence, wisdom and vigilance. This means that this is a good choice that will serve you for many years and will delight you every day',
-    photo: '/catalog/_6c74d6a6-2c2b-4d89-b23e-ef60235a26f4.jpg',
+    photo: '_6c74d6a6-2c2b-4d89-b23e-ef60235a26f4.jpg',
     price: 6999,
     rating: 3.9,
     availableQuantity: 12,
@@ -416,7 +416,7 @@ const PRODUCTS = [
     title: 'Classic Series Ginger Cat Bed',
     description:
       'Why everyone loves our classics is their cozy appearance, quality and comfortable use - we give all this to our classic series customers',
-    photo: '/catalog/_6ca6cfeb-2a33-4c29-95f2-89c25cfc2d39.jpg',
+    photo: '_6ca6cfeb-2a33-4c29-95f2-89c25cfc2d39.jpg',
     price: 5299,
     sale: 4999,
     rating: 5,
@@ -429,7 +429,7 @@ const PRODUCTS = [
     title: 'Sea Series Budget Grey Shark Bed',
     description:
       'This shark from the budget line of our sea series will be affordable for everyone, this does not mean that the quality and durability are worse than other models',
-    photo: '/catalog/_6d542aaa-473f-4881-b415-fc61aa9eb9e2.jpg',
+    photo: '_6d542aaa-473f-4881-b415-fc61aa9eb9e2.jpg',
     price: 2499,
     rating: 4.9,
     availableQuantity: 67,
@@ -441,7 +441,7 @@ const PRODUCTS = [
     title: 'Grey Fluffy Mouse Bed',
     description:
       'This fluffy rodent is made only from environmentally friendly and high-quality materials. As always, very fluffy and soft. We wish you that other rodents do not bother you in the house while you sleep on our mouse bed',
-    photo: '/catalog/_6f53237a-ca1a-4de3-9456-0b06456bb68a.jpg',
+    photo: '_6f53237a-ca1a-4de3-9456-0b06456bb68a.jpg',
     price: 6999,
     rating: 5,
     availableQuantity: 1,
@@ -453,7 +453,7 @@ const PRODUCTS = [
     title: 'Sea Series Lux Coral Garden Bedroom Set',
     description:
       'You feel like a little fish somewhere in the Maldives while you sleep on such a piece of art. Lots of handmade corals indistinguishable from real ones and LED lighting framed. The price is steep, but believe me, you will get full quality for the money',
-    photo: '/catalog/_7c407b73-8f29-4063-b7d7-d19b11571b18.jpg',
+    photo: '_7c407b73-8f29-4063-b7d7-d19b11571b18.jpg',
     price: 29999,
     rating: 5,
     availableQuantity: 5,
@@ -465,7 +465,7 @@ const PRODUCTS = [
     title: 'Sea Series Grey Pink Shell Bed',
     description:
       'Imagine yourself as a clam and dive into this cute bed.Low price for decent quality.',
-    photo: '/catalog/_7cc939fb-4445-4803-b11f-ee4a3b39b057.jpg',
+    photo: '_7cc939fb-4445-4803-b11f-ee4a3b39b057.jpg',
     price: 3599,
     rating: 4.5,
     availableQuantity: 5,
@@ -477,7 +477,7 @@ const PRODUCTS = [
     title: 'Classic Series Yellow Pink Ottoman Cat Bed',
     description:
       'This king size ottoman in the classic cat fluffy look will be a wonderful sleeping place and will last for many years. Fits perfectly into an interior with light beige pink or gray tones',
-    photo: '/catalog/_7d7c79cf-d5bd-4806-a7da-f0b698804668.jpg',
+    photo: '_7d7c79cf-d5bd-4806-a7da-f0b698804668.jpg',
     price: 6299,
     rating: 4.9,
     availableQuantity: 12,
@@ -489,7 +489,7 @@ const PRODUCTS = [
     title: 'Orange Grey Cat Bed Rounded',
     description:
       "This cat bed will fit perfectly into both the nursery and your bedroom. Just look at this cute kitten - he's just asking for you to take him home",
-    photo: '/catalog/_7f25b42e-65e5-40d7-96f7-e08ad370f650.jpg',
+    photo: '_7f25b42e-65e5-40d7-96f7-e08ad370f650.jpg',
     price: 4999,
     rating: 4.5,
     availableQuantity: 24,
@@ -501,7 +501,7 @@ const PRODUCTS = [
     title: 'Creamy Beige Teddy Bear Bed',
     description:
       'Teddy bear is a symbol of kindness, warmth and comfort. They are loved by children of all ages and adults, they are hugged tightly and given to those closest to them. These soft bundles of tenderness have long ceased to be simple toys. So is our teddy bear bed. This is not just a bed, but an indicator of our love and care for customers',
-    photo: '/catalog/_8a627ed2-587f-4abb-907f-e82b89244e6c.jpg',
+    photo: '_8a627ed2-587f-4abb-907f-e82b89244e6c.jpg',
     price: 5999,
     rating: 5,
     availableQuantity: 9,
@@ -513,7 +513,7 @@ const PRODUCTS = [
     title: 'Wood Round Framed Mouse Bed',
     description:
       'Lovers of Scandinavian eco style will like our mouse as an excellent addition to the interior. The frame is made of solid wood. Natural fur trim. The best materials for our customers',
-    photo: '/catalog/_8bda9f4c-f230-4eba-8d86-61d1ff863424.jpg',
+    photo: '_8bda9f4c-f230-4eba-8d86-61d1ff863424.jpg',
     price: 4999,
     rating: 4.4,
     availableQuantity: 4,
@@ -525,7 +525,7 @@ const PRODUCTS = [
     title: 'Sea Series Violet Stingray Rounded Ottoman',
     description:
       'As you continue your journey through our sea series, you will certainly enjoy the opportunity to try out our purple stingray ottoman...',
-    photo: '/catalog/_8c04f122-0205-4967-a58f-4b180ab21d6a.jpg',
+    photo: '_8c04f122-0205-4967-a58f-4b180ab21d6a.jpg',
     price: 3799,
     rating: 3.7,
     availableQuantity: 3,
@@ -537,7 +537,7 @@ const PRODUCTS = [
     title: 'Classic Series Real Pink-Eared Cat Bed',
     description:
       'This specimen truly looks like a real cat. A huge sleeping place and large eyes, which, by the way, can easily fit any video camera, so we made it twistable. Fulfilling the preferences of clients with a wide variety of hobbies is our motto',
-    photo: '/catalog/_8c8de842-14b2-4f37-92f4-0da2621b19f8.jpg',
+    photo: '_8c8de842-14b2-4f37-92f4-0da2621b19f8.jpg',
     price: 7999,
     sale: 7899,
     rating: 4.1,
@@ -550,7 +550,7 @@ const PRODUCTS = [
     title: 'Huge Stuffed Mouse Head Tsar Bed',
     description:
       "For those who are interested in taxidermy, our royal bed with a huge head will appeal. We value nature so don't worry, no giant mice were harmed during assembly. However, you have the right to replace the head with a real one",
-    photo: '/catalog/_9d3e8a14-f17f-4366-b7ac-84840591144f.jpg',
+    photo: '_9d3e8a14-f17f-4366-b7ac-84840591144f.jpg',
     price: 9099,
     rating: 2.8,
     availableQuantity: 3,
@@ -562,7 +562,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Orange Light Bedroom Set',
     description:
       'Our headset straight from 2077 is made with the latest technology by our Chinese and South Korean partners, has a built-in memory of 2 exabytes, a retinal scanner and a 200 gigapixel camera for morning selfies, as well as a coffee maker',
-    photo: '/catalog/_9d11add0-12fb-42cd-a12b-d4ce8bf04a80.jpg',
+    photo: '_9d11add0-12fb-42cd-a12b-d4ce8bf04a80.jpg',
     price: 12999,
     rating: 4.2,
     availableQuantity: 1,
@@ -574,7 +574,7 @@ const PRODUCTS = [
     title: 'Classic Series Grey Matting Fabric Kitten Bed',
     description:
       "Such sweet eyes cannot leave anyone indifferent. Litter box trained and very kind. And also has built-in speakers with different purring modes. so don't hesitate to take this kitten to your home",
-    photo: '/catalog/_016b96cd-947d-4c51-81f5-862684b86f3d.jpg',
+    photo: '_016b96cd-947d-4c51-81f5-862684b86f3d.jpg',
     price: 3599,
     rating: 4.9,
     availableQuantity: 4,
@@ -586,7 +586,7 @@ const PRODUCTS = [
     title: 'Huge 360 Rounded Cat Bed',
     description:
       "A great option for the living room if you don't know what to do with the empty space. Will be a cool place for your children to play or your party drink with friends",
-    photo: '/catalog/_28a5f22d-3e66-4b1b-9e1c-56f4284fddef.jpg',
+    photo: '_28a5f22d-3e66-4b1b-9e1c-56f4284fddef.jpg',
     price: 15299,
     sale: 10199,
     rating: 2.3,
@@ -599,7 +599,7 @@ const PRODUCTS = [
     title: 'Fluffy White Owl Bed',
     description:
       "This polar owl will fit perfectly into any interior due to its versatility. An interesting fact is that the head, as well as the paws with the covering, have a removable design, so if you suddenly want to let someone sleep on your bed, you can remove them and turn the owl into a completely ordinary bed so that they don't get it dirty",
-    photo: '/catalog/_31e7ff8f-5bb6-41f3-9a4b-411ad9654f0a.jpg',
+    photo: '_31e7ff8f-5bb6-41f3-9a4b-411ad9654f0a.jpg',
     price: 4999,
     rating: 4.6,
     availableQuantity: 6,
@@ -611,7 +611,7 @@ const PRODUCTS = [
     title: 'Realistic White Cat Bed',
     description:
       'This bed is so realistic that your cat may be scared of it due to its large size. Soft white fur combined with plush. Will be an excellent sleeping place for centuries. Mattress included',
-    photo: '/catalog/_31e97dc2-e183-4efb-896c-a1dc8dd8d34a.jpg',
+    photo: '_31e97dc2-e183-4efb-896c-a1dc8dd8d34a.jpg',
     price: 3999,
     rating: 1.3,
     availableQuantity: 7,
@@ -623,7 +623,7 @@ const PRODUCTS = [
     title: 'Bright Orange Giraffe Bed',
     description:
       'This dude came to us on 6 types of transport straight from Africa, not for you to just stand and stare at him. Buy quickly!',
-    photo: '/catalog/_35f91047-c592-4a81-ba05-3680e96bf374.jpg',
+    photo: '_35f91047-c592-4a81-ba05-3680e96bf374.jpg',
     price: 4999,
     rating: 4.9,
     availableQuantity: 6,
@@ -635,7 +635,7 @@ const PRODUCTS = [
     title: 'Classic Series Beige Double Cat Bed',
     description:
       'Collapsible shelves stylized as paws, a super comfortable mattress, and soft fluffy upholstery. Everything you expect from the classic series is right here',
-    photo: '/catalog/_39f28391-194d-4df2-a3c8-65395f65e597.jpg',
+    photo: '_39f28391-194d-4df2-a3c8-65395f65e597.jpg',
     price: 6199,
     rating: 4.7,
     availableQuantity: 32,
@@ -647,7 +647,7 @@ const PRODUCTS = [
     title: 'Simple White Fluffy Bed',
     description:
       "I understand that you are accustomed to the exotic in our store, that's why it's called that. But in our super customer-oriented store there should be something for people who value simplicity without exoticism, which is why this model is presented here",
-    photo: '/catalog/_41ed66f0-93dd-4625-b783-1dd18af1a75f.jpg',
+    photo: '_41ed66f0-93dd-4625-b783-1dd18af1a75f.jpg',
     price: 1999,
     rating: 4,
     availableQuantity: 7,
@@ -659,7 +659,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Movieman Bed',
     description:
       'This bed from the future was designed by the Chinese in Chingjen to satisfy the needs of even the most sophisticated movie fan, 20 USB ports, built-in memory of 1 yottabyte and a large screen. For buyers from Japan and conservatives, a floppy and video cassette receiver as well as an ancient TV set are also integrated. Some books in Chinese and a subscription to Chinese TV shows for 5 months as a gift',
-    photo: '/catalog/_42d46483-2470-47e4-ade2-7fa4f7d0a485.jpg',
+    photo: '_42d46483-2470-47e4-ade2-7fa4f7d0a485.jpg',
     price: 8999,
     rating: 3.1,
     availableQuantity: 3,
@@ -671,7 +671,7 @@ const PRODUCTS = [
     title: 'Simple Worm Styled LED Bed',
     description:
       'This bed is for connoisseurs of simplicity and taste. The minimalist design of the bed in combination with lighting gives a confident feeling that the owner knows a lot about things and has good taste',
-    photo: '/catalog/_42f89a46-42da-45b9-a056-1b13156fd6b5.jpg',
+    photo: '_42f89a46-42da-45b9-a056-1b13156fd6b5.jpg',
     price: 2999,
     sale: 2899,
     rating: 1.6,
@@ -684,7 +684,7 @@ const PRODUCTS = [
     title: 'Giant Light Beige Snail Bed',
     description:
       'Furniture trends in the form of high headboards designed by EB. This is a giant hairy snail, whose shell is made like a high headboard of a bed and its face is in front. However, you see everything for yourself, hurry up and place your order!',
-    photo: '/catalog/_43ac2cc5-61d5-4c46-bca2-eab4e25db751.jpg',
+    photo: '_43ac2cc5-61d5-4c46-bca2-eab4e25db751.jpg',
     price: 5999,
     rating: 4.9,
     availableQuantity: 2,
@@ -696,7 +696,7 @@ const PRODUCTS = [
     title: 'Classic Series Realistic Black Cat Bed',
     description:
       'This bed is more realistic than the others. This design will not highlight any interior, but for experts in their field this can be an indispensable find',
-    photo: '/catalog/_45b27a2e-e021-40cc-9dec-8eaa4201e748.jpg',
+    photo: '_45b27a2e-e021-40cc-9dec-8eaa4201e748.jpg',
     price: 4999,
     sale: 3999,
     rating: 3.2,
@@ -709,7 +709,7 @@ const PRODUCTS = [
     title: 'Yellow Fluffy Duckling Bed',
     description:
       'A four-legged duckling that will touch the hearts of any child or adult. Suitable for interiors in pastel shades',
-    photo: '/catalog/_047b88fa-ae33-4336-873c-2505302ee2c1.jpg',
+    photo: '_047b88fa-ae33-4336-873c-2505302ee2c1.jpg',
     price: 5599,
     rating: 5,
     availableQuantity: 17,
@@ -721,7 +721,7 @@ const PRODUCTS = [
     title: 'King-Size Peacock Bed',
     description:
       'Take a closer look at the highly detailed peacock bed with fluffy feathers protruding from the headboard... This bed can attract any female',
-    photo: '/catalog/_49e3e10d-6a3a-4d4f-a1c1-d9d2348ac8fc.jpg',
+    photo: '_49e3e10d-6a3a-4d4f-a1c1-d9d2348ac8fc.jpg',
     price: 4999,
     sale: 4499,
     rating: 3,
@@ -734,7 +734,7 @@ const PRODUCTS = [
     title: 'Car Series Turquoise Retro Cadillac Bed',
     description:
       "Another representative of the American classics of the 50s. It's securely attached to the bottom platform, so you don't have to worry about it rolling around Florida while you sleep",
-    photo: '/catalog/_061e0cdc-e87e-4236-8cd9-cb70620c9a65.jpg',
+    photo: '_061e0cdc-e87e-4236-8cd9-cb70620c9a65.jpg',
     price: 5999,
     rating: 4.7,
     availableQuantity: 1,
@@ -746,7 +746,7 @@ const PRODUCTS = [
     title: 'Sea Series Pastel Orange Coral Garden Bed',
     description:
       "You have never seen such corals in any sea. Made from soft, elastic material, they won't scratch your feet as you climb up to the bed and won't hurt you if you suddenly fall on them at night while sleeping. Who knows, maybe you'll be more comfortable sleeping directly on them",
-    photo: '/catalog/_67b70a0c-555d-4dc1-a0b3-41461cf120cb.jpg',
+    photo: '_67b70a0c-555d-4dc1-a0b3-41461cf120cb.jpg',
     price: 8999,
     rating: 4.4,
     availableQuantity: 2,
@@ -758,7 +758,7 @@ const PRODUCTS = [
     title: 'Pastel Orange Giraffe Bed',
     description:
       'Due to numerous requests, our craftsmen have made a unique bed design in the shape of a unique animal. Meet our giraffe bed',
-    photo: '/catalog/_69b0c23a-0cce-4000-bc36-16003b0d747e.jpg',
+    photo: '_69b0c23a-0cce-4000-bc36-16003b0d747e.jpg',
     price: 4399,
     rating: 4.6,
     availableQuantity: 4,
@@ -770,7 +770,7 @@ const PRODUCTS = [
     title: 'Sea Series Grey Orange Turtle',
     description:
       'This turtle swam 2 oceans and 5 seas to get to our store window. The bed frame is made of solid wood and includes a soft, wear-resistant orthopedic mattress',
-    photo: '/catalog/_72a5e795-f8e3-4de3-9a4a-9b37eaa22ff1.jpg',
+    photo: '_72a5e795-f8e3-4de3-9a4a-9b37eaa22ff1.jpg',
     price: 3899,
     rating: 4.9,
     availableQuantity: 2,
@@ -782,7 +782,7 @@ const PRODUCTS = [
     title: 'Classic Series Burgundy Eco Leather Cat Bed',
     description:
       'This piece of the classic series is covered with eco leather in dark burgundy color, equipped with a mattress and four removable legs also',
-    photo: '/catalog/_72cac68c-98a4-4c9b-8d56-6887129b3afa.jpg',
+    photo: '_72cac68c-98a4-4c9b-8d56-6887129b3afa.jpg',
     price: 3199,
     rating: 5,
     availableQuantity: 43,
@@ -794,7 +794,7 @@ const PRODUCTS = [
     title: 'Classic Series Light Grey Orange Cat Bed',
     description:
       'This classic cat smiles just like we do when we see our dear customers in the store. As always, high detailed quality and high-tech materials',
-    photo: '/catalog/_72f9d574-00f4-44a0-9e83-4bd56ab1c824.jpg',
+    photo: '_72f9d574-00f4-44a0-9e83-4bd56ab1c824.jpg',
     price: 4999,
     rating: 5,
     availableQuantity: 55,
@@ -806,7 +806,7 @@ const PRODUCTS = [
     title: 'Car Series Ginger Luxury Retromobile Bed',
     description:
       'Having bought this retro monster from auction on ebay, our craftsmen were able to surprise everyone by making it into a luxury bed especially for you in our series of cars',
-    photo: '/catalog/_74c8dec6-121d-4b7f-9592-cab475ce644b.jpg',
+    photo: '_74c8dec6-121d-4b7f-9592-cab475ce644b.jpg',
     price: 11999,
     rating: 4.8,
     availableQuantity: 2,
@@ -818,7 +818,7 @@ const PRODUCTS = [
     title: 'Realistic Pink Fluffy Piggy Bed',
     description:
       'Realistic light pink piggy bed, made by our craftsmen to the high quality standards of our company.',
-    photo: '/catalog/_81fba675-0212-402c-ba25-fcc2a4736270.jpg',
+    photo: '_81fba675-0212-402c-ba25-fcc2a4736270.jpg',
     price: 3499,
     rating: 2.9,
     availableQuantity: 2,
@@ -830,7 +830,7 @@ const PRODUCTS = [
     title: 'Classic Series Ginger White Cat Bed',
     description:
       "A classic representative of our store. Last year's topseller and just a cute cat bed for your attention. Only environmental materials are used in the assembly. Covered with soft plush and twistable eyes - shelves where you can hide anything in every sense",
-    photo: '/catalog/_088ef251-8628-470c-826f-2865a0a49b65.jpg',
+    photo: '_088ef251-8628-470c-826f-2865a0a49b65.jpg',
     price: 4999,
     rating: 5,
     availableQuantity: 78,
@@ -842,7 +842,7 @@ const PRODUCTS = [
     title: 'Pastel Orange Ottoman Giraffe Bed',
     description:
       'This cute fluffy giraffe in pastel colors will be a great sleeping place for you or your children due to its universal size. high quality workmanship and a fantastically soft mattress',
-    photo: '/catalog/_98b04bed-02e0-462b-a7d7-ec79e2b69a2b.jpg',
+    photo: '_98b04bed-02e0-462b-a7d7-ec79e2b69a2b.jpg',
     price: 3999,
     rating: 5,
     availableQuantity: 34,
@@ -854,7 +854,7 @@ const PRODUCTS = [
     title: 'Classic Series Beige Leather Cat',
     description:
       'Our gorgeous classic design. Orthopedic mattress. Upholstery made of genuine leather with flock inserts. 100% quality guarantee. What else do you need to finally purchase this beauty?',
-    photo: '/catalog/_150e258e-5b84-4b57-a0d7-6dab4daa7d1d.jpg',
+    photo: '_150e258e-5b84-4b57-a0d7-6dab4daa7d1d.jpg',
     price: 5199,
     rating: 4.6,
     availableQuantity: 21,
@@ -866,7 +866,7 @@ const PRODUCTS = [
     title: 'Realistic Ginger White Squirrel Bed',
     description:
       'Do you like squirrels? Great, then we have good news. A huge realistic fluffy squirrel bed is waiting for you in our store, hurry to purchase',
-    photo: '/catalog/_173f172e-e60d-42d8-850d-cb9327dfe29f.jpg',
+    photo: '_173f172e-e60d-42d8-850d-cb9327dfe29f.jpg',
     price: 3599,
     rating: 2.5,
     availableQuantity: 4,
@@ -878,7 +878,7 @@ const PRODUCTS = [
     title: 'Ottoman Penguin Bed',
     description:
       'This beauty arrived from the southern waters of Antarctica to decorate your bedroom and become the most comfortable sleeping place that will delight you with its quality for many years. Hurry to order',
-    photo: '/catalog/_191a8856-9301-4a2d-889d-505e1da37236.jpg',
+    photo: '_191a8856-9301-4a2d-889d-505e1da37236.jpg',
     price: 4199,
     rating: 4.3,
     availableQuantity: 4,
@@ -890,7 +890,7 @@ const PRODUCTS = [
     title: 'Car Series Black Retro Cadillac Bed',
     description:
       "Lovers of retro classics from the 1950s will love this bed. A perfectly preserved shiny black Cadillac with a soft mattress and a luxurious headboard. Hurry up to buy before it's sold out",
-    photo: '/catalog/_273e8f36-a864-4bc6-98a0-591543cef1b2.jpg',
+    photo: '_273e8f36-a864-4bc6-98a0-591543cef1b2.jpg',
     price: 5699,
     rating: 3.2,
     availableQuantity: 2,
@@ -902,7 +902,7 @@ const PRODUCTS = [
     title: 'Classic Series White Grey Large Cat Bed',
     description:
       'This bed is made exclusively from high-quality, high-strength, wear-resistant materials. Having bought this cat bed once, you would be doomed to years of joy and healthy sleep',
-    photo: '/catalog/_354ad029-d8f9-43a4-9f8f-7048a74cf8ca.jpg',
+    photo: '_354ad029-d8f9-43a4-9f8f-7048a74cf8ca.jpg',
     price: 6599,
     rating: 4.8,
     availableQuantity: 7,
@@ -914,7 +914,7 @@ const PRODUCTS = [
     title: 'Sea Series Coral Grey Turtle Bed',
     description:
       'The only thing this sea turtle wants is to quickly end up in your bedroom and warm you up with comfort every day. The only thing we want is for our customers to be satisfied and come back again and again for new purchases =)',
-    photo: '/catalog/_382c2b4f-9ac0-40c8-bbb5-b6b6a74b072b.jpg',
+    photo: '_382c2b4f-9ac0-40c8-bbb5-b6b6a74b072b.jpg',
     price: 4199,
     rating: 5,
     availableQuantity: 4,
@@ -926,7 +926,7 @@ const PRODUCTS = [
     title: 'Classic Series Violet Pink Cat Bed',
     description:
       'This bed has a very memorable purple color, suitable for a bedroom with lilac or purple decorative elements. Equipped with a comfortable mattress and a lifting mechanism for storing things and saving space in the house',
-    photo: '/catalog/_406cd7f1-1913-4b50-b24f-a4d7458e5dda.jpg',
+    photo: '_406cd7f1-1913-4b50-b24f-a4d7458e5dda.jpg',
     price: 4599,
     sale: 3999,
     rating: 3.9,
@@ -939,7 +939,7 @@ const PRODUCTS = [
     title: 'Sea Series Anemones Coral Bed',
     description:
       "You will feel like Nemo the fish when you sleep on such a bed. And you don't have to worry, our anemones don't sting, in addition, they are very soft and will never lose their shape thanks to high-tech materials",
-    photo: '/catalog/_446a35c4-8d15-4f9a-b6ea-2a439412456b.jpg',
+    photo: '_446a35c4-8d15-4f9a-b6ea-2a439412456b.jpg',
     price: 7999,
     sale: 6599,
     rating: 4.1,
@@ -952,7 +952,7 @@ const PRODUCTS = [
     title: 'Sea Series White Shell Bed',
     description:
       'If you are an introvert or you value personal space, you can sleep closed in such a shell, air will flow into it thanks to high-tech materials. The jewelry is included, it is easy to unfasten it when needed',
-    photo: '/catalog/_489aaa32-f57a-47f7-a9fa-05d5077fde0c.jpg',
+    photo: '_489aaa32-f57a-47f7-a9fa-05d5077fde0c.jpg',
     price: 4199,
     rating: 3.4,
     availableQuantity: 2,
@@ -964,7 +964,7 @@ const PRODUCTS = [
     title: 'Sea Series Luxurious Coral Bed',
     description:
       "Another model of coral beds in our sea series. It's hard to take your eyes off how well detailed the elements are on it. Our team handmade these corals from high-tech materials so that you can enjoy such beauty in your bedroom",
-    photo: '/catalog/_512edbb9-7c87-4d6e-9176-54c3ff811dc3.jpg',
+    photo: '_512edbb9-7c87-4d6e-9176-54c3ff811dc3.jpg',
     price: 8199,
     rating: 4.5,
     availableQuantity: 5,
@@ -976,7 +976,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Black Massage Bed',
     description:
       'After a hard day at work, sometimes you need a good massage. This bed can give you anything - therapeutic, aromatic, relaxing, sports massage, acupuncture, heating, cooling - this is just a small part of what this unit can do',
-    photo: '/catalog/_0634c26d-2b10-42e5-8e69-e887ede8f092.jpg',
+    photo: '_0634c26d-2b10-42e5-8e69-e887ede8f092.jpg',
     price: 6599,
     rating: 4.1,
     availableQuantity: 2,
@@ -988,7 +988,7 @@ const PRODUCTS = [
     title: 'White Rabbit Bed',
     description:
       'This big-eared, fluffy cutie will create coziness and comfort in your home. Suitable for almost any interior',
-    photo: '/catalog/_769c4162-b356-43d0-9528-7f1754d62d14.jpg',
+    photo: '_769c4162-b356-43d0-9528-7f1754d62d14.jpg',
     price: 4199,
     sale: 3999,
     rating: 4.2,
@@ -1001,7 +1001,7 @@ const PRODUCTS = [
     title: 'White Grey Cat Bed',
     description:
       'We have made this option the most accessible for people who do not want to spend a lot of money while maintaining our brand quality. Feel free to trust this budget bed and it will be worth every cent you spend.',
-    photo: '/catalog/_774e250a-0e44-4128-8bba-cb320cb2f773.jpg',
+    photo: '_774e250a-0e44-4128-8bba-cb320cb2f773.jpg',
     price: 1599,
     rating: 4.7,
     availableQuantity: 45,
@@ -1013,7 +1013,7 @@ const PRODUCTS = [
     title: 'Huge Grey Figure Cat Bed',
     description:
       'This is not a bed, but a real sphinx in the flesh, or rather in padding materials. If you live in a castle or palace, you will probably want to occupy your entire living room with it, in which all guests will pay attention exclusively to the bed from EB',
-    photo: '/catalog/_0899aa99-7d27-42a3-9c47-425f16030683.jpg',
+    photo: '_0899aa99-7d27-42a3-9c47-425f16030683.jpg',
     price: 14999,
     sale: 10999,
     rating: 3.8,
@@ -1026,7 +1026,7 @@ const PRODUCTS = [
     title: 'Huge Ceramics Head Mouse Bed',
     description:
       'This luxurious huge bed in the Baroque style has the main argument that will distinguish it from thousands of similar ones that you could order for your castle - it is a huge mouse face soldered into the headboard - our exoticism which is the distinctive feature of the brand',
-    photo: '/catalog/_949dfeb8-5653-4e75-aaa5-d3dcf7f55310.jpg',
+    photo: '_949dfeb8-5653-4e75-aaa5-d3dcf7f55310.jpg',
     price: 18999,
     rating: 1,
     availableQuantity: 2,
@@ -1038,7 +1038,7 @@ const PRODUCTS = [
     title: 'Biscuit Pug Dog Bed',
     description:
       'Dog lovers will love this stray. Like any dog, it will be faithful to you to the end and serve faithfully',
-    photo: '/catalog/_959adb57-70b6-4f71-9e64-e8b8f7a73e51.jpg',
+    photo: '_959adb57-70b6-4f71-9e64-e8b8f7a73e51.jpg',
     price: 4199,
     rating: 4.2,
     availableQuantity: 3,
@@ -1050,7 +1050,7 @@ const PRODUCTS = [
     title: 'Yellow Brown Renaissance Crocodile Bed',
     description:
       'This villain in the Renaissance style will decorate and at the same time scare away any stranger who wants to approach your sleeping place. If you are a person of harsh morals, this is your choice',
-    photo: '/catalog/_970d481c-c6e0-4a26-8f51-c141092ce024.jpg',
+    photo: '_970d481c-c6e0-4a26-8f51-c141092ce024.jpg',
     price: 7999,
     rating: 1.8,
     availableQuantity: 3,
@@ -1061,7 +1061,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Sponge Bob Series Square Bed',
     description: 'A themed bed for fans of the famous cartoon',
-    photo: '/catalog/_2775cd74-6e5d-4060-bc0c-d2dd3476de49.jpg',
+    photo: '_2775cd74-6e5d-4060-bc0c-d2dd3476de49.jpg',
     price: 4499,
     rating: 5,
     availableQuantity: 4,
@@ -1073,7 +1073,7 @@ const PRODUCTS = [
     title: 'Beige Cat Bed',
     description:
       'The bed is made exclusively from high quality materials. Handmade. At the same time, the price for this model is relatively low. 100% quality guarantee',
-    photo: '/catalog/_4674f0b6-a800-4a5c-8c42-fdef2cbbcd20.jpg',
+    photo: '_4674f0b6-a800-4a5c-8c42-fdef2cbbcd20.jpg',
     price: 2499,
     rating: 4.9,
     availableQuantity: 35,
@@ -1085,7 +1085,7 @@ const PRODUCTS = [
     title: 'Huge Green Pepe Frog Statue Bed',
     description:
       'Can you boast high ceilings of at least 5 meters in your home and plenty of free space? Surely then our giant Pepe is your choice',
-    photo: '/catalog/_4901c308-ff51-415a-b6cd-172d18b9221a.jpg',
+    photo: '_4901c308-ff51-415a-b6cd-172d18b9221a.jpg',
     price: 9999,
     rating: 3.5,
     availableQuantity: 3,
@@ -1097,7 +1097,7 @@ const PRODUCTS = [
     title: 'Super Fluffy Light Grey Mouse Bed',
     description:
       "The most fluffy mouse you could ever see. Cheese decorations are included in the price. Don't worry, they won't attract real mice from your neighbors as they're made of plastic and don't smell anything",
-    photo: '/catalog/_5675b20a-33b6-4688-89ec-b09d791220a8.jpg',
+    photo: '_5675b20a-33b6-4688-89ec-b09d791220a8.jpg',
     price: 3999,
     rating: 4.5,
     availableQuantity: 1,
@@ -1109,7 +1109,7 @@ const PRODUCTS = [
     title: 'Large Ottoman Koala Bed',
     description:
       'A large soft koala on which you can lounge after a hard day, relax and sleep. What else is needed for complete happiness?',
-    photo: '/catalog/_5846cbe8-e41d-44c4-b703-1820979a63f9.jpg',
+    photo: '_5846cbe8-e41d-44c4-b703-1820979a63f9.jpg',
     price: 6999,
     sale: 6499,
     rating: 4.6,
@@ -1122,7 +1122,7 @@ const PRODUCTS = [
     title: 'Shrek Series Cat Bed',
     description:
       'The same cat from Shrek, the idol of your favorite children and the hero of memes is now in our store. The bed is completely designed in a cartoon style, in addition there are themed interior items included in the price',
-    photo: '/catalog/_8004d07e-bc1d-41aa-830f-fd58c6403705.jpg',
+    photo: '_8004d07e-bc1d-41aa-830f-fd58c6403705.jpg',
     price: 4199,
     rating: 4.1,
     availableQuantity: 4,
@@ -1134,7 +1134,7 @@ const PRODUCTS = [
     title: 'Dark Oad Crocodile Bed',
     description:
       "Won't such a wide mouth with razor-sharp teeth scare you? You are a very brave person and this bed is for you",
-    photo: '/catalog/_8949fe39-01b8-48fe-a180-f672b0b14f14.jpg',
+    photo: '_8949fe39-01b8-48fe-a180-f672b0b14f14.jpg',
     price: 5199,
     rating: 1.9,
     availableQuantity: 1,
@@ -1146,7 +1146,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Chipboard Bed',
     description:
       'This bed from the future is stuffed with electronics and everything possible because in 2077 there are no problems with Chinese junk, but it is made of chipboard in order to reduce its cost relative to analogues in this series',
-    photo: '/catalog/_9328b864-42a8-4266-9fed-070eb084d9a4.jpg',
+    photo: '_9328b864-42a8-4266-9fed-070eb084d9a4.jpg',
     price: 3999,
     rating: 2.3,
     availableQuantity: 3,
@@ -1158,7 +1158,7 @@ const PRODUCTS = [
     title: 'Sea Series Green White Turtle Bed',
     description:
       'This soft turtle bed is presented in our sea series for the economy class consumer. However, the quality of finishing is as always at its best',
-    photo: '/catalog/_17607de6-e7b7-47f1-8264-1c02c0c544d2.jpg',
+    photo: '_17607de6-e7b7-47f1-8264-1c02c0c544d2.jpg',
     price: 2399,
     rating: 3.4,
     availableQuantity: 5,
@@ -1170,7 +1170,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Yellow Pikachu Bed',
     description:
       'Pokemon is a popular anime based on the video game series of the same name, which is part of the Pokemon line of media products, which comes from the English word Pocket Monster. This bed essentially represents the main Pokemon from the series - Pikachu',
-    photo: '/catalog/_18594e46-e55e-47cb-85d9-52be50ae013b.jpg',
+    photo: '_18594e46-e55e-47cb-85d9-52be50ae013b.jpg',
     price: 4199,
     rating: 5,
     availableQuantity: 3,
@@ -1182,7 +1182,7 @@ const PRODUCTS = [
     title: 'Grey Pink Mouse Bed',
     description:
       'What does a house mouse look like? A small, long-tailed rodent whose body length usually does not exceed 7-10 centimeters, excluding the tail. Our mouse has a standard bed length of 2 meters and a width of 180 centimeters, which is called king size',
-    photo: '/catalog/_20762ab1-3380-43a7-938d-9d2e81ee3fb4.jpg',
+    photo: '_20762ab1-3380-43a7-938d-9d2e81ee3fb4.jpg',
     price: 4099,
     rating: 4.9,
     availableQuantity: 4,
@@ -1194,7 +1194,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Bachelor Bedroom Set',
     description:
       "The cost of this bed is only 10% of the complete set. After all, for a bachelor, it doesn't matter what to sleep on. It would be a mattress placed on the primitive base of the bed, but the main role is played by a bunch of electronics around that allow you to do anything right without getting out of bed, from listening to music to playing video games",
-    photo: '/catalog/_42521e84-88c0-48a9-859a-f01f07ee5ed9.jpg',
+    photo: '_42521e84-88c0-48a9-859a-f01f07ee5ed9.jpg',
     price: 6499,
     rating: 3.6,
     availableQuantity: 3,
@@ -1206,7 +1206,7 @@ const PRODUCTS = [
     title: 'Soft Grey Koala Bed',
     description:
       "Yes, I'm a beast in bed. Or rather, a koala. I can sleep 22 hours a day. If this anecdote is about you, this bed will suit you, it is so comfortable that you want to sleep in it all day long",
-    photo: '/catalog/_68006e37-ee1b-48de-b622-e7c09e316aef.jpg',
+    photo: '_68006e37-ee1b-48de-b622-e7c09e316aef.jpg',
     price: 4599,
     rating: 5,
     availableQuantity: 15,
@@ -1218,7 +1218,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Standard Bed',
     description:
       "Lovers of minimalism and practicality with maximum functionality will like this bed from the future. Yes, we don't only sell beds with cat faces",
-    photo: '/catalog/_86940c5e-b70d-4d27-ad40-e6b43044f5a4.jpg',
+    photo: '_86940c5e-b70d-4d27-ad40-e6b43044f5a4.jpg',
     price: 4799,
     rating: 4.2,
     availableQuantity: 5,
@@ -1230,7 +1230,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Party Maker Bedroom Set',
     description:
       'Straight from 2077, this bed is equipped with speakers that sound like any experienced rock concert lover will appreciate. A threat to any neighbors and a favorite of young music lovers - the bedroom party maker',
-    photo: '/catalog/_96885b96-4735-4554-89ce-38bc7ffb1c79.jpg',
+    photo: '_96885b96-4735-4554-89ce-38bc7ffb1c79.jpg',
     price: 5499,
     rating: 4.3,
     availableQuantity: 4,
@@ -1242,7 +1242,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Hot Pink Slowpoke Bed',
     description:
       'It is always vacantly lost in thought, but no one knows what it is thinking about. It is good at fishing with its tail. It is incredibly slow and dopey. It is the Slowpoke',
-    photo: '/catalog/_336993a8-2794-48a2-8caa-6c4c8298ba7e.jpg',
+    photo: '_336993a8-2794-48a2-8caa-6c4c8298ba7e.jpg',
     price: 3899,
     rating: 3.9,
     availableQuantity: 7,
@@ -1254,7 +1254,7 @@ const PRODUCTS = [
     title: 'White Budget Cat Bed',
     description:
       'A budget bed in the shape of a white cat. Simple and tasteful',
-    photo: '/catalog/_370508f3-69a3-4bee-8743-a6ce27230caa.jpg',
+    photo: '_370508f3-69a3-4bee-8743-a6ce27230caa.jpg',
     price: 3499,
     rating: 4,
     availableQuantity: 3,
@@ -1266,7 +1266,7 @@ const PRODUCTS = [
     title: 'Budget Giraffe Bed',
     description:
       'Many people have probably noticed, while admiring giraffes in zoos or at least in documentaries about wildlife, that giraffes sleep standing up. However, these graceful creatures only use a standing posture during short-term naps to provide better protection from predators. Our giraffe is there to protect your sleep around the clock',
-    photo: '/catalog/_582898a3-97c2-4b70-a3d9-0217c4655ceb.jpg',
+    photo: '_582898a3-97c2-4b70-a3d9-0217c4655ceb.jpg',
     price: 2999,
     rating: 4.8,
     availableQuantity: 33,
@@ -1278,7 +1278,7 @@ const PRODUCTS = [
     title: 'Sea Series Plush Blue Shark Bed',
     description:
       'The range of blue sharks extends from Norway in the north to Chile in the south. Blue sharks are found off the coast of all continents except Antarctica. Like our stores where you can buy a bed in the form of one of these beauties',
-    photo: '/catalog/_644356fe-666a-467c-95d4-cce55f09bd13.jpg',
+    photo: '_644356fe-666a-467c-95d4-cce55f09bd13.jpg',
     price: 3399,
     rating: 4.5,
     availableQuantity: 45,
@@ -1290,7 +1290,7 @@ const PRODUCTS = [
     title: 'Beige Hidden Cat Bed',
     description:
       'This furry rascal hid himself so that only his ears stuck out. Or maybe he just fell asleep. Believe me, this bed is so comfortable that if you lie on it you immediately want to fall into a deep sleep',
-    photo: '/catalog/_791688c7-3491-43a5-b959-c7d63844626d.jpg',
+    photo: '_791688c7-3491-43a5-b959-c7d63844626d.jpg',
     price: 3999,
     rating: 4.8,
     availableQuantity: 39,
@@ -1302,7 +1302,7 @@ const PRODUCTS = [
     title: 'Ligth Grey Comfort Teddy Bed',
     description:
       'The world of Teddy bears is a world of serenity, a world of pleasure that knows no suffering. By purchasing such a teddy bear bed from us you will find all this, at least your sleep and relaxation on this bed will be serene',
-    photo: '/catalog/_812022cd-13d3-4d32-b804-14919a7128da.jpg',
+    photo: '_812022cd-13d3-4d32-b804-14919a7128da.jpg',
     price: 3199,
     rating: 3.9,
     availableQuantity: 37,
@@ -1314,7 +1314,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Alarm Clock Bedroom Set',
     description:
       'This set is for those who drank for days on end, as can be seen on our decorations, and then cannot wake up. This bed from the future 2077 is equipped for this occasion with a huge alarm clock located above the head, which will wake up even the dead with its ringing...',
-    photo: '/catalog/_6199116e-80a0-48f5-bae8-18520b6f2248.jpg',
+    photo: '_6199116e-80a0-48f5-bae8-18520b6f2248.jpg',
     price: 3499,
     rating: 4.6,
     availableQuantity: 61,
@@ -1326,7 +1326,7 @@ const PRODUCTS = [
     title: 'Classic Series Bright Orange Rounded Cat Bed',
     description:
       'This is the brightest representative of our classic series. Bright orange color, round shape, softest mattress, meticulous design and highest quality',
-    photo: '/catalog/_7801865c-c980-47f6-9db1-0eae93c6132e.jpg',
+    photo: '_7801865c-c980-47f6-9db1-0eae93c6132e.jpg',
     price: 5399,
     rating: 5,
     availableQuantity: 79,
@@ -1338,7 +1338,7 @@ const PRODUCTS = [
     title: 'Simple Grey Koala Bed',
     description:
       'A simple cozy bed in the shape of a small animal from Australia that loves eucalyptus',
-    photo: '/catalog/_37648438-366f-46cd-8e13-ca66ae9d2698.jpg',
+    photo: '_37648438-366f-46cd-8e13-ca66ae9d2698.jpg',
     price: 3199,
     rating: 4,
     availableQuantity: 61,
@@ -1350,7 +1350,7 @@ const PRODUCTS = [
     title: 'Light Beige Hidden Cat Bed',
     description:
       "A bed with a headboard in the shape of a cat's face, like its hidden with only its ears sticking out. The real cat from the photo is not included in the set, it is the pet of the manager of one of our stores :3",
-    photo: '/catalog/_64616545-bc5b-4ad8-8188-77ee9b26d226.jpg',
+    photo: '_64616545-bc5b-4ad8-8188-77ee9b26d226.jpg',
     price: 3199,
     rating: 4.3,
     availableQuantity: 23,
@@ -1362,7 +1362,7 @@ const PRODUCTS = [
     title: 'White Long-Eared Rabbit Bed',
     description:
       'Rabbits communicate mainly through gestures and smells. Meanwhile, rabbits are also capable of expressing their feelings - they can purr, grumble and scream if they feel mortal danger or are in severe pain. An important point of mutual understanding between your rabbit and you is body language. It is important for our rabbit that you sleep on him with sound, healthy sleep at least 8 hours a day, otherwise he will be offended',
-    photo: '/catalog/_76588523-890b-4151-9434-0b8ab88d09fc.jpg',
+    photo: '_76588523-890b-4151-9434-0b8ab88d09fc.jpg',
     price: 4299,
     sale: 3299,
     rating: 4.7,
@@ -1375,7 +1375,7 @@ const PRODUCTS = [
     title: 'Classic Series Beige Rounded Cat Bed',
     description:
       'For those who like to sleep on the round. And also a unique design and the highest quality from EB',
-    photo: '/catalog/_a00df836-1180-437f-a4a6-e510ff5730d5.jpg',
+    photo: '_a00df836-1180-437f-a4a6-e510ff5730d5.jpg',
     price: 4399,
     rating: 4.9,
     availableQuantity: 44,
@@ -1387,7 +1387,7 @@ const PRODUCTS = [
     title: 'Huge Statue Penguin Bed',
     description:
       'This huge penguin bed can only fit in a very spacious room with high ceilings. If you live in one of these you are doubly lucky, as we have something to offer you',
-    photo: '/catalog/_a2fa3b39-ae46-44de-975e-745010e30308.jpg',
+    photo: '_a2fa3b39-ae46-44de-975e-745010e30308.jpg',
     price: 6499,
     sale: 5499,
     rating: 3.2,
@@ -1400,7 +1400,7 @@ const PRODUCTS = [
     title: 'Sea Series Light Blue Shark Bed',
     description:
       "We always have something to offer to lovers of marine themes. For example, this cutest shark can't wait until you place your order and place it in your bedroom",
-    photo: '/catalog/_a6b90046-a8f9-4c13-9261-96bb8454bd0c.jpg',
+    photo: '_a6b90046-a8f9-4c13-9261-96bb8454bd0c.jpg',
     price: 3999,
     rating: 4.6,
     availableQuantity: 98,
@@ -1412,7 +1412,7 @@ const PRODUCTS = [
     title: 'Three-Legged Zebra Bear Bed',
     description:
       "Can't decide on a bed? Or maybe you want something that will definitely raise a lot of questions among those who see it? Then put your eyes on the three-legged  zebra bear bed",
-    photo: '/catalog/_a8f9770e-dc97-4af6-b540-791489fa5db5.jpg',
+    photo: '_a8f9770e-dc97-4af6-b540-791489fa5db5.jpg',
     price: 3199,
     rating: 3.8,
     availableQuantity: 2,
@@ -1424,7 +1424,7 @@ const PRODUCTS = [
     title: 'Inverted Nose Zebra Bed',
     description:
       "Don't want an ordinary zebra bed and want to be more original and mysterious? A zebra bed with an inverted nose will suit you",
-    photo: '/catalog/_a86e6aaf-e50d-46b1-971d-6c31e27a1876.jpg',
+    photo: '_a86e6aaf-e50d-46b1-971d-6c31e27a1876.jpg',
     price: 3799,
     rating: 3.9,
     availableQuantity: 3,
@@ -1436,7 +1436,7 @@ const PRODUCTS = [
     title: 'Grey Cat Bed',
     description:
       'We have something to offer cat lovers. This cozy cat face bed will be a great addition to your home with lots of cats. They will definitely become friends',
-    photo: '/catalog/_a0253a1f-768e-468f-8a1c-f3870c666d92.jpg',
+    photo: '_a0253a1f-768e-468f-8a1c-f3870c666d92.jpg',
     price: 3299,
     rating: 4.1,
     availableQuantity: 65,
@@ -1448,7 +1448,7 @@ const PRODUCTS = [
     title: 'Tailed Ash Rounded Cat Bed',
     description:
       'This round cat bed has a very soft long tail with which you can sleep cuddled',
-    photo: '/catalog/_a316587f-8795-44d5-a1a1-ac41230ba4a1.jpg',
+    photo: '_a316587f-8795-44d5-a1a1-ac41230ba4a1.jpg',
     price: 4199,
     rating: 4,
     availableQuantity: 10,
@@ -1460,7 +1460,7 @@ const PRODUCTS = [
     title: 'Hugging White Cat Bed',
     description:
       'This cat bed remarkable because it have her large paws covering the sleeping area as if she were hugging you and guarding your sleep',
-    photo: '/catalog/_a711164d-8851-4421-8466-f7bc7d23ea08.jpg',
+    photo: '_a711164d-8851-4421-8466-f7bc7d23ea08.jpg',
     price: 4399,
     rating: 4.1,
     availableQuantity: 11,
@@ -1472,7 +1472,7 @@ const PRODUCTS = [
     title: 'Fluffy Classic Zebra Bed',
     description:
       'A very fluffy bed in zebra coloring, perfect for a stylized apartment with a modern design',
-    photo: '/catalog/_a5812608-77df-4bd9-946c-aa1e51883bba.jpg',
+    photo: '_a5812608-77df-4bd9-946c-aa1e51883bba.jpg',
     price: 3999,
     rating: 4.2,
     availableQuantity: 23,
@@ -1484,7 +1484,7 @@ const PRODUCTS = [
     title: 'Violet Stingray Bed',
     description:
       'The design of this bed is not obvious and suggests the shape of an electric stingray in purple color',
-    photo: '/catalog/_aa01295d-6492-4d45-aafa-2529629f6608.jpg',
+    photo: '_aa01295d-6492-4d45-aafa-2529629f6608.jpg',
     price: 3599,
     sale: 3499,
     rating: 4.5,
@@ -1496,7 +1496,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'White Ship Bed',
     description: 'Single bed stylized as a white fluffy lamb',
-    photo: '/catalog/_acdea2ea-f292-4a1c-b673-f11cbd46c125.jpg',
+    photo: '_acdea2ea-f292-4a1c-b673-f11cbd46c125.jpg',
     price: 2099,
     rating: 3.4,
     availableQuantity: 4,
@@ -1508,7 +1508,7 @@ const PRODUCTS = [
     title: 'Green White Smiling Frog Bed',
     description:
       'Just the sight of this frog fills you with positivity and good mood. And sleeping on it, thanks to the high technology of our assembly and the softness of the premium category mattress, will charge you with good health and vigor for the whole day',
-    photo: '/catalog/_ad81ebe3-f0c4-4143-ab2d-59c6f4663956.jpg',
+    photo: '_ad81ebe3-f0c4-4143-ab2d-59c6f4663956.jpg',
     price: 4599,
     rating: 4.7,
     availableQuantity: 9,
@@ -1520,7 +1520,7 @@ const PRODUCTS = [
     title: 'White Teddy Bear Bed',
     description:
       'The classic teddy bear, the favorite of many children and girls, has been transformed into a bed and has appeared on the shelves of our stores to quickly move into your bedroom',
-    photo: '/catalog/_afd97e84-8734-4fc9-a77d-9aadd7bf9f24.jpg',
+    photo: '_afd97e84-8734-4fc9-a77d-9aadd7bf9f24.jpg',
     price: 4299,
     rating: 5,
     availableQuantity: 44,
@@ -1532,7 +1532,7 @@ const PRODUCTS = [
     title: 'Classic Series Plush White Cat Bed',
     description:
       'This incredibly soft and pleasant to the touch bed with our unique design is equipped with a premium comfort class orthopedic mattress. Highest quality 100% guarantee',
-    photo: '/catalog/_b0d4edbe-757e-4d1d-b66d-8de51ba2f52a.jpg',
+    photo: '_b0d4edbe-757e-4d1d-b66d-8de51ba2f52a.jpg',
     price: 4299,
     rating: 4.8,
     availableQuantity: 32,
@@ -1544,7 +1544,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Disco Bass Bed',
     description:
       'Futuristic bed for lovers of noisy and bright discos who need a bed not to sleep but to illuminate the room and provide bass for drinking and dancing with friends',
-    photo: '/catalog/_b1d1a40b-bf79-4c76-810e-f3da99ac7738.jpg',
+    photo: '_b1d1a40b-bf79-4c76-810e-f3da99ac7738.jpg',
     price: 4899,
     rating: 2.9,
     availableQuantity: 32,
@@ -1556,7 +1556,7 @@ const PRODUCTS = [
     title: 'Car Series White Luxurious President Caddilac Bed',
     description:
       'This Caddilac bed is made for people from high society and we will come only so that they imagine themselves even higher. An ideal shiny body with an integrated comfort class mattress. We can drive it to you anywhere in the world',
-    photo: '/catalog/_b2a81924-5ef4-4db0-9cc5-4661c1b264a2.jpg',
+    photo: '_b2a81924-5ef4-4db0-9cc5-4661c1b264a2.jpg',
     price: 7999,
     rating: 4.9,
     availableQuantity: 3,
@@ -1568,7 +1568,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Romantic Bed',
     description:
       'Bedroom set for a real romantic from the future. Contains a complete set of heartbreakers. A bunch of colorful lights and lamps creating an atmosphere and built-in speakers for quiet, soothing romantic music. Well, it goes without saying that the headset is full of a variety of accessories both in the bottom shelf and in the bedside tables',
-    photo: '/catalog/_b6b12567-7791-4bc4-b3b6-b30f87447ca3.jpg',
+    photo: '_b6b12567-7791-4bc4-b3b6-b30f87447ca3.jpg',
     price: 6699,
     rating: 4.7,
     availableQuantity: 43,
@@ -1580,7 +1580,7 @@ const PRODUCTS = [
     title: 'Huge Realistic Soft Head Mouse Bed',
     description:
       "A huge realistic mouse head on the head of your bed, isn't that great? Lovers of mice and rodents will be delighted with the opportunity to place this in their bedroom. However, be careful and make sure that your ceilings allow you to install such a headboard",
-    photo: '/catalog/_b8ea52bc-769a-4b31-b74a-a22874d902aa.jpg',
+    photo: '_b8ea52bc-769a-4b31-b74a-a22874d902aa.jpg',
     price: 4199,
     rating: 3.1,
     availableQuantity: 1,
@@ -1592,7 +1592,7 @@ const PRODUCTS = [
     title: 'Sea Series Budget Blue Shark Bed',
     description:
       'We have something to offer for lovers of sea creatures and also those who like to save their money. This shark bed is not at all expensive, but it looks impressive and cool',
-    photo: '/catalog/_b9a8fc60-dd3d-4898-8dee-b8f6045a61dd.jpg',
+    photo: '_b9a8fc60-dd3d-4898-8dee-b8f6045a61dd.jpg',
     price: 1499,
     rating: 4.6,
     availableQuantity: 54,
@@ -1604,7 +1604,7 @@ const PRODUCTS = [
     title: 'White Soft Teddy Bear Bed',
     description:
       'Do you like teddy bears? You will definitely like this bed made in the form of one of these',
-    photo: '/catalog/_b9d85601-1ebc-4246-b310-34ef88163d69.jpg',
+    photo: '_b9d85601-1ebc-4246-b310-34ef88163d69.jpg',
     price: 3499,
     rating: 4.5,
     availableQuantity: 76,
@@ -1616,7 +1616,7 @@ const PRODUCTS = [
     title: 'Car Series Toasted Lincoln Bed',
     description:
       'Do you like toast and old American cars? This Lincoln with a toast-shaped headboard and a toast-styled mattress will suit you',
-    photo: '/catalog/_b9db67ac-6308-402c-8d76-1f9f5363532c.jpg',
+    photo: '_b9db67ac-6308-402c-8d76-1f9f5363532c.jpg',
     price: 5199,
     rating: 4.8,
     availableQuantity: 5,
@@ -1627,7 +1627,7 @@ const PRODUCTS = [
     category: 'beds',
     title: 'Newlyweds Peacock Nest Bed',
     description: "Cozy and beautiful like a peacock's tail nest for newlyweds",
-    photo: '/catalog/_b43f4d0f-dc52-4dd5-94c7-4ee293f7ccde.jpg',
+    photo: '_b43f4d0f-dc52-4dd5-94c7-4ee293f7ccde.jpg',
     price: 3199,
     rating: 3.2,
     availableQuantity: 34,
@@ -1639,7 +1639,7 @@ const PRODUCTS = [
     title: 'Fluffy White Rabbit Bed',
     description:
       'The softest, most comfortable mattress, viewed in a frame, made in the shape of a soft fleecy rabbit. What could be more comfortable?',
-    photo: '/catalog/_b239b960-49b7-4e5a-aa2c-af99fffc1ebd.jpg',
+    photo: '_b239b960-49b7-4e5a-aa2c-af99fffc1ebd.jpg',
     price: 3899,
     rating: 5,
     availableQuantity: 23,
@@ -1651,7 +1651,7 @@ const PRODUCTS = [
     title: 'Squere Shark The Bed',
     description:
       "It's like the cartoon about a sea sponge, but it's about a shark. The design was worked out in the smallest detail by our craftsmen, who used only high-quality, high-strength materials in production to ensure that this bed serves faithfully for many years",
-    photo: '/catalog/_b6749a3e-78e2-4763-8615-2798bae6da99.jpg',
+    photo: '_b6749a3e-78e2-4763-8615-2798bae6da99.jpg',
     price: 3799,
     rating: 4.6,
     availableQuantity: 5,
@@ -1663,7 +1663,7 @@ const PRODUCTS = [
     title: 'Classic Series Cocoa Plush Bed',
     description:
       'The cutest coffee-colored cat looking at you from the headboard and watching over your sound sleep. Classic from EB',
-    photo: '/catalog/_b892011f-f894-4cc7-b53c-b579614cd15f.jpg',
+    photo: '_b892011f-f894-4cc7-b53c-b579614cd15f.jpg',
     price: 3999,
     rating: 4.8,
     availableQuantity: 30,
@@ -1675,7 +1675,7 @@ const PRODUCTS = [
     title: 'Car Series Classic Wooden Lincoln Bed',
     description:
       'American monster from the 70s with a wooden body and a tall headboard made of leather and solid red dark wood',
-    photo: '/catalog/_b9609860-d35d-453a-ad23-36277f404af1.jpg',
+    photo: '_b9609860-d35d-453a-ad23-36277f404af1.jpg',
     price: 5299,
     rating: 4.6,
     availableQuantity: 12,
@@ -1687,7 +1687,7 @@ const PRODUCTS = [
     title: 'Realistic White Fluffy Cat Bed',
     description:
       'This cat bed has a very realistic look. We hope your pet is not afraid of the new neighbor',
-    photo: '/catalog/_ba8d8d6b-5cf6-46f3-8a59-e474d3794989.jpg',
+    photo: '_ba8d8d6b-5cf6-46f3-8a59-e474d3794989.jpg',
     price: 3799,
     sale: 3299,
     rating: 3.2,
@@ -1700,7 +1700,7 @@ const PRODUCTS = [
     title: 'Classic Series Grey Rounded Cat Bed',
     description:
       'Quite an impressive sized bed with a rounded front shape and our classic headboard design',
-    photo: '/catalog/_bbbc9bca-bfc7-497b-9a20-e6fd329251ef.jpg',
+    photo: '_bbbc9bca-bfc7-497b-9a20-e6fd329251ef.jpg',
     price: 4299,
     rating: 4.7,
     availableQuantity: 4,
@@ -1712,7 +1712,7 @@ const PRODUCTS = [
     title: 'Sea Series Lilac Manta Ray Bed',
     description:
       "Have you been to the maldives? If so, you probably could have observed these huge manta rays. Our bed imagined itself as one of these. Even though it's lilac it's still very similar",
-    photo: '/catalog/_bf2a1986-1095-43ec-98c4-1d254450a525.jpg',
+    photo: '_bf2a1986-1095-43ec-98c4-1d254450a525.jpg',
     price: 4199,
     rating: 4.9,
     availableQuantity: 47,
@@ -1724,7 +1724,7 @@ const PRODUCTS = [
     title: 'Fluffy Lumpy Light Beige Cat Bed',
     description:
       'This cat is so soft and fluffy that only our comfort class orthopedic mattress will not allow you to drown in its fur',
-    photo: '/catalog/_c3eb7891-31df-4de1-a166-e0f98a57fc1c.jpg',
+    photo: '_c3eb7891-31df-4de1-a166-e0f98a57fc1c.jpg',
     price: 3199,
     sale: 2999,
     rating: 2.1,
@@ -1737,7 +1737,7 @@ const PRODUCTS = [
     title: 'Simple Wooden Ghost Bed',
     description:
       "If you are afraid of the dark and imagine monsters in it, then we cannot recommend this bed to you. However, if you don't fantasize in the dark or you're a fan of Casper, then we recommend",
-    photo: '/catalog/_c04a44fd-c12c-4f23-ac1e-90dd563bcc98.jpg',
+    photo: '_c04a44fd-c12c-4f23-ac1e-90dd563bcc98.jpg',
     price: 2199,
     rating: 2.5,
     availableQuantity: 32,
@@ -1749,7 +1749,7 @@ const PRODUCTS = [
     title: 'White Blue Bubbled Pineapple Bed',
     description:
       'A bed imagining itself as a fancy pineapple. Very soft and wear-resistant. The bubbles are the softest and hold their shape for a long time',
-    photo: '/catalog/_c6bc61a8-8b9b-489c-9ca0-ce019ba4689c.jpg',
+    photo: '_c6bc61a8-8b9b-489c-9ca0-ce019ba4689c.jpg',
     price: 2999,
     rating: 2.9,
     availableQuantity: 43,
@@ -1761,7 +1761,7 @@ const PRODUCTS = [
     title: 'Realistic Light Beige Fluffy Cat Bed',
     description:
       "This is a true masterpiece handmade by our craftsmen. They managed to create a bed with a cat's face so natural and realistic that it would seem impossible. This is the kind of bed that is a truly worthy thing, not only as a sleeping place but as a design item",
-    photo: '/catalog/_c64acccc-76a6-4a8d-9788-a708fded4a69.jpg',
+    photo: '_c64acccc-76a6-4a8d-9788-a708fded4a69.jpg',
     price: 4199,
     rating: 2.5,
     availableQuantity: 4,
@@ -1773,7 +1773,7 @@ const PRODUCTS = [
     title: 'Polar Zebra Bed',
     description:
       'This polar bear imagines himself as a zebra and is waiting for you to finally decide and make the best purchase of your life',
-    photo: '/catalog/_c131b9f0-87b9-444e-b029-13c3338a06ce.jpg',
+    photo: '_c131b9f0-87b9-444e-b029-13c3338a06ce.jpg',
     price: 3499,
     rating: 4.5,
     availableQuantity: 45,
@@ -1785,7 +1785,7 @@ const PRODUCTS = [
     title: 'Light Beige Coral Rounded Mouse Bed',
     description:
       'This mouse bed has a color scheme that will fit into any interior of your bedroom. A very comfortable and practical sleeping place. Quality guarantee from EB',
-    photo: '/catalog/_c468e599-db8f-4217-b296-b8e5bf50d646.jpg',
+    photo: '_c468e599-db8f-4217-b296-b8e5bf50d646.jpg',
     price: 3499,
     rating: 4.7,
     availableQuantity: 43,
@@ -1797,7 +1797,7 @@ const PRODUCTS = [
     title: 'Classic Series Cartoon Grey Cat Bed',
     description:
       'This cat looks like he escaped from some cartoon and is pretending to be a bed in your bedroom. But rest assured these are not a hallucination from LSD, this is reality from EB',
-    photo: '/catalog/_c640f58b-5ea8-4a71-9a26-4d52867d45f6.jpg',
+    photo: '_c640f58b-5ea8-4a71-9a26-4d52867d45f6.jpg',
     price: 4299,
     rating: 4.7,
     availableQuantity: 6,
@@ -1809,7 +1809,7 @@ const PRODUCTS = [
     title: 'Light Biscuit Orange Giraffe Bed',
     description:
       'Our craftsmen went on vacation to Africa and saw a baby giraffe. They were so inspired by this that they created such a cute bed in the form of it',
-    photo: '/catalog/_cb35b46b-9241-41e0-a176-2229f7d66a91.jpg',
+    photo: '_cb35b46b-9241-41e0-a176-2229f7d66a91.jpg',
     price: 3299,
     rating: 4.5,
     availableQuantity: 75,
@@ -1821,7 +1821,7 @@ const PRODUCTS = [
     title: 'Light Biscuit Green Frog Bed',
     description:
       'The best frog that we could find for you in the dense swamps and which agreed to become a soft bed by Exotic Beds. Nothing is impossible for us',
-    photo: '/catalog/_cc92991a-79c9-42f2-89d0-6ecfb3413a11.jpg',
+    photo: '_cc92991a-79c9-42f2-89d0-6ecfb3413a11.jpg',
     price: 3299,
     rating: 4.2,
     availableQuantity: 3,
@@ -1833,7 +1833,7 @@ const PRODUCTS = [
     title: 'Classic Series Light Biscuit Burgundy Cat Bed',
     description:
       'Cutie in our classic version. As always, unique original design and the highest quality',
-    photo: '/catalog/_cd7e8d42-6da5-4efa-ba6e-6a57339429b7.jpg',
+    photo: '_cd7e8d42-6da5-4efa-ba6e-6a57339429b7.jpg',
     price: 3999,
     rating: 5,
     availableQuantity: 54,
@@ -1845,7 +1845,7 @@ const PRODUCTS = [
     title: 'Classic Series White Cat Bedroom Set',
     description:
       'A king size bed in the shape of a soft white cat and a couple of bedside tables to boot',
-    photo: '/catalog/_ce4eb5eb-3a0b-42d9-afad-16f6df8fd268.jpg',
+    photo: '_ce4eb5eb-3a0b-42d9-afad-16f6df8fd268.jpg',
     price: 4199,
     rating: 4.4,
     availableQuantity: 43,
@@ -1857,7 +1857,7 @@ const PRODUCTS = [
     title: 'Totoro Series Thematic Bed',
     description:
       'Totoro (Japanese: トトロ) is an anime character, guardian of the forest, a large fluffy gray creature. This bed is made like him',
-    photo: '/catalog/_cef8ee73-f20c-4b8e-aa12-ae377f758407.jpg',
+    photo: '_cef8ee73-f20c-4b8e-aa12-ae377f758407.jpg',
     price: 3199,
     rating: 4.5,
     availableQuantity: 65,
@@ -1869,7 +1869,7 @@ const PRODUCTS = [
     title: 'White Soft Light Biscuit Teddy Bear Bed',
     description:
       'Many children love Teddy bears. They are associated with tenderness, kindness and romance. This bed is designed in one of these in a light biscuit color',
-    photo: '/catalog/_cf30d0b9-e880-4adb-934d-b5ec6bf42604.jpg',
+    photo: '_cf30d0b9-e880-4adb-934d-b5ec6bf42604.jpg',
     price: 3399,
     rating: 4.8,
     availableQuantity: 37,
@@ -1881,7 +1881,7 @@ const PRODUCTS = [
     title: 'Classic Series Light Beige Cat Bed',
     description:
       'One of our unique classic series. By buying such a handmade bed, you are purchasing your own collectible piece that only a few people will own',
-    photo: '/catalog/_d0a2ecc4-269f-463a-b085-90bb51406658.jpg',
+    photo: '_d0a2ecc4-269f-463a-b085-90bb51406658.jpg',
     price: 3799,
     sale: 2999,
     rating: 3.3,
@@ -1894,7 +1894,7 @@ const PRODUCTS = [
     title: 'Hairy Frog Bed',
     description:
       'This frog is hairy and fluffy, which is unusual for its relatives. Everything to make you comfortable and pleasant to sleep on it',
-    photo: '/catalog/_d0b0ce3f-bcfb-462a-a584-ae7bda5d02b3.jpg',
+    photo: '_d0b0ce3f-bcfb-462a-a584-ae7bda5d02b3.jpg',
     price: 2999,
     rating: 3.7,
     availableQuantity: 6,
@@ -1906,7 +1906,7 @@ const PRODUCTS = [
     title: 'Double Peacock Bed',
     description:
       "The headboard of this bed is made and stylized to resemble a peacock's tail. No female will pass by this",
-    photo: '/catalog/_d3eb0c53-8878-4013-b659-b2684f03a0b8.jpg',
+    photo: '_d3eb0c53-8878-4013-b659-b2684f03a0b8.jpg',
     price: 2199,
     rating: 2.6,
     availableQuantity: 6,
@@ -1918,7 +1918,7 @@ const PRODUCTS = [
     title: 'Biscuit Orange Cat Bed',
     description:
       'This bed is the personification of comfort and coziness. After all, it is made in the form of the main pet of most people - a cat',
-    photo: '/catalog/_d4e65548-bfef-49d0-983f-62eac42a15aa.jpg',
+    photo: '_d4e65548-bfef-49d0-983f-62eac42a15aa.jpg',
     price: 3199,
     rating: 4.6,
     availableQuantity: 64,
@@ -1930,7 +1930,7 @@ const PRODUCTS = [
     title: 'Wide Luxurious Peacock Bed',
     description:
       'Such a peacock is capable of luring any female. A huge fluffy tail made as a headboard and a bed base as soft as feathers. A peacock head was also made here',
-    photo: '/catalog/_d9d63313-c4e4-4e91-a714-5f782abf9780.jpg',
+    photo: '_d9d63313-c4e4-4e91-a714-5f782abf9780.jpg',
     price: 4399,
     rating: 4.7,
     availableQuantity: 9,
@@ -1942,7 +1942,7 @@ const PRODUCTS = [
     title: 'Huge Luxurious Round Shell Bed',
     description:
       'This is a huge round shell bed equipped with a closing mechanism that will allow you to close yourself and breathe peacefully thanks to high technologies in materials and manufacturing. Upholstery made of soft flock and genuine leather under the cover and a mattress in the softest down frame',
-    photo: '/catalog/_d25f166a-fcf5-4e30-88ec-9912175cfdac.jpg',
+    photo: '_d25f166a-fcf5-4e30-88ec-9912175cfdac.jpg',
     price: 5999,
     rating: 5,
     availableQuantity: 56,
@@ -1954,7 +1954,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Triangular Party Maker Bedroom Set',
     description:
       'For those who like to make noise and annoy their neighbors instead of sleeping. This set of the future is equipped with a bunch of all possible twisters and skewers for everything, perhaps giving special sound effects, some of which are even useless and mounted for beauty. However, a powerful central bass speaker will blow up your custom apartment dance floor as powerfully as your neighbor’s butts',
-    photo: '/catalog/_d47c3199-2242-4d60-aa2a-f7afbf3e3dd5.jpg',
+    photo: '_d47c3199-2242-4d60-aa2a-f7afbf3e3dd5.jpg',
     price: 3599,
     rating: 5,
     availableQuantity: 4,
@@ -1966,7 +1966,7 @@ const PRODUCTS = [
     title: 'Cute Ghost Double Bed',
     description:
       'This bed is stylized as a small indoor ghost. How can something like this scare instead of touch?',
-    photo: '/catalog/_d57f7a11-acaf-47a5-a239-93cf126f907f.jpg',
+    photo: '_d57f7a11-acaf-47a5-a239-93cf126f907f.jpg',
     price: 2199,
     rating: 4,
     availableQuantity: 4,
@@ -1978,7 +1978,7 @@ const PRODUCTS = [
     title: 'Grey Spotted Cat Bed',
     description:
       'As usual, a bed of unique design from our craftsmen. By the way, this cat from the photo ran into the store and our kind workers tamed him. If you wish, you can take it along with this wonderful bed',
-    photo: '/catalog/_d93f997c-15d0-43d3-a391-3effbd27b63b.jpg',
+    photo: '_d93f997c-15d0-43d3-a391-3effbd27b63b.jpg',
     price: 3999,
     rating: 4.9,
     availableQuantity: 51,
@@ -1990,7 +1990,7 @@ const PRODUCTS = [
     title: 'Complaining Pug Bed',
     description:
       "Doesn't this poor guy's appearance make you want to take him home with you? Then I'll tell you that this bed is made of natural, environmentally friendly materials, equipped with the most comfortable mattress and has a highly durable construction so it will serve you for many years. 100% guarantee. Now you will definitely buy it",
-    photo: '/catalog/_d96f588e-5d13-45e9-aacb-b8a56bd4fc84.jpg',
+    photo: '_d96f588e-5d13-45e9-aacb-b8a56bd4fc84.jpg',
     price: 3399,
     rating: 4.5,
     availableQuantity: 4,
@@ -2002,7 +2002,7 @@ const PRODUCTS = [
     title: 'Light Grey Orange-Eared Cat Bed',
     description:
       'Look at this cutie with orange ears. This exclusive design is, as usual, available only in several copies',
-    photo: '/catalog/_d551a826-eb90-44d6-9ebe-4463f6d8e7b3.jpg',
+    photo: '_d551a826-eb90-44d6-9ebe-4463f6d8e7b3.jpg',
     price: 3199,
     rating: 4.5,
     availableQuantity: 8,
@@ -2014,7 +2014,7 @@ const PRODUCTS = [
     title: 'Yellow Fluffy Pineapple Bed',
     description:
       'You wanted a bed in the shape of a pineapple, but unusual and not like others. Take this all yellow one',
-    photo: '/catalog/_dbb5cf4d-4786-48cf-aca6-f21b4dad81f3.jpg',
+    photo: '_dbb5cf4d-4786-48cf-aca6-f21b4dad81f3.jpg',
     price: 2699,
     rating: 3.9,
     availableQuantity: 6,
@@ -2026,7 +2026,7 @@ const PRODUCTS = [
     title: 'Pink Grey Owl Bed',
     description:
       "This owl is a masterpiece of our craftsmen. Handmade, all the details are worked out in detail, only high-quality materials. Buy it, you won't regret it",
-    photo: '/catalog/_de372e19-fbcc-4dc9-be33-b47c8e142055.jpg',
+    photo: '_de372e19-fbcc-4dc9-be33-b47c8e142055.jpg',
     price: 3699,
     rating: 5,
     availableQuantity: 70,
@@ -2038,7 +2038,7 @@ const PRODUCTS = [
     title: 'White Bubbled Rabbear Bed',
     description:
       'Either a rabbit or a bear... meet rabbear. Only in our stores',
-    photo: '/catalog/_ded047c6-f6de-4cbf-bde2-012b7f549b97.jpg',
+    photo: '_ded047c6-f6de-4cbf-bde2-012b7f549b97.jpg',
     price: 2899,
     rating: 3.9,
     availableQuantity: 3,
@@ -2050,7 +2050,7 @@ const PRODUCTS = [
     title: 'Creamy Green Pineapple Bed',
     description:
       "For lovers of the popular exotic fruit, chicken and coconut's best friend - pineapple. In a light beige bubbly body with green tops",
-    photo: '/catalog/_dee534d5-e128-4f0a-bd35-b7c71739df50.jpg',
+    photo: '_dee534d5-e128-4f0a-bd35-b7c71739df50.jpg',
     price: 2599,
     rating: 4,
     availableQuantity: 7,
@@ -2062,7 +2062,7 @@ const PRODUCTS = [
     title: 'Car Series Luxurious President Lincoln Bed',
     description:
       'The utmost luxury is impossible to imagine. A shiny Lincoln body with a huge, luxurious headboard and the softest mattress. The batch was made for the White House, but due to demand, it is now available to anyone who wants it, although for a lot of money',
-    photo: '/catalog/_e0eea067-99af-455c-ba5c-6586a8c19b16.jpg',
+    photo: '_e0eea067-99af-455c-ba5c-6586a8c19b16.jpg',
     price: 19999,
     rating: 5,
     availableQuantity: 59,
@@ -2074,7 +2074,7 @@ const PRODUCTS = [
     title: 'Classic Series Coffee Cat Bed',
     description:
       "Our classic. The softest bed with a headboard in the shape of a cat's face. This one with a tail that can be used as a cuddle pillow",
-    photo: '/catalog/_e5a0229b-a4f5-450a-92ba-0f9b90621f44.jpg',
+    photo: '_e5a0229b-a4f5-450a-92ba-0f9b90621f44.jpg',
     price: 3899,
     rating: 4.6,
     availableQuantity: 5,
@@ -2086,7 +2086,7 @@ const PRODUCTS = [
     title: 'Regular Lavender Eco Leather Bed',
     description:
       'Connoisseurs of simple and unpretentious things also have something to look for in our store',
-    photo: '/catalog/_e9c890b3-3836-4b69-a113-3767a3c15ad0.jpg',
+    photo: '_e9c890b3-3836-4b69-a113-3767a3c15ad0.jpg',
     price: 1699,
     rating: 2.2,
     availableQuantity: 90,
@@ -2098,7 +2098,7 @@ const PRODUCTS = [
     title: 'Classic Series White Ginger-Eared Cat Bed',
     description:
       'A bright representative of our classics. Red-eared cutie. You can be sure of the quality',
-    photo: '/catalog/_e9dda7b3-6d12-466a-b330-a892dc55b17b.jpg',
+    photo: '_e9dda7b3-6d12-466a-b330-a892dc55b17b.jpg',
     price: 4199,
     rating: 4.5,
     availableQuantity: 31,
@@ -2110,7 +2110,7 @@ const PRODUCTS = [
     title: 'Classic Series Grey Cat Bed',
     description:
       'Classic from our store - the cat bed grey colored. Highest quality workmanship. Handmade. 100% guarantee. Shipping worldwide',
-    photo: '/catalog/_e24fc73f-d971-411d-8534-c476d8b0b263.jpg',
+    photo: '_e24fc73f-d971-411d-8534-c476d8b0b263.jpg',
     price: 4599,
     sale: 3999,
     rating: 4.9,
@@ -2123,7 +2123,7 @@ const PRODUCTS = [
     title: 'Creamy Mouse Nose Bed',
     description:
       'Mouse ears at the head of the bed and a nose at the end of the bed. Our designers came up with such an amazing idea. And the implementation of our craftsmen met expectations, it turned out to be a surprisingly beautiful and comfortable bed',
-    photo: '/catalog/_e092a0a3-71b6-4d5a-9048-e1e54b684e37.jpg',
+    photo: '_e092a0a3-71b6-4d5a-9048-e1e54b684e37.jpg',
     price: 2199,
     rating: 4.6,
     availableQuantity: 4,
@@ -2135,7 +2135,7 @@ const PRODUCTS = [
     title: 'Grey White Pink-Eared Cat Bed',
     description:
       'This bed is made according to our unique design by a team of our craftsmen with such high quality and thoughtfulness that you will never regret purchasing it',
-    photo: '/catalog/_e453b92a-9455-4a91-bf8f-cd9795bda90a.jpg',
+    photo: '_e453b92a-9455-4a91-bf8f-cd9795bda90a.jpg',
     price: 3799,
     sale: 3399,
     rating: 4.7,
@@ -2148,7 +2148,7 @@ const PRODUCTS = [
     title: 'Classic Series White Pink Cat Bed',
     description:
       'This white-pink model of our classic series has a soft tail that is comfortable to hug while sleeping. It is noteworthy that this bed was released in a very limited edition. Hurry to purchase and become the happy owner of an essentially unique and unthinkable',
-    photo: '/catalog/_e674ae23-18fb-477e-acb4-89402977ddb3.jpg',
+    photo: '_e674ae23-18fb-477e-acb4-89402977ddb3.jpg',
     price: 3899,
     rating: 4.7,
     availableQuantity: 2,
@@ -2160,7 +2160,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Orange Highlight Bedroom Set',
     description:
       'A futuristic bed with a bright orange panel in the Art Nouveau style fits perfectly into the home of a true connoisseur of modern fashion and the modern world in general',
-    photo: '/catalog/_ea6387d2-9ea6-4d44-a67d-2c68d2608a63.jpg',
+    photo: '_ea6387d2-9ea6-4d44-a67d-2c68d2608a63.jpg',
     price: 2899,
     rating: 3.4,
     availableQuantity: 23,
@@ -2172,7 +2172,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series MRI Complex Bed Set',
     description:
       "You don't need to visit the clinic every time you want to check something in your body with an Magnetic Resonance Imaging machine, since the machine is already included with our futuristic bed as a whole complex into which your bed can move and perform the study. All the necessary computers and displays with the ability to take the result and immediately send it to the doctor right from here included. If you are an ardent fan of regular check-ups of your body and are worried about your health, this thing will be indispensable for you",
-    photo: '/catalog/_ec3e0165-f360-4a44-8222-637bd57b2f3e.jpg',
+    photo: '_ec3e0165-f360-4a44-8222-637bd57b2f3e.jpg',
     price: 14999,
     rating: 3.9,
     availableQuantity: 4,
@@ -2184,7 +2184,7 @@ const PRODUCTS = [
     title: 'Creamy Orange Cat Bed',
     description:
       'If you like this bed, you have excellent taste. A creamy orange cat bed with a headboard that also features cat ears. The highest quality frame manufacturing, the softness and strength of the mattress included in the price, a unique design, you will get all this by purchasing this bed',
-    photo: '/catalog/_ed3b423e-3868-479b-876b-bbf5567de931.jpg',
+    photo: '_ed3b423e-3868-479b-876b-bbf5567de931.jpg',
     price: 3799,
     rating: 4.6,
     availableQuantity: 41,
@@ -2196,7 +2196,7 @@ const PRODUCTS = [
     title: 'Tall Creamy Rabbit Bed',
     description:
       'If your ceilings are more than 3 meters you are lucky, as you can fit this amazing rabbit  bed in your apartment',
-    photo: '/catalog/_ee64a76a-ed90-433c-8aae-06e1dff865b3.jpg',
+    photo: '_ee64a76a-ed90-433c-8aae-06e1dff865b3.jpg',
     price: 4599,
     sale: 4099,
     rating: 5,
@@ -2209,7 +2209,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Mobile Cubic Bedroom',
     description:
       'Hello world from 2077. This is a full-fledged bedroom of compact dimensions in the form of a cube 2.5m x 2.5m x 2.5m. You can mount it in your motorhome or simply attach it to your truck and ride around the world in comfort and with all the necessary digital technologies within walking distance. High-speed Internet, computer, a complex of sensors included in the smart home system, massage, temperature and transform modes in the bed. Of course everything is included here',
-    photo: '/catalog/_efb054e3-a521-4ee4-9156-09f8796ada28.jpg',
+    photo: '_efb054e3-a521-4ee4-9156-09f8796ada28.jpg',
     price: 13999,
     rating: 4.9,
     availableQuantity: 16,
@@ -2221,7 +2221,7 @@ const PRODUCTS = [
     title: 'Totoro Series Rounded Ottoman Bed',
     description:
       'Totoro (Japanese: トトロ) is an anime character, guardian of the forest, a large fluffy gray creature. This bed is made in the shape of this character. Soft and fluffy. Suitable for both bedroom and nursery',
-    photo: '/catalog/_f8ffc917-6585-42c6-b031-823fdc19d632.jpg',
+    photo: '_f8ffc917-6585-42c6-b031-823fdc19d632.jpg',
     price: 2999,
     rating: 4.5,
     availableQuantity: 33,
@@ -2233,7 +2233,7 @@ const PRODUCTS = [
     title: 'White Ginger Corgi Bed',
     description:
       'The Corgi is a miniature shepherd dog that helped Welsh peasants herd sheep, goats, ponies and even poultry. Thanks to its short stature, the corgi was able to deftly dodge horns and hooves. Since Corgis do not tend to bark much, these dogs accompanied and guarded poultry without scaring them. Our bed is made in the form of one of these',
-    photo: '/catalog/_f95cf3f5-5e0b-4493-a3a2-8da0b9bd5d1d.jpg',
+    photo: '_f95cf3f5-5e0b-4493-a3a2-8da0b9bd5d1d.jpg',
     price: 3399,
     rating: 4.9,
     availableQuantity: 23,
@@ -2245,7 +2245,7 @@ const PRODUCTS = [
     title: 'Classic Series Grey White Rounded Cat Bed',
     description:
       'This model of our classic is made with a very realistic face of the most ordinary gray and white cat',
-    photo: '/catalog/_f95dfca6-7a3b-4451-a564-1b304a70f995.jpg',
+    photo: '_f95dfca6-7a3b-4451-a564-1b304a70f995.jpg',
     price: 3799,
     rating: 4.2,
     availableQuantity: 6,
@@ -2257,7 +2257,7 @@ const PRODUCTS = [
     title: 'Stitch Series Thematic Bed',
     description:
       'Stitch is the name of genetic experiment 626, the main character of the Lilo and Stitch franchise. Stitch is a fictional alien, originally created to create great chaos in the galaxy and various cities. He is distinguished by his exceptional temper and destructive behavior, which, nevertheless, the earthly girl Lilo manages to tame, who took him as her little bundle of happiness. You can take your own You can place an order and take your own stitch too',
-    photo: '/catalog/_fb790ff1-0b03-4c4e-a04d-b0d200b98dcb.jpg',
+    photo: '_fb790ff1-0b03-4c4e-a04d-b0d200b98dcb.jpg',
     price: 2399,
     rating: 4.2,
     availableQuantity: 32,
@@ -2269,7 +2269,7 @@ const PRODUCTS = [
     title: 'Biscuit Teddy Bear Bed',
     description:
       'A bed in the shape of a bear in a delicate biscuit color. Due to its universal dimensions, this is an excellent sleeping place for both children and adults',
-    photo: '/catalog/_fc5af8bb-d051-4b8e-9103-f60b2626f142.jpg',
+    photo: '_fc5af8bb-d051-4b8e-9103-f60b2626f142.jpg',
     price: 2699,
     rating: 3,
     availableQuantity: 23,
@@ -2281,7 +2281,7 @@ const PRODUCTS = [
     title: 'Soft Yellow Plush Cat Bed',
     description:
       'Bed in the shape of a gentle yellow kitten. Due to its universal dimensions, this is an excellent sleeping place for both children and adults',
-    photo: '/catalog/_fee97849-d3fb-485a-bc8f-dbb730434d99.jpg',
+    photo: '_fee97849-d3fb-485a-bc8f-dbb730434d99.jpg',
     price: 2699,
     rating: 3.1,
     availableQuantity: 12,
@@ -2293,7 +2293,7 @@ const PRODUCTS = [
     title: 'Stitch Series Ottoman Bed',
     description:
       "The same favorite of children from the cartoon Stitch. Now in the form of an ottoman bed. The sizes are universal, it will perfectly fit in the bedroom or in the children's room",
-    photo: '/catalog/_19125600-ae1d-4120-bc1e-8e9358edf9a0.jpg',
+    photo: '_19125600-ae1d-4120-bc1e-8e9358edf9a0.jpg',
     price: 3499,
     rating: 3.2,
     availableQuantity: 4,
@@ -2305,7 +2305,7 @@ const PRODUCTS = [
     title: 'Creamy Biscuit Owl Bed',
     description:
       'Gorgeous beautiful owl in your bedroom. Only high-quality materials, soft upholstery and a thick, practical mattress. This bed is worth it...',
-    photo: '/catalog/_ac25c9e4-74db-4ad9-b828-a8b373983f68.jpg',
+    photo: '_ac25c9e4-74db-4ad9-b828-a8b373983f68.jpg',
     price: 2899,
     sale: 2699,
     rating: 3.1,
@@ -2318,7 +2318,7 @@ const PRODUCTS = [
     title: 'Stitch Series Ottoman Bed V2',
     description:
       'Stitch was created by the evil genius Jumba Jookieba, who named him "Experiment 626". It was created from the genes of the most powerful and dangerous creatures in the galaxy, which were connected together with electricity to begin the formation of molecules and the process of creating a body. Our ottoman bed in the form of this cute creature is also a kind of experiment that has incorporated the best materials that have no analogues in softness and practicality.',
-    photo: '/catalog/_0b72ad45-23df-4146-a27d-f5cc01143e76.jpg',
+    photo: '_0b72ad45-23df-4146-a27d-f5cc01143e76.jpg',
     price: 3999,
     rating: 3.3,
     availableQuantity: 4,
@@ -2330,7 +2330,7 @@ const PRODUCTS = [
     title: 'Sea Series Luxurious Lavender Coral Garden Sofa',
     description:
       'A real coral garden located in your living room. Finely crafted coral in soft, tactile materials frames your living room sofa. A dream for many underwater lovers',
-    photo: '/catalog/_0b10cc03-f722-4d0b-836a-25c7d30ed8a6.jpg',
+    photo: '_0b10cc03-f722-4d0b-836a-25c7d30ed8a6.jpg',
     price: 3199,
     rating: 4.8,
     availableQuantity: 14,
@@ -2342,7 +2342,7 @@ const PRODUCTS = [
     title: 'Sea Series Coral Pink Colored Crab Sofa',
     description:
       'Highly detailed designer sofa in coral color with crab theme with a claw. Fits perfectly into Art Nouveau interiors in soft pastel shades',
-    photo: '/catalog/_0d8dd284-6199-4935-a7f9-eea8affadbd7.jpg',
+    photo: '_0d8dd284-6199-4935-a7f9-eea8affadbd7.jpg',
     price: 2499,
     rating: 4.9,
     availableQuantity: 53,
@@ -2354,7 +2354,7 @@ const PRODUCTS = [
     title: 'Raspberry Marmalade Sofa',
     description:
       'A sofa in the shape of those sweet Haribo gummies that your children constantly ask for',
-    photo: '/catalog/_1f13c476-bb30-40fa-b76e-3e6001598981.jpg',
+    photo: '_1f13c476-bb30-40fa-b76e-3e6001598981.jpg',
     price: 2199,
     rating: 3.2,
     availableQuantity: 6,
@@ -2366,7 +2366,7 @@ const PRODUCTS = [
     title: 'Matting Light Grey Cat Divan',
     description:
       'High-quality sofa stylized as a cat. On the back there are ears and a nose in front, as well as paws in a kind of poufs on which you can rest your feet... Made of gray matting',
-    photo: '/catalog/_2ba83e60-830c-4e65-9b7a-41e0870d74d6.jpg',
+    photo: '_2ba83e60-830c-4e65-9b7a-41e0870d74d6.jpg',
     price: 1399,
     rating: 4.6,
     availableQuantity: 2,
@@ -2378,7 +2378,7 @@ const PRODUCTS = [
     title: 'Classic Series Violet Cat Sofa',
     description:
       "This sofa, like our beds from the classic series, has a cat's face on the headboard. This one is made in purple color",
-    photo: '/catalog/_3b903d3c-e822-40c3-a13f-611e4d5a9a2d.jpg',
+    photo: '_3b903d3c-e822-40c3-a13f-611e4d5a9a2d.jpg',
     price: 2099,
     rating: 4.3,
     availableQuantity: 6,
@@ -2390,7 +2390,7 @@ const PRODUCTS = [
     title: 'Sea Series White Dolphin Sofa',
     description:
       'Fluffy soft sofa in the shape of a white dolphin. The design is thought out to the smallest detail. Fits perfectly into any Art Nouveau apartment',
-    photo: '/catalog/_4e1ca439-9291-4bdc-b611-d7f6c86d400e.jpg',
+    photo: '_4e1ca439-9291-4bdc-b611-d7f6c86d400e.jpg',
     price: 2299,
     rating: 5,
     availableQuantity: 76,
@@ -2402,7 +2402,7 @@ const PRODUCTS = [
     title: 'Light Creamy Banana Corner Sofa',
     description:
       'A corner sofa stylized as a banana is perfect for both the living room and the kitchen area at the dining table',
-    photo: '/catalog/_5bda4ffc-adb9-435a-a56b-090bdcf559bc.jpg',
+    photo: '_5bda4ffc-adb9-435a-a56b-090bdcf559bc.jpg',
     price: 1999,
     rating: 4.9,
     availableQuantity: 45,
@@ -2414,7 +2414,7 @@ const PRODUCTS = [
     title: 'White Sheep Wool Sofa',
     description:
       "Sofa made of natural sheep wool. So fluffy it looks like it hasn't been cut since birth until old age",
-    photo: '/catalog/_5fda611b-b0df-4555-9a2b-d568f6fccddb.jpg',
+    photo: '_5fda611b-b0df-4555-9a2b-d568f6fccddb.jpg',
     price: 1399,
     rating: 3,
     availableQuantity: 3,
@@ -2426,7 +2426,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Trader Sofa',
     description:
       'In the modern world, traders perform a huge number of transactions on the stock exchange per month. They work both to increase and decrease the exchange rate of a currency or the value of securities, and sometimes they are willing to risk their entire capital for great profit. Next to this coral-colored sofa there is everything you need in the kit so that you can risk big bucks without taking your butt off the sofa',
-    photo: '/catalog/_6b34619d-8749-4080-be05-2c7fd1eaa31f.jpg',
+    photo: '_6b34619d-8749-4080-be05-2c7fd1eaa31f.jpg',
     price: 4199,
     rating: 4.9,
     availableQuantity: 4,
@@ -2438,7 +2438,7 @@ const PRODUCTS = [
     title: 'Big Smug Frog Sofa',
     description:
       'This frog was inspired by memes about his relative and decided to take his place by sitting on with a smug wide smile. At a time when one deceived Pepe is sad somewhere, you need to make the main choice in your life - whether to take this impostor, smug face home. Make sure your ceiling heights match it',
-    photo: '/catalog/_7b2bb3c2-7630-421c-8bca-92067c9ebbb1.jpg',
+    photo: '_7b2bb3c2-7630-421c-8bca-92067c9ebbb1.jpg',
     price: 4499,
     rating: 4.8,
     availableQuantity: 2,
@@ -2450,7 +2450,7 @@ const PRODUCTS = [
     title: 'Classic White Brown Owl Sofa',
     description:
       "This small owl will fit into almost any room, maybe a nursery. The quality is top notch as always. Manufacturer's warranty",
-    photo: '/catalog/_7db8a337-f9b7-4cd3-8fca-bf0f4aa07bd0.jpg',
+    photo: '_7db8a337-f9b7-4cd3-8fca-bf0f4aa07bd0.jpg',
     price: 1999,
     rating: 3.9,
     availableQuantity: 6,
@@ -2462,7 +2462,7 @@ const PRODUCTS = [
     title: 'Sea Series Light Beige Stingray Sofa',
     description:
       'The stingray has been transformed into a bed to give you comfort and coziness in your home for many years.',
-    photo: '/catalog/_7f15d66b-c0ec-43bc-a769-f2bf8f4633b7.jpg',
+    photo: '_7f15d66b-c0ec-43bc-a769-f2bf8f4633b7.jpg',
     price: 1599,
     rating: 4.4,
     availableQuantity: 4,
@@ -2474,7 +2474,7 @@ const PRODUCTS = [
     title: 'Black Caviar Sofa',
     description:
       'An integral part of the table of rich gourmets and oligarchs who love to live large is black caviar. If you are a lover and fan of this expensive delicacy, this sofa made in the style of bubbles of such caviar will bring you delight and you will buy it for any money, because you can afford it',
-    photo: '/catalog/_8c6afda4-e4d2-4198-b46a-c115d81e2361.jpg',
+    photo: '_8c6afda4-e4d2-4198-b46a-c115d81e2361.jpg',
     price: 9999,
     rating: 4.6,
     availableQuantity: 76,
@@ -2486,7 +2486,7 @@ const PRODUCTS = [
     title: 'Sea Series Luxurious Lavender Coral Garden Sofa V2',
     description:
       'A coral garden of unprecedented beauty in your home. The big plus is that they are soft, unlike the ones you injured yourself on while diving drunk in Egypt',
-    photo: '/catalog/_8d2e8727-12e8-4ce1-b134-9d04cd65726b.jpg',
+    photo: '_8d2e8727-12e8-4ce1-b134-9d04cd65726b.jpg',
     price: 5999,
     rating: 4.9,
     availableQuantity: 4,
@@ -2498,7 +2498,7 @@ const PRODUCTS = [
     title: 'Sea Series Light Beige Stingray Sofa V2',
     description:
       'A more modern design compared to the first version of the stingray bed. The quality is as good as ever',
-    photo: '/catalog/_9acceb0b-2a36-49e6-8d85-4997c0efdf49.jpg',
+    photo: '_9acceb0b-2a36-49e6-8d85-4997c0efdf49.jpg',
     price: 1999,
     rating: 4.9,
     availableQuantity: 56,
@@ -2510,7 +2510,7 @@ const PRODUCTS = [
     title: 'Sea Series Light Beige Octopus Sofa',
     description:
       'A curled up light beige octopus is looking forward to your purchase and is ready to bring you comfort and coziness in your home for many years',
-    photo: '/catalog/_9f060563-43ac-428f-b8ea-29e34327ac37.jpg',
+    photo: '_9f060563-43ac-428f-b8ea-29e34327ac37.jpg',
     price: 1899,
     sale: 1799,
     rating: 4.6,
@@ -2523,7 +2523,7 @@ const PRODUCTS = [
     title: 'Sea Series Orange Bottom Grey Stingray Sofa',
     description:
       'This tramp swam seas and oceans before he got to our store and is really waiting until you take him home',
-    photo: '/catalog/_14acdd46-8c9a-4006-bc90-19cef10d20c3.jpg',
+    photo: '_14acdd46-8c9a-4006-bc90-19cef10d20c3.jpg',
     price: 1799,
     rating: 4.7,
     availableQuantity: 4,
@@ -2535,7 +2535,7 @@ const PRODUCTS = [
     title: 'Sea Series Lavender Coral Garden Sofa With Pouf',
     description:
       'A highly detailed sofa with a coral style in lavender color, and even with a pouf included. Definitely a good offer',
-    photo: '/catalog/_018a0a91-6923-4e55-9bfe-88b183f65876.jpg',
+    photo: '_018a0a91-6923-4e55-9bfe-88b183f65876.jpg',
     price: 2399,
     rating: 3.8,
     availableQuantity: 5,
@@ -2547,7 +2547,7 @@ const PRODUCTS = [
     title: 'Classic Series Fluffy White Cat Sofa',
     description:
       'Very realistic and detailed work of our craftsmen. As if a real braid looking out from the back of this sofa will be an unusual and original solution to complement any interior of your home or apartment',
-    photo: '/catalog/_21ddb75e-b3eb-483d-8b16-3f0be8688910.jpg',
+    photo: '_21ddb75e-b3eb-483d-8b16-3f0be8688910.jpg',
     price: 2299,
     sale: 1999,
     rating: 4.9,
@@ -2560,7 +2560,7 @@ const PRODUCTS = [
     title: 'Sea Series White Stingray Sofa',
     description:
       'Dedicated to lovers of sea reptiles. Sofa stylized as a stingray. Very comfortable and soft like other items in our store',
-    photo: '/catalog/_21e3ab52-c812-4053-bc46-1e2e698548fb.jpg',
+    photo: '_21e3ab52-c812-4053-bc46-1e2e698548fb.jpg',
     price: 1799,
     rating: 5,
     availableQuantity: 2,
@@ -2572,7 +2572,7 @@ const PRODUCTS = [
     title: 'Dragonfruit Sofa',
     description:
       'Sofa in the shape of a Thai exotic fruit - pitaya or dragonfruit',
-    photo: '/catalog/_27b6f7b2-0410-4ae8-a9f1-5041d3b550f3.jpg',
+    photo: '_27b6f7b2-0410-4ae8-a9f1-5041d3b550f3.jpg',
     price: 1599,
     rating: 4.2,
     availableQuantity: 44,
@@ -2584,7 +2584,7 @@ const PRODUCTS = [
     title: 'Soft Orange Giraffe Sofa',
     description:
       'The giraffe sofa is a soft pastel orange color. For lovers of African fauna and unique Exotic Beds design',
-    photo: '/catalog/_76cdb5ad-c9e7-40bf-9bd6-fa5989661158.jpg',
+    photo: '_76cdb5ad-c9e7-40bf-9bd6-fa5989661158.jpg',
     price: 1999,
     sale: 1599,
     rating: 5,
@@ -2597,7 +2597,7 @@ const PRODUCTS = [
     title: 'Light Beige Pug Sofa',
     description:
       "Just look at this cutie. a soft and fluffy pug is just asking to come home to you. Such a realistic appearance of a pug is a consequence of our craftsmen's attention to detail and the high quality of the materials we use",
-    photo: '/catalog/_84bdbce5-1cc3-4a71-bbd5-c501cb09923b.jpg',
+    photo: '_84bdbce5-1cc3-4a71-bbd5-c501cb09923b.jpg',
     price: 1999,
     sale: 1699,
     rating: 4.3,
@@ -2610,7 +2610,7 @@ const PRODUCTS = [
     title: 'Sea Series Pastel Orange Eco Leather Crab Sofa',
     description:
       "This sofa thinks it's an orange crab. Don't worry, it's tame and won't pinch. Made from high quality eco leather",
-    photo: '/catalog/_90b4035c-c551-4731-8a79-ee79936a82b7.jpg',
+    photo: '_90b4035c-c551-4731-8a79-ee79936a82b7.jpg',
     price: 2199,
     sale: 1499,
     rating: 4.9,
@@ -2623,7 +2623,7 @@ const PRODUCTS = [
     title: 'Sea Series Gigantic Whale Shark Sofa',
     description:
       'If you have been to the Maldives, you may have seen these huge beauties and were so impressed that now you go buy such a sofa in the form of one of them and take up most of your living room with it. We give you this chance',
-    photo: '/catalog/_450bf8a7-0a34-413f-b80e-3a823e14368d.jpg',
+    photo: '_450bf8a7-0a34-413f-b80e-3a823e14368d.jpg',
     price: 6599,
     sale: 5999,
     rating: 5,
@@ -2636,7 +2636,7 @@ const PRODUCTS = [
     title: 'White Plush Toothy Dolphin Sofa',
     description:
       'This dude must be brushing his shiny teeth 4 times a day and whitening them. In any case, such a handsome man will perfectly emphasize your taste and the design of your apartment in the Art Nouveau design or any other',
-    photo: '/catalog/_921a61da-b28e-4da0-bf29-7e50f81d27f3.jpg',
+    photo: '_921a61da-b28e-4da0-bf29-7e50f81d27f3.jpg',
     price: 1999,
     sale: 1899,
     rating: 4.9,
@@ -2649,7 +2649,7 @@ const PRODUCTS = [
     title: 'Biscuit Mushroom Sofa',
     description:
       "Don't worry, that is not mushroom cloud effect of Nuclear Weapons behind you, it's just a sofa designed by Exotic Beds with a huge biscuit mushroom in addition",
-    photo: '/catalog/_4126d311-cdde-40c7-a2f3-af678f451beb.jpg',
+    photo: '_4126d311-cdde-40c7-a2f3-af678f451beb.jpg',
     price: 2599,
     rating: 3.1,
     availableQuantity: 42,
@@ -2661,7 +2661,7 @@ const PRODUCTS = [
     title: 'Ashy Crocodile Statue Sofa',
     description:
       'This crocodile looks like a work of art. All thanks to our craftsmen. The sofas themselves are the second reason why people prefer our products, the first is a unique art object that they represent',
-    photo: '/catalog/_5279f908-1981-48c6-8f3e-c90af213397d.jpg',
+    photo: '_5279f908-1981-48c6-8f3e-c90af213397d.jpg',
     price: 5299,
     sale: 4299,
     rating: 4.2,
@@ -2674,7 +2674,7 @@ const PRODUCTS = [
     title: 'Beige Crocodile Sofa',
     description:
       'Soft and fluffy sofa with a crocodile face. This item will be a unique addition to the design of your apartment',
-    photo: '/catalog/_7671f76a-577e-4eb4-86d7-c73dd05a1561.jpg',
+    photo: '_7671f76a-577e-4eb4-86d7-c73dd05a1561.jpg',
     price: 3799,
     sale: 1799,
     rating: 4.9,
@@ -2687,7 +2687,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Party Maker Sofa',
     description:
       'Sofa of the future equipped with super loud and bassy speakers with equipment for fine-tuning the sound... Super sound and ultra bass guaranteed',
-    photo: '/catalog/_1592492e-e27e-4b9d-a2dc-e46f41fdcd7e.jpg',
+    photo: '_1592492e-e27e-4b9d-a2dc-e46f41fdcd7e.jpg',
     price: 2999,
     rating: 4.5,
     availableQuantity: 6,
@@ -2699,7 +2699,7 @@ const PRODUCTS = [
     title: 'Light Beige Frog Sofa',
     description:
       'Flock sofa with frog eyes and legs made of the most durable and soft materials',
-    photo: '/catalog/_11523106-bf86-464f-ae5a-5a3e3d475bde.jpg',
+    photo: '_11523106-bf86-464f-ae5a-5a3e3d475bde.jpg',
     price: 2599,
     sale: 1999,
     rating: 4.1,
@@ -2712,7 +2712,7 @@ const PRODUCTS = [
     title: 'Bubbled Ashy Cat Eared Sofa',
     description:
       'Very soft sofa with cat ears in ash color, made in bubbles shape',
-    photo: '/catalog/_37294321-0b37-448b-a9a6-98aa6abaf29b.jpg',
+    photo: '_37294321-0b37-448b-a9a6-98aa6abaf29b.jpg',
     price: 1599,
     sale: 1399,
     rating: 3,
@@ -2725,7 +2725,7 @@ const PRODUCTS = [
     title: 'Beige Green Mushroom Sofa',
     description:
       'A soft bed equipped with a large mushroom that stands on it. Imagine yourself as a bug in a mushroom forest and relax on such a miracle',
-    photo: '/catalog/_72770348-ba52-410f-b0e4-0a71eb43b637.jpg',
+    photo: '_72770348-ba52-410f-b0e4-0a71eb43b637.jpg',
     price: 1999,
     rating: 2.1,
     availableQuantity: 34,
@@ -2737,7 +2737,7 @@ const PRODUCTS = [
     title: 'Mustard Yoda Sofa',
     description:
       'The same Yoda from Star Wars can be placed in your living room and create mood and comfort in your home',
-    photo: '/catalog/_ab629230-f691-47c5-bb97-3c17a2363d8e.jpg',
+    photo: '_ab629230-f691-47c5-bb97-3c17a2363d8e.jpg',
     price: 2199,
     rating: 3.4,
     availableQuantity: 3,
@@ -2749,7 +2749,7 @@ const PRODUCTS = [
     title: 'Pink Bubbled Teddy Bear Sofa',
     description:
       'Bubble-shaped sofa with a back in the shape of a soft teddy bear. Will be a great addition to an interior with delicate pastel shades',
-    photo: '/catalog/_ac8c5c3c-86d8-45ea-86fa-652ce7356e4f.jpg',
+    photo: '_ac8c5c3c-86d8-45ea-86fa-652ce7356e4f.jpg',
     price: 2199,
     rating: 3.9,
     availableQuantity: 4,
@@ -2761,7 +2761,7 @@ const PRODUCTS = [
     title: 'Sea Series Whale Shark Sofa',
     description:
       "The whale shark lives in the warm waters of tropical climates throughout the world's oceans. But it can also live in your apartment if you want. Any whim will be fulfilled by the EB",
-    photo: '/catalog/_afa488d4-35c8-4163-9ca0-e856c83775c7.jpg',
+    photo: '_afa488d4-35c8-4163-9ca0-e856c83775c7.jpg',
     price: 3399,
     sale: 3199,
     rating: 4.9,
@@ -2774,7 +2774,7 @@ const PRODUCTS = [
     title: 'Mustard Plush Pineapple Sofa',
     description:
       'This plush sofa is made in the shape of a pineapple and is completely in mustard color. If you like him, you have good taste',
-    photo: '/catalog/_b01fdc99-ed44-4bab-b471-f13b8412c4d2.jpg',
+    photo: '_b01fdc99-ed44-4bab-b471-f13b8412c4d2.jpg',
     price: 1999,
     rating: 4.7,
     availableQuantity: 5,
@@ -2786,7 +2786,7 @@ const PRODUCTS = [
     title: 'Green Yoda Sofa',
     description:
       'Yoda is one of the main characters of Star Wars, Grand Master of the Jedi Order, one of the strongest and wisest Jedi of his time. Our sofa is designed like him. Completely in green',
-    photo: '/catalog/_b07af274-e072-4676-9abe-e71b6c01cb31.jpg',
+    photo: '_b07af274-e072-4676-9abe-e71b6c01cb31.jpg',
     price: 2199,
     rating: 3.5,
     availableQuantity: 5,
@@ -2798,7 +2798,7 @@ const PRODUCTS = [
     title: 'Creamy Beige Yoda Sofa',
     description:
       'Master Yoda was 900 years old, middle-aged by the standards of his race. Our bed is of such high quality that it will serve you for the same number of years',
-    photo: '/catalog/_b4662585-59d0-4a3e-aae6-cd27f33ce915.jpg',
+    photo: '_b4662585-59d0-4a3e-aae6-cd27f33ce915.jpg',
     price: 2299,
     sale: 1999,
     rating: 4,
@@ -2811,7 +2811,7 @@ const PRODUCTS = [
     title: 'Creamed Yellow Banana',
     description:
       'This sofa looks like cream and banana, as always an original solution from our craftsmen. It looks very beautiful and appetizing, it makes you hungry for real',
-    photo: '/catalog/_bd79d145-fd4b-414a-b671-4c8064dfb57b.jpg',
+    photo: '_bd79d145-fd4b-414a-b671-4c8064dfb57b.jpg',
     price: 1999,
     rating: 4.2,
     availableQuantity: 53,
@@ -2823,7 +2823,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Slowpoke',
     description:
       "Now there's a sofa in the shape of the cutest pink Pokemon Slowpoke",
-    photo: '/catalog/_bf26adee-aa01-4657-953b-59249ce62c05.jpg',
+    photo: '_bf26adee-aa01-4657-953b-59249ce62c05.jpg',
     price: 2299,
     rating: 3.5,
     availableQuantity: 5,
@@ -2835,7 +2835,7 @@ const PRODUCTS = [
     title: 'Light Mustard Crocodile Sofa',
     description:
       'Sharp fangs and an ominous grin and at the same time unsurpassed softness and comfort. All this about our crocodile sofa',
-    photo: '/catalog/_c8fb029d-0f02-4eba-81ee-e5918ddf9759.jpg',
+    photo: '_c8fb029d-0f02-4eba-81ee-e5918ddf9759.jpg',
     price: 2199,
     rating: 3.9,
     availableQuantity: 56,
@@ -2847,7 +2847,7 @@ const PRODUCTS = [
     title: 'Dragonfruit Sofa V2',
     description:
       'Sofa in the shape of an exotic dragonfruit in its juicy and bright colors',
-    photo: '/catalog/_c7191834-23b2-451a-a9e8-86ba101b2abe.jpg',
+    photo: '_c7191834-23b2-451a-a9e8-86ba101b2abe.jpg',
     price: 1699,
     rating: 4.9,
     availableQuantity: 6,
@@ -2859,7 +2859,7 @@ const PRODUCTS = [
     title: 'Fluffy Violet Eared Cat Sofa',
     description:
       'Purple sofa made of very soft and fluffy materials with cute cat ears on the back and paws at the bottom',
-    photo: '/catalog/_ca2b63b8-10d1-4ca3-bd67-b10916b02871.jpg',
+    photo: '_ca2b63b8-10d1-4ca3-bd67-b10916b02871.jpg',
     price: 2399,
     rating: 4.3,
     availableQuantity: 67,
@@ -2871,7 +2871,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Massage Sofa',
     description:
       'Massage from 2077 looks something like this. A sofa with 200 different massage modes from relaxing to acupuncture. All displays and panels with settings included',
-    photo: '/catalog/_cbab7c90-e41d-4516-9841-018775c10016.jpg',
+    photo: '_cbab7c90-e41d-4516-9841-018775c10016.jpg',
     price: 3399,
     rating: 5,
     availableQuantity: 32,
@@ -2883,7 +2883,7 @@ const PRODUCTS = [
     title: 'Matting Creamy Pug Sofa',
     description:
       'Very cute sofa with a pug face in a soft cream color made of matting',
-    photo: '/catalog/_cce05b1a-069c-4b94-bfea-9cac85180e6a.jpg',
+    photo: '_cce05b1a-069c-4b94-bfea-9cac85180e6a.jpg',
     price: 1699,
     rating: 3.4,
     availableQuantity: 5,
@@ -2895,7 +2895,7 @@ const PRODUCTS = [
     title: 'Sea Series Eco Leather Shrimp Sofa',
     description:
       'A sofa in the shape of a shrimp in a soft coral color. The upholstery is made of high-quality eco leather that will serve you for decades',
-    photo: '/catalog/_d92c9ed8-a755-4a4a-9606-d9a44af15e0d.jpg',
+    photo: '_d92c9ed8-a755-4a4a-9606-d9a44af15e0d.jpg',
     price: 1999,
     rating: 4.9,
     availableQuantity: 32,
@@ -2907,7 +2907,7 @@ const PRODUCTS = [
     title: 'Light Green Hippopotamus Sofa',
     description:
       'Sofa with the outline of a hippopotamus face. Made of genuine leather in a light green, pleasant pastel color',
-    photo: '/catalog/_f48f4fb5-a023-47db-aee5-4eee4588b39f.jpg',
+    photo: '_f48f4fb5-a023-47db-aee5-4eee4588b39f.jpg',
     price: 1499,
     rating: 4.9,
     availableQuantity: 45,
@@ -2919,7 +2919,7 @@ const PRODUCTS = [
     title: 'Raspberry Leather Sofa',
     description:
       'Genuine leather sofa in the shape of a raspberry in its bright colors',
-    photo: '/catalog/_f97e6c83-adf5-4e7a-974d-0699e3e1deae.jpg',
+    photo: '_f97e6c83-adf5-4e7a-974d-0699e3e1deae.jpg',
     price: 2499,
     sale: 1499,
     rating: 4,
@@ -2932,7 +2932,7 @@ const PRODUCTS = [
     title: 'Classic Series Light Beige Cat Sofa',
     description:
       'Our classic. A cute cat face looking at you from the headboard. This will be scattered the fastest, hurry up and place your order',
-    photo: '/catalog/_fb8a8ac6-77c2-4dd3-8eca-c5bf3671fec6.jpg',
+    photo: '_fb8a8ac6-77c2-4dd3-8eca-c5bf3671fec6.jpg',
     price: 2399,
     rating: 4.9,
     availableQuantity: 2,
@@ -2944,7 +2944,7 @@ const PRODUCTS = [
     title: 'Fluffy Grey Wolf Sofa',
     description:
       'Do you think these are wolf eyes? In our opinion this is definitely the case',
-    photo: '/catalog/_fb9073e1-a185-4c2d-95f3-05ecaa767ffe.jpg',
+    photo: '_fb9073e1-a185-4c2d-95f3-05ecaa767ffe.jpg',
     price: 1999,
     rating: 3.3,
     availableQuantity: 4,
@@ -2956,7 +2956,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Original Hipster Sofa',
     description:
       "Perhaps the future has no future. Just another thing for Instagram photos with bright lighting and nothing more, but you can sit on it. There is no functionality here, just a beautiful thing for a lot of money. But it has a category of consumers. Let's not say anything about quality",
-    photo: '/catalog/_fe927d98-545b-4d8d-bd26-aa9cedacb8da.jpg',
+    photo: '_fe927d98-545b-4d8d-bd26-aa9cedacb8da.jpg',
     price: 6999,
     rating: 3,
     availableQuantity: 11,
@@ -2968,7 +2968,7 @@ const PRODUCTS = [
     title: 'Light Beige Teddy Bear Armchair',
     description:
       'A chair in the shape of a Teddy bear, the favorite toy of all children and adults',
-    photo: '/catalog/_1fd71e0f-07c2-4b2e-8028-958e77530528.jpg',
+    photo: '_1fd71e0f-07c2-4b2e-8028-958e77530528.jpg',
     price: 1199,
     rating: 4.8,
     availableQuantity: 3,
@@ -2980,7 +2980,7 @@ const PRODUCTS = [
     title: 'Light Grey Koala Armchair',
     description:
       'Koala is the cutest animal from Australia. Now a chair in the shape of it is available in our store',
-    photo: '/catalog/_4d31800f-1646-4035-8890-dce151536274.jpg',
+    photo: '_4d31800f-1646-4035-8890-dce151536274.jpg',
     price: 1399,
     sale: 999,
     rating: 5,
@@ -2993,7 +2993,7 @@ const PRODUCTS = [
     title: 'Black Caviar Armchair',
     description:
       'Chair in the shape of black caviar bubbles. For the elite of society or simply for those who are ready to pay 4 thousand euros for an ordinary chair',
-    photo: '/catalog/_4f23ea3a-8bb1-4fb6-9ed4-313c871f1538.jpg',
+    photo: '_4f23ea3a-8bb1-4fb6-9ed4-313c871f1538.jpg',
     price: 3999,
     rating: 3.4,
     availableQuantity: 4,
@@ -3005,7 +3005,7 @@ const PRODUCTS = [
     title: 'Soft Light Beige Bear Armchair',
     description:
       'A chair made in the style of a soft bear. Quite realistic and cute specimen',
-    photo: '/catalog/_5acb8a9e-73c0-4ae2-9f70-6d8d411d9baa.jpg',
+    photo: '_5acb8a9e-73c0-4ae2-9f70-6d8d411d9baa.jpg',
     price: 1399,
     sale: 999,
     rating: 4.3,
@@ -3018,7 +3018,7 @@ const PRODUCTS = [
     title: 'Bubbled Creamy Beige Bear Armchair',
     description:
       'A chair made in the shape of a bubble soft bear in a creamy beige color. It will be an excellent design addition suitable for almost any interior style',
-    photo: '/catalog/_6cb08bcf-4c6e-4691-b37b-08d0d53b154c.jpg',
+    photo: '_6cb08bcf-4c6e-4691-b37b-08d0d53b154c.jpg',
     price: 1399,
     rating: 4.2,
     availableQuantity: 34,
@@ -3030,7 +3030,7 @@ const PRODUCTS = [
     title: 'White Leather Pineapple Armchair',
     description:
       'A chair made of genuine leather, made in the shape of a pineapple, completely white. An excellent choice for the interior of an apartment in the Art Nouveau style',
-    photo: '/catalog/_8c8a92ff-9847-436e-b917-bd04f9ac6dad.jpg',
+    photo: '_8c8a92ff-9847-436e-b917-bd04f9ac6dad.jpg',
     price: 1499,
     sale: 1399,
     rating: 3.6,
@@ -3043,7 +3043,7 @@ const PRODUCTS = [
     title: 'Raspberry Candy Red Armchair',
     description:
       "A chair in the shape of everyone's favorite red raspberry jelly beans",
-    photo: '/catalog/_9d86cd4b-8fa6-4ad6-b6c5-28c62fbce0d6.jpg',
+    photo: '_9d86cd4b-8fa6-4ad6-b6c5-28c62fbce0d6.jpg',
     price: 1299,
     sale: 999,
     rating: 3.5,
@@ -3056,7 +3056,7 @@ const PRODUCTS = [
     title: 'Eggplant Armchair',
     description:
       'Armchair in the shape of an eggplant. An unusual solution for creative people',
-    photo: '/catalog/_27d38b5f-e33b-42cf-b0a3-7eaa33996372.jpg',
+    photo: '_27d38b5f-e33b-42cf-b0a3-7eaa33996372.jpg',
     price: 1299,
     sale: 999,
     rating: 3.5,
@@ -3069,7 +3069,7 @@ const PRODUCTS = [
     title: 'White Pink Baby Sperm Whale Chair',
     description:
       'A chair stylized as a baby sperm whale. Unusual unique design, high quality materials, excellent price. What else do you need to place an order?',
-    photo: '/catalog/_123f47e8-02b2-4d50-b3ad-fcdaf70a7df4.jpg',
+    photo: '_123f47e8-02b2-4d50-b3ad-fcdaf70a7df4.jpg',
     price: 999,
     rating: 5,
     availableQuantity: 23,
@@ -3081,7 +3081,7 @@ const PRODUCTS = [
     title: 'Beige Koala Armchair',
     description:
       'A beige chair made in the shape of a koala - a beloved animal that lives in Australia',
-    photo: '/catalog/_396acd8b-5b6f-4fe1-86dd-3142bef729cd.jpg',
+    photo: '_396acd8b-5b6f-4fe1-86dd-3142bef729cd.jpg',
     price: 1399,
     rating: 4.6,
     availableQuantity: 5,
@@ -3093,7 +3093,7 @@ const PRODUCTS = [
     title: 'Flock Green Frog Chair',
     description:
       'Green chair in the shape of a frog. Agree, very unusual. Place an order and become the owner of a truly unique rare item as we produce furniture in limited editions of several dozen pieces',
-    photo: '/catalog/_02516a7f-9288-4d74-8417-14c7d420c41b.jpg',
+    photo: '_02516a7f-9288-4d74-8417-14c7d420c41b.jpg',
     price: 899,
     rating: 3.9,
     availableQuantity: 34,
@@ -3105,7 +3105,7 @@ const PRODUCTS = [
     title: 'Light Coral Grey Rounded Shrimp Chair',
     description:
       'A rounded chair in the shape of a curled shrimp of coral color. Truly unique item',
-    photo: '/catalog/_20505fe0-3e1a-4fef-8fa6-43c7d327c60f.jpg',
+    photo: '_20505fe0-3e1a-4fef-8fa6-43c7d327c60f.jpg',
     price: 1299,
     sale: 999,
     rating: 4.8,
@@ -3118,7 +3118,7 @@ const PRODUCTS = [
     title: 'Lavender Pink Candy Chair',
     description:
       'Armchair in the shape of candies in lavender pink color. A delight for those with a sweet tooth',
-    photo: '/catalog/_125501ad-bd36-4001-b142-3e0a9ad28ad9.jpg',
+    photo: '_125501ad-bd36-4001-b142-3e0a9ad28ad9.jpg',
     price: 799,
     rating: 3.4,
     availableQuantity: 34,
@@ -3129,7 +3129,7 @@ const PRODUCTS = [
     category: 'armchairs',
     title: 'Turquoise Peacock Armchair',
     description: 'A chair in the shape of a chic turquoise peacock tail',
-    photo: '/catalog/_380457c9-8a3d-4d3a-bd89-d3f547e522d1.jpg',
+    photo: '_380457c9-8a3d-4d3a-bd89-d3f547e522d1.jpg',
     price: 1399,
     rating: 3.2,
     availableQuantity: 4,
@@ -3141,7 +3141,7 @@ const PRODUCTS = [
     title: 'Furry Raccoon Armchair',
     description:
       'Wooden chair in the shape of a raccoon covered with very fluffy natural fur. An excellent option for a chalet-style country house',
-    photo: '/catalog/_a1387870-1fe7-44c3-aca2-cbf5d6379258.jpg',
+    photo: '_a1387870-1fe7-44c3-aca2-cbf5d6379258.jpg',
     price: 1399,
     sale: 1099,
     rating: 3.4,
@@ -3154,7 +3154,7 @@ const PRODUCTS = [
     title: 'Matting Beige Mushroom Armchair',
     description:
       'Beige armchair in the shape of a mushroom. Sitting under such a mushroom cap, one could wait out any rain. Unusual unique design and quality materials, all to give you a feeling of coziness and comfort',
-    photo: '/catalog/_ada4669d-c15d-444a-b1b2-398514dedb9d.jpg',
+    photo: '_ada4669d-c15d-444a-b1b2-398514dedb9d.jpg',
     price: 1399,
     rating: 4.9,
     availableQuantity: 3,
@@ -3166,7 +3166,7 @@ const PRODUCTS = [
     title: 'Classic Series Ginger Beige Cat Armchair',
     description:
       'Our classic design. Ginger beige color. The softest flock. Very worthy model',
-    photo: '/catalog/_c8c4b60d-52ce-4c98-baae-4879c04478db.jpg',
+    photo: '_c8c4b60d-52ce-4c98-baae-4879c04478db.jpg',
     price: 1599,
     rating: 5,
     availableQuantity: 43,
@@ -3178,7 +3178,7 @@ const PRODUCTS = [
     title: 'Ashy Eared Armchair',
     description:
       'Ash-colored soft fluffy chair with cat ears. Simple and tasteful',
-    photo: '/catalog/_d6ca196a-d998-488a-b2b6-c0653ee0b57d.jpg',
+    photo: '_d6ca196a-d998-488a-b2b6-c0653ee0b57d.jpg',
     price: 999,
     rating: 3.4,
     availableQuantity: 4,
@@ -3190,7 +3190,7 @@ const PRODUCTS = [
     title: 'Classic Series Dark Grey Cat Armchair',
     description:
       'Just look at this fluffy, stately graceful cat. Such furniture radiates well-being and high status of its owner',
-    photo: '/catalog/_d2390b29-9a6a-46d4-beb0-f6888337728f.jpg',
+    photo: '_d2390b29-9a6a-46d4-beb0-f6888337728f.jpg',
     price: 1599,
     rating: 4.9,
     availableQuantity: 43,
@@ -3202,7 +3202,7 @@ const PRODUCTS = [
     title: 'Pastel Orange Shrimp Chair',
     description:
       'Sitting on this genuine leather shrimp you will feel like you are floating on clouds, it is so soft',
-    photo: '/catalog/_d661660e-7e1c-4df0-a54b-dbee8cad0457.jpg',
+    photo: '_d661660e-7e1c-4df0-a54b-dbee8cad0457.jpg',
     price: 1299,
     sale: 1199,
     rating: 4.9,
@@ -3215,7 +3215,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Light Pink Slow Poke Chair',
     description:
       "This chair is made in the shape of one of the cutest and slowest creatures. No, it's not a koala or a sloth. This is a slowpok!",
-    photo: '/catalog/_dcf99425-f683-49d6-9dd5-42e8e2b9f6cc.jpg',
+    photo: '_dcf99425-f683-49d6-9dd5-42e8e2b9f6cc.jpg',
     price: 1299,
     rating: 5,
     availableQuantity: 4,
@@ -3227,7 +3227,7 @@ const PRODUCTS = [
     title: 'Large Koala Armchair',
     description:
       'This is such a big and soft chair in the shape of a koala that if you sit in it you can drown. Come to our offline store and judge for yourself',
-    photo: '/catalog/_de48f884-c3e0-40bc-a84b-8ea0116df6ce.jpg',
+    photo: '_de48f884-c3e0-40bc-a84b-8ea0116df6ce.jpg',
     price: 1699,
     rating: 3.5,
     availableQuantity: 3,
@@ -3239,7 +3239,7 @@ const PRODUCTS = [
     title: 'Black Caviar Armchair V2',
     description:
       'This armchair for stately and high-ranking gentlemen is made in the shape of their favorite delicacy - black caviar. Upholstery material - genuine chevro leather. Handmade, highly detailed, only high-quality natural materials. 100% quality guarantee',
-    photo: '/catalog/_e460b1d1-4aac-4f62-9427-06d922b8bb7e.jpg',
+    photo: '_e460b1d1-4aac-4f62-9427-06d922b8bb7e.jpg',
     price: 3999,
     rating: 3.2,
     availableQuantity: 4,
@@ -3251,7 +3251,7 @@ const PRODUCTS = [
     title: 'Sea Series Lavender Coral Chair',
     description:
       'Highly detailed lavender coral style chair. Especially for lovers of underwater beauty in our sea series',
-    photo: '/catalog/_f87828b5-6ad7-4f09-993e-a1c76d006df8.jpg',
+    photo: '_f87828b5-6ad7-4f09-993e-a1c76d006df8.jpg',
     price: 999,
     rating: 2.3,
     availableQuantity: 4,
@@ -3263,7 +3263,7 @@ const PRODUCTS = [
     title: 'Grey Double Mouse Chair',
     description:
       'This sofa made in mouse design. One mouse muzzle represents the back and the second the base of the chair. A very unusual, essentially unique solution from our designers',
-    photo: '/catalog/_fe6ce458-4acf-4b3a-80ec-05beee1cf455.jpg',
+    photo: '_fe6ce458-4acf-4b3a-80ec-05beee1cf455.jpg',
     price: 1099,
     rating: 2.3,
     availableQuantity: 4,
@@ -3275,7 +3275,7 @@ const PRODUCTS = [
     title: 'Classic Series Violet Yellow Cat Crib',
     description:
       'Our classic series is now also for children. The softest mattress, very pleasant to the touch covering materials, cute and interesting design. Your baby will enjoy sleeping in this crib so much that he will be less fussy',
-    photo: '/catalog/_0cd73490-1a81-45e3-a6b6-be6165770677.jpg',
+    photo: '_0cd73490-1a81-45e3-a6b6-be6165770677.jpg',
     price: 1399,
     rating: 4.9,
     availableQuantity: 4,
@@ -3287,7 +3287,7 @@ const PRODUCTS = [
     title: 'Dragonfruit Teenage Bed',
     description:
       'This bed in the form of dragonfruit is relatively small in size so it is suitable for teenagers',
-    photo: '/catalog/_0f82f7ba-66bd-44ff-bf96-62dfe8093231.jpg',
+    photo: '_0f82f7ba-66bd-44ff-bf96-62dfe8093231.jpg',
     price: 1299,
     rating: 5,
     availableQuantity: 5,
@@ -3299,7 +3299,7 @@ const PRODUCTS = [
     title: 'Classic Series Lavender Kid Cat Bed',
     description:
       "A durable pillow, a soft orthopedic mattress, the softest upholstery materials, what else is needed for an ideal children's bed?",
-    photo: '/catalog/_1c4040b8-8846-41c8-b05b-a3a9c13312c1.jpg',
+    photo: '_1c4040b8-8846-41c8-b05b-a3a9c13312c1.jpg',
     price: 1399,
     rating: 4.3,
     availableQuantity: 4,
@@ -3311,7 +3311,7 @@ const PRODUCTS = [
     title: "Rounded Green Baby's Frog Crib",
     description:
       'Round crib with eyes and frog legs. Your child will definitely appreciate this design',
-    photo: '/catalog/_4cef8356-4dcc-4031-b229-b81c93f17807.jpg',
+    photo: '_4cef8356-4dcc-4031-b229-b81c93f17807.jpg',
     price: 1099,
     sale: 899,
     rating: 3,
@@ -3324,7 +3324,7 @@ const PRODUCTS = [
     title: "Claassic Series Lavender Baby's Cat Crib",
     description:
       "Bed in our unique classic design, with a cat's face on the headboard. In very delicate pastel colors from the softest materials. Your child will definitely like this crib",
-    photo: '/catalog/_4ee9817d-0598-4101-805f-480df47ec59e.jpg',
+    photo: '_4ee9817d-0598-4101-805f-480df47ec59e.jpg',
     price: 1399,
     rating: 4.9,
     availableQuantity: 45,
@@ -3336,7 +3336,7 @@ const PRODUCTS = [
     title: 'Green Teenage Smiling Frog Bed',
     description:
       'Due to its size and design, this is mainly a teenage bed, but it can also be suitable for adults if you are not a very tall person. A green frog with a smile stretched all over his face is happy that you paid attention to him and is waiting for you to finally place your order',
-    photo: '/catalog/_5b2b4e70-aeaa-4b43-a1f9-0ee9df0bce18.jpg',
+    photo: '_5b2b4e70-aeaa-4b43-a1f9-0ee9df0bce18.jpg',
     price: 1999,
     rating: 3.3,
     availableQuantity: 36,
@@ -3348,7 +3348,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Kids Turquoise Pikachu Bed',
     description:
       'If your child loves Pokemon, he will definitely love this Pikachu in turquoise color',
-    photo: '/catalog/_5b02646f-5d38-437b-8e12-4968c6379796.jpg',
+    photo: '_5b02646f-5d38-437b-8e12-4968c6379796.jpg',
     price: 1499,
     rating: 4.9,
     availableQuantity: 2,
@@ -3360,7 +3360,7 @@ const PRODUCTS = [
     title: "Beige Baby's Fluffy Spider Crib",
     description:
       'If your baby is not afraid of spiders, he might like this thing. Unique design and unusual shape from our craftsmen',
-    photo: '/catalog/_5d389c62-29bd-4c88-8df5-56d9e176cc5c.jpg',
+    photo: '_5d389c62-29bd-4c88-8df5-56d9e176cc5c.jpg',
     price: 1199,
     sale: 999,
     rating: 4.3,
@@ -3373,7 +3373,7 @@ const PRODUCTS = [
     title: 'Classic Series Flock Violet Kids Cat Bed',
     description:
       'Soft flock, bright rich colors, unique design - only the best for your children',
-    photo: '/catalog/_6a4fa981-5a29-4072-a6cd-7aa19e664e87.jpg',
+    photo: '_6a4fa981-5a29-4072-a6cd-7aa19e664e87.jpg',
     price: 1399,
     rating: 4.9,
     availableQuantity: 5,
@@ -3385,7 +3385,7 @@ const PRODUCTS = [
     title: 'Light Orange Kids Giraffe Bed',
     description:
       'Such a bed in the shape of this handsome guy from the African savannah will appeal to any child... Do you love your child and want to buy him a comfortable and unique bed that no one else will have? We give you this chance',
-    photo: '/catalog/_6a549851-9bdc-4043-9381-c5b9c1c3b5ae.jpg',
+    photo: '_6a549851-9bdc-4043-9381-c5b9c1c3b5ae.jpg',
     price: 1599,
     rating: 5,
     availableQuantity: 6,
@@ -3397,7 +3397,7 @@ const PRODUCTS = [
     title: "White Baby's Ship Bed",
     description:
       'A bed in the shape of a cute white sheep. Such a cute design will definitely appeal to any child',
-    photo: '/catalog/_6b7c70b8-2a16-432f-a598-b3a110ededb5.jpg',
+    photo: '_6b7c70b8-2a16-432f-a598-b3a110ededb5.jpg',
     price: 1499,
     rating: 4.8,
     availableQuantity: 8,
@@ -3409,7 +3409,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Kids Yellow Pikachu Bed',
     description:
       'Is your child a Pokemon lover? This is your chance to make him happy. A bed in the shape of the main Pokemon of the all Pokemon series - Pikachu',
-    photo: '/catalog/_6d6b5827-c624-4772-ae5d-9e72eff2f534.jpg',
+    photo: '_6d6b5827-c624-4772-ae5d-9e72eff2f534.jpg',
     price: 1399,
     rating: 4.7,
     availableQuantity: 45,
@@ -3421,7 +3421,7 @@ const PRODUCTS = [
     title: 'Violet Kids Ottoman Cat Bed',
     description:
       'If you are looking at this model you definitely have good taste. A six-legged purple cat bed ottoman made of soft quality materials will serve you and your child for a long time, and the unique unique design will make your friends jealous',
-    photo: '/catalog/_07ba3d59-2553-46eb-a40f-fe6d940d9d1c.jpg',
+    photo: '_07ba3d59-2553-46eb-a40f-fe6d940d9d1c.jpg',
     price: 1599,
     rating: 4.7,
     availableQuantity: 6,
@@ -3433,7 +3433,7 @@ const PRODUCTS = [
     title: 'Green Kids Frog Face Bed',
     description:
       'This bed is designed like the face of a frog. A very unusual solution that our craftsmen were able to implement and make it very practical to use',
-    photo: '/catalog/_7f2a059a-ae74-48f7-9e08-498f80dd984d.jpg',
+    photo: '_7f2a059a-ae74-48f7-9e08-498f80dd984d.jpg',
     price: 1299,
     rating: 3.9,
     availableQuantity: 4,
@@ -3445,7 +3445,7 @@ const PRODUCTS = [
     title: 'Kids Corgi Bed',
     description:
       'A bed in the shape of a cute corgi dog will definitely make your child happy if you give him one',
-    photo: '/catalog/_8b68972f-7b07-4eb3-aa68-bfddf1132f77.jpg',
+    photo: '_8b68972f-7b07-4eb3-aa68-bfddf1132f77.jpg',
     price: 1399,
     rating: 5,
     availableQuantity: 1,
@@ -3456,7 +3456,7 @@ const PRODUCTS = [
     category: 'kids',
     title: 'Classic Series Kids Red Round Ottoman Cat Bed',
     description: "Round children's bed ottoman with a cat's face",
-    photo: '/catalog/_8d423ce6-6a37-44d8-a574-97580d9e7878.jpg',
+    photo: '_8d423ce6-6a37-44d8-a574-97580d9e7878.jpg',
     price: 999,
     rating: 3.3,
     availableQuantity: 12,
@@ -3468,7 +3468,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Pink Violet Cat Bed',
     description:
       'Such a cute pink kitten will delight any child, both a girl and a boy. However, the color scheme is meant more as a bed for girls',
-    photo: '/catalog/_8e6ba842-482e-491f-ad88-ec9a4185de25.jpg',
+    photo: '_8e6ba842-482e-491f-ad88-ec9a4185de25.jpg',
     price: 1199,
     rating: 4.5,
     availableQuantity: 23,
@@ -3480,7 +3480,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Kids Slowpoke Soft Bag',
     description:
       'This frameless model provides a soft seat for children. It will serve your child for a long and faithful service',
-    photo: '/catalog/_9a0fe0d3-8aa2-4028-bd69-240905a4775d.jpg',
+    photo: '_9a0fe0d3-8aa2-4028-bd69-240905a4775d.jpg',
     price: 999,
     rating: 3.2,
     availableQuantity: 3,
@@ -3492,7 +3492,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Red Pink Cat Bed',
     description:
       'Classic cat bed for children from EB. As always, high-quality and soft materials and unique design',
-    photo: '/catalog/_9a7db296-7e39-4304-8370-e5b745d8ebc3.jpg',
+    photo: '_9a7db296-7e39-4304-8370-e5b745d8ebc3.jpg',
     price: 1299,
     rating: 4.5,
     availableQuantity: 5,
@@ -3504,7 +3504,7 @@ const PRODUCTS = [
     title: 'Shrek Series Kids Cartoon Thematic Bed',
     description:
       'If your child likes cartoons about Shrek, he will be delighted with this bed',
-    photo: '/catalog/_9ca5d9eb-c03b-404c-87fb-93827d219e4f.jpg',
+    photo: '_9ca5d9eb-c03b-404c-87fb-93827d219e4f.jpg',
     price: 1499,
     rating: 3.4,
     availableQuantity: 4,
@@ -3516,7 +3516,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Matting Grey Cat Bed',
     description:
       "Beds with a cat's face on the headboard are our classic ones. This one from a gray matting for children is one of the series",
-    photo: '/catalog/_28fb217b-8daa-4c84-a4e2-78eddbe014a5.jpg',
+    photo: '_28fb217b-8daa-4c84-a4e2-78eddbe014a5.jpg',
     price: 1299,
     rating: 4.5,
     availableQuantity: 3,
@@ -3528,7 +3528,7 @@ const PRODUCTS = [
     title: 'Grey Soft Kids Koala Bed',
     description:
       'This bed in the shape of a cute koala has no frame, only the softest built-in mattress',
-    photo: '/catalog/_042b1eb1-b224-47a6-aca7-0f381dcf0242.jpg',
+    photo: '_042b1eb1-b224-47a6-aca7-0f381dcf0242.jpg',
     price: 999,
     rating: 4.2,
     availableQuantity: 5,
@@ -3540,7 +3540,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Plush Violet Yellow Cat Bed',
     description:
       'Bed in the shape of a cat in bright purple with yellow eyes, ears and paws. A very interesting option. Your child will be delighted',
-    photo: '/catalog/_58d05ff2-c366-4022-923e-f820c70e0257.jpg',
+    photo: '_58d05ff2-c366-4022-923e-f820c70e0257.jpg',
     price: 1299,
     rating: 3.9,
     availableQuantity: 23,
@@ -3551,7 +3551,7 @@ const PRODUCTS = [
     category: 'kids',
     title: 'Pokemon Series Kids Pink Dragonite Bed',
     description: 'Bed in the shape of a cute Pokemon Dragonite in pink',
-    photo: '/catalog/_59d1c0eb-10a4-4a20-9827-5806217d5953.jpg',
+    photo: '_59d1c0eb-10a4-4a20-9827-5806217d5953.jpg',
     price: 1199,
     rating: 4.1,
     availableQuantity: 4,
@@ -3563,7 +3563,7 @@ const PRODUCTS = [
     title: 'Sea Series Kids Soft Pink Shell Bed',
     description:
       'The design is thought out so that your baby will sleep as if in a pink seashell, just like a sea mollusk. Grand decision',
-    photo: '/catalog/_66f780a5-9f14-4bf2-8bfc-680e9700fa21.jpg',
+    photo: '_66f780a5-9f14-4bf2-8bfc-680e9700fa21.jpg',
     price: 999,
     rating: 4.9,
     availableQuantity: 43,
@@ -3574,7 +3574,7 @@ const PRODUCTS = [
     category: 'kids',
     title: 'Light Beige Mustard Kids Giraffe Bed',
     description: "Children's bed in the shape of a soft cute giraffe",
-    photo: '/catalog/_68a4071f-05f4-426a-b97a-4582d21d5496.jpg',
+    photo: '_68a4071f-05f4-426a-b97a-4582d21d5496.jpg',
     price: 1499,
     rating: 5,
     availableQuantity: 48,
@@ -3585,7 +3585,7 @@ const PRODUCTS = [
     category: 'kids',
     title: 'Soft Creamy Kids Cat Paws Bed',
     description: "Soft baby crib with mini poufs in the shape of cat's paws",
-    photo: '/catalog/_85beb3ad-6ea9-474a-9622-032c256650d8.jpg',
+    photo: '_85beb3ad-6ea9-474a-9622-032c256650d8.jpg',
     price: 1199,
     sale: 999,
     rating: 3.4,
@@ -3598,7 +3598,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Violet Cat Bed',
     description:
       "Children's bed in our classic design - with a cat's face at the headboard. These beds are made in limited editions of several dozen copies, so in essence you become the owner of a unique collectible item",
-    photo: '/catalog/_89ff06be-4771-4b48-8d47-b2b754edc7ff.jpg',
+    photo: '_89ff06be-4771-4b48-8d47-b2b754edc7ff.jpg',
     price: 1699,
     rating: 4.9,
     availableQuantity: 51,
@@ -3610,7 +3610,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Kids Light Lilac Orange Dragonite Sofa',
     description:
       'Pokemon lovers will love this cute little Pokemon Dragonite sofa. If your child is interested in Pokemon, consider giving him one',
-    photo: '/catalog/_107c7ec8-a89a-4ba1-8635-e4948585a380.jpg',
+    photo: '_107c7ec8-a89a-4ba1-8635-e4948585a380.jpg',
     price: 999,
     sale: 899,
     rating: 4.3,
@@ -3623,7 +3623,7 @@ const PRODUCTS = [
     title: 'Light Beige Fluffy Kids Cat Bed',
     description:
       'This softest bed for children in the shape of a cat will be an excellent sleeping place for your child. It will suit of almost any interior design',
-    photo: '/catalog/_151cd888-3073-48b1-9816-6bef971d71e2.jpg',
+    photo: '_151cd888-3073-48b1-9816-6bef971d71e2.jpg',
     price: 1199,
     sale: 899,
     rating: 4.3,
@@ -3636,7 +3636,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Violet Bright Pink Cat Crib',
     description:
       'A child will definitely like such a crib in bright colors. Be sure to take it',
-    photo: '/catalog/_282c62d1-9fb1-4ae0-8e6b-41bcdabd470a.jpg',
+    photo: '_282c62d1-9fb1-4ae0-8e6b-41bcdabd470a.jpg',
     price: 1099,
     sale: 799,
     rating: 2.2,
@@ -3649,7 +3649,7 @@ const PRODUCTS = [
     title: 'Corgi Kids Frameless Sofa',
     description:
       'Frameless soft sofa for children in the shape of a corgi. Dog lovers and corgi lovers in particular will love this model for sure',
-    photo: '/catalog/_313c625d-8ae0-46ef-bb67-57b945b8c296.jpg',
+    photo: '_313c625d-8ae0-46ef-bb67-57b945b8c296.jpg',
     price: 1199,
     sale: 999,
     rating: 5,
@@ -3662,7 +3662,7 @@ const PRODUCTS = [
     title: 'Green Frog Kids Bed',
     description:
       'Any child will like this funny smiling frog sofa, no doubt about it :)',
-    photo: '/catalog/_522c0dfb-c8da-4ba8-8d29-21d5834e961f.jpg',
+    photo: '_522c0dfb-c8da-4ba8-8d29-21d5834e961f.jpg',
     price: 1199,
     rating: 3.3,
     availableQuantity: 4,
@@ -3674,7 +3674,7 @@ const PRODUCTS = [
     title: 'Soft Fluffy Bubbled Kids Ship Style Bed',
     description:
       "A children's bed that looks like a sheep is soft and fluffy in the shape of balls",
-    photo: '/catalog/_534f33a3-3d6b-41e6-b66f-136353a0606d.jpg',
+    photo: '_534f33a3-3d6b-41e6-b66f-136353a0606d.jpg',
     price: 1199,
     sale: 999,
     rating: 2.3,
@@ -3687,7 +3687,7 @@ const PRODUCTS = [
     title: 'Soft Fluffy Bubbled Kids Mouse Style Bed',
     description:
       "A children's bed that looks like a mouse with mouse ears on the headboard. Made from soft fluffy material in the shape of balls",
-    photo: '/catalog/_638f615c-9c2d-4f4c-bb2a-994fc51e74c1.jpg',
+    photo: '_638f615c-9c2d-4f4c-bb2a-994fc51e74c1.jpg',
     price: 1199,
     sale: 999,
     rating: 4.2,
@@ -3700,7 +3700,7 @@ const PRODUCTS = [
     title: 'Sponge Bob Series Kids Patrick The Starfish Bed',
     description:
       'Bed from the Spongebob cartoon series. Looks like Patrick the starfish - a character from this cartoon',
-    photo: '/catalog/_731c0114-f629-4c6d-8142-808cbaa6b446.jpg',
+    photo: '_731c0114-f629-4c6d-8142-808cbaa6b446.jpg',
     price: 1299,
     rating: 4.9,
     availableQuantity: 45,
@@ -3711,7 +3711,7 @@ const PRODUCTS = [
     category: 'kids',
     title: 'Green Rounded Kids Frog Eyed Crib',
     description: "Round children's bed with frog eyes",
-    photo: '/catalog/_3034b5a6-80f3-4557-a4ab-a9929aab7108.jpg',
+    photo: '_3034b5a6-80f3-4557-a4ab-a9929aab7108.jpg',
     price: 899,
     rating: 4.3,
     availableQuantity: 5,
@@ -3723,7 +3723,7 @@ const PRODUCTS = [
     title: 'Sponge Bob Series Kids Patrick The Starfish Bed V2',
     description:
       'Another bed in the shape of Patrick The Starfish - a character from the cartoon SpongeBob SquarePants',
-    photo: '/catalog/_3648a740-6ad1-46dc-a9d1-a1ed357f442f.jpg',
+    photo: '_3648a740-6ad1-46dc-a9d1-a1ed357f442f.jpg',
     price: 1299,
     rating: 4.6,
     availableQuantity: 55,
@@ -3735,7 +3735,7 @@ const PRODUCTS = [
     title: 'Lavender Kids Cat Bed',
     description:
       'A soft fluffy bed in the shape of a lavender cat is the dream of any child',
-    photo: '/catalog/_8630b900-687d-4263-8711-90d245c841ae.jpg',
+    photo: '_8630b900-687d-4263-8711-90d245c841ae.jpg',
     price: 1299,
     rating: 4.9,
     availableQuantity: 33,
@@ -3747,7 +3747,7 @@ const PRODUCTS = [
     title: "Children's Mouse Bed",
     description:
       "Children's bed in the shape of a cute little mouse. Rest assured the child would be happy to receive a gift in the form of such a nice bed",
-    photo: '/catalog/_17632c75-671b-4d31-b770-52d17a6ad649.jpg',
+    photo: '_17632c75-671b-4d31-b770-52d17a6ad649.jpg',
     price: 1399,
     rating: 5,
     availableQuantity: 52,
@@ -3759,7 +3759,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Kids Standard Bed',
     description:
       'A bed from the future for your child. Strict classic style, upholstery made of genuine leather. Smart nightstand included',
-    photo: '/catalog/_47454d98-fe29-4d2b-a485-09158b86d46a.jpg',
+    photo: '_47454d98-fe29-4d2b-a485-09158b86d46a.jpg',
     price: 2399,
     rating: 4.9,
     availableQuantity: 4,
@@ -3771,7 +3771,7 @@ const PRODUCTS = [
     title: 'Kids Corgi Bed V2',
     description:
       'A bed for your child in the shape of the cutest corgi dog. Second version',
-    photo: '/catalog/_94159aa6-2513-4c30-b2a6-810df62e3522.jpg',
+    photo: '_94159aa6-2513-4c30-b2a6-810df62e3522.jpg',
     price: 1099,
     rating: 3.4,
     availableQuantity: 9,
@@ -3783,7 +3783,7 @@ const PRODUCTS = [
     title: 'Teenage Giraffe Bed',
     description:
       'Bed in the shape of a cute giraffe. The sizes are most suitable for a teenager',
-    photo: '/catalog/_109050c0-bd26-49f6-9076-e4088124d148.jpg',
+    photo: '_109050c0-bd26-49f6-9076-e4088124d148.jpg',
     price: 1399,
     rating: 4.9,
     availableQuantity: 3,
@@ -3795,7 +3795,7 @@ const PRODUCTS = [
     title: 'Totoro Series Kids Frameless Bed',
     description:
       'Your child will love this frameless bed, especially if he likes the Japanese anime My Neighbor Totoro',
-    photo: '/catalog/_7974996a-3d84-4f35-b0ca-0e475771385e.jpg',
+    photo: '_7974996a-3d84-4f35-b0ca-0e475771385e.jpg',
     price: 999,
     rating: 4.3,
     availableQuantity: 54,
@@ -3807,7 +3807,7 @@ const PRODUCTS = [
     title: 'Corgi Kids Frameless Sofa V2',
     description:
       'This frameless sofa is made in the shape of a corgi dog, especially popular recently',
-    photo: '/catalog/_08707585-6b9e-4f36-86c5-7a5abd4bc01e.jpg',
+    photo: '_08707585-6b9e-4f36-86c5-7a5abd4bc01e.jpg',
     price: 1099,
     sale: 999,
     rating: 3.5,
@@ -3820,7 +3820,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Pink Cat Crib',
     description:
       'This crib is in our classic style with a cat face at the headboard. Great design for your baby',
-    photo: '/catalog/_54773586-2f05-49d6-b2dd-d4705b2c9b91.jpg',
+    photo: '_54773586-2f05-49d6-b2dd-d4705b2c9b91.jpg',
     price: 899,
     rating: 4.2,
     availableQuantity: 4,
@@ -3832,7 +3832,7 @@ const PRODUCTS = [
     title: "Yellow Children's Jake The Dog Bed",
     description:
       "Jake the Dog is one of the main characters in the American animated series Adventure Time by Pendleton Ward. We made this children's bed in his shape. If your child has watched this cartoon, he will definitely like it",
-    photo: '/catalog/_74927449-ffc9-47c1-9f50-b762e18c1909.jpg',
+    photo: '_74927449-ffc9-47c1-9f50-b762e18c1909.jpg',
     price: 1399,
     rating: 4.9,
     availableQuantity: 4,
@@ -3844,7 +3844,7 @@ const PRODUCTS = [
     title: 'Dragonfruit Kids Bed',
     description:
       'Bed for school and preschool children in the shape of a famous Thai exotic fruit',
-    photo: '/catalog/_a5f8f5f8-3b1d-4a88-a613-85d7639e0f9c.jpg',
+    photo: '_a5f8f5f8-3b1d-4a88-a613-85d7639e0f9c.jpg',
     price: 1099,
     sale: 999,
     rating: 3.3,
@@ -3857,7 +3857,7 @@ const PRODUCTS = [
     title: 'Beige Portable Bear Crib',
     description:
       'For the little ones we also have something in our assortment. This portable crib for a baby in the shape of a bear can simply stand in the room or can serve as a stroller for walks in the fresh air with your baby',
-    photo: '/catalog/_acb1a2b6-9370-49b1-8c86-4bc520feac16.jpg',
+    photo: '_acb1a2b6-9370-49b1-8c86-4bc520feac16.jpg',
     price: 599,
     rating: 4.4,
     availableQuantity: 5,
@@ -3869,7 +3869,7 @@ const PRODUCTS = [
     title: 'Stitch Series Kids Bed',
     description:
       "Children's bed in the form of a cute little monster from the cartoon -  Stitch",
-    photo: '/catalog/_b3dceca7-f117-4988-97d7-acf6bf396144.jpg',
+    photo: '_b3dceca7-f117-4988-97d7-acf6bf396144.jpg',
     price: 1299,
     rating: 4,
     availableQuantity: 3,
@@ -3881,7 +3881,7 @@ const PRODUCTS = [
     title: 'Sponge Bob Series Kids Patrick The Starfish Bed V3',
     description:
       "Another version of a children's bed in the form of Patrick from SpongeBob cartoon",
-    photo: '/catalog/_b7d6bc6e-d01d-4c07-852c-17da7604b220.jpg',
+    photo: '_b7d6bc6e-d01d-4c07-852c-17da7604b220.jpg',
     price: 1199,
     rating: 5,
     availableQuantity: 30,
@@ -3893,7 +3893,7 @@ const PRODUCTS = [
     title: 'Pink Flock Kids Cat Eyed Bed',
     description:
       "A children's bed with cat ears, lined with the softest pink flock, will be the perfect sleeping place for your gorgeous child",
-    photo: '/catalog/_b9a5caba-ecbb-4ebe-91c7-1fcd39deacc7.jpg',
+    photo: '_b9a5caba-ecbb-4ebe-91c7-1fcd39deacc7.jpg',
     price: 1099,
     rating: 4.9,
     availableQuantity: 1,
@@ -3905,7 +3905,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Violet Cat Bed V2',
     description:
       'The softest bed in the shape of a purple cat. We use only the best materials in the beds for your children. The quality speaks for itself',
-    photo: '/catalog/_b67ac332-7d59-4998-91a3-2bc93a95b86f.jpg',
+    photo: '_b67ac332-7d59-4998-91a3-2bc93a95b86f.jpg',
     price: 1299,
     sale: 1199,
     rating: 3.8,
@@ -3918,7 +3918,7 @@ const PRODUCTS = [
     title: 'Round Grey Koala Crib',
     description:
       'Round baby crib in the shape of a koala. An excellent choice for your beloved child',
-    photo: '/catalog/_b609baf2-a478-45de-bfd7-f82affd1fd5c.jpg',
+    photo: '_b609baf2-a478-45de-bfd7-f82affd1fd5c.jpg',
     price: 999,
     rating: 4.6,
     availableQuantity: 7,
@@ -3930,7 +3930,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Light Beige Plush Cat Bed',
     description:
       'A kids bed in the shape of a kitten made of the softest plush, detailed and high quality made as always',
-    photo: '/catalog/_bc42ea34-c04f-47f6-96f5-bd94020327a5.jpg',
+    photo: '_bc42ea34-c04f-47f6-96f5-bd94020327a5.jpg',
     price: 1199,
     rating: 4.9,
     availableQuantity: 1,
@@ -3942,7 +3942,7 @@ const PRODUCTS = [
     title: 'White Ginger Kids Cat Bed',
     description:
       "Just look at this cute kitten, it's just asking you to take him home and place in the children's room. And he will already make sure that your child has a healthy sleep",
-    photo: '/catalog/_c2c6c01d-bdfc-43f3-b62a-b17e07516633.jpg',
+    photo: '_c2c6c01d-bdfc-43f3-b62a-b17e07516633.jpg',
     price: 1299,
     rating: 4.1,
     availableQuantity: 4,
@@ -3954,7 +3954,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Lilac Pink  Cat Bed',
     description:
       'Your baby will sleep soundly in this plush crib. Very soft materials and detailed design finishing. We care for your children the same way we would care for our own',
-    photo: '/catalog/_c7e2ea94-6240-4f28-b6cc-ccccb4b842a3.jpg',
+    photo: '_c7e2ea94-6240-4f28-b6cc-ccccb4b842a3.jpg',
     price: 1299,
     rating: 4.9,
     availableQuantity: 3,
@@ -3966,7 +3966,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Flock Pink Violet Cat Bed ',
     description:
       "An excellent children's bed, covered with the softest flock. Delicate pink color with purple details. There is no doubt about the quality",
-    photo: '/catalog/_c38d8492-5f09-45e9-9707-72d042b5ba4b.jpg',
+    photo: '_c38d8492-5f09-45e9-9707-72d042b5ba4b.jpg',
     price: 1199,
     sale: 999,
     rating: 3.4,
@@ -3979,7 +3979,7 @@ const PRODUCTS = [
     title: 'Grey Plush Kids Cat Bed',
     description:
       "Plush children's bed in the shape of a gray cat. There are also cat ears on the headboard. Have no doubt that your child will really like this bed",
-    photo: '/catalog/_d95263fa-32a2-42ad-a49f-0f36711ff956.jpg',
+    photo: '_d95263fa-32a2-42ad-a49f-0f36711ff956.jpg',
     price: 1299,
     sale: 1199,
     rating: 4.2,
@@ -3992,7 +3992,7 @@ const PRODUCTS = [
     title: 'Fluffy Pink Kids Piggy Bed',
     description:
       'A kids bed in the shape of a fluffy piggy snout. Very original and unusual',
-    photo: '/catalog/_d3803767-5c39-4214-afb8-5de96848f92d.jpg',
+    photo: '_d3803767-5c39-4214-afb8-5de96848f92d.jpg',
     price: 1399,
     rating: 5,
     availableQuantity: 1,
@@ -4004,7 +4004,7 @@ const PRODUCTS = [
     title: 'Pink Kids Four-Eyed Cat Bed',
     description:
       'This bed for children is in the shape of a four-eyed pink kitten. Those who are tired of standard options can take a closer look at this extraordinary model',
-    photo: '/catalog/_ea34dc27-dcd5-45d9-af00-9686fc8134aa.jpg',
+    photo: '_ea34dc27-dcd5-45d9-af00-9686fc8134aa.jpg',
     price: 1199,
     rating: 4.9,
     availableQuantity: 22,
@@ -4016,7 +4016,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Kids Ottoman Pikachu Bed',
     description:
       'Ottoman bed for children in the shape of the main Pokemon from the series',
-    photo: '/catalog/_ea14278a-c60e-4527-884b-0e9131553a37.jpg',
+    photo: '_ea14278a-c60e-4527-884b-0e9131553a37.jpg',
     price: 1299,
     rating: 3.9,
     availableQuantity: 51,
@@ -4028,7 +4028,7 @@ const PRODUCTS = [
     title: 'Classic Series Kids Grey Bubbled Cat Bed',
     description:
       "Children's bed in the shape of a cat. Soft bubble design with a cat's face on the headboard as usual in our classic style",
-    photo: '/catalog/_ec27400f-780d-44c6-a863-7a96d5803de6.jpg',
+    photo: '_ec27400f-780d-44c6-a863-7a96d5803de6.jpg',
     price: 1399,
     rating: 3.8,
     availableQuantity: 3,
@@ -4040,7 +4040,7 @@ const PRODUCTS = [
     title: 'Fluffy Grey Kids Mouse Bed',
     description:
       "If there is a lot of space in the children's room that you want to occupy, this is suitable, because the bed consists of a fairly large part in the form of a mouse head. The smaller part is a sleeping place in the form of a mouse spout",
-    photo: '/catalog/_ecbb31cf-45cb-446c-8d2b-cf3b984b8b23.jpg',
+    photo: '_ecbb31cf-45cb-446c-8d2b-cf3b984b8b23.jpg',
     price: 1499,
     rating: 4.1,
     availableQuantity: 3,
@@ -4052,7 +4052,7 @@ const PRODUCTS = [
     title: 'Pastel Yellow Kids Duckling Bed',
     description:
       "Children's bed in the shape of a cute duckling in light yellow pastel color. A very successful and unique model. Hurry up to order as there will never be one exactly like it again",
-    photo: '/catalog/_ed721c5c-b168-4ee3-bf54-de59b629d37d.jpg',
+    photo: '_ed721c5c-b168-4ee3-bf54-de59b629d37d.jpg',
     price: 1499,
     rating: 5,
     availableQuantity: 2,
@@ -4064,7 +4064,7 @@ const PRODUCTS = [
     title: 'Lilac Kids Cat Bed',
     description:
       "Children's bed in the form of a purple high detailed cat with a tail and whiskers",
-    photo: '/catalog/_eeeefa99-1410-4d47-aeb2-1caa7e9352cc.jpg',
+    photo: '_eeeefa99-1410-4d47-aeb2-1caa7e9352cc.jpg',
     price: 1199,
     rating: 3.9,
     availableQuantity: 3,
@@ -4076,7 +4076,7 @@ const PRODUCTS = [
     title: 'Bright Red Kids Cat Bed',
     description:
       "Bright red children's bed in the shape of a cat with a full muzzle in front and ears on the headboard",
-    photo: '/catalog/_fa56bc57-94a2-4939-8b4b-05d65011d189.jpg',
+    photo: '_fa56bc57-94a2-4939-8b4b-05d65011d189.jpg',
     price: 1199,
     sale: 999,
     rating: 3.4,
@@ -4089,7 +4089,7 @@ const PRODUCTS = [
     title: 'Sea Series Pink Fluffy Octopus Pouf',
     description:
       'Fluffy pouf in the shape of an octopus. An excellent addition to our sea series beds',
-    photo: '/catalog/_2b7d11ee-e012-4d26-a281-7cd54ed45932.jpg',
+    photo: '_2b7d11ee-e012-4d26-a281-7cd54ed45932.jpg',
     price: 399,
     rating: 5,
     availableQuantity: 41,
@@ -4100,7 +4100,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Pug Muzzle Pouf',
     description: 'Pouf in the shape of a pug muzzle with paws',
-    photo: '/catalog/_7c9b2c50-c908-4c2f-8ea8-c8873f1bf156.jpg',
+    photo: '_7c9b2c50-c908-4c2f-8ea8-c8873f1bf156.jpg',
     price: 399,
     sale: 349,
     rating: 4.9,
@@ -4112,7 +4112,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Exotic Fruit Pouf',
     description: 'Pouf in the shape of some exotic fruit',
-    photo: '/catalog/_8a7191d0-e948-40f1-9c57-05311d3b679f.jpg',
+    photo: '_8a7191d0-e948-40f1-9c57-05311d3b679f.jpg',
     price: 249,
     rating: 3.3,
     availableQuantity: 43,
@@ -4123,7 +4123,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Pug Pouf',
     description: 'Pouf in the shape of a pug',
-    photo: '/catalog/_8c6bb400-a4a6-4925-9c25-4772adc8a12b.jpg',
+    photo: '_8c6bb400-a4a6-4925-9c25-4772adc8a12b.jpg',
     price: 399,
     sale: 349,
     rating: 4.7,
@@ -4135,7 +4135,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Fluffy Owl Pouf',
     description: 'Pouf in the shape of little owl. Very cute',
-    photo: '/catalog/_8ce84531-d776-400d-9bd3-b3790574afb7.jpg',
+    photo: '_8ce84531-d776-400d-9bd3-b3790574afb7.jpg',
     price: 449,
     sale: 399,
     rating: 4.9,
@@ -4148,7 +4148,7 @@ const PRODUCTS = [
     title: 'Car Series Retromobile Pouf',
     description:
       'Pouf made in the shape of an old retro car. Will go well with beds from the same series',
-    photo: '/catalog/_12d90154-b667-4568-b964-b5e073f62cf5.jpg',
+    photo: '_12d90154-b667-4568-b964-b5e073f62cf5.jpg',
     price: 399,
     rating: 5,
     availableQuantity: 23,
@@ -4160,7 +4160,7 @@ const PRODUCTS = [
     title: 'Plush Beige Owl Pouf',
     description:
       'Pouf in the shape of an owl made of soft plush. Ideal choice if you already have one of our owl beds',
-    photo: '/catalog/_22a24b14-941b-456c-86b9-c924b9973fe8.jpg',
+    photo: '_22a24b14-941b-456c-86b9-c924b9973fe8.jpg',
     price: 399,
     sale: 349,
     rating: 4,
@@ -4173,7 +4173,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Mysterious Pokemon Poof',
     description:
       'A pokemon series pouf. We will give those who guess the name of this Pokemon a 100 euro discount on this pouf ;)',
-    photo: '/catalog/_70d2053c-1941-466f-a681-285b6dbf40c6.jpg',
+    photo: '_70d2053c-1941-466f-a681-285b6dbf40c6.jpg',
     price: 399,
     rating: 4.2,
     availableQuantity: 3,
@@ -4185,7 +4185,7 @@ const PRODUCTS = [
     title: 'Beige Velvet Crocodile Pouf',
     description:
       "Soft high-quality detailed pouf with velvet upholstery in the shape of a crocodile's face with paws",
-    photo: '/catalog/_75fbfc23-c880-426c-bc9c-f861abe34932.jpg',
+    photo: '_75fbfc23-c880-426c-bc9c-f861abe34932.jpg',
     price: 499,
     rating: 4.9,
     availableQuantity: 2,
@@ -4197,7 +4197,7 @@ const PRODUCTS = [
     title: 'Classic Series Creamy White Cat Pouf',
     description:
       'Our classic series is now available in poufs. Meet this beauty and hurry to buy',
-    photo: '/catalog/_369ecb2e-aee1-4e72-b828-2473c611c383.jpg',
+    photo: '_369ecb2e-aee1-4e72-b828-2473c611c383.jpg',
     price: 399,
     rating: 4.2,
     availableQuantity: 54,
@@ -4208,7 +4208,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Furry Mysterious Pouf',
     description: 'Pouf representing a mysterious hairy creature :)',
-    photo: '/catalog/_427c0960-3fcd-4c68-91b1-c871337556ad.jpg',
+    photo: '_427c0960-3fcd-4c68-91b1-c871337556ad.jpg',
     price: 249,
     rating: 3.4,
     availableQuantity: 5,
@@ -4220,7 +4220,7 @@ const PRODUCTS = [
     title: 'Corgi Pouf',
     description:
       'Soft pouf in the shape of a corgi dog. You will definitely like it if you love these cuties',
-    photo: '/catalog/_644e0552-ac75-43d2-9201-57bd253a6c6b.jpg',
+    photo: '_644e0552-ac75-43d2-9201-57bd253a6c6b.jpg',
     price: 499,
     sale: 449,
     rating: 3.9,
@@ -4233,7 +4233,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Data Processor Pouf',
     description:
       'Why buy a standard pouf if you can use the space profitably and at the same time comfortably. In 2077, everyone saves space and tries to use it to the maximum. This pouf is a powerful data processor which is a necessary thing in the world of the future',
-    photo: '/catalog/_6307d2e9-23c5-4384-957e-84d78d7bcd77.jpg',
+    photo: '_6307d2e9-23c5-4384-957e-84d78d7bcd77.jpg',
     price: 999,
     rating: 4.9,
     availableQuantity: 6,
@@ -4244,7 +4244,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Exotic Fruit Pouf V2',
     description: 'Another pouf in the shape of a mysterious exotic fruit',
-    photo: '/catalog/_8574bd70-949a-46a8-b16f-f88bf21b618f.jpg',
+    photo: '_8574bd70-949a-46a8-b16f-f88bf21b618f.jpg',
     price: 399,
     rating: 4,
     availableQuantity: 84,
@@ -4256,7 +4256,7 @@ const PRODUCTS = [
     title: 'Standard Beige Fluffy Pouf',
     description:
       'Connoisseurs of simplicity and comfort. Nothing unusual about this pouf, just an ordinary soft fluffy piece of furniture.',
-    photo: '/catalog/_8857f71f-3b79-47eb-80e6-96ccc3a12f0e.jpg',
+    photo: '_8857f71f-3b79-47eb-80e6-96ccc3a12f0e.jpg',
     price: 249,
     sale: 199,
     rating: 3.7,
@@ -4268,7 +4268,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Car Series Retromobile Pouf V2',
     description: 'Another example for connoisseurs of old classic cars',
-    photo: '/catalog/_85022d0d-f923-45ad-a05d-0bafa78b3826.jpg',
+    photo: '_85022d0d-f923-45ad-a05d-0bafa78b3826.jpg',
     price: 449,
     rating: 4.8,
     availableQuantity: 1,
@@ -4280,7 +4280,7 @@ const PRODUCTS = [
     title: 'Sea Series Natural Octopus Pouf',
     description:
       'This is a pouf in the shape of an octopus with realistic tentacles. It is so well designed and detailed that it causes delight',
-    photo: '/catalog/_88883c40-0109-4cb4-bac1-650cb23d57e6.jpg',
+    photo: '_88883c40-0109-4cb4-bac1-650cb23d57e6.jpg',
     price: 499,
     rating: 4.5,
     availableQuantity: 6,
@@ -4292,7 +4292,7 @@ const PRODUCTS = [
     title: 'Pug Muzzle Pouf V2',
     description:
       "Another version of the pouf in the shape of a cute pug's face",
-    photo: '/catalog/_99725ea2-8897-46b3-88df-b0c2dff7c090.jpg',
+    photo: '_99725ea2-8897-46b3-88df-b0c2dff7c090.jpg',
     price: 349,
     rating: 4.3,
     availableQuantity: 6,
@@ -4304,7 +4304,7 @@ const PRODUCTS = [
     title: 'Sea Series Plush Yellow Starfish Pouf',
     description:
       'Plush pouf in the shape of a starfish. For lovers of the underwater world',
-    photo: '/catalog/_163539e5-bd50-443d-810c-c62e67905f04.jpg',
+    photo: '_163539e5-bd50-443d-810c-c62e67905f04.jpg',
     price: 299,
     sale: 249,
     rating: 4.5,
@@ -4316,7 +4316,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Plush Grey Owl Pouf',
     description: 'Plush pouf in the shape of an owl. This one is in grey',
-    photo: '/catalog/_17475839-2aaf-4f8e-a981-3690ba849893.jpg',
+    photo: '_17475839-2aaf-4f8e-a981-3690ba849893.jpg',
     price: 399,
     rating: 4.1,
     availableQuantity: 23,
@@ -4328,7 +4328,7 @@ const PRODUCTS = [
     title: 'Sea Series Light Beige Starfish Pouf',
     description:
       'Pouf in the shape of a starfish. If you like sea creatures and our sea series in general, you will like this',
-    photo: '/catalog/_64901218-f0f0-4031-8420-9b0713a4566d.jpg',
+    photo: '_64901218-f0f0-4031-8420-9b0713a4566d.jpg',
     price: 299,
     rating: 3.4,
     availableQuantity: 4,
@@ -4340,7 +4340,7 @@ const PRODUCTS = [
     title: 'Plush Pumpkin Pouf',
     description:
       'Pumpkin-shaped pouf made of soft plush material that is pleasant to the touch',
-    photo: '/catalog/_a02e6360-270a-4467-bcbb-1293f27e9c84.jpg',
+    photo: '_a02e6360-270a-4467-bcbb-1293f27e9c84.jpg',
     price: 349,
     sale: 299,
     rating: 3.3,
@@ -4352,7 +4352,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Knitted Socks Pouf',
     description: 'Pouf in the style of knitted socks with a fluffy ball',
-    photo: '/catalog/_a1767782-b708-44d3-8c67-f2c400106dd5.jpg',
+    photo: '_a1767782-b708-44d3-8c67-f2c400106dd5.jpg',
     price: 299,
     rating: 3.9,
     availableQuantity: 1,
@@ -4363,7 +4363,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Totoro Series Pouf',
     description: 'Pouf in the form of the anime character Totoro',
-    photo: '/catalog/_b2d35378-29f1-4dee-9899-b3e32aecf762.jpg',
+    photo: '_b2d35378-29f1-4dee-9899-b3e32aecf762.jpg',
     price: 349,
     rating: 4.3,
     availableQuantity: 64,
@@ -4374,7 +4374,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Chocolate Framed Pouf',
     description: 'Chocolate-colored pouf framed in gilded metal',
-    photo: '/catalog/_c21ff387-d737-4b7d-b451-68c0097d036f.jpg',
+    photo: '_c21ff387-d737-4b7d-b451-68c0097d036f.jpg',
     price: 349,
     sale: 299,
     rating: 3.9,
@@ -4387,7 +4387,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Powerbank Pouf',
     description:
       'Everything should be as functional and useful as possible in the world of the future. In addition to its intended purpose, this pouf also serves as a very capacious power bank for charging your devices',
-    photo: '/catalog/_c87d6fa4-b244-4f5b-8bc5-349b3c880a5e.jpg',
+    photo: '_c87d6fa4-b244-4f5b-8bc5-349b3c880a5e.jpg',
     price: 699,
     rating: 4.9,
     availableQuantity: 5,
@@ -4399,7 +4399,7 @@ const PRODUCTS = [
     title: 'Totoro Series Pouf V2',
     description:
       'Totoro (Japanese: トトロ) is the guardian of the forest, a large, furry, gray creature. Another version of the pouf in its shape',
-    photo: '/catalog/_d8523c46-b3fa-4c8c-81bf-cf9666af38a4.jpg',
+    photo: '_d8523c46-b3fa-4c8c-81bf-cf9666af38a4.jpg',
     price: 349,
     rating: 5,
     availableQuantity: 2,
@@ -4411,7 +4411,7 @@ const PRODUCTS = [
     title: 'Totoro Series Pouf V3',
     description:
       'The third version of the pouf in the form of Totoro - a Japanese anime character',
-    photo: '/catalog/_e6a4f3c7-38e4-4fd3-958a-b19ab34b3af4.jpg',
+    photo: '_e6a4f3c7-38e4-4fd3-958a-b19ab34b3af4.jpg',
     price: 399,
     sale: 299,
     rating: 4.9,
@@ -4423,7 +4423,7 @@ const PRODUCTS = [
     category: 'poufs',
     title: 'Gorilla The Pouf',
     description: 'Pouf in the shape of a black rugged gorilla',
-    photo: '/catalog/_e8c6a5b4-7637-421e-ae87-856871495c3f.jpg',
+    photo: '_e8c6a5b4-7637-421e-ae87-856871495c3f.jpg',
     price: 399,
     rating: 4.5,
     availableQuantity: 63,
@@ -4435,7 +4435,7 @@ const PRODUCTS = [
     title: 'Cyberpunk Series Soviet Pouf',
     description:
       'If in 2077 there are still people alive who are nostalgic for the USSR and Soviet times, they will definitely pay attention to this model',
-    photo: '/catalog/_e87138da-ed0c-44bf-bf90-83963416b7f9.jpg',
+    photo: '_e87138da-ed0c-44bf-bf90-83963416b7f9.jpg',
     price: 499,
     rating: 4.9,
     availableQuantity: 2,
@@ -4447,7 +4447,7 @@ const PRODUCTS = [
     title: 'Pastel Orange Exotic Fruit Pouf',
     description:
       'A pouf in the shape of something exotic that fell from a tree',
-    photo: '/catalog/_eaccd8b8-b2f0-47ff-85d3-ad2505df5c71.jpg',
+    photo: '_eaccd8b8-b2f0-47ff-85d3-ad2505df5c71.jpg',
     price: 249,
     rating: 3.3,
     availableQuantity: 11,
@@ -4459,7 +4459,7 @@ const PRODUCTS = [
     title: 'Realistic Corgi Pouf',
     description:
       "This corgi dog pouf is so realistic that you'll think it's a real dog sitting next to your bed",
-    photo: '/catalog/_ecfd0acd-98fb-4088-b3d3-e4b3c0d50c85.jpg',
+    photo: '_ecfd0acd-98fb-4088-b3d3-e4b3c0d50c85.jpg',
     price: 449,
     sale: 399,
     rating: 4.1,
@@ -4472,7 +4472,7 @@ const PRODUCTS = [
     title: 'Pokemon Series Mysterious Pokemon Poof V2',
     description:
       'Another Pokemon from the series. Try to guess his name and get a 100 euro discount on this pouf',
-    photo: '/catalog/_ef0941f7-9105-4ac4-bd7a-907e470e7099.jpg',
+    photo: '_ef0941f7-9105-4ac4-bd7a-907e470e7099.jpg',
     price: 399,
     rating: 3.4,
     availableQuantity: 1,
@@ -4484,7 +4484,7 @@ const PRODUCTS = [
     title: 'Sea Series Coral Pouf',
     description:
       'Handmade coral pouf made from very soft, pleasant-to-touch materials. You can touch these corals and get great pleasure and satisfaction instead of burns',
-    photo: '/catalog/_f2369915-f055-43a2-a9d5-dd12b0e09069.jpg',
+    photo: '_f2369915-f055-43a2-a9d5-dd12b0e09069.jpg',
     price: 599,
     rating: 4.9,
     availableQuantity: 4,
@@ -4496,7 +4496,7 @@ const PRODUCTS = [
     title: 'Matting Abstract Pouf',
     description:
       'For lovers of abstract art and other art incomprehensible to mere mortals, we invite you to evaluate this pouf made of matting',
-    photo: '/catalog/_fc8df800-87e5-4c6c-a0e3-11d8c320f28f.jpg',
+    photo: '_fc8df800-87e5-4c6c-a0e3-11d8c320f28f.jpg',
     price: 499,
     rating: 4.9,
     availableQuantity: 10,

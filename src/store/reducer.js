@@ -3,7 +3,9 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   setOverlayLoader,
   setIsAuth,
+  setProductsLoaded,
   setUser,
+  setProducts,
   loadProducts,
   productsAreLoaded,
   cartOpen,
@@ -18,6 +20,8 @@ import {
   setNearStoresCenter,
   setSnackbar,
   loginModalsOpen,
+  setNotificationModal,
+  setConfirmationModal,
 } from './action';
 
 // import {
@@ -27,15 +31,18 @@ import {
 //   updateLovelist,
 // } from '../utils';
 
-import PRODUCTS from '../data/products';
+//import PRODUCTS from '../data/products';
 
 const initialState = {
   overlayLoader: true,
+  productsLoaded: false,
   isAuth: false,
   user: {},
-  products: PRODUCTS,
+  products: [],
   isCartOpen: false,
   isLoginModalsOpen: false,
+  confirmationModal: {},
+  notificationModal: {},
   sortType: null,
   cartProducts: [],
   lovelistProducts: [],
@@ -58,11 +65,17 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setOverlayLoader, (state, action) => {
       state.overlayLoader = action.payload;
     })
+    .addCase(setProductsLoaded, (state, action) => {
+      state.productsLoaded = action.payload;
+    })
     .addCase(setIsAuth, (state, action) => {
       state.isAuth = action.payload;
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;
+    })
+    .addCase(setProducts, (state, action) => {
+      state.products = action.payload.slice();
     })
     .addCase(loadProducts, (state, action) => {
       state.products = action.payload;
@@ -75,6 +88,12 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loginModalsOpen, (state, action) => {
       state.loginModalsOpen = action.payload;
+    })
+    .addCase(setNotificationModal, (state, action) => {
+      state.notificationModal = action.payload;
+    })
+    .addCase(setConfirmationModal, (state, action) => {
+      state.confirmationModal = action.payload;
     })
     .addCase(setCart, (state, action) => {
       state.cartProducts = action.payload.slice();

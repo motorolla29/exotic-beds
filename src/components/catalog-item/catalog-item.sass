@@ -122,18 +122,27 @@
                 border-radius: 2em
                 outline: none
                 border: none
+                transform: scale(0.999)
                 transition: transform 0.1s ease
                 &:hover
                     opacity: 0.9
                 &:active
                     transform: scale(0.97)
-                span
-                    svg 
-                        //fill: $main-color-biscuit
+                > span
+                    display: flex
+                    align-items: flex-end
+                    svg
                         margin-right: 0.5em
                         vertical-align: sub
                         width: 1.5em
                         height: auto
+                    span
+                        margin-right: 0.5em
+                        vertical-align: sub
+                        width: 1.5em !important
+                        height: 1.5em !important
+
+                    
                     
 
             &_open-cart-button
@@ -217,5 +226,6 @@
                     span
                         svg 
                             margin: 0
-
+                        span
+                            margin: 0
 

@@ -55,8 +55,8 @@ const StorePage = () => {
       <div className="store-page">
         <div className="store-page_store-image">
           <ProgressiveImageContainer
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${store.properties.photo}?tr=w-60`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/${store.properties.photo}`}
+            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${store.properties.photo}?tr=w-60`}
+            src={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${store.properties.photo}`}
             alt="store-image"
           />
         </div>
@@ -187,8 +187,8 @@ const StorePage = () => {
                     <Link to={`/store-finder/${it.properties.id}`}>
                       <div className="store-page_nearby-stores_items_item_image">
                         <ProgressiveImageContainer
-                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${it.properties.photo}?tr=w-40`}
-                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/${it.properties.photo}?tr=w-500`}
+                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${it.properties.photo}?tr=w-40`}
+                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${it.properties.photo}?tr=w-500`}
                           alt="store-image"
                         />
                       </div>

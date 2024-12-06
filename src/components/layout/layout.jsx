@@ -12,6 +12,8 @@ import LoginModals from '../login-modals/login-modals';
 
 import 'overlayscrollbars/overlayscrollbars.css';
 import './layout.sass';
+import NotificationModal from '../notification-modal/notification-modal';
+import ConfirmationModal from '../confirmation-modal/confirmation-modal';
 
 const Layout = () => {
   const cartOpen = useSelector((state) => state.isCartOpen);
@@ -36,6 +38,8 @@ const Layout = () => {
           <LogoSpinner />
           <MainSnackbar />
           <LoginModals />
+          <NotificationModal />
+          <ConfirmationModal />
           <Chat />
         </div>
       </div>

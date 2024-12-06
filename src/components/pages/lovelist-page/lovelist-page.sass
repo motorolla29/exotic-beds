@@ -14,6 +14,43 @@
             margin-left: 0.6em
             font-size: 0.6em
             
+    &_lovelist-authorization-required
+        padding: 1em 2em 1em 2em
+        max-width: 32em
+        display: flex
+        align-self: center
+        justify-content: center
+        flex-direction: column
+        align-items: center
+        margin-top: 50px
+        color: $main-color-grey
+        background: $main-color-white-transparent
+        border-radius: 2em
+
+        &_title
+            margin-bottom: 0.5em
+
+        &_subtitle
+            margin-bottom: 1em
+            display: flex
+            flex-direction: column
+            align-items: center
+        
+        &_button
+            cursor: pointer
+            font-weight: 600
+            font-size: 0.8em
+            color: $main-color-white
+            background: $main-color-turquoise
+            opacity: 0.8
+            border: none
+            border-radius: 1.5em
+            padding: 1em
+            &:hover
+                opacity: 0.7
+            &:active
+                opacity: 0.6
+                
 @media (max-width: 1200px) 
     .lovelist-page
         font-size: 14px

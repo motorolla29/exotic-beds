@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-
+import { useEffect } from 'react';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
 import CatalogFilters from '../../catalog-filters/catalog-filters';
 import Catalog from '../../catalog/catalog';
 import {
+  categoriesIds,
   findCheapestProductObj,
   findMostExpensiveProductObj,
   getUcFirstNoDashStr,
@@ -18,7 +19,6 @@ import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
 
 import './catalog-page.sass';
-import { useEffect } from 'react';
 
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
@@ -26,6 +26,7 @@ const CatalogPage = ({ category }) => {
   const [ww] = useWindowSize();
 
   const products = useSelector((state) => state.products);
+
   const highestPrice =
     findMostExpensiveProductObj(products).sale ||
     findMostExpensiveProductObj(products).price;
@@ -44,7 +45,7 @@ const CatalogPage = ({ category }) => {
   const sort = searchParams.get('sortBy');
 
   const currentCategoryProducts = products.filter(
-    (it) => it.category === category
+    (it) => it.categoryId === categoriesIds[category]
   );
 
   const filteredProducts = currentCategoryProducts.filter((product) => {
@@ -78,40 +79,46 @@ const CatalogPage = ({ category }) => {
   }, []);
 
   return (
-    <>
-      {ww <= 768 ? <SearchPanel /> : null}
-      <Tabs />
-      <Breadcrumbs />
-      <div className="catalog-page">
-        {ww > 768 ? (
-          <CatalogFilters
-            products={currentCategoryProducts}
-            category={category}
-          />
-        ) : null}
-        <div className="catalog-container">
-          <h1 className="catalog-container_title">
-            {getUcFirstNoDashStr(category)}
-          </h1>
+    products.length && (
+      <>
+        {ww <= 768 ? <SearchPanel /> : null}
+        <Tabs />
+        <Breadcrumbs />
+        <div className="catalog-page">
+          {ww > 768 ? (
+            <CatalogFilters
+              products={currentCategoryProducts}
+              category={category}
+            />
+          ) : null}
+          <div className="catalog-container">
+            <h1 className="catalog-container_title">
+              {getUcFirstNoDashStr(category)}
+            </h1>
 
-          {sortedProducts.length ? (
-            <>
-              <CatalogTopToolbar
-                products={currentCategoryProducts}
-                category={category}
-                sortedProducts={sortedProducts}
-                limitedSortedProducts={limitedSortedProducts}
-              />
-              <CatalogPagination products={sortedProducts} limit={limit} />
-              <Catalog products={limitedSortedProducts} />
-              <CatalogPagination products={sortedProducts} limit={limit} />
-            </>
-          ) : (
-            <CatalogEmpty />
-          )}
+            {sortedProducts.length ? (
+              <>
+                <CatalogTopToolbar
+                  products={currentCategoryProducts}
+                  category={category}
+                  sortedProducts={sortedProducts}
+                  limitedSortedProducts={limitedSortedProducts}
+                />
+                {sortedProducts.length > 24 && (
+                  <CatalogPagination products={sortedProducts} limit={limit} />
+                )}
+                <Catalog products={limitedSortedProducts} />
+                {sortedProducts.length > 24 && (
+                  <CatalogPagination products={sortedProducts} limit={limit} />
+                )}
+              </>
+            ) : (
+              <CatalogEmpty />
+            )}
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   );
 };
 

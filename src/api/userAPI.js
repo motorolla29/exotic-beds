@@ -25,3 +25,7 @@ export const check = async () => {
   localStorage.setItem('token', data.token);
   return jwtDecode(data.token);
 };
+
+export const deleteUser = async () => {
+  return await $authHost.get('api/user/delete');
+};

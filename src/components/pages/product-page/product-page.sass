@@ -109,13 +109,18 @@
                     opacity: 0.9
                 &:active
                     transform: scale(0.97)
-                span
+                > span
                     svg
-                        fill: $main-color-biscuit
                         margin-right: 0.5em
                         vertical-align: sub
                         height: auto
                         width: 1.5em
+                    span
+                        margin-right: 0.5em
+                        vertical-align: sub
+                        height: 1.5em !important
+                        width: 1.5em !important
+
                     
 
             &_open-cart-button
@@ -149,6 +154,7 @@
                     stroke-width: 1em
                     width: 50%
                     height: auto
+
 
 @media (max-width: 1200px)
     .product-page

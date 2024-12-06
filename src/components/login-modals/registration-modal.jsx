@@ -8,10 +8,13 @@ import {
   setCart,
   setIsAuth,
   setLovelist,
+  setNotificationModal,
   setUser,
 } from '../../store/action';
 import { getBasket } from '../../api/basketAPI';
 import { getLovelist } from '../../api/lovelistAPI';
+
+import ErrorIcon from '@mui/icons-material/Error';
 
 const RegistrationModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
@@ -75,24 +78,31 @@ const RegistrationModal = ({ setRegistrated }) => {
 
   const signUpHandler = async () => {
     setContinueClicked(true);
-    if ((nameValid, emailValid, passwordValid, confirmPasswordValid)) {
+    if (nameValid && emailValid && passwordValid && confirmPasswordValid) {
       try {
         setLoading(true);
         const user = await registration(name, email, password);
         setLoading(false);
         dispatch(setUser(user));
         dispatch(setIsAuth(true));
-        const basket = await getBasket();
-        const lovelist = await getLovelist();
-        dispatch(setCart(basket));
-        dispatch(setLovelist(lovelist));
+        setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
       } catch (e) {
         setLoading(false);
-        e.response.data.name && setEmailError(e.response.data.name);
-        e.response.data.email && setEmailError(e.response.data.email);
-        e.response.data.password && setEmailError(e.response.data.password);
+        if (e.response) {
+          e.response.data.name && setEmailError(e.response.data.name);
+          e.response.data.email && setEmailError(e.response.data.email);
+          e.response.data.password && setEmailError(e.response.data.password);
+        } else {
+          dispatch(
+            setNotificationModal({
+              open: true,
+              icon: <ErrorIcon />,
+              title: e.message,
+              description: 'Something went wrong, try again later',
+            })
+          );
+        }
       } finally {
-        setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
       }
     }
   };

@@ -1,29 +1,28 @@
-import { useEffect } from 'react';
 import { DialogActions, DialogContent, DialogTitle, Divider } from '@mui/joy';
 import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
+import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import { Transition } from 'react-transition-group';
+
+import './notification-modal.sass';
 import { useDispatch, useSelector } from 'react-redux';
-import { setConfirmationModal } from '../../store/action';
+import { setNotificationModal } from '../../store/action';
 
-import './confirmation-modal.sass';
-
-const ConfirmationModal = () => {
+const NotificationModal = () => {
   const dispatch = useDispatch();
-  const confirmationModal = useSelector((state) => state.confirmationModal);
-
+  const notificationModal = useSelector((state) => state.notificationModal);
   return (
-    <Transition in={confirmationModal.open} timeout={400}>
+    <Transition in={notificationModal.open} timeout={400}>
       {(state) => (
         <Modal
           keepMounted
           open={!['exited', 'exiting'].includes(state)}
-          onClose={() => {
+          onClose={() =>
             dispatch(
-              setConfirmationModal({ ...confirmationModal, open: false })
-            );
-          }}
+              setNotificationModal({ ...notificationModal, open: false })
+            )
+          }
           slotProps={{
             backdrop: {
               sx: {
@@ -55,34 +54,23 @@ const ConfirmationModal = () => {
             }}
           >
             <DialogTitle>
-              {confirmationModal.icon}
-              {confirmationModal.title}
+              {notificationModal.icon}
+              {notificationModal.title}
             </DialogTitle>
             <Divider />
-            <DialogContent>{confirmationModal.description}</DialogContent>
+            <DialogContent>{notificationModal.description}</DialogContent>
             <DialogActions>
               <Button
+                className="notification-action-button"
                 variant="solid"
                 color="danger"
                 onClick={() => {
-                  confirmationModal.action();
                   dispatch(
-                    setConfirmationModal({ ...confirmationModal, open: false })
+                    setNotificationModal({ ...notificationModal, open: false })
                   );
                 }}
               >
-                {confirmationModal.yesBtnText}
-              </Button>
-              <Button
-                variant="plain"
-                color="neutral"
-                onClick={() => {
-                  dispatch(
-                    setConfirmationModal({ ...confirmationModal, open: false })
-                  );
-                }}
-              >
-                {confirmationModal.noBtnText}
+                Ok
               </Button>
             </DialogActions>
           </ModalDialog>
@@ -92,4 +80,4 @@ const ConfirmationModal = () => {
   );
 };
 
-export default ConfirmationModal;
+export default NotificationModal;

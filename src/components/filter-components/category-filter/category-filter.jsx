@@ -26,9 +26,9 @@ const CategoryFilter = ({ products }) => {
             exit={{ height: 0 }}
             className="category-filter_options"
           >
-            {PRODUCT_CATEGORIES.map((category) => {
+            {PRODUCT_CATEGORIES.map((category, index) => {
               const count = products.filter(
-                (it) => it.category.toLowerCase() === category.toLowerCase()
+                (it) => it.categoryId === index + 1
               ).length;
 
               return (

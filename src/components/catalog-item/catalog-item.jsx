@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-
 import RatingStars from '../rating-stars/rating-stars';
 import { randomInteger } from '../../utils';
 import {
   cartOpen,
+  loginModalsOpen,
   setCart,
+  setLovelist,
   setSnackbar,
-  toggleProductInLovelist,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
@@ -17,17 +17,21 @@ import { TbShoppingCart } from 'react-icons/tb';
 import { TbShoppingCartCheck } from 'react-icons/tb';
 import useWindowSize from '../../hooks/use-window-size';
 import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
-
-import './catalog-item.sass';
 import { addToBasket } from '../../api/basketAPI';
 import { useState } from 'react';
+import { AddShoppingCartRounded } from '@mui/icons-material';
+import { toggleProductInLovelist } from '../../api/lovelistAPI';
+import ClipLoader from 'react-spinners/ClipLoader';
+
+import './catalog-item.sass';
 
 const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
   const [ww] = useWindowSize();
 
   const isAuth = useSelector((state) => state.isAuth);
-  const [loading, setLoading] = useState(false);
+  const [addToBasketLoading, setAddToBasketLoading] = useState(false);
+  const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
 
   const basketItems = useSelector((state) => state.cartProducts);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
@@ -40,14 +44,55 @@ const CatalogItem = ({ item, size = '' }) => {
     { opacity: 0, y: -25 },
     { opacity: 0, y: 25 },
   ];
+
+  const onHeartIconClick = () => {
+    if (isAuth) {
+      setAddToLovelistLoading(true);
+      toggleProductInLovelist(item)
+        .then((lovelist) => {
+          dispatch(setLovelist(lovelist));
+          isLoved
+            ? dispatch(
+                setSnackbar({
+                  open: true,
+                  decorator: <HeartBrokenOutlined />,
+                  text: 'Product is not loved anymore :(',
+                  id: item.id,
+                })
+              )
+            : dispatch(
+                setSnackbar({
+                  open: true,
+                  decorator: <FavoriteBorderOutlined />,
+                  text: 'Product is loved now :)',
+                  id: item.id,
+                })
+              );
+        })
+        .catch((err) => console.log(err.message))
+        .finally(() => setAddToLovelistLoading(false));
+    } else {
+      dispatch(loginModalsOpen(true));
+    }
+  };
+
   const onAddToCartHandler = () => {
     if (isAuth) {
-      setLoading(true);
+      setAddToBasketLoading(true);
       addToBasket(item)
         .then((cart) => {
           dispatch(setCart(cart));
+          dispatch(
+            setSnackbar({
+              open: true,
+              decorator: <AddShoppingCartRounded />,
+              text: 'Product added to basket',
+              id: item.id,
+            })
+          );
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => console.log(err.message))
+        .finally(() => setAddToBasketLoading(false));
     } else {
       const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
       const localStorageCartItem = localStorageCart.find(
@@ -60,6 +105,14 @@ const CatalogItem = ({ item, size = '' }) => {
         localStorageCart.push(cartItem);
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
         dispatch(setCart(localStorageCart));
+        dispatch(
+          setSnackbar({
+            open: true,
+            decorator: <AddShoppingCartRounded />,
+            text: 'Product added to basket',
+            id: item.id,
+          })
+        );
       }
     }
   };
@@ -76,8 +129,8 @@ const CatalogItem = ({ item, size = '' }) => {
         <Link to={`/${item.id}`}>
           <ProgressiveImageContainer
             alt="product_picture"
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/${item.photo}?tr=w-40`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/${item.photo}?tr=w-300`}
+            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-40`}
+            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-300`}
           />
           {ww > 360 && (
             <>
@@ -109,11 +162,11 @@ const CatalogItem = ({ item, size = '' }) => {
       <div className="catalog-item_info">
         <div className="catalog-item_info_rating">
           <div className="catalog-item_info_rating_stars">
-            <RatingStars id={item.id} rating={item.rating} />
+            <RatingStars id={item.id} rating={Number(item.rating)} />
           </div>
           {ww > 385 && (
             <span className="catalog-item_info_rating_mark">
-              Rating: {item.rating.toFixed(1)}
+              Rating: {Number(item.rating).toFixed(1)}
             </span>
           )}
         </div>
@@ -160,36 +213,23 @@ const CatalogItem = ({ item, size = '' }) => {
                 className="catalog-item_info_ui_add-to-cart-button"
                 onClick={onAddToCartHandler}
                 title="Add to basket"
+                disabled={addToBasketLoading}
               >
                 <span>
-                  <TbShoppingCart />
+                  {addToBasketLoading ? (
+                    <ClipLoader color="#e9d5be" />
+                  ) : (
+                    <TbShoppingCart />
+                  )}
                   {ww > 360 && 'Add to basket'}
                 </span>
               </button>
             )}
             <button
               className="catalog-item_info_ui_lovelist-button"
-              onClick={() => {
-                dispatch(toggleProductInLovelist(item.id));
-                isLoved
-                  ? dispatch(
-                      setSnackbar({
-                        open: true,
-                        decorator: <HeartBrokenOutlined />,
-                        text: 'Product is not loved anymore :(',
-                        id: item.id,
-                      })
-                    )
-                  : dispatch(
-                      setSnackbar({
-                        open: true,
-                        decorator: <FavoriteBorderOutlined />,
-                        text: 'Product is loved now :)',
-                        id: item.id,
-                      })
-                    );
-              }}
+              onClick={onHeartIconClick}
               title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
+              disabled={addToLovelistLoading}
             >
               <HeartIcon isLoved={isLoved} />
             </button>

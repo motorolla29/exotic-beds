@@ -134,7 +134,8 @@ const scrollController = {
       left: 0;
       height: 100vh;
       width: 100vw;
-      padding-right: ${window.innerWidth - document.body.offsetWidth}px
+      padding-right: ${window.innerWidth - document.body.offsetWidth}px;
+      overflow: visible !important
     `;
     document.documentElement.style.scrollBehavior = 'unset';
   },
@@ -142,6 +143,17 @@ const scrollController = {
     document.body.style.cssText = '';
     window.scroll({ top: scrollController.scrollPosition });
     document.documentElement.style.scrollBehavior = '';
+  },
+  disableScrollWithRetention() {
+    scrollController.scroll =
+      window.scrollY || document.documentElement.scrollTop;
+    document.body.style.setProperty('position', 'fixed');
+    document.body.style.setProperty('top', `${-scrollController.scroll}px`);
+  },
+  enableScrollWithRetention() {
+    document.body.style.removeProperty('position');
+    document.body.style.removeProperty('top');
+    window.scrollTo(0, scrollController.scroll);
   },
 };
 
@@ -223,16 +235,16 @@ const sortProducts = (products, sortBy) => {
 
 const findCheapestProductObj = (products) =>
   products.reduce((x, y) => {
-    if (x.sale && y.sale && x.sale < y.sale) {
+    if (+x.sale && +y.sale && +x.sale < +y.sale) {
       return x;
     }
-    if (x.sale && !y.sale && x.sale < y.price) {
+    if (+x.sale && +!y.sale && +x.sale < +y.price) {
       return x;
     }
-    if (!x.sale && y.sale && x.price < y.sale) {
+    if (+!x.sale && y.sale && +x.price < +y.sale) {
       return x;
     }
-    if (!x.sale && !y.sale && x.price < y.price) {
+    if (+!x.sale && +!y.sale && +x.price < +y.price) {
       return x;
     }
     return y;
@@ -240,16 +252,16 @@ const findCheapestProductObj = (products) =>
 
 const findMostExpensiveProductObj = (products) =>
   products.reduce((x, y) => {
-    if (x.sale && y.sale && x.sale > y.sale) {
+    if (+x.sale && +y.sale && +x.sale > +y.sale) {
       return x;
     }
-    if (x.sale && !y.sale && x.sale > y.price) {
+    if (+x.sale && +!y.sale && +x.sale > +y.price) {
       return x;
     }
-    if (!x.sale && y.sale && x.price > y.sale) {
+    if (+!x.sale && +y.sale && +x.price > +y.sale) {
       return x;
     }
-    if (!x.sale && !y.sale && x.price > y.price) {
+    if (+!x.sale && +!y.sale && +x.price > +y.price) {
       return x;
     }
     return y;
@@ -484,6 +496,14 @@ const randomInteger = (min, max) => {
 //   return data;
 // };
 
+const categoriesIds = {
+  beds: 1,
+  sofas: 2,
+  armchairs: 3,
+  kids: 4,
+  poufs: 5,
+};
+
 export {
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
@@ -500,4 +520,5 @@ export {
   getStoreWorkDescription,
   sortStoresByProximity,
   randomInteger,
+  categoriesIds,
 };
