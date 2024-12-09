@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   cartOpen,
@@ -17,57 +18,67 @@ import {
   decrementBasketProduct,
   removeBasketProduct,
 } from '../../api/basketAPI';
-//import { useState } from 'react';
 import { toggleProductInLovelist } from '../../api/lovelistAPI';
 import { RemoveShoppingCartRounded } from '@mui/icons-material';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+import PuffLoader from 'react-spinners/PuffLoader';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import './cart-item.sass';
+import { ClickAwayListener, Tooltip } from '@mui/material';
+import { Zoom } from '@mui/material';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.isAuth);
-  //const [counterLoading, setCounterLoading] = useState(false);
+  const [counterLoading, setCounterLoading] = useState(false);
+  const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
   const isLoved = lovedProducts.find((it) => it.id === item.id);
 
   const onHeartIconClick = () => {
     if (isAuth) {
-      toggleProductInLovelist(item).then((lovelist) => {
-        dispatch(setLovelist(lovelist));
-        isLoved
-          ? dispatch(
-              setSnackbar({
-                open: true,
-                decorator: <HeartBrokenOutlined />,
-                text: 'Product is not loved anymore :(',
-                id: item.id,
-              })
-            )
-          : dispatch(
-              setSnackbar({
-                open: true,
-                decorator: <FavoriteBorderOutlined />,
-                text: 'Product is loved now :)',
-                id: item.id,
-              })
-            );
-      });
+      setAddToLovelistLoading(true);
+      toggleProductInLovelist(item)
+        .then((lovelist) => {
+          dispatch(setLovelist(lovelist));
+          isLoved
+            ? dispatch(
+                setSnackbar({
+                  open: true,
+                  decorator: <HeartBrokenOutlined />,
+                  text: 'Product is not loved anymore :(',
+                  id: item.id,
+                })
+              )
+            : dispatch(
+                setSnackbar({
+                  open: true,
+                  decorator: <FavoriteBorderOutlined />,
+                  text: 'Product is loved now :)',
+                  id: item.id,
+                })
+              );
+        })
+        .catch((err) => console.log(err.message))
+        .finally(() => setAddToLovelistLoading(false));
     } else {
       dispatch(loginModalsOpen(true));
     }
   };
 
   const onDecreaseButtonClick = () => {
+    setTooltipOpen(false);
     if (item.quantity > 1) {
       if (isAuth) {
-        //setCounterLoading(true);
+        setCounterLoading(true);
         decrementBasketProduct(item)
           .then((cart) => {
             dispatch(setCart(cart));
           })
-          .catch((err) => console.log(err.message));
-        //.finally(() => setCounterLoading(false));
+          .catch((err) => console.log(err.message))
+          .finally(() => setCounterLoading(false));
       } else {
         const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
         const localStorageCartItem = localStorageCart.find(
@@ -81,22 +92,26 @@ const CartItem = ({ item }) => {
   };
 
   const onIncreaseButtonClick = () => {
-    if (isAuth) {
-      //setCounterLoading(true);
-      addToBasket(item)
-        .then((cart) => {
-          dispatch(setCart(cart));
-        })
-        .catch((err) => console.log(err.message));
-      //.finally(() => setCounterLoading(false));
+    if (item.quantity < item.availableQuantity) {
+      if (isAuth) {
+        setCounterLoading(true);
+        addToBasket(item)
+          .then((cart) => {
+            dispatch(setCart(cart));
+          })
+          .catch((err) => console.log(err.message))
+          .finally(() => setCounterLoading(false));
+      } else {
+        const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
+        const localStorageCartItem = localStorageCart.find(
+          (it) => item.id === it.id
+        );
+        localStorageCartItem.quantity++;
+        localStorage.setItem('cart', JSON.stringify(localStorageCart));
+        dispatch(setCart(localStorageCart));
+      }
     } else {
-      const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
-      const localStorageCartItem = localStorageCart.find(
-        (it) => item.id === it.id
-      );
-      localStorageCartItem.quantity++;
-      localStorage.setItem('cart', JSON.stringify(localStorageCart));
-      dispatch(setCart(localStorageCart));
+      setTooltipOpen(true);
     }
   };
 
@@ -165,12 +180,16 @@ const CartItem = ({ item }) => {
           )}
         </div>
         <div className="cart-item_body_ui">
-          <div
+          <button
             onClick={onHeartIconClick}
             className={`cart-item_body_ui_lovelist ${isLoved ? 'loved' : ''}`}
           >
-            <HeartIcon isLoved={isLoved} />
-          </div>
+            {addToLovelistLoading ? (
+              <PuffLoader color="#cc0000" />
+            ) : (
+              <HeartIcon isLoved={isLoved} />
+            )}
+          </button>
           <div className="cart-item_body_ui_right-side">
             <span
               onClick={() =>
@@ -191,23 +210,46 @@ const CartItem = ({ item }) => {
             >
               Remove
             </span>
-            <div className="cart-item_body_ui_right-side_counter">
-              <span
-                onClick={onDecreaseButtonClick}
-                className="cart-item_body_ui_right-side_counter_minus"
-              >
-                -
-              </span>
-              <span className="cart-item_body_ui_right-side_counter_value">
-                {item.quantity}
-              </span>
-              <span
-                onClick={onIncreaseButtonClick}
-                className="cart-item_body_ui_right-side_counter_plus"
-              >
-                +
-              </span>
-            </div>
+            <ClickAwayListener onClickAway={() => setTooltipOpen(false)}>
+              <div className="cart-item_body_ui_right-side_counter">
+                <button
+                  onClick={onDecreaseButtonClick}
+                  className="cart-item_body_ui_right-side_counter_minus"
+                  disabled={counterLoading}
+                >
+                  -
+                </button>
+                <Tooltip
+                  placement="top"
+                  TransitionComponent={Zoom}
+                  PopperProps={{
+                    disablePortal: true,
+                  }}
+                  onClose={() => setTooltipOpen(false)}
+                  open={tooltipOpen}
+                  style={{ zIndex: -1 }}
+                  disableFocusListener
+                  disableHoverListener
+                  disableTouchListener
+                  title={`Only ${item.availableQuantity} available`}
+                >
+                  <span className="cart-item_body_ui_right-side_counter_value">
+                    {counterLoading ? (
+                      <ClipLoader color="#4f4a5767" />
+                    ) : (
+                      item.quantity
+                    )}
+                  </span>
+                </Tooltip>
+                <button
+                  onClick={onIncreaseButtonClick}
+                  className="cart-item_body_ui_right-side_counter_plus"
+                  disabled={counterLoading}
+                >
+                  +
+                </button>
+              </div>
+            </ClickAwayListener>
           </div>
         </div>
       </div>

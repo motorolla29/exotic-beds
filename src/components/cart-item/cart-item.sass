@@ -81,6 +81,14 @@
                     stroke-width: 1em
                     width: 50%
                     height: auto
+                // стилизация лоадера для кнопки избранного
+                > span
+                    width: 100% !important
+                    height: 100% !important
+                    > span
+                        border-width: 2px !important
+                        width: 100% !important
+                        height: 100% !important
 
                 &:hover
                     svg
@@ -111,7 +119,11 @@
                     user-select: none
 
                     &_minus, &_plus
+                        user-select: none
                         cursor: pointer
+                        background: none
+                        border: none
+                        outline: none
                         width: 2em
                         display: flex
                         align-items: center
@@ -127,3 +139,11 @@
                         color: $main-color-grey
                         border: 1px solid #00475737
                         background: $main-color-white
+                        span
+                            width: 1em !important
+                            height: 1em !important
+                    & .MuiTooltip-popper
+                        z-index: 11
+                    & .MuiTooltip-popper[data-popper-placement="top"]
+                        & > .MuiTooltip-tooltip
+                            margin-bottom: 0.75em
