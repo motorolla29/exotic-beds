@@ -84,31 +84,30 @@ const Cart = () => {
               transition={{ duration: 0.5 }}
               className="cart_widget"
             >
+              <div className="cart_widget_header">
+                <div className="cart_widget_header_title">
+                  <h1>
+                    {cartItemsTotal
+                      ? 'Shopping Basket'
+                      : 'Shopping Basket is empty'}
+                  </h1>
+                  {cartItemsTotal ? (
+                    <p>
+                      You have {cartItemsTotal}{' '}
+                      {cartItemsTotal === 1 ? 'item' : 'items'} in your basket
+                    </p>
+                  ) : null}
+                </div>
+                <div
+                  onClick={() => dispatch(cartOpen(false))}
+                  className="cart_widget_header_close"
+                />
+              </div>
               <div className="cart_widget_widget-inner">
                 <OverlayScrollbarsComponent
                   className="cart_widget_widget-inner_scroll-container"
                   defer
                 >
-                  <div className="cart_widget_widget-inner_header">
-                    <div className="cart_widget_widget-inner_header_title">
-                      <h1>
-                        {cartItemsTotal
-                          ? 'Shopping Basket'
-                          : 'Shopping Basket is empty'}
-                      </h1>
-                      {cartItemsTotal ? (
-                        <p>
-                          You have {cartItemsTotal}{' '}
-                          {cartItemsTotal === 1 ? 'item' : 'items'} in your
-                          basket
-                        </p>
-                      ) : null}
-                    </div>
-                    <div
-                      onClick={() => dispatch(cartOpen(false))}
-                      className="cart_widget_widget-inner_header_close"
-                    />
-                  </div>
                   {cartItemsTotal ? (
                     <div className="cart_widget_widget-inner_scroll-inner">
                       {cartItems.map((item) => {
