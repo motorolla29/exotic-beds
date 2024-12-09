@@ -22,6 +22,7 @@ import { useState } from 'react';
 import { AddShoppingCartRounded } from '@mui/icons-material';
 import { toggleProductInLovelist } from '../../api/lovelistAPI';
 import ClipLoader from 'react-spinners/ClipLoader';
+import PuffLoader from 'react-spinners/PuffLoader';
 
 import './catalog-item.sass';
 
@@ -231,7 +232,11 @@ const CatalogItem = ({ item, size = '' }) => {
               title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
               disabled={addToLovelistLoading}
             >
-              <HeartIcon isLoved={isLoved} />
+              {addToLovelistLoading ? (
+                <PuffLoader color="#cc0000" />
+              ) : (
+                <HeartIcon isLoved={isLoved} />
+              )}
             </button>
           </div>
         </div>

@@ -5,6 +5,7 @@ import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartIcon from '../../heart-icon/heart-icon';
 import ClipLoader from 'react-spinners/ClipLoader';
+import PuffLoader from 'react-spinners/PuffLoader';
 import { TbShoppingCart, TbShoppingCartCheck } from 'react-icons/tb';
 import { AddShoppingCartRounded } from '@mui/icons-material';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
@@ -205,7 +206,11 @@ const ProductPage = () => {
                 title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
                 disabled={addToLovelistLoading}
               >
-                <HeartIcon isLoved={isLoved} />
+                {addToLovelistLoading ? (
+                  <PuffLoader color="#cc0000" />
+                ) : (
+                  <HeartIcon isLoved={isLoved} />
+                )}
               </button>
             </div>
           </div>
