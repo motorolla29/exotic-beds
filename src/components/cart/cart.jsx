@@ -198,7 +198,6 @@ const Cart = () => {
                                 setPromocodeStatus(null);
                                 setPromocodeInput(e.target.value);
                               }}
-                              onBlur={() => {}}
                               className={`cart_widget_widget-inner_promocode_body_input ${promocodeStatus}`}
                             />
 
@@ -226,6 +225,11 @@ const Cart = () => {
                             <button
                               onClick={onApplyPromocodeClick}
                               className="cart_widget_widget-inner_promocode_body_button"
+                              onBlur={() => {
+                                if (!promocodeInput) {
+                                  setPromocodeStatus(null);
+                                }
+                              }}
                             >
                               Apply
                             </button>
