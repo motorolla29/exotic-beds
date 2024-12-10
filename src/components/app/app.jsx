@@ -72,8 +72,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
-          <Route path=":id" element={<ProductPage />} />
+          <Route index element={productsLoaded && <MainPage />} />
+          <Route path=":id" element={productsLoaded && <ProductPage />} />
           <Route
             path="beds"
             element={productsLoaded && <CatalogPage category="beds" />}
@@ -94,7 +94,7 @@ const App = () => {
             path="kids"
             element={productsLoaded && <CatalogPage category="kids" />}
           />
-          <Route path="search" element={<SearchPage />} />
+          <Route path="search" element={productsLoaded && <SearchPage />} />
           <Route path="my-lovelist" element={<LovelistPage />} />
           <Route path="store-finder" element={<StoreFinderPage />} />
           <Route path="store-finder/:id" element={<StorePage />} />
