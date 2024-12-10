@@ -1,8 +1,7 @@
 @import 'src/styles/variables'
-    
+
 .login-modals-shadow
     display: flex
-    align-items: center
     justify-content: center
     position: fixed
     top: 0
@@ -11,11 +10,14 @@
     width: 100%
     background: rgba(0, 0, 0, 0.5)
     z-index: 1000
-    //min-height: fit-content
+    overflow: hidden auto 
+    &::-webkit-scrollbar
+        width: 0
+        height: 0
 .login-modals
-    //margin: 1em
-    overflow: scroll
-    min-height: fit-content
+    font-size: 16px
+    height: fit-content
+    margin: 10em 1em 1em 1em
     display: flex
     overflow: hidden
     width: 20em
@@ -43,6 +45,7 @@
             & .MuiFormControl-root
                 margin-bottom: 1em
         &_sign-in-button, &_registration-button
+            font-size: 14px
             display: flex
             justify-content: center
             align-items: center
@@ -84,7 +87,7 @@
             margin: 0
             font-weight: 600
             color: $main-color-turquoise
-            padding: 0.2em 0.8em 0.4em 0.8em
+            padding: 0.2em 0.8em 0.35em 0.8em
             vertical-align: baseline
             border: 1px solid $main-color-turquoise
             border-radius: 2em
@@ -107,3 +110,33 @@
         fill: $main-color-turquoise
         height: auto
         width: 50%
+
+@media (max-width: 480px)
+    .login-modals
+        font-size: 14px
+        &_sign-in-inner, &_registration-inner
+            &_sign-in-button
+                font-size: 12px
+                width: 70px
+                height: 35px
+            &_registration-button
+                font-size: 12px
+                width: 80px
+                height: 35px
+
+                
+@media (max-width: 360px)
+    .login-modals
+        font-size: 12px
+        &_sign-in-inner, &_registration-inner
+            &_sign-in-button
+                font-size: 10px
+                width: 60px
+                height: 30px
+            &_registration-button
+                font-size: 10px
+                width: 70px
+                height: 30px
+@media (max-width: 320px)
+    .login-modals
+        font-size: 10px

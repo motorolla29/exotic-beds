@@ -5,25 +5,23 @@ import { login } from '../../api/userAPI';
 import { useDispatch } from 'react-redux';
 import {
   loginModalsOpen,
-  setCart,
   setIsAuth,
-  setLovelist,
   setNotificationModal,
   setUser,
 } from '../../store/action';
-import { getBasket } from '../../api/basketAPI';
-import { getLovelist } from '../../api/lovelistAPI';
 import ErrorIcon from '@mui/icons-material/Error';
+import useWindowSize from '../../hooks/use-window-size';
 
-const SignInModal = ({ setSuccessSignIn, setRegistrated }) => {
+const SignInModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
+  const [ww] = useWindowSize();
+  const [loading, setLoading] = useState(false);
   const [signInClicked, setSignInClicked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const onEmailChange = (e) => {
     setEmailError(false);
@@ -69,6 +67,7 @@ const SignInModal = ({ setSuccessSignIn, setRegistrated }) => {
       <div className="login-modals_sign-in-inner_textfields">
         <TextField
           onChange={onEmailChange}
+          size={ww > 480 ? 'normal' : 'small'}
           value={email}
           fullWidth
           label="Email"
@@ -78,6 +77,7 @@ const SignInModal = ({ setSuccessSignIn, setRegistrated }) => {
         />
         <TextField
           onChange={onPasswordChange}
+          size={ww > 480 ? 'normal' : 'small'}
           value={password}
           fullWidth
           label="Password"

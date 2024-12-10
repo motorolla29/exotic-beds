@@ -5,19 +5,17 @@ import { registration } from '../../api/userAPI';
 import { useDispatch } from 'react-redux';
 import {
   loginModalsOpen,
-  setCart,
   setIsAuth,
-  setLovelist,
   setNotificationModal,
   setUser,
 } from '../../store/action';
-import { getBasket } from '../../api/basketAPI';
-import { getLovelist } from '../../api/lovelistAPI';
-
+import useWindowSize from '../../hooks/use-window-size';
 import ErrorIcon from '@mui/icons-material/Error';
 
 const RegistrationModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
+  const [ww] = useWindowSize();
+  const [loading, setLoading] = useState(false);
   const [continueClicked, setContinueClicked] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -74,8 +72,6 @@ const RegistrationModal = ({ setRegistrated }) => {
     }
   };
 
-  const [loading, setLoading] = useState(false);
-
   const signUpHandler = async () => {
     setContinueClicked(true);
     if (nameValid && emailValid && passwordValid && confirmPasswordValid) {
@@ -114,6 +110,7 @@ const RegistrationModal = ({ setRegistrated }) => {
         <TextField
           required
           onChange={onNameChange}
+          size={ww > 480 ? 'normal' : 'small'}
           value={name}
           fullWidth
           label="Name"
@@ -129,6 +126,7 @@ const RegistrationModal = ({ setRegistrated }) => {
         <TextField
           required
           onChange={onEmailChange}
+          size={ww > 480 ? 'normal' : 'small'}
           value={email}
           fullWidth
           label="Email"
@@ -143,6 +141,7 @@ const RegistrationModal = ({ setRegistrated }) => {
         <TextField
           required
           onChange={onPasswordChange}
+          size={ww > 480 ? 'normal' : 'small'}
           value={password}
           fullWidth
           label="Password"
@@ -158,6 +157,7 @@ const RegistrationModal = ({ setRegistrated }) => {
         <TextField
           required
           onChange={onConfirmPasswordChange}
+          size={ww > 480 ? 'normal' : 'small'}
           value={confirmPassword}
           fullWidth
           label="Confirm password"

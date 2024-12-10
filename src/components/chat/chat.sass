@@ -131,6 +131,41 @@
         height: 55px
         right: 35px
         bottom: 25px
+@media (max-width: 360px)
+    .chat
+        width: 40px
+        height: 40px
+        right: 15px
+        bottom: 15px
+    .contacts-container
+        margin-bottom: 10px
+        width: 200px
+        height: 350px
+        & .logo
+            margin-top: 5px
+            width: 70px
+        & .title
+            font-size: 0.7em
+        & .contact-form
+            &_name-input, &_email-input, &_message-input
+                border-radius: 7px
+                font-size: 12px
+                width: 170px
+            &_message-input
+                height: 60px
+
+            &_error
+                margin-top: 1px 
+                color: red
+                width: 170px
+                font-size: 10px
+            &_submit-button
+                width: 60px
+                padding: 8px 10px
+                margin: 10px 0
+                border-radius: 20px
+                font-size: 12px
+
 @keyframes scale-arise
     0%
         opacity: 0
