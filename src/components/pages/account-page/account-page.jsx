@@ -1,11 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './account-page.sass';
+import { AnimatePresence, motion } from 'framer-motion';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
-import { TextField } from '@mui/material';
+import { ClickAwayListener, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { TbLogout2 } from 'react-icons/tb';
-import { MdAddAPhoto } from 'react-icons/md';
+import { HiOutlineCamera } from 'react-icons/hi';
+import { TbCameraPlus } from 'react-icons/tb';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import { ImBin } from 'react-icons/im';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
@@ -14,15 +19,21 @@ import {
   setIsAuth,
   setLovelist,
   setNotificationModal,
+  setSnackbar,
   setUser,
 } from '../../../store/action';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser } from '../../../api/userAPI';
+import { deleteAvatar, deleteUser, setAvatar } from '../../../api/userAPI';
 
 const AccountPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [avatarHovered, setAvatarHovered] = useState(false);
+  const [avatarOptionsOpen, setAvatarOptionsOpen] = useState(false);
   const user = useSelector((state) => state.user);
+  const isAuth = useSelector((state) => state.isAuth);
+
+  if (!isAuth) navigate('/');
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -82,6 +93,49 @@ const AccountPage = () => {
       });
   };
 
+  const onAvatarClick = (e) => {
+    if (user.photo) {
+      e.preventDefault();
+      setAvatarOptionsOpen(true);
+      return;
+    }
+  };
+
+  const onAvatarDeleteClick = (e) => {
+    deleteAvatar()
+      .then((user) => {
+        dispatch(setUser(user));
+        setAvatarOptionsOpen(false);
+        dispatch(
+          setSnackbar({
+            open: true,
+            text: 'You successfully deleted your avatar',
+            decorator: <DeleteIcon />,
+          })
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const onAvatarInputChange = (e) => {
+    const img = e.target.files[0];
+    const formData = new FormData();
+    formData.append('photo', img);
+    setAvatar(formData)
+      .then((user) => {
+        dispatch(setUser(user));
+        setAvatarOptionsOpen(false);
+        dispatch(
+          setSnackbar({
+            open: true,
+            text: 'Avatar successfully uploaded',
+            decorator: <AccountCircleIcon />,
+          })
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="account-page">
       <Breadcrumbs />
@@ -94,8 +148,64 @@ const AccountPage = () => {
                 user.photo || 'default-avatar.jpg'
               }`}
             />
+            <label
+              onMouseEnter={() => {
+                setAvatarHovered(true);
+              }}
+              onMouseLeave={() => {
+                setAvatarHovered(false);
+              }}
+              htmlFor="avatar_load"
+            >
+              <input
+                id="avatar_load"
+                type="file"
+                className="account-page_heading_photo"
+                onChange={onAvatarInputChange}
+                onClick={onAvatarClick}
+              />
+            </label>
+
+            {avatarHovered && (
+              <div className="account-page_heading_photo_background">
+                <HiOutlineCamera />
+              </div>
+            )}
           </div>
-          <MdAddAPhoto />
+
+          <AnimatePresence>
+            {avatarOptionsOpen && (
+              <ClickAwayListener
+                onClickAway={() => setAvatarOptionsOpen(false)}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.1 }}
+                  className="account-page_heading_photo-container_options"
+                >
+                  <div className="account-page_heading_photo-container_options_option update">
+                    <TbCameraPlus />
+                    <span>Update photo</span>
+                    <label htmlFor="avatar_change_option">
+                      <input
+                        id="avatar_change_option"
+                        type="file"
+                        onChange={onAvatarInputChange}
+                      />
+                    </label>
+                  </div>
+                  <div
+                    onClick={onAvatarDeleteClick}
+                    className="account-page_heading_photo-container_options_option delete"
+                  >
+                    <RiDeleteBin5Line />
+                    <span>Delete photo</span>
+                  </div>
+                </motion.div>
+              </ClickAwayListener>
+            )}
+          </AnimatePresence>
         </div>
         <div className="account-page_heading_title">
           <h1>My Profile #{user.id}</h1>
@@ -111,21 +221,11 @@ const AccountPage = () => {
       <div className="account-page_user-info">
         <div className="account-page_user-info_personal-data">
           <h2>Personal data:</h2>
-          <TextField
-            label="Name"
-            variant="outlined"
-            value={name}
-            //onChange={(e) => setName(e.target.value)}
-          />
+          <TextField label="Name" variant="outlined" value={name} />
         </div>
         <div className="account-page_user-info_contact-details">
           <h2>Contact details:</h2>
-          <TextField
-            label="Email"
-            variant="outlined"
-            value={email}
-            //onChange={(e) => setEmail(e.target.value)}
-          />
+          <TextField label="Email" variant="outlined" value={email} />
         </div>
       </div>
       <div onClick={onDeleteAccountClick} className="account-page_delete">

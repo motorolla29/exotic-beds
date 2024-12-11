@@ -43,7 +43,16 @@ const Header = () => {
           {isAuth && user ? (
             <Link to="/account" className="header_nav_account">
               <div className="header_nav_account_icon">
-                {user.name.slice(0, 1).toUpperCase()}
+                {user.photo ? (
+                  <img
+                    src={`${process.env.REACT_APP_API_URL}/user-avatars/${
+                      user.photo || 'default-avatar.jpg'
+                    }`}
+                    alt="user_photo"
+                  />
+                ) : (
+                  user.name.slice(0, 1).toUpperCase()
+                )}
               </div>
               <p className="header_nav_account_title">Account</p>
             </Link>

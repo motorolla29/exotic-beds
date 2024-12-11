@@ -44,7 +44,7 @@ const LoginModals = () => {
           key="login-modals-shadow"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          exit={{ opacity: 0, delay: 2 }}
           transition={{ duration: 0.5 }}
           onMouseDown={() => dispatch(loginModalsOpen(false))}
           className="login-modals-shadow"
@@ -53,13 +53,30 @@ const LoginModals = () => {
             <motion.div
               key="sign-in-success"
               initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -100 }}
-              transition={{
-                duration: 0.5,
-                type: 'spring',
-                bounce: 0.3,
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  type: 'spring',
+                  bounce: 0.3,
+                  delay: 0.25,
+                },
               }}
+              exit={{
+                opacity: 0,
+                y: -100,
+                transition: {
+                  duration: 0.5,
+                  type: 'spring',
+                  bounce: 0.3,
+                },
+              }}
+              // transition={{
+              //   duration: 0.5,
+              //   type: 'spring',
+              //   bounce: 0.3,
+              // }}
               className="success-div"
             >
               <SuccessIcon />

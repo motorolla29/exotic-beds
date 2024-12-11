@@ -29,3 +29,15 @@ export const check = async () => {
 export const deleteUser = async () => {
   return await $authHost.get('api/user/delete');
 };
+
+export const setAvatar = async (formData) => {
+  const { data } = await $authHost.post('api/user/avatar/set', formData);
+  localStorage.setItem('token', data.token);
+  return jwtDecode(data.token);
+};
+
+export const deleteAvatar = async () => {
+  const { data } = await $authHost.post('api/user/avatar/delete');
+  localStorage.setItem('token', data.token);
+  return jwtDecode(data.token);
+};

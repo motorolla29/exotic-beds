@@ -6,25 +6,50 @@
         margin: 2em 0 0 0
         display: flex
         &_photo-container
-            height: fit-content
             position: relative
-            svg
-                cursor: pointer
-                width: 1.5em
-                height: auto
+            height: fit-content
+            &_options
+                user-select: none
+                background: $main-color-green-light
+                border-radius: 5px
+                padding: 5px
                 position: absolute
-                bottom: 0.5em
-                right: 0em
-                fill: $main-color-turquoise
-                //padding: 0.5em
-                //border-radius: 50%
-                //fill: $main-color-green-light
-                //background: $main-color-turquoise
-                &:hover
-                    fill: $main-color-grey
+                bottom: -5em
+                z-index: 2
+                &_option
+                    cursor: pointer
+                    color: $main-color-grey
+                    display: flex
+                    align-items: center
+                    white-space: nowrap
+                    border-radius: 5px
+                    padding: 5px
+                    &.delete
+                        svg
+                            fill: $main-color-red
+                    &.update
+                        position: relative
+                        label
+                            cursor: pointer
+                            position: absolute
+                            width: 100%
+                            height: 100%
+                            top: 0
+                            left: 0
+                            input
+                                visibility: hidden
+                        svg
+                            stroke: $main-color-turquoise
+                    svg
+                        margin-right: 5px
+                    &:hover
+                        background: $main-color-white-transparent
+
         &_photo
             position: relative
-            
+            display: flex
+            align-items: center
+            justify-content: center
             border-radius: 50%
             border: 2px solid $main-color-green-light
             overflow: hidden
@@ -32,8 +57,33 @@
             height: 7em
             background: $main-color-white-transparent
             img
+                display: flex
                 width: 100%
+                height: 100%
                 object-fit: cover
+            label
+                cursor: pointer
+                position: absolute
+                width: 100%
+                height: 100%
+                border-radius: 50%
+                overflow: hidden
+                z-index: 1
+                input
+                    visibility: hidden
+            &_background
+                display: flex
+                justify-content: center
+                align-items: center
+                background: #55555555
+                position: absolute
+                width: 100%
+                height: 100%
+                svg
+                    width: 50%
+                    height: auto
+                    stroke: $main-color-white-transparent
+            
             
         &_title
             margin: 0 0 0 2em
