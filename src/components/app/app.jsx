@@ -14,6 +14,7 @@ import StorePage from '../pages/store-page/store-page';
 
 import { check } from '../../api/userAPI';
 import {
+  setAuthProcess,
   setCart,
   setIsAuth,
   setLovelist,
@@ -26,6 +27,7 @@ import AccountPage from '../pages/account-page/account-page';
 import { getBasket } from '../../api/basketAPI';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getAllProducts } from '../../api/productAPI';
+import ProtectedRoute from '../../routes/ProtectedRoute';
 
 import './app.sass';
 
@@ -41,6 +43,7 @@ const App = () => {
         dispatch(setProductsLoaded(true));
       })
       .then(() => {
+        dispatch(setAuthProcess(true));
         check()
           .then((user) => {
             dispatch(setUser(user));
@@ -62,7 +65,8 @@ const App = () => {
               dispatch(setLovelist([]));
             }
             console.log(err.message);
-          });
+          })
+          .finally(() => dispatch(setAuthProcess(false)));
       })
       .then(() => dispatch(setOverlayLoader(false)))
       .catch((err) => console.log(err.message));
@@ -98,7 +102,14 @@ const App = () => {
           <Route path="my-lovelist" element={<LovelistPage />} />
           <Route path="store-finder" element={<StoreFinderPage />} />
           <Route path="store-finder/:id" element={<StorePage />} />
-          <Route path="account" element={<AccountPage />} />
+          <Route
+            path="account"
+            element={
+              <ProtectedRoute>
+                <AccountPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="not-found" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

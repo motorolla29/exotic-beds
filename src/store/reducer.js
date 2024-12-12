@@ -4,6 +4,7 @@ import {
   setOverlayLoader,
   setIsAuth,
   setProductsLoaded,
+  setAuthProcess,
   setUser,
   setProducts,
   loadProducts,
@@ -36,6 +37,7 @@ import {
 const initialState = {
   overlayLoader: true,
   productsLoaded: false,
+  authProcess: true,
   isAuth: false,
   user: {},
   products: [],
@@ -67,6 +69,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setProductsLoaded, (state, action) => {
       state.productsLoaded = action.payload;
+    })
+    .addCase(setAuthProcess, (state, action) => {
+      state.authProcess = action.payload;
     })
     .addCase(setIsAuth, (state, action) => {
       state.isAuth = action.payload;

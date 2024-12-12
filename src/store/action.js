@@ -12,6 +12,10 @@ const setProductsLoaded = createAction(`SET_PRODUCTS_LOADED`, (bool) => ({
   payload: bool,
 }));
 
+const setAuthProcess = createAction(`SET_AUTH_PROCESS`, (bool) => ({
+  payload: bool,
+}));
+
 const setUser = createAction(`SET_USER`, (user) => ({
   payload: user,
 }));
@@ -108,6 +112,7 @@ export {
   setOverlayLoader,
   setIsAuth,
   setProductsLoaded,
+  setAuthProcess,
   setUser,
   setProducts,
   setCart,

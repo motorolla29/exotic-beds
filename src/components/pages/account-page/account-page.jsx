@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import './account-page.sass';
 import { AnimatePresence, motion } from 'framer-motion';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import { ClickAwayListener, TextField } from '@mui/material';
@@ -25,6 +24,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { deleteAvatar, deleteUser, setAvatar } from '../../../api/userAPI';
 
+import './account-page.sass';
+
 const AccountPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,8 +33,6 @@ const AccountPage = () => {
   const [avatarOptionsOpen, setAvatarOptionsOpen] = useState(false);
   const user = useSelector((state) => state.user);
   const isAuth = useSelector((state) => state.isAuth);
-
-  if (!isAuth) navigate('/');
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -73,10 +72,10 @@ const AccountPage = () => {
   const onDeleteAccountConfirm = () => {
     deleteUser()
       .then((res) => {
-        navigate('/');
         dispatch(setIsAuth(false));
         dispatch(setUser({}));
         localStorage.removeItem('token');
+        navigate('/');
         setTimeout(() => {
           dispatch(
             setNotificationModal({
@@ -117,7 +116,7 @@ const AccountPage = () => {
       .catch((err) => console.log(err));
   };
 
-  const onAvatarInputChange = (e) => {
+  const onAvatarInputChange = async (e) => {
     const img = e.target.files[0];
     const formData = new FormData();
     formData.append('photo', img);
@@ -135,6 +134,9 @@ const AccountPage = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  // Если пользователь не авторизован, ничего не отображаем
+  if (!isAuth) return null;
 
   return (
     <div className="account-page">
