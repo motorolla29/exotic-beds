@@ -13,6 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
+import LogoutIcon from '@mui/icons-material/Logout';
 import {
   setCart,
   setConfirmationModal,
@@ -56,6 +57,13 @@ const AccountPage = () => {
     dispatch(setCart(JSON.parse(localStorage.getItem('cart')) || []));
     dispatch(setLovelist([]));
     localStorage.removeItem('token');
+    dispatch(
+      setSnackbar({
+        open: true,
+        text: 'You have been logged out of your account',
+        decorator: <LogoutIcon />,
+      })
+    );
     navigate('/');
   };
 
@@ -129,7 +137,7 @@ const AccountPage = () => {
           setNotificationModal({
             open: true,
             icon: <ErrorIcon />,
-            title: err.request.statusText,
+            title: 'Avatar deletion failed',
             description: err.response.data.message,
           })
         );
@@ -161,7 +169,7 @@ const AccountPage = () => {
           setNotificationModal({
             open: true,
             icon: <ErrorIcon />,
-            title: err.request.statusText,
+            title: 'Avatar loading failed',
             description: err.response.data.message,
           })
         );
