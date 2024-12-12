@@ -12,6 +12,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
 import {
   setCart,
   setConfirmationModal,
@@ -23,12 +24,14 @@ import {
 } from '../../../store/action';
 import { useNavigate } from 'react-router-dom';
 import { deleteAvatar, deleteUser, setAvatar } from '../../../api/userAPI';
+import SyncLoader from 'react-spinners/SyncLoader';
 
 import './account-page.sass';
 
 const AccountPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [avatarHovered, setAvatarHovered] = useState(false);
   const [avatarOptionsOpen, setAvatarOptionsOpen] = useState(false);
   const user = useSelector((state) => state.user);
@@ -93,7 +96,11 @@ const AccountPage = () => {
   };
 
   const onAvatarClick = (e) => {
-    if (user.photo) {
+    if (loading) {
+      e.preventDefault();
+      return;
+    }
+    if (user.photo && !loading) {
       e.preventDefault();
       setAvatarOptionsOpen(true);
       return;
@@ -117,6 +124,8 @@ const AccountPage = () => {
   };
 
   const onAvatarInputChange = async (e) => {
+    setLoading(true);
+    setAvatarOptionsOpen(false);
     const img = e.target.files[0];
     const formData = new FormData();
     formData.append('photo', img);
@@ -132,7 +141,18 @@ const AccountPage = () => {
           })
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: err.request.statusText,
+            description: err.response.data.message,
+          })
+        );
+      })
+      .finally(() => setLoading(false));
   };
 
   // Если пользователь не авторизован, ничего не отображаем
@@ -145,10 +165,12 @@ const AccountPage = () => {
         <div className="account-page_heading_photo-container">
           <div className="account-page_heading_photo">
             <img
+              style={{ opacity: loading ? 0.5 : 1 }}
               alt="user_photo"
-              src={`${process.env.REACT_APP_API_URL}/user-avatars/${
-                user.photo || 'default-avatar.jpg'
-              }`}
+              src={
+                user.photo ||
+                'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+              }
             />
             <label
               onMouseEnter={() => {
@@ -168,9 +190,15 @@ const AccountPage = () => {
               />
             </label>
 
-            {avatarHovered && (
+            {avatarHovered && !loading && (
               <div className="account-page_heading_photo_background">
                 <HiOutlineCamera />
+              </div>
+            )}
+
+            {loading && (
+              <div className="account-page_heading_photo_loading-background">
+                <SyncLoader speedMultiplier={0.9} />
               </div>
             )}
           </div>

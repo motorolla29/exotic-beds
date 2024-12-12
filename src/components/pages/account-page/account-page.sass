@@ -71,7 +71,7 @@
                 z-index: 1
                 input
                     visibility: hidden
-            &_background
+            &_background, &_loading-background
                 display: flex
                 justify-content: center
                 align-items: center
@@ -79,10 +79,21 @@
                 position: absolute
                 width: 100%
                 height: 100%
+            &_background
                 svg
                     width: 50%
                     height: auto
                     stroke: $main-color-white-transparent
+            &_loading-background
+                & > span
+                    & > span
+                        opacity: 0.8
+                        background-color: $main-color-green-light !important
+                        margin: 0.1em !important
+                        width: 0.75em !important
+                        height: 0.75em !important
+
+
             
             
         &_title

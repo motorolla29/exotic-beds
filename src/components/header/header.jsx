@@ -45,9 +45,10 @@ const Header = () => {
               <div className="header_nav_account_icon">
                 {user.photo ? (
                   <img
-                    src={`${process.env.REACT_APP_API_URL}/user-avatars/${
-                      user.photo || 'default-avatar.jpg'
-                    }`}
+                    src={
+                      user.photo ||
+                      'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+                    }
                     alt="user_photo"
                   />
                 ) : (
