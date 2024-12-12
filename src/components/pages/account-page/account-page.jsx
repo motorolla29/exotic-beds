@@ -29,6 +29,8 @@ import SyncLoader from 'react-spinners/SyncLoader';
 import { isTouchSupported } from 'detect-mobile';
 
 import './account-page.sass';
+import { VERCEL_MAX_FILE_SIZE } from '../../../const';
+import { resizeImage } from '../../../utils';
 
 const AccountPage = () => {
   const dispatch = useDispatch();
@@ -148,33 +150,75 @@ const AccountPage = () => {
   const onAvatarInputChange = async (e) => {
     setLoading(true);
     setAvatarOptionsOpen(false);
+
     const img = e.target.files[0];
-    const formData = new FormData();
-    formData.append('photo', img);
-    setAvatar(formData)
-      .then((user) => {
-        dispatch(setUser(user));
-        setAvatarOptionsOpen(false);
-        dispatch(
-          setSnackbar({
-            open: true,
-            text: 'Avatar successfully uploaded',
-            decorator: <AccountCircleIcon />,
-          })
-        );
-      })
-      .catch((err) => {
-        console.log(err);
+
+    try {
+      // Сжимаем изображение и автоматически исправляем ориентацию
+      const resizedFile = await resizeImage(img);
+      // Проверяем размер после сжатия
+      console.log('Resized file:', resizedFile);
+      console.log('File size:', resizedFile.size);
+      if (resizedFile.size > VERCEL_MAX_FILE_SIZE) {
         dispatch(
           setNotificationModal({
             open: true,
             icon: <ErrorIcon />,
-            title: 'Avatar loading failed',
-            description: err.response.data.message,
+            title: 'File size too large',
+            description: 'Please upload a file smaller than 4.5 MB.',
           })
         );
-      })
-      .finally(() => setLoading(false));
+        setLoading(false);
+        return;
+      }
+
+      // Создаем FormData с сжатыми данными
+      const formData = new FormData();
+      formData.append('photo', resizedFile);
+
+      // Проверка перед отправкой
+      if (resizedFile.size === 0) {
+        console.error('Error: The file is empty!');
+        return;
+      }
+
+      // Отправляем сжатое изображение на сервер
+      setAvatar(formData)
+        .then((user) => {
+          dispatch(setUser(user));
+          setAvatarOptionsOpen(false);
+          dispatch(
+            setSnackbar({
+              open: true,
+              text: 'Avatar successfully uploaded',
+              decorator: <AccountCircleIcon />,
+            })
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch(
+            setNotificationModal({
+              open: true,
+              icon: <ErrorIcon />,
+              title: 'Avatar loading failed',
+              description: err.response.data.message,
+            })
+          );
+        })
+        .finally(() => setLoading(false));
+    } catch (error) {
+      console.error('Error processing image:', error);
+      dispatch(
+        setNotificationModal({
+          open: true,
+          icon: <ErrorIcon />,
+          title: 'Avatar loading failed',
+          description: 'Error processing image before upload.',
+        })
+      );
+      setLoading(false);
+    }
   };
 
   // Если пользователь не авторизован, ничего не отображаем

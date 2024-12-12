@@ -1,4 +1,24 @@
 import getDistance from 'geolib/es/getDistance';
+import Resizer from 'react-image-file-resizer';
+
+const resizeImage = (file) => {
+  return new Promise((resolve, reject) => {
+    Resizer.imageFileResizer(
+      file,
+      1920, // Максимальная ширина
+      1920, // Максимальная высота
+      'JPEG', // Формат изображения (JPEG, PNG, WEBP)
+      75, // Качество (от 0 до 100)
+      0, // Ориентация
+      (uri) => {
+        // В `uri` возвращается сжатое изображение
+        const resizedFile = new File([uri], file.name, { type: 'image/jpeg' });
+        resolve(resizedFile);
+      },
+      'blob' // Формат результата (можно использовать 'blob' или 'base64')
+    );
+  });
+};
 
 const getCartWithAddedProduct = (state, action) => {
   let newProducts = {};
@@ -494,6 +514,7 @@ const categoriesIds = {
 };
 
 export {
+  resizeImage,
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
   getCartWithDecreasedProduct,
