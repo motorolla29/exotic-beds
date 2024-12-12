@@ -17,6 +17,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.8",
+    "detect-mobile": "^0.0.0",
     "framer-motion": "^11.2.10",
     "geolib": "^3.3.4",
     "jwt-decode": "^4.0.0",

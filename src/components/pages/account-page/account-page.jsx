@@ -25,6 +25,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { deleteAvatar, deleteUser, setAvatar } from '../../../api/userAPI';
 import SyncLoader from 'react-spinners/SyncLoader';
+import { isTouchSupported } from 'detect-mobile';
 
 import './account-page.sass';
 
@@ -108,6 +109,8 @@ const AccountPage = () => {
   };
 
   const onAvatarDeleteClick = (e) => {
+    setLoading(true);
+    setAvatarOptionsOpen(false);
     deleteAvatar()
       .then((user) => {
         dispatch(setUser(user));
@@ -120,7 +123,18 @@ const AccountPage = () => {
           })
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: err.request.statusText,
+            description: err.response.data.message,
+          })
+        );
+      })
+      .finally(() => setLoading(false));
   };
 
   const onAvatarInputChange = async (e) => {
@@ -190,7 +204,7 @@ const AccountPage = () => {
               />
             </label>
 
-            {avatarHovered && !loading && (
+            {!isTouchSupported() && avatarHovered && !loading && (
               <div className="account-page_heading_photo_background">
                 <HiOutlineCamera />
               </div>
