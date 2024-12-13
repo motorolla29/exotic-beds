@@ -6,6 +6,7 @@ import './avatar-modal.sass';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { scrollController } from '../../utils';
+import { isTouchSupported } from 'detect-mobile';
 
 const AvatarModal = ({ avatarSrc, onAvatarShadowClick }) => {
   const overlayLoading = useSelector((state) => state.overlayLoading);
@@ -35,7 +36,7 @@ const AvatarModal = ({ avatarSrc, onAvatarShadowClick }) => {
       onClick={handleShadowClick}
     >
       <motion.div
-        onContextMenu={() => setShowContextMenu(true)}
+        onContextMenu={() => !isTouchSupported() && setShowContextMenu(true)}
         initial={{ opacity: 0, scale: 0.2 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.2 }}

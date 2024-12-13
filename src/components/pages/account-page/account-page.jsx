@@ -88,6 +88,7 @@ const AccountPage = () => {
       })
     );
   };
+
   const onDeleteAccountConfirm = () => {
     deleteUser()
       .then((res) => {
@@ -158,12 +159,12 @@ const AccountPage = () => {
 
     const img = e.target.files[0];
 
+    //if (!img) return;
+
     try {
       // Сжимаем изображение и автоматически исправляем ориентацию
       const resizedFile = await resizeImage(img);
       // Проверяем размер после сжатия
-      console.log('Resized file:', resizedFile);
-      console.log('File size:', resizedFile.size);
       if (resizedFile.size > VERCEL_MAX_FILE_SIZE) {
         dispatch(
           setNotificationModal({
@@ -273,7 +274,6 @@ const AccountPage = () => {
               </div>
             )}
           </div>
-
           <AnimatePresence>
             {avatarOptionsOpen && (
               <ClickAwayListener
