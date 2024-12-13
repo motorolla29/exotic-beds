@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import { ClickAwayListener, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
+
 import { TbLogout2 } from 'react-icons/tb';
 import { HiOutlineCamera } from 'react-icons/hi';
 import { TbCameraPlus } from 'react-icons/tb';
@@ -14,6 +15,9 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { TbPhoto } from 'react-icons/tb';
+import SyncLoader from 'react-spinners/SyncLoader';
+
 import {
   setCart,
   setConfirmationModal,
@@ -25,16 +29,17 @@ import {
 } from '../../../store/action';
 import { useNavigate } from 'react-router-dom';
 import { deleteAvatar, deleteUser, setAvatar } from '../../../api/userAPI';
-import SyncLoader from 'react-spinners/SyncLoader';
 import { isTouchSupported } from 'detect-mobile';
-
-import './account-page.sass';
 import { VERCEL_MAX_FILE_SIZE } from '../../../const';
 import { resizeImage } from '../../../utils';
+import AvatarModal from '../../avatar-modal/avatar-modal';
+
+import './account-page.sass';
 
 const AccountPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [avatarModalOpen, setAvatarModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [avatarHovered, setAvatarHovered] = useState(false);
   const [avatarOptionsOpen, setAvatarOptionsOpen] = useState(false);
@@ -280,6 +285,16 @@ const AccountPage = () => {
                   exit={{ opacity: 0, scale: 0.1 }}
                   className="account-page_heading_photo-container_options"
                 >
+                  <div
+                    onClick={() => {
+                      setAvatarModalOpen(true);
+                      setAvatarOptionsOpen(false);
+                    }}
+                    className="account-page_heading_photo-container_options_option show"
+                  >
+                    <TbPhoto />
+                    <span>Show photo</span>
+                  </div>
                   <div className="account-page_heading_photo-container_options_option update">
                     <TbCameraPlus />
                     <span>Update photo</span>
@@ -328,6 +343,17 @@ const AccountPage = () => {
         <ImBin />
         <span>Delete my account</span>
       </div>
+      <AnimatePresence>
+        {avatarModalOpen && (
+          <AvatarModal
+            avatarSrc={
+              user.photo ||
+              'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+            }
+            onAvatarShadowClick={() => setAvatarModalOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
