@@ -37,39 +37,46 @@ const App = () => {
   const productsLoaded = useSelector((state) => state.productsLoaded);
 
   useEffect(() => {
-    getAllProducts()
-      .then((data) => {
-        dispatch(setProducts(data.rows));
+    const initApp = async () => {
+      try {
+        // Загрузка продуктов
+        const productData = await getAllProducts();
+        dispatch(setProducts(productData.rows));
         dispatch(setProductsLoaded(true));
-      })
-      .then(() => {
+
+        // Начало процесса авторизации
         dispatch(setAuthProcess(true));
-        check()
-          .then((user) => {
-            dispatch(setUser(user));
-            dispatch(setIsAuth(true));
-            getBasket()
-              .then((basket) => {
-                dispatch(setCart(basket));
-              })
-              .catch((err) => console.log(err.message));
-            getLovelist()
-              .then((lovelist) => {
-                dispatch(setLovelist(lovelist));
-              })
-              .catch((err) => console.log(err.message));
-          })
-          .catch((err) => {
-            if (!isAuth) {
-              dispatch(setCart(JSON.parse(localStorage.getItem('cart')) || []));
-              dispatch(setLovelist([]));
-            }
-            console.log(err.message);
-          })
-          .finally(() => dispatch(setAuthProcess(false)));
-      })
-      .then(() => dispatch(setOverlayLoader(false)))
-      .catch((err) => console.log(err.message));
+
+        // Проверка токена
+        try {
+          const user = await check();
+          dispatch(setUser(user));
+          dispatch(setIsAuth(true));
+
+          // Параллельная загрузка корзины и списка желаемого
+          const [basket, lovelist] = await Promise.all([
+            getBasket(),
+            getLovelist(),
+          ]);
+          dispatch(setCart(basket));
+          dispatch(setLovelist(lovelist));
+        } catch (authError) {
+          console.log(authError.message);
+          if (!isAuth) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            dispatch(setCart(cart));
+            dispatch(setLovelist([]));
+          }
+        }
+      } catch (error) {
+        console.error('Error loading app data:', error.message);
+      } finally {
+        // Завершаем процесс загрузки
+        dispatch(setAuthProcess(false));
+        dispatch(setOverlayLoader(false));
+      }
+    };
+    initApp();
   }, [isAuth, dispatch]);
 
   return (

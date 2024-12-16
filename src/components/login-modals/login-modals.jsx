@@ -72,11 +72,6 @@ const LoginModals = () => {
                   bounce: 0.3,
                 },
               }}
-              // transition={{
-              //   duration: 0.5,
-              //   type: 'spring',
-              //   bounce: 0.3,
-              // }}
               className="success-div"
             >
               <SuccessIcon />

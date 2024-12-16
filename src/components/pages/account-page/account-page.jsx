@@ -92,10 +92,12 @@ const AccountPage = () => {
   const onDeleteAccountConfirm = () => {
     deleteUser()
       .then((res) => {
-        dispatch(setIsAuth(false));
-        dispatch(setUser({}));
-        localStorage.removeItem('token');
-        navigate('/');
+        setTimeout(() => {
+          dispatch(setIsAuth(false));
+          dispatch(setUser({}));
+          localStorage.removeItem('token');
+          navigate('/');
+        }, 250);
         setTimeout(() => {
           dispatch(
             setNotificationModal({
@@ -105,8 +107,8 @@ const AccountPage = () => {
               description: 'You have successfully deleted your account',
             })
           );
-        });
-      }, 500)
+        }, 500);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -154,12 +156,16 @@ const AccountPage = () => {
   };
 
   const onAvatarInputChange = async (e) => {
-    setLoading(true);
     setAvatarOptionsOpen(false);
 
-    const img = e.target.files[0];
+    const img = e.target.files?.[0];
 
-    //if (!img) return;
+    if (!img) {
+      console.warn('No file selected');
+      return;
+    }
+
+    setLoading(true);
 
     try {
       // Сжимаем изображение и автоматически исправляем ориентацию

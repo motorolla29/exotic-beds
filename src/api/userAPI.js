@@ -8,7 +8,7 @@ export const registration = async (name, email, password) => {
     password,
   });
   localStorage.setItem('token', data.token);
-  return jwtDecode(data.token);
+  return data.user;
 };
 
 export const login = async (email, password) => {
@@ -17,13 +17,13 @@ export const login = async (email, password) => {
     password,
   });
   localStorage.setItem('token', data.token);
-  return jwtDecode(data.token);
+  return data.user;
 };
 
 export const check = async () => {
   const { data } = await $authHost.get('api/user/auth');
   localStorage.setItem('token', data.token);
-  return jwtDecode(data.token);
+  return data.user;
 };
 
 export const deleteUser = async () => {
@@ -32,12 +32,10 @@ export const deleteUser = async () => {
 
 export const setAvatar = async (formData) => {
   const { data } = await $authHost.post('api/user/avatar/set', formData);
-  localStorage.setItem('token', data.token);
-  return jwtDecode(data.token);
+  return data.user;
 };
 
 export const deleteAvatar = async () => {
   const { data } = await $authHost.post('api/user/avatar/delete');
-  localStorage.setItem('token', data.token);
-  return jwtDecode(data.token);
+  return data.user;
 };
