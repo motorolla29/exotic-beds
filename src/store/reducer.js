@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   setOverlayLoader,
   setIsAuth,
+  setDeviceId,
   setProductsLoaded,
   setAuthProcess,
   setUser,
@@ -39,6 +40,7 @@ const initialState = {
   productsLoaded: false,
   authProcess: true,
   isAuth: false,
+  deviceId: null,
   user: {},
   products: [],
   isCartOpen: false,
@@ -75,6 +77,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setIsAuth, (state, action) => {
       state.isAuth = action.payload;
+    })
+    .addCase(setDeviceId, (state, action) => {
+      state.deviceId = action.payload;
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;

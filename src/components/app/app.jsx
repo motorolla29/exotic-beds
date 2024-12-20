@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import Layout from '../layout/layout';
 import MainPage from '../pages/main-page/main-page';
@@ -11,13 +11,16 @@ import LovelistPage from '../pages/lovelist-page/lovelist-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import SearchPage from '../pages/search-page/search-page';
 import StorePage from '../pages/store-page/store-page';
+import ErrorIcon from '@mui/icons-material/Error';
 
-import { check } from '../../api/userAPI';
+import { checkAuth } from '../../api/userAPI';
 import {
   setAuthProcess,
   setCart,
+  setDeviceId,
   setIsAuth,
   setLovelist,
+  setNotificationModal,
   setOverlayLoader,
   setProducts,
   setProductsLoaded,
@@ -28,6 +31,7 @@ import { getBasket } from '../../api/basketAPI';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getAllProducts } from '../../api/productAPI';
 import ProtectedRoute from '../../routes/ProtectedRoute';
+import { generateDeviceId } from '../../utils';
 
 import './app.sass';
 
@@ -35,10 +39,23 @@ const App = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.isAuth);
   const productsLoaded = useSelector((state) => state.productsLoaded);
+  const isInitialized = useRef(false);
 
   useEffect(() => {
+    if (isInitialized.current) return; // Предотвращение повторного выполнения
+    isInitialized.current = true;
+
+    // Инициализация приложения
     const initApp = async () => {
       try {
+        // Генерация deviceId
+        let storedDeviceId = localStorage.getItem('deviceId');
+        if (!storedDeviceId) {
+          storedDeviceId = generateDeviceId();
+          localStorage.setItem('deviceId', storedDeviceId);
+        }
+        dispatch(setDeviceId(storedDeviceId));
+
         // Загрузка продуктов
         const productData = await getAllProducts();
         dispatch(setProducts(productData.rows));
@@ -47,29 +64,44 @@ const App = () => {
         // Начало процесса авторизации
         dispatch(setAuthProcess(true));
 
-        // Проверка токена
-        try {
-          const user = await check();
-          dispatch(setUser(user));
-          dispatch(setIsAuth(true));
+        const token = localStorage.getItem('token');
+        if (token) {
+          // Проверка токена
+          try {
+            const user = await checkAuth();
+            dispatch(setUser(user));
+            dispatch(setIsAuth(true));
 
-          // Параллельная загрузка корзины и списка желаемого
-          const [basket, lovelist] = await Promise.all([
-            getBasket(),
-            getLovelist(),
-          ]);
-          dispatch(setCart(basket));
-          dispatch(setLovelist(lovelist));
-        } catch (authError) {
-          console.log(authError.message);
-          if (!isAuth) {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            dispatch(setCart(cart));
-            dispatch(setLovelist([]));
+            // Параллельная загрузка корзины и списка желаемого
+            const [basket, lovelist] = await Promise.all([
+              getBasket(),
+              getLovelist(),
+            ]);
+            dispatch(setCart(basket));
+            dispatch(setLovelist(lovelist));
+          } catch (authError) {
+            if (!isAuth) {
+              const cart = JSON.parse(localStorage.getItem('cart')) || [];
+              dispatch(setCart(cart));
+              dispatch(setLovelist([]));
+            }
           }
+        } else {
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          dispatch(setCart(cart));
+          dispatch(setLovelist([]));
         }
       } catch (error) {
         console.error('Error loading app data:', error.message);
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: error.message,
+            description:
+              'Failed to load application data, please try again later',
+          })
+        );
       } finally {
         // Завершаем процесс загрузки
         dispatch(setAuthProcess(false));

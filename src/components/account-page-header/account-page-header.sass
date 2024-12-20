@@ -1,0 +1,119 @@
+@import 'src/styles/variables'
+
+.account-page_heading
+    margin: 2em 0 0 0
+    display: flex
+    &_photo-container
+        position: relative
+        height: fit-content
+        &_options
+            user-select: none
+            background: $main-color-green-light
+            border-radius: 5px
+            padding: 5px
+            position: absolute
+            top: 105%
+            z-index: 2
+            -webkit-box-shadow: 0 0 0.5em -0.1em #0047574f 
+            -moz-box-shadow: 0 0 0.5em -0.1em #0047574f 
+            box-shadow: 0 0 0.5em -0.1em #0047574f 
+            &_option
+                cursor: pointer
+                color: $main-color-grey
+                display: flex
+                align-items: center
+                white-space: nowrap
+                border-radius: 5px
+                padding: 5px
+                &.delete
+                    svg
+                        fill: $main-color-red
+                &.update
+                    position: relative
+                    label
+                        cursor: pointer
+                        position: absolute
+                        width: 100%
+                        height: 100%
+                        top: 0
+                        left: 0
+                        input
+                            visibility: hidden
+                    svg
+                        stroke: $main-color-turquoise
+                svg
+                    margin-right: 5px
+                &:hover
+                    background: $main-color-white-transparent
+    &_photo
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        border-radius: 50%
+        border: 2px solid $main-color-green-light
+        overflow: hidden
+        width: 7em
+        height: 7em
+        background: $main-color-white-transparent
+        img
+            display: flex
+            width: 100%
+            height: 100%
+            object-fit: cover
+        label
+            cursor: pointer
+            position: absolute
+            width: 100%
+            height: 100%
+            border-radius: 50%
+            overflow: hidden
+            z-index: 1
+            input
+                visibility: hidden
+        &_background, &_loading-background
+            display: flex
+            justify-content: center
+            align-items: center
+            background: #55555555
+            position: absolute
+            width: 100%
+            height: 100%
+        &_background
+            svg
+                width: 50%
+                height: auto
+                stroke: $main-color-white-transparent
+        &_loading-background
+            & > span
+                & > span
+                    opacity: 0.8
+                    background-color: $main-color-green-light !important
+                    margin: 0.1em !important
+                    width: 0.75em !important
+                    height: 0.75em !important
+        
+        
+    &_title
+        margin: 0 0 0 2em
+        h1
+            position: relative
+            margin: 0 0 0.5em 0
+            svg
+                position: absolute
+                right: -1.5em
+                top: 0.2em
+                fill: $main-color-turquoise-transparent
+        &_signout
+            cursor: pointer
+            width: fit-content
+            display: flex
+            align-items: center
+            span
+                margin-left: 0.25em
+                font-weight: 600
+            svg
+                height: auto
+                width: 1.5em
+            &:hover
+                color: $main-color-grey

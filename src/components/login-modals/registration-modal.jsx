@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { registration } from '../../api/userAPI';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   loginModalsOpen,
   setIsAuth,
@@ -15,6 +15,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 const RegistrationModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
   const [ww] = useWindowSize();
+  const deviceId = useSelector((state) => state.deviceId);
   const [loading, setLoading] = useState(false);
   const [continueClicked, setContinueClicked] = useState(false);
   const [name, setName] = useState('');
@@ -77,23 +78,27 @@ const RegistrationModal = ({ setRegistrated }) => {
     if (nameValid && emailValid && passwordValid && confirmPasswordValid) {
       try {
         setLoading(true);
-        const user = await registration(name, email, password);
+        const user = await registration(name, email, password, deviceId);
         setLoading(false);
         dispatch(setUser(user));
         dispatch(setIsAuth(true));
         setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
       } catch (e) {
         setLoading(false);
-        if (e.response) {
-          e.response.data.name && setEmailError(e.response.data.name);
-          e.response.data.email && setEmailError(e.response.data.email);
-          e.response.data.password && setEmailError(e.response.data.password);
+        if (e.response && e.response.data.errors) {
+          e.response.data.errors.name &&
+            setEmailError(e.response.data.errors.name);
+          e.response.data.errors.email &&
+            setEmailError(e.response.data.errors.email);
+          e.response.data.errors.password &&
+            setEmailError(e.response.data.errors.password);
         } else {
+          console.log(e);
           dispatch(
             setNotificationModal({
               open: true,
               icon: <ErrorIcon />,
-              title: e.message,
+              title: 'Registration failed',
               description: 'Something went wrong, try again later',
             })
           );
@@ -120,7 +125,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           helperText={
             continueClicked && (nameError || !nameValid)
               ? nameError || 'Minimum 2 alphabetic only characters'
-              : false
+              : ''
           }
         />
         <TextField
@@ -135,7 +140,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           helperText={
             continueClicked && (emailError || !emailValid)
               ? emailError || 'Invalid email address'
-              : false
+              : ''
           }
         />
         <TextField
@@ -151,7 +156,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           helperText={
             continueClicked && (passwordError || !passwordValid)
               ? passwordError || 'Password must be at least 6 characters long'
-              : false
+              : ''
           }
         />
         <TextField
@@ -167,7 +172,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           helperText={
             continueClicked && !confirmPasswordValid
               ? 'Passwords do not match'
-              : false
+              : ''
           }
         />
       </div>

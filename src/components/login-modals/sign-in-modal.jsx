@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { login } from '../../api/userAPI';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   loginModalsOpen,
   setIsAuth,
@@ -15,6 +15,7 @@ import useWindowSize from '../../hooks/use-window-size';
 const SignInModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
   const [ww] = useWindowSize();
+  const deviceId = useSelector((state) => state.deviceId);
   const [loading, setLoading] = useState(false);
   const [signInClicked, setSignInClicked] = useState(false);
   const [email, setEmail] = useState('');
@@ -36,28 +37,29 @@ const SignInModal = ({ setRegistrated }) => {
     setSignInClicked(true);
     try {
       setLoading(true);
-      const user = await login(email, password);
+      const user = await login(email, password, deviceId);
       setLoading(false);
       dispatch(setUser(user));
       dispatch(setIsAuth(true));
       setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
     } catch (e) {
       setLoading(false);
-      if (e.response) {
-        e.response?.data.email && setEmailError(e.response.data.email);
-        e.response?.data.password && setPasswordError(e.response.data.password);
+      if (e.response && e.response.data.errors) {
+        e.response.data.errors.email &&
+          setEmailError(e.response.data.errors.email);
+        e.response.data.errors.password &&
+          setPasswordError(e.response.data.errors.password);
       } else {
         dispatch(
           setNotificationModal({
             open: true,
             icon: <ErrorIcon />,
-            title: e.message,
+            title: 'Sign in failed',
             description: 'Something went wrong, try again later',
           })
         );
       }
       console.log(e);
-    } finally {
     }
   };
 

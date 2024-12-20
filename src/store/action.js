@@ -8,6 +8,10 @@ const setIsAuth = createAction(`SET_IS_AUTH`, (bool) => ({
   payload: bool,
 }));
 
+const setDeviceId = createAction(`SET_DEVICE_ID`, (device) => ({
+  payload: device,
+}));
+
 const setProductsLoaded = createAction(`SET_PRODUCTS_LOADED`, (bool) => ({
   payload: bool,
 }));
@@ -111,6 +115,7 @@ const setSnackbar = createAction('SET_SNACKBAR', (options) => ({
 export {
   setOverlayLoader,
   setIsAuth,
+  setDeviceId,
   setProductsLoaded,
   setAuthProcess,
   setUser,

@@ -1,5 +1,38 @@
 import getDistance from 'geolib/es/getDistance';
 import Resizer from 'react-image-file-resizer';
+import { UAParser } from 'ua-parser-js';
+
+const generateDeviceId = () => {
+  const parser = new UAParser();
+  const result = parser.getResult(); // Получаем все данные о пользователе
+
+  let deviceModel = 'Unknown Device';
+
+  // Определяем, если это мобильное устройство или desktop
+  if (result.device.type === 'mobile' || result.device.type === 'tablet') {
+    // Если мобильное устройство, возвращаем модель
+    if (result.device.model) {
+      deviceModel = result.device.model;
+    } else {
+      // В случае, если модель не определена, указываем generic модель устройства
+      deviceModel = `${
+        result.device.type.charAt(0).toUpperCase() + result.device.type.slice(1)
+      } Device`;
+    }
+  } else if (
+    result.os.name === 'Windows' ||
+    result.os.name === 'Mac OS' ||
+    result.os.name === 'Linux'
+  ) {
+    // Для десктопов, добавляем информацию о платформе
+    deviceModel = `${result.os.name} Desktop`;
+  }
+
+  // Генерация случайной строки для уникальности
+  const randomString = Math.random().toString(36).slice(2, 11).toUpperCase(); // Генерация случайной строки из 9 символов
+
+  return `${deviceModel} ID: ${randomString}`;
+};
 
 const resizeImage = (file) => {
   return new Promise((resolve, reject) => {
@@ -514,6 +547,7 @@ const categoriesIds = {
 };
 
 export {
+  generateDeviceId,
   resizeImage,
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
