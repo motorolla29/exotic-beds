@@ -82,7 +82,7 @@ const RegistrationModal = ({ setRegistrated }) => {
         setLoading(false);
         dispatch(setUser(user));
         dispatch(setIsAuth(true));
-        setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
+        //setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
       } catch (e) {
         setLoading(false);
         if (e.response && e.response.data.errors) {
@@ -103,7 +103,6 @@ const RegistrationModal = ({ setRegistrated }) => {
             })
           );
         }
-      } finally {
       }
     }
   };

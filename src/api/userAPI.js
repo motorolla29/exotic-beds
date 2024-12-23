@@ -1,4 +1,4 @@
-import { $authHost } from './index';
+import { $host, $authHost } from './index';
 import axios from 'axios';
 
 export const registration = async (name, email, password, deviceId) => {
@@ -54,4 +54,9 @@ export const setAvatar = async (formData) => {
 export const deleteAvatar = async () => {
   const { data } = await $authHost.post('api/user/avatar/delete');
   return data.user;
+};
+
+export const resendActivationMail = async (email) => {
+  const { data } = await $host.post('api/user/resend-activation', { email });
+  return data.message;
 };

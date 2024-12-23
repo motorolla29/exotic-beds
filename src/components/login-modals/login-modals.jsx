@@ -7,6 +7,7 @@ import { scrollController } from '../../utils';
 import RegistrationModal from './registration-modal';
 import SignInModal from './sign-in-modal';
 import { ReactComponent as SuccessIcon } from '../../images/success.svg';
+import { LuMailCheck } from 'react-icons/lu';
 
 import './login-modals.sass';
 
@@ -50,32 +51,74 @@ const LoginModals = () => {
           className="login-modals-shadow"
         >
           {isAuth ? (
-            <motion.div
-              key="sign-in-success"
-              initial={{ opacity: 0, y: -100 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 0.5,
-                  type: 'spring',
-                  bounce: 0.3,
-                  delay: 0.25,
-                },
-              }}
-              exit={{
-                opacity: 0,
-                y: -100,
-                transition: {
-                  duration: 0.5,
-                  type: 'spring',
-                  bounce: 0.3,
-                },
-              }}
-              className="success-div"
-            >
-              <SuccessIcon />
-            </motion.div>
+            <>
+              {registrated ? (
+                <motion.div
+                  key="sign-in-success"
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.5,
+                      type: 'spring',
+                      bounce: 0.3,
+                      delay: 0.25,
+                    },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -100,
+                    transition: {
+                      duration: 0.5,
+                      type: 'spring',
+                      bounce: 0.3,
+                    },
+                  }}
+                  className="success-div"
+                >
+                  <SuccessIcon />
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.5,
+                      type: 'spring',
+                      bounce: 0.3,
+                      delay: 0.25,
+                    },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -100,
+                    transition: {
+                      duration: 0.5,
+                      type: 'spring',
+                      bounce: 0.3,
+                    },
+                  }}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={() => dispatch(loginModalsOpen(false))}
+                  className="email-confirm-notification-div"
+                >
+                  <LuMailCheck />
+                  <p className="email-confirm-notification-div_title">
+                    Confirmation email sent!
+                  </p>
+                  <div className="email-confirm-notification-div_description">
+                    We have sent you an email with a link to confirm your email.
+                    Please check your email and follow the instructions.
+                  </div>
+                  <button className="email-confirm-notification-div_button">
+                    Ok
+                  </button>
+                </motion.div>
+              )}
+            </>
           ) : (
             <motion.div
               key="login-modals"
