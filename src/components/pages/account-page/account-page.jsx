@@ -191,7 +191,6 @@ const AccountPage = () => {
                   <span className="account-page_user-info_contact-details_email_confirm_info">
                     Requires confirmation
                   </span>
-
                   <button
                     disabled={loadingSendMail || cooldownTime}
                     onClick={handleSendConfirmation}

@@ -2,6 +2,9 @@
     
 .account-page
     font-size: 16px
+    & .MuiFormControl-root
+        & .MuiInputBase-root
+            color: $main-color-grey // цвет текста в инпуте
     &_user-info
         margin: 1em 0 2em 0
         &_contact-details, &_personal-data
@@ -35,7 +38,6 @@
                         border: none
                         background: none
                         padding: 0
-                        //text-decoration: underline
                         margin: 0.5em 0 0 0
                         &::after
                             content: ''
@@ -50,11 +52,15 @@
                         &:hover
                             opacity: 0.8
                         &:disabled
+                            opacity: 0.4
+                            color: $main-color-grey
                             cursor: default
+                            &::after
+                                background-color: $main-color-grey
                         &.cooldown
                             color: $main-color-grey
                             text-decoration: none
-                            opacity: 0.75
+                            opacity: 0.6
                             &::after
                                 display: none
 
