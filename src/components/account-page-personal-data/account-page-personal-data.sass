@@ -1,0 +1,49 @@
+@import 'src/styles/variables'
+    
+.account-page_user-info_personal-data
+    margin: 0 0 2em 0
+    h2
+        margin: 0 0 1em 0
+    &_full-name, &_date-of-birth, &_gender
+        margin-bottom: 1em
+    &_full-name, &_date-of-birth
+        &_field.MuiTextField-root
+            margin-bottom: 1em
+            margin-right: 2em
+    &_gender
+        width: fit-content
+        & .MuiFormGroup-root
+            & > .MuiFormControlLabel-root
+                margin-right: 0
+                margin-left: 0
+            & .MuiRadio-root
+                color: $main-color-turquoise-transparent
+
+    &_save-button
+        font-weight: 600
+        color: $main-color-white
+        background-color: $main-color-turquoise-transparent
+        cursor: pointer
+        border: none
+        border-radius: 2em
+        padding: 0.75em 1.5em
+        &:hover
+            opacity: 0.9
+        &:active:enabled
+            transform: scale(0.97)
+        &:disabled
+            cursor: default
+            opacity: 0.5
+
+
+@media (max-width: 360px) 
+    .account-page_user-info_personal-data
+        &_full-name, &_date-of-birth
+            &_field.MuiTextField-root
+                margin-right: 0
+        &_gender
+            display: flex
+            width: 100%
+            align-items: center
+            justify-content: center
+            
