@@ -60,3 +60,19 @@ export const resendActivationMail = async (email) => {
   const { data } = await $host.post('api/user/resend-activation', { email });
   return data.message;
 };
+
+export const updatePersonalData = async (userData) => {
+  const { data } = await $authHost.post(
+    'api/user/update-personal-data',
+    userData
+  );
+  return data.user;
+};
+
+export const updateContactData = async (userData) => {
+  const { data } = await $authHost.post(
+    'api/user/update-contact-data',
+    userData
+  );
+  return data.user;
+};

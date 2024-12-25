@@ -7,9 +7,11 @@ import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ErrorIcon from '@mui/icons-material/Error';
 
-import { setNotificationModal, setSnackbar } from '../../store/action';
-import { resendActivationMail } from '../../api/userAPI';
+import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
+import { resendActivationMail, updateContactData } from '../../api/userAPI';
 
 import './account-page-contact-details.sass';
 
@@ -18,18 +20,45 @@ const AccountPageContactDetails = () => {
 
   const user = useSelector((state) => state.user);
 
+  const [isChanges, setIsChanges] = useState(false);
+  const [saveChangesClicked, setSaveChangesClicked] = useState(false);
+  const [dataSending, setDataSending] = useState(false);
+
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [phoneFieldError, setPhoneFieldError] = useState(false);
+  const [phoneInputHelperText, setPhoneInputHelperText] = useState('');
+
+  const [emailValid, setEmailValid] = useState(true);
+  const [phoneValid, setPhoneValid] = useState(true);
+
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   const [cooldownTime, setCooldownTime] = useState(0);
   const [loadingSendMail, setLoadingSendMail] = useState(false);
 
+  const normalizeValue = (value) =>
+    value === null || value === undefined ? '' : value;
+
   useEffect(() => {
-    if (user.email) {
-      setEmail(user.email);
+    setEmail(email.length ? email : normalizeValue(user.email));
+    setPhone(
+      phone.length ? phone : normalizeValue(user.phone.replace(/\D/g, ''))
+    );
+    if (!user.phone)
+      setPhoneInputHelperText(
+        'Enter your phone number in international format'
+      );
+
+    if (
+      normalizeValue(user.email) !== email ||
+      normalizeValue(user.phone) !== `+${phone}`
+    ) {
+      setIsChanges(true);
+    } else {
+      setIsChanges(false);
     }
-  }, [user]);
+  }, [user, email, phone]);
 
   useEffect(() => {
     // Восстановление таймера из localStorage
@@ -107,29 +136,86 @@ const AccountPageContactDetails = () => {
       })
       .finally(() => setLoadingSendMail(false));
   };
+
   const handlePhoneChange = (event) => {
-    const value = event.target.value;
-
-    // Удаляем все символы, кроме цифр и плюса
-    const sanitizedValue = value.replace(/[^\d+]/g, '');
-
-    // Проверяем формат номера телефона (опциональный "+", затем цифры длиной 10-15)
-    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    phoneError && setPhoneError(false);
+    const sanitizedValue = event.target.value.replace(/[^\d]/g, ''); //Удаляем все символы, кроме цифр и плюса
     setPhone(sanitizedValue);
-    setPhoneFieldError(
-      !phoneRegex.test(sanitizedValue) && sanitizedValue.length > 0
-    ); // Ошибка только если что-то введено
+
+    if (/^[0-9]{10,15}$/.test(sanitizedValue) && sanitizedValue.length > 0) {
+      setPhoneValid(true);
+    } else {
+      setPhoneValid(false);
+    }
   };
+
+  const handleEmailChange = (event) => {
+    emailError && setEmailError(false);
+    setEmail(event.target.value);
+    if (/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(event.target.value)) {
+      setEmailValid(true);
+    } else {
+      setEmailValid(false);
+    }
+  };
+
+  const onSaveButtonClick = () => {
+    setSaveChangesClicked(true);
+    if (emailValid && phoneValid) {
+      setDataSending(true);
+      updateContactData({ email, phone: `+${phone}` })
+        .then((user) => {
+          setSaveChangesClicked(false);
+          dispatch(setUser(user));
+          dispatch(
+            setSnackbar({
+              open: true,
+              text: 'Contact data updated successfully',
+              decorator: <AccountBoxIcon />,
+            })
+          );
+        })
+        .catch((e) => {
+          if (e.response && e.response.data.errors) {
+            e.response.data.errors.email &&
+              setEmailError(e.response.data.errors.email);
+            e.response.data.errors.phone &&
+              setPhoneError(e.response.data.errors.phone);
+          } else {
+            dispatch(
+              setNotificationModal({
+                open: true,
+                icon: <ErrorIcon />,
+                title: e.response.data.message || e.message,
+                description: 'Error updating contact data, try again later',
+              })
+            );
+          }
+        })
+        .finally(() => setDataSending(false));
+    }
+  };
+
+  const emailErrorCondition =
+    (user.email === email && !user.isActivated) ||
+    (saveChangesClicked && (emailError || !emailValid));
 
   return (
     <div className="account-page_user-info_contact-details">
       <h2>Contact details:</h2>
       <div className="account-page_user-info_contact-details_email">
         <TextField
-          error={!user.isActivated}
+          className="account-page_user-info_contact-details_email_field"
           label="Email"
           variant="outlined"
           value={email}
+          onChange={handleEmailChange}
+          error={emailErrorCondition}
+          helperText={
+            saveChangesClicked && (emailError || !emailValid)
+              ? emailError || 'Invalid email address'
+              : ''
+          }
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -138,43 +224,47 @@ const AccountPageContactDetails = () => {
             ), // Иконка mail перед полем ввода
           }}
         />
-        <div className="account-page_user-info_contact-details_email_confirm">
-          {!user.isActivated && (
-            <>
-              <span className="account-page_user-info_contact-details_email_confirm_info">
-                Requires confirmation
-              </span>
-              <button
-                disabled={loadingSendMail || cooldownTime}
-                onClick={handleSendConfirmation}
-                className={`account-page_user-info_contact-details_email_confirm_button ${
-                  cooldownTime ? 'cooldown' : ''
-                }`}
-              >
-                {cooldownTime ? (
-                  `Send again in ${cooldownTime} sec`
-                ) : (
-                  <>
-                    <CiMail />
-                    Send a confirmation email
-                  </>
-                )}
-              </button>
-            </>
-          )}
-        </div>
+        {user.email === email && !emailError && emailValid && (
+          <div className="account-page_user-info_contact-details_email_confirm">
+            {!user.isActivated && (
+              <>
+                <span className="account-page_user-info_contact-details_email_confirm_info">
+                  Requires confirmation
+                </span>
+                <button
+                  disabled={loadingSendMail || cooldownTime}
+                  onClick={handleSendConfirmation}
+                  className={`account-page_user-info_contact-details_email_confirm_button ${
+                    cooldownTime ? 'cooldown' : ''
+                  }`}
+                >
+                  {cooldownTime ? (
+                    `Send again in ${cooldownTime} sec`
+                  ) : (
+                    <>
+                      <CiMail />
+                      Send a confirmation email
+                    </>
+                  )}
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </div>
       <div className="account-page_user-info_contact-details_phone">
         <TextField
+          className="account-page_user-info_contact-details_phone_field"
           label="Phone Number"
           variant="outlined"
-          value={phone}
+          value={`+${phone}`}
           onChange={handlePhoneChange}
-          error={phoneFieldError}
+          error={saveChangesClicked && (phoneError || !phoneValid)}
           helperText={
-            phoneFieldError
-              ? 'Please enter a valid phone number (e.g., +1234567890)'
-              : 'Enter your phone number in international format'
+            saveChangesClicked && (phoneError || !phoneValid)
+              ? phoneError ||
+                'Please enter a valid phone number (e.g., +1234567890)'
+              : phoneInputHelperText
           }
           InputProps={{
             inputMode: 'tel', // Подсказка для мобильных устройств
@@ -186,7 +276,11 @@ const AccountPageContactDetails = () => {
           }}
         />
       </div>
-      <button className="account-page_user-info_contact-details_save-button">
+      <button
+        disabled={!isChanges || dataSending}
+        onClick={onSaveButtonClick}
+        className="account-page_user-info_contact-details_save-button"
+      >
         Save Changes
       </button>
     </div>

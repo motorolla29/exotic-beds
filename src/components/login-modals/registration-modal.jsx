@@ -35,7 +35,7 @@ const RegistrationModal = ({ setRegistrated }) => {
   const onNameChange = (e) => {
     nameError && setNameError(false);
     setName(e.target.value);
-    if (/([а-яА-Яa-zA-Z_\s]+){2,}$/.test(e.target.value)) {
+    if (/^[а-яА-Яa-zA-Z_\s]{2,32}$/.test(e.target.value)) {
       setNameValid(true);
     } else {
       setNameValid(false);
@@ -82,7 +82,6 @@ const RegistrationModal = ({ setRegistrated }) => {
         setLoading(false);
         dispatch(setUser(user));
         dispatch(setIsAuth(true));
-        //setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
       } catch (e) {
         setLoading(false);
         if (e.response && e.response.data.errors) {
@@ -123,7 +122,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           error={continueClicked && (nameError || !nameValid)}
           helperText={
             continueClicked && (nameError || !nameValid)
-              ? nameError || 'Minimum 2 alphabetic only characters'
+              ? nameError || 'Minimum 2, maximum 32 alphabetic only characters'
               : ''
           }
         />
