@@ -96,14 +96,22 @@
         
     &_title
         margin: 0 0 0 2em
-        h1
+        &_profile-id
             position: relative
-            margin: 0 0 0.5em 0
-            svg
+            display: flex
+            margin: 0 0 1em 0
+            &_check-icon
                 position: absolute
-                right: -1.5em
-                top: 0.2em
-                fill: $main-color-turquoise-transparent
+                right: -3.5em
+                top: 50%
+                transform: translateY(-50%)
+                width: 2.5em
+                height: auto
+                svg
+                    display: flex
+                    width: 100%
+                    height: auto
+                    fill: $main-color-turquoise-transparent
         &_signout
             cursor: pointer
             width: fit-content

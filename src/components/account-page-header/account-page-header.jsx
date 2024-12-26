@@ -271,10 +271,14 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
         </AnimatePresence>
       </div>
       <div className="account-page_heading_title">
-        <h1>
-          My Profile #{user.id}
-          {user.isActivated && <PiCheckCircleBold />}
-        </h1>
+        <div className="account-page_heading_title_profile-id">
+          <h1>My Profile #{user.id}</h1>
+          {(user.isActivated || 1) && (
+            <div className="account-page_heading_title_profile-id_check-icon">
+              <PiCheckCircleBold />
+            </div>
+          )}
+        </div>
         <div
           onClick={onSignoutHandler}
           className="account-page_heading_title_signout"
