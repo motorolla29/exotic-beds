@@ -36,15 +36,14 @@ const AccountPagePersonalData = () => {
     value === null || value === undefined ? '' : value;
 
   useEffect(() => {
-    setName(name.length ? name : normalizeValue(user.name));
-    setSurname(surname.length ? surname : normalizeValue(user.surname));
-    setPatronymic(
-      patronymic.length ? patronymic : normalizeValue(user.patronymic)
-    );
-    setDateOfBirth(
-      dateOfBirth.length ? dateOfBirth : normalizeValue(user.dateOfBirth)
-    );
-    setGender(gender.length ? gender : normalizeValue(user.gender));
+    setName(user.name ? user.name : name);
+    setSurname(user.surname ? user.surname : surname);
+    setPatronymic(user.patronymic ? user.patronymic : patronymic);
+    setDateOfBirth(user.dateOfBirth ? user.dateOfBirth : dateOfBirth);
+    setGender(user.gender ? user.gender : gender);
+  }, [user.name, user.surname, user.patronymic, user.dateOfBirth, user.gender]);
+
+  useEffect(() => {
     if (
       normalizeValue(user.name) !== name ||
       normalizeValue(user.surname) !== surname ||
@@ -56,7 +55,7 @@ const AccountPagePersonalData = () => {
     } else {
       setIsChanges(false);
     }
-  }, [user, name, surname, patronymic, dateOfBirth, gender]);
+  }, [name, surname, patronymic, dateOfBirth, gender, saveChangesClicked]);
 
   const onNameChange = (e) => {
     nameError && setNameError(false);

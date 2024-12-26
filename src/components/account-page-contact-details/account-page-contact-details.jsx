@@ -41,46 +41,25 @@ const AccountPageContactDetails = () => {
     value === null || value === undefined ? '' : value;
 
   useEffect(() => {
-    const normalizedPhone = normalizeValue(user.phone?.replace(/\D/g, ''));
-    const normalizedEmail = normalizeValue(user.email);
+    setEmail(user.email ? user.email : email);
+    setPhone(user.phone ? user.phone.replace(/\D/g, '') : phone);
 
-    // Устанавливаем email и phone только при первом рендере или при изменении user
-    if (!saveChangesClicked) {
-      if (!email) setEmail(normalizedEmail);
-      if (!phone) {
-        setPhone(normalizedPhone);
-        if (!user.phone)
-          setPhoneInputHelperText(
-            'Enter your phone number in international format'
-          );
-      }
+    if (!user.phone)
+      setPhoneInputHelperText(
+        'Enter your phone number in international format'
+      );
+  }, [user.email, user.phone]);
+
+  useEffect(() => {
+    if (
+      normalizeValue(user.email) !== email ||
+      normalizeValue(user.phone) !== `+${phone}`
+    ) {
+      setIsChanges(true);
+    } else {
+      setIsChanges(false);
     }
-
-    // Проверяем, были ли внесены изменения
-    const isEmailChanged = normalizedEmail !== email;
-    const isPhoneChanged = `+${normalizedPhone}` !== `+${phone}`;
-
-    setIsChanges(isEmailChanged || isPhoneChanged);
-
-    // setEmail(email.length ? email : normalizeValue(user.email));
-    // setPhone(
-    //   phone.length ? phone : normalizeValue(user.phone?.replace(/\D/g, ''))
-    // );
-
-    // if (!user.phone)
-    //   setPhoneInputHelperText(
-    //     'Enter your phone number in international format'
-    //   );
-
-    // if (
-    //   normalizeValue(user.email) !== email ||
-    //   normalizeValue(user.phone) !== `+${phone}`
-    // ) {
-    //   setIsChanges(true);
-    // } else {
-    //   setIsChanges(false);
-    // }
-  }, [user, email, phone, saveChangesClicked]);
+  }, [email, phone, saveChangesClicked]);
 
   useEffect(() => {
     // Восстановление таймера из localStorage
@@ -146,7 +125,6 @@ const AccountPageContactDetails = () => {
         setCooldownTime(cooldownDuration); // Устанавливаем отсечку
       })
       .catch((err) => {
-        console.log(err);
         dispatch(
           setNotificationModal({
             open: true,

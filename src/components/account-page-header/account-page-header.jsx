@@ -95,13 +95,12 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
         );
       })
       .catch((err) => {
-        console.log(err);
         dispatch(
           setNotificationModal({
             open: true,
             icon: <ErrorIcon />,
             title: 'Avatar deletion failed',
-            description: err.response.data.message,
+            description: err.response.data.message || err.message,
           })
         );
       })
@@ -161,13 +160,12 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
           );
         })
         .catch((err) => {
-          console.log(err);
           dispatch(
             setNotificationModal({
               open: true,
               icon: <ErrorIcon />,
               title: 'Avatar loading failed',
-              description: err.response.data.message,
+              description: err.response.data.message || err.message,
             })
           );
         })
@@ -273,7 +271,7 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
       <div className="account-page_heading_title">
         <div className="account-page_heading_title_profile-id">
           <h1>My Profile #{user.id}</h1>
-          {(user.isActivated || 1) && (
+          {user.isActivated && (
             <div className="account-page_heading_title_profile-id_check-icon">
               <PiCheckCircleBold />
             </div>
