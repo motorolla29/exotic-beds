@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextField } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
 import { Radio, RadioGroup, FormControlLabel } from '@mui/material';
 
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ErrorIcon from '@mui/icons-material/Error';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 import { updatePersonalData } from '../../api/userAPI';
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
@@ -31,6 +33,8 @@ const AccountPagePersonalData = () => {
   const [nameError, setNameError] = useState(false);
   const [surnameError, setSurnameError] = useState(false);
   const [patronymicError, setPatronymicError] = useState(false);
+
+  const dateInputRef = useRef();
 
   const normalizeValue = (value) =>
     value === null || value === undefined ? '' : value;
@@ -163,12 +167,24 @@ const AccountPagePersonalData = () => {
       </div>
       <div className="account-page_user-info_personal-data_date-of-birth">
         <TextField
+          className="account-page_user-info_personal-data_date-of-birth_field"
           label="Date of Birth"
           type="date"
           value={dateOfBirth}
           onChange={(e) => setDateOfBirth(e.target.value)}
           InputLabelProps={{
             shrink: true,
+            inputMode: 'numeric',
+          }}
+          inputRef={dateInputRef}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <EditCalendarIcon
+                  onClick={() => dateInputRef.current.showPicker()}
+                />
+              </InputAdornment>
+            ),
           }}
         />
       </div>

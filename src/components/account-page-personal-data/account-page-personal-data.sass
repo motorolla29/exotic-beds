@@ -10,6 +10,17 @@
         &_field.MuiTextField-root
             margin-bottom: 1em
             margin-right: 2em
+    &_date-of-birth
+        &_field.MuiTextField-root
+            width: 160px
+            
+            & input[type="date"]::-webkit-calendar-picker-indicator
+                display: none
+            & svg
+                cursor: pointer
+                &:hover
+                    opacity: 0.9
+
     &_gender
         width: fit-content
         & .MuiFormGroup-root

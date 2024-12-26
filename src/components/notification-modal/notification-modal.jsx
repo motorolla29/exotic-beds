@@ -2,7 +2,6 @@ import { DialogActions, DialogContent, DialogTitle, Divider } from '@mui/joy';
 import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import { Transition } from 'react-transition-group';
 
 import './notification-modal.sass';

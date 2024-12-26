@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { memo, useEffect, useRef, useState } from 'react';
 import { ReactComponent as CrossIcon } from '../../images/ui-icons/cross-icon.svg';
 import { ReactComponent as ChatIcon } from '../../images/ui-icons/chat-icon.svg';

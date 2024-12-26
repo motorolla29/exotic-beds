@@ -23,7 +23,7 @@ const StoreFinder = () => {
   const [popupInfo, setPopupInfo] = useState();
   const [showPopup, setShowPopup] = useState(false);
   const { storeFinderMap } = useMap();
-  const [ww, wh] = useWindowSize();
+  const [ww] = useWindowSize();
   const [locatorView, setLocatorView] = useState('map');
 
   const storesSortedByProximity = sortStoresByProximity(

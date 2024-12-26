@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch, useSelector } from 'react-redux';
 import { InputAdornment, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -42,7 +43,9 @@ const AccountPageContactDetails = () => {
 
   useEffect(() => {
     setEmail(user.email ? user.email : email);
-    setPhone(user.phone ? user.phone.replace(/\D/g, '') : phone);
+    setPhone(
+      user.phone ? normalizeValue(user.phone).replace(/\D/g, '') : phone
+    );
 
     if (!user.phone)
       setPhoneInputHelperText(
@@ -53,7 +56,7 @@ const AccountPageContactDetails = () => {
   useEffect(() => {
     if (
       normalizeValue(user.email) !== email ||
-      normalizeValue(user.phone) !== `+${phone}`
+      normalizeValue(user.phone).replace(/\D/g, '') !== phone
     ) {
       setIsChanges(true);
     } else {

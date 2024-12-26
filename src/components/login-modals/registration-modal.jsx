@@ -3,12 +3,7 @@ import { useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { registration } from '../../api/userAPI';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  loginModalsOpen,
-  setIsAuth,
-  setNotificationModal,
-  setUser,
-} from '../../store/action';
+import { setIsAuth, setNotificationModal, setUser } from '../../store/action';
 import useWindowSize from '../../hooks/use-window-size';
 import ErrorIcon from '@mui/icons-material/Error';
 
