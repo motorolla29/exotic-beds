@@ -41,24 +41,46 @@ const AccountPageContactDetails = () => {
     value === null || value === undefined ? '' : value;
 
   useEffect(() => {
-    setEmail(email.length ? email : normalizeValue(user.email));
-    setPhone(
-      phone.length ? phone : normalizeValue(user.phone.replace(/\D/g, ''))
-    );
-    if (!user.phone)
-      setPhoneInputHelperText(
-        'Enter your phone number in international format'
-      );
+    const normalizedPhone = normalizeValue(user.phone?.replace(/\D/g, ''));
+    const normalizedEmail = normalizeValue(user.email);
 
-    if (
-      normalizeValue(user.email) !== email ||
-      normalizeValue(user.phone) !== `+${phone}`
-    ) {
-      setIsChanges(true);
-    } else {
-      setIsChanges(false);
+    // Устанавливаем email и phone только при первом рендере или при изменении user
+    if (!saveChangesClicked) {
+      if (!email) setEmail(normalizedEmail);
+      if (!phone) {
+        setPhone(normalizedPhone);
+        if (!user.phone)
+          setPhoneInputHelperText(
+            'Enter your phone number in international format'
+          );
+      }
     }
-  }, [user, email, phone]);
+
+    // Проверяем, были ли внесены изменения
+    const isEmailChanged = normalizedEmail !== email;
+    const isPhoneChanged = `+${normalizedPhone}` !== `+${phone}`;
+
+    setIsChanges(isEmailChanged || isPhoneChanged);
+
+    // setEmail(email.length ? email : normalizeValue(user.email));
+    // setPhone(
+    //   phone.length ? phone : normalizeValue(user.phone?.replace(/\D/g, ''))
+    // );
+
+    // if (!user.phone)
+    //   setPhoneInputHelperText(
+    //     'Enter your phone number in international format'
+    //   );
+
+    // if (
+    //   normalizeValue(user.email) !== email ||
+    //   normalizeValue(user.phone) !== `+${phone}`
+    // ) {
+    //   setIsChanges(true);
+    // } else {
+    //   setIsChanges(false);
+    // }
+  }, [user, email, phone, saveChangesClicked]);
 
   useEffect(() => {
     // Восстановление таймера из localStorage
@@ -139,14 +161,24 @@ const AccountPageContactDetails = () => {
 
   const handlePhoneChange = (event) => {
     phoneError && setPhoneError(false);
-    const sanitizedValue = event.target.value.replace(/[^\d]/g, ''); //Удаляем все символы, кроме цифр и плюса
-    setPhone(sanitizedValue);
 
-    if (/^[0-9]{10,15}$/.test(sanitizedValue) && sanitizedValue.length > 0) {
+    //Удаляем все символы, кроме цифр и плюса
+    const sanitizedValue = event.target.value.replace(/[^\d]/g, '');
+
+    // Если поле очищается, сохраняем пустое значение
+    if (sanitizedValue === '') {
+      setPhone('');
+      setPhoneValid(false);
+      return;
+    }
+
+    if (/^[0-9]{10,15}$/.test(sanitizedValue)) {
       setPhoneValid(true);
     } else {
       setPhoneValid(false);
     }
+
+    setPhone(sanitizedValue);
   };
 
   const handleEmailChange = (event) => {
