@@ -137,6 +137,9 @@ const AccountPagePersonalData = () => {
               : ''
           }
           onChange={onNameChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           className="account-page_user-info_personal-data_full-name_field"
@@ -150,6 +153,9 @@ const AccountPagePersonalData = () => {
               : ''
           }
           onChange={onSurnameChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         <TextField
           className="account-page_user-info_personal-data_full-name_field"
@@ -163,6 +169,9 @@ const AccountPagePersonalData = () => {
               : ''
           }
           onChange={onPatronymicChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
       </div>
       <div className="account-page_user-info_personal-data_date-of-birth">

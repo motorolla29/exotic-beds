@@ -13,9 +13,14 @@
     &_date-of-birth
         &_field.MuiTextField-root
             width: 160px
-            
+            & input[type="date"] 
+                -webkit-appearance: none
+                appearance: none
+                position: relative
             & input[type="date"]::-webkit-calendar-picker-indicator
                 display: none
+                -webkit-appearance: none
+                appearance: none
             & svg
                 cursor: pointer
                 &:hover
