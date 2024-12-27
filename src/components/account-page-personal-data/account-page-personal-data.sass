@@ -17,7 +17,10 @@
                 -webkit-appearance: none
                 appearance: none
                 position: relative
-            & input[type="date"]::-webkit-calendar-picker-indicator
+                padding-right: 0
+            & input[type="date"]::-webkit-calendar-picker-indicator,
+            & input[type="date"]::-webkit-inner-spin-button,
+            & input[type="date"]::-webkit-clear-button
                 display: none
                 -webkit-appearance: none
                 appearance: none
