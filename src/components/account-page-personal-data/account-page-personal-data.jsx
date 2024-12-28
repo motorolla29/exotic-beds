@@ -33,6 +33,7 @@ const AccountPagePersonalData = () => {
   const [nameValid, setNameValid] = useState(true);
   const [surnameValid, setSurnameValid] = useState(true);
   const [patronymicValid, setPatronymicValid] = useState(true);
+  const [dateValid, setDateValid] = useState(true);
 
   const [nameError, setNameError] = useState(false);
   const [surnameError, setSurnameError] = useState(false);
@@ -47,7 +48,6 @@ const AccountPagePersonalData = () => {
     setPatronymic(user.patronymic ? user.patronymic : patronymic);
     setDateOfBirth(user.dateOfBirth ? dayjs(user.dateOfBirth) : null);
     setGender(user.gender ? user.gender : gender);
-    console.log(dateOfBirth);
   }, [user.name, user.surname, user.patronymic, user.dateOfBirth, user.gender]);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const AccountPagePersonalData = () => {
   const onSurnameChange = (e) => {
     surnameError && setSurnameError(false);
     setSurname(e.target.value);
-    if (/^[а-яА-Яa-zA-Z_\s]{2,32}$/.test(e.target.value)) {
+    if (/^[а-яА-Яa-zA-Z_\s]{0,32}$/.test(e.target.value)) {
       setSurnameValid(true);
     } else {
       setSurnameValid(false);
@@ -87,16 +87,32 @@ const AccountPagePersonalData = () => {
   const onPatronymicChange = (e) => {
     patronymicError && setPatronymicError(false);
     setPatronymic(e.target.value);
-    if (/^[а-яА-Яa-zA-Z_\s]{2,32}$/.test(e.target.value)) {
+    if (/^[а-яА-Яa-zA-Z_\s]{0,32}$/.test(e.target.value)) {
       setPatronymicValid(true);
     } else {
       setPatronymicValid(false);
     }
   };
 
+  const onDateChange = (newValue) => {
+    setDateOfBirth(newValue);
+    if (!newValue || !newValue.isValid()) {
+      setDateValid(false);
+    } else {
+      const currentYear = dayjs().year();
+      const year = newValue.year();
+
+      if (year >= 1900 && year <= currentYear) {
+        setDateValid(true);
+      } else {
+        setDateValid(false);
+      }
+    }
+  };
+
   const onSaveButtonClick = () => {
     setSaveChangesClicked(true);
-    if (nameValid && surnameValid && patronymicValid) {
+    if (nameValid && surnameValid && patronymicValid && dateValid) {
       setDataSending(true);
       updatePersonalData({
         name,
@@ -155,7 +171,7 @@ const AccountPagePersonalData = () => {
           error={saveChangesClicked && !surnameValid}
           helperText={
             saveChangesClicked && !surnameValid
-              ? 'Minimum 2, maximum 32 alphabetic only characters'
+              ? 'Maximum 32 alphabetic only characters'
               : ''
           }
           onChange={onSurnameChange}
@@ -168,7 +184,7 @@ const AccountPagePersonalData = () => {
           error={saveChangesClicked && !patronymicValid}
           helperText={
             saveChangesClicked && !patronymicValid
-              ? 'Minimum 2, maximum 32 alphabetic only characters'
+              ? 'Maximum 32 alphabetic only characters'
               : ''
           }
           onChange={onPatronymicChange}
@@ -182,7 +198,18 @@ const AccountPagePersonalData = () => {
             variant="outlined"
             value={dateOfBirth}
             format="DD.MM.YYYY"
-            onChange={(newValue) => setDateOfBirth(newValue)}
+            onChange={onDateChange}
+            sx={{
+              // Переопределяем стили Mui-error с высоким приоритетом, т.к тут не получается стандартное управление объектом ошибки
+              '&.MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root': {
+                color: saveChangesClicked && !dateValid ? '#d32f2f' : 'inherit',
+              },
+              '&.MuiFormControl-root .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-formControl .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor:
+                    saveChangesClicked && !dateValid ? '#d32f2f' : 'inherit',
+                },
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
