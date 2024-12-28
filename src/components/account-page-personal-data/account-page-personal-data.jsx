@@ -96,6 +96,10 @@ const AccountPagePersonalData = () => {
 
   const onDateChange = (newValue) => {
     setDateOfBirth(newValue);
+    if (newValue === null) {
+      setDateValid(true);
+      return;
+    }
     if (!newValue || !newValue.isValid()) {
       setDateValid(false);
     } else {
@@ -114,11 +118,15 @@ const AccountPagePersonalData = () => {
     setSaveChangesClicked(true);
     if (nameValid && surnameValid && patronymicValid && dateValid) {
       setDataSending(true);
+      const formattedDateOfBirth =
+        dateOfBirth && dayjs(dateOfBirth).isValid()
+          ? dayjs(dateOfBirth).format('YYYY-MM-DD')
+          : null;
       updatePersonalData({
         name,
         surname,
         patronymic,
-        dateOfBirth: dayjs(dateOfBirth).format('YYYY-MM-DD'),
+        dateOfBirth: formattedDateOfBirth,
         gender,
       })
         .then((user) => {
@@ -202,12 +210,36 @@ const AccountPagePersonalData = () => {
             sx={{
               // Переопределяем стили Mui-error с высоким приоритетом, т.к тут не получается стандартное управление объектом ошибки
               '&.MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root': {
-                color: saveChangesClicked && !dateValid ? '#d32f2f' : 'inherit',
+                color: saveChangesClicked && !dateValid ? '#d32f2f' : '',
               },
               '&.MuiFormControl-root .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-formControl .MuiOutlinedInput-notchedOutline':
                 {
                   borderColor:
-                    saveChangesClicked && !dateValid ? '#d32f2f' : 'inherit',
+                    saveChangesClicked && !dateValid ? '#d32f2f' : '',
+                },
+              '&.MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root.Mui-error':
+                {
+                  color:
+                    saveChangesClicked && !dateValid
+                      ? '#d32f2f'
+                      : 'rgba(0, 0, 0, 0.6)',
+                },
+              '&.MuiFormControl-root .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-formControl.Mui-error .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor:
+                    saveChangesClicked && !dateValid
+                      ? '#d32f2f'
+                      : 'rgba(0, 0, 0, 0.23)',
+                },
+              '&.MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root.Mui-error.Mui-focused':
+                {
+                  color:
+                    saveChangesClicked && !dateValid ? '#d32f2f' : '#004757',
+                },
+              '&.MuiFormControl-root .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-formControl.Mui-error.Mui-focused .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor:
+                    saveChangesClicked && !dateValid ? '#d32f2f' : '#004757',
                 },
             }}
             renderInput={(params) => (
