@@ -11,21 +11,11 @@
             margin-bottom: 1em
             margin-right: 2em
     &_date-of-birth
-        &_field.MuiTextField-root
-            min-width: fit-content
-            width: 160px
-            & input[type="date"] 
-                -webkit-appearance: none
-                -moz-appearance: none
-                appearance: none
-                padding-right: 0
-            & input[type="date"]::-webkit-calendar-picker-indicator
-                display: none
-            & input[type="date"]::-moz-calendar-picker-indicator 
-                display: none
-            & input[type="date"]::-webkit-inner-spin-button, 
-            & input[type="date"]::-webkit-clear-button 
-                display: none
+        &_field
+            input
+                width: 110px
+            & .MuiInputAdornment-root
+                margin: 0
             & svg
                 cursor: pointer
                 &:hover
@@ -60,7 +50,7 @@
 
 @media (max-width: 360px) 
     .account-page_user-info_personal-data
-        &_full-name, &_date-of-birth
+        &_full-name
             &_field.MuiTextField-root
                 margin-right: 0
         &_gender

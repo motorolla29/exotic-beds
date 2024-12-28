@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextField, InputAdornment } from '@mui/material';
+import { TextField } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Radio, RadioGroup, FormControlLabel } from '@mui/material';
 
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ErrorIcon from '@mui/icons-material/Error';
-import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 import { updatePersonalData } from '../../api/userAPI';
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
@@ -20,10 +23,11 @@ const AccountPagePersonalData = () => {
   const [saveChangesClicked, setSaveChangesClicked] = useState(false);
   const [isChanges, setIsChanges] = useState(false);
   const [dataSending, setDataSending] = useState(false);
+
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [patronymic, setPatronymic] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState(null);
   const [gender, setGender] = useState('');
 
   const [nameValid, setNameValid] = useState(true);
@@ -34,8 +38,6 @@ const AccountPagePersonalData = () => {
   const [surnameError, setSurnameError] = useState(false);
   const [patronymicError, setPatronymicError] = useState(false);
 
-  const dateInputRef = useRef();
-
   const normalizeValue = (value) =>
     value === null || value === undefined ? '' : value;
 
@@ -43,8 +45,9 @@ const AccountPagePersonalData = () => {
     setName(user.name ? user.name : name);
     setSurname(user.surname ? user.surname : surname);
     setPatronymic(user.patronymic ? user.patronymic : patronymic);
-    setDateOfBirth(user.dateOfBirth ? user.dateOfBirth : dateOfBirth);
+    setDateOfBirth(user.dateOfBirth ? dayjs(user.dateOfBirth) : null);
     setGender(user.gender ? user.gender : gender);
+    console.log(dateOfBirth);
   }, [user.name, user.surname, user.patronymic, user.dateOfBirth, user.gender]);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ const AccountPagePersonalData = () => {
       normalizeValue(user.name) !== name ||
       normalizeValue(user.surname) !== surname ||
       normalizeValue(user.patronymic) !== patronymic ||
-      normalizeValue(user.dateOfBirth) !== dateOfBirth ||
+      !dayjs(dateOfBirth).isSame(dayjs(user.dateOfBirth)) ||
       normalizeValue(user.gender) !== gender
     ) {
       setIsChanges(true);
@@ -95,7 +98,13 @@ const AccountPagePersonalData = () => {
     setSaveChangesClicked(true);
     if (nameValid && surnameValid && patronymicValid) {
       setDataSending(true);
-      updatePersonalData({ name, surname, patronymic, dateOfBirth, gender })
+      updatePersonalData({
+        name,
+        surname,
+        patronymic,
+        dateOfBirth: dayjs(dateOfBirth).format('YYYY-MM-DD'),
+        gender,
+      })
         .then((user) => {
           setSaveChangesClicked(false);
           dispatch(setUser(user));
@@ -137,9 +146,6 @@ const AccountPagePersonalData = () => {
               : ''
           }
           onChange={onNameChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
         />
         <TextField
           className="account-page_user-info_personal-data_full-name_field"
@@ -153,9 +159,6 @@ const AccountPagePersonalData = () => {
               : ''
           }
           onChange={onSurnameChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
         />
         <TextField
           className="account-page_user-info_personal-data_full-name_field"
@@ -169,33 +172,30 @@ const AccountPagePersonalData = () => {
               : ''
           }
           onChange={onPatronymicChange}
-          InputLabelProps={{
-            shrink: true,
-          }}
         />
       </div>
       <div className="account-page_user-info_personal-data_date-of-birth">
-        <TextField
-          className="account-page_user-info_personal-data_date-of-birth_field"
-          label="Date of Birth"
-          type="date"
-          value={dateOfBirth}
-          onChange={(e) => setDateOfBirth(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-            inputMode: 'numeric',
-          }}
-          inputRef={dateInputRef}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <EditCalendarIcon
-                  onClick={() => dateInputRef.current.showPicker()}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            className="account-page_user-info_personal-data_date-of-birth_field"
+            label="Date of Birth"
+            variant="outlined"
+            value={dateOfBirth}
+            format="DD.MM.YYYY"
+            onChange={(newValue) => setDateOfBirth(newValue)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                slotProps={{
+                  inputLabel: {
+                    shrink: true,
+                    inputMode: 'numeric',
+                  },
+                }}
+              />
+            )}
+          />
+        </LocalizationProvider>
       </div>
       <div className="account-page_user-info_personal-data_gender">
         <RadioGroup value={gender} onChange={(e) => setGender(e.target.value)}>
