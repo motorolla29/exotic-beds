@@ -1,6 +1,16 @@
 import getDistance from 'geolib/es/getDistance';
 import Resizer from 'react-image-file-resizer';
 import { UAParser } from 'ua-parser-js';
+import dayjs from 'dayjs';
+
+const nullAndUndefinedToEmptyString = (value) =>
+  value === null || value === undefined ? '' : value;
+
+const areDatesEqual = (date1, date2) => {
+  if (date1 === null && date2 === null) return true;
+  if (date1 === null || date2 === null) return false;
+  return dayjs(date1).isSame(dayjs(date2));
+};
 
 const generateDeviceId = () => {
   const parser = new UAParser();
@@ -547,6 +557,8 @@ const categoriesIds = {
 };
 
 export {
+  nullAndUndefinedToEmptyString,
+  areDatesEqual,
   generateDeviceId,
   resizeImage,
   getCartWithAddedProduct,

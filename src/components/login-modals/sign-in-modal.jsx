@@ -5,12 +5,16 @@ import { login } from '../../api/userAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   loginModalsOpen,
+  setCart,
   setIsAuth,
+  setLovelist,
   setNotificationModal,
   setUser,
 } from '../../store/action';
 import ErrorIcon from '@mui/icons-material/Error';
 import useWindowSize from '../../hooks/use-window-size';
+import { getLovelist } from '../../api/lovelistAPI';
+import { getBasket } from '../../api/basketAPI';
 
 const SignInModal = ({ setRegistrated }) => {
   const dispatch = useDispatch();
@@ -41,6 +45,12 @@ const SignInModal = ({ setRegistrated }) => {
       setLoading(false);
       dispatch(setUser(user));
       dispatch(setIsAuth(true));
+      const [basket, lovelist] = await Promise.all([
+        getBasket(),
+        getLovelist(),
+      ]);
+      dispatch(setCart(basket));
+      dispatch(setLovelist(lovelist));
       setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
     } catch (e) {
       setLoading(false);

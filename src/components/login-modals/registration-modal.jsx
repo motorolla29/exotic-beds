@@ -114,7 +114,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           label="Name"
           variant="outlined"
           color="success"
-          error={continueClicked && (nameError || !nameValid)}
+          error={continueClicked && (!!nameError || !nameValid)}
           helperText={
             continueClicked && (nameError || !nameValid)
               ? nameError || 'Minimum 2, maximum 32 alphabetic only characters'
@@ -129,7 +129,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           fullWidth
           label="Email"
           variant="outlined"
-          error={continueClicked && (emailError || !emailValid)}
+          error={continueClicked && (!!emailError || !emailValid)}
           helperText={
             continueClicked && (emailError || !emailValid)
               ? emailError || 'Invalid email address'
@@ -145,7 +145,7 @@ const RegistrationModal = ({ setRegistrated }) => {
           label="Password"
           variant="outlined"
           type="password"
-          error={continueClicked && (passwordError || !passwordValid)}
+          error={continueClicked && (!!passwordError || !passwordValid)}
           helperText={
             continueClicked && (passwordError || !passwordValid)
               ? passwordError || 'Password must be at least 6 characters long'

@@ -13,6 +13,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 
 import { updatePersonalData } from '../../api/userAPI';
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
+import { nullAndUndefinedToEmptyString, areDatesEqual } from '../../utils';
 
 import './account-page-personal-data.sass';
 
@@ -39,9 +40,6 @@ const AccountPagePersonalData = () => {
   const [surnameError, setSurnameError] = useState(false);
   const [patronymicError, setPatronymicError] = useState(false);
 
-  const normalizeValue = (value) =>
-    value === null || value === undefined ? '' : value;
-
   useEffect(() => {
     setName(user.name ? user.name : name);
     setSurname(user.surname ? user.surname : surname);
@@ -52,11 +50,11 @@ const AccountPagePersonalData = () => {
 
   useEffect(() => {
     if (
-      normalizeValue(user.name) !== name ||
-      normalizeValue(user.surname) !== surname ||
-      normalizeValue(user.patronymic) !== patronymic ||
-      !dayjs(dateOfBirth).isSame(dayjs(user.dateOfBirth)) ||
-      normalizeValue(user.gender) !== gender
+      nullAndUndefinedToEmptyString(user.name) !== name ||
+      nullAndUndefinedToEmptyString(user.surname) !== surname ||
+      nullAndUndefinedToEmptyString(user.patronymic) !== patronymic ||
+      !areDatesEqual(dateOfBirth, user.dateOfBirth) ||
+      nullAndUndefinedToEmptyString(user.gender) !== gender
     ) {
       setIsChanges(true);
     } else {

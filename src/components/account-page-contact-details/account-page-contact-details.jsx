@@ -13,6 +13,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
 import { resendActivationMail, updateContactData } from '../../api/userAPI';
+import { nullAndUndefinedToEmptyString } from '../../utils';
 
 import './account-page-contact-details.sass';
 
@@ -38,13 +39,12 @@ const AccountPageContactDetails = () => {
   const [cooldownTime, setCooldownTime] = useState(0);
   const [loadingSendMail, setLoadingSendMail] = useState(false);
 
-  const normalizeValue = (value) =>
-    value === null || value === undefined ? '' : value;
-
   useEffect(() => {
     setEmail(user.email ? user.email : email);
     setPhone(
-      user.phone ? normalizeValue(user.phone).replace(/\D/g, '') : phone
+      user.phone
+        ? nullAndUndefinedToEmptyString(user.phone).replace(/\D/g, '')
+        : phone
     );
 
     if (!user.phone)
@@ -55,8 +55,8 @@ const AccountPageContactDetails = () => {
 
   useEffect(() => {
     if (
-      normalizeValue(user.email) !== email ||
-      normalizeValue(user.phone).replace(/\D/g, '') !== phone
+      nullAndUndefinedToEmptyString(user.email) !== email ||
+      nullAndUndefinedToEmptyString(user.phone).replace(/\D/g, '') !== phone
     ) {
       setIsChanges(true);
     } else {
