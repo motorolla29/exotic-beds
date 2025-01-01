@@ -56,7 +56,6 @@ const App = () => {
         if (!storedDeviceId) {
           //storedDeviceId = generateDeviceId();
           storedDeviceId = await generateDeviceIdWithUAClientHints();
-          console.log(storedDeviceId);
           localStorage.setItem('deviceId', storedDeviceId);
         }
         dispatch(setDeviceId(storedDeviceId));

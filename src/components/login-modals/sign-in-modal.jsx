@@ -76,7 +76,6 @@ const SignInModal = ({ setRegistrated }) => {
 
   const handleEnterPress = (e) => {
     if (e.key === 'Enter') {
-      console.log(email, password);
       if (email && password && !loading && !emailError && !passwordError)
         signInHandler();
     }

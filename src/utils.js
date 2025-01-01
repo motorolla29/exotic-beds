@@ -27,10 +27,12 @@ const generateDeviceIdWithUAClientHints = async () => {
 
       let deviceType = 'Unknown Device';
 
+      const mobileBrand = brand || uaData.brand;
+
       // Определяем тип устройства
       if (navigator.userAgentData.mobile) {
         deviceType = brand
-          ? `${brand} ${model || 'Generic Mobile Device'}`
+          ? `${mobileBrand} ${model || 'Generic Mobile Device'}`
           : model || 'Generic Mobile Device';
       } else {
         // Для настольных устройств
