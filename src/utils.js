@@ -12,6 +12,54 @@ const areDatesEqual = (date1, date2) => {
   return dayjs(date1).isSame(dayjs(date2));
 };
 
+const generateDeviceIdWithUAClientHints = async () => {
+  if (navigator.userAgentData) {
+    const uaData = navigator.userAgentData;
+
+    try {
+      const { model, platform, platformVersion } =
+        await uaData.getHighEntropyValues([
+          'model',
+          'platform',
+          'platformVersion',
+        ]);
+
+      let deviceType = 'Unknown Device';
+
+      // Определяем тип устройства
+      if (navigator.userAgentData.mobile) {
+        // Если это мобильное устройство, используем модель
+        deviceType = model || 'Generic Mobile Device';
+      } else {
+        // Для настольных устройств
+        const formattedPlatform = `${platform || 'Unknown'} ${
+          platformVersion || ''
+        }`.trim();
+        deviceType = `${formattedPlatform} Desktop`;
+      }
+
+      const randomString = Math.random()
+        .toString(36)
+        .slice(2, 11)
+        .toUpperCase();
+
+      return `${deviceType} ID: ${randomString}`;
+    } catch (error) {
+      console.error('Failed to retrieve high entropy UA-CH values:', error);
+      return `Unknown Device ID: ${Math.random()
+        .toString(36)
+        .slice(2, 11)
+        .toUpperCase()}`;
+    }
+  } else {
+    console.warn(
+      'User-Agent Client Hints are not supported. Falling back to basic device info.'
+    );
+    const randomString = Math.random().toString(36).slice(2, 11).toUpperCase();
+    return `Fallback Device ID: ${randomString}`;
+  }
+};
+
 const generateDeviceId = () => {
   const parser = new UAParser();
   const result = parser.getResult(); // Получаем все данные о пользователе
@@ -559,6 +607,7 @@ const categoriesIds = {
 export {
   nullAndUndefinedToEmptyString,
   areDatesEqual,
+  generateDeviceIdWithUAClientHints,
   generateDeviceId,
   resizeImage,
   getCartWithAddedProduct,

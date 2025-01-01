@@ -13,7 +13,7 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import './chat.sass';
 
 const Chat = () => {
-  const [play] = useSound(uvedomlenie);
+  const [play] = useSound(uvedomlenie, { volume: 0.1 });
 
   const [state, handleSubmit] = useForm('moqggkvy');
   const [sent, setSent] = useState(false);

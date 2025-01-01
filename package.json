@@ -43,7 +43,7 @@
     "sass": "1.69.7",
     "slick-carousel": "1.8.1",
     "swiper": "11.1.1",
-    "ua-parser-js": "2.0.0",
+    "ua-parser-js": "^2.0.0",
     "use-sound": "4.0.1"
   },
   "scripts": {

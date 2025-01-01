@@ -31,7 +31,10 @@ import { getBasket } from '../../api/basketAPI';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getAllProducts } from '../../api/productAPI';
 import ProtectedRoute from '../../routes/ProtectedRoute';
-import { generateDeviceId } from '../../utils';
+import {
+  generateDeviceId,
+  generateDeviceIdWithUAClientHints,
+} from '../../utils';
 
 import './app.sass';
 
@@ -51,7 +54,9 @@ const App = () => {
         // Генерация deviceId
         let storedDeviceId = localStorage.getItem('deviceId');
         if (!storedDeviceId) {
-          storedDeviceId = generateDeviceId();
+          //storedDeviceId = generateDeviceId();
+          storedDeviceId = await generateDeviceIdWithUAClientHints();
+          console.log(storedDeviceId);
           localStorage.setItem('deviceId', storedDeviceId);
         }
         dispatch(setDeviceId(storedDeviceId));
