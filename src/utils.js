@@ -17,8 +17,9 @@ const generateDeviceIdWithUAClientHints = async () => {
     const uaData = navigator.userAgentData;
 
     try {
-      const { model, platform, platformVersion } =
+      const { brand, model, platform, platformVersion } =
         await uaData.getHighEntropyValues([
+          'brand',
           'model',
           'platform',
           'platformVersion',
@@ -28,8 +29,6 @@ const generateDeviceIdWithUAClientHints = async () => {
 
       // Определяем тип устройства
       if (navigator.userAgentData.mobile) {
-        const brand = uaData.brand || ''; // Получаем бренд устройства, если он доступен
-        // Если это мобильное устройство, используем модель
         deviceType = brand
           ? `${brand} ${model || 'Generic Mobile Device'}`
           : model || 'Generic Mobile Device';
