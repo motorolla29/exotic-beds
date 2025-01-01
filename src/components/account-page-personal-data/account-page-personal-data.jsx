@@ -104,7 +104,7 @@ const AccountPagePersonalData = () => {
       const currentYear = dayjs().year();
       const year = newValue.year();
 
-      if (year >= 1900 && year <= currentYear) {
+      if (year > 1900 && year < currentYear) {
         setDateValid(true);
       } else {
         setDateValid(false);
