@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { TextField } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { login } from '../../api/userAPI';
 import { useDispatch, useSelector } from 'react-redux';
@@ -73,6 +74,21 @@ const SignInModal = ({ setRegistrated }) => {
     }
   };
 
+  const handleEnterPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log(email, password);
+      if (email && password && !loading && !emailError && !passwordError)
+        signInHandler();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleEnterPress);
+    return () => {
+      window.removeEventListener('keydown', handleEnterPress);
+    };
+  }, [email, password, loading, emailError, passwordError]);
+
   return (
     <div className="login-modals_sign-in-inner">
       <h2>Sign in</h2>
@@ -84,7 +100,7 @@ const SignInModal = ({ setRegistrated }) => {
           fullWidth
           label="Email"
           variant="outlined"
-          error={signInClicked && emailError}
+          error={!!signInClicked && !!emailError}
           helperText={signInClicked && emailError ? emailError : false}
         />
         <TextField
@@ -95,7 +111,7 @@ const SignInModal = ({ setRegistrated }) => {
           label="Password"
           variant="outlined"
           type="password"
-          error={signInClicked && passwordError}
+          error={!!signInClicked && !!passwordError}
           helperText={signInClicked && passwordError ? passwordError : false}
         />
       </div>

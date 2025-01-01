@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { TextField } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { registration } from '../../api/userAPI';
 import { useDispatch, useSelector } from 'react-redux';
@@ -100,6 +101,38 @@ const RegistrationModal = ({ setRegistrated }) => {
       }
     }
   };
+
+  const handleEnterPress = (e) => {
+    if (e.key === 'Enter') {
+      if (
+        !loading &&
+        name &&
+        email &&
+        password &&
+        confirmPassword &&
+        !nameError &&
+        !emailError &&
+        !passwordError
+      )
+        signUpHandler();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleEnterPress);
+    return () => {
+      window.removeEventListener('keydown', handleEnterPress);
+    };
+  }, [
+    name,
+    email,
+    loading,
+    password,
+    confirmPassword,
+    nameError,
+    emailError,
+    passwordError,
+  ]);
 
   return (
     <div className="login-modals_registration-inner">
