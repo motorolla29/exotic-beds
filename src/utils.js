@@ -12,88 +12,81 @@ const areDatesEqual = (date1, date2) => {
   return dayjs(date1).isSame(dayjs(date2));
 };
 
-const generateDeviceIdWithUAClientHints = async () => {
+const generateDeviceIdWithUserAgentAndClientHints = async () => {
+  let deviceType = 'Unknown Device';
+
   if (navigator.userAgentData) {
     const uaData = navigator.userAgentData;
-
     try {
-      const { brand, model, platform, platformVersion } =
+      const { brands, model, platform, platformVersion } =
         await uaData.getHighEntropyValues([
-          'brand',
+          'brands',
           'model',
           'platform',
           'platformVersion',
         ]);
 
-      let deviceType = 'Unknown Device';
+      const brand = brands && brands.length > 0 ? brands[0].brand : null;
 
-      const mobileBrand = brand || uaData.brand;
-
-      // Определяем тип устройства
-      if (navigator.userAgentData.mobile) {
-        deviceType = brand
-          ? `${mobileBrand} ${model || 'Generic Mobile Device'}`
-          : model || 'Generic Mobile Device';
+      if (uaData.mobile) {
+        deviceType =
+          brand && model && model.length >= 3
+            ? `${brand} ${model}`
+            : brand
+            ? `${brand} Generic Mobile Device`
+            : model && model.length >= 3
+            ? model
+            : 'Generic Mobile Device';
       } else {
-        // Для настольных устройств
         const formattedPlatform = `${platform || 'Unknown'} ${
           platformVersion || ''
         }`.trim();
-        deviceType = `${formattedPlatform} Desktop`;
+        deviceType =
+          brand && formattedPlatform
+            ? `${brand} ${formattedPlatform} Desktop`
+            : formattedPlatform
+            ? `${formattedPlatform} Desktop`
+            : 'Generic Desktop';
       }
-
-      const randomString = Math.random()
-        .toString(36)
-        .slice(2, 11)
-        .toUpperCase();
-
-      return `${deviceType} ID: ${randomString}`;
     } catch (error) {
       console.error('Failed to retrieve high entropy UA-CH values:', error);
-      return `Unknown Device ID: ${Math.random()
-        .toString(36)
-        .slice(2, 11)
-        .toUpperCase()}`;
+      deviceType = 'Unknown Device';
     }
   } else {
     console.warn(
       'User-Agent Client Hints are not supported. Falling back to basic device info.'
     );
-    const randomString = Math.random().toString(36).slice(2, 11).toUpperCase();
-    return `Fallback Device ID: ${randomString}`;
+    deviceType = 'Fallback Device';
   }
-};
 
-const generateDeviceId = () => {
-  const parser = new UAParser();
-  const result = parser.getResult(); // Получаем все данные о пользователе
-
-  let deviceModel = 'Unknown Device';
-
-  // Определяем, если это мобильное устройство или desktop
-  if (result.device.type === 'mobile' || result.device.type === 'tablet') {
-    // Если мобильное устройство, возвращаем модель
-    if (result.device.model) {
-      deviceModel = result.device.model;
-    } else {
-      // В случае, если модель не определена, указываем generic модель устройства
-      deviceModel = `${
-        result.device.type.charAt(0).toUpperCase() + result.device.type.slice(1)
-      } Device`;
-    }
-  } else if (
-    result.os.name === 'Windows' ||
-    result.os.name === 'Mac OS' ||
-    result.os.name === 'Linux'
+  //Fallback на User-Agent
+  if (
+    deviceType.includes('Generic') ||
+    deviceType.includes('Unknown') ||
+    deviceType.includes('Fallback')
   ) {
-    // Для десктопов, добавляем информацию о платформе
-    deviceModel = `${result.os.name} Desktop`;
+    const parser = new UAParser();
+    const result = parser.getResult();
+    if (result.device.type === 'mobile' || result.device.type === 'tablet') {
+      deviceType =
+        result.device.model && result.device.model.length >= 3
+          ? result.device.model
+          : `${
+              result.device.type.charAt(0).toUpperCase() +
+              result.device.type.slice(1)
+            } Device`;
+    } else if (result.os.name) {
+      const osName = result.os.name || 'Unknown';
+      const osVersion = result.os.version ? ` ${result.os.version}` : '';
+      deviceType = `${osName}${osVersion} Desktop`;
+    } else {
+      deviceType = 'Fallback Desktop';
+    }
   }
 
-  // Генерация случайной строки для уникальности
-  const randomString = Math.random().toString(36).slice(2, 11).toUpperCase(); // Генерация случайной строки из 9 символов
+  const randomString = Math.random().toString(36).slice(2, 11).toUpperCase();
 
-  return `${deviceModel} ID: ${randomString}`;
+  return `${deviceType} ID: ${randomString}`;
 };
 
 const resizeImage = (file) => {
@@ -611,8 +604,7 @@ const categoriesIds = {
 export {
   nullAndUndefinedToEmptyString,
   areDatesEqual,
-  generateDeviceIdWithUAClientHints,
-  generateDeviceId,
+  generateDeviceIdWithUserAgentAndClientHints,
   resizeImage,
   getCartWithAddedProduct,
   getCartWithIncreasedProduct,
