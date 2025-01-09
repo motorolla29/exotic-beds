@@ -12,9 +12,11 @@ import { scrollController } from '../../utils';
 import { PROMOCODES } from '../../data/promocodes';
 
 import './cart.sass';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const overlayLoading = useSelector((state) => state.overlayLoader);
   const isOpen = useSelector((state) => state.isCartOpen);
   const cartItems = useSelector((state) => state.cartProducts);
@@ -238,7 +240,10 @@ const Cart = () => {
                         </div>
                       </div>
                       <div className="cart_widget_widget-inner_checkout">
-                        <button className="cart_widget_widget-inner_checkout_button">
+                        <button
+                          onClick={() => navigate('/checkout')}
+                          className="cart_widget_widget-inner_checkout_button"
+                        >
                           Checkout
                         </button>
                       </div>

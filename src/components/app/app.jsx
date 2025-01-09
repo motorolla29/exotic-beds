@@ -27,6 +27,7 @@ import {
   setUser,
 } from '../../store/action';
 import AccountPage from '../pages/account-page/account-page';
+import Checkout from '../pages/checkout-page/checkout-page';
 import { getBasket } from '../../api/basketAPI';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getAllProducts } from '../../api/productAPI';
@@ -34,6 +35,7 @@ import ProtectedRoute from '../../routes/ProtectedRoute';
 import { generateDeviceIdWithUserAgentAndClientHints } from '../../utils';
 
 import './app.sass';
+import CheckoutPage from '../pages/checkout-page/checkout-page';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -149,9 +151,11 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+
           <Route path="not-found" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </BrowserRouter>
   );

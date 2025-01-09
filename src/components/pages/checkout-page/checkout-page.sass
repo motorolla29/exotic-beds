@@ -1,0 +1,22 @@
+@import 'src/styles/variables'
+    
+.checkout-page
+    height: 100vh
+    &_header
+        height: 9em
+        display: flex
+        justify-content: center
+        align-items: center
+        border-bottom: 1px solid $main-color-green-light
+        &_logo
+            position: relative
+            width: 8em
+            height: auto
+            img
+                display: flex
+                width: 100%
+    &_main
+        display: flex
+        flex-direction: row
+        min-height: calc( 100vh - 9em )
+        
