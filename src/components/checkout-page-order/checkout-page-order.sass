@@ -1,10 +1,123 @@
 @import 'src/styles/variables'
 
 .checkout-page_main_order
+    position: relative
     width: 45%
     background: $main-color-white
     &_inner
         padding: 2em
         position: sticky
         top: 0
+        justify-self: flex-start
         height: fit-content
+        width: 100%
+        max-width: 550px
+        &_items
+            &_item
+                display: flex
+                justify-content: space-between
+                margin-bottom: 1em
+                
+                &_info
+                    display: flex
+                    &_visual
+                        display: flex
+                        position: relative
+                        width: 4em
+                        height: 4em
+                        & > div
+                            position: relative
+                            width: 100%
+                            height: 100%
+                            border-radius: 5px
+                            overflow: hidden
+                            background: #c4e2cf20
+                        &_count
+                            position: absolute
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            font-size: 0.75em
+                            width: 1.75em
+                            height: 1.75em
+                            border-radius: 50%
+                            top: -0.5em
+                            right: -0.5em
+                            background: $main-color-green-light
+                            opacity: 0.9
+                    &_title
+                        white-space: nowrap
+                        overflow: hidden
+                        text-overflow: ellipsis
+                        width: 250px
+                        margin-left: 0.75em
+                &_price
+        &_promocode
+            font-size: 1.25em
+            margin: 2em 0
+            &_body
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 100%
+                &_input-container
+                    position: relative
+                    flex-grow: 1
+                    height: 2em
+                &_input
+                    padding: 0 0.4em
+                    font-size: 1em
+                    color: $main-color-grey
+                    width: 100%
+                    height: 100%
+                    border-radius: 0.25em
+                    border: #00475747 solid 1px 
+                    outline-color: #004757ae
+                    align-items: center
+                    &::placeholder
+                        font-size: 0.75em
+                    &.valid
+                        border-color: green
+                    &.invalid
+                        border-color: red
+                &_status
+                    width: 100%
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    position: absolute
+                    text-align: center
+                    font-weight: 600
+                    font-size: 0.60em
+                    padding: 0.25em 0
+                    left: 0%
+                    top: 100%
+                    &.valid
+                        color: green
+                    &.invalid
+                        color: red
+                &_button
+                    color: $main-color-grey
+                    font-weight: 400
+                    font-size: 0.6em
+                    background:  #00475710 
+                    margin: 0 0 0 2em
+                    padding: 1em 2em
+                    cursor: pointer
+                    border: none
+                    border-radius: 2em
+                    outline: #00475747 solid 1px
+                    transition: transform 0.1s ease
+                    &:hover
+                        opacity: 0.8
+                    &:active
+                        transform: scale(0.95)
+        &_count
+            &_subtotal, &_promocode, &_savings, &_delivery, &_total
+                display: flex
+                justify-content: space-between
+                margin-bottom: 0.75em
+            &_total
+                font-size: 1.5em
+                font-weight: 600
+                margin: 1.5em 0 0 0
