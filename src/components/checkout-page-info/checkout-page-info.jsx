@@ -16,11 +16,10 @@ import JoyFormLabel from '@mui/joy/FormLabel';
 import JoySelect from '@mui/joy/Select';
 import JoyOption from '@mui/joy/Option';
 import { ClickAwayListener } from '@mui/base';
-import PinDropIcon from '@mui/icons-material/PinDrop';
+import { PinDrop } from '@mui/icons-material';
 import { AVAILABLE_SHIPPING_COUNTRIES, MAPTILER_API_KEY } from '../../const';
 
 import './checkout-page-info.sass';
-import { PinDrop } from '@mui/icons-material';
 
 const CheckoutPageInfo = () => {
   const [addressSuggestions, setAddressSuggestions] = useState([]);
@@ -71,7 +70,7 @@ const CheckoutPageInfo = () => {
             key: MAPTILER_API_KEY,
             limit: 5,
             language: 'en',
-            country: countryCode || undefined, // Передаем код страны, если он указан
+            country: countryCode || undefined,
           },
         }
       );
@@ -79,7 +78,7 @@ const CheckoutPageInfo = () => {
       const results = response.data.features || [];
       setAddressSuggestions(
         results.map((feature) => ({
-          name: feature.place_name, // Полное название места
+          name: feature.place_name,
           city:
             feature.context?.find((c) => c.id.includes('municipality'))?.text ||
             feature.context?.find((c) => c.id.startsWith('subregion'))?.text ||
@@ -88,12 +87,11 @@ const CheckoutPageInfo = () => {
           postalCode:
             feature.context?.find((c) => c.id.startsWith('postal_code'))
               ?.text || '',
-          displayName: feature.place_name, // Для отображения
         }))
       );
     } catch (error) {
       console.error('Error fetching address suggestions:', error);
-      setAddressSuggestions([]); // Сбрасываем список подсказок при ошибке
+      setAddressSuggestions([]);
     } finally {
       setLoadingSuggestions(false);
     }
@@ -103,7 +101,7 @@ const CheckoutPageInfo = () => {
     debounce((addressQuery) => {
       fetchAddressSuggestions(addressQuery, deliveryData.country);
     }, 1000),
-    [deliveryData.country] // Добавляем зависимость от страны
+    [deliveryData.country]
   );
 
   const handleAddressChange = (event) => {
@@ -113,16 +111,10 @@ const CheckoutPageInfo = () => {
   };
 
   const handleAddressSelect = (selectedFeature) => {
-    handleDeliveryDataChange('address', selectedFeature.displayName);
+    handleDeliveryDataChange('address', selectedFeature.name);
     handleDeliveryDataChange('city', selectedFeature.city);
     handleDeliveryDataChange('postalCode', selectedFeature.postalCode);
-    // handleDeliveryDataChange('address', address.display_name);
-    // handleDeliveryDataChange(
-    //   'city',
-    //   address.address.city || address.address.town
-    // );
-    // handleDeliveryDataChange('postalCode', address.address.postcode);
-    setAddressSuggestions([]); // Скрыть предложения после выбора
+    setAddressSuggestions([]);
   };
 
   return (
@@ -280,7 +272,7 @@ const CheckoutPageInfo = () => {
                             key={index}
                             onClick={() => handleAddressSelect(address)}
                           >
-                            {address.displayName}
+                            {address.name}
                           </Box>
                         ))}
                       </Box>

@@ -36,7 +36,7 @@
                 border-radius: 1em
                 &_address
                     position: relative
-                    svg
+                    svg.MuiSvgIcon-root //pin icon
                         color: $main-color-turquoise
                         opacity: 0.25
                     & .Mui-focused
@@ -58,8 +58,9 @@
                         justify-content: center
                         align-items: center
                         height: 3em
-                        svg
-                            color: $main-color-green-light
+                        svg //circular loader
+                            color: $main-color-turquoise
+                            opacity: 0.25
                     &_suggestions-list
                         max-height: 250px
                         overflow-y: auto
