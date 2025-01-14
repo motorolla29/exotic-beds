@@ -78,8 +78,7 @@ const CheckoutPageInfo = () => {
         results.map((feature) => ({
           name: feature.place_name, // Полное название места
           city:
-            feature.context?.find((c) => c.id.startsWith('municipality'))
-              ?.text ||
+            feature.context?.find((c) => c.id.includes('municipality'))?.text ||
             feature.context?.find((c) => c.id.startsWith('subregion'))?.text ||
             feature.context?.find((c) => c.id.startsWith('county'))?.text ||
             '',
