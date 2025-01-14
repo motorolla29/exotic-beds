@@ -46,7 +46,10 @@ const CheckoutPageOrder = () => {
         <div className="checkout-page_main_order_inner_items">
           {orderedItems.map((it) => {
             return (
-              <div className="checkout-page_main_order_inner_items_item">
+              <div
+                key={it.id}
+                className="checkout-page_main_order_inner_items_item"
+              >
                 <div className="checkout-page_main_order_inner_items_item_info">
                   <div className="checkout-page_main_order_inner_items_item_info_visual">
                     <div>

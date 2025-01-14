@@ -17,6 +17,7 @@
         height: fit-content  
         width: 100%
         max-width: 750px
+        
 
         &_contact, &_delivery, &_payment
             margin-bottom: 1em
@@ -31,3 +32,52 @@
         &_delivery 
             & .MuiTextField-root
                 margin: 0 0 0.5em 0
+            &_container
+                padding: 2em
+                border: 1px solid #ddd
+                border-radius: 1em
+                &_address
+                    position: relative
+                    &_suggestions-loader, &_suggestions-list
+                        position: absolute
+                        top: 100%
+                        left: 16px
+                        background: #fafafa
+                        border: 1px solid #ddd
+                        border-radius: 4px
+                        width: calc(100% - 16px)
+                        z-index: 2
+                    &_suggestions-loader
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        height: 3em
+                        svg
+                            color: $main-color-green-light
+                    &_suggestions-list
+                        max-height: 250px
+                        overflow-y: auto
+                        &_item
+                            padding: 0.5em
+                            cursor: pointer
+                            &:hover
+                                background: #e9f1ef
+        &_pay-button
+            font-size: 1.25em
+            border: none
+            outline: none
+            cursor: pointer
+            margin: 1em 0
+            padding: 0.75em
+            background: $main-color-turquoise
+            color: $main-color-white
+            border-radius: 7px
+            width: 100%
+            
+            &:hover
+                opacity: 0.9
+            &:active
+                opacity: 0.95
+            &:disabled
+                cursor: default
+                opacity: 0.25

@@ -1,44 +1,105 @@
-import { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useState } from 'react';
+import axios from 'axios';
+import { debounce } from '../../utils';
 import {
   Checkbox,
   TextField,
   Box,
-  Typography,
   Grid,
   FormControlLabel,
+  CircularProgress,
 } from '@mui/material';
-import { GeocodingControl } from '@maptiler/geocoding-control/react';
-import { MAPTILER_API_KEY } from '../../const';
+import JoyFormControl from '@mui/joy/FormControl';
+import JoyFormLabel from '@mui/joy/FormLabel';
+import JoySelect from '@mui/joy/Select';
+import JoyOption from '@mui/joy/Option';
+
+import { AVAILABLE_SHIPPING_COUNTRIES } from '../../const';
 
 import './checkout-page-info.sass';
 
 const CheckoutPageInfo = () => {
-  const [address, setAddress] = useState({
-    country: '',
+  const [addressSuggestions, setAddressSuggestions] = useState([]);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [deliveryData, setDeliveryData] = useState({
+    country: 'US',
     city: '',
     postalCode: '',
-    street: '',
-    house: '',
+    address: '',
     apartment: '',
     company: '',
+    name: '',
+    surname: '',
+    phoneNumber: '',
+    email: '',
   });
 
-  const handleAddressChange = (key, value) => {
-    setAddress((prev) => ({ ...prev, [key]: value }));
+  const handleDeliveryDataChange = (field, value) => {
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      [field]: value || '',
+    }));
   };
 
-  const handleGeocodingSelect = (result) => {
-    console.log(result);
-    // const components = result.properties;
-    // setAddress({
-    //   country: components.country || '',
-    //   city: components.city || '',
-    //   postalCode: components.postcode || '',
-    //   street: components.street || '',
-    //   house: '',
-    //   apartment: '',
-    //   company: '',
-    // });
+  const handleCountryChange = (newCountry) => {
+    setAddressSuggestions([]);
+    setDeliveryData({
+      ...deliveryData,
+      country: newCountry,
+      city: '',
+      postalCode: '',
+      address: '',
+      apartment: '',
+    });
+  };
+
+  const fetchAddressSuggestions = async (addressQuery, countryCode) => {
+    if (!addressQuery) return;
+
+    setLoadingSuggestions(true);
+    try {
+      const response = await axios.get(
+        `https://nominatim.openstreetmap.org/search`,
+        {
+          params: {
+            q: addressQuery,
+            countrycodes: countryCode, // Ограничиваем поиск по стране
+            format: 'json',
+            addressdetails: 1,
+            limit: 5, // Получаем 5 вариантов
+          },
+        }
+      );
+      setAddressSuggestions(response.data || []);
+    } catch (error) {
+      console.error('Error fetching address suggestions:', error);
+    } finally {
+      setLoadingSuggestions(false); // Устанавливаем состояние загрузки в false после завершения запроса
+    }
+  };
+
+  const debouncedFetchAddressSuggestions = useCallback(
+    debounce((addressQuery) => {
+      fetchAddressSuggestions(addressQuery, deliveryData.country);
+    }, 1000),
+    [deliveryData.country] // Добавляем зависимость от страны
+  );
+
+  const handleAddressChange = (event) => {
+    const addressQuery = event.target.value;
+    handleDeliveryDataChange('address', addressQuery);
+    debouncedFetchAddressSuggestions(addressQuery);
+  };
+
+  const handleAddressSelect = (address) => {
+    handleDeliveryDataChange('address', address.display_name);
+    handleDeliveryDataChange(
+      'city',
+      address.address.city || address.address.town
+    );
+    handleDeliveryDataChange('postalCode', address.address.postcode);
+    setAddressSuggestions([]); // Скрыть предложения после выбора
   };
 
   return (
@@ -59,103 +120,193 @@ const CheckoutPageInfo = () => {
           <p className="checkout-page_main_info_inner_delivery_title">
             Delivery
           </p>
-          <Box
-            sx={{
-              p: 4,
-              border: '1px solid #ddd',
-              borderRadius: 2,
-            }}
-          >
-            <Typography variant="h6" sx={{ mb: 2 }}>
-              Shipping address
-            </Typography>
-            <Box sx={{ mb: 2 }}>
-              <GeocodingControl
-                apiKey={MAPTILER_API_KEY}
-                placeholder="Enter address"
-                onSelect={handleGeocodingSelect}
-              />
+          <Box className="checkout-page_main_info_inner_delivery_container">
+            <Box
+              sx={{
+                mb: 4,
+              }}
+            >
+              <JoyFormControl>
+                <JoyFormLabel
+                  id="country-select-label"
+                  htmlFor="country-select-id"
+                >
+                  Country
+                </JoyFormLabel>
+                <JoySelect
+                  id="country-select-id"
+                  value={deliveryData.country}
+                  onChange={(e, newValue) => {
+                    handleCountryChange(newValue);
+                  }}
+                  slotProps={{
+                    button: {
+                      id: 'country-select',
+                      'aria-labelledby': 'country-select-label country-select',
+                    },
+                  }}
+                  renderValue={(selected) => {
+                    const selectedCountry = AVAILABLE_SHIPPING_COUNTRIES.find(
+                      (country) => country.value === selected.value
+                    );
+                    return selectedCountry ? (
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <img
+                          loading="lazy"
+                          width={20}
+                          height={14}
+                          srcSet={`https://flagcdn.com/w40/${selectedCountry.value.toLowerCase()}.png 2x`}
+                          src={`https://flagcdn.com/w20/${selectedCountry.value.toLowerCase()}.png`}
+                          alt={`Flag of ${selectedCountry.label}`}
+                          style={{ marginRight: 8 }}
+                        />
+                        {selectedCountry.label}
+                      </Box>
+                    ) : (
+                      'Select country'
+                    );
+                  }}
+                >
+                  {AVAILABLE_SHIPPING_COUNTRIES.map((country) => (
+                    <JoyOption key={country.value} value={country.value}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <img
+                          loading="lazy"
+                          width={20}
+                          height={14}
+                          srcSet={`https://flagcdn.com/w40/${country.value.toLowerCase()}.png 2x`}
+                          src={`https://flagcdn.com/w20/${country.value.toLowerCase()}.png`}
+                          alt={`Flag of ${country.label}`}
+                          style={{ marginRight: 8 }}
+                        />
+                        {country.label}
+                      </Box>
+                    </JoyOption>
+                  ))}
+                </JoySelect>
+              </JoyFormControl>
             </Box>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <TextField
-                  label="Country/Region"
+                  label="Name"
                   variant="outlined"
                   fullWidth
-                  value={address.country}
+                  value={deliveryData.name}
                   onChange={(e) =>
-                    handleAddressChange('country', e.target.value)
+                    handleDeliveryDataChange('name', e.target.value)
                   }
                 />
               </Grid>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  label="Surname"
+                  variant="outlined"
+                  fullWidth
+                  value={deliveryData.surname}
+                  onChange={(e) =>
+                    handleDeliveryDataChange('surname', e.target.value)
+                  }
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  label="Company (optional)"
+                  variant="outlined"
+                  fullWidth
+                  value={deliveryData.company}
+                  onChange={(e) =>
+                    handleDeliveryDataChange('company', e.target.value)
+                  }
+                />
+              </Grid>
+
+              <Grid
+                className="checkout-page_main_info_inner_delivery_container_address"
+                item
+                xs={12}
+              >
+                <TextField
+                  label="Address"
+                  variant="outlined"
+                  fullWidth
+                  value={deliveryData.address}
+                  onChange={handleAddressChange}
+                />
+                {loadingSuggestions ? (
+                  <Box className="checkout-page_main_info_inner_delivery_container_address_suggestions-loader">
+                    <CircularProgress size="1.5em" />
+                  </Box>
+                ) : (
+                  addressSuggestions.length > 0 && (
+                    <Box className="checkout-page_main_info_inner_delivery_container_address_suggestions-list">
+                      {addressSuggestions.map((address, index) => (
+                        <Box
+                          className="checkout-page_main_info_inner_delivery_container_address_suggestions-list_item"
+                          key={index}
+                          onClick={() => handleAddressSelect(address)}
+                        >
+                          {address.display_name}
+                        </Box>
+                      ))}
+                    </Box>
+                  )
+                )}
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  label="Apartment, suite, etc. (optional)"
+                  variant="outlined"
+                  fullWidth
+                  value={deliveryData.apartment}
+                  onChange={(e) =>
+                    handleDeliveryDataChange('apartment', e.target.value)
+                  }
+                />
+              </Grid>
+
               <Grid item xs={12} md={6}>
                 <TextField
                   label="City"
                   variant="outlined"
                   fullWidth
-                  value={address.city}
-                  onChange={(e) => handleAddressChange('city', e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  label="ZIP code"
-                  variant="outlined"
-                  fullWidth
-                  value={address.postalCode}
+                  value={deliveryData.city}
                   onChange={(e) =>
-                    handleAddressChange('postalCode', e.target.value)
+                    handleDeliveryDataChange('city', e.target.value)
                   }
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
-                  label="Street"
+                  label="Postal code"
                   variant="outlined"
                   fullWidth
-                  value={address.street}
+                  value={deliveryData.postalCode}
                   onChange={(e) =>
-                    handleAddressChange('street', e.target.value)
+                    handleDeliveryDataChange('postalCode', e.target.value)
                   }
                 />
               </Grid>
-              <Grid item xs={12} md={4}>
+
+              <Grid item xs={12}>
                 <TextField
-                  label="House"
+                  label="Phone"
                   variant="outlined"
                   fullWidth
-                  value={address.house}
-                  onChange={(e) => handleAddressChange('house', e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <TextField
-                  label="Apartment, suite, etc. (optional)"
-                  variant="outlined"
-                  fullWidth
-                  value={address.apartment}
+                  value={deliveryData.phoneNumber}
                   onChange={(e) =>
-                    handleAddressChange('apartment', e.target.value)
-                  }
-                />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <TextField
-                  label="Company (optional)"
-                  variant="outlined"
-                  fullWidth
-                  value={address.company}
-                  onChange={(e) =>
-                    handleAddressChange('company', e.target.value)
+                    handleDeliveryDataChange('phoneNumber', e.target.value)
                   }
                 />
               </Grid>
             </Grid>
           </Box>
         </div>
-        <div className="checkout-page_main_info_inner_payment">
-          <p className="checkout-page_main_info_inner_payment_title">Payment</p>
-        </div>
+        <button className="checkout-page_main_info_inner_pay-button">
+          PAY NOW
+        </button>
       </div>
     </div>
   );
