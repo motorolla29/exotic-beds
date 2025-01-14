@@ -9,15 +9,18 @@ import {
   Grid,
   FormControlLabel,
   CircularProgress,
+  InputAdornment,
 } from '@mui/material';
 import JoyFormControl from '@mui/joy/FormControl';
 import JoyFormLabel from '@mui/joy/FormLabel';
 import JoySelect from '@mui/joy/Select';
 import JoyOption from '@mui/joy/Option';
-
+import { ClickAwayListener } from '@mui/base';
+import PinDropIcon from '@mui/icons-material/PinDrop';
 import { AVAILABLE_SHIPPING_COUNTRIES, MAPTILER_API_KEY } from '../../const';
 
 import './checkout-page-info.sass';
+import { PinDrop } from '@mui/icons-material';
 
 const CheckoutPageInfo = () => {
   const [addressSuggestions, setAddressSuggestions] = useState([]);
@@ -88,7 +91,6 @@ const CheckoutPageInfo = () => {
           displayName: feature.place_name, // Для отображения
         }))
       );
-      console.log(results);
     } catch (error) {
       console.error('Error fetching address suggestions:', error);
       setAddressSuggestions([]); // Сбрасываем список подсказок при ошибке
@@ -207,7 +209,7 @@ const CheckoutPageInfo = () => {
                 </JoySelect>
               </JoyFormControl>
             </Box>
-            <Grid container spacing={2}>
+            <Grid container spacing={2.5}>
               <Grid item xs={12} md={6}>
                 <TextField
                   label="Name"
@@ -252,6 +254,13 @@ const CheckoutPageInfo = () => {
                   label="Address"
                   variant="outlined"
                   fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <PinDrop />
+                      </InputAdornment>
+                    ),
+                  }}
                   value={deliveryData.address}
                   onChange={handleAddressChange}
                 />
@@ -261,17 +270,21 @@ const CheckoutPageInfo = () => {
                   </Box>
                 ) : (
                   addressSuggestions.length > 0 && (
-                    <Box className="checkout-page_main_info_inner_delivery_container_address_suggestions-list">
-                      {addressSuggestions.map((address, index) => (
-                        <Box
-                          className="checkout-page_main_info_inner_delivery_container_address_suggestions-list_item"
-                          key={index}
-                          onClick={() => handleAddressSelect(address)}
-                        >
-                          {address.displayName}
-                        </Box>
-                      ))}
-                    </Box>
+                    <ClickAwayListener
+                      onClickAway={() => setAddressSuggestions([])}
+                    >
+                      <Box className="checkout-page_main_info_inner_delivery_container_address_suggestions-list">
+                        {addressSuggestions.map((address, index) => (
+                          <Box
+                            className="checkout-page_main_info_inner_delivery_container_address_suggestions-list_item"
+                            key={index}
+                            onClick={() => handleAddressSelect(address)}
+                          >
+                            {address.displayName}
+                          </Box>
+                        ))}
+                      </Box>
+                    </ClickAwayListener>
                   )
                 )}
               </Grid>
