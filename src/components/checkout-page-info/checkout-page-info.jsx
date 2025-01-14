@@ -15,7 +15,7 @@ import JoyFormLabel from '@mui/joy/FormLabel';
 import JoySelect from '@mui/joy/Select';
 import JoyOption from '@mui/joy/Option';
 
-import { AVAILABLE_SHIPPING_COUNTRIES } from '../../const';
+import { AVAILABLE_SHIPPING_COUNTRIES, MAPTILER_API_KEY } from '../../const';
 
 import './checkout-page-info.sass';
 
@@ -55,27 +55,46 @@ const CheckoutPageInfo = () => {
   };
 
   const fetchAddressSuggestions = async (addressQuery, countryCode) => {
-    if (!addressQuery) return;
+    if (!addressQuery.trim()) return;
 
     setLoadingSuggestions(true);
     try {
       const response = await axios.get(
-        `https://nominatim.openstreetmap.org/search`,
+        `https://api.maptiler.com/geocoding/${encodeURIComponent(
+          addressQuery
+        )}.json`,
         {
           params: {
-            q: addressQuery,
-            countrycodes: countryCode, // Ограничиваем поиск по стране
-            format: 'json',
-            addressdetails: 1,
-            limit: 5, // Получаем 5 вариантов
+            key: MAPTILER_API_KEY,
+            limit: 5,
+            language: 'en',
+            country: countryCode || undefined, // Передаем код страны, если он указан
           },
         }
       );
-      setAddressSuggestions(response.data || []);
+
+      const results = response.data.features || [];
+      setAddressSuggestions(
+        results.map((feature) => ({
+          name: feature.place_name, // Полное название места
+          city:
+            feature.context?.find((c) => c.id.startsWith('municipality'))
+              ?.text ||
+            feature.context?.find((c) => c.id.startsWith('subregion'))?.text ||
+            feature.context?.find((c) => c.id.startsWith('county'))?.text ||
+            '',
+          postalCode:
+            feature.context?.find((c) => c.id.startsWith('postal_code'))
+              ?.text || '',
+          displayName: feature.place_name, // Для отображения
+        }))
+      );
+      console.log(results);
     } catch (error) {
       console.error('Error fetching address suggestions:', error);
+      setAddressSuggestions([]); // Сбрасываем список подсказок при ошибке
     } finally {
-      setLoadingSuggestions(false); // Устанавливаем состояние загрузки в false после завершения запроса
+      setLoadingSuggestions(false);
     }
   };
 
@@ -92,13 +111,16 @@ const CheckoutPageInfo = () => {
     debouncedFetchAddressSuggestions(addressQuery);
   };
 
-  const handleAddressSelect = (address) => {
-    handleDeliveryDataChange('address', address.display_name);
-    handleDeliveryDataChange(
-      'city',
-      address.address.city || address.address.town
-    );
-    handleDeliveryDataChange('postalCode', address.address.postcode);
+  const handleAddressSelect = (selectedFeature) => {
+    handleDeliveryDataChange('address', selectedFeature.displayName);
+    handleDeliveryDataChange('city', selectedFeature.city);
+    handleDeliveryDataChange('postalCode', selectedFeature.postalCode);
+    // handleDeliveryDataChange('address', address.display_name);
+    // handleDeliveryDataChange(
+    //   'city',
+    //   address.address.city || address.address.town
+    // );
+    // handleDeliveryDataChange('postalCode', address.address.postcode);
     setAddressSuggestions([]); // Скрыть предложения после выбора
   };
 
@@ -247,7 +269,7 @@ const CheckoutPageInfo = () => {
                           key={index}
                           onClick={() => handleAddressSelect(address)}
                         >
-                          {address.display_name}
+                          {address.displayName}
                         </Box>
                       ))}
                     </Box>
