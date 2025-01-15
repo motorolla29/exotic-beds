@@ -223,16 +223,6 @@ const CheckoutPageInfo = () => {
 
   const handlePayButtonClick = () => {
     setPayButtonClicked(true);
-    setEmailError(validateEmail(deliveryData.email));
-    setNameError(validateName(deliveryData.name));
-    setAddressError(validateAddress(deliveryData.address));
-    setCityError(validateCity(deliveryData.city));
-    setPostalCodeError(
-      validatePostalCode(deliveryData.postalCode, deliveryData.country)
-    );
-    setPhoneNumberError(
-      validatePhone(deliveryData.phoneNumber.replace(/\D/g, ''))
-    );
 
     const emailError = validateEmail(deliveryData.email);
     const nameError = validateName(deliveryData.name);
@@ -245,6 +235,13 @@ const CheckoutPageInfo = () => {
     const phoneNumberError = validatePhone(
       deliveryData.phoneNumber.replace(/\D/g, '')
     );
+
+    setEmailError(emailError);
+    setNameError(nameError);
+    setAddressError(addressError);
+    setCityError(cityError);
+    setPostalCodeError(postalCodeError);
+    setPhoneNumberError(phoneNumberError);
 
     if (
       !emailError &&

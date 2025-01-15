@@ -65,9 +65,9 @@ const CheckoutPageOrder = () => {
                       </span>
                     )}
                   </div>
-                  <span className="checkout-page_main_order_inner_items_item_info_title">
+                  <p className="checkout-page_main_order_inner_items_item_info_title">
                     {it.title}
-                  </span>
+                  </p>
                 </div>
                 <span className="checkout-page_main_order_inner_items_item_price">
                   €{it.sale?.toFixed(2) || it.price.toFixed(2)}

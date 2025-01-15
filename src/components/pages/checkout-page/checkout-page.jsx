@@ -1,27 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { TextField } from '@mui/material';
-
-import './checkout-page.sass';
 import { Link } from 'react-router-dom';
 import CheckoutPageInfo from '../../checkout-page-info/checkout-page-info';
 import CheckoutPageOrder from '../../checkout-page-order/checkout-page-order';
+import useWindowSize from '../../../hooks/use-window-size';
+import { PROMOCODES } from '../../../data/promocodes';
+import { countTheBasket } from '../../../utils';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+import './checkout-page.sass';
 
 const CheckoutPage = () => {
-  const cartProducts = useSelector((state) => state.cartProducts);
-  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [ww] = useWindowSize();
+  const [topOrderSummaryVisible, setTopOrderSummaryVisible] = useState(false);
 
-  //   useEffect(() => {}, []);
-
-  //   const onSubmit = (data) => {
-  //     console.log(data);
-  //   };
-
-  //   const handleCountryChange = (selected) => {
-  //   };
-
-  //   const handleCityChange = (selected) => {
-  //   };
+  const orderedItems = useSelector((state) => state.cartProducts);
+  const countedBasket = countTheBasket(orderedItems);
+  const [promocode, setPromocode] = useState(null);
 
   return (
     <div className="checkout-page">
@@ -34,8 +30,39 @@ const CheckoutPage = () => {
         </Link>
       </div>
       <div className="checkout-page_main">
+        {ww <= 998 && (
+          <div className="checkout-page_main_sm-top-order">
+            <div
+              onClick={() => setTopOrderSummaryVisible(!topOrderSummaryVisible)}
+              className="checkout-page_main_sm-top-order_heading"
+            >
+              <div className="checkout-page_main_sm-top-order_heading_inner">
+                <span className="checkout-page_main_sm-top-order_heading_inner_title">
+                  Order summary
+                  <span>
+                    {topOrderSummaryVisible ? (
+                      <KeyboardArrowUpIcon />
+                    ) : (
+                      <KeyboardArrowDownIcon />
+                    )}
+                  </span>
+                </span>
+                <p className="checkout-page_main_sm-top-order_heading_inner_total">
+                  €
+                  {(
+                    countedBasket.total -
+                    (promocode
+                      ? countedBasket.total * PROMOCODES[promocode]
+                      : 0)
+                  ).toFixed(2)}
+                </p>
+              </div>
+            </div>
+            {topOrderSummaryVisible && <CheckoutPageOrder />}
+          </div>
+        )}
         <CheckoutPageInfo />
-        <CheckoutPageOrder />
+        {ww > 998 && <CheckoutPageOrder />}
       </div>
     </div>
   );

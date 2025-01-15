@@ -20,4 +20,45 @@
         display: flex
         flex-direction: row
         min-height: calc( 100vh - 9em )
-        
+        &_sm-top-order
+            display: flex
+            flex-direction: column
+            &_heading
+                width: 100%
+                background: hsl(0, 0%, 96%)
+                border-bottom: 1px solid #C4E2CF
+                &_inner
+                    padding: 2em
+                    width: 100%
+                    max-width: 700px
+                    display: flex
+                    justify-self: center
+                    justify-content: space-between
+                    &_title
+                        display: flex
+                        align-items: center
+                        color: $main-color-turquoise-transparent
+                        font-weight: 600
+                        & > span
+                            margin-left: 0.5em
+                            display: flex
+                            svg
+                                font-size: 1em
+                    &_total
+                        font-weight: 600
+            & .checkout-page_main_order
+                width: 100%
+                border-bottom: 1px solid #C4E2CF
+                &_inner
+                    justify-self: center
+                    max-width: 700px
+                    
+
+@media ( max-width: 998px )
+    .checkout-page_main
+        flex-direction: column
+
+@media ( max-width: 480px )
+    .checkout-page
+        font-size: 14px
+    
