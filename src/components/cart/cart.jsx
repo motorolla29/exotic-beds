@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion, AnimatePresence, useAnimate } from 'framer-motion';
 
-import { cartOpen } from '../../store/action';
+import { cartOpen, setCart } from '../../store/action';
 import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
@@ -65,6 +65,13 @@ const Cart = () => {
       }
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      scrollController.enabledScroll();
+      dispatch(cartOpen(false));
+    };
+  }, []);
 
   return (
     <>

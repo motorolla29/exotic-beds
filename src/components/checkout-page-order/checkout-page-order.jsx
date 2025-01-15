@@ -70,7 +70,7 @@ const CheckoutPageOrder = () => {
                   </span>
                 </div>
                 <span className="checkout-page_main_order_inner_items_item_price">
-                  €{it.price.toFixed(2)}
+                  €{it.sale?.toFixed(2) || it.price.toFixed(2)}
                 </span>
               </div>
             );

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { debounce } from '../../utils';
 import {
@@ -20,8 +20,26 @@ import { PinDrop } from '@mui/icons-material';
 import { AVAILABLE_SHIPPING_COUNTRIES, MAPTILER_API_KEY } from '../../const';
 
 import './checkout-page-info.sass';
+import { useSelector } from 'react-redux';
+import {
+  validateAddress,
+  validateCity,
+  validateEmail,
+  validateName,
+  validatePhone,
+  validatePostalCode,
+} from './fields-validators';
 
 const CheckoutPageInfo = () => {
+  const user = useSelector((state) => state.user);
+  const [payButtonClicked, setPayButtonClicked] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+  const [nameError, setNameError] = useState(null);
+  const [addressError, setAddressError] = useState(null);
+  const [cityError, setCityError] = useState(null);
+  const [postalCodeError, setPostalCodeError] = useState(null);
+  const [phoneNumberError, setPhoneNumberError] = useState(null);
+
   const [addressSuggestions, setAddressSuggestions] = useState([]);
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
   const [deliveryData, setDeliveryData] = useState({
@@ -37,24 +55,15 @@ const CheckoutPageInfo = () => {
     email: '',
   });
 
-  const handleDeliveryDataChange = (field, value) => {
-    setDeliveryData((prevData) => ({
-      ...prevData,
-      [field]: value || '',
-    }));
-  };
-
-  const handleCountryChange = (newCountry) => {
-    setAddressSuggestions([]);
+  useEffect(() => {
     setDeliveryData({
       ...deliveryData,
-      country: newCountry,
-      city: '',
-      postalCode: '',
-      address: '',
-      apartment: '',
+      email: user.email || deliveryData.email,
+      name: user.name || deliveryData.name,
+      surname: user.surname || deliveryData.surname,
+      phoneNumber: user.phone || deliveryData.phoneNumber || '+',
     });
-  };
+  }, [user.email, user.name, user.surname, user.phone]);
 
   const fetchAddressSuggestions = async (addressQuery, countryCode) => {
     if (!addressQuery.trim()) return;
@@ -104,17 +113,149 @@ const CheckoutPageInfo = () => {
     [deliveryData.country]
   );
 
-  const handleAddressChange = (event) => {
-    const addressQuery = event.target.value;
-    handleDeliveryDataChange('address', addressQuery);
-    debouncedFetchAddressSuggestions(addressQuery);
+  const handleEmailChange = (e) => {
+    setEmailError(validateEmail(e.target.value));
+    if (user.email) return;
+    setDeliveryData({ ...deliveryData, email: e.target.value });
   };
 
-  const handleAddressSelect = (selectedFeature) => {
-    handleDeliveryDataChange('address', selectedFeature.name);
-    handleDeliveryDataChange('city', selectedFeature.city);
-    handleDeliveryDataChange('postalCode', selectedFeature.postalCode);
+  const handleCountryChange = (newCountry) => {
     setAddressSuggestions([]);
+    setDeliveryData({
+      ...deliveryData,
+      country: newCountry,
+      city: '',
+      postalCode: '',
+      address: '',
+      apartment: '',
+    });
+
+    setPayButtonClicked(false);
+
+    setAddressError(null);
+    setCityError(null);
+    setPostalCodeError(null);
+  };
+
+  const handleNameChange = (e) => {
+    setNameError(validateName(e.target.value));
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      name: e.target.value,
+    }));
+  };
+  const handleSurameChange = (e) => {
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      surname: e.target.value,
+    }));
+  };
+  const handleCompanyChange = (e) => {
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      company: e.target.value,
+    }));
+  };
+
+  const handleAddressChange = (value) => {
+    setAddressError(validateAddress(value));
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      address: value,
+    }));
+
+    debouncedFetchAddressSuggestions(value);
+  };
+  const handleAddressSelect = (selectedFeature) => {
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      address: selectedFeature.name,
+      city: selectedFeature.city,
+      postalCode: selectedFeature.postalCode,
+    }));
+
+    setAddressError(validateAddress(selectedFeature.name));
+    setCityError(validateCity(selectedFeature.city));
+    setPostalCodeError(
+      validatePostalCode(selectedFeature.postalCode, deliveryData.country)
+    );
+
+    setAddressSuggestions([]);
+  };
+
+  const handleApartmentChange = (e) => {
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      apartment: e.target.value,
+    }));
+  };
+  const handleCityChange = (value) => {
+    setCityError(validateCity(value));
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      city: value,
+    }));
+  };
+  const handlePostalCodeChange = (value) => {
+    setPostalCodeError(validatePostalCode(value, deliveryData.country));
+    setDeliveryData((prevData) => ({
+      ...prevData,
+      postalCode: value,
+    }));
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    const input = e.target.value;
+    setPhoneNumberError(validatePhone(input.replace(/[^0-9]/g, '')));
+
+    if (!input.startsWith('+')) {
+      setDeliveryData((prevData) => ({
+        ...prevData,
+        phoneNumber: '+' + input.replace(/[^0-9]/g, ''), // Убираем все, кроме цифр
+      }));
+    } else {
+      setDeliveryData((prevData) => ({
+        ...prevData,
+        phoneNumber: input.replace(/[^0-9+]/g, ''), // Убираем все, кроме цифр и "+"
+      }));
+    }
+  };
+
+  const handlePayButtonClick = () => {
+    setPayButtonClicked(true);
+    setEmailError(validateEmail(deliveryData.email));
+    setNameError(validateName(deliveryData.name));
+    setAddressError(validateAddress(deliveryData.address));
+    setCityError(validateCity(deliveryData.city));
+    setPostalCodeError(
+      validatePostalCode(deliveryData.postalCode, deliveryData.country)
+    );
+    setPhoneNumberError(
+      validatePhone(deliveryData.phoneNumber.replace(/\D/g, ''))
+    );
+
+    const emailError = validateEmail(deliveryData.email);
+    const nameError = validateName(deliveryData.name);
+    const addressError = validateAddress(deliveryData.address);
+    const cityError = validateCity(deliveryData.city);
+    const postalCodeError = validatePostalCode(
+      deliveryData.postalCode,
+      deliveryData.country
+    );
+    const phoneNumberError = validatePhone(
+      deliveryData.phoneNumber.replace(/\D/g, '')
+    );
+
+    if (
+      !emailError &&
+      !nameError &&
+      !addressError &&
+      !cityError &&
+      !postalCodeError &&
+      !phoneNumberError
+    ) {
+      console.log('continue to pay');
+    }
   };
 
   return (
@@ -122,7 +263,18 @@ const CheckoutPageInfo = () => {
       <div className="checkout-page_main_info_inner">
         <div className="checkout-page_main_info_inner_contact">
           <p className="checkout-page_main_info_inner_contact_title">Contact</p>
-          <TextField label="Email" variant="outlined" />
+          <TextField
+            value={deliveryData.email}
+            onChange={handleEmailChange}
+            error={emailError && payButtonClicked}
+            helperText={
+              payButtonClicked && emailError
+                ? emailError || 'Invalid email address'
+                : ''
+            }
+            label="Email"
+            variant="outlined"
+          />
           <div className="checkout-page_main_info_inner_contact_mailing-consent">
             <FormControlLabel
               control={<Checkbox />}
@@ -208,8 +360,12 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.name}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('name', e.target.value)
+                  onChange={handleNameChange}
+                  error={nameError && payButtonClicked}
+                  helperText={
+                    payButtonClicked && nameError
+                      ? nameError || 'Invalid name'
+                      : ''
                   }
                 />
               </Grid>
@@ -219,9 +375,7 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.surname}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('surname', e.target.value)
-                  }
+                  onChange={handleSurameChange}
                 />
               </Grid>
 
@@ -231,9 +385,7 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.company}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('company', e.target.value)
-                  }
+                  onChange={handleCompanyChange}
                 />
               </Grid>
 
@@ -254,7 +406,13 @@ const CheckoutPageInfo = () => {
                     ),
                   }}
                   value={deliveryData.address}
-                  onChange={handleAddressChange}
+                  onChange={(e) => handleAddressChange(e.target.value)}
+                  error={addressError && payButtonClicked}
+                  helperText={
+                    payButtonClicked && addressError
+                      ? addressError || 'Invalid address'
+                      : ''
+                  }
                 />
                 {loadingSuggestions ? (
                   <Box className="checkout-page_main_info_inner_delivery_container_address_suggestions-loader">
@@ -287,9 +445,7 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.apartment}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('apartment', e.target.value)
-                  }
+                  onChange={handleApartmentChange}
                 />
               </Grid>
 
@@ -299,8 +455,12 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.city}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('city', e.target.value)
+                  onChange={(e) => handleCityChange(e.target.value)}
+                  error={cityError && payButtonClicked}
+                  helperText={
+                    payButtonClicked && cityError
+                      ? cityError || 'Invalid city'
+                      : ''
                   }
                 />
               </Grid>
@@ -310,8 +470,12 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.postalCode}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('postalCode', e.target.value)
+                  onChange={(e) => handlePostalCodeChange(e.target.value)}
+                  error={postalCodeError && payButtonClicked}
+                  helperText={
+                    payButtonClicked && postalCodeError
+                      ? postalCodeError || 'Invalid postal code'
+                      : ''
                   }
                 />
               </Grid>
@@ -322,15 +486,22 @@ const CheckoutPageInfo = () => {
                   variant="outlined"
                   fullWidth
                   value={deliveryData.phoneNumber}
-                  onChange={(e) =>
-                    handleDeliveryDataChange('phoneNumber', e.target.value)
+                  onChange={handlePhoneNumberChange}
+                  error={phoneNumberError && payButtonClicked}
+                  helperText={
+                    payButtonClicked && phoneNumberError
+                      ? phoneNumberError || 'Invalid phone number'
+                      : ''
                   }
                 />
               </Grid>
             </Grid>
           </Box>
         </div>
-        <button className="checkout-page_main_info_inner_pay-button">
+        <button
+          onClick={handlePayButtonClick}
+          className="checkout-page_main_info_inner_pay-button"
+        >
           PAY NOW
         </button>
       </div>
