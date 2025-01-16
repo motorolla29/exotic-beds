@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { debounce } from '../../utils';
 import {
   Checkbox,
@@ -18,9 +19,6 @@ import JoyOption from '@mui/joy/Option';
 import { ClickAwayListener } from '@mui/base';
 import { PinDrop } from '@mui/icons-material';
 import { AVAILABLE_SHIPPING_COUNTRIES, MAPTILER_API_KEY } from '../../const';
-
-import './checkout-page-info.sass';
-import { useSelector } from 'react-redux';
 import {
   validateAddress,
   validateCity,
@@ -29,10 +27,19 @@ import {
   validatePhone,
   validatePostalCode,
 } from './fields-validators';
+import useWindowSize from '../../hooks/use-window-size';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-const CheckoutPageInfo = () => {
+import './checkout-page-info.sass';
+import CheckoutPageOrderedItems from '../checkout-page-ordered-items/checkout-page-ordered-items';
+import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counting';
+
+const CheckoutPageInfo = ({ orderedItems }) => {
+  const [ww] = useWindowSize();
   const user = useSelector((state) => state.user);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
+  const [orderBodyVisible, setOrderBodyVisible] = useState(false);
   const [emailError, setEmailError] = useState(null);
   const [nameError, setNameError] = useState(null);
   const [addressError, setAddressError] = useState(null);
@@ -495,6 +502,31 @@ const CheckoutPageInfo = () => {
             </Grid>
           </Box>
         </div>
+        {ww <= 998 && (
+          <div className="checkout-page_main_info_bottom-order-summary">
+            <div
+              onClick={() => setOrderBodyVisible(!orderBodyVisible)}
+              className="checkout-page_main_info_bottom-order-summary_title"
+            >
+              <p>Order summary</p>
+              {orderBodyVisible ? (
+                <span>
+                  Hide
+                  <KeyboardArrowUpIcon />
+                </span>
+              ) : (
+                <span>
+                  Show
+                  <KeyboardArrowDownIcon />
+                </span>
+              )}
+            </div>
+            {orderBodyVisible && (
+              <CheckoutPageOrderedItems items={orderedItems} />
+            )}
+            <CheckoutPageCounting items={orderedItems} />
+          </div>
+        )}
         <button
           onClick={handlePayButtonClick}
           className="checkout-page_main_info_inner_pay-button"

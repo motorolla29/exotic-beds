@@ -58,11 +58,13 @@ const CheckoutPage = () => {
                 </p>
               </div>
             </div>
-            {topOrderSummaryVisible && <CheckoutPageOrder />}
+            {topOrderSummaryVisible && (
+              <CheckoutPageOrder orderedItems={orderedItems} />
+            )}
           </div>
         )}
-        <CheckoutPageInfo />
-        {ww > 998 && <CheckoutPageOrder />}
+        <CheckoutPageInfo orderedItems={orderedItems} />
+        {ww > 998 && <CheckoutPageOrder orderedItems={orderedItems} />}
       </div>
     </div>
   );

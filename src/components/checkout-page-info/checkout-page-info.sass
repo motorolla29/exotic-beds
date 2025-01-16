@@ -22,6 +22,7 @@
         &_contact, &_delivery, &_payment
             margin-bottom: 1em
             &_title
+                font-weight: 600
                 font-size: 1.5em
                 margin-bottom: 0.75em
             & .MuiTextField-root
@@ -74,7 +75,7 @@
             border: none
             outline: none
             cursor: pointer
-            margin: 1em 0
+            margin: 1em 0 0 0
             padding: 0.75em
             background: $main-color-turquoise
             color: $main-color-white
@@ -88,6 +89,29 @@
             &:disabled
                 cursor: default
                 opacity: 0.25
+    &_bottom-order-summary
+        &_title
+            display: flex
+            align-items: center
+            justify-content: space-between
+            font-size: 1.5em
+            margin-bottom: 0.75em
+            p
+                font-weight: 600
+                margin-right: 1em
+            span
+                font-size: 0.7em
+                color: $main-color-turquoise-transparent
+                svg
+                    vertical-align: middle
+                    font-size: 1em
+                    margin-left: 0.5em
+        & .checkout-page-ordered-items
+            padding: 0.5em 0
+        & .checkout-page-counting
+            &_promocode
+                margin: 1em 0
+
 
 @media ( max-width: 998px )
     .checkout-page_main_info
@@ -95,3 +119,6 @@
         &_inner
             justify-self: center
             max-width: 700px
+@media ( max-width: 480px )
+    .checkout-page_main_info_inner_delivery_container
+        padding: 1em
