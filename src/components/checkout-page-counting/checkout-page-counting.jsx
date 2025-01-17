@@ -1,14 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { animate } from 'framer-motion';
 import { PROMOCODES } from '../../data/promocodes';
-
-import './checkout-page-counting.sass';
-import { useDispatch, useSelector } from 'react-redux';
 import { setAppliedPromocode } from '../../store/action';
 
-const CheckoutPageCounting = ({ items, countedBasket }) => {
+import './checkout-page-counting.sass';
+
+const CheckoutPageCounting = ({ items, countedBasket, promocode }) => {
   const dispatch = useDispatch();
-  const promocode = useSelector((state) => state.appliedPromocode);
   const [promocodeInput, setPromocodeInput] = useState('');
 
   const onApplyPromocodeClick = () => {

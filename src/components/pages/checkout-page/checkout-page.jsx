@@ -17,8 +17,7 @@ const CheckoutPage = () => {
 
   const orderedItems = useSelector((state) => state.cartProducts);
   const countedBasket = countTheBasket(orderedItems);
-
-  const [promocode, setPromocode] = useState(null);
+  const promocode = useSelector((state) => state.appliedPromocode);
 
   return (
     <div className="checkout-page">
@@ -52,8 +51,8 @@ const CheckoutPage = () => {
                   €
                   {(
                     countedBasket.total -
-                    (promocode
-                      ? countedBasket.total * PROMOCODES[promocode]
+                    (promocode.name
+                      ? countedBasket.total * PROMOCODES[promocode.name]
                       : 0)
                   ).toFixed(2)}
                 </p>
@@ -63,6 +62,7 @@ const CheckoutPage = () => {
               <CheckoutPageOrder
                 orderedItems={orderedItems}
                 countedBasket={countedBasket}
+                promocode={promocode}
               />
             )}
           </div>
@@ -70,11 +70,13 @@ const CheckoutPage = () => {
         <CheckoutPageInfo
           orderedItems={orderedItems}
           countedBasket={countedBasket}
+          promocode={promocode}
         />
         {ww > 998 && (
           <CheckoutPageOrder
             orderedItems={orderedItems}
             countedBasket={countedBasket}
+            promocode={promocode}
           />
         )}
       </div>
