@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { animate } from 'framer-motion';
 import { PROMOCODES } from '../../data/promocodes';
-import { countTheBasket } from '../../utils';
 
 import './checkout-page-counting.sass';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAppliedPromocode } from '../../store/action';
 
-const CheckoutPageCounting = ({ items }) => {
-  const countedBasket = countTheBasket(items);
-
+const CheckoutPageCounting = ({ items, countedBasket }) => {
+  const dispatch = useDispatch();
+  const promocode = useSelector((state) => state.appliedPromocode);
   const [promocodeInput, setPromocodeInput] = useState('');
-  const [promocodeStatus, setPromocodeStatus] = useState(null);
-  const [promocode, setPromocode] = useState(null);
 
   const onApplyPromocodeClick = () => {
     if (Object.keys(PROMOCODES).includes(promocodeInput.toLowerCase())) {
-      setPromocode(promocodeInput.toLowerCase());
-      setPromocodeStatus('valid');
+      dispatch(
+        setAppliedPromocode({
+          name: promocodeInput.toLowerCase(),
+          status: 'valid',
+        })
+      );
     } else {
-      setPromocodeStatus('invalid');
+      dispatch(setAppliedPromocode({ name: null, status: 'invalid' }));
       animate(
         '.checkout-page-counting_promocode_body_status',
         {
@@ -34,37 +37,36 @@ const CheckoutPageCounting = ({ items }) => {
     }
   };
   const onCancelPromocodeClick = () => {
-    setPromocode(null);
-    setPromocodeStatus(null);
+    dispatch(setAppliedPromocode({ name: null, status: null }));
     setPromocodeInput('');
   };
   return (
     <div className="checkout-page-counting">
-      <div className="checkout-page-counting_promocode">
+      <div className={`checkout-page-counting_promocode ${promocode.status}`}>
         <div className="checkout-page-counting_promocode_body">
           <div className="checkout-page-counting_promocode_body_input-container">
             <input
               placeholder="Discount code or gift card"
-              value={promocode ? promocode : promocodeInput}
-              disabled={promocode}
+              value={promocode.name ? promocode.name : promocodeInput}
+              disabled={promocode.name}
               onChange={(e) => {
-                setPromocodeStatus(null);
+                dispatch(setAppliedPromocode({ name: null, status: null }));
                 setPromocodeInput(e.target.value);
               }}
-              className={`checkout-page-counting_promocode_body_input ${promocodeStatus}`}
+              className={`checkout-page-counting_promocode_body_input ${promocode.status}`}
             />
             <span
               style={{
-                visibility: promocodeStatus ? 'visible' : 'hidden',
+                visibility: promocode.status ? 'visible' : 'hidden',
               }}
-              className={`checkout-page-counting_promocode_body_status ${promocodeStatus}`}
+              className={`checkout-page-counting_promocode_body_status ${promocode.status}`}
             >
-              {promocodeStatus === 'valid'
+              {promocode.status === 'valid'
                 ? 'Promocode applied'
                 : 'Invalid promocode'}
             </span>
           </div>
-          {promocode ? (
+          {promocode.name ? (
             <button
               onClick={onCancelPromocodeClick}
               className="checkout-page-counting_promocode_body_button"
@@ -77,7 +79,7 @@ const CheckoutPageCounting = ({ items }) => {
               className="checkout-page-counting_promocode_body_button"
               onBlur={() => {
                 if (!promocodeInput) {
-                  setPromocodeStatus(null);
+                  dispatch(setAppliedPromocode({ name: null, status: null }));
                 }
               }}
             >
@@ -96,9 +98,11 @@ const CheckoutPageCounting = ({ items }) => {
             )}{' '}
             items
           </span>
-          <span>€{countedBasket.subtotal - countedBasket.savings}</span>
+          <span>
+            €{(countedBasket.subtotal - countedBasket.savings).toFixed(2)}
+          </span>
         </div>
-        {promocode && (
+        {promocode.name && (
           <div className="checkout-page-counting_count_promocode">
             <span>
               Promocode ({' '}
@@ -108,12 +112,12 @@ const CheckoutPageCounting = ({ items }) => {
                   textDecoration: 'underline green wavy',
                 }}
               >
-                {promocode}
+                {promocode.name}
               </span>{' '}
               )
             </span>
             <span>
-              - €{(countedBasket.total * PROMOCODES[promocode]).toFixed(2)}
+              - €{(countedBasket.total * PROMOCODES[promocode.name]).toFixed(2)}
             </span>
           </div>
         )}
@@ -121,7 +125,9 @@ const CheckoutPageCounting = ({ items }) => {
           <span>Shipping</span>
           <span>
             {typeof countedBasket.delivery === 'number' ? '€' : ''}
-            {countedBasket.delivery}
+            {typeof countedBasket.delivery === 'number'
+              ? countedBasket.delivery.toFixed(2)
+              : countedBasket.delivery}
           </span>
         </div>
         <div className="checkout-page-counting_count_total">
@@ -130,7 +136,9 @@ const CheckoutPageCounting = ({ items }) => {
             €
             {(
               countedBasket.total -
-              (promocode ? countedBasket.total * PROMOCODES[promocode] : 0)
+              (promocode.name
+                ? countedBasket.total * PROMOCODES[promocode.name]
+                : 0)
             ).toFixed(2)}
           </span>
         </div>

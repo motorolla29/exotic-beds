@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion, AnimatePresence, useAnimate } from 'framer-motion';
 
-import { cartOpen, setCart } from '../../store/action';
+import { cartOpen, setAppliedPromocode, setCart } from '../../store/action';
 import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
@@ -24,17 +24,20 @@ const Cart = () => {
     (acc, currentValue) => acc + currentValue.quantity,
     0
   );
+  const promocode = useSelector((state) => state.appliedPromocode);
   const [promocodeInput, setPromocodeInput] = useState('');
-  const [promocodeStatus, setPromocodeStatus] = useState(null);
-  const [promocode, setPromocode] = useState(null);
   const [scope, animate] = useAnimate();
 
   const onApplyPromocodeClick = () => {
     if (Object.keys(PROMOCODES).includes(promocodeInput.toLowerCase())) {
-      setPromocode(promocodeInput.toLowerCase());
-      setPromocodeStatus('valid');
+      dispatch(
+        setAppliedPromocode({
+          name: promocodeInput.toLowerCase(),
+          status: 'valid',
+        })
+      );
     } else {
-      setPromocodeStatus('invalid');
+      dispatch(setAppliedPromocode({ name: null, status: 'invalid' }));
       animate(
         '.cart_widget_widget-inner_promocode_body_status',
         {
@@ -51,8 +54,7 @@ const Cart = () => {
     }
   };
   const onCancelPromocodeClick = () => {
-    setPromocode(null);
-    setPromocodeStatus(null);
+    dispatch(setAppliedPromocode({ name: null, status: null }));
     setPromocodeInput('');
   };
 
@@ -145,7 +147,7 @@ const Cart = () => {
                             {countTheBasket(cartItems).delivery}
                           </span>
                         </div>
-                        {promocode ? (
+                        {promocode.name ? (
                           <div className="cart_widget_widget-inner_summary_total">
                             <span>
                               Promocode ({' '}
@@ -155,7 +157,7 @@ const Cart = () => {
                                   textDecoration: 'underline red wavy',
                                 }}
                               >
-                                {promocode}
+                                {promocode.name}
                               </span>{' '}
                               )
                             </span>
@@ -163,7 +165,7 @@ const Cart = () => {
                               - €
                               {(
                                 countTheBasket(cartItems).total *
-                                PROMOCODES[promocode]
+                                PROMOCODES[promocode.name]
                               ).toFixed(2)}
                             </span>
                           </div>
@@ -174,9 +176,9 @@ const Cart = () => {
                             €
                             {(
                               countTheBasket(cartItems).savings +
-                              (promocode
+                              (promocode.name
                                 ? countTheBasket(cartItems).total *
-                                  PROMOCODES[promocode]
+                                  PROMOCODES[promocode.name]
                                 : 0)
                             ).toFixed(2)}
                           </span>
@@ -187,9 +189,9 @@ const Cart = () => {
                             €
                             {(
                               countTheBasket(cartItems).total -
-                              (promocode
+                              (promocode.name
                                 ? countTheBasket(cartItems).total *
-                                  PROMOCODES[promocode]
+                                  PROMOCODES[promocode.name]
                                 : 0)
                             ).toFixed(2)}
                           </span>
@@ -202,29 +204,36 @@ const Cart = () => {
                         <div className="cart_widget_widget-inner_promocode_body">
                           <div className="cart_widget_widget-inner_promocode_body_input-container">
                             <input
-                              value={promocode ? promocode : promocodeInput}
-                              disabled={promocode}
+                              value={
+                                promocode.name ? promocode.name : promocodeInput
+                              }
+                              disabled={promocode.name}
                               onChange={(e) => {
-                                setPromocodeStatus(null);
+                                dispatch(
+                                  setAppliedPromocode({
+                                    name: null,
+                                    status: null,
+                                  })
+                                );
                                 setPromocodeInput(e.target.value);
                               }}
-                              className={`cart_widget_widget-inner_promocode_body_input ${promocodeStatus}`}
+                              className={`cart_widget_widget-inner_promocode_body_input ${promocode.status}`}
                             />
 
                             <span
                               style={{
-                                visibility: promocodeStatus
+                                visibility: promocode.status
                                   ? 'visible'
                                   : 'hidden',
                               }}
-                              className={`cart_widget_widget-inner_promocode_body_status ${promocodeStatus}`}
+                              className={`cart_widget_widget-inner_promocode_body_status ${promocode.status}`}
                             >
-                              {promocodeStatus === 'valid'
+                              {promocode.status === 'valid'
                                 ? 'Promocode applied'
                                 : 'Invalid promocode'}
                             </span>
                           </div>
-                          {promocode ? (
+                          {promocode.name ? (
                             <button
                               onClick={onCancelPromocodeClick}
                               className="cart_widget_widget-inner_promocode_body_button"
@@ -237,7 +246,12 @@ const Cart = () => {
                               className="cart_widget_widget-inner_promocode_body_button"
                               onBlur={() => {
                                 if (!promocodeInput) {
-                                  setPromocodeStatus(null);
+                                  dispatch(
+                                    setAppliedPromocode({
+                                      name: null,
+                                      status: null,
+                                    })
+                                  );
                                 }
                               }}
                             >

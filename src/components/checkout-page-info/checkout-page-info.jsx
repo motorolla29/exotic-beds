@@ -35,7 +35,7 @@ import './checkout-page-info.sass';
 import CheckoutPageOrderedItems from '../checkout-page-ordered-items/checkout-page-ordered-items';
 import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counting';
 
-const CheckoutPageInfo = ({ orderedItems }) => {
+const CheckoutPageInfo = ({ orderedItems, countedBasket }) => {
   const [ww] = useWindowSize();
   const user = useSelector((state) => state.user);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
@@ -524,7 +524,10 @@ const CheckoutPageInfo = ({ orderedItems }) => {
             {orderBodyVisible && (
               <CheckoutPageOrderedItems items={orderedItems} />
             )}
-            <CheckoutPageCounting items={orderedItems} />
+            <CheckoutPageCounting
+              items={orderedItems}
+              countedBasket={countedBasket}
+            />
           </div>
         )}
         <button

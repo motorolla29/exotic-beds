@@ -17,6 +17,7 @@ const CheckoutPage = () => {
 
   const orderedItems = useSelector((state) => state.cartProducts);
   const countedBasket = countTheBasket(orderedItems);
+
   const [promocode, setPromocode] = useState(null);
 
   return (
@@ -59,12 +60,23 @@ const CheckoutPage = () => {
               </div>
             </div>
             {topOrderSummaryVisible && (
-              <CheckoutPageOrder orderedItems={orderedItems} />
+              <CheckoutPageOrder
+                orderedItems={orderedItems}
+                countedBasket={countedBasket}
+              />
             )}
           </div>
         )}
-        <CheckoutPageInfo orderedItems={orderedItems} />
-        {ww > 998 && <CheckoutPageOrder orderedItems={orderedItems} />}
+        <CheckoutPageInfo
+          orderedItems={orderedItems}
+          countedBasket={countedBasket}
+        />
+        {ww > 998 && (
+          <CheckoutPageOrder
+            orderedItems={orderedItems}
+            countedBasket={countedBasket}
+          />
+        )}
       </div>
     </div>
   );

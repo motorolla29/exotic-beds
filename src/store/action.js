@@ -65,31 +65,6 @@ const setConfirmationModal = createAction(
   })
 );
 
-// const addProductToCart = createAction(`ADD_PRODUCT_TO_CART`, (productId) => ({
-//   payload: productId,
-// }));
-
-// const removeProductFromCart = createAction(
-//   `REMOVE_PRODUCT_FROM_CART`,
-//   (productId) => ({
-//     payload: productId,
-//   })
-// );
-
-// const increaseProductAmountInCart = createAction(
-//   `INCREASE_PRODUCT_AMOUNT_IN_CART`,
-//   (productId) => ({
-//     payload: productId,
-//   })
-// );
-
-// const decreaseProductAmountInCart = createAction(
-//   `DECREASE_PRODUCT_AMOUNT_IN_CART`,
-//   (productId) => ({
-//     payload: productId,
-//   })
-// );
-
 const toggleProductInLovelist = createAction(
   `TOGGLE_PRODUCT_IN_LOVELIST`,
   (productId) => ({
@@ -112,6 +87,13 @@ const setSnackbar = createAction('SET_SNACKBAR', (options) => ({
   payload: options,
 }));
 
+const setAppliedPromocode = createAction(
+  `SET_APPLIED_PROMOCODE`,
+  (promocode) => ({
+    payload: promocode,
+  })
+);
+
 export {
   setOverlayLoader,
   setIsAuth,
@@ -128,12 +110,9 @@ export {
   loginModalsOpen,
   setNotificationModal,
   setConfirmationModal,
-  // addProductToCart,
-  // removeProductFromCart,
-  // increaseProductAmountInCart,
-  // decreaseProductAmountInCart,
   toggleProductInLovelist,
   setMapViewState,
   setNearStoresCenter,
   setSnackbar,
+  setAppliedPromocode,
 };

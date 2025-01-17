@@ -3,12 +3,15 @@ import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counti
 
 import './checkout-page-order.sass';
 
-const CheckoutPageOrder = ({ orderedItems }) => {
+const CheckoutPageOrder = ({ orderedItems, countedBasket }) => {
   return (
     <div className="checkout-page_main_order">
       <div className="checkout-page_main_order_inner">
         <CheckoutPageOrderedItems items={orderedItems} />
-        <CheckoutPageCounting items={orderedItems} />
+        <CheckoutPageCounting
+          items={orderedItems}
+          countedBasket={countedBasket}
+        />
       </div>
     </div>
   );

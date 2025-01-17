@@ -12,18 +12,14 @@ import {
   productsAreLoaded,
   cartOpen,
   setCart,
-  // addProductToCart,
-  // removeProductFromCart,
-  // increaseProductAmountInCart,
-  // decreaseProductAmountInCart,
   setLovelist,
-  // toggleProductInLovelist,
   setMapViewState,
   setNearStoresCenter,
   setSnackbar,
   loginModalsOpen,
   setNotificationModal,
   setConfirmationModal,
+  setAppliedPromocode,
 } from './action';
 
 // import {
@@ -62,6 +58,7 @@ const initialState = {
     decorator: null,
     id: null,
   },
+  appliedPromocode: { name: null, status: null },
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -108,31 +105,9 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setCart, (state, action) => {
       state.cartProducts = action.payload.slice();
     })
-    // .addCase(addProductToCart, (state, action) => {
-    //   state.cartProducts = getCartWithAddedProduct(state, action);
-    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
-    // })
-    // .addCase(removeProductFromCart, (state, action) => {
-    //   state.cartProducts = state.cartProducts.filter(
-    //     (product) => product.id !== action.payload
-    //   );
-    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
-    // })
-    // .addCase(increaseProductAmountInCart, (state, action) => {
-    //   state.cartProducts = getCartWithIncreasedProduct(state, action);
-    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
-    // })
-    // .addCase(decreaseProductAmountInCart, (state, action) => {
-    //   state.cartProducts = getCartWithDecreasedProduct(state, action);
-    //   localStorage.setItem('cart', JSON.stringify(state.cartProducts));
-    // })
     .addCase(setLovelist, (state, action) => {
       state.lovelistProducts = action.payload.slice();
     })
-    // .addCase(toggleProductInLovelist, (state, action) => {
-    //   state.lovelistProducts = updateLovelist(state, action);
-    //   localStorage.setItem('lovelist', JSON.stringify(state.lovelistProducts));
-    // })
     .addCase(setMapViewState, (state, action) => {
       state.mapViewState = action.payload;
     })
@@ -141,6 +116,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setSnackbar, (state, action) => {
       state.snackbar = action.payload;
+    })
+    .addCase(setAppliedPromocode, (state, action) => {
+      state.appliedPromocode = action.payload;
     });
 });
 
