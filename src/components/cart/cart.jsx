@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion, AnimatePresence, useAnimate } from 'framer-motion';
 
-import { cartOpen, setAppliedPromocode, setCart } from '../../store/action';
+import { cartOpen, setAppliedPromocode } from '../../store/action';
 import CartEmpty from '../cart-empty/cart-empty';
 import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
@@ -12,7 +13,6 @@ import { scrollController } from '../../utils';
 import { PROMOCODES } from '../../data/promocodes';
 
 import './cart.sass';
-import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const dispatch = useDispatch();

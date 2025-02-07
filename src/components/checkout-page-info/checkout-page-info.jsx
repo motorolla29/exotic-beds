@@ -30,15 +30,19 @@ import {
 import useWindowSize from '../../hooks/use-window-size';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 import './checkout-page-info.sass';
 import CheckoutPageOrderedItems from '../checkout-page-ordered-items/checkout-page-ordered-items';
 import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counting';
+import { createOrder } from '../../api/orderAPI';
+import { current } from '@reduxjs/toolkit';
 
 const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
   const [ww] = useWindowSize();
   const user = useSelector((state) => state.user);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
+  const [payButtonLoading, setPayButtonLoading] = useState(false);
   const [orderBodyVisible, setOrderBodyVisible] = useState(false);
   const [emailError, setEmailError] = useState(null);
   const [nameError, setNameError] = useState(null);
@@ -228,7 +232,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
     }
   };
 
-  const handlePayButtonClick = () => {
+  const handlePayButtonClick = async () => {
     setPayButtonClicked(true);
 
     const emailError = validateEmail(deliveryData.email);
@@ -258,7 +262,34 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       !postalCodeError &&
       !phoneNumberError
     ) {
-      console.log('continue to pay');
+      setPayButtonLoading(true);
+      const orderData = {
+        deliveryData,
+        items: JSON.stringify(orderedItems),
+        total: countedBasket.total,
+        currency: 'EUR',
+        paymentProviderName: 'YooKassa',
+        description: user.id
+          ? `Payment for the order for the user ID ${user.id}`
+          : `Payment for the order for an unregistered user`,
+        returnUrl: `${window.location.origin}/payment-success`,
+      };
+
+      try {
+        const order = await createOrder(orderData);
+        // Если сервер вернул confirmationUrl, перенаправляем пользователя
+        if (order?.confirmationUrl) {
+          window.location.href = order.confirmationUrl;
+        } else {
+          console.error('Payment URL not returned', order);
+          // Обработайте ошибку – уведомите пользователя, например
+          alert('Error initializing payment, please try again later');
+        }
+      } catch (error) {
+        setPayButtonLoading(false);
+        console.error('Error creating order:', error);
+        alert('Error creating order, please try again later');
+      }
     }
   };
 
@@ -534,8 +565,13 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         <button
           onClick={handlePayButtonClick}
           className="checkout-page_main_info_inner_pay-button"
+          disabled={payButtonLoading}
         >
-          PAY NOW
+          {payButtonLoading ? (
+            <BeatLoader color="#eefef6" size={ww > 768 ? 12 : 10} />
+          ) : (
+            'PAY NOW'
+          )}
         </button>
       </div>
     </div>

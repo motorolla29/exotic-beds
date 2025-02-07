@@ -1,0 +1,80 @@
+@import 'src/styles/variables'
+    
+.payment-success-page
+    font-size: 16px
+    display: flex
+    flex-direction: column
+    height: 100%
+    align-items: center
+    justify-content: center
+    text-align: center
+    padding: 2em
+    & .propagate-loader
+        margin-top: 2em
+    &_icon
+        margin-bottom: 0.5em
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 3em
+        height: 3em
+        border: 0.25em solid $main-color-turquoise
+        border-radius: 50%
+        svg
+            width: 75%
+            height: auto
+            fill: $main-color-turquoise
+    &_success-title
+        margin-bottom: 0.5em
+    &_success-description
+        color: $main-color-grey
+        margin-bottom: 0.5em
+        font-size: 1em
+        font-weight: 600
+        max-width: 500px
+    &_success-order
+        font-weight: 600
+        margin-bottom: 0.25em
+    &_success-total
+        font-weight: 600
+        margin-bottom: 1em
+    &_links
+        margin: 0.25em 0
+        a
+            padding: 0.4em 0.5em 0.5em 0.5em
+            margin: 0 0.5em 
+            border-radius: 0.5em
+            &:hover
+                opacity: 0.8
+            &:active
+                opacity: 0.9
+        &_home-link
+            background: #457B7A
+            border: 1px solid #457B7A
+            color: $main-color-green-light
+        &_orders-link
+            border: 1px solid #5e5e5e
+            color: #5e5e5e
+    
+    
+
+@media (max-width: 1200px) 
+    .payment-success-page
+        font-size: 14px
+
+@media (max-width: 992px) 
+    .payment-success-page
+        font-size: 13px
+
+@media (max-width: 768px) 
+    .payment-success-page
+        font-size: 12px
+
+@media (max-width: 480px) 
+    .payment-success-page
+        font-size: 10px
+
+@media (max-width: 320px) 
+    .payment-success-page
+        font-size: 8px
