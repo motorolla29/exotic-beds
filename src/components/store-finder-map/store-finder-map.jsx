@@ -58,7 +58,7 @@ const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
     <Map
       {...viewState}
       id="storeFinderMap"
-      mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`}
+      mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${process.env.MAPTILER_API_KEY}`}
       attributionControl={false}
       interactiveLayerIds={['clusters', 'unclustered-point']}
       onMove={onMapMove}

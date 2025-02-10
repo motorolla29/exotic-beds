@@ -148,7 +148,7 @@ const StorePage = () => {
                   latitude: store.geometry.coordinates[1],
                   zoom: 16,
                 }}
-                mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`}
+                mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${process.env.MAPTILER_API_KEY}`}
               >
                 <NavigationControl showCompass={false} />
                 <Marker

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { debounce } from '../../utils';
 import {
   Checkbox,
@@ -28,18 +28,21 @@ import {
   validatePostalCode,
 } from './fields-validators';
 import useWindowSize from '../../hooks/use-window-size';
+import ErrorIcon from '@mui/icons-material/Error';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import BeatLoader from 'react-spinners/BeatLoader';
-
-import './checkout-page-info.sass';
 import CheckoutPageOrderedItems from '../checkout-page-ordered-items/checkout-page-ordered-items';
 import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counting';
 import { createOrder } from '../../api/orderAPI';
-import { current } from '@reduxjs/toolkit';
+import { setNotificationModal } from '../../store/action';
+
+import './checkout-page-info.sass';
+import { PROMOCODES } from '../../data/promocodes';
 
 const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
   const [ww] = useWindowSize();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
   const [payButtonLoading, setPayButtonLoading] = useState(false);
@@ -87,7 +90,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         )}.json`,
         {
           params: {
-            key: MAPTILER_API_KEY,
+            key: process.env.MAPTILER_API_KEY,
             limit: 5,
             language: 'en',
             country: countryCode || undefined,
@@ -268,6 +271,12 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         items: JSON.stringify(orderedItems),
         total: countedBasket.total,
         currency: 'EUR',
+        promocode: promocode.name || null,
+        promocodeDiscountTotal: PROMOCODES[promocode.name]
+          ? +(countedBasket.total * PROMOCODES[promocode.name]).toFixed(2)
+          : null,
+        promocodeDiscountPercent: PROMOCODES[promocode.name] * 100 || null,
+        shippingCost: countedBasket.delivery,
         paymentProviderName: 'YooKassa',
         description: user.id
           ? `Payment for the order for the user ID ${user.id}`
@@ -288,7 +297,14 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       } catch (error) {
         setPayButtonLoading(false);
         console.error('Error creating order:', error);
-        alert('Error creating order, please try again later');
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: error.response.data.message || error.message,
+            description: 'Error creating order, please try again later',
+          })
+        );
       }
     }
   };
