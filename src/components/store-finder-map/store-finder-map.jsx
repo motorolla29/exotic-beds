@@ -21,7 +21,6 @@ import {
 import stores from '../../data/exotic-beds-stores.json';
 import { getStoreWorkStatus } from '../../utils';
 import { getStoreWorkDescription } from '../../utils';
-import { MAPTILER_API_KEY } from '../../const';
 
 import './store-finder-map.sass';
 

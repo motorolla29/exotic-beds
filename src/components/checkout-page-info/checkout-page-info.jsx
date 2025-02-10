@@ -18,7 +18,7 @@ import JoySelect from '@mui/joy/Select';
 import JoyOption from '@mui/joy/Option';
 import { ClickAwayListener } from '@mui/base';
 import { PinDrop } from '@mui/icons-material';
-import { AVAILABLE_SHIPPING_COUNTRIES, MAPTILER_API_KEY } from '../../const';
+import { AVAILABLE_SHIPPING_COUNTRIES } from '../../const';
 import {
   validateAddress,
   validateCity,
@@ -276,7 +276,8 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
           ? +(countedBasket.total * PROMOCODES[promocode.name]).toFixed(2)
           : null,
         promocodeDiscountPercent: PROMOCODES[promocode.name] * 100 || null,
-        shippingCost: countedBasket.delivery,
+        shippingCost:
+          countedBasket.delivery === 'FREE' ? 0 : countedBasket.delivery,
         paymentProviderName: 'YooKassa',
         description: user.id
           ? `Payment for the order for the user ID ${user.id}`

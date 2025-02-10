@@ -11,7 +11,6 @@ import {
   getStoreWorkStatus,
   sortStoresByProximity,
 } from '../../../utils';
-import { MAPTILER_API_KEY } from '../../../const';
 import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
 import { ReactComponent as MapPinIcon } from '../../../images/map-pin-icon.svg';
 import { ReactComponent as ClockIcon } from '../../../images/clock-icon.svg';

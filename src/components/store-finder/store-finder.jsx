@@ -7,7 +7,6 @@ import { GeocodingControl } from '@maptiler/geocoding-control/react';
 import { setNearStoresCenter } from '../../store/action';
 import StoreFinderMap from '../store-finder-map/store-finder-map';
 import StoreInfoItem from '../store-info-item/store-info-item';
-import { MAPTILER_API_KEY } from '../../const';
 import stores from '../../data/exotic-beds-stores';
 import useWindowSize from '../../hooks/use-window-size';
 import { sortStoresByProximity } from '../../utils';
