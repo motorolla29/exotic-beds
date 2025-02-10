@@ -10,7 +10,22 @@
     text-align: center
     padding: 2em
     & .propagate-loader
-        margin-top: 2em
+        margin-top: 1.5em
+    &_error-div, &_payment-failed
+        background: #ff000025
+        max-width: 600px
+        padding: 1.5em
+        border-radius: 1em
+        border: 1px solid #cc0000
+        svg
+            width: 2em
+            height: auto
+            fill: $main-color-red
+        &_error-message 
+            font-weight: 600
+        &_error-message, &_title
+            color: $main-color-red 
+        
     &_icon
         margin-bottom: 0.5em
         position: relative
@@ -25,9 +40,9 @@
             width: 75%
             height: auto
             fill: $main-color-turquoise
-    &_success-title
+    &_success-title, &_payment-failed_title
         margin-bottom: 0.5em
-    &_success-description
+    &_success-description, &_payment-failed_description
         color: $main-color-grey
         margin-bottom: 0.5em
         font-size: 1em
@@ -42,9 +57,9 @@
     &_links
         margin: 0.25em 0
         a
-            padding: 0.4em 0.5em 0.5em 0.5em
+            padding: 0.35em 0.5em 0.55em 0.5em
             margin: 0 0.5em 
-            border-radius: 0.5em
+            border-radius: 0.35em
             &:hover
                 opacity: 0.8
             &:active

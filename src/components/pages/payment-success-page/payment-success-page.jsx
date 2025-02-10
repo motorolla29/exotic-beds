@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import { ReactComponent as SuccessIcon } from '../../../images/success.svg';
+import { BiError } from 'react-icons/bi';
+import { BiErrorCircle } from 'react-icons/bi';
 
 import './payment-success-page.sass';
 
@@ -14,10 +16,9 @@ const PaymentSuccessPage = () => {
   const [error, setError] = useState(null);
   const [pollingAttempts, setPollingAttempts] = useState(0);
 
-  // Допустим, максимальное число попыток равняется 20 (примерно 60 секунд при интервале 3 секунды)
+  //примерно 30 секунд при интервале 3 секунды
   const maxPollingAttempts = 10;
 
-  // Извлекаем orderId из query-параметров URL
   const [searchParams] = useSearchParams();
   const orderId = searchParams.get('orderId');
 
@@ -33,7 +34,7 @@ const PaymentSuccessPage = () => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          // Если требуется, добавьте заголовок авторизации, например:
+          // Заголовок авторизации:
           // 'Authorization': `Bearer ${yourAuthToken}`
         },
       })
@@ -56,7 +57,7 @@ const PaymentSuccessPage = () => {
             clearInterval(intervalId);
             setLoading(false);
             setError(
-              'Failed to get payment status update. Try refreshing the page.'
+              `Failed to get payment status update. Try refreshing the page or contact support.`
             );
           }
         })
@@ -68,11 +69,9 @@ const PaymentSuccessPage = () => {
         });
     }, 3000);
 
-    // Очистка интервала при размонтировании компонента
     return () => clearInterval(intervalId);
   }, [orderId, pollingAttempts]);
 
-  // Пока идет загрузка
   if (loading) {
     return (
       <div className="payment-success-page">
@@ -86,12 +85,19 @@ const PaymentSuccessPage = () => {
     );
   }
 
-  // Если произошла ошибка
   if (error) {
-    return <div className="payment-success-page">{error}</div>;
+    return (
+      <div className="payment-success-page">
+        <div className="payment-success-page_error-div">
+          <BiError />
+          <p className="payment-success-page_error-div_error-message">
+            {error}
+          </p>
+        </div>
+      </div>
+    );
   }
 
-  // Если данные заказа получены
   if (order) {
     if (order.status === 'paid') {
       return (
@@ -131,19 +137,15 @@ const PaymentSuccessPage = () => {
     } else if (order.status === 'failed') {
       return (
         <div className="payment-success-page">
-          <h2>Payment failed</h2>
-          <p>Please try again or contact support.</p>
-        </div>
-      );
-    } else {
-      // Если статус всё ещё pending (но опрос остановился по таймауту)
-      return (
-        <div className="payment-success-page">
-          <h2>Payment status: {order.status}</h2>
-          <p>
-            Please try refreshing the page or contact support to clarify the
-            status.
-          </p>
+          <div className="payment-success-page_payment-failed">
+            <BiErrorCircle />
+            <h3 className="payment-success-page_payment-failed_title">
+              Payment failed
+            </h3>
+            <p className="payment-success-page_payment-failed_description">
+              Please try again or contact support.
+            </p>
+          </div>
         </div>
       );
     }
