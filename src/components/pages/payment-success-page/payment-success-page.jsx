@@ -52,7 +52,8 @@ const PaymentSuccessPage = () => {
           // Если получен окончательный статус — прекращаем опрос
           if (data.status === 'paid' || data.status === 'failed') {
             if (data.status === 'paid') {
-              isAuth ? dispatch(setCart([])) : localStorage.removeItem('cart');
+              dispatch(setCart([]));
+              !isAuth && localStorage.removeItem('cart');
             }
             clearInterval(intervalId);
             setLoading(false);
