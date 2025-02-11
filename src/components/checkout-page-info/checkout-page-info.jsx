@@ -266,7 +266,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       const orderData = {
         deliveryData,
         items: JSON.stringify(orderedItems),
-        total: (
+        total: +(
           countedBasket.total -
           (promocode.name
             ? countedBasket.total * PROMOCODES[promocode.name]
