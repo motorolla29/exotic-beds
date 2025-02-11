@@ -269,7 +269,12 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       const orderData = {
         deliveryData,
         items: JSON.stringify(orderedItems),
-        total: countedBasket.total,
+        total: (
+          countedBasket.total -
+          (promocode.name
+            ? countedBasket.total * PROMOCODES[promocode.name]
+            : 0)
+        ).toFixed(2),
         currency: 'EUR',
         promocode: promocode.name || null,
         promocodeDiscountTotal: PROMOCODES[promocode.name]
