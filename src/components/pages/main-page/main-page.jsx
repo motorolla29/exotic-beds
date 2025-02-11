@@ -101,7 +101,9 @@ const MainPage = () => {
             className="highest-rated-items-carousel"
           >
             {highestRatedProducts.map((it) => {
-              return <CatalogItem key={it.id} item={it} />;
+              return (
+                <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
+              );
             })}
           </Slider>
         </div>
@@ -119,7 +121,9 @@ const MainPage = () => {
             className="sale-items-carousel"
           >
             {saleProducts.map((it) => {
-              return <CatalogItem key={it.id} item={it} />;
+              return (
+                <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
+              );
             })}
           </Slider>
         </div>

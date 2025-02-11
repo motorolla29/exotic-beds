@@ -36,8 +36,8 @@ const CatalogItem = ({ item, size = '' }) => {
 
   const basketItems = useSelector((state) => state.cartProducts);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
-  const isInBasket = basketItems.find((it) => it.id === item.id);
-  const isLoved = lovedProducts.find((it) => it.id === item.id);
+  const isInBasket = basketItems.find((it) => it.productId === item.productId);
+  const isLoved = lovedProducts.find((it) => it.productId === item.productId);
 
   const initialStateVariants = [
     { opacity: 0, x: -25 },
@@ -49,7 +49,7 @@ const CatalogItem = ({ item, size = '' }) => {
   const onHeartIconClick = () => {
     if (isAuth) {
       setAddToLovelistLoading(true);
-      toggleProductInLovelist(item)
+      toggleProductInLovelist({ ...item, productId: item.productId })
         .then((lovelist) => {
           dispatch(setLovelist(lovelist));
           isLoved
@@ -58,7 +58,7 @@ const CatalogItem = ({ item, size = '' }) => {
                   open: true,
                   decorator: <HeartBrokenOutlined />,
                   text: 'Product is not loved anymore :(',
-                  id: item.id,
+                  id: item.productId,
                 })
               )
             : dispatch(
@@ -66,7 +66,7 @@ const CatalogItem = ({ item, size = '' }) => {
                   open: true,
                   decorator: <FavoriteBorderOutlined />,
                   text: 'Product is loved now :)',
-                  id: item.id,
+                  id: item.productId,
                 })
               );
         })
@@ -80,7 +80,7 @@ const CatalogItem = ({ item, size = '' }) => {
   const onAddToCartHandler = () => {
     if (isAuth) {
       setAddToBasketLoading(true);
-      addToBasket(item)
+      addToBasket({ ...item, productId: item.productId })
         .then((cart) => {
           dispatch(setCart(cart));
           dispatch(
@@ -88,7 +88,7 @@ const CatalogItem = ({ item, size = '' }) => {
               open: true,
               decorator: <AddShoppingCartRounded />,
               text: 'Product added to basket',
-              id: item.id,
+              id: item.productId,
             })
           );
         })
@@ -97,7 +97,7 @@ const CatalogItem = ({ item, size = '' }) => {
     } else {
       const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
       const localStorageCartItem = localStorageCart.find(
-        (it) => item.id === it.id
+        (it) => it.productId === item.productId
       );
       if (localStorageCartItem) {
         localStorageCartItem.quantity++;
@@ -111,7 +111,7 @@ const CatalogItem = ({ item, size = '' }) => {
             open: true,
             decorator: <AddShoppingCartRounded />,
             text: 'Product added to basket',
-            id: item.id,
+            id: item.productId,
           })
         );
       }
@@ -123,11 +123,11 @@ const CatalogItem = ({ item, size = '' }) => {
       initial={initialStateVariants[randomInteger(0, 3)]}
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 0.5 }}
-      key={item.id}
+      key={item.productId}
       className={`catalog-item ${size}`}
     >
       <div className="catalog-item_visual">
-        <Link to={`/${item.id}`}>
+        <Link to={`/${item.productId}`}>
           <ProgressiveImageContainer
             alt="product_picture"
             thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-40`}
@@ -163,7 +163,7 @@ const CatalogItem = ({ item, size = '' }) => {
       <div className="catalog-item_info">
         <div className="catalog-item_info_rating">
           <div className="catalog-item_info_rating_stars">
-            <RatingStars id={item.id} rating={Number(item.rating)} />
+            <RatingStars id={item.productId} rating={Number(item.rating)} />
           </div>
           {ww > 385 && (
             <span className="catalog-item_info_rating_mark">
@@ -172,7 +172,7 @@ const CatalogItem = ({ item, size = '' }) => {
           )}
         </div>
 
-        <Link to={`/${item.id}`}>
+        <Link to={`/${item.productId}`}>
           <p className="catalog-item_info_title">{item.title}</p>
         </Link>
         <div className="catalog-item_info_price-with-ui-container">

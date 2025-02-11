@@ -35,7 +35,7 @@ const CartItem = ({ item }) => {
   const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
-  const isLoved = lovedProducts.find((it) => it.id === item.id);
+  const isLoved = lovedProducts.find((it) => it.productId === item.productId);
 
   const onHeartIconClick = () => {
     if (isAuth) {
@@ -49,7 +49,7 @@ const CartItem = ({ item }) => {
                   open: true,
                   decorator: <HeartBrokenOutlined />,
                   text: 'Product is not loved anymore :(',
-                  id: item.id,
+                  id: item.productId,
                 })
               )
             : dispatch(
@@ -57,7 +57,7 @@ const CartItem = ({ item }) => {
                   open: true,
                   decorator: <FavoriteBorderOutlined />,
                   text: 'Product is loved now :)',
-                  id: item.id,
+                  id: item.productId,
                 })
               );
         })
@@ -82,7 +82,7 @@ const CartItem = ({ item }) => {
       } else {
         const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
         const localStorageCartItem = localStorageCart.find(
-          (it) => item.id === it.id
+          (it) => item.productId === it.productId
         );
         localStorageCartItem.quantity--;
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
@@ -104,7 +104,7 @@ const CartItem = ({ item }) => {
       } else {
         const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
         const localStorageCartItem = localStorageCart.find(
-          (it) => item.id === it.id
+          (it) => it.productId === item.productId
         );
         localStorageCartItem.quantity++;
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
@@ -125,14 +125,16 @@ const CartItem = ({ item }) => {
               open: true,
               decorator: <RemoveShoppingCartRounded />,
               text: 'Product removed from basket',
-              id: item.id,
+              id: item.productId,
             })
           );
         })
         .catch((err) => console.log(err.message));
     } else {
       const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
-      const newCart = localStorageCart.filter((it) => it.id !== item.id);
+      const newCart = localStorageCart.filter(
+        (it) => it.productId !== item.productId
+      );
       localStorage.setItem('cart', JSON.stringify(newCart));
       dispatch(setCart(newCart));
       dispatch(
@@ -140,15 +142,15 @@ const CartItem = ({ item }) => {
           open: true,
           decorator: <RemoveShoppingCartRounded />,
           text: 'Product removed from basket',
-          id: item.id,
+          id: item.productId,
         })
       );
     }
   };
 
   return (
-    <div className="cart-item" key={item.id}>
-      <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.id}`}>
+    <div className="cart-item" key={item.productId}>
+      <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.productId}`}>
         <div className="cart-item_photo">
           <ProgressiveImageContainer
             thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-20`}
@@ -159,7 +161,10 @@ const CartItem = ({ item }) => {
       </Link>
       <div className="cart-item_body">
         <div className="cart-item_body_info">
-          <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.id}`}>
+          <Link
+            onClick={() => dispatch(cartOpen(false))}
+            to={`/${item.productId}`}
+          >
             <div className="cart-item_body_info_title">{item.title}</div>
           </Link>
           {item.sale ? (

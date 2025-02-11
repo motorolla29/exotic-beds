@@ -38,8 +38,8 @@ const ProductPage = () => {
   const basketItems = useSelector((state) => state.cartProducts);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
   const product = products.find((it) => it.id === id);
-  const isInBasket = basketItems.find((it) => it.id === id);
-  const isLoved = lovedProducts.find((it) => it.id === id);
+  const isInBasket = basketItems.find((it) => it.productId === id);
+  const isLoved = lovedProducts.find((it) => it.productId === id);
 
   const onHeartIconClick = () => {
     if (isAuth) {

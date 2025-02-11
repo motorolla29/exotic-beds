@@ -123,7 +123,7 @@ const Cart = () => {
                   {cartItemsTotal ? (
                     <div className="cart_widget_widget-inner_scroll-inner">
                       {cartItems.map((item) => {
-                        return <CartItem key={item.id} item={item} />;
+                        return <CartItem key={item.productId} item={item} />;
                       })}
                       <div className="cart_widget_widget-inner_summary">
                         <div className="cart_widget_widget-inner_summary_title">

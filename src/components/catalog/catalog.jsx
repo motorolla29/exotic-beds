@@ -6,7 +6,7 @@ const Catalog = ({ products }) => {
   return (
     <div className="catalog">
       {products?.map((it) => {
-        return <CatalogItem key={it.id} item={it} />;
+        return <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />;
       })}
     </div>
   );
