@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import { ReactComponent as SuccessIcon } from '../../../images/success.svg';
@@ -7,8 +7,10 @@ import { BiError } from 'react-icons/bi';
 import { BiErrorCircle } from 'react-icons/bi';
 
 import './payment-success-page.sass';
+import { setCart } from '../../../store/action';
 
 const PaymentSuccessPage = () => {
+  const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
   const [order, setOrder] = useState(null);
@@ -47,9 +49,11 @@ const PaymentSuccessPage = () => {
         .then((data) => {
           setOrder(data);
           setPollingAttempts((prev) => prev + 1);
-
           // Если получен окончательный статус — прекращаем опрос
           if (data.status === 'paid' || data.status === 'failed') {
+            if (data.status === 'paid') {
+              isAuth ? dispatch(setCart([])) : localStorage.removeItem('cart');
+            }
             clearInterval(intervalId);
             setLoading(false);
           } else if (pollingAttempts >= maxPollingAttempts) {
