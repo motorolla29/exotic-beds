@@ -94,7 +94,7 @@ const StoreFinder = () => {
       <h1 className="store-finder_header">Find our Exotic store</h1>
       <div className="store-finder_geocoder">
         <GeocodingControl
-          apiKey={process.env.MAPTILER_API_KEY}
+          apiKey={process.env.REACT_APP_MAPTILER_API_KEY}
           onPick={onGeocoderItemPick}
         />
       </div>

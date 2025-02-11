@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { debounce } from '../../utils';
 import {
   Checkbox,
@@ -28,21 +28,18 @@ import {
   validatePostalCode,
 } from './fields-validators';
 import useWindowSize from '../../hooks/use-window-size';
-import ErrorIcon from '@mui/icons-material/Error';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import BeatLoader from 'react-spinners/BeatLoader';
 import CheckoutPageOrderedItems from '../checkout-page-ordered-items/checkout-page-ordered-items';
 import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counting';
 import { createOrder } from '../../api/orderAPI';
-import { setNotificationModal } from '../../store/action';
+import { PROMOCODES } from '../../data/promocodes';
 
 import './checkout-page-info.sass';
-import { PROMOCODES } from '../../data/promocodes';
 
 const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
   const [ww] = useWindowSize();
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
   const [payButtonLoading, setPayButtonLoading] = useState(false);
@@ -90,7 +87,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         )}.json`,
         {
           params: {
-            key: process.env.MAPTILER_API_KEY,
+            key: process.env.REACT_APP_MAPTILER_API_KEY,
             limit: 5,
             language: 'en',
             country: countryCode || undefined,
@@ -269,7 +266,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       const orderData = {
         deliveryData,
         items: JSON.stringify(orderedItems),
-        total: (
+        total: +(
           countedBasket.total -
           (promocode.name
             ? countedBasket.total * PROMOCODES[promocode.name]
@@ -297,20 +294,12 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
           window.location.href = order.confirmationUrl;
         } else {
           console.error('Payment URL not returned', order);
-          // Обработайте ошибку – уведомите пользователя, например
           alert('Error initializing payment, please try again later');
         }
       } catch (error) {
         setPayButtonLoading(false);
         console.error('Error creating order:', error);
-        dispatch(
-          setNotificationModal({
-            open: true,
-            icon: <ErrorIcon />,
-            title: error.response.data.message || error.message,
-            description: 'Error creating order, please try again later',
-          })
-        );
+        alert('Error creating order, please try again later');
       }
     }
   };
