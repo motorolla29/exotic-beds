@@ -265,6 +265,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       setPayButtonLoading(true);
       const orderData = {
         deliveryData,
+        userId: user?.id || null,
         items: JSON.stringify(orderedItems),
         total: +(
           countedBasket.total -
