@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { debounce } from '../../utils';
@@ -39,6 +39,7 @@ import { PROMOCODES } from '../../data/promocodes';
 import './checkout-page-info.sass';
 
 const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
+  const selectRef = useRef();
   const [ww] = useWindowSize();
   const user = useSelector((state) => state.user);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
@@ -65,6 +66,8 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
     phoneNumber: '',
     email: '',
   });
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     setDeliveryData({
@@ -348,15 +351,20 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   Country
                 </JoyFormLabel>
                 <JoySelect
+                  ref={selectRef}
                   id="country-select-id"
                   value={deliveryData.country}
                   onChange={(e, newValue) => {
                     handleCountryChange(newValue);
                   }}
                   slotProps={{
+                    listbox: {
+                      disablePortal: true,
+                    },
                     button: {
-                      id: 'country-select',
-                      'aria-labelledby': 'country-select-label country-select',
+                      id: 'country-select-id',
+                      'aria-labelledby':
+                        'country-select-label country-select-id',
                     },
                   }}
                   renderValue={(selected) => {

@@ -5,9 +5,9 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 import { ReactComponent as SuccessIcon } from '../../../images/success.svg';
 import { BiError } from 'react-icons/bi';
 import { BiErrorCircle } from 'react-icons/bi';
+import { setCart } from '../../../store/action';
 
 import './payment-success-page.sass';
-import { setCart } from '../../../store/action';
 
 const PaymentSuccessPage = () => {
   const dispatch = useDispatch();
