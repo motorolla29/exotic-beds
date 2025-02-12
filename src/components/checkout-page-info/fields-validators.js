@@ -41,7 +41,7 @@ export const validateCity = (city) => {
   if (!city.trim()) {
     return 'City is required.';
   }
-  if (!/^[\p{L}\s]+$/u.test(city)) {
+  if (!/^[\p{L}][\p{L}\d\s\-'’.]*$/u.test(city)) {
     return 'City can only contain letters and spaces.';
   }
   return null;
