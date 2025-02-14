@@ -15,9 +15,9 @@ import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
 import { resendActivationMail, updateContactData } from '../../api/userAPI';
 import { nullAndUndefinedToEmptyString } from '../../utils';
 
-import './account-page-contact-details.sass';
+import './profile-page-contact-details.sass';
 
-const AccountPageContactDetails = () => {
+const ProfilePageContactDetails = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
@@ -214,11 +214,11 @@ const AccountPageContactDetails = () => {
     (saveChangesClicked && (emailError || !emailValid));
 
   return (
-    <div className="account-page_user-info_contact-details">
+    <div className="profile-page_user-info_contact-details">
       <h2>Contact details:</h2>
-      <div className="account-page_user-info_contact-details_email">
+      <div className="profile-page_user-info_contact-details_email">
         <TextField
-          className="account-page_user-info_contact-details_email_field"
+          className="profile-page_user-info_contact-details_email_field"
           label="Email"
           variant="outlined"
           value={email}
@@ -238,16 +238,16 @@ const AccountPageContactDetails = () => {
           }}
         />
         {user.email === email && !emailError && emailValid && (
-          <div className="account-page_user-info_contact-details_email_confirm">
+          <div className="profile-page_user-info_contact-details_email_confirm">
             {!user.isActivated && (
               <>
-                <span className="account-page_user-info_contact-details_email_confirm_info">
+                <span className="profile-page_user-info_contact-details_email_confirm_info">
                   Requires confirmation
                 </span>
                 <button
                   disabled={loadingSendMail || cooldownTime}
                   onClick={handleSendConfirmation}
-                  className={`account-page_user-info_contact-details_email_confirm_button ${
+                  className={`profile-page_user-info_contact-details_email_confirm_button ${
                     cooldownTime ? 'cooldown' : ''
                   }`}
                 >
@@ -265,9 +265,9 @@ const AccountPageContactDetails = () => {
           </div>
         )}
       </div>
-      <div className="account-page_user-info_contact-details_phone">
+      <div className="profile-page_user-info_contact-details_phone">
         <TextField
-          className="account-page_user-info_contact-details_phone_field"
+          className="profile-page_user-info_contact-details_phone_field"
           label="Phone Number"
           variant="outlined"
           value={`+${phone}`}
@@ -292,7 +292,7 @@ const AccountPageContactDetails = () => {
       <button
         disabled={!isChanges || dataSending}
         onClick={onSaveButtonClick}
-        className="account-page_user-info_contact-details_save-button"
+        className="profile-page_user-info_contact-details_save-button"
       >
         Save Changes
       </button>
@@ -300,4 +300,4 @@ const AccountPageContactDetails = () => {
   );
 };
 
-export default AccountPageContactDetails;
+export default ProfilePageContactDetails;

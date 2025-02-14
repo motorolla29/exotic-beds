@@ -32,10 +32,12 @@ import { getLovelist } from '../../api/lovelistAPI';
 import { getAllProducts } from '../../api/productAPI';
 import ProtectedRoute from '../../routes/ProtectedRoute';
 import { generateDeviceIdWithUserAgentAndClientHints } from '../../utils';
-
-import './app.sass';
 import CheckoutPage from '../pages/checkout-page/checkout-page';
 import PaymentSuccessPage from '../pages/payment-success-page/payment-success-page';
+import OrdersPage from '../pages/orders-page/orders-page';
+import ProfilePage from '../pages/profile-page/profile-page';
+
+import './app.sass';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -150,7 +152,10 @@ const App = () => {
                 <AccountPage />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route index element={<ProfilePage />} />
+            <Route path="orders" element={<OrdersPage />} />
+          </Route>
           <Route path="payment-success" element={<PaymentSuccessPage />} />
           <Route path="not-found" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />

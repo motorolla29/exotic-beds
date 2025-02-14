@@ -1,74 +1,20 @@
 @import 'src/styles/variables'
     
 .account-page
-    font-size: 16px
-    & .MuiFormControl-root
-        font-size: 1em
-        & .MuiInputBase-root
-            color: $main-color-grey // цвет текста в инпуте
-        & .MuiFormHelperText-root
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif
-            font-size: 0.9em
-            letter-spacing: normal
-            width: fit-content
-            margin: 0
-            padding: 0 0 0 0.5em
-    &_user-info
-        margin: 1em 0 2em 0
-    &_delete   
-        margin: 2em 0
-        &_button
-            width: fit-content
-            cursor: pointer
-            display: flex
-            align-items: center
-            color: $main-color-red
-            span
-                margin: 0 0 0 0.25em
-                font-weight: 600
-            svg
-                width: 1em
-                height: auto
+    &_tabs
+        display: flex
+        height: fit-content
+        margin: 0 0 2em 0
+        a
+            font-weight: 600
+            font-size: 1em
+            color: $main-color-grey
+            padding: 1em
+        a:not(:last-child)
+            margin-right: 1em
+        a.active
+            color: $main-color-turquoise
+            border-bottom: 2px solid
+        a:not(.active)
             &:hover
-                opacity: 0.6
-
-@media (max-width: 1200px) 
-    .account-page
-        font-size: 14px
-@media (max-width: 992px) 
-    .account-page
-        font-size: 13px
-@media (max-width: 768px) 
-    .account-page
-        font-size: 12px
-@media (max-width: 480px) 
-    .account-page
-        font-size: 11px
-@media (max-width: 360px) 
-    .account-page
-        font-size: 11px
-        &_heading
-            flex-direction: column
-            &_photo-container
-                display: flex
-                justify-content: center
-            &_title
-                margin: 1em 0 0 0
-                display: flex
-                flex-direction: column
-                align-items: center
-        &_user-info
-            display: flex
-            flex-direction: column
-            align-items: center
-            text-align: center
-            margin: 2em 0 0 0
-        &_delete
-            width: 100%
-            display: flex
-            justify-content: center
-            margin-top: 0
-
-@media (max-width: 320px) 
-    .account-page
-        font-size: 10px
+                opacity: 0.8

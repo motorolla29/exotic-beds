@@ -15,9 +15,9 @@ import { updatePersonalData } from '../../api/userAPI';
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
 import { nullAndUndefinedToEmptyString, areDatesEqual } from '../../utils';
 
-import './account-page-personal-data.sass';
+import './profile-page-personal-data.sass';
 
-const AccountPagePersonalData = () => {
+const ProfilePagePersonalData = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -153,11 +153,11 @@ const AccountPagePersonalData = () => {
   };
 
   return (
-    <div className="account-page_user-info_personal-data">
+    <div className="profile-page_user-info_personal-data">
       <h2>Personal data:</h2>
-      <div className="account-page_user-info_personal-data_full-name">
+      <div className="profile-page_user-info_personal-data_full-name">
         <TextField
-          className="account-page_user-info_personal-data_full-name_field"
+          className="profile-page_user-info_personal-data_full-name_field"
           label="Name"
           variant="outlined"
           value={name}
@@ -170,7 +170,7 @@ const AccountPagePersonalData = () => {
           onChange={onNameChange}
         />
         <TextField
-          className="account-page_user-info_personal-data_full-name_field"
+          className="profile-page_user-info_personal-data_full-name_field"
           label="Surname"
           variant="outlined"
           value={surname}
@@ -183,7 +183,7 @@ const AccountPagePersonalData = () => {
           onChange={onSurnameChange}
         />
         <TextField
-          className="account-page_user-info_personal-data_full-name_field"
+          className="profile-page_user-info_personal-data_full-name_field"
           label="Patronymic"
           variant="outlined"
           value={patronymic}
@@ -196,10 +196,10 @@ const AccountPagePersonalData = () => {
           onChange={onPatronymicChange}
         />
       </div>
-      <div className="account-page_user-info_personal-data_date-of-birth">
+      <div className="profile-page_user-info_personal-data_date-of-birth">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
-            className="account-page_user-info_personal-data_date-of-birth_field"
+            className="profile-page_user-info_personal-data_date-of-birth_field"
             label="Date of Birth"
             variant="outlined"
             value={dateOfBirth}
@@ -254,7 +254,7 @@ const AccountPagePersonalData = () => {
           />
         </LocalizationProvider>
       </div>
-      <div className="account-page_user-info_personal-data_gender">
+      <div className="profile-page_user-info_personal-data_gender">
         <RadioGroup value={gender} onChange={(e) => setGender(e.target.value)}>
           <FormControlLabel value="male" control={<Radio />} label="Male" />
           <FormControlLabel value="female" control={<Radio />} label="Female" />
@@ -263,7 +263,7 @@ const AccountPagePersonalData = () => {
       <button
         disabled={!isChanges || dataSending}
         onClick={onSaveButtonClick}
-        className="account-page_user-info_personal-data_save-button"
+        className="profile-page_user-info_personal-data_save-button"
       >
         Save Changes
       </button>
@@ -271,4 +271,4 @@ const AccountPagePersonalData = () => {
   );
 };
 
-export default AccountPagePersonalData;
+export default ProfilePagePersonalData;

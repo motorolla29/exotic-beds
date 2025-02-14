@@ -23,6 +23,7 @@ import ProgressiveImageContainer from '../../progressive-image-container/progres
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import './product-page.sass';
+import { PRODUCT_CATEGORIES } from '../../../const';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -122,7 +123,7 @@ const ProductPage = () => {
   return (
     product && (
       <>
-        <Breadcrumbs category={product.category} />
+        <Breadcrumbs category={PRODUCT_CATEGORIES[product.categoryId - 1]} />
         <div className="product-page">
           <div className="product-page_visual">
             <ProgressiveImageContainer

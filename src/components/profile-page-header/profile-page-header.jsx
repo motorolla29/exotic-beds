@@ -29,9 +29,9 @@ import { isTouchSupported } from 'detect-mobile';
 import { VERCEL_MAX_FILE_SIZE } from '../../const';
 import { resizeImage } from '../../utils';
 
-import './account-page-header.sass';
+import './profile-page-header.sass';
 
-const AccountPageHeader = ({ setAvatarModalOpen }) => {
+const ProfilePageHeader = ({ setAvatarModalOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -185,9 +185,9 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
   };
 
   return (
-    <div className="account-page_heading">
-      <div className="account-page_heading_photo-container">
-        <div className="account-page_heading_photo">
+    <div className="profile-page_heading">
+      <div className="profile-page_heading_photo-container">
+        <div className="profile-page_heading_photo">
           <img
             style={{ opacity: loading ? 0.5 : 1 }}
             alt="user_photo"
@@ -208,20 +208,20 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
             <input
               id="avatar_load"
               type="file"
-              className="account-page_heading_photo"
+              className="profile-page_heading_photo"
               onChange={onAvatarInputChange}
               onClick={onAvatarClick}
             />
           </label>
 
           {!isTouchSupported() && avatarHovered && !loading && (
-            <div className="account-page_heading_photo_background">
+            <div className="profile-page_heading_photo_background">
               <HiOutlineCamera />
             </div>
           )}
 
           {loading && (
-            <div className="account-page_heading_photo_loading-background">
+            <div className="profile-page_heading_photo_loading-background">
               <SyncLoader speedMultiplier={0.9} />
             </div>
           )}
@@ -233,19 +233,19 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
                 initial={{ opacity: 0, scale: 0.1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.1 }}
-                className="account-page_heading_photo-container_options"
+                className="profile-page_heading_photo-container_options"
               >
                 <div
                   onClick={() => {
                     setAvatarModalOpen(true);
                     setAvatarOptionsOpen(false);
                   }}
-                  className="account-page_heading_photo-container_options_option show"
+                  className="profile-page_heading_photo-container_options_option show"
                 >
                   <TbPhoto />
                   <span>Show photo</span>
                 </div>
-                <div className="account-page_heading_photo-container_options_option update">
+                <div className="profile-page_heading_photo-container_options_option update">
                   <TbCameraPlus />
                   <span>Update photo</span>
                   <label htmlFor="avatar_change_option">
@@ -258,7 +258,7 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
                 </div>
                 <div
                   onClick={onAvatarDeleteClick}
-                  className="account-page_heading_photo-container_options_option delete"
+                  className="profile-page_heading_photo-container_options_option delete"
                 >
                   <RiDeleteBin5Line />
                   <span>Delete photo</span>
@@ -268,18 +268,18 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
           )}
         </AnimatePresence>
       </div>
-      <div className="account-page_heading_title">
-        <div className="account-page_heading_title_profile-id">
+      <div className="profile-page_heading_title">
+        <div className="profile-page_heading_title_profile-id">
           <h1>My Profile #{user.id}</h1>
           {user.isActivated && (
-            <div className="account-page_heading_title_profile-id_check-icon">
+            <div className="profile-page_heading_title_profile-id_check-icon">
               <PiCheckCircleBold />
             </div>
           )}
         </div>
         <div
           onClick={onSignoutHandler}
-          className="account-page_heading_title_signout"
+          className="profile-page_heading_title_signout"
         >
           <TbLogout2 />
           <span>Sign out</span>
@@ -289,4 +289,4 @@ const AccountPageHeader = ({ setAvatarModalOpen }) => {
   );
 };
 
-export default AccountPageHeader;
+export default ProfilePageHeader;
