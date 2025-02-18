@@ -1,7 +1,6 @@
 @import 'src/styles/variables'
     
 .profile-page
-    font-size: 16px
     & .MuiFormControl-root
         font-size: 1em
         & .MuiInputBase-root
@@ -32,21 +31,9 @@
             &:hover
                 opacity: 0.6
 
-@media (max-width: 1200px) 
-    .account-page
-        font-size: 14px
-@media (max-width: 992px) 
-    .account-page
-        font-size: 13px
-@media (max-width: 768px) 
-    .account-page
-        font-size: 12px
-@media (max-width: 480px) 
-    .account-page
-        font-size: 11px
+
 @media (max-width: 360px) 
-    .account-page
-        font-size: 11px
+    .profile-page
         &_heading
             flex-direction: column
             &_photo-container
@@ -68,7 +55,3 @@
             display: flex
             justify-content: center
             margin-top: 0
-
-@media (max-width: 320px) 
-    .account-page
-        font-size: 10px
