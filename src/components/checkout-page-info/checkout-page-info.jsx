@@ -269,7 +269,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
       const orderData = {
         deliveryData,
         userId: user?.id || null,
-        items: JSON.stringify(orderedItems),
+        items: orderedItems,
         total: +(
           countedBasket.total -
           (promocode.name
