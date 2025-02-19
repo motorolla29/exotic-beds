@@ -374,11 +374,13 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                     return selectedCountry ? (
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <img
-                          loading="lazy"
+                          loading="eager"
                           width={20}
                           height={14}
-                          srcSet={`https://flagcdn.com/w40/${selectedCountry.value.toLowerCase()}.png 2x`}
-                          src={`https://flagcdn.com/w20/${selectedCountry.value.toLowerCase()}.png`}
+                          src={`https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/${selectedCountry.value.toLowerCase()}.svg`}
+                          srcSet={`https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/${selectedCountry.value.toLowerCase()}.svg 2x`}
+                          //srcSet={`https://flagcdn.com/w40/${selectedCountry.value.toLowerCase()}.png 2x`}
+                          //src={`https://flagcdn.com/w20/${selectedCountry.value.toLowerCase()}.png`}
                           alt={`Flag of ${selectedCountry.label}`}
                           style={{ marginRight: 8 }}
                         />
@@ -393,11 +395,13 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                     <JoyOption key={country.value} value={country.value}>
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <img
-                          loading="lazy"
+                          loading="eager"
                           width={20}
                           height={14}
-                          srcSet={`https://flagcdn.com/w40/${country.value.toLowerCase()}.png 2x`}
-                          src={`https://flagcdn.com/w20/${country.value.toLowerCase()}.png`}
+                          src={`https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/${country.value.toLowerCase()}.svg`}
+                          srcSet={`https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/flags/4x3/${country.value.toLowerCase()}.svg 2x`}
+                          //srcSet={`https://flagcdn.com/w40/${country.value.toLowerCase()}.png 2x`}
+                          //src={`https://flagcdn.com/w20/${country.value.toLowerCase()}.png`}
                           alt={`Flag of ${country.label}`}
                           style={{ marginRight: 8 }}
                         />
