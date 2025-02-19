@@ -80,7 +80,7 @@ const CatalogItem = ({ item, size = '' }) => {
   const onAddToCartHandler = () => {
     if (isAuth) {
       setAddToBasketLoading(true);
-      addToBasket({ ...item, productId: item.productId })
+      addToBasket({ ...item, productId: item.id })
         .then((cart) => {
           dispatch(setCart(cart));
           dispatch(

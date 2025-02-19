@@ -45,7 +45,7 @@ const ProductPage = () => {
   const onHeartIconClick = () => {
     if (isAuth) {
       setAddToLovelistLoading(true);
-      toggleProductInLovelist(product)
+      toggleProductInLovelist({ ...product, productId: product.id })
         .then((lovelist) => {
           dispatch(setLovelist(lovelist));
           isLoved
@@ -76,7 +76,7 @@ const ProductPage = () => {
   const addToCartButtonHandler = () => {
     if (isAuth) {
       setAddToBasketLoading(true);
-      addToBasket(product)
+      addToBasket({ ...product, productId: product.id })
         .then((cart) => {
           dispatch(setCart(cart));
           dispatch(
