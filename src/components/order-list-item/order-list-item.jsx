@@ -30,7 +30,7 @@ const OrderListItem = ({ order }) => {
 
   return (
     <div className="order-list-item">
-      <div key={order.id} className="order-list-item_first-top">
+      <div className="order-list-item_first-top">
         <div className="order-list-item_first-top_info">
           <p>
             Order № <span>{order.id}</span> from{' '}
@@ -63,7 +63,7 @@ const OrderListItem = ({ order }) => {
               : -orderItemsVisibleCount + 1
           )
           .map((item) => (
-            <div className="order-list-item_visual_icon">
+            <div key={item.id} className="order-list-item_visual_icon">
               <div>
                 <img
                   src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
@@ -83,7 +83,7 @@ const OrderListItem = ({ order }) => {
           </div>
         )}
       </div>
-      <Link to="/" className="order-list-item_link">
+      <Link to={`/account/orders/${order.id}`} className="order-list-item_link">
         Details
       </Link>
     </div>

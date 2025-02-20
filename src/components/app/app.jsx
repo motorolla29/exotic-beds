@@ -11,6 +11,7 @@ import LovelistPage from '../pages/lovelist-page/lovelist-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import SearchPage from '../pages/search-page/search-page';
 import StorePage from '../pages/store-page/store-page';
+import OrderPage from '../pages/order-page/order-page';
 import ErrorIcon from '@mui/icons-material/Error';
 
 import { checkAuth } from '../../api/userAPI';
@@ -155,6 +156,7 @@ const App = () => {
           >
             <Route index element={<ProfilePage />} />
             <Route path="orders" element={<OrdersPage />} />
+            <Route path="orders/:id" element={<OrderPage />} />
           </Route>
           <Route path="payment-success" element={<PaymentSuccessPage />} />
           <Route path="not-found" element={<NotFoundPage />} />

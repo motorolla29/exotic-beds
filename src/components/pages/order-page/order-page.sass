@@ -1,0 +1,82 @@
+@import 'src/styles/variables'
+
+.order-page
+    &_back-link
+        color: $main-color-grey
+        display: inline-flex
+        align-items: center
+        
+        svg
+            width: 0.75em
+            height: auto
+            margin-right: 0.25em
+        &:hover
+            opacity: 0.8
+    h1, h2, h4
+        font-weight: 600
+        color: $main-color-turquoise
+    h1
+        margin: 0.5em 0 0.25em 0
+    h2
+        margin-bottom: 0.75em
+    h4
+        margin-bottom: 0.25em
+        color: $main-color-grey
+
+    &_from
+        font-weight: 600
+    &_main
+        display: flex
+        flex-direction: row
+        margin: 1em 0
+        &_info, &_items
+            padding: 0.5em
+            border-radius: 0.75em
+            background: $main-color-white-transparent
+        &_info
+            display: flex
+            flex-direction: row
+            margin-bottom: 1em
+            &_shipping, &_recipient
+                padding: 1em
+                width: 50%
+            &_shipping
+                &_title
+                &_address
+                    margin-bottom: 1em
+                &_estimated-delivery
+            &_recipient
+                &_title
+                &_name, &_email, &_company, &_phone
+                    margin-bottom: 1em
+        &_items
+            height: 2000px
+            &_inner
+                padding: 1em
+
+        &_count
+            &_summary
+                position: sticky
+                top: 1em
+                min-width: 24em
+                margin: 0 0 0 1em
+                padding: 1.5em
+                height: fit-content
+                background: $main-color-white-transparent
+                border-radius: 0.75em
+                h4
+                    margin-bottom: 0
+                &_title
+                &_subtotal, &_shipping, &_promocode, &_total
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                &_subtotal, &_shipping, &_promocode
+                    margin-bottom: 0.5em
+                &_total
+                    padding-top: 0.5em
+                    h4
+                        color: $main-color-turquoise
+                    p
+                        font-weight: 600
+

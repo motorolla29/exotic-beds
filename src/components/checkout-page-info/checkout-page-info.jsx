@@ -270,6 +270,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         deliveryData,
         userId: user?.id || null,
         items: orderedItems,
+        subtotal: +(countedBasket.subtotal - countedBasket.savings).toFixed(2),
         total: +(
           countedBasket.total -
           (promocode.name

@@ -6,6 +6,11 @@ export const createOrder = async (orderData) => {
 };
 
 export const getOrders = async () => {
-  const { data } = await $authHost('api/orders');
+  const { data } = await $authHost.get('api/orders');
+  return data;
+};
+
+export const getOrder = async (id) => {
+  const { data } = await $authHost.get(`api/orders/${id}`);
   return data;
 };
