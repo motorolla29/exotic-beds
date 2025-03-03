@@ -21,10 +21,12 @@ const ProgressiveImageContainer = ({
 
   useIntersectionObserver({
     target: ref,
-    onIntersect: ([{ isIntersecting }], observerElement) => {
-      if (isIntersecting) {
+    onIntersect: ([entry], observerElement) => {
+      if (entry.isIntersecting) {
         setIsVisible(true);
-        observerElement.unobserve(ref.current);
+        if (ref.current && entry.target && entry.target instanceof Element) {
+          observerElement.unobserve(ref.current);
+        }
       }
     },
   });

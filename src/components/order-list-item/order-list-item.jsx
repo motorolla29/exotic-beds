@@ -3,6 +3,7 @@ import './order-list-item.sass';
 import { Link } from 'react-router-dom';
 import useWindowSize from '../../hooks/use-window-size';
 import { useEffect, useState } from 'react';
+import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 
 const getVisibleOrderItemsCount = (ww) => {
   if (ww > 768) {
@@ -65,9 +66,10 @@ const OrderListItem = ({ order }) => {
           .map((item) => (
             <div key={item.id} className="order-list-item_visual_icon">
               <div>
-                <img
+                <ProgressiveImageContainer
+                  thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
                   src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
-                  alt="order-item-img"
+                  alt="order-item-image"
                 />
               </div>
               {item.quantity > 1 && (

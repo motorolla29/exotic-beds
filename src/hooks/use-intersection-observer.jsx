@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 const useIntersectionObserver = ({
   target,
@@ -6,7 +6,10 @@ const useIntersectionObserver = ({
   threshold = 0.1,
   rootMargin = '0px',
 }) => {
-  useEffect(() => {
+  const isMounted = useRef(true);
+  useLayoutEffect(() => {
+    isMounted.current = true;
+    if (!target.current) return;
     const observer = new IntersectionObserver(onIntersect, {
       rootMargin,
       threshold,
@@ -14,9 +17,12 @@ const useIntersectionObserver = ({
     const current = target.current;
     observer.observe(current);
     return () => {
-      observer.unobserve(current);
+      isMounted.current = false;
+      if (current && current instanceof Element && isMounted.current) {
+        observer.unobserve(current);
+      }
     };
-  });
+  }, [target, onIntersect, threshold, rootMargin]);
 };
 
 export default useIntersectionObserver;

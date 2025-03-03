@@ -601,6 +601,18 @@ const categoriesIds = {
   poufs: 5,
 };
 
+const getCurrencySymbol = (currencyCode, locale = 'en-US') => {
+  const formatter = new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currencyCode,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+  const parts = formatter.formatToParts(0);
+  const currencyPart = parts.find((part) => part.type === 'currency');
+  return currencyPart ? currencyPart.value : '';
+};
+
 export {
   nullAndUndefinedToEmptyString,
   areDatesEqual,
@@ -622,4 +634,5 @@ export {
   sortStoresByProximity,
   randomInteger,
   categoriesIds,
+  getCurrencySymbol,
 };

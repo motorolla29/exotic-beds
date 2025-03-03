@@ -1,17 +1,30 @@
 @import 'src/styles/variables'
 
 .order-page
+    margin-bottom: 3em
     &_back-link
         color: $main-color-grey
         display: inline-flex
         align-items: center
-        
         svg
             width: 0.75em
             height: auto
             margin-right: 0.25em
         &:hover
             opacity: 0.8
+    &_title
+        display: flex
+        align-items: center
+        &_status
+            position: relative
+            top: 0.1em
+            margin-left: 1em
+            font-size: 0.5em
+            padding: 0.25em 0.5em
+            border: 1px solid
+            border-radius: 0.25em
+            &.paid
+                color: green
     h1, h2, h4
         font-weight: 600
         color: $main-color-turquoise
@@ -40,6 +53,7 @@
             &_shipping, &_recipient
                 padding: 1em
                 width: 50%
+                max-width: 50%
             &_shipping
                 &_title
                 &_address
@@ -47,12 +61,84 @@
                 &_estimated-delivery
             &_recipient
                 &_title
+                &_email
+                    p
+                        overflow-wrap: break-word
+                        word-wrap: break-word
                 &_name, &_email, &_company, &_phone
                     margin-bottom: 1em
         &_items
-            height: 2000px
             &_inner
                 padding: 1em
+                &_item
+                    display: flex
+                    justify-content: space-between
+                    max-width: 100%
+                    &:not(:last-child)
+                        padding-bottom: 1.5em
+                        
+                    > div
+                        display: flex
+
+                    &_visual
+                        display: flex
+                        min-width: 3.5em
+                        min-height: 3.5em
+                        max-width: 3.5em
+                        max-height: 3.5em
+                        border-radius: 5px
+                        overflow: hidden
+                        background: $main-color-green-light
+                    &_price-each, &_price-total, &_count
+                        white-space: nowrap
+                        text-align: right
+                        margin-left: 1em
+                    &_title, &_price-each, &_count
+                        color: $main-color-grey
+                    &_title, &_price-total
+                        font-weight: 600
+                    &_title
+                        margin-left: 0.6em
+                        max-width: 20em
+                    &_price-each
+                        width: 8em
+                    &_price-total
+                        font-size: 1.05em
+                        width: 6em
+                    &_count
+                        width: 4em
+                &_item-sm
+                    display: flex
+                    &:not(:first-child)
+                        padding-top: 1em
+                    &:not(:last-child)
+                        padding-bottom: 1em
+                        border-bottom: 1px solid #acacac
+                    &_visual
+                        display: flex
+                        max-width: 5em
+                        max-height: 5em
+                        min-width: 5em
+                        min-height: 5em
+                        height: auto
+                        border-radius: 5px
+                        overflow: hidden
+                        background: $main-color-green-light
+                    > div
+                        
+                        > div
+                            display: flex
+                            justify-content: space-between
+                            padding-left: 1em
+                    &_title, &_price-each
+                        color: $main-color-grey
+                        padding-left: 1em
+                        margin-bottom: 0.5em
+                    &_title, &_price-total
+                        font-weight: 600
+                    &_price-total
+                        font-size: 1.05em
+
 
         &_count
             &_summary
@@ -80,3 +166,26 @@
                     p
                         font-weight: 600
 
+
+@media (max-width: 992px)
+    .order-page
+        &_main
+            &_count
+                margin: 1em 0
+                &_summary
+                    min-width: auto
+                    margin: 0
+
+@media (max-width: 768px)
+    .order-page
+        &_main
+            div
+                width: 100% 
+                &_info, &_items
+                &_info
+                &_items
+                    &_inner
+                        &_item
+                            display: flex
+                            justify-content: space-between
+                

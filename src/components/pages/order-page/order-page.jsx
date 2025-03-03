@@ -3,17 +3,21 @@ import { getOrder } from '../../../api/orderAPI';
 import { useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import './order-page.sass';
+import useWindowSize from '../../../hooks/use-window-size';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setNotificationModal } from '../../../store/action';
 import ErrorIcon from '@mui/icons-material/Error';
 import dayjs from 'dayjs';
+import { getCurrencySymbol } from '../../../utils';
+import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
 
 const OrderPage = () => {
   const [order, setOrder] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [ww] = useWindowSize();
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -59,7 +63,12 @@ const OrderPage = () => {
         <IoIosArrowBack />
         Back
       </Link>
-      <h1 className="order-page_title">Order №{order.id}</h1>
+      <h1 className="order-page_title">
+        Order №{order.id}{' '}
+        <span className={`order-page_title_status ${order.status}`}>
+          {order.status.toUpperCase()}
+        </span>
+      </h1>
       <p className="order-page_from">
         from {new Date(order.createdAt).toLocaleDateString()}
       </p>
@@ -114,58 +123,170 @@ const OrderPage = () => {
               )}
             </div>
           </div>
+          {ww <= 992 && (
+            <div className="order-page_main_count">
+              <div className="order-page_main_count_summary">
+                <h2 className="order-page_main_count_summary_title">Summary</h2>
+                <div className="order-page_main_count_summary_subtotal">
+                  <h4>
+                    Subtotal ({itemsCount} {itemsCount > 1 ? 'items' : 'item'})
+                  </h4>
+                  <p>{getCurrencySymbol(order.originalCurrency)}9380</p>
+                </div>
+                <div className="order-page_main_count_summary_shipping">
+                  <h4>Shipping cost</h4>
+                  <p>
+                    {order.shippingCost > 0
+                      ? `${getCurrencySymbol(order.originalCurrency)}${
+                          order.shippingCost
+                        }`
+                      : 'FREE'}
+                  </p>
+                </div>
+                {order.promocode &&
+                  order.promocodeDiscountTotal &&
+                  order.promocodeDiscountPercent && (
+                    <div className="order-page_main_count_summary_promocode">
+                      <h4>
+                        Promocode "{order.promocode}" (-
+                        {order.promocodeDiscountPercent}
+                        %)
+                      </h4>
+                      <p>
+                        - {getCurrencySymbol(order.originalCurrency)}
+                        {order.promocodeDiscountTotal}
+                      </p>
+                    </div>
+                  )}
+                <div className="order-page_main_count_summary_total">
+                  <h4>Total</h4>
+                  <p>
+                    {getCurrencySymbol(order.originalCurrency)}
+                    {order.originalTotal}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
           <div className="order-page_main_items">
             <div className="order-page_main_items_inner">
-              <h2 className="order-page_main_items_inner_title">Items</h2>
-              {order.items?.map((item) => (
-                <div key={item.id} className="order-page_main_items_inner_item">
-                  <p className="order-page_main_items_inner_item_title">
-                    {item.title}
-                  </p>
-                </div>
-              ))}
+              <h2>Items</h2>
+              {order.items?.map((item) => {
+                return ww > 768 ? (
+                  <div
+                    key={item.id}
+                    className="order-page_main_items_inner_item"
+                  >
+                    <div>
+                      <div className="order-page_main_items_inner_item_visual">
+                        <ProgressiveImageContainer
+                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
+                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
+                          alt="order-item-image"
+                        />
+                      </div>
+                      <p className="order-page_main_items_inner_item_title">
+                        {item.title}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="order-page_main_items_inner_item_price-each">
+                        {getCurrencySymbol(order.originalCurrency)}
+                        {(item.sale || item.price).toFixed(2)} each
+                      </p>
+                      <p className="order-page_main_items_inner_item_price-total">
+                        {getCurrencySymbol(order.originalCurrency)}
+                        {((item.sale || item.price) * item.quantity).toFixed(2)}
+                      </p>
+
+                      <p className="order-page_main_items_inner_item_count">
+                        x {item.quantity} {item.quantity > 1 ? 'pcs' : 'pc '}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    key={item.id}
+                    className="order-page_main_items_inner_item-sm"
+                  >
+                    <div className="order-page_main_items_inner_item-sm_visual">
+                      <ProgressiveImageContainer
+                        thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
+                        src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
+                        alt="order-item-image"
+                      />
+                    </div>
+                    <div>
+                      <p className="order-page_main_items_inner_item-sm_title">
+                        {item.title}
+                      </p>
+                      <p className="order-page_main_items_inner_item-sm_price-each">
+                        {getCurrencySymbol(order.originalCurrency)}
+                        {(item.sale || item.price).toFixed(2)} each
+                      </p>
+                      <div>
+                        <p className="order-page_main_items_inner_item-sm_price-total">
+                          {getCurrencySymbol(order.originalCurrency)}
+                          {((item.sale || item.price) * item.quantity).toFixed(
+                            2
+                          )}
+                        </p>
+                        <p className="order-page_main_items_inner_item-sm_count">
+                          x {item.quantity} {item.quantity > 1 ? 'pcs' : 'pc '}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
-        <div className="order-page_main_count">
-          <div className="order-page_main_count_summary">
-            <h2 className="order-page_main_count_summary_title">Summary</h2>
-            <div className="order-page_main_count_summary_subtotal">
-              <h4>
-                Subtotal ({itemsCount} {itemsCount > 1 ? 'items' : 'item'})
-              </h4>
-              <p>9380 {order.originalCurrency}</p>
-            </div>
-            <div className="order-page_main_count_summary_shipping">
-              <h4>Shipping cost</h4>
-              <p>
-                {order.shippingCost > 0
-                  ? `${order.shippingCost} ${order.originalCurrency}`
-                  : 'FREE'}
-              </p>
-            </div>
-            {order.promocode &&
-              order.promocodeDiscountTotal &&
-              order.promocodeDiscountPercent && (
-                <div className="order-page_main_count_summary_promocode">
-                  <h4>
-                    Promocode "{order.promocode}" (-
-                    {order.promocodeDiscountPercent}
-                    %)
-                  </h4>
-                  <p>
-                    -{order.promocodeDiscountTotal} {order.originalCurrency}
-                  </p>
-                </div>
-              )}
-            <div className="order-page_main_count_summary_total">
-              <h4>Total</h4>
-              <p>
-                {order.originalTotal} {order.originalCurrency}
-              </p>
+        {ww > 992 && (
+          <div className="order-page_main_count">
+            <div className="order-page_main_count_summary">
+              <h2 className="order-page_main_count_summary_title">Summary</h2>
+              <div className="order-page_main_count_summary_subtotal">
+                <h4>
+                  Subtotal ({itemsCount} {itemsCount > 1 ? 'items' : 'item'})
+                </h4>
+                <p>{getCurrencySymbol(order.originalCurrency)}9380</p>
+              </div>
+              <div className="order-page_main_count_summary_shipping">
+                <h4>Shipping cost</h4>
+                <p>
+                  {order.shippingCost > 0
+                    ? `${getCurrencySymbol(order.originalCurrency)}${
+                        order.shippingCost
+                      }`
+                    : 'FREE'}
+                </p>
+              </div>
+              {order.promocode &&
+                order.promocodeDiscountTotal &&
+                order.promocodeDiscountPercent && (
+                  <div className="order-page_main_count_summary_promocode">
+                    <h4>
+                      Promocode "{order.promocode}" (-
+                      {order.promocodeDiscountPercent}
+                      %)
+                    </h4>
+                    <p>
+                      - {getCurrencySymbol(order.originalCurrency)}
+                      {order.promocodeDiscountTotal}
+                    </p>
+                  </div>
+                )}
+              <div className="order-page_main_count_summary_total">
+                <h4>Total</h4>
+                <p>
+                  {getCurrencySymbol(order.originalCurrency)}
+                  {order.originalTotal}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

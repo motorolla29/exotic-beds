@@ -36,7 +36,7 @@ const StoreFinderMap = ({ onMapClick, popupInfo, showPopup, setShowPopup }) => {
     mapPin.height = 150;
     mapPin.src = '/logo/EB-LOGO-NO-TEXT.svg';
     mapPin.onload = function (e) {
-      mapRef.current.addImage('logo', mapPin);
+      mapRef.current?.addImage('logo', mapPin);
     };
   }, []);
 
