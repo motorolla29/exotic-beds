@@ -8,6 +8,7 @@ import { BiErrorCircle } from 'react-icons/bi';
 import { setCart } from '../../../store/action';
 
 import './payment-success-page.sass';
+import { $authHost } from '../../../api';
 
 const PaymentSuccessPage = () => {
   const dispatch = useDispatch();
@@ -32,21 +33,9 @@ const PaymentSuccessPage = () => {
     }
 
     const intervalId = setInterval(() => {
-      fetch(`${process.env.REACT_APP_API_URL}/api/orders/${orderId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          // Заголовок авторизации:
-          // 'Authorization': `Bearer ${yourAuthToken}`
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Error receiving order data');
-          }
-          return response.json();
-        })
-        .then((data) => {
+      $authHost
+        .get(`/api/orders/${orderId}`)
+        .then(({ data }) => {
           setOrder(data);
           setPollingAttempts((prev) => prev + 1);
           // Если получен окончательный статус — прекращаем опрос
@@ -75,7 +64,7 @@ const PaymentSuccessPage = () => {
     }, 3000);
 
     return () => clearInterval(intervalId);
-  }, [orderId, pollingAttempts]);
+  }, [orderId, pollingAttempts, dispatch, isAuth]);
 
   if (loading) {
     return (
@@ -128,7 +117,7 @@ const PaymentSuccessPage = () => {
             {isAuth && user && (
               <Link
                 className="payment-success-page_links_orders-link"
-                to="/account"
+                to="/account/orders"
               >
                 My Orders
               </Link>

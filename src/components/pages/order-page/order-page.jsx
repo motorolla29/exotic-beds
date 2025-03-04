@@ -131,7 +131,10 @@ const OrderPage = () => {
                   <h4>
                     Subtotal ({itemsCount} {itemsCount > 1 ? 'items' : 'item'})
                   </h4>
-                  <p>{getCurrencySymbol(order.originalCurrency)}9380</p>
+                  <p>
+                    {getCurrencySymbol(order.originalCurrency)}
+                    {order.subtotal}
+                  </p>
                 </div>
                 <div className="order-page_main_count_summary_shipping">
                   <h4>Shipping cost</h4>
@@ -250,7 +253,10 @@ const OrderPage = () => {
                 <h4>
                   Subtotal ({itemsCount} {itemsCount > 1 ? 'items' : 'item'})
                 </h4>
-                <p>{getCurrencySymbol(order.originalCurrency)}9380</p>
+                <p>
+                  {getCurrencySymbol(order.originalCurrency)}
+                  {order.subtotal}
+                </p>
               </div>
               <div className="order-page_main_count_summary_shipping">
                 <h4>Shipping cost</h4>
