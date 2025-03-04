@@ -107,7 +107,7 @@ const CatalogPage = ({ category }) => {
                 {sortedProducts.length > 24 && (
                   <CatalogPagination products={sortedProducts} limit={limit} />
                 )}
-                <Catalog products={limitedSortedProducts} />
+                <Catalog products={limitedSortedProducts} category={category} />
                 {sortedProducts.length > 24 && (
                   <CatalogPagination products={sortedProducts} limit={limit} />
                 )}

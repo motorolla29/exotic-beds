@@ -8,6 +8,7 @@ import Catalog from '../../catalog/catalog';
 import SearchEmpty from '../../search-empty/search-empty';
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
 import {
+  categoriesIds,
   findCheapestProductObj,
   findMostExpensiveProductObj,
   sortProducts,
@@ -53,7 +54,8 @@ const SearchPage = () => {
   const filteredProducts = foundedProducts.filter((product) => {
     if (
       (categoryArray.some(
-        (category) => category.toLowerCase() === product.category.toLowerCase()
+        (category) =>
+          categoriesIds[category.toLowerCase()] === product.categoryId
       ) ||
         !categoryArray.length) &&
       product.price >= minPrice &&

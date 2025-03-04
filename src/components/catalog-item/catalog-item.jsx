@@ -23,6 +23,8 @@ import { AddShoppingCartRounded } from '@mui/icons-material';
 import { toggleProductInLovelist } from '../../api/lovelistAPI';
 import ClipLoader from 'react-spinners/ClipLoader';
 import PuffLoader from 'react-spinners/PuffLoader';
+import { RiDeleteBin5Line } from 'react-icons/ri';
+import { MdOutlineEdit } from 'react-icons/md';
 
 import './catalog-item.sass';
 
@@ -126,6 +128,16 @@ const CatalogItem = ({ item, size = '' }) => {
       key={item.productId}
       className={`catalog-item ${size}`}
     >
+      {1 && (
+        <>
+          <div className="catalog-item_admin-edit">
+            <MdOutlineEdit />
+          </div>
+          <div className="catalog-item_admin-delete">
+            <RiDeleteBin5Line />
+          </div>
+        </>
+      )}
       <div className="catalog-item_visual">
         <Link to={`/${item.productId}`}>
           <ProgressiveImageContainer
@@ -142,7 +154,7 @@ const CatalogItem = ({ item, size = '' }) => {
                   className="catalog-item_visual_new"
                 />
               ) : null}
-              {item.rating >= 4.7 ? (
+              {item.rating >= 4.9 ? (
                 <img
                   alt="top"
                   src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/top-rated.png?tr=w-100"

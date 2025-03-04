@@ -1,8 +1,53 @@
+@import 'src/styles/variables'
+    
 .catalog
     margin: 2em 0
     display: flex
     flex-wrap: wrap
+    &_admin-add-product
+        display: none
+        cursor: pointer
+        align-items: center
+        justify-content: center
+        font-size: 14px
+        margin-right: 1em
+        margin-bottom: 2em
+        width: 18em
+        border-radius: 1em
+        border: 0.4em solid
+        opacity: 0.5
+        svg
+            width: 50%
+            height: auto
+        &:hover
+            opacity: 0.8
+.catalog-page .catalog_admin-add-product
+    display: flex
 
-@media (max-width: 480px) 
+@media (max-width: 1215px) 
+    .catalog
+        &_admin-add-product
+            font-size: 13px
+
+@media (max-width: 1115px) 
+    .catalog
+        &_admin-add-product
+            font-size: 12px
+
+@media (max-width: 1060px) 
+    .catalog
+        &_admin-add-product
+            font-size: 11px
+
+@media (max-width: 1000px) 
+    .catalog
+        &_admin-add-product
+            font-size: 10px
+@media (max-width: 480px)
     .catalog
         justify-content: space-between
+        &_admin-add-product
+            display: flex
+            flex-direction: column
+            margin-right: 1em
+            width: calc(50% - 1em)
