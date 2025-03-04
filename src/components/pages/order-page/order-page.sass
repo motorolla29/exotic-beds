@@ -2,6 +2,17 @@
 
 .order-page
     margin-bottom: 3em
+    &_loading
+        display: inline-block
+        color: $main-color-turquoise-transparent
+        font-weight: 600
+        font-size: 1.5em
+        margin: 1em 0
+        background: linear-gradient(90deg,#004757a0 25%,#ffffffa0 50%,#004757a0 75%)
+        background-size: 200% auto
+        -webkit-background-clip: text
+        color: transparent
+        animation: shimmer 3.5s infinite
     &_back-link
         color: $main-color-grey
         display: inline-flex
@@ -42,6 +53,7 @@
         display: flex
         flex-direction: row
         margin: 1em 0
+        
         &_info, &_items
             padding: 0.5em
             border-radius: 0.75em
@@ -188,4 +200,3 @@
                         &_item
                             display: flex
                             justify-content: space-between
-                

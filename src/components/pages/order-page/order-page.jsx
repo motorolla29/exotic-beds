@@ -52,7 +52,7 @@ const OrderPage = () => {
   if (loading) {
     return (
       <div className="order-page">
-        <p className="order-page_main_loading">Loading order...</p>
+        <p className="order-page_loading">Loading order...</p>
       </div>
     );
   }
