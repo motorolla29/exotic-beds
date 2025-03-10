@@ -1,29 +1,50 @@
 import { useEffect, useState } from 'react';
-import './admin-add-product-modal.sass';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import imagekit from '../../imagekit';
-import { useSelector } from 'react-redux';
-import { scrollController } from '../../utils';
-import { IoCloseOutline } from 'react-icons/io5';
+import { motion } from 'framer-motion';
+
 import { TextField, Slider } from '@mui/material';
+import JoyFormControl from '@mui/joy/FormControl';
+import JoyFormLabel from '@mui/joy/FormLabel';
+import JoySelect from '@mui/joy/Select';
+import JoyOption from '@mui/joy/Option';
+
+import { IoCloseOutline } from 'react-icons/io5';
 import { HiOutlineCamera } from 'react-icons/hi';
 import SyncLoader from 'react-spinners/SyncLoader';
-import validateProductData from './validate-product-data';
+import ClipLoader from 'react-spinners/ClipLoader';
+import DoneIcon from '@mui/icons-material/Done';
 
-const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
+import validateProductData from './validate-product-data';
+import useWindowSize from '../../hooks/use-window-size';
+import { categoriesIds, scrollController } from '../../utils';
+import {
+  setProducts,
+  setProductsLoaded,
+  setSnackbar,
+} from '../../store/action';
+import { createProduct, getAllProducts } from '../../api/productAPI';
+
+import './admin-modals.sass';
+
+const AdminAddProductModal = ({ isOpen, onClose, category }) => {
   const overlayLoading = useSelector((state) => state.overlayLoader);
+  const dispatch = useDispatch();
+  const [ww] = useWindowSize();
   const [photoLoading, setPhotoLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [submitClicked, setSubmitClicked] = useState(false);
 
   const [productData, setProductData] = useState({
+    category: category || 'beds',
+    photo: null,
     title: '',
     description: '',
     price: '',
     sale: '',
     quantity: '',
     rating: 4.0,
-    category: category || 'beds',
-    photo: null,
   });
 
   const [error, setError] = useState({
@@ -38,11 +59,11 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setError({ ...error, [name]: '' });
     setProductData((prev) => ({
       ...prev,
       [name]: value,
     }));
-    console.log(productData);
   };
 
   const handleSubmit = (e) => {
@@ -51,8 +72,39 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
     const { isValid, errors } = validateProductData(productData);
     setError(errors);
     if (isValid) {
-      // Отправляем данные
-      console.log('Форма отправляется');
+      setSubmitting(true);
+      const adaptedData = {
+        categoryId: categoriesIds[productData.category],
+        photo: productData.photo,
+        title: productData.title,
+        description: productData.description,
+        price: +productData.price,
+        sale: productData.sale ? +productData.sale : null,
+        availableQuantity: +productData.quantity,
+        rating: +(+productData.rating).toFixed(1),
+      };
+      createProduct(adaptedData)
+        .then(async () => {
+          dispatch(setProductsLoaded(false));
+          const productData = await getAllProducts();
+          dispatch(setProducts(productData.rows));
+          dispatch(setProductsLoaded(true));
+          onClose();
+          dispatch(
+            setSnackbar({
+              open: true,
+              text: 'Product successfully added',
+              decorator: <DoneIcon />,
+            })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setSubmitting(false);
+        });
+      console.log('Форма отправляется', adaptedData);
     } else {
       console.log('Ошибки валидации');
     }
@@ -70,7 +122,6 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
   if (!isOpen) return null;
 
   const handleImageUpload = async (e) => {
-    console.log('upload');
     const file = e.target.files?.[0];
 
     if (!file) {
@@ -87,7 +138,6 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
       );
       const authData = await authRes.json();
 
-      console.log(authData);
       imagekit
         .upload({
           file,
@@ -96,7 +146,6 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
           ...authData,
         })
         .then((response) => {
-          console.log('Image uploaded successfully');
           setProductData((prev) => ({
             ...prev,
             photo: response.name,
@@ -113,11 +162,23 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
 
   return (
     <div className="admin-add-product-modal">
-      <div className="admin-add-product-modal_shadow">
-        <div className="admin-add-product-modal_content">
+      <motion.div
+        key="admin-add-product-modal-shadow"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="admin-add-product-modal_shadow"
+      >
+        <motion.div
+          key="admin-add-product-modal-content"
+          initial={{ scale: 0.1 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.1 }}
+          className="admin-add-product-modal_content"
+        >
           <div className="admin-add-product-modal_content_title">
             <h2>Add New Product</h2>
-            <IoCloseOutline onClick={() => setIsOpen(false)} />
+            <IoCloseOutline onClick={onClose} />
           </div>
           <div className="admin-add-product-modal_content_photo-container">
             <div className="admin-add-product-modal_content_photo">
@@ -146,10 +207,50 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
             </div>
             {error.photo ? <span className="error">{error.photo}</span> : ''}
           </div>
+          <JoyFormControl className="admin-add-product-modal_content_category-select">
+            <JoyFormLabel
+              id="category-select-label"
+              htmlFor="category-select-id"
+            >
+              Category
+            </JoyFormLabel>
+            <JoySelect
+              id="category-select-id"
+              name="category"
+              value={productData.category}
+              onChange={(event, newValue) =>
+                handleChange({
+                  target: { name: 'category', value: newValue },
+                })
+              }
+              slotProps={{
+                listbox: {
+                  disablePortal: true,
+                },
+                button: {
+                  id: 'category-select-id',
+                  'aria-labelledby': 'category-select-label category-select-id',
+                },
+              }}
+              renderValue={(selected) => {
+                const selectedCategory = Object.keys(categoriesIds).find(
+                  (category) => category === selected.value
+                );
+                return selectedCategory ? selectedCategory : 'Select category';
+              }}
+            >
+              {Object.keys(categoriesIds).map((category) => (
+                <JoyOption key={category} value={category}>
+                  {category}
+                </JoyOption>
+              ))}
+            </JoySelect>
+          </JoyFormControl>
           <TextField
             className="admin-add-product-modal_content_name"
             label="Product Name"
             name="title"
+            size={ww > 480 ? 'normal' : 'small'}
             error={submitClicked && !!error.title}
             helperText={submitClicked && error.title ? error.title : ''}
             value={productData.title}
@@ -161,6 +262,7 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
             label="Description"
             placeholder="Write something about this product..."
             name="description"
+            size={ww > 480 ? 'normal' : 'small'}
             error={submitClicked && !!error.description}
             helperText={
               submitClicked && error.description ? error.description : ''
@@ -175,10 +277,10 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
             className="admin-add-product-modal_content_price"
             label="Price (€)"
             name="price"
+            size={ww > 480 ? 'normal' : 'small'}
             error={submitClicked && !!error.price}
             helperText={submitClicked && error.price ? error.price : ''}
-            type="number"
-            min="0"
+            type="text"
             value={productData.price}
             onChange={handleChange}
             fullWidth
@@ -187,10 +289,10 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
             className="admin-add-product-modal_content_sale"
             label="Sale Price (optional)"
             name="sale"
+            size={ww > 480 ? 'normal' : 'small'}
             error={submitClicked && !!error.sale}
             helperText={submitClicked && error.sale ? error.sale : ''}
-            type="number"
-            min="0"
+            type="text"
             value={productData.sale}
             onChange={handleChange}
             fullWidth
@@ -199,10 +301,10 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
             className="admin-add-product-modal_content_quantity"
             label="Quantity Available"
             name="quantity"
+            size={ww > 480 ? 'normal' : 'small'}
             error={submitClicked && !!error.quantity}
             helperText={submitClicked && error.quantity ? error.quantity : ''}
-            type="number"
-            min="0"
+            type="text"
             value={productData.quantity}
             onChange={handleChange}
             fullWidth
@@ -212,17 +314,12 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
               className="admin-add-product-modal_content_rating_input"
               label="Rating"
               name="rating"
+              size={ww > 480 ? 'normal' : 'small'}
               error={submitClicked && !!error.rating}
               helperText={submitClicked && error.rating ? error.rating : ''}
-              type="number"
-              min="0"
+              type="text"
               value={productData.rating}
               onChange={handleChange}
-              inputProps={{
-                min: 0,
-                max: 5,
-                step: 0.01,
-              }}
               fullWidth
             />
             <div className="admin-add-product-modal_content_rating_slider-container">
@@ -233,19 +330,26 @@ const AdminAddProductModal = ({ isOpen, setIsOpen, onClose, category }) => {
                 onChange={handleChange}
                 min={0}
                 max={5}
-                step={0.01}
+                step={0.1}
                 valueLabelDisplay="auto"
               />
             </div>
           </div>
           <button
             onClick={handleSubmit}
-            className="admin-add-product-modal_content_add-button"
+            className="admin-add-product-modal_content_submit-button"
+            disabled={
+              submitting ||
+              !productData.title ||
+              !productData.description ||
+              !productData.price ||
+              !productData.quantity
+            }
           >
-            Add Product
+            {submitting ? <ClipLoader color="#e9d5be" /> : 'Add Product'}
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import RatingStars from '../rating-stars/rating-stars';
 import { randomInteger } from '../../utils';
 import {
   cartOpen,
   loginModalsOpen,
   setCart,
+  setConfirmationModal,
   setLovelist,
+  setProducts,
+  setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
@@ -25,8 +28,12 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import PuffLoader from 'react-spinners/PuffLoader';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { MdOutlineEdit } from 'react-icons/md';
+import DoneIcon from '@mui/icons-material/Done';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import AdminEditProductModal from '../admin-modals/admin-edit-product-modal';
 
 import './catalog-item.sass';
+import { deleteProduct, getAllProducts } from '../../api/productAPI';
 
 const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
@@ -35,6 +42,7 @@ const CatalogItem = ({ item, size = '' }) => {
   const isAuth = useSelector((state) => state.isAuth);
   const [addToBasketLoading, setAddToBasketLoading] = useState(false);
   const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
+  const [adminModalOpen, setAdminModalOpen] = useState(false);
 
   const basketItems = useSelector((state) => state.cartProducts);
   const lovedProducts = useSelector((state) => state.lovelistProducts);
@@ -120,6 +128,24 @@ const CatalogItem = ({ item, size = '' }) => {
     }
   };
 
+  const onDeleteProductConfirm = () => {
+    deleteProduct(item.id)
+      .then(async () => {
+        dispatch(setProductsLoaded(false));
+        const productData = await getAllProducts();
+        dispatch(setProducts(productData.rows));
+        dispatch(setProductsLoaded(true));
+        dispatch(
+          setSnackbar({
+            open: true,
+            text: 'Product successfully deleted',
+            decorator: <DoneIcon />,
+          })
+        );
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <motion.div
       initial={initialStateVariants[randomInteger(0, 3)]}
@@ -130,10 +156,29 @@ const CatalogItem = ({ item, size = '' }) => {
     >
       {1 && (
         <>
-          <div className="catalog-item_admin-edit">
+          <div
+            onClick={() => setAdminModalOpen(true)}
+            className="catalog-item_admin-edit"
+          >
             <MdOutlineEdit />
           </div>
-          <div className="catalog-item_admin-delete">
+          <div
+            onClick={() => {
+              dispatch(
+                setConfirmationModal({
+                  open: true,
+                  icon: <DeleteForeverIcon />,
+                  title: 'Delete Product?',
+                  description:
+                    'Are you sure you want to delete this product? It will not be possible to restore it...',
+                  yesBtnText: 'Delete',
+                  noBtnText: 'Cancel',
+                  action: onDeleteProductConfirm,
+                })
+              );
+            }}
+            className="catalog-item_admin-delete"
+          >
             <RiDeleteBin5Line />
           </div>
         </>
@@ -253,6 +298,15 @@ const CatalogItem = ({ item, size = '' }) => {
           </div>
         </div>
       </div>
+      <AnimatePresence>
+        {adminModalOpen && (
+          <AdminEditProductModal
+            isOpen={adminModalOpen}
+            onClose={() => setAdminModalOpen(false)}
+            item={item}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

@@ -3,7 +3,8 @@ import { BsPlusLg } from 'react-icons/bs';
 
 import './catalog.sass';
 import { useState } from 'react';
-import AdminAddProductModal from '../admin-add-product-modal/admin-add-product-modal';
+import AdminAddProductModal from '../admin-modals/admin-add-product-modal';
+import { AnimatePresence } from 'framer-motion';
 
 const Catalog = ({ products, category }) => {
   const [adminModalOpen, setAdminModalOpen] = useState(false);
@@ -21,14 +22,15 @@ const Catalog = ({ products, category }) => {
       {products?.map((it) => {
         return <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />;
       })}
-      {adminModalOpen && (
-        <AdminAddProductModal
-          setIsOpen={setAdminModalOpen}
-          isOpen={adminModalOpen}
-          onClose={() => setAdminModalOpen(false)}
-          category={category}
-        />
-      )}
+      <AnimatePresence>
+        {adminModalOpen && (
+          <AdminAddProductModal
+            isOpen={adminModalOpen}
+            onClose={() => setAdminModalOpen(false)}
+            category={category}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
