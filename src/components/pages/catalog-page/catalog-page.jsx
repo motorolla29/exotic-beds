@@ -50,8 +50,9 @@ const CatalogPage = ({ category }) => {
 
   const filteredProducts = currentCategoryProducts.filter((product) => {
     if (
-      (product.sale || product.price) >= minPrice &&
-      (product.sale || product.price) <= maxPrice &&
+      (product.sale
+        ? product.sale >= minPrice && product.sale <= maxPrice
+        : product.price >= minPrice && product.price <= maxPrice) &&
       product.rating >= minRating &&
       (seriesArray.some((series) =>
         product.title.toLowerCase().includes(`${series.toLowerCase()} series`)

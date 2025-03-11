@@ -5,13 +5,16 @@ import './catalog.sass';
 import { useState } from 'react';
 import AdminAddProductModal from '../admin-modals/admin-add-product-modal';
 import { AnimatePresence } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
 
 const Catalog = ({ products, category }) => {
   const [adminModalOpen, setAdminModalOpen] = useState(false);
+  const [searchParams] = useSearchParams();
+  const page = +searchParams.get('page');
 
   return (
     <div className="catalog">
-      {1 && (
+      {1 && page <= 1 && (
         <div
           onClick={() => setAdminModalOpen(true)}
           className="catalog_admin-add-product"

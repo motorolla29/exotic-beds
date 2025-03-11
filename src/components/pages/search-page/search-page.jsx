@@ -12,6 +12,7 @@ import {
   findCheapestProductObj,
   findMostExpensiveProductObj,
   sortProducts,
+  sortProductsForSearch,
 } from '../../../utils';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 import SearchPanel from '../../search-panel/search-panel';
@@ -22,9 +23,9 @@ import './search-page.sass';
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
 
-  const searchQuery = searchParams.get('q').toLowerCase() || '';
+  const searchQuery = (searchParams.get('q') || '').trim().toLowerCase();
 
-  const searchArray = searchQuery.split(' ');
+  const searchArray = searchQuery.split(/\s+/).filter(Boolean);
 
   const [ww] = useWindowSize();
 
@@ -47,9 +48,15 @@ const SearchPage = () => {
   const limit = searchParams.get('limit') || 24;
   const sort = searchParams.get('sortBy');
 
-  const foundedProducts = products.filter((it) =>
-    searchArray.every((q) => it.title.toLowerCase().includes(q))
-  );
+  const foundedProducts = products.filter((product) => {
+    // Если запрос пустой, возвращаем все товары
+    if (!searchArray.length) return true;
+
+    const title = product.title ? product.title.trim().toLowerCase() : '';
+
+    // Требуем, чтобы каждый непустой поисковой запрос встречался в названии
+    return searchArray.every((q) => title.includes(q));
+  });
 
   const filteredProducts = foundedProducts.filter((product) => {
     if (
@@ -58,8 +65,9 @@ const SearchPage = () => {
           categoriesIds[category.toLowerCase()] === product.categoryId
       ) ||
         !categoryArray.length) &&
-      product.price >= minPrice &&
-      product.price <= maxPrice &&
+      (product.sale
+        ? product.sale >= minPrice && product.sale <= maxPrice
+        : product.price >= minPrice && product.price <= maxPrice) &&
       product.rating >= minRating &&
       (seriesArray.some((series) =>
         product.title.toLowerCase().includes(`${series.toLowerCase()} series`)
@@ -75,7 +83,10 @@ const SearchPage = () => {
     }
   });
 
-  const sortedProducts = sortProducts(filteredProducts, sort);
+  const sortedProducts =
+    sort === 'relevance' || !sort
+      ? sortProductsForSearch(filteredProducts, searchArray)
+      : sortProducts(filteredProducts, sort);
 
   const limitedSortedProducts = sortedProducts.slice(
     ((+searchParams.get('page') || 1) - 1) * limit,

@@ -59,8 +59,14 @@ const CatalogFilters = ({ products, category }) => {
       )}
       <div className="catalog-filters_filter">
         <PriceFilter
-          minPrice={findCheapestProductObj(products).price}
-          maxPrice={findMostExpensiveProductObj(products).price}
+          minPrice={
+            findCheapestProductObj(products).sale ||
+            findCheapestProductObj(products).price
+          }
+          maxPrice={
+            findMostExpensiveProductObj(products).sale ||
+            findMostExpensiveProductObj(products).price
+          }
         />
       </div>
       <div className="catalog-filters_filter">

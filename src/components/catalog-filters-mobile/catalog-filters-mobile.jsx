@@ -90,8 +90,14 @@ const CatalogFiltersMobile = ({
           </div>
           {category ? null : <CategoryFilter products={products} />}
           <PriceFilter
-            minPrice={findCheapestProductObj(products).price}
-            maxPrice={findMostExpensiveProductObj(products).price}
+            minPrice={
+              findCheapestProductObj(products).sale ||
+              findCheapestProductObj(products).price
+            }
+            maxPrice={
+              findMostExpensiveProductObj(products).sale ||
+              findMostExpensiveProductObj(products).price
+            }
           />
           <RatingFilter products={products} />
           <SeriesFilter products={products} />

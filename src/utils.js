@@ -272,12 +272,54 @@ const debounce = (fn, wait) => {
   };
 };
 
+const calculateRelevance = (product, searchArray) => {
+  let score = 0;
+
+  const title = product.title?.toLowerCase() || '';
+  const description = product.description?.toLowerCase() || '';
+
+  searchArray.forEach((word) => {
+    if (!word) return;
+
+    // Считаем количество вхождений слова
+    const titleMatches = title.split(word).length - 1;
+    const descMatches = description.split(word).length - 1;
+
+    // Приоритет названия перед описанием
+    score += titleMatches * 10;
+    score += descMatches * 5;
+
+    // Дополнительные очки, если слово в начале названия
+    if (title.startsWith(word)) score += 15;
+
+    // Полное совпадение с названием дает бонус
+    if (title === word) score += 20;
+  });
+
+  // Дополнительные баллы за рейтинг
+  score += product.rating;
+
+  return score;
+};
+
 const sortProducts = (products, sortBy) => {
   let sortedProducts;
 
   switch (sortBy) {
     case 'relevance':
-      sortedProducts = products;
+      sortedProducts = sortedProducts = products.slice().sort((a, b) => {
+        const dateA = a.createdAt
+          ? new Date(a.createdAt)
+          : a.updatedAt
+          ? new Date(a.updatedAt)
+          : new Date(0);
+        const dateB = b.createdAt
+          ? new Date(b.createdAt)
+          : b.updatedAt
+          ? new Date(b.updatedAt)
+          : new Date(0);
+        return dateB - dateA;
+      });
       break;
     case 'price_asc':
       sortedProducts = products
@@ -294,13 +336,13 @@ const sortProducts = (products, sortBy) => {
       break;
     case 'recent':
       sortedProducts = products.slice().sort((a, b) => {
-        if (a.isNew && !b.isNew) {
-          return -1;
-        }
-        if (!a.isNew && b.isNew) {
-          return 1;
-        }
-        return 0;
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+
+        const dateA = a.createdAt ? new Date(a.createdAt) : new Date(0);
+        const dateB = b.createdAt ? new Date(b.createdAt) : new Date(0);
+
+        return dateB - dateA;
       });
       break;
     case 'discount':
@@ -325,13 +367,33 @@ const sortProducts = (products, sortBy) => {
       break;
     default:
       sortedProducts = sortedProducts = products.slice().sort((a, b) => {
-        const dateA = a.createdAt ? new Date(a.createdAt) : new Date(0);
-        const dateB = b.createdAt ? new Date(b.createdAt) : new Date(0);
+        const dateA = a.createdAt
+          ? new Date(a.createdAt)
+          : a.updatedAt
+          ? new Date(a.updatedAt)
+          : new Date(0);
+        const dateB = b.createdAt
+          ? new Date(b.createdAt)
+          : b.updatedAt
+          ? new Date(b.updatedAt)
+          : new Date(0);
         return dateB - dateA;
       });
   }
 
   return sortedProducts;
+};
+
+const sortProductsForSearch = (products, searchArray) => {
+  // Если поисковой массив пуст, возвращаем исходный массив товаров
+  if (!searchArray.length) return products;
+
+  // Сортируем копию массива товаров по релевантности
+  return products.slice().sort((a, b) => {
+    const relevanceA = calculateRelevance(a, searchArray);
+    const relevanceB = calculateRelevance(b, searchArray);
+    return relevanceB - relevanceA; // Более релевантный товар — выше
+  });
 };
 
 const findCheapestProductObj = (products) =>
@@ -630,7 +692,9 @@ export {
   getUcFirstNoDashStr,
   scrollController,
   debounce,
+  calculateRelevance,
   sortProducts,
+  sortProductsForSearch,
   findCheapestProductObj,
   findMostExpensiveProductObj,
   getStoreWorkStatus,

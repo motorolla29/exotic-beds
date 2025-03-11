@@ -59,7 +59,7 @@ const CatalogItem = ({ item, size = '' }) => {
   const onHeartIconClick = () => {
     if (isAuth) {
       setAddToLovelistLoading(true);
-      toggleProductInLovelist({ ...item, productId: item.productId })
+      toggleProductInLovelist(item)
         .then((lovelist) => {
           dispatch(setLovelist(lovelist));
           isLoved
@@ -90,7 +90,7 @@ const CatalogItem = ({ item, size = '' }) => {
   const onAddToCartHandler = () => {
     if (isAuth) {
       setAddToBasketLoading(true);
-      addToBasket({ ...item, productId: item.id })
+      addToBasket(item)
         .then((cart) => {
           dispatch(setCart(cart));
           dispatch(
