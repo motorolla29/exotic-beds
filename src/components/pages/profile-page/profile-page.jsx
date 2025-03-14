@@ -92,8 +92,9 @@ const ProfilePage = () => {
         {avatarModalOpen && (
           <AvatarModal
             avatarSrc={
-              user.photo ||
-              'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+              user.photo
+                ? `https://res.cloudinary.com/ddprwf1qr/image/upload/user-avatars/${user.photo}`
+                : 'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
             }
             onAvatarShadowClick={() => setAvatarModalOpen(false)}
           />

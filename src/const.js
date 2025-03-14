@@ -79,9 +79,12 @@ const AVAILABLE_SHIPPING_COUNTRIES = [
 
 const VERCEL_MAX_FILE_SIZE = 4.5 * 1024 * 1024; // 4.5 MB в байтах
 
+const RATING_TEXTS = ['Terrible', 'Bad', 'Not so good', 'Good', 'Excellent'];
+
 export {
   PRODUCT_CATEGORIES,
   PRODUCT_SERIES,
   AVAILABLE_SHIPPING_COUNTRIES,
   VERCEL_MAX_FILE_SIZE,
+  RATING_TEXTS,
 };

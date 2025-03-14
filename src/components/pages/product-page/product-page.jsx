@@ -20,10 +20,11 @@ import {
 import { addToBasket } from '../../../api/basketAPI';
 import { toggleProductInLovelist } from '../../../api/lovelistAPI';
 import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
+import { PRODUCT_CATEGORIES } from '../../../const';
+import Reviews from '../../reviews/reviews';
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import './product-page.sass';
-import { PRODUCT_CATEGORIES } from '../../../const';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -133,86 +134,93 @@ const ProductPage = () => {
               withInnerZoom
             />
           </div>
-          <div className="product-page_info">
-            <div className="product-page_info_title">{product.title}</div>
-            <div className="product-page_info_rating">
-              <div className="product-page_info_rating_stars">
-                <RatingStars id={product.id} rating={product.rating} />
+          <div className="product-page_main">
+            <div className="product-page_main_info">
+              <div className="product-page_main_info_title">
+                {product.title}
+              </div>
+              <div className="product-page_main_info_rating">
+                <div className="product-page_main_info_rating_stars">
+                  <RatingStars id={product.id} rating={product.rating} />
+                </div>
+
+                <span className="product-page_main_info_rating_mark">
+                  {product.rating.toFixed(1)}
+                </span>
               </div>
 
-              <span className="product-page_info_rating_mark">
-                {product.rating.toFixed(1)}
-              </span>
-            </div>
+              <div className="product-page_main_info_description">
+                {product.description}
+              </div>
 
-            <div className="product-page_info_description">
-              {product.description}
-            </div>
-
-            {product.sale ? (
-              <div className="product-page_info_price">
-                <div>
-                  <span className="product-page_info_price_final">
-                    €{product.sale}
+              {product.sale ? (
+                <div className="product-page_main_info_price">
+                  <div>
+                    <span className="product-page_main_info_price_final">
+                      €{product.sale}
+                    </span>
+                    <span className="product-page_main_info_price_first">
+                      €{product.price}
+                    </span>
+                  </div>
+                  <span className="product-page_main_info_price_save">
+                    You Save: €{product.price - product.sale} (
+                    {Math.round(100 - (product.sale / product.price) * 100)}%)
                   </span>
-                  <span className="product-page_info_price_first">
+                </div>
+              ) : (
+                <div className="product-page_main_info_price">
+                  <span className="product-page_main_info_price_final">
                     €{product.price}
                   </span>
                 </div>
-                <span className="product-page_info_price_save">
-                  You Save: €{product.price - product.sale} (
-                  {Math.round(100 - (product.sale / product.price) * 100)}%)
-                </span>
-              </div>
-            ) : (
-              <div className="product-page_info_price">
-                <span className="product-page_info_price_final">
-                  €{product.price}
-                </span>
-              </div>
-            )}
-            <div className="product-page_info_ui">
-              {isInBasket ? (
-                <button
-                  onClick={() => dispatch(cartOpen(true))}
-                  className="product-page_info_ui_open-cart-button"
-                  title="Open cart"
-                >
-                  <span>
-                    <TbShoppingCartCheck />
-                    In the basket
-                  </span>
-                </button>
-              ) : (
-                <button
-                  onClick={addToCartButtonHandler}
-                  className="product-page_info_ui_add-to-cart-button"
-                  title="Add to basket"
-                  disabled={addToBasketLoading}
-                >
-                  <span>
-                    {addToBasketLoading ? (
-                      <ClipLoader color="#e9d5be" />
-                    ) : (
-                      <TbShoppingCart />
-                    )}
-                    Add to basket
-                  </span>
-                </button>
               )}
-
-              <button
-                onClick={onHeartIconClick}
-                className="product-page_info_ui_lovelist-button"
-                title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
-                disabled={addToLovelistLoading}
-              >
-                {addToLovelistLoading ? (
-                  <PuffLoader color="#cc0000" />
+              <div className="product-page_main_info_ui">
+                {isInBasket ? (
+                  <button
+                    onClick={() => dispatch(cartOpen(true))}
+                    className="product-page_main_info_ui_open-cart-button"
+                    title="Open cart"
+                  >
+                    <span>
+                      <TbShoppingCartCheck />
+                      In the basket
+                    </span>
+                  </button>
                 ) : (
-                  <HeartIcon isLoved={isLoved} />
+                  <button
+                    onClick={addToCartButtonHandler}
+                    className="product-page_main_info_ui_add-to-cart-button"
+                    title="Add to basket"
+                    disabled={addToBasketLoading}
+                  >
+                    <span>
+                      {addToBasketLoading ? (
+                        <ClipLoader color="#e9d5be" />
+                      ) : (
+                        <TbShoppingCart />
+                      )}
+                      Add to basket
+                    </span>
+                  </button>
                 )}
-              </button>
+
+                <button
+                  onClick={onHeartIconClick}
+                  className="product-page_main_info_ui_lovelist-button"
+                  title={isLoved ? 'Remove from lovelist' : 'Add to lovelist'}
+                  disabled={addToLovelistLoading}
+                >
+                  {addToLovelistLoading ? (
+                    <PuffLoader color="#cc0000" />
+                  ) : (
+                    <HeartIcon isLoved={isLoved} />
+                  )}
+                </button>
+              </div>
+            </div>
+            <div className="product-page_main_reviews">
+              <Reviews product={product} />
             </div>
           </div>
         </div>

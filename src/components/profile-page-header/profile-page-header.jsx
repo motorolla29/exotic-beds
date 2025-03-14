@@ -192,8 +192,9 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             style={{ opacity: loading ? 0.5 : 1 }}
             alt="user_photo"
             src={
-              user.photo ||
-              'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+              user.photo
+                ? `https://res.cloudinary.com/ddprwf1qr/image/upload/user-avatars/${user.photo}`
+                : 'https://res.cloudinary.com/ddprwf1qr/image/upload/default-avatar.jpg'
             }
           />
           <label

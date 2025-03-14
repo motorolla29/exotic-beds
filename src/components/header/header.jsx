@@ -46,8 +46,9 @@ const Header = () => {
                 {user.photo ? (
                   <img
                     src={
-                      user.photo ||
-                      'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+                      user.photo
+                        ? `https://res.cloudinary.com/ddprwf1qr/image/upload/user-avatars/${user.photo}`
+                        : 'https://res.cloudinary.com/ddprwf1qr/image/upload/default-avatar.jpg'
                     }
                     alt="user_photo"
                   />

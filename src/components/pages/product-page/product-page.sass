@@ -6,9 +6,11 @@
 
     &_visual
         display: flex
-        position: relative
+        position: sticky
+        top: 1em
         user-select: none
         width: 48%
+        height: fit-content
         aspect-ratio: 1/1
         background: $main-color-green-light
         overflow: hidden
@@ -26,161 +28,174 @@
             bottom: 1.5em
             right: 1.5em
             border-radius: 50%
-
-    &_info
+    &_main
         font-size: 14px
-        color: $main-color-grey
-        background: linear-gradient(to left, #eefef60f, #eefef65e) 
-        height: fit-content
-        width: 52%
-        border-radius: 2em
         margin-left: 2em
-        padding: 1em 2em 
+        width: 52%
+        color: $main-color-grey
+        &_info
+            background: linear-gradient(to left, #eefef60f, #eefef65e) 
+            height: fit-content
+            border-radius: 2em
+            padding: 1em 2em 
 
-        &_rating
-            display: inline-flex
-            margin: 1em 0
+            &_rating
+                display: inline-flex
+                margin: 1em 0
 
-            &_stars
-                display: flex
-                width: 8em
+                &_stars
+                    display: flex
+                    width: 8em
 
-                svg
-                    width: 100%
-                    height: auto
-
-            &_mark
-                margin-left: 0.6em
-                font-size: 1.2em
-                font-weight: 600
-
-        &_title
-            font-family: AnjaEliane, Debussy
-            font-size: 2.2em
-
-        &_description
-            font-size: 1.4em
-            font-weight: 600
-
-        &_price
-            color: $main-color-turquoise
-            margin-top: 1em
-
-            &_final
-                font-size: 2.2em
-                font-weight: 900
-
-            &_first
-                color:$main-color-grey
-                font-weight: 300
-                margin-left: 1em
-                font-size: 1.6em
-                text-decoration: line-through
-                text-decoration-color: $main-color-turquoise
-
-            &_save
-                opacity: 1
-                color: $main-color-red
-                font-weight: 600
-                font-size: 1em
-        
-        &_ui
-            display: flex
-            margin-top: 2em
-            margin-bottom: 1em
-
-            &_add-to-cart-button, &_open-cart-button
-                display: flex
-                justify-content: center
-                align-items: center
-                opacity: 0.8
-                cursor: pointer
-                font-weight: 600
-                color: $main-color-biscuit
-                font-size: 1em
-                width: 12em
-                height: 4em
-                background: $main-color-turquoise
-                border-radius: 2em
-                outline: none
-                border: none
-                transition: transform 0.1s ease
-                &:hover
-                    opacity: 0.9
-                &:active
-                    transform: scale(0.97)
-                > span
                     svg
-                        margin-right: 0.5em
-                        vertical-align: sub
+                        width: 100%
                         height: auto
-                        width: 1.5em
-                    span
-                        margin-right: 0.5em
-                        vertical-align: sub
-                        height: 1.5em !important
-                        width: 1.5em !important
 
-                    
+                &_mark
+                    margin-left: 0.6em
+                    font-size: 1.2em
+                    font-weight: 600
 
-            &_open-cart-button
-                background: $main-color-grey
-            
+            &_title
+                font-family: AnjaEliane, Debussy
+                font-size: 2.2em
 
-            &_lovelist-button
-                opacity: 0.8
+            &_description
+                font-size: 1.4em
+                font-weight: 600
+
+            &_price
+                color: $main-color-turquoise
+                margin-top: 1em
+
+                &_final
+                    font-size: 2.2em
+                    font-weight: 900
+
+                &_first
+                    color:$main-color-grey
+                    font-weight: 300
+                    margin-left: 1em
+                    font-size: 1.6em
+                    text-decoration: line-through
+                    text-decoration-color: $main-color-turquoise
+
+                &_save
+                    opacity: 1
+                    color: $main-color-red
+                    font-weight: 600
+                    font-size: 1em
+
+            &_ui
                 display: flex
-                align-items: center
-                justify-content: center
-                font-size: 1em
-                width: 4em
-                height: 4em
-                margin-left: 2em
-                cursor: pointer
-                background: none
-                outline: none
-                background: #4f4a571a
-                border: none
-                border-radius: 50%
+                margin-top: 2em
+                margin-bottom: 1em
 
-                &:hover
-                    opacity: 0.6
-                &:active
-                    opacity: 0.4
-
-                svg
-                    transform: translateY(0.16em)
-                    stroke: $main-color-red
-                    stroke-width: 1em
-                    width: 50%
-                    height: auto
-                // стилизация лоадера для кнопки избранного
-                > span
-                    width: 100% !important
-                    height: 100% !important
+                &_add-to-cart-button, &_open-cart-button
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    opacity: 0.8
+                    cursor: pointer
+                    font-weight: 600
+                    color: $main-color-biscuit
+                    font-size: 1em
+                    width: 12em
+                    height: 4em
+                    background: $main-color-turquoise
+                    border-radius: 2em
+                    outline: none
+                    border: none
+                    transform: scale(0.999)
+                    transition: transform 0.1s ease
+                    &:hover
+                        opacity: 0.9
+                    &:active
+                        transform: scale(0.97)
                     > span
-                        border-width: 2px !important
+                        svg
+                            margin-right: 0.5em
+                            vertical-align: sub
+                            height: auto
+                            width: 1.5em
+                        span
+                            margin-right: 0.5em
+                            vertical-align: sub
+                            height: 1.5em !important
+                            width: 1.5em !important
+
+
+
+                &_open-cart-button
+                    background: $main-color-grey
+
+
+                &_lovelist-button
+                    opacity: 0.8
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    font-size: 1em
+                    width: 4em
+                    height: 4em
+                    margin-left: 2em
+                    cursor: pointer
+                    background: none
+                    outline: none
+                    background: #4f4a571a
+                    border: none
+                    border-radius: 50%
+
+                    &:hover
+                        opacity: 0.6
+                    &:active
+                        opacity: 0.4
+
+                    svg
+                        transform: translateY(0.16em)
+                        stroke: $main-color-red
+                        stroke-width: 1em
+                        width: 50%
+                        height: auto
+                    // стилизация лоадера для кнопки избранного
+                    > span
                         width: 100% !important
                         height: 100% !important
-
+                        > span
+                            border-width: 2px !important
+                            width: 100% !important
+                            height: 100% !important
+        &_reviews
+            margin-top: 1em
+            border-radius: 2em
+            padding: 1em 2em
+            height: fit-content
+            background: #eefef625
 
 @media (max-width: 1200px)
     .product-page
         font-size: 14px
-        &_info
-            font-size: 12px
+        &_main
+            &_info
+                font-size: 12px
 
 @media (max-width: 992px)
     .product-page
         margin-top: 1.5em
         flex-direction: column
         padding-bottom: 1rem
-        &_info
-            background: linear-gradient(to left top, #eefef60f, #eefef65e) 
+        &_visual
+            position: relative
+            width: 100%
+        &_main
             width: 100%
             margin: 1em 0 0 0
-        &_visual
-            width: 100%
+            &_info
+                margin-top: 1em
+                background: linear-gradient(to left top, #eefef60f, #eefef65e) 
+            &_reviews
+                margin-top: 1.5em
+        
 
 @media (max-width: 480px) 
     .product-page
@@ -188,12 +203,15 @@
         font-size: 12px
         &_visual
             border-radius: 15px
-        &_info
-            border-radius: 15px
-            font-size: 10px
+        &_main   
+            &_info, &_reviews
+                font-size: 10px
+                border-radius: 15px
+
 
 @media (max-width: 320px) 
     .product-page
         font-size: 10px
-        &_info
-            font-size: 8px
+        &_main
+            &_info, &_reviews
+                font-size: 8px
