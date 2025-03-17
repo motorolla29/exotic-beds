@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ClickAwayListener } from '@mui/material';
 
 import PulseLoader from 'react-spinners/PulseLoader';
 
 import Review from '../review/review';
 import RatingSelector from '../rating-selector/rating-selector';
-import { RATING_TEXTS } from '../../const';
+import { COMMENTS_SORT_OPTIONS, RATING_TEXTS } from '../../const';
+import { loginModalsOpen } from '../../store/action';
 
 import './reviews.sass';
-import { loginModalsOpen } from '../../store/action';
 
 const mockReviews = [
   {
@@ -20,17 +21,6 @@ const mockReviews = [
     user: {
       name: 'John',
       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 2,
-    productId: 201,
-    rating: 4,
-    comment: 'Good product, but the packaging was slightly damaged.',
-    createdAt: '2025-03-09T08:15:30Z',
-    user: {
-      name: 'Emma',
-      photo: null,
     },
   },
   {
@@ -129,11 +119,13 @@ const Reviews = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [sending, setSending] = useState(false);
-  //   const [commentError, setCommentError] = useState(
-  //     'You have not filled out the review.'
-  //   );
   const [reviewsLimit, setReviewsLimit] = useState(5);
   const [commentError, setCommentError] = useState('');
+  const [isSortCommentsSelectListOpen, setIsSortCommentsSelectListOpen] =
+    useState(false);
+  const [selectedCommentsSortOption, setSelectedCommentsSortOption] = useState(
+    COMMENTS_SORT_OPTIONS[0]
+  );
 
   const onCommentChange = (e) => {
     setCommentError(null);
@@ -145,6 +137,7 @@ const Reviews = () => {
       setCommentError('You have not filled out the review.');
       return;
     }
+    setSending(true);
   };
 
   return (
@@ -199,9 +192,60 @@ const Reviews = () => {
       )}
       {mockReviews.length > 0 ? (
         <div className="reviews_list">
-          {mockReviews
-            .map((review) => <Review key={review.id} review={review} />)
-            .slice(0, reviewsLimit)}
+          <div className="reviews_list_header">
+            <div className="reviews_list_header_count">
+              1-
+              {reviewsLimit < mockReviews.length
+                ? reviewsLimit
+                : mockReviews.length}{' '}
+              of {mockReviews.length} reviews
+            </div>
+            <div className="reviews_list_header_sort">
+              <ClickAwayListener
+                onClickAway={() => setIsSortCommentsSelectListOpen(false)}
+              >
+                <div
+                  className="reviews_list_header_sort_select"
+                  onClick={() =>
+                    setIsSortCommentsSelectListOpen(
+                      !isSortCommentsSelectListOpen
+                    )
+                  }
+                >
+                  <div className="reviews_list_header_sort_select_selected">
+                    {selectedCommentsSortOption.label}
+                    <span
+                      className={`reviews_list_header_sort_select_arrow ${
+                        isSortCommentsSelectListOpen ? 'open' : ''
+                      }`}
+                    ></span>
+                  </div>
+                  {isSortCommentsSelectListOpen && (
+                    <ul className="reviews_list_header_sort_select_list">
+                      {COMMENTS_SORT_OPTIONS.map((option) => (
+                        <li
+                          key={option.value}
+                          className="reviews_list_header_sort_select_item"
+                          onClick={() => {
+                            console.log(option);
+                            setSelectedCommentsSortOption(option);
+                            setIsSortCommentsSelectListOpen(false);
+                          }}
+                        >
+                          {option.label}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </ClickAwayListener>
+            </div>
+          </div>
+          <div className="reviews_list_body">
+            {mockReviews
+              .map((review) => <Review key={review.id} review={review} />)
+              .slice(0, reviewsLimit)}
+          </div>
           {reviewsLimit < mockReviews.length && (
             <button
               onClick={() => {

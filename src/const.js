@@ -81,10 +81,18 @@ const VERCEL_MAX_FILE_SIZE = 4.5 * 1024 * 1024; // 4.5 MB в байтах
 
 const RATING_TEXTS = ['Terrible', 'Bad', 'Not so good', 'Good', 'Excellent'];
 
+const COMMENTS_SORT_OPTIONS = [
+  { value: 'newest', label: 'Newest first' },
+  { value: 'highest', label: 'Highest rated first' },
+  { value: 'lowest', label: 'Lowest rated first' },
+  { value: 'helpful', label: 'Most helpful first' },
+];
+
 export {
   PRODUCT_CATEGORIES,
   PRODUCT_SERIES,
   AVAILABLE_SHIPPING_COUNTRIES,
   VERCEL_MAX_FILE_SIZE,
   RATING_TEXTS,
+  COMMENTS_SORT_OPTIONS,
 };

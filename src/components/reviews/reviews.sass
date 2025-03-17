@@ -58,8 +58,11 @@
                 padding: 0.5em
                 font-size: 1em
                 margin-bottom: 1em
+                opacity: 0.8
+                &:focus
+                    opacity: 1
                 &.error
-                    border: 1px solid #cc0000
+                    outline: 1px solid #cc0000
                 &_error
                     font-size: 0.75em
                     color: $main-color-red
@@ -121,6 +124,64 @@
             
 
     &_list
+        &_body
+            margin-top: 1.5em
+        &_header
+            display: flex
+            justify-content: space-between
+            align-items: flex-end
+            padding-bottom: 1em
+            border-bottom: 1px solid $main-color-grey-transparent
+            &_sort
+                &_select
+                    user-select: none
+                    cursor: pointer
+                    position: relative
+                    width: 12.5em
+                    &_selected
+                        background-color: $main-color-white-transparent
+                        border: 1px solid $main-color-grey-transparent
+                        border-radius: 2em
+                        padding: 0.5em 1em
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+                        transition: opacity 0.2s ease
+                        opacity: 1
+                        &:hover
+
+                    &_arrow
+                        border: solid $main-color-grey
+                        border-width: 0 1px 1px 0
+                        display: flex
+                        padding: 0.2em
+                        margin: 0 0.5em
+                        transform: rotate(45deg) translateY(0em) translateX(-0.1em)
+                        transition: transform 0.2s ease
+                        &.open
+                            transform: rotate(-135deg) translateY(-0.1em) translateX(-0.2em)
+
+                    &_list
+                        position: absolute
+                        top: calc( 100% + 0.25em )
+                        left: 0
+                        width: 100%
+                        background-color: $main-color-white
+                        border: 1px solid $main-color-grey-transparent
+                        border-top: none
+                        border-radius: 1em
+                        box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1)
+                        overflow: hidden
+                        animation: fadeIn 0.25s ease-in-out
+                    &_item
+                        user-select: none
+                        white-space: nowrap
+                        min-width: fit-content
+                        padding: 0.5em 1em
+                        transition: background-color 0.2s ease
+                        &:hover
+                            background-color: $main-color-green-light
+
         &_show-more-button
             display: flex
             align-items: center
@@ -144,3 +205,61 @@
                 opacity: 0.9
             &:active:not(:disabled)
                 transform: scale(0.97)
+
+@keyframes fadeIn
+    from
+        opacity: 0
+        transform: translateY(-0.5em)
+    to
+        opacity: 1
+        transform: translateY(0)
+
+@media (max-width: 1200px)
+    .reviews
+        font-size: 12px
+        &_form
+            &_send-button
+                font-size: 12px
+        &_list
+            &_show-more-button
+                font-size: 12px
+
+@media (max-width: 768px)
+    .reviews
+        &_form
+            &_comment
+                &_textarea 
+                    height: 8em
+
+@media (max-width: 480px) 
+    .reviews
+        font-size: 10px
+        &_form
+            &_comment
+                &_textarea 
+                    height: 10em
+            &_send-button
+                font-size: 10px
+        &_list
+            &_show-more-button
+                font-size: 10px
+
+@media (max-width: 320px) 
+    .reviews
+        font-size: 8px
+        &_list
+            &_show-more-button
+                font-size: 8px
+        &_form
+            &_send-button
+                font-size: 8px
+
+@media (max-width: 280px) 
+    .reviews
+        &_list
+            &_header
+                display: flex
+                flex-direction: column
+                align-items: center
+                &_count
+                    margin-bottom: 1em
