@@ -26,6 +26,7 @@ import {
   setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
+import { deleteImageFromImagekit } from '../../utils';
 
 import './admin-modals.sass';
 
@@ -86,6 +87,9 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
         availableQuantity: +productData.quantity,
         rating: +(+productData.rating).toFixed(1),
       };
+
+      const previousPhoto = item.photo;
+
       updateProduct(item.id, adaptedData)
         .then(async () => {
           dispatch(setProductsLoaded(false));
@@ -100,6 +104,9 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
               decorator: <DoneIcon />,
             })
           );
+          if (previousPhoto && previousPhoto !== adaptedData.photo) {
+            deleteImageFromImagekit(previousPhoto);
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -107,9 +114,8 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
         .finally(() => {
           setSubmitting(false);
         });
-      console.log('Форма отправляется', adaptedData);
     } else {
-      console.log('Ошибки валидации');
+      console.log('Validation errors');
     }
   };
 
@@ -137,7 +143,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
     if (file) {
       setPhotoLoading(true);
       const authRes = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/imagekit-auth`
+        `${process.env.REACT_APP_API_URL}/api/imagekit/auth`
       );
       const authData = await authRes.json();
 
@@ -149,6 +155,13 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
           ...authData,
         })
         .then((response) => {
+          if (
+            productData.photo &&
+            productData.photo !== response.name &&
+            productData.photo !== item.photo
+          ) {
+            deleteImageFromImagekit(productData.photo);
+          }
           setProductData((prev) => ({
             ...prev,
             photo: response.name,
@@ -161,6 +174,17 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
           setPhotoLoading(false);
         });
     }
+  };
+
+  const handleCloseModal = async () => {
+    if (productData.photo && productData.photo !== item.photo) {
+      try {
+        await deleteImageFromImagekit(productData.photo);
+      } catch (deleteError) {
+        console.error('Error deleting uploaded photo:', deleteError);
+      }
+    }
+    onClose();
   };
 
   return (
@@ -181,7 +205,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
         >
           <div className="admin-edit-product-modal_content_title">
             <h2>Edit Product</h2>
-            <IoCloseOutline onClick={onClose} />
+            <IoCloseOutline onClick={handleCloseModal} />
           </div>
           <div className="admin-edit-product-modal_content_photo-container">
             <div className="admin-edit-product-modal_content_photo">

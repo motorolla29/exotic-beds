@@ -18,7 +18,11 @@ import DoneIcon from '@mui/icons-material/Done';
 
 import validateProductData from './validate-product-data';
 import useWindowSize from '../../hooks/use-window-size';
-import { categoriesIds, scrollController } from '../../utils';
+import {
+  categoriesIds,
+  deleteImageFromImagekit,
+  scrollController,
+} from '../../utils';
 import {
   setProducts,
   setProductsLoaded,
@@ -104,9 +108,8 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
         .finally(() => {
           setSubmitting(false);
         });
-      console.log('Форма отправляется', adaptedData);
     } else {
-      console.log('Ошибки валидации');
+      console.log('Validation errors');
     }
   };
 
@@ -134,7 +137,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
     if (file) {
       setPhotoLoading(true);
       const authRes = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/imagekit-auth`
+        `${process.env.REACT_APP_API_URL}/api/imagekit/auth`
       );
       const authData = await authRes.json();
 
@@ -146,6 +149,9 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
           ...authData,
         })
         .then((response) => {
+          if (productData.photo && productData.photo !== response.name) {
+            deleteImageFromImagekit(productData.photo);
+          }
           setProductData((prev) => ({
             ...prev,
             photo: response.name,
@@ -158,6 +164,17 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
           setPhotoLoading(false);
         });
     }
+  };
+
+  const handleCloseModal = async () => {
+    if (productData.photo) {
+      try {
+        await deleteImageFromImagekit(productData.photo);
+      } catch (deleteError) {
+        console.error('Error deleting uploaded photo:', deleteError);
+      }
+    }
+    onClose();
   };
 
   return (
@@ -178,7 +195,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
         >
           <div className="admin-add-product-modal_content_title">
             <h2>Add New Product</h2>
-            <IoCloseOutline onClick={onClose} />
+            <IoCloseOutline onClick={handleCloseModal} />
           </div>
           <div className="admin-add-product-modal_content_photo-container">
             <div className="admin-add-product-modal_content_photo">
