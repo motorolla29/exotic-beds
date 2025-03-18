@@ -142,11 +142,9 @@ const Reviews = ({ product }) => {
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [showForm, setShowForm] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [reviews, setReviews] = useState([]);
-  const [hasUserReviewed, setHasUserReviewed] = useState(null);
-  const [reviewsLoading, setReviewsLoading] = useState(false);
+  const [hasUserReviewed, setHasUserReviewed] = useState(false);
+  const [reviewsLoading, setReviewsLoading] = useState(true);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [sending, setSending] = useState(false);
@@ -157,13 +155,6 @@ const Reviews = ({ product }) => {
   const [selectedCommentsSortOption, setSelectedCommentsSortOption] = useState(
     COMMENTS_SORT_OPTIONS[0]
   );
-
-  useEffect(() => {
-    if (!reviewsLoading) {
-      setShowForm(!hasUserReviewed);
-      setMounted(true);
-    }
-  }, [hasUserReviewed, reviewsLoading]);
 
   useEffect(() => {
     (async () => {
@@ -256,16 +247,9 @@ const Reviews = ({ product }) => {
       </div>
       {isAuth && (
         <AnimatePresence>
-          {showForm && (
+          {!hasUserReviewed && (
             <motion.div
-              initial={
-                mounted
-                  ? {
-                      opacity: 0,
-                      scale: 0,
-                    }
-                  : { opacity: 1, scale: 1 }
-              }
+              initial={reviewsLoading ? { opacity: 0, scale: 0 } : false}
               animate={{ opacity: 1, scale: 1 }}
               exit={{
                 opacity: 0,
