@@ -83,8 +83,8 @@ const RATING_TEXTS = ['Terrible', 'Bad', 'Not so good', 'Good', 'Excellent'];
 
 const COMMENTS_SORT_OPTIONS = [
   { value: 'newest', label: 'Newest first' },
-  { value: 'highest', label: 'Highest rated first' },
-  { value: 'lowest', label: 'Lowest rated first' },
+  { value: 'highest-rating', label: 'Highest rated first' },
+  { value: 'lowest-rating', label: 'Lowest rated first' },
   { value: 'helpful', label: 'Most helpful first' },
 ];
 

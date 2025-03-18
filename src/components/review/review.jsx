@@ -1,32 +1,31 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 
 import RatingStars from '../rating-stars/rating-stars';
 import { FiThumbsDown, FiThumbsUp } from 'react-icons/fi';
 
-import './review.sass';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { getReviewRating, rateReview } from '../../api/reviewAPI';
+import { rateReview } from '../../api/reviewAPI';
 import { loginModalsOpen } from '../../store/action';
 
+import './review.sass';
+
 const Review = ({ review }) => {
-  const user = useSelector((state) => state.user);
   const isAuth = useSelector((state) => state.isAuth);
   const dispatch = useDispatch();
-  const [votes, setVotes] = useState({ up: 0, down: 0 });
-  const [userVote, setUserVote] = useState(null);
+  const [votes, setVotes] = useState({
+    up: review.likes || 0,
+    down: review.dislikes || 0,
+  });
+  const [userVote, setUserVote] = useState(review.userVote);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const data = await getReviewRating(review.id);
-        setVotes({ up: data.likes, down: data.dislikes });
-        setUserVote(data.userVote);
-      } catch (error) {
-        console.error('Error fetching review ratings:', error);
-      }
-    })();
-  }, [review.id]);
+    setVotes({
+      up: review.likes || 0,
+      down: review.dislikes || 0,
+    });
+    setUserVote(review.userVote);
+  }, [review]);
 
   const handleVote = async (isLike) => {
     if (!isAuth) {
@@ -40,7 +39,7 @@ const Review = ({ review }) => {
         up: prev.up + (isLike ? 1 : 0),
         down: prev.down + (!isLike ? 1 : 0),
       }));
-      setUserVote(true);
+      setUserVote(isLike);
     } catch (error) {
       console.error('Error rating review:', error);
     }
@@ -72,7 +71,7 @@ const Review = ({ review }) => {
         </div>
       </div>
       <div className="review_comment">{review.comment}</div>
-      <div className={`review_rates ${userVote ? 'checked' : ''}`}>
+      <div className={`review_rates ${userVote !== null ? 'checked' : ''}`}>
         <div
           onClick={() => handleVote(true)}
           className={`review_rates_up ${userVote === true ? 'checked' : ''}`}

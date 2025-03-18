@@ -1,121 +1,149 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ClickAwayListener } from '@mui/material';
 
+import ErrorIcon from '@mui/icons-material/Error';
 import PulseLoader from 'react-spinners/PulseLoader';
 
 import Review from '../review/review';
 import RatingSelector from '../rating-selector/rating-selector';
 import { COMMENTS_SORT_OPTIONS, RATING_TEXTS } from '../../const';
-import { loginModalsOpen } from '../../store/action';
+import { loginModalsOpen, setNotificationModal } from '../../store/action';
+import {
+  createReview,
+  getReviewsByProductPrivate,
+  getReviewsByProductPublic,
+} from '../../api/reviewAPI';
 
 import './reviews.sass';
 
-const mockReviews = [
-  {
-    id: 1,
-    productId: 201,
-    rating: 5,
-    comment: 'Excellent product! Great quality, highly recommend!',
-    createdAt: '2025-01-01 22:39:08.713+03',
-    user: {
-      name: 'John',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 3,
-    productId: 202,
-    rating: 3,
-    comment: 'Expected better quality, but decent for the price.',
-    createdAt: '2025-03-08T18:45:10Z',
-    user: {
-      name: 'Michael',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 4,
-    productId: 203,
-    rating: 5,
-    comment: 'Fast delivery, everything is great!',
-    createdAt: '2025-03-07T14:20:05Z',
-    user: {
-      name: 'Sophia',
-      photo: null,
-    },
-  },
-  {
-    id: 5,
-    productId: 204,
-    rating: 2,
-    comment: 'Unfortunately, the product does not match the description.',
-    createdAt: '2025-03-06T10:10:00Z',
-    user: {
-      name: 'James',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 6,
-    productId: 205,
-    rating: 4,
-    comment: 'Overall satisfied, but could be better.',
-    createdAt: '2025-03-05T17:05:22Z',
-    user: {
-      name: 'Olivia',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 7,
-    productId: 206,
-    rating: 5,
-    comment: 'The best product in its category!',
-    createdAt: '2025-03-04T21:30:12Z',
-    user: {
-      name: 'William',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 8,
-    productId: 207,
-    rating: 3,
-    comment: 'Not exactly what I expected. Average quality.',
-    createdAt: '2025-03-03T09:45:55Z',
-    user: {
-      name: 'Isabella',
-      photo: null,
-    },
-  },
-  {
-    id: 9,
-    productId: 208,
-    rating: 1,
-    comment: 'The product arrived broken, very disappointed.',
-    createdAt: '2025-03-02T12:20:40Z',
-    user: {
-      name: 'Alexander',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-  {
-    id: 10,
-    productId: 209,
-    rating: 4,
-    comment: 'Overall a good product, but a bit overpriced.',
-    createdAt: '2025-03-01T16:55:30Z',
-    user: {
-      name: 'Mia',
-      photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
-    },
-  },
-];
+// const mockReviews = [
+//   {
+//     id: 1,
+//     productId: 201,
+//     rating: 5,
+//     comment: 'Excellent product! Great quality, highly recommend!',
+//     createdAt: '2025-01-01 22:39:08.713+03',
+//     user: {
+//       name: 'John',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 2,
+//     dislikes: 1,
+//   },
+//   {
+//     id: 3,
+//     productId: 202,
+//     rating: 3,
+//     comment: 'Expected better quality, but decent for the price.',
+//     createdAt: '2025-03-08T18:45:10Z',
+//     user: {
+//       name: 'Michael',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 0,
+//     dislikes: 1,
+//   },
+//   {
+//     id: 4,
+//     productId: 203,
+//     rating: 5,
+//     comment: 'Fast delivery, everything is great!',
+//     createdAt: '2025-03-07T14:20:05Z',
+//     user: {
+//       name: 'Sophia',
+//       photo: null,
+//     },
+//     likes: 2,
+//     dislikes: 11,
+//   },
+//   {
+//     id: 5,
+//     productId: 204,
+//     rating: 2,
+//     comment: 'Unfortunately, the product does not match the description.',
+//     createdAt: '2025-03-06T10:10:00Z',
+//     user: {
+//       name: 'James',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 12,
+//     dislikes: 1,
+//   },
+//   {
+//     id: 6,
+//     productId: 205,
+//     rating: 4,
+//     comment: 'Overall satisfied, but could be better.',
+//     createdAt: '2025-03-05T17:05:22Z',
+//     user: {
+//       name: 'Olivia',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 22,
+//     dislikes: 10,
+//   },
+//   {
+//     id: 7,
+//     productId: 206,
+//     rating: 5,
+//     comment: 'The best product in its category!',
+//     createdAt: '2025-03-04T21:30:12Z',
+//     user: {
+//       name: 'William',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 3,
+//     dislikes: 5,
+//   },
+//   {
+//     id: 8,
+//     productId: 207,
+//     rating: 3,
+//     comment: 'Not exactly what I expected. Average quality.',
+//     createdAt: '2025-03-03T09:45:55Z',
+//     user: {
+//       name: 'Isabella',
+//       photo: null,
+//     },
+//     likes: 20,
+//     dislikes: 11,
+//   },
+//   {
+//     id: 9,
+//     productId: 208,
+//     rating: 1,
+//     comment: 'The product arrived broken, very disappointed.',
+//     createdAt: '2025-03-02T12:20:40Z',
+//     user: {
+//       name: 'Alexander',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 4,
+//     dislikes: 4,
+//   },
+//   {
+//     id: 10,
+//     productId: 209,
+//     rating: 4,
+//     comment: 'Overall a good product, but a bit overpriced.',
+//     createdAt: '2025-03-01T16:55:30Z',
+//     user: {
+//       name: 'Mia',
+//       photo: '6514aaf1-934f-40fe-9a3d-7866d6d5bd37_USER_AVATAR',
+//     },
+//     likes: 223,
+//     dislikes: 111,
+//   },
+// ];
 
-const Reviews = () => {
+const Reviews = ({ product }) => {
   const isAuth = useSelector((state) => state.isAuth);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const [reviews, setReviews] = useState([]);
+  const [hasUserReviewed, setHasUserReviewed] = useState(false);
+  const [reviewsLoading, setReviewsLoading] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [sending, setSending] = useState(false);
@@ -127,25 +155,95 @@ const Reviews = () => {
     COMMENTS_SORT_OPTIONS[0]
   );
 
+  useEffect(() => {
+    (async () => {
+      setReviewsLoading(true);
+      try {
+        const data = isAuth
+          ? await getReviewsByProductPrivate(product.id)
+          : await getReviewsByProductPublic(product.id);
+        setReviews(data);
+
+        const userReview = data.find((review) => review.user.id === user.id);
+
+        setHasUserReviewed(!!userReview);
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+      } finally {
+        setReviewsLoading(false);
+      }
+    })();
+  }, [product.id, user.id, isAuth]);
+
+  // Функция сортировки
+  const sortedReviews = [...reviews].sort((a, b) => {
+    switch (selectedCommentsSortOption.value) {
+      case 'newest':
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      case 'highest-rating':
+        return b.rating - a.rating;
+      case 'lowest-rating':
+        return a.rating - b.rating;
+      case 'helpful':
+        return b.likes - b.dislikes - (a.likes - a.dislikes);
+      default:
+        return 0;
+    }
+  });
+
   const onCommentChange = (e) => {
     setCommentError(null);
     setComment(e.target.value);
   };
 
-  const onSendReviewButtonClick = () => {
+  const onSendReviewButtonClick = async () => {
     if (comment.length < 1) {
       setCommentError('You have not filled out the review.');
       return;
     }
     setSending(true);
+
+    try {
+      const newReview = await createReview({
+        productId: product.id,
+        rating,
+        comment,
+      });
+
+      const formattedReview = {
+        ...newReview,
+        user: { name: user.name, photo: user.photo },
+        likes: 0,
+        dislikes: 0,
+        userVote: null,
+        reviewRates: [],
+      };
+
+      setReviews((prev) => [formattedReview, ...prev]); // Добавляем новый отзыв в начало списка
+      setRating(0);
+      setComment('');
+      setHasUserReviewed(true);
+    } catch (error) {
+      dispatch(
+        setNotificationModal({
+          open: true,
+          icon: <ErrorIcon />,
+          title: 'Error creating review',
+          description: 'Something went wrong, try again later',
+        })
+      );
+      console.error('Error creating review:', error);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <div className="reviews">
       <div className="reviews_title">
-        Reviews<span className="reviews_title_count">{mockReviews.length}</span>
+        Reviews<span className="reviews_title_count">{reviews.length}</span>
       </div>
-      {isAuth ? (
+      {isAuth && !hasUserReviewed ? (
         <div className="reviews_form">
           <div className="reviews_form_rating">
             <span className="reviews_form_rating_title">Rate it!</span>
@@ -181,7 +279,8 @@ const Reviews = () => {
             {sending ? <PulseLoader color="#e9d5be" /> : 'Send'}
           </button>
         </div>
-      ) : (
+      ) : null}
+      {!isAuth && (
         <div className="reviews_auth-req">
           <p>
             To leave a review, please{' '}
@@ -190,15 +289,14 @@ const Reviews = () => {
           </p>
         </div>
       )}
-      {mockReviews.length > 0 ? (
+      {reviews.length > 0 ? (
         <div className="reviews_list">
           <div className="reviews_list_header">
             <div className="reviews_list_header_count">
               1-
-              {reviewsLimit < mockReviews.length
+              {reviewsLimit < reviews.length
                 ? reviewsLimit
-                : mockReviews.length}{' '}
-              of {mockReviews.length} reviews
+                : reviews.length} of {reviews.length} reviews
             </div>
             <div className="reviews_list_header_sort">
               <ClickAwayListener
@@ -227,7 +325,6 @@ const Reviews = () => {
                           key={option.value}
                           className="reviews_list_header_sort_select_item"
                           onClick={() => {
-                            console.log(option);
                             setSelectedCommentsSortOption(option);
                             setIsSortCommentsSelectListOpen(false);
                           }}
@@ -242,11 +339,11 @@ const Reviews = () => {
             </div>
           </div>
           <div className="reviews_list_body">
-            {mockReviews
+            {sortedReviews
               .map((review) => <Review key={review.id} review={review} />)
               .slice(0, reviewsLimit)}
           </div>
-          {reviewsLimit < mockReviews.length && (
+          {reviewsLimit < reviews.length && (
             <button
               onClick={() => {
                 setReviewsLimit((prev) => prev + 5);
