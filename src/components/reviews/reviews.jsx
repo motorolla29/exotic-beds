@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ClickAwayListener } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import ErrorIcon from '@mui/icons-material/Error';
 import PulseLoader from 'react-spinners/PulseLoader';
@@ -141,8 +142,10 @@ const Reviews = ({ product }) => {
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const [showForm, setShowForm] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [reviews, setReviews] = useState([]);
-  const [hasUserReviewed, setHasUserReviewed] = useState(false);
+  const [hasUserReviewed, setHasUserReviewed] = useState(null);
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -154,6 +157,13 @@ const Reviews = ({ product }) => {
   const [selectedCommentsSortOption, setSelectedCommentsSortOption] = useState(
     COMMENTS_SORT_OPTIONS[0]
   );
+
+  useEffect(() => {
+    if (!reviewsLoading) {
+      setShowForm(!hasUserReviewed);
+      setMounted(true);
+    }
+  }, [hasUserReviewed, reviewsLoading]);
 
   useEffect(() => {
     (async () => {
@@ -217,6 +227,7 @@ const Reviews = ({ product }) => {
         dislikes: 0,
         userVote: null,
         reviewRates: [],
+        new: true,
       };
 
       setReviews((prev) => [formattedReview, ...prev]); // Добавляем новый отзыв в начало списка
@@ -243,43 +254,66 @@ const Reviews = ({ product }) => {
       <div className="reviews_title">
         Reviews<span className="reviews_title_count">{reviews.length}</span>
       </div>
-      {isAuth && !hasUserReviewed ? (
-        <div className="reviews_form">
-          <div className="reviews_form_rating">
-            <span className="reviews_form_rating_title">Rate it!</span>
-            <RatingSelector
-              rating={rating}
-              onChange={(value) => setRating(value)}
-            />
-            <span className="reviews_form_rating_rate-text">
-              {rating ? RATING_TEXTS[rating - 1] : ''}
-            </span>
-          </div>
-          <div className="reviews_form_comment">
-            <textarea
-              rows={4}
-              className={`reviews_form_comment_textarea ${
-                commentError ? 'error' : ''
-              }`}
-              value={comment}
-              onChange={onCommentChange}
-              placeholder="Describe your impressions of this product..."
-            />
-            {commentError && (
-              <span className="reviews_form_comment_textarea_error">
-                {commentError}
-              </span>
-            )}
-          </div>
-          <button
-            onClick={onSendReviewButtonClick}
-            disabled={sending || !rating}
-            className="reviews_form_send-button"
-          >
-            {sending ? <PulseLoader color="#e9d5be" /> : 'Send'}
-          </button>
-        </div>
-      ) : null}
+      {isAuth && (
+        <AnimatePresence>
+          {showForm && (
+            <motion.div
+              initial={
+                mounted
+                  ? {
+                      opacity: 0,
+                      scale: 0,
+                    }
+                  : { opacity: 1, scale: 1 }
+              }
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{
+                opacity: 0,
+                scale: 0,
+                maxHeight: '0px',
+                marginBottom: '0em',
+                padding: '0em',
+                border: '0px',
+              }}
+              className="reviews_form"
+            >
+              <div className="reviews_form_rating">
+                <span className="reviews_form_rating_title">Rate it!</span>
+                <RatingSelector
+                  rating={rating}
+                  onChange={(value) => setRating(value)}
+                />
+                <span className="reviews_form_rating_rate-text">
+                  {rating ? RATING_TEXTS[rating - 1] : ''}
+                </span>
+              </div>
+              <div className="reviews_form_comment">
+                <textarea
+                  rows={4}
+                  className={`reviews_form_comment_textarea ${
+                    commentError ? 'error' : ''
+                  }`}
+                  value={comment}
+                  onChange={onCommentChange}
+                  placeholder="Describe your impressions of this product..."
+                />
+                {commentError && (
+                  <span className="reviews_form_comment_textarea_error">
+                    {commentError}
+                  </span>
+                )}
+              </div>
+              <button
+                onClick={onSendReviewButtonClick}
+                disabled={sending || !rating}
+                className="reviews_form_send-button"
+              >
+                {sending ? <PulseLoader color="#e9d5be" /> : 'Send'}
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
       {!isAuth && (
         <div className="reviews_auth-req">
           <p>

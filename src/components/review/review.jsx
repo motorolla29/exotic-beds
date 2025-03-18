@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
+import { motion } from 'framer-motion';
 
 import RatingStars from '../rating-stars/rating-stars';
 import { FiThumbsDown, FiThumbsUp } from 'react-icons/fi';
@@ -46,7 +47,12 @@ const Review = ({ review }) => {
   };
 
   return (
-    <div className="review">
+    <motion.div
+      initial={review.new ? { opacity: 0, scale: 0 } : false}
+      animate={review.new ? { opacity: 1, scale: 1 } : {}}
+      transition={review.new ? { duration: 0.5, ease: 'easeOut' } : {}}
+      className="review"
+    >
       <div className="review_top">
         <div className="review_top_user">
           <div className="review_top_user_avatar">
@@ -88,7 +94,7 @@ const Review = ({ review }) => {
           <span className="review_rates_down_count">{votes.down}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
