@@ -1,4 +1,4 @@
-import { $host } from './index';
+import { $authHost, $host } from './index';
 
 export const getAllProducts = async () => {
   const { data } = await $host.get('api/product');
@@ -6,16 +6,16 @@ export const getAllProducts = async () => {
 };
 
 export const createProduct = async (productData) => {
-  const { data } = await $host.post('api/product', productData);
+  const { data } = await $authHost.post('api/product', productData);
   return data;
 };
 
 export const updateProduct = async (id, productData) => {
-  const { data } = await $host.put(`api/product/${id}`, productData);
+  const { data } = await $authHost.put(`api/product/${id}`, productData);
   return data;
 };
 
 export const deleteProduct = async (id) => {
-  const { data } = await $host.delete(`api/product/${id}`);
+  const { data } = await $authHost.delete(`api/product/${id}`);
   return data;
 };

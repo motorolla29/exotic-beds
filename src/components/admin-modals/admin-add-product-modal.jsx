@@ -18,17 +18,17 @@ import DoneIcon from '@mui/icons-material/Done';
 
 import validateProductData from './validate-product-data';
 import useWindowSize from '../../hooks/use-window-size';
-import {
-  categoriesIds,
-  deleteImageFromImagekit,
-  scrollController,
-} from '../../utils';
+import { categoriesIds, scrollController } from '../../utils';
 import {
   setProducts,
   setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
 import { createProduct, getAllProducts } from '../../api/productAPI';
+import {
+  getImagekitAuth,
+  deleteImageFromImagekit,
+} from '../../api/imagekitAPI';
 
 import './admin-modals.sass';
 
@@ -70,44 +70,46 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitClicked(true);
     const { isValid, errors } = validateProductData(productData);
     setError(errors);
     if (isValid) {
-      setSubmitting(true);
-      const adaptedData = {
-        categoryId: categoriesIds[productData.category],
-        photo: productData.photo,
-        title: productData.title,
-        description: productData.description,
-        price: +productData.price,
-        sale: productData.sale ? +productData.sale : null,
-        availableQuantity: +productData.quantity,
-        rating: +(+productData.rating).toFixed(1),
-      };
-      createProduct(adaptedData)
-        .then(async () => {
-          dispatch(setProductsLoaded(false));
-          const productData = await getAllProducts();
-          dispatch(setProducts(productData.rows));
-          dispatch(setProductsLoaded(true));
-          onClose();
-          dispatch(
-            setSnackbar({
-              open: true,
-              text: 'Product successfully added',
-              decorator: <DoneIcon />,
-            })
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setSubmitting(false);
-        });
+      try {
+        setSubmitting(true);
+        const adaptedData = {
+          categoryId: categoriesIds[productData.category],
+          photo: productData.photo,
+          title: productData.title,
+          description: productData.description,
+          price: +productData.price,
+          sale: productData.sale ? +productData.sale : null,
+          availableQuantity: +productData.quantity,
+          rating: +(+productData.rating).toFixed(1),
+        };
+
+        await createProduct(adaptedData);
+
+        dispatch(setProductsLoaded(false));
+        const updatedProducts = await getAllProducts();
+        dispatch(setProducts(updatedProducts.rows));
+        dispatch(setProductsLoaded(true));
+
+        onClose();
+
+        dispatch(
+          setSnackbar({
+            open: true,
+            text: 'Product successfully added',
+            decorator: <DoneIcon />,
+          })
+        );
+      } catch (error) {
+        console.error('Error creating product:', error);
+      } finally {
+        setSubmitting(false);
+      }
     } else {
       console.log('Validation errors');
     }
@@ -134,42 +136,43 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
 
     e.target.value = null;
 
-    if (file) {
+    try {
       setPhotoLoading(true);
-      const authRes = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/imagekit/auth`
-      );
-      const authData = await authRes.json();
 
-      imagekit
-        .upload({
-          file,
-          fileName: uuidv4(),
-          folder: '/exotic-beds/catalog',
-          ...authData,
-        })
-        .then((response) => {
-          if (productData.photo && productData.photo !== response.name) {
-            deleteImageFromImagekit(productData.photo);
-          }
-          setProductData((prev) => ({
-            ...prev,
-            photo: response.name,
-          }));
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          setPhotoLoading(false);
-        });
+      const authData = await getImagekitAuth();
+
+      const response = await imagekit.upload({
+        file,
+        fileName: uuidv4(),
+        folder: '/exotic-beds/catalog',
+        ...authData,
+      });
+
+      if (productData.photo && productData.photo !== response.name) {
+        try {
+          await deleteImageFromImagekit(productData.photo);
+        } catch (error) {
+          console.error('Error deleting old image:', error);
+        }
+      }
+
+      setProductData((prev) => ({
+        ...prev,
+        photo: response.name,
+      }));
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    } finally {
+      setPhotoLoading(false);
     }
   };
 
   const handleCloseModal = async () => {
     if (productData.photo) {
       try {
-        await deleteImageFromImagekit(productData.photo);
+        deleteImageFromImagekit(productData.photo).catch((deleteError) => {
+          console.error('Error deleting uploaded photo:', deleteError);
+        });
       } catch (deleteError) {
         console.error('Error deleting uploaded photo:', deleteError);
       }

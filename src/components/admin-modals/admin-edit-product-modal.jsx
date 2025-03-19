@@ -26,7 +26,10 @@ import {
   setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
-import { deleteImageFromImagekit } from '../../utils';
+import {
+  getImagekitAuth,
+  deleteImageFromImagekit,
+} from '../../api/imagekitAPI';
 
 import './admin-modals.sass';
 
@@ -70,50 +73,53 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitClicked(true);
     const { isValid, errors } = validateProductData(productData);
     setError(errors);
     if (isValid) {
-      setSubmitting(true);
-      const adaptedData = {
-        categoryId: categoriesIds[productData.category],
-        photo: productData.photo,
-        title: productData.title,
-        description: productData.description,
-        price: +productData.price,
-        sale: productData.sale ? +productData.sale : null,
-        availableQuantity: +productData.quantity,
-        rating: +(+productData.rating).toFixed(1),
-      };
+      try {
+        setSubmitting(true);
+        const adaptedData = {
+          categoryId: categoriesIds[productData.category],
+          photo: productData.photo,
+          title: productData.title,
+          description: productData.description,
+          price: +productData.price,
+          sale: productData.sale ? +productData.sale : null,
+          availableQuantity: +productData.quantity,
+          rating: +(+productData.rating).toFixed(1),
+        };
 
-      const previousPhoto = item.photo;
+        const previousPhoto = item.photo;
 
-      updateProduct(item.id, adaptedData)
-        .then(async () => {
-          dispatch(setProductsLoaded(false));
-          const productData = await getAllProducts();
-          dispatch(setProducts(productData.rows));
-          dispatch(setProductsLoaded(true));
-          onClose();
-          dispatch(
-            setSnackbar({
-              open: true,
-              text: 'Product successfully updated',
-              decorator: <DoneIcon />,
-            })
-          );
-          if (previousPhoto && previousPhoto !== adaptedData.photo) {
-            deleteImageFromImagekit(previousPhoto);
+        await updateProduct(item.id, adaptedData);
+
+        dispatch(setProductsLoaded(false));
+        const updatedProducts = await getAllProducts();
+        dispatch(setProducts(updatedProducts.rows));
+        dispatch(setProductsLoaded(true));
+        onClose();
+        dispatch(
+          setSnackbar({
+            open: true,
+            text: 'Product successfully updated',
+            decorator: <DoneIcon />,
+          })
+        );
+        if (previousPhoto && previousPhoto !== adaptedData.photo) {
+          try {
+            await deleteImageFromImagekit(previousPhoto);
+          } catch (error) {
+            console.error('Error deleting old image:', error);
           }
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setSubmitting(false);
-        });
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setSubmitting(false);
+      }
     } else {
       console.log('Validation errors');
     }
@@ -140,51 +146,52 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
 
     e.target.value = null;
 
-    if (file) {
+    try {
       setPhotoLoading(true);
-      const authRes = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/imagekit/auth`
-      );
-      const authData = await authRes.json();
 
-      imagekit
-        .upload({
-          file,
-          fileName: uuidv4(),
-          folder: '/exotic-beds/catalog',
-          ...authData,
-        })
-        .then((response) => {
-          if (
-            productData.photo &&
-            productData.photo !== response.name &&
-            productData.photo !== item.photo
-          ) {
-            deleteImageFromImagekit(productData.photo);
-          }
-          setProductData((prev) => ({
-            ...prev,
-            photo: response.name,
-          }));
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          setPhotoLoading(false);
-        });
+      const authData = await getImagekitAuth();
+
+      const response = await imagekit.upload({
+        file,
+        fileName: uuidv4(),
+        folder: '/exotic-beds/catalog',
+        ...authData,
+      });
+
+      if (
+        productData.photo &&
+        productData.photo !== response.name &&
+        productData.photo !== item.photo
+      ) {
+        try {
+          await deleteImageFromImagekit(productData.photo);
+        } catch (error) {
+          console.error('Error deleting old image:', error);
+        }
+      }
+
+      setProductData((prev) => ({
+        ...prev,
+        photo: response.name,
+      }));
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    } finally {
+      setPhotoLoading(false);
     }
   };
 
   const handleCloseModal = async () => {
+    onClose();
     if (productData.photo && productData.photo !== item.photo) {
       try {
-        await deleteImageFromImagekit(productData.photo);
+        deleteImageFromImagekit(productData.photo).catch((deleteError) => {
+          console.error('Error deleting uploaded photo:', deleteError);
+        });
       } catch (deleteError) {
         console.error('Error deleting uploaded photo:', deleteError);
       }
     }
-    onClose();
   };
 
   return (

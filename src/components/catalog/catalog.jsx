@@ -6,15 +6,18 @@ import { useState } from 'react';
 import AdminAddProductModal from '../admin-modals/admin-add-product-modal';
 import { AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Catalog = ({ products, category }) => {
+  const isAuth = useSelector((state) => state.isAuth);
+  const user = useSelector((state) => state.user);
   const [adminModalOpen, setAdminModalOpen] = useState(false);
   const [searchParams] = useSearchParams();
   const page = +searchParams.get('page');
 
   return (
     <div className="catalog">
-      {1 && page <= 1 && (
+      {isAuth && user.role === 'ADMIN' && page <= 1 && (
         <div
           onClick={() => setAdminModalOpen(true)}
           className="catalog_admin-add-product"

@@ -679,20 +679,6 @@ const getCurrencySymbol = (currencyCode, locale = 'en-US') => {
   return currencyPart ? currencyPart.value : '';
 };
 
-const deleteImageFromImagekit = (photo) => {
-  fetch(`${process.env.REACT_APP_API_URL}/api/imagekit/delete`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ fileName: photo }),
-  })
-    .then(() => {
-      console.log(`Image ${photo} deleted successfully`);
-    })
-    .catch((error) => {
-      console.error('Error deleting image:', error);
-    });
-};
-
 export {
   nullAndUndefinedToEmptyString,
   areDatesEqual,
@@ -717,5 +703,4 @@ export {
   randomInteger,
   categoriesIds,
   getCurrencySymbol,
-  deleteImageFromImagekit,
 };

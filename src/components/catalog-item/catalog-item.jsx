@@ -31,15 +31,17 @@ import { MdOutlineEdit } from 'react-icons/md';
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AdminEditProductModal from '../admin-modals/admin-edit-product-modal';
+import { deleteProduct, getAllProducts } from '../../api/productAPI';
+import { deleteImageFromImagekit } from '../../api/imagekitAPI';
 
 import './catalog-item.sass';
-import { deleteProduct, getAllProducts } from '../../api/productAPI';
 
 const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
   const [ww] = useWindowSize();
 
   const isAuth = useSelector((state) => state.isAuth);
+  const user = useSelector((state) => state.user);
   const [addToBasketLoading, setAddToBasketLoading] = useState(false);
   const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
   const [adminModalOpen, setAdminModalOpen] = useState(false);
@@ -128,22 +130,31 @@ const CatalogItem = ({ item, size = '' }) => {
     }
   };
 
-  const onDeleteProductConfirm = () => {
-    deleteProduct(item.id)
-      .then(async () => {
-        dispatch(setProductsLoaded(false));
-        const productData = await getAllProducts();
-        dispatch(setProducts(productData.rows));
-        dispatch(setProductsLoaded(true));
-        dispatch(
-          setSnackbar({
-            open: true,
-            text: 'Product successfully deleted',
-            decorator: <DoneIcon />,
-          })
-        );
-      })
-      .catch((error) => console.log(error));
+  const onDeleteProductConfirm = async () => {
+    try {
+      await deleteProduct(item.id); // Ожидаем удаления продукта
+      if (item.photo) {
+        try {
+          await deleteImageFromImagekit(item.photo);
+        } catch (error) {
+          console.error('Error deleting previous image:', error);
+        }
+      }
+      dispatch(setProductsLoaded(false));
+      const productData = await getAllProducts();
+      dispatch(setProducts(productData.rows));
+      dispatch(setProductsLoaded(true));
+      dispatch(
+        setSnackbar({
+          open: true,
+          text: 'Product successfully deleted',
+          decorator: <DoneIcon />,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+      return;
+    }
   };
 
   return (
@@ -154,7 +165,7 @@ const CatalogItem = ({ item, size = '' }) => {
       key={item.productId}
       className={`catalog-item ${size}`}
     >
-      {1 && (
+      {isAuth && user.role === 'ADMIN' && (
         <>
           <div
             onClick={() => setAdminModalOpen(true)}
