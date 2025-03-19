@@ -198,8 +198,8 @@ const CatalogItem = ({ item, size = '' }) => {
         <Link to={`/${item.productId}`}>
           <ProgressiveImageContainer
             alt="product_picture"
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-50`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-500`}
+            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-50,w-50,cm-scale`}
+            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-350,w-350,cm-scale`}
           />
           {ww > 360 && (
             <>
