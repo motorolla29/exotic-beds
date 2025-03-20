@@ -22,6 +22,14 @@
                     border-radius: 5px
                     overflow: hidden
                     background: #c4e2cf20
+                    > .progressive-image-container
+                        > .progressive-image
+                            object-position: center
+                        > .progressive-image.thumb
+                            object-fit: cover
+                        > .progressive-image.full
+                            object-fit: contain
+
                 &_count
                     position: absolute
                     display: flex

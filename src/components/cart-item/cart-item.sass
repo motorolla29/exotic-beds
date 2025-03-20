@@ -13,9 +13,18 @@
         height: 8em
         border-radius: 0.6em
         overflow: hidden
-        background: #c4e2cf20
+        //background: #c4e2cf20
         &:hover
             opacity: 0.9
+        & .progressive-image-container
+            position: relative
+            > .progressive-image
+                object-position: center
+            > .progressive-image.thumb
+                object-fit: cover
+            > .progressive-image.full
+                object-fit: contain
+
 
     &_body
         display: flex

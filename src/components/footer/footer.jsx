@@ -73,7 +73,7 @@ function Footer() {
         <div className="footer_line" />
 
         <div className="footer_copyright">
-          © 2024 Designed and developed by Motorolla29
+          © 2025 Designed and developed by Motorolla29
         </div>
       </div>
     </div>

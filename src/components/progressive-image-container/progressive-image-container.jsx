@@ -37,7 +37,7 @@ const ProgressiveImageContainer = ({
         className="progressive-image thumb"
         alt={alt}
         src={thumb}
-        style={{ visibility: isLoaded ? 'hidden' : 'visible' }}
+        //style={{ visibility: isLoaded ? 'hidden' : 'visible' }}
       />
       {isVisible && (
         <>
