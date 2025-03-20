@@ -21,6 +21,7 @@
             width: 0.75em
             height: auto
             margin-right: 0.25em
+            transform: translateY(0.05em)
         &:hover
             opacity: 0.8
     &_title
@@ -93,6 +94,7 @@
                         display: flex
 
                     &_visual
+                        user-select: none
                         display: flex
                         min-width: 3.5em
                         min-height: 3.5em
@@ -101,6 +103,13 @@
                         border-radius: 5px
                         overflow: hidden
                         background: $main-color-green-light
+                        & .progressive-image-container
+                            & .progressive-image
+                                object-position: center
+                                &.thumb
+                                    object-fit: cover
+                                &.full
+                                    object-fit: contain
                     &_price-each, &_price-total, &_count
                         white-space: nowrap
                         text-align: right
@@ -127,6 +136,8 @@
                         padding-bottom: 1em
                         border-bottom: 1px solid #acacac
                     &_visual
+                        position: relative
+                        user-select: none
                         display: flex
                         max-width: 5em
                         max-height: 5em
@@ -136,12 +147,17 @@
                         border-radius: 5px
                         overflow: hidden
                         background: $main-color-green-light
-                    > div
-                        
-                        > div
-                            display: flex
-                            justify-content: space-between
-                            padding-left: 1em
+                        & .progressive-image-container
+                            & .progressive-image
+                                object-position: center
+                                &.thumb
+                                    object-fit: cover
+                                &.full
+                                    object-fit: contain
+                    &_total-with-count-container
+                        display: flex
+                        justify-content: space-between
+                        padding-left: 1em
                     &_title, &_price-each
                         color: $main-color-grey
                         padding-left: 1em

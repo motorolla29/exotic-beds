@@ -227,7 +227,7 @@ const OrderPage = () => {
                         {getCurrencySymbol(order.originalCurrency)}
                         {(item.sale || item.price).toFixed(2)} each
                       </p>
-                      <div>
+                      <div className="order-page_main_items_inner_item-sm_total-with-count-container">
                         <p className="order-page_main_items_inner_item-sm_price-total">
                           {getCurrencySymbol(order.originalCurrency)}
                           {((item.sale || item.price) * item.quantity).toFixed(
