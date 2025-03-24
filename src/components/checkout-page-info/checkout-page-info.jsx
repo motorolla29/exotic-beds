@@ -286,7 +286,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         shippingCost:
           countedBasket.delivery === 'FREE' ? 0 : countedBasket.delivery,
         //paymentProviderName: 'YooKassa',
-        paymentProviderName: 'Stripe',
+        paymentProviderName: 'Mollie',
         description: user.id
           ? `Payment for the order for the user ID ${user.id}`
           : `Payment for the order for an unregistered user`,

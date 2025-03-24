@@ -3,6 +3,11 @@
 .product-page
     margin: 2em 0
     display: flex
+    
+    & .product-page_visual_admin-panel_edit,
+    & .product-page .product-page_visual_admin-panel_delete
+        display: flex
+
 
     &_visual
         display: flex
@@ -15,6 +20,33 @@
         background: $main-color-green-light
         overflow: hidden
         border-radius: 2em
+        &_admin-edit, &_admin-delete
+            display: flex
+            cursor: pointer
+            position: absolute
+            justify-content: center
+            align-items: center
+            width: 3em
+            height: 3em
+            border-radius: 50%
+            background: $main-color-white
+            z-index: 1
+            opacity: 0.75
+            &:hover
+                opacity: 1
+            svg
+                width: 50%
+                height: auto
+        &_admin-edit
+            top: 5em
+            right: 1em
+            color: $main-color-turquoise
+            border: 1px solid $main-color-turquoise
+        &_admin-delete
+            top: 1em
+            right: 1em
+            color: $main-color-red
+            border: 1px solid $main-color-red
         & .progressive-image-container
             > img
                 object-fit: cover

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
 import RatingStars from '../rating-stars/rating-stars';
@@ -38,6 +38,7 @@ import './catalog-item.sass';
 
 const CatalogItem = ({ item, size = '' }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [ww] = useWindowSize();
 
   const isAuth = useSelector((state) => state.isAuth);
@@ -195,7 +196,7 @@ const CatalogItem = ({ item, size = '' }) => {
         </>
       )}
       <div className="catalog-item_visual">
-        <Link to={`/${item.productId}`}>
+        <Link to={`/${item.productId}`} state={{ from: location.pathname }}>
           <ProgressiveImageContainer
             alt="product_picture"
             thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-50,w-50,cm-scale`}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { DialogActions, DialogContent, DialogTitle, Divider } from '@mui/joy';
 import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
@@ -6,11 +7,26 @@ import { Transition } from 'react-transition-group';
 import { useDispatch, useSelector } from 'react-redux';
 import { setConfirmationModal } from '../../store/action';
 
+import PulseLoader from 'react-spinners/PulseLoader';
+
 import './confirmation-modal.sass';
 
 const ConfirmationModal = () => {
   const dispatch = useDispatch();
   const confirmationModal = useSelector((state) => state.confirmationModal);
+  const [loading, setLoading] = useState(false);
+
+  const handleAction = async () => {
+    if (!confirmationModal.action) return;
+
+    setLoading(true);
+    try {
+      await confirmationModal.action();
+      dispatch(setConfirmationModal({ ...confirmationModal, open: false }));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Transition in={confirmationModal.open} timeout={400}>
@@ -63,14 +79,14 @@ const ConfirmationModal = () => {
               <Button
                 variant="solid"
                 color="danger"
-                onClick={() => {
-                  confirmationModal.action();
-                  dispatch(
-                    setConfirmationModal({ ...confirmationModal, open: false })
-                  );
-                }}
+                onClick={handleAction}
+                disabled={loading}
               >
-                {confirmationModal.yesBtnText}
+                {loading ? (
+                  <PulseLoader color="#eefef664" />
+                ) : (
+                  confirmationModal.yesBtnText
+                )}
               </Button>
               <Button
                 variant="plain"

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import imagekit from '../../imagekit';
@@ -36,6 +37,8 @@ import './admin-modals.sass';
 const AdminEditProductModal = ({ isOpen, onClose, item }) => {
   const overlayLoading = useSelector((state) => state.overlayLoader);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [ww] = useWindowSize();
   const [photoLoading, setPhotoLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -94,7 +97,14 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
 
         const previousPhoto = item.photo;
 
-        await updateProduct(item.id, adaptedData);
+        const updatedProduct = await updateProduct(item.id, adaptedData);
+
+        if (
+          updatedProduct.id !== item.id &&
+          location.pathname === `/${item.id}`
+        ) {
+          navigate(`/${updatedProduct.id}`, { replace: true });
+        }
 
         dispatch(setProductsLoaded(false));
         const updatedProducts = await getAllProducts();

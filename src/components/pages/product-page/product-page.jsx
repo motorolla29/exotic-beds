@@ -1,20 +1,30 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
+
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartIcon from '../../heart-icon/heart-icon';
+import { RiDeleteBin5Line } from 'react-icons/ri';
+import { MdOutlineEdit } from 'react-icons/md';
 import ClipLoader from 'react-spinners/ClipLoader';
 import PuffLoader from 'react-spinners/PuffLoader';
+import DoneIcon from '@mui/icons-material/Done';
 import { TbShoppingCart, TbShoppingCartCheck } from 'react-icons/tb';
 import { AddShoppingCartRounded } from '@mui/icons-material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import RatingStars from '../../rating-stars/rating-stars';
 import {
   cartOpen,
   loginModalsOpen,
   setCart,
+  setConfirmationModal,
   setLovelist,
+  setProducts,
+  setProductsLoaded,
   setSnackbar,
 } from '../../../store/action';
 import { addToBasket } from '../../../api/basketAPI';
@@ -22,19 +32,25 @@ import { toggleProductInLovelist } from '../../../api/lovelistAPI';
 import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
 import { PRODUCT_CATEGORIES } from '../../../const';
 import Reviews from '../../reviews/reviews';
+import { deleteImageFromImagekit } from '../../../api/imagekitAPI';
+import { deleteProduct, getAllProducts } from '../../../api/productAPI';
+import AdminEditProductModal from '../../admin-modals/admin-edit-product-modal';
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import './product-page.sass';
 
 const ProductPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const isAuth = useSelector((state) => state.isAuth);
+  const user = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [addToBasketLoading, setAddToBasketLoading] = useState(false);
   const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
+  const [adminModalOpen, setAdminModalOpen] = useState(false);
 
   const products = useSelector((state) => state.products);
   const basketItems = useSelector((state) => state.cartProducts);
@@ -113,6 +129,38 @@ const ProductPage = () => {
     }
   };
 
+  const onDeleteProductConfirm = async () => {
+    try {
+      await deleteProduct(product.id); // Ожидаем удаления продукта
+      if (product.photo) {
+        try {
+          await deleteImageFromImagekit(product.photo);
+        } catch (error) {
+          console.error('Error deleting previous image:', error);
+        }
+      }
+      if (location.state?.from) {
+        navigate(location.state.from, { replace: true });
+      } else {
+        navigate('/beds', { replace: true });
+      }
+      dispatch(setProductsLoaded(false));
+      const productData = await getAllProducts();
+      dispatch(setProducts(productData.rows));
+      dispatch(setProductsLoaded(true));
+      dispatch(
+        setSnackbar({
+          open: true,
+          text: 'Product successfully deleted',
+          decorator: <DoneIcon />,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   useEffect(() => {
     if (!product) {
       return navigate('/not-found');
@@ -127,12 +175,45 @@ const ProductPage = () => {
         <Breadcrumbs category={PRODUCT_CATEGORIES[product.categoryId - 1]} />
         <div className="product-page">
           <div className="product-page_visual">
-            <ProgressiveImageContainer
-              thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${product.photo}?tr=w-60`}
-              src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${product.photo}`}
-              alt="product-image"
-              withInnerZoom
-            />
+            <div
+              style={{ position: 'relative', width: '100%', height: '100%' }}
+            >
+              <ProgressiveImageContainer
+                thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${product.photo}?tr=w-60`}
+                src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${product.photo}`}
+                alt="product-image"
+                withInnerZoom
+              />
+              {isAuth && user.role === 'ADMIN' && (
+                <>
+                  <div
+                    onClick={() => setAdminModalOpen(true)}
+                    className="product-page_visual_admin-edit"
+                  >
+                    <MdOutlineEdit />
+                  </div>
+                  <div
+                    onClick={() => {
+                      dispatch(
+                        setConfirmationModal({
+                          open: true,
+                          icon: <DeleteForeverIcon />,
+                          title: 'Delete Product?',
+                          description:
+                            'Are you sure you want to delete this product? It will not be possible to restore it...',
+                          yesBtnText: 'Delete',
+                          noBtnText: 'Cancel',
+                          action: onDeleteProductConfirm,
+                        })
+                      );
+                    }}
+                    className="product-page_visual_admin-delete"
+                  >
+                    <RiDeleteBin5Line />
+                  </div>
+                </>
+              )}
+            </div>
           </div>
           <div className="product-page_main">
             <div className="product-page_main_info">
@@ -223,6 +304,15 @@ const ProductPage = () => {
               <Reviews product={product} />
             </div>
           </div>
+          <AnimatePresence>
+            {adminModalOpen && (
+              <AdminEditProductModal
+                isOpen={adminModalOpen}
+                onClose={() => setAdminModalOpen(false)}
+                item={product}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </>
     )
