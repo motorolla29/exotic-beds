@@ -1,7 +1,6 @@
 @import 'src/styles/variables'
 
 .MuiModal-root
-    
     & .MuiModalDialog-root
         border-radius: 20px
         background-color: $main-color-green-light
@@ -9,19 +8,21 @@
         & .MuiDialogContent-root
             color: $main-color-grey
         & .MuiButton-root
+            min-width: 6em
             border-radius: 20px
+            padding: 0.5em 1.25em 0.6em 1.25em
+            &.Mui-disabled
+                opacity: 0.5
             &.MuiButton-colorDanger
-                min-width: 6em
                 color: $main-color-white
+                &.Mui-disabled
+                    background-color: rgb(196, 28, 28)
+                > span
+                    > span
+                        height: 0.5em !important 
+                        width: 0.5em !important
             &.MuiButton-colorNeutral
                 color: $main-color-grey
                 &:hover
                     background: $main-color-white-transparent
-            &.Mui-disabled
-                opacity: 0.5
-                background-color: rgb(196, 28, 28)
-            > span
-                > span
-                    //vertical-align: sub
-                    height: 0.5em !important 
-                    width: 0.5em !important
+            

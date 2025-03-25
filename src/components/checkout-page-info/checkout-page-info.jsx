@@ -11,6 +11,7 @@ import {
   FormControlLabel,
   CircularProgress,
   InputAdornment,
+  Radio,
 } from '@mui/material';
 import JoyFormControl from '@mui/joy/FormControl';
 import JoyFormLabel from '@mui/joy/FormLabel';
@@ -31,6 +32,10 @@ import useWindowSize from '../../hooks/use-window-size';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { ReactComponent as StripeLogo } from '../../images/payment-methods-logos/Stripe wordmark - slate.svg';
+import { ReactComponent as MollieLogo } from '../../images/payment-methods-logos/Mollie-Logo-White-2023.svg';
+import { ReactComponent as YookassaLogo } from '../../images/payment-methods-logos/logo-white.svg';
+
 import CheckoutPageOrderedItems from '../checkout-page-ordered-items/checkout-page-ordered-items';
 import CheckoutPageCounting from '../checkout-page-counting/checkout-page-counting';
 import { createOrder } from '../../api/orderAPI';
@@ -51,6 +56,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
   const [cityError, setCityError] = useState(null);
   const [postalCodeError, setPostalCodeError] = useState(null);
   const [phoneNumberError, setPhoneNumberError] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState('Stripe');
 
   const [addressSuggestions, setAddressSuggestions] = useState([]);
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
@@ -286,7 +292,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
         shippingCost:
           countedBasket.delivery === 'FREE' ? 0 : countedBasket.delivery,
         //paymentProviderName: 'YooKassa',
-        paymentProviderName: 'Mollie',
+        paymentProviderName: paymentMethod,
         description: user.id
           ? `Payment for the order for the user ID ${user.id}`
           : `Payment for the order for an unregistered user`,
@@ -559,7 +565,59 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
             </Grid>
           </Box>
         </div>
-        {ww <= 998 && (
+        <div className="checkout-page_main_info_inner_payment">
+          <p className="checkout-page_main_info_inner_payment_title">
+            Payment method
+          </p>
+          <div className="checkout-page_main_info_inner_payment_options">
+            <div
+              className={`checkout-page_main_info_inner_payment_options_stripe ${
+                paymentMethod === 'Stripe' ? 'active' : ''
+              }`}
+            >
+              <div onClick={() => setPaymentMethod('Stripe')}>
+                <div>
+                  <StripeLogo />
+                </div>
+              </div>
+              <Radio
+                checked={paymentMethod === 'Stripe'}
+                onChange={() => setPaymentMethod('Stripe')}
+              />
+            </div>
+            <div
+              className={`checkout-page_main_info_inner_payment_options_mollie ${
+                paymentMethod === 'Mollie' ? 'active' : ''
+              }`}
+            >
+              <div onClick={() => setPaymentMethod('Mollie')}>
+                <div>
+                  <MollieLogo />
+                </div>
+              </div>
+              <Radio
+                checked={paymentMethod === 'Mollie'}
+                onChange={() => setPaymentMethod('Mollie')}
+              />
+            </div>
+            <div
+              className={`checkout-page_main_info_inner_payment_options_yookassa  ${
+                paymentMethod === 'YooKassa' ? 'active' : ''
+              }`}
+            >
+              <div onClick={() => setPaymentMethod('YooKassa')}>
+                <div>
+                  <YookassaLogo />
+                </div>
+              </div>
+              <Radio
+                checked={paymentMethod === 'YooKassa'}
+                onChange={() => setPaymentMethod('YooKassa')}
+              />
+            </div>
+          </div>
+        </div>
+        {ww <= 992 && (
           <div className="checkout-page_main_info_bottom-order-summary">
             <div
               onClick={() => setOrderBodyVisible(!orderBodyVisible)}

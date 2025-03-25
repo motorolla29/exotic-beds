@@ -70,6 +70,73 @@
                             cursor: pointer
                             &:hover
                                 background: #e9f1ef
+        &_payment
+            &_options
+                margin: 2em 0
+                position: relative
+                display: flex
+                justify-content: space-between
+                &_stripe, &_mollie, &_yookassa
+                    position: relative
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    width: 31%
+                    &.active
+                        > div
+                            outline-color: $main-color-turquoise-transparent
+                            opacity: 1
+                    > div
+                        opacity: 0.75
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        cursor: pointer
+                        width: 100%
+                        aspect-ratio: 16/9
+                        outline: 2px solid #9494943a
+                        border-radius: 1em
+                        transition: opacity 0.2s ease, outline-color 0.2s ease
+                        > div
+                            width: 95%
+                            height: 91.12%
+                            border-radius: 0.85em
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                    span.MuiRadio-root
+                        font-size: 16px
+                        padding: 0.5em
+                        align-self: center
+                        width: fit-content
+                        color: $main-color-turquoise-transparent
+                        svg
+                            font-size: 1.5em
+                &_stripe
+                    > div
+                        > div
+                            background-color: #e5e7e9
+                            svg
+                                height: 37.5%
+                                width: auto
+
+                &_mollie
+                    > div
+                        > div
+                            background-color: #1E1E1E
+                            svg
+                                height: 20%
+                                width: auto
+                &_yookassa
+                    > div
+                        > div
+                            background-color: #0070F0
+                            svg
+                                height: 28%
+                                width: auto
+                        
+                        
+
         &_pay-button
             font-size: 1.25em
             border: none
@@ -115,13 +182,56 @@
             &_promocode.valid, &_promocode.invalid
                 margin-bottom: 2em
 
+@media ( max-width: 1200px )
+    .checkout-page_main_info
+        &_inner
+            &_payment
+                &_options
+                    &_stripe, &_mollie, &_yookassa
+                        width: 32%
+                        span.MuiRadio-root
+                            font-size: 14px
 
-@media ( max-width: 998px )
+@media ( max-width: 992px )
     .checkout-page_main_info
         width: 100%
         &_inner
             justify-self: center
             max-width: 700px
+            &_payment
+                &_options
+                    &_stripe, &_mollie, &_yookassa
+                        width: 31.5%
 @media ( max-width: 480px )
-    .checkout-page_main_info_inner_delivery_container
-        padding: 1em
+    .checkout-page_main_info
+        &_inner
+            &_delivery
+                &_container
+                    padding: 1em
+            &_payment
+                &_options
+                    &_stripe, &_mollie, &_yookassa
+                        > div
+                            border-radius: 0.8em
+                            > div
+                                border-radius: 0.68em
+                        span.MuiRadio-root
+                            font-size: 12px
+
+@media ( max-width: 360px )
+    .checkout-page_main_info
+        &_inner
+            &_payment
+                &_options
+                    position: relative
+                    flex-direction: column
+                    &_stripe, &_mollie, &_yookassa
+                        width: 100%
+                        flex-direction: row-reverse
+                        justify-content: flex-end
+                        &:not(:last-child)
+                            margin-bottom: 1em
+                        > div
+                            margin-left: 0.5em
+                            width: 45%
+

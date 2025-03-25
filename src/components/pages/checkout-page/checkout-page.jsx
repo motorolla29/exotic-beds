@@ -30,7 +30,7 @@ const CheckoutPage = () => {
         </Link>
       </div>
       <div className="checkout-page_main">
-        {ww <= 998 && (
+        {ww <= 992 && (
           <div className="checkout-page_main_sm-top-order">
             <div
               onClick={() => setTopOrderSummaryVisible(!topOrderSummaryVisible)}
@@ -72,7 +72,7 @@ const CheckoutPage = () => {
           countedBasket={countedBasket}
           promocode={promocode}
         />
-        {ww > 998 && (
+        {ww > 992 && (
           <CheckoutPageOrder
             orderedItems={orderedItems}
             countedBasket={countedBasket}

@@ -35,9 +35,11 @@ const ConfirmationModal = () => {
           keepMounted
           open={!['exited', 'exiting'].includes(state)}
           onClose={() => {
-            dispatch(
-              setConfirmationModal({ ...confirmationModal, open: false })
-            );
+            if (!loading) {
+              dispatch(
+                setConfirmationModal({ ...confirmationModal, open: false })
+              );
+            }
           }}
           slotProps={{
             backdrop: {
@@ -96,6 +98,7 @@ const ConfirmationModal = () => {
                     setConfirmationModal({ ...confirmationModal, open: false })
                   );
                 }}
+                disabled={loading}
               >
                 {confirmationModal.noBtnText}
               </Button>
