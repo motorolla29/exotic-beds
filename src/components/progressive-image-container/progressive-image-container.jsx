@@ -8,6 +8,8 @@ const ProgressiveImageContainer = ({
   alt,
   thumb,
   src,
+  defaultSrc,
+  defaultThumbSrc,
   withInnerZoom = false,
 }) => {
   const ref = useRef();
@@ -35,6 +37,11 @@ const ProgressiveImageContainer = ({
     <div ref={ref} className="progressive-image-container">
       <img
         className="progressive-image thumb"
+        onError={(e) => {
+          if (defaultThumbSrc) {
+            e.target.src = defaultThumbSrc;
+          }
+        }}
         alt={alt}
         src={thumb}
         //style={{ visibility: isLoaded ? 'hidden' : 'visible' }}
@@ -52,6 +59,9 @@ const ProgressiveImageContainer = ({
           ) : (
             <img
               onLoad={() => setIsLoaded(true)}
+              onError={(e) => {
+                if (defaultSrc) e.target.src = defaultSrc;
+              }}
               className="progressive-image full"
               style={{ opacity: isLoaded ? 1 : 0 }}
               alt={alt}
