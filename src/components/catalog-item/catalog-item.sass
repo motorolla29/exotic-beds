@@ -77,6 +77,15 @@
             right: -0.5em
             width: 5em
 
+        &_sold-out
+            position: absolute
+            top: 25%
+            bottom: 25%
+            left: 10%
+            right: 10%
+            width: 80%
+            align-self: center
+
     &_info
         padding: 0.6em
 
@@ -176,7 +185,7 @@
                         height: 1.5em !important
 
                     
-                    
+            
 
             &_open-cart-button
                 background: $main-color-grey
@@ -211,7 +220,20 @@
                         border-width: 2px !important
                         width: 100% !important
                         height: 100% !important
-
+            &_sold-out
+                user-select: none
+                font-size: 0.8em
+                font-weight: 600
+                text-align: center
+                color: $main-color-grey
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 16em
+                height: 3.2em
+                background: #6c6c6c1e
+                border-radius: 2em
+                opacity: 0.8
 @media (max-width: 1215px) 
     .catalog-item
         font-size: 13px
@@ -253,7 +275,7 @@
                 flex-grow: 1
                 justify-content: space-between
             &_ui
-                &_add-to-cart-button, &_open-cart-button
+                &_add-to-cart-button, &_open-cart-button, &_sold-out
                     width: auto
                     flex-grow: 1
                     padding: 0 0.5em

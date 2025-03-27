@@ -68,6 +68,16 @@
                         height: 100%
                         object-fit: contain
                         object-position: center
+        &_sold-out
+            pointer-events: none
+            position: absolute
+            top: 25%
+            bottom: 25%
+            left: 15%
+            right: 15%
+            width: 70%
+            align-self: center
+
     &_main
         font-size: 14px
         margin-left: 2em
@@ -163,9 +173,17 @@
                             vertical-align: sub
                             height: 1.5em !important
                             width: 1.5em !important
-
-
-
+                &_sold-out
+                    user-select: none
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    font-weight: 600
+                    width: 12em
+                    height: 4em
+                    background: #6c6c6c1e
+                    border-radius: 2em
+                    opacity: 0.8
                 &_open-cart-button
                     background: $main-color-grey
 

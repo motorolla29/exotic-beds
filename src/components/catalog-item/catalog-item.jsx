@@ -30,6 +30,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { MdOutlineEdit } from 'react-icons/md';
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { ReactComponent as SoldOutIcon } from '../../images/sold-out.svg';
 import AdminEditProductModal from '../admin-modals/admin-edit-product-modal';
 import { deleteProduct, getAllProducts } from '../../api/productAPI';
 import { deleteImageFromImagekit } from '../../api/imagekitAPI';
@@ -227,6 +228,13 @@ const CatalogItem = ({ item, size = '' }) => {
               ) : null}
             </>
           )}
+          {1 && (
+            <img
+              className="catalog-item_visual_sold-out"
+              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png,w-350"
+              alt="sold-out"
+            />
+          )}
         </Link>
       </div>
       <div className="catalog-item_info">
@@ -267,33 +275,39 @@ const CatalogItem = ({ item, size = '' }) => {
             </div>
           )}
           <div className="catalog-item_info_ui">
-            {isInBasket ? (
-              <button
-                className="catalog-item_info_ui_open-cart-button"
-                onClick={() => dispatch(cartOpen(true))}
-                title="Open cart"
-              >
-                <span>
-                  <TbShoppingCartCheck />
-                  {ww > 360 && 'In the basket'}
-                </span>
-              </button>
+            {1 ? (
+              <div className="catalog-item_info_ui_sold-out">Sold out</div>
             ) : (
-              <button
-                className="catalog-item_info_ui_add-to-cart-button"
-                onClick={onAddToCartHandler}
-                title="Add to basket"
-                disabled={addToBasketLoading}
-              >
-                <span>
-                  {addToBasketLoading ? (
-                    <ClipLoader color="#e9d5be" />
-                  ) : (
-                    <TbShoppingCart />
-                  )}
-                  {ww > 360 && 'Add to basket'}
-                </span>
-              </button>
+              <>
+                {isInBasket ? (
+                  <button
+                    className="catalog-item_info_ui_open-cart-button"
+                    onClick={() => dispatch(cartOpen(true))}
+                    title="Open cart"
+                  >
+                    <span>
+                      <TbShoppingCartCheck />
+                      {ww > 360 && 'In the basket'}
+                    </span>
+                  </button>
+                ) : (
+                  <button
+                    className="catalog-item_info_ui_add-to-cart-button"
+                    onClick={onAddToCartHandler}
+                    title="Add to basket"
+                    disabled={addToBasketLoading}
+                  >
+                    <span>
+                      {addToBasketLoading ? (
+                        <ClipLoader color="#e9d5be" />
+                      ) : (
+                        <TbShoppingCart />
+                      )}
+                      {ww > 360 && 'Add to basket'}
+                    </span>
+                  </button>
+                )}
+              </>
             )}
             <button
               className="catalog-item_info_ui_lovelist-button"

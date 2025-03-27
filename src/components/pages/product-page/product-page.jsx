@@ -184,6 +184,13 @@ const ProductPage = () => {
                 alt="product-image"
                 withInnerZoom
               />
+              {1 && (
+                <img
+                  className="product-page_visual_sold-out"
+                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png"
+                  alt="sold-out"
+                />
+              )}
               {isAuth && user.role === 'ADMIN' && (
                 <>
                   <div
@@ -257,33 +264,41 @@ const ProductPage = () => {
                 </div>
               )}
               <div className="product-page_main_info_ui">
-                {isInBasket ? (
-                  <button
-                    onClick={() => dispatch(cartOpen(true))}
-                    className="product-page_main_info_ui_open-cart-button"
-                    title="Open cart"
-                  >
-                    <span>
-                      <TbShoppingCartCheck />
-                      In the basket
-                    </span>
-                  </button>
+                {1 ? (
+                  <div className="product-page_main_info_ui_sold-out">
+                    Sold out
+                  </div>
                 ) : (
-                  <button
-                    onClick={addToCartButtonHandler}
-                    className="product-page_main_info_ui_add-to-cart-button"
-                    title="Add to basket"
-                    disabled={addToBasketLoading}
-                  >
-                    <span>
-                      {addToBasketLoading ? (
-                        <ClipLoader color="#e9d5be" />
-                      ) : (
-                        <TbShoppingCart />
-                      )}
-                      Add to basket
-                    </span>
-                  </button>
+                  <>
+                    {isInBasket ? (
+                      <button
+                        onClick={() => dispatch(cartOpen(true))}
+                        className="product-page_main_info_ui_open-cart-button"
+                        title="Open cart"
+                      >
+                        <span>
+                          <TbShoppingCartCheck />
+                          In the basket
+                        </span>
+                      </button>
+                    ) : (
+                      <button
+                        onClick={addToCartButtonHandler}
+                        className="product-page_main_info_ui_add-to-cart-button"
+                        title="Add to basket"
+                        disabled={addToBasketLoading}
+                      >
+                        <span>
+                          {addToBasketLoading ? (
+                            <ClipLoader color="#e9d5be" />
+                          ) : (
+                            <TbShoppingCart />
+                          )}
+                          Add to basket
+                        </span>
+                      </button>
+                    )}
+                  </>
                 )}
 
                 <button
