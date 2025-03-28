@@ -22,6 +22,8 @@ import './search-page.sass';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
+  const user = useSelector((state) => state.user);
+  const products = useSelector((state) => state.products);
 
   const searchQuery = (searchParams.get('q') || '').trim().toLowerCase();
 
@@ -29,7 +31,6 @@ const SearchPage = () => {
 
   const [ww] = useWindowSize();
 
-  const products = useSelector((state) => state.products);
   const highestPrice =
     findMostExpensiveProductObj(products).sale ||
     findMostExpensiveProductObj(products).price;
@@ -58,16 +59,16 @@ const SearchPage = () => {
     return searchArray.every((q) => title.includes(q));
   });
 
-  const filteredProducts = foundedProducts.filter((product) => {
+  let filteredProducts = foundedProducts.filter((product) => {
+    const priceToUse = product.sale ? product.sale : product.price;
     if (
       (categoryArray.some(
         (category) =>
           categoriesIds[category.toLowerCase()] === product.categoryId
       ) ||
         !categoryArray.length) &&
-      (product.sale
-        ? product.sale >= minPrice && product.sale <= maxPrice
-        : product.price >= minPrice && product.price <= maxPrice) &&
+      priceToUse >= minPrice &&
+      priceToUse <= maxPrice &&
       product.rating >= minRating &&
       (seriesArray.some((series) =>
         product.title.toLowerCase().includes(`${series.toLowerCase()} series`)
@@ -83,10 +84,26 @@ const SearchPage = () => {
     }
   });
 
-  const sortedProducts =
+  if (!user || user.role !== 'ADMIN') {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.availableQuantity > 0
+    );
+  }
+
+  let sortedProducts =
     sort === 'relevance' || !sort
       ? sortProductsForSearch(filteredProducts, searchArray)
       : sortProducts(filteredProducts, sort);
+
+  if (user && user.role === 'ADMIN') {
+    const availableProducts = sortedProducts.filter(
+      (product) => product.availableQuantity > 0
+    );
+    const outOfStockProducts = sortedProducts.filter(
+      (product) => product.availableQuantity === 0
+    );
+    sortedProducts = [...availableProducts, ...outOfStockProducts];
+  }
 
   const limitedSortedProducts = sortedProducts.slice(
     ((+searchParams.get('page') || 1) - 1) * limit,

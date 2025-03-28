@@ -15,7 +15,9 @@ const CheckoutPage = () => {
   const [ww] = useWindowSize();
   const [topOrderSummaryVisible, setTopOrderSummaryVisible] = useState(false);
 
-  const orderedItems = useSelector((state) => state.cartProducts);
+  const orderedItems = useSelector((state) =>
+    state.cartProducts.filter((item) => item.availableQuantity > 0)
+  );
   const countedBasket = countTheBasket(orderedItems);
   const promocode = useSelector((state) => state.appliedPromocode);
 

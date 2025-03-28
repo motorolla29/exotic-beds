@@ -184,7 +184,7 @@ const ProductPage = () => {
                 alt="product-image"
                 withInnerZoom
               />
-              {1 && (
+              {product.availableQuantity === 0 && (
                 <img
                   className="product-page_visual_sold-out"
                   src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png"
@@ -264,7 +264,7 @@ const ProductPage = () => {
                 </div>
               )}
               <div className="product-page_main_info_ui">
-                {1 ? (
+                {product.availableQuantity === 0 ? (
                   <div className="product-page_main_info_ui_sold-out">
                     Sold out
                   </div>

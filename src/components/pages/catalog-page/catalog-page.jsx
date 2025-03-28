@@ -22,10 +22,10 @@ import './catalog-page.sass';
 
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
+  const user = useSelector((state) => state.user);
+  const products = useSelector((state) => state.products);
 
   const [ww] = useWindowSize();
-
-  const products = useSelector((state) => state.products);
 
   const highestPrice =
     findMostExpensiveProductObj(products).sale ||
@@ -48,11 +48,11 @@ const CatalogPage = ({ category }) => {
     (it) => it.categoryId === categoriesIds[category]
   );
 
-  const filteredProducts = currentCategoryProducts.filter((product) => {
+  let filteredProducts = currentCategoryProducts.filter((product) => {
+    const priceToUse = product.sale ? product.sale : product.price;
     if (
-      (product.sale
-        ? product.sale >= minPrice && product.sale <= maxPrice
-        : product.price >= minPrice && product.price <= maxPrice) &&
+      priceToUse >= minPrice &&
+      priceToUse <= maxPrice &&
       product.rating >= minRating &&
       (seriesArray.some((series) =>
         product.title.toLowerCase().includes(`${series.toLowerCase()} series`)
@@ -63,12 +63,27 @@ const CatalogPage = ({ category }) => {
       (product.isNew || !isNew)
     ) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   });
 
-  const sortedProducts = sortProducts(filteredProducts, sort);
+  if (!user || user.role !== 'ADMIN') {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.availableQuantity > 0
+    );
+  }
+
+  let sortedProducts = sortProducts(filteredProducts, sort);
+
+  if (user && user.role === 'ADMIN') {
+    const availableProducts = sortedProducts.filter(
+      (product) => product.availableQuantity > 0
+    );
+    const outOfStockProducts = sortedProducts.filter(
+      (product) => product.availableQuantity === 0
+    );
+    sortedProducts = [...availableProducts, ...outOfStockProducts];
+  }
 
   const limitedSortedProducts = sortedProducts.slice(
     ((+searchParams.get('page') || 1) - 1) * limit,

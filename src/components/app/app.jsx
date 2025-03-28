@@ -32,7 +32,10 @@ import { getBasket } from '../../api/basketAPI';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getAllProducts } from '../../api/productAPI';
 import ProtectedRoute from '../../routes/ProtectedRoute';
-import { generateDeviceIdWithUserAgentAndClientHints } from '../../utils';
+import {
+  generateDeviceIdWithUserAgentAndClientHints,
+  updateLocalStorageBasketItemsQuantity,
+} from '../../utils';
 import CheckoutPage from '../pages/checkout-page/checkout-page';
 import PaymentSuccessPage from '../pages/payment-success-page/payment-success-page';
 import OrdersPage from '../pages/orders-page/orders-page';
@@ -65,6 +68,17 @@ const App = () => {
         const productData = await getAllProducts();
         dispatch(setProducts(productData.rows));
         dispatch(setProductsLoaded(true));
+
+        // Обновление локальной корзины
+        const cartFromStorage = JSON.parse(localStorage.getItem('cart'));
+        if (cartFromStorage) {
+          const updatedCart = updateLocalStorageBasketItemsQuantity(
+            cartFromStorage,
+            productData.rows
+          );
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          dispatch(setCart(updatedCart));
+        }
 
         // Начало процесса авторизации
         dispatch(setAuthProcess(true));

@@ -13,6 +13,7 @@ import { scrollController } from '../../utils';
 import { PROMOCODES } from '../../data/promocodes';
 
 import './cart.sass';
+import CartItemSoldOut from '../cart-item-sold-out/cart-item-sold-out';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,13 @@ const Cart = () => {
   const overlayLoading = useSelector((state) => state.overlayLoader);
   const isOpen = useSelector((state) => state.isCartOpen);
   const cartItems = useSelector((state) => state.cartProducts);
-  const cartItemsTotal = cartItems.reduce(
+  const availableCartItems = cartItems.filter(
+    (item) => item.availableQuantity > 0
+  );
+  const soldOutCartItems = cartItems.filter(
+    (item) => item.availableQuantity === 0
+  );
+  const cartItemsTotal = availableCartItems.reduce(
     (acc, currentValue) => acc + currentValue.quantity,
     0
   );
@@ -99,11 +106,11 @@ const Cart = () => {
               <div className="cart_widget_header">
                 <div className="cart_widget_header_title">
                   <h1>
-                    {cartItemsTotal
+                    {cartItems.length
                       ? 'Shopping Basket'
                       : 'Shopping Basket is empty'}
                   </h1>
-                  {cartItemsTotal ? (
+                  {cartItems.length ? (
                     <p>
                       You have {cartItemsTotal}{' '}
                       {cartItemsTotal === 1 ? 'item' : 'items'} in your basket
@@ -120,154 +127,189 @@ const Cart = () => {
                   className="cart_widget_widget-inner_scroll-container"
                   defer
                 >
-                  {cartItemsTotal ? (
+                  {cartItems.length ? (
                     <div className="cart_widget_widget-inner_scroll-inner">
-                      {cartItems.map((item) => {
-                        return <CartItem key={item.productId} item={item} />;
-                      })}
-                      <div className="cart_widget_widget-inner_summary">
-                        <div className="cart_widget_widget-inner_summary_title">
-                          Summary
-                        </div>
-                        <div className="cart_widget_widget-inner_summary_total">
-                          <span>Items:</span>
-                          <span>€{countTheBasket(cartItems).items}</span>
-                        </div>
-                        <div className="cart_widget_widget-inner_summary_total">
-                          <span>Subtotal:</span>
-                          <span>€{countTheBasket(cartItems).subtotal}</span>
-                        </div>
-                        <div className="cart_widget_widget-inner_summary_total">
-                          <span>Delivery:</span>
-                          <span>
-                            {typeof countTheBasket(cartItems).delivery ===
-                            'number'
-                              ? '€'
-                              : ''}
-                            {countTheBasket(cartItems).delivery}
-                          </span>
-                        </div>
-                        {promocode.name ? (
-                          <div className="cart_widget_widget-inner_summary_total">
-                            <span>
-                              Promocode ({' '}
-                              <span
-                                style={{
-                                  color: '#004757',
-                                  textDecoration: 'underline red wavy',
-                                }}
-                              >
-                                {promocode.name}
-                              </span>{' '}
-                              )
-                            </span>
-                            <span>
-                              - €
-                              {(
-                                countTheBasket(cartItems).total *
-                                PROMOCODES[promocode.name]
-                              ).toFixed(2)}
-                            </span>
-                          </div>
-                        ) : null}
-                        <div className="cart_widget_widget-inner_summary_total">
-                          <span>Total savings:</span>
-                          <span>
-                            €
-                            {(
-                              countTheBasket(cartItems).savings +
-                              (promocode.name
-                                ? countTheBasket(cartItems).total *
-                                  PROMOCODES[promocode.name]
-                                : 0)
-                            ).toFixed(2)}
-                          </span>
-                        </div>
-                        <div className="cart_widget_widget-inner_summary_order-total">
-                          <span>Order total:</span>
-                          <span>
-                            €
-                            {(
-                              countTheBasket(cartItems).total -
-                              (promocode.name
-                                ? countTheBasket(cartItems).total *
-                                  PROMOCODES[promocode.name]
-                                : 0)
-                            ).toFixed(2)}
-                          </span>
-                        </div>
+                      <div
+                        className={`cart_widget_widget-inner_items ${
+                          availableCartItems.length > 0 ? 'full' : ''
+                        }`}
+                      >
+                        {availableCartItems.map((item) => {
+                          return <CartItem key={item.productId} item={item} />;
+                        })}
                       </div>
-                      <div className="cart_widget_widget-inner_promocode">
-                        <span className="cart_widget_widget-inner_promocode_title">
-                          If you have a promo code enter it here:
-                        </span>
-                        <div className="cart_widget_widget-inner_promocode_body">
-                          <div className="cart_widget_widget-inner_promocode_body_input-container">
-                            <input
-                              value={
-                                promocode.name ? promocode.name : promocodeInput
-                              }
-                              disabled={promocode.name}
-                              onChange={(e) => {
-                                dispatch(
-                                  setAppliedPromocode({
-                                    name: null,
-                                    status: null,
-                                  })
-                                );
-                                setPromocodeInput(e.target.value);
-                              }}
-                              className={`cart_widget_widget-inner_promocode_body_input ${promocode.status}`}
-                            />
+                      {soldOutCartItems.length > 0 && (
+                        <div className="cart_widget_widget-inner_sold-out-items">
+                          <div className="cart_widget_widget-inner_sold-out-items_title">
+                            <p>
+                              Out of stock ({soldOutCartItems.length}{' '}
+                              {soldOutCartItems.length > 1 ? 'items' : 'item'}):
+                            </p>
+                          </div>
 
-                            <span
-                              style={{
-                                visibility: promocode.status
-                                  ? 'visible'
-                                  : 'hidden',
-                              }}
-                              className={`cart_widget_widget-inner_promocode_body_status ${promocode.status}`}
-                            >
-                              {promocode.status === 'valid'
-                                ? 'Promocode applied'
-                                : 'Invalid promocode'}
-                            </span>
-                          </div>
-                          {promocode.name ? (
-                            <button
-                              onClick={onCancelPromocodeClick}
-                              className="cart_widget_widget-inner_promocode_body_button"
-                            >
-                              Cancel
-                            </button>
-                          ) : (
-                            <button
-                              onClick={onApplyPromocodeClick}
-                              className="cart_widget_widget-inner_promocode_body_button"
-                              onBlur={() => {
-                                if (!promocodeInput) {
-                                  dispatch(
-                                    setAppliedPromocode({
-                                      name: null,
-                                      status: null,
-                                    })
-                                  );
-                                }
-                              }}
-                            >
-                              Apply
-                            </button>
-                          )}
+                          {soldOutCartItems.map((item) => {
+                            return (
+                              <CartItemSoldOut
+                                key={item.productId}
+                                item={item}
+                              />
+                            );
+                          })}
                         </div>
-                      </div>
-                      <div className="cart_widget_widget-inner_checkout">
-                        <button
-                          onClick={() => navigate('/checkout')}
-                          className="cart_widget_widget-inner_checkout_button"
-                        >
-                          Checkout
-                        </button>
-                      </div>
+                      )}
+                      {availableCartItems.length > 0 && (
+                        <>
+                          <div className="cart_widget_widget-inner_summary">
+                            <div className="cart_widget_widget-inner_summary_title">
+                              Summary
+                            </div>
+                            <div className="cart_widget_widget-inner_summary_total">
+                              <span>Items:</span>
+                              <span>
+                                €{countTheBasket(availableCartItems).items}
+                              </span>
+                            </div>
+                            <div className="cart_widget_widget-inner_summary_total">
+                              <span>Subtotal:</span>
+                              <span>
+                                €{countTheBasket(availableCartItems).subtotal}
+                              </span>
+                            </div>
+                            <div className="cart_widget_widget-inner_summary_total">
+                              <span>Delivery:</span>
+                              <span>
+                                {typeof countTheBasket(availableCartItems)
+                                  .delivery === 'number'
+                                  ? '€'
+                                  : ''}
+                                {countTheBasket(availableCartItems).delivery}
+                              </span>
+                            </div>
+                            {promocode.name ? (
+                              <div className="cart_widget_widget-inner_summary_total">
+                                <span>
+                                  Promocode ({' '}
+                                  <span
+                                    style={{
+                                      color: '#004757',
+                                      textDecoration: 'underline red wavy',
+                                    }}
+                                  >
+                                    {promocode.name}
+                                  </span>{' '}
+                                  )
+                                </span>
+                                <span>
+                                  - €
+                                  {(
+                                    countTheBasket(availableCartItems).total *
+                                    PROMOCODES[promocode.name]
+                                  ).toFixed(2)}
+                                </span>
+                              </div>
+                            ) : null}
+                            <div className="cart_widget_widget-inner_summary_total">
+                              <span>Total savings:</span>
+                              <span>
+                                €
+                                {(
+                                  countTheBasket(availableCartItems).savings +
+                                  (promocode.name
+                                    ? countTheBasket(availableCartItems).total *
+                                      PROMOCODES[promocode.name]
+                                    : 0)
+                                ).toFixed(2)}
+                              </span>
+                            </div>
+                            <div className="cart_widget_widget-inner_summary_order-total">
+                              <span>Order total:</span>
+                              <span>
+                                €
+                                {(
+                                  countTheBasket(availableCartItems).total -
+                                  (promocode.name
+                                    ? countTheBasket(availableCartItems).total *
+                                      PROMOCODES[promocode.name]
+                                    : 0)
+                                ).toFixed(2)}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="cart_widget_widget-inner_promocode">
+                            <span className="cart_widget_widget-inner_promocode_title">
+                              If you have a promo code enter it here:
+                            </span>
+                            <div className="cart_widget_widget-inner_promocode_body">
+                              <div className="cart_widget_widget-inner_promocode_body_input-container">
+                                <input
+                                  value={
+                                    promocode.name
+                                      ? promocode.name
+                                      : promocodeInput
+                                  }
+                                  disabled={promocode.name}
+                                  onChange={(e) => {
+                                    dispatch(
+                                      setAppliedPromocode({
+                                        name: null,
+                                        status: null,
+                                      })
+                                    );
+                                    setPromocodeInput(e.target.value);
+                                  }}
+                                  className={`cart_widget_widget-inner_promocode_body_input ${promocode.status}`}
+                                />
+
+                                <span
+                                  style={{
+                                    visibility: promocode.status
+                                      ? 'visible'
+                                      : 'hidden',
+                                  }}
+                                  className={`cart_widget_widget-inner_promocode_body_status ${promocode.status}`}
+                                >
+                                  {promocode.status === 'valid'
+                                    ? 'Promocode applied'
+                                    : 'Invalid promocode'}
+                                </span>
+                              </div>
+                              {promocode.name ? (
+                                <button
+                                  onClick={onCancelPromocodeClick}
+                                  className="cart_widget_widget-inner_promocode_body_button"
+                                >
+                                  Cancel
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={onApplyPromocodeClick}
+                                  className="cart_widget_widget-inner_promocode_body_button"
+                                  onBlur={() => {
+                                    if (!promocodeInput) {
+                                      dispatch(
+                                        setAppliedPromocode({
+                                          name: null,
+                                          status: null,
+                                        })
+                                      );
+                                    }
+                                  }}
+                                >
+                                  Apply
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                          <div className="cart_widget_widget-inner_checkout">
+                            <button
+                              onClick={() => navigate('/checkout')}
+                              className="cart_widget_widget-inner_checkout_button"
+                            >
+                              Checkout
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   ) : (
                     <div className="cart_widget_widget-inner_scroll-inner-empty">

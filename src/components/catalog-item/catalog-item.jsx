@@ -30,7 +30,6 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { MdOutlineEdit } from 'react-icons/md';
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { ReactComponent as SoldOutIcon } from '../../images/sold-out.svg';
 import AdminEditProductModal from '../admin-modals/admin-edit-product-modal';
 import { deleteProduct, getAllProducts } from '../../api/productAPI';
 import { deleteImageFromImagekit } from '../../api/imagekitAPI';
@@ -228,7 +227,7 @@ const CatalogItem = ({ item, size = '' }) => {
               ) : null}
             </>
           )}
-          {1 && (
+          {item.availableQuantity === 0 && (
             <img
               className="catalog-item_visual_sold-out"
               src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png,w-350"
@@ -275,7 +274,7 @@ const CatalogItem = ({ item, size = '' }) => {
             </div>
           )}
           <div className="catalog-item_info_ui">
-            {1 ? (
+            {item.availableQuantity === 0 ? (
               <div className="catalog-item_info_ui_sold-out">Sold out</div>
             ) : (
               <>

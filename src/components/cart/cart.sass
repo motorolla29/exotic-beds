@@ -67,6 +67,8 @@
         &_widget-inner
             padding: 0 2em
             height: 100%
+            &_items.full
+                margin-bottom: 1em
             
             &_scroll-container
                 position: relative
@@ -77,6 +79,7 @@
             &_scroll-inner
                 padding-top: 8em
                 max-width: 36em
+            
                 
             &_scroll-inner-empty
                 display: flex
@@ -200,6 +203,13 @@
                         
                     &:active
                         opacity: 0.9
+            &_sold-out-items
+                &_title
+                    p
+                        color: $main-color-grey
+                        margin-bottom: 1em
+                        font-size: 1.12em
+                        font-weight: 600
 
 @media (max-width: 1200px) 
     .cart

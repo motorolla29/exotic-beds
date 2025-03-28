@@ -679,6 +679,22 @@ const getCurrencySymbol = (currencyCode, locale = 'en-US') => {
   return currencyPart ? currencyPart.value : '';
 };
 
+const updateLocalStorageBasketItemsQuantity = (
+  itemsToUpdate,
+  loadedProducts
+) => {
+  if (!itemsToUpdate || !Array.isArray(itemsToUpdate)) return [];
+
+  return itemsToUpdate
+    .map((item) => {
+      const updatedProduct = loadedProducts.find((p) => p.id === item.id);
+      return updatedProduct
+        ? { ...item, availableQuantity: updatedProduct.availableQuantity }
+        : null;
+    })
+    .filter(Boolean);
+};
+
 export {
   nullAndUndefinedToEmptyString,
   areDatesEqual,
@@ -703,4 +719,5 @@ export {
   randomInteger,
   categoriesIds,
   getCurrencySymbol,
+  updateLocalStorageBasketItemsQuantity,
 };
