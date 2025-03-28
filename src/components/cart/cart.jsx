@@ -11,9 +11,9 @@ import CartItem from '../cart-item/cart-item';
 import { countTheBasket } from '../../utils';
 import { scrollController } from '../../utils';
 import { PROMOCODES } from '../../data/promocodes';
+import CartItemSoldOut from '../cart-item-sold-out/cart-item-sold-out';
 
 import './cart.sass';
-import CartItemSoldOut from '../cart-item-sold-out/cart-item-sold-out';
 
 const Cart = () => {
   const dispatch = useDispatch();
