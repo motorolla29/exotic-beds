@@ -139,7 +139,13 @@ const Cart = () => {
                         })}
                       </div>
                       {soldOutCartItems.length > 0 && (
-                        <div className="cart_widget_widget-inner_sold-out-items">
+                        <div
+                          className={`cart_widget_widget-inner_sold-out-items ${
+                            availableCartItems.length === 0
+                              ? 'underline-last'
+                              : ''
+                          }`}
+                        >
                           <div className="cart_widget_widget-inner_sold-out-items_title">
                             <p>
                               Out of stock ({soldOutCartItems.length}{' '}

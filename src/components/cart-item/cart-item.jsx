@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ClickAwayListener, Tooltip } from '@mui/material';
+import { Zoom } from '@mui/material';
 import {
   cartOpen,
   setSnackbar,
@@ -9,9 +11,6 @@ import {
   setLovelist,
   setConfirmationModal,
 } from '../../store/action';
-import HeartIcon from '../heart-icon/heart-icon';
-import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
-import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 import {
   addToBasket,
@@ -19,14 +18,17 @@ import {
   removeBasketProduct,
 } from '../../api/basketAPI';
 import { toggleProductInLovelist } from '../../api/lovelistAPI';
+
+import HeartIcon from '../heart-icon/heart-icon';
+import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
+import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import { RemoveShoppingCartRounded } from '@mui/icons-material';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import PuffLoader from 'react-spinners/PuffLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 
 import './cart-item.sass';
-import { ClickAwayListener, Tooltip } from '@mui/material';
-import { Zoom } from '@mui/material';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -196,7 +198,8 @@ const CartItem = ({ item }) => {
             )}
           </button>
           <div className="cart-item_body_ui_right-side">
-            <span
+            <div
+              className="cart-item_body_ui_right-side_remove"
               onClick={() =>
                 dispatch(
                   setConfirmationModal({
@@ -211,10 +214,9 @@ const CartItem = ({ item }) => {
                   })
                 )
               }
-              className="cart-item_body_ui_right-side_remove"
             >
-              Remove
-            </span>
+              <RiDeleteBin5Line />
+            </div>
             <ClickAwayListener onClickAway={() => setTooltipOpen(false)}>
               <div className="cart-item_body_ui_right-side_counter">
                 <button

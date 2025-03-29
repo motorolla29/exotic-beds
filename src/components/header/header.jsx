@@ -18,12 +18,18 @@ const Header = () => {
   const user = useSelector((state) => state.user);
 
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
-  const basketLength = useSelector((state) => {
-    return state.cartProducts.reduce(
+  const cartItems = useSelector((state) => state.cartProducts);
+  const availableCartItems = cartItems.filter(
+    (item) => item.availableQuantity > 0
+  );
+  const soldOutCartItems = cartItems.filter(
+    (item) => item.availableQuantity === 0
+  );
+  const basketLength =
+    availableCartItems.reduce(
       (acc, currentValue) => acc + currentValue.quantity,
       0
-    );
-  });
+    ) + soldOutCartItems.length;
 
   const [ww] = useWindowSize();
 

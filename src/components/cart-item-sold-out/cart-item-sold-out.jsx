@@ -1,9 +1,23 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSnackbar, setCart } from '../../store/action';
+import {
+  setSnackbar,
+  setCart,
+  setConfirmationModal,
+  setLovelist,
+  loginModalsOpen,
+} from '../../store/action';
 import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 import { removeBasketProduct } from '../../api/basketAPI';
+import { toggleProductInLovelist } from '../../api/lovelistAPI';
+
+import HeartIcon from '../heart-icon/heart-icon';
+import PuffLoader from 'react-spinners/PuffLoader';
+import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
+import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import { RemoveShoppingCartRounded } from '@mui/icons-material';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 
 import './cart-item-sold-out.sass';
 
@@ -11,7 +25,42 @@ const CartItemSoldOut = ({ item }) => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.isAuth);
 
-  const onDeleteButton = () => {
+  const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
+  const lovedProducts = useSelector((state) => state.lovelistProducts);
+  const isLoved = lovedProducts.find((it) => it.productId === item.productId);
+
+  const onHeartIconClick = () => {
+    if (isAuth) {
+      setAddToLovelistLoading(true);
+      toggleProductInLovelist(item)
+        .then((lovelist) => {
+          dispatch(setLovelist(lovelist));
+          isLoved
+            ? dispatch(
+                setSnackbar({
+                  open: true,
+                  decorator: <HeartBrokenOutlined />,
+                  text: 'Product is not loved anymore :(',
+                  id: item.productId,
+                })
+              )
+            : dispatch(
+                setSnackbar({
+                  open: true,
+                  decorator: <FavoriteBorderOutlined />,
+                  text: 'Product is loved now :)',
+                  id: item.productId,
+                })
+              );
+        })
+        .catch((err) => console.log(err.message))
+        .finally(() => setAddToLovelistLoading(false));
+    } else {
+      dispatch(loginModalsOpen(true));
+    }
+  };
+
+  const onRemoveConfirmButton = () => {
     if (isAuth) {
       removeBasketProduct(item)
         .then((cart) => {
@@ -45,51 +94,66 @@ const CartItemSoldOut = ({ item }) => {
   };
 
   return (
-    <div className="cart-item-sold-out_container">
-      <div className="cart-item-sold-out" key={item.productId}>
-        <div className="cart-item-sold-out_photo">
-          <ProgressiveImageContainer
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-20`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-150`}
-            alt="cart-item-sold-out-image"
-          />
-          <img
-            className="cart-item-sold-out_photo_sign"
-            src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png"
-            alt="sold-out-sign"
-          />
+    <div className="cart-item-sold-out" key={item.productId}>
+      <div className="cart-item-sold-out_photo">
+        <ProgressiveImageContainer
+          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-20`}
+          src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-150`}
+          alt="cart-item-sold-out-image"
+        />
+        <img
+          className="cart-item-sold-out_photo_sign"
+          src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png"
+          alt="sold-out-sign"
+        />
+      </div>
+      <div className="cart-item-sold-out_body">
+        <div className="cart-item-sold-out_body_info">
+          <div className="cart-item-sold-out_body_info_title">{item.title}</div>
         </div>
-        <div className="cart-item-sold-out_body">
-          <div className="cart-item-sold-out_body_info">
-            <div className="cart-item-sold-out_body_info_title">
-              {item.title}
-            </div>
-            {item.sale ? (
-              <div className="cart-item-sold-out_body_info_price">
-                <span className="cart-item-sold-out_body_info_price_last">
-                  €{item.sale * item.quantity}
-                </span>
-                <span className="cart-item-sold-out_body_info_price_first">
-                  €{item.price * item.quantity}
-                </span>
-              </div>
+        <div className="cart-item-sold-out_body_ui">
+          <button
+            onClick={onHeartIconClick}
+            className={`cart-item-sold-out_body_ui_lovelist ${
+              isLoved ? 'loved' : ''
+            }`}
+          >
+            {addToLovelistLoading ? (
+              <PuffLoader color="#cc0000" />
             ) : (
-              <div className="cart-item-sold-out_body_info_price">
-                <span className="cart-item-sold-out_body_info_price_last">
-                  €{item.price * item.quantity}
-                </span>
-              </div>
+              <HeartIcon isLoved={isLoved} />
             )}
+          </button>
+          <div className="cart-item-sold-out_body_ui_right-side">
+            <div
+              onClick={() =>
+                dispatch(
+                  setConfirmationModal({
+                    open: true,
+                    icon: <WarningRoundedIcon />,
+                    title: 'Confirmation',
+                    description:
+                      'Are you sure you want to remove this item from your cart?',
+                    yesBtnText: 'Yes, remove it',
+                    noBtnText: 'Cancel',
+                    action: onRemoveConfirmButton,
+                  })
+                )
+              }
+              className="cart-item-sold-out_body_ui_right-side_remove"
+            >
+              <RiDeleteBin5Line />
+            </div>
           </div>
         </div>
       </div>
-      <div
+    </div>
+    /* <div
         onClick={onDeleteButton}
         className="cart-item-sold-out_container_delete"
       >
         <RiDeleteBin5Line />
-      </div>
-    </div>
+      </div> */
   );
 };
 

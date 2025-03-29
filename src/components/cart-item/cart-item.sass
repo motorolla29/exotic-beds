@@ -105,13 +105,22 @@
                                     
             &_right-side
                 display: flex
-                align-items: flex-end
-
                 &_remove
                     cursor: pointer
-                    font-weight: 400
-                    margin-right: 2em
-                    border-bottom: 1px dashed 
+                    margin-right: 1em
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    width: 2em
+                    height: 2em
+                    background: #00475710 
+                    border-radius: 50%
+                    svg
+                        fill: $main-color-red
+                        width: 55%
+                        height: auto
+                    &:hover
+                        opacity: 0.7
 
                 &_counter
                     font-size: 1em
@@ -123,7 +132,7 @@
                     background: #00475710 
                     font-weight: 500
                     height: 2em
-                    width: 100%
+                    //width: 100%
                     border-radius: 1em
                     user-select: none
 
