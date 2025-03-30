@@ -9,6 +9,8 @@
         gap: 0.5em 1em
         background-color: $main-color-green-light
         color: $main-color-turquoise
+        & .MuiDivider-root
+            margin-inline: -1.25em
         & .MuiDialogContent-root
             height: fit-content
             color: $main-color-grey
@@ -24,12 +26,14 @@
                 height: 1em
                 width: auto
         & .MuiButton-root
+            display: block
+            line-height: 1.2
             font-size: 0.8em
             min-width: 6em
             min-height: auto
+            height: 2.5em
             border-radius: 20px
-            line-height: normal
-            padding: 0.7em 1.25em
+            padding: 0.5em 1.25em
             &.Mui-disabled
                 opacity: 0.5
             &.MuiButton-colorDanger
@@ -37,8 +41,8 @@
                 &.Mui-disabled
                     background-color: rgb(196, 28, 28)
                 > span
-                    height: 1.2em
-                    align-items: center
+                    line-height: 1.7
+                    align-self: center
                     > span
                         height: 0.5em !important 
                         width: 0.5em !important
@@ -57,7 +61,7 @@
         & .MuiModalDialog-root
             & .MuiDialogActions-root
                 padding-top: 0.5em
-                
+
 @media (max-width: 360px)
     .MuiModal-root
         font-size: 10px
