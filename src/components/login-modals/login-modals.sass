@@ -26,7 +26,7 @@
     border-radius: 1em
     border: 2px solid $main-color-turquoise
     z-index: 1001
-    &_sign-in-inner, &_registration-inner
+    &_sign-in-inner, &_registration-inner, &_verify-email, &_new-password
         width: 100%
         padding: 1em 2em
         text-align: center
@@ -44,8 +44,23 @@
             flex-direction: column
             & .MuiFormControl-root
                 margin-bottom: 1em
+                &.forgot-password
+                    margin-bottom: 0
+                & .MuiFormHelperText-root
+                    font-size: 0.75em
+                    margin: 0.2em 0.75em 0 0.75em
+            &_forgot-password-button
+                margin: 0 0.5625em 1em 0.5625em
+                span
+                    cursor: pointer
+                    display: flex
+                    width: fit-content
+                    font-size: 0.75em
+                    text-decoration: underline
+                    &:hover
+                        opacity: 0.9
         &_sign-in-button, &_registration-button
-            font-size: 14px
+            font-size: 0.875em
             display: flex
             justify-content: center
             align-items: center
@@ -53,8 +68,8 @@
             cursor: pointer
             padding: 0.45em 1em 0.55em 1em
             min-width: fit-content
-            width: 80px
-            height: 40px
+            width: 5.5em
+            height: 3em
             border: none
             border-radius: 2em
             background: $main-color-turquoise
@@ -66,6 +81,27 @@
                 cursor: default
             &:active:enabled
                 transform: scale(0.95)
+
+            ////////////////// styling the circle loader for responsive
+            > span
+                width: 1.25em !important
+                height: 1.25em !important
+                > span:nth-child(1)
+                    width: 1.25em !important
+                    height: 1.25em !important
+                > span:nth-child(2)
+                    width: 1.125em !important
+                    height: 1.125em !important
+                > span:nth-child(3)
+                    width: 1em !important
+                    height: 1em !important
+                > span:nth-child(4)
+                    width: 0.875em !important
+                    height: 0.875em !important
+                > span:nth-child(5)
+                    width: 0.75em !important
+                    height: 0.75em !important
+
         > p
             color: $main-color-grey
             font-weight: 600
@@ -77,6 +113,41 @@
             text-decoration: underline
             &:hover
                 opacity: 0.9
+
+    &_verify-email
+                
+    &_new-password
+        > p
+            margin: 0
+        &_textfields
+            margin-top: 1.5em
+        &_submit
+            align-self: center
+            font-size: 0.875em
+            display: flex
+            justify-content: center
+            align-items: center
+            font-weight: 600
+            cursor: pointer
+            padding: 0.45em 1em 0.55em 1em
+            min-width: fit-content
+            width: 6em
+            height: 3em
+            border: none
+            border-radius: 2em
+            background: $main-color-turquoise
+            color: $main-color-white
+            > span
+                > span
+                    height: 0.6em !important 
+                    width: 0.6em !important
+            &:hover
+                opacity: 0.9
+            &:disabled
+                opacity: 0.5
+                cursor: default
+            &:active:enabled
+                transform: scale(0.95)
         
     &_registration-inner
         > p 
@@ -95,7 +166,7 @@
             &:hover
                 opacity: 0.9
         &_registration-button
-            width: 100px
+            width: 7em
 
 .success-div
     margin: 14em 1em 1em 1em
@@ -160,32 +231,13 @@
 @media (max-width: 480px)
     .login-modals
         font-size: 14px
-        &_sign-in-inner, &_registration-inner
-            &_sign-in-button
-                font-size: 12px
-                width: 70px
-                height: 35px
-            &_registration-button
-                font-size: 12px
-                width: 80px
-                height: 35px
     .email-confirm-notification-div
         font-size: 14px
-    
-
                 
 @media (max-width: 360px)
     .login-modals
         font-size: 12px
-        &_sign-in-inner, &_registration-inner
-            &_sign-in-button
-                font-size: 10px
-                width: 60px
-                height: 30px
-            &_registration-button
-                font-size: 10px
-                width: 70px
-                height: 30px
+
 @media (max-width: 320px)
     .login-modals
         font-size: 10px

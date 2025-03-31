@@ -1,0 +1,40 @@
+@import 'src/styles/variables'
+
+.code-input-container
+    position: relative
+    display: flex
+    gap: 1em
+    justify-content: center
+    margin: 1.5em 0 2em 0
+    &_error
+        display: flex
+        align-items: center
+        justify-content: center
+        top: 100%
+        left: 0%
+        width: 100%
+        position: absolute
+        span
+            padding: 0.65em
+            color: red
+
+.code-input 
+    color: $main-color-grey
+    width: 2em
+    height: 2em
+    text-align: center
+    font-size: 1.5em
+    font-weight: bold
+    border: none
+    border: 2px solid #ccc
+    border-radius: 0.25em
+    outline: none
+    transition: border-color 0.3s
+    background: none
+
+    &:focus 
+        border-color: $main-color-turquoise
+    
+    &.error
+        border-color: red
+  

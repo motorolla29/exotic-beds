@@ -11,6 +11,8 @@ import { ReactComponent as SuccessIcon } from '../../images/success.svg';
 import { LuMailCheck } from 'react-icons/lu';
 
 import './login-modals.sass';
+import ForgotPasswordNewPassword from './forgot-password-new-password';
+import ForgotPasswordCode from './forgot-password-code';
 
 const LoginModals = () => {
   const dispatch = useDispatch();
@@ -19,10 +21,13 @@ const LoginModals = () => {
   const isOpen = useSelector((state) => state.loginModalsOpen);
   const isCartOpen = useSelector((state) => state.isCartOpen);
   const [registrated, setRegistrated] = useState(true);
+  const [forgotPasswordStage, setForgotPasswordStage] = useState('code'); // "null" | "code" | "password"
+  const [resetEmail, setResetEmail] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
       setRegistrated(true);
+      setForgotPasswordStage(null);
       if (!isCartOpen && !overlayLoading) scrollController.disabledScroll();
     } else {
       if (!isCartOpen && !overlayLoading) scrollController.enabledScroll();
@@ -38,6 +43,16 @@ const LoginModals = () => {
       window.removeEventListener('popstate', onPopStateHandler);
     };
   }, []);
+
+  const onForgotPassword = (email) => {
+    try {
+      //api.sendResetCode(email);
+      setResetEmail(email);
+      setForgotPasswordStage('code');
+    } catch (err) {
+      console.error('Error sending code', err);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -130,11 +145,32 @@ const LoginModals = () => {
               onMouseDown={(e) => e.stopPropagation()}
               className="login-modals"
             >
-              {registrated ? (
-                <SignInModal setRegistrated={setRegistrated} />
-              ) : (
-                <RegistrationModal setRegistrated={setRegistrated} />
+              {forgotPasswordStage === 'code' && (
+                <ForgotPasswordCode
+                  setForgotPasswordStage={setForgotPasswordStage}
+                  email={resetEmail}
+                />
               )}
+              {forgotPasswordStage === 'password' && (
+                <ForgotPasswordNewPassword
+                  email={resetEmail}
+                  setForgotPasswordStage={setForgotPasswordStage}
+                  onSuccess={() => {
+                    setForgotPasswordStage(null);
+                    setRegistrated(true);
+                    setTimeout(() => dispatch(loginModalsOpen(false)), 2000);
+                  }}
+                />
+              )}
+              {forgotPasswordStage === null &&
+                (registrated ? (
+                  <SignInModal
+                    setRegistrated={setRegistrated}
+                    onForgotPassword={onForgotPassword}
+                  />
+                ) : (
+                  <RegistrationModal setRegistrated={setRegistrated} />
+                ))}
             </motion.div>
           )}
         </motion.div>

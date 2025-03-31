@@ -17,7 +17,7 @@ import useWindowSize from '../../hooks/use-window-size';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getBasket } from '../../api/basketAPI';
 
-const SignInModal = ({ setRegistrated }) => {
+const SignInModal = ({ setRegistrated, onForgotPassword }) => {
   const dispatch = useDispatch();
   const [ww] = useWindowSize();
   const deviceId = useSelector((state) => state.deviceId);
@@ -103,6 +103,9 @@ const SignInModal = ({ setRegistrated }) => {
           helperText={signInClicked && emailError ? emailError : false}
         />
         <TextField
+          className={`${
+            signInClicked && !emailError && passwordError && 'forgot-password'
+          }`}
           onChange={onPasswordChange}
           size={ww > 480 ? 'normal' : 'small'}
           value={password}
@@ -113,13 +116,20 @@ const SignInModal = ({ setRegistrated }) => {
           error={!!signInClicked && !!passwordError}
           helperText={signInClicked && passwordError ? passwordError : false}
         />
+        {signInClicked && !emailError && passwordError && (
+          <div className="login-modals_sign-in-inner_textfields_forgot-password-button">
+            <span onClick={() => onForgotPassword(email)}>
+              Forgot password?
+            </span>
+          </div>
+        )}
       </div>
       <button
         onClick={signInHandler}
         className="login-modals_sign-in-inner_sign-in-button"
         disabled={loading || emailError || passwordError || !password || !email}
       >
-        {loading ? <CircleLoader size={20} color="#C4E2CF" /> : 'Sign in'}
+        {loading ? <CircleLoader color="#C4E2CF" /> : 'Sign in'}
       </button>
       <p>or</p>
       <p
