@@ -2,10 +2,15 @@ import { TextField } from '@mui/material';
 import { useState } from 'react';
 import useWindowSize from '../../hooks/use-window-size';
 
+import ErrorIcon from '@mui/icons-material/Error';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { updatePassword } from '../../api/userAPI';
+import { setNotificationModal } from '../../store/action';
+import { useDispatch } from 'react-redux';
 
-const ForgotPasswordNewPassword = ({ email }) => {
+const ForgotPasswordNewPassword = ({ email, code, setForgotPasswordStage }) => {
   const [ww] = useWindowSize();
+  const dispatch = useDispatch();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -16,7 +21,7 @@ const ForgotPasswordNewPassword = ({ email }) => {
 
   const [submitClicked, setSubmitClicked] = useState(false);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const onPasswordChange = (e) => {
     setSubmitClicked(false);
@@ -43,31 +48,28 @@ const ForgotPasswordNewPassword = ({ email }) => {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setSubmitClicked(true);
     if (passwordValid && confirmPasswordValid) {
       try {
         setLoading(true);
-        // await resetPassword(email, password);
-        //setLoading(false);
-        //setTimeout(() => dispatch(loginModalsOpen(false)), 1500);
+        await updatePassword({
+          email,
+          inputCode: +code,
+          newPassword: password,
+        });
+        setLoading(false);
+        setForgotPasswordStage('success');
       } catch (e) {
         setLoading(false);
-        // if (e.response && e.response.data.errors) {
-        //   e.response.data.errors.email &&
-        //     setEmailError(e.response.data.errors.email);
-        //   e.response.data.errors.password &&
-        //     setPasswordError(e.response.data.errors.password);
-        // } else {
-        //   dispatch(
-        //     setNotificationModal({
-        //       open: true,
-        //       icon: <ErrorIcon />,
-        //       title: 'Sign in failed',
-        //       description: 'Something went wrong, try again later',
-        //     })
-        //   );
-        // }
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: 'Failed to reset password',
+            description: e.response.data.message || e.message,
+          })
+        );
         console.log(e);
       }
     }
@@ -116,14 +118,14 @@ const ForgotPasswordNewPassword = ({ email }) => {
               : ''
           }
         />
-        <button
-          onClick={onSubmit}
-          className="login-modals_new-password_submit"
-          disabled={!password || !confirmPassword || loading}
-        >
-          {loading ? <PulseLoader size={20} color="#C4E2CF" /> : 'Submit'}
-        </button>
       </div>
+      <button
+        onClick={onSubmit}
+        className="login-modals_new-password_submit"
+        disabled={!password || !confirmPassword || loading}
+      >
+        {loading ? <PulseLoader size={20} color="#C4E2CF" /> : 'Submit'}
+      </button>
     </div>
   );
 };

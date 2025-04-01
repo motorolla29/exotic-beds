@@ -76,3 +76,21 @@ export const updateContactData = async (userData) => {
   );
   return data.user;
 };
+
+export const sendPasswordResetCode = async (data) => {
+  const response = await $host.post('api/user/send-password-reset-code', data);
+  return response.data;
+};
+
+export const verifyPasswordResetCode = async (data) => {
+  const response = await $host.post(
+    'api/user/verify-password-reset-code',
+    data
+  );
+  return response.data;
+};
+
+export const updatePassword = async (data) => {
+  const response = await $host.post('api/user/update-password', data);
+  return response.data;
+};

@@ -15,6 +15,7 @@ const NotificationModal = () => {
     <Transition in={notificationModal.open} timeout={400}>
       {(state) => (
         <Modal
+          className="notification-modal"
           keepMounted
           open={!['exited', 'exiting'].includes(state)}
           onClose={() =>

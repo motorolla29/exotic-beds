@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import CodeInput from '../code-input/code-input';
+import { verifyPasswordResetCode } from '../../api/userAPI';
 
-const ForgotPasswordCode = ({ email, setForgotPasswordStage }) => {
-  const [code, setCode] = useState('');
+const ForgotPasswordCode = ({
+  email,
+  setForgotPasswordStage,
+  setResetCode,
+}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const verifyCode = async (code) => {
     setLoading(true);
     try {
-      //await api.verifyResetCode({ email, code }); // Имитация API-запроса
-      console.log(code);
-      if (+code === 5555) {
-        setForgotPasswordStage('password');
-      } else {
-        setError(true);
-      }
+      await verifyPasswordResetCode({ email, inputCode: +code });
+      setResetCode(code);
+      setForgotPasswordStage('password');
     } catch (err) {
       console.error('Wrong code', err);
       setError(true);

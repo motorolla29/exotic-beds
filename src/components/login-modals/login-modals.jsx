@@ -10,9 +10,12 @@ import SignInModal from './sign-in-modal';
 import { ReactComponent as SuccessIcon } from '../../images/success.svg';
 import { LuMailCheck } from 'react-icons/lu';
 
-import './login-modals.sass';
 import ForgotPasswordNewPassword from './forgot-password-new-password';
 import ForgotPasswordCode from './forgot-password-code';
+
+import './login-modals.sass';
+import ForgotPasswordSuccess from './forgot-password-success';
+import { sendPasswordResetCode } from '../../api/userAPI';
 
 const LoginModals = () => {
   const dispatch = useDispatch();
@@ -21,8 +24,9 @@ const LoginModals = () => {
   const isOpen = useSelector((state) => state.loginModalsOpen);
   const isCartOpen = useSelector((state) => state.isCartOpen);
   const [registrated, setRegistrated] = useState(true);
-  const [forgotPasswordStage, setForgotPasswordStage] = useState('code'); // "null" | "code" | "password"
+  const [forgotPasswordStage, setForgotPasswordStage] = useState(null); // "null" | "code" | "password" | "success"
   const [resetEmail, setResetEmail] = useState(null);
+  const [resetPasswordCode, setResetPasswordCode] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -46,7 +50,7 @@ const LoginModals = () => {
 
   const onForgotPassword = (email) => {
     try {
-      //api.sendResetCode(email);
+      sendPasswordResetCode({ email });
       setResetEmail(email);
       setForgotPasswordStage('code');
     } catch (err) {
@@ -149,17 +153,25 @@ const LoginModals = () => {
                 <ForgotPasswordCode
                   setForgotPasswordStage={setForgotPasswordStage}
                   email={resetEmail}
+                  setResetCode={setResetPasswordCode}
                 />
               )}
               {forgotPasswordStage === 'password' && (
                 <ForgotPasswordNewPassword
                   email={resetEmail}
+                  code={resetPasswordCode}
                   setForgotPasswordStage={setForgotPasswordStage}
-                  onSuccess={() => {
-                    setForgotPasswordStage(null);
-                    setRegistrated(true);
-                    setTimeout(() => dispatch(loginModalsOpen(false)), 2000);
-                  }}
+                  // onSuccess={() => {
+                  //   setForgotPasswordStage(null);
+                  //   setRegistrated(true);
+                  //   setTimeout(() => dispatch(loginModalsOpen(false)), 2000);
+                  // }}
+                />
+              )}
+              {forgotPasswordStage === 'success' && (
+                <ForgotPasswordSuccess
+                  email={resetEmail}
+                  setForgotPasswordStage={setForgotPasswordStage}
                 />
               )}
               {forgotPasswordStage === null &&

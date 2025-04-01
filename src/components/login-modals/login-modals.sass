@@ -26,7 +26,7 @@
     border-radius: 1em
     border: 2px solid $main-color-turquoise
     z-index: 1001
-    &_sign-in-inner, &_registration-inner, &_verify-email, &_new-password
+    &_sign-in-inner, &_registration-inner, &_verify-email, &_new-password, &_success
         width: 100%
         padding: 1em 2em
         text-align: center
@@ -118,9 +118,9 @@
                 
     &_new-password
         > p
-            margin: 0
+            margin: 0 0 1.5em 0
         &_textfields
-            margin-top: 1.5em
+            margin: 0 0 0.5em 0
         &_submit
             align-self: center
             font-size: 0.875em
@@ -131,16 +131,48 @@
             cursor: pointer
             padding: 0.45em 1em 0.55em 1em
             min-width: fit-content
-            width: 6em
+            width: 5.5em
             height: 3em
             border: none
             border-radius: 2em
             background: $main-color-turquoise
             color: $main-color-white
+            ////////////// PulseLoader Styles for responsive
             > span
+                transform: translateY(0.075em)
                 > span
+                    margin: 0.125em !important
                     height: 0.6em !important 
                     width: 0.6em !important
+            &:hover
+                opacity: 0.9
+            &:disabled
+                opacity: 0.5
+                cursor: default
+            &:active:enabled
+                transform: scale(0.95)
+    &_success
+        svg
+            width: 2em
+            height: auto
+        p
+            margin: 0.5em 0 1.5em 0
+        &_button
+            align-self: center
+            font-size: 0.875em
+            display: flex
+            justify-content: center
+            align-items: center
+            font-weight: 600
+            cursor: pointer
+            padding: 0.45em 1em 0.55em 1em
+            min-width: fit-content
+            width: 5.5em
+            height: 3em
+            border: none
+            border-radius: 2em
+            background: $main-color-turquoise
+            color: $main-color-white
             &:hover
                 opacity: 0.9
             &:disabled

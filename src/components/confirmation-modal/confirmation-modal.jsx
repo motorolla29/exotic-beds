@@ -32,6 +32,7 @@ const ConfirmationModal = () => {
     <Transition in={confirmationModal.open} timeout={400}>
       {(state) => (
         <Modal
+          className="confirmation-modal"
           keepMounted
           open={!['exited', 'exiting'].includes(state)}
           onClose={() => {
