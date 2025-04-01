@@ -1,9 +1,16 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import './code-input.sass';
 
 const CodeInput = ({ onComplete, error, onChange }) => {
   const inputRefs = useRef([]);
   const [values, setValues] = useState(Array(4).fill(''));
+
+  useEffect(() => {
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  }, []);
 
   const handleChange = (e, idx) => {
     const val = e.target.value;
