@@ -132,7 +132,7 @@ const ProfilePageContactDetails = () => {
           setNotificationModal({
             open: true,
             icon: <ReportGmailerrorredIcon />,
-            title: 'Error sending confirmation email',
+            title: 'Error sending email',
             description: err.response.data.message || err.message,
           })
         );

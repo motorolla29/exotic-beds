@@ -12,10 +12,10 @@ import { LuMailCheck } from 'react-icons/lu';
 
 import ForgotPasswordNewPassword from './forgot-password-new-password';
 import ForgotPasswordCode from './forgot-password-code';
-
-import './login-modals.sass';
 import ForgotPasswordSuccess from './forgot-password-success';
 import { sendPasswordResetCode } from '../../api/userAPI';
+
+import './login-modals.sass';
 
 const LoginModals = () => {
   const dispatch = useDispatch();
@@ -161,11 +161,6 @@ const LoginModals = () => {
                   email={resetEmail}
                   code={resetPasswordCode}
                   setForgotPasswordStage={setForgotPasswordStage}
-                  // onSuccess={() => {
-                  //   setForgotPasswordStage(null);
-                  //   setRegistrated(true);
-                  //   setTimeout(() => dispatch(loginModalsOpen(false)), 2000);
-                  // }}
                 />
               )}
               {forgotPasswordStage === 'success' && (
