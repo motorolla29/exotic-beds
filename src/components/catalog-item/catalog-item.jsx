@@ -36,7 +36,7 @@ import { deleteImageFromImagekit } from '../../api/imagekitAPI';
 
 import './catalog-item.sass';
 
-const CatalogItem = ({ item, size = '' }) => {
+const CatalogItem = ({ item }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [ww] = useWindowSize();
@@ -164,7 +164,7 @@ const CatalogItem = ({ item, size = '' }) => {
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 0.5 }}
       key={item.productId}
-      className={`catalog-item ${size}`}
+      className="catalog-item"
     >
       {isAuth && user.role === 'ADMIN' && (
         <>

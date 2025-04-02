@@ -21,8 +21,12 @@ import './main-page.sass';
 
 const MainPage = () => {
   const products = useSelector((state) => state.products);
-  const highestRatedProducts = sortProducts(products, 'rating').slice(0, 10);
-  const saleProducts = sortProducts(products, 'discount').slice(0, 10);
+  const availableProducts = products.filter((it) => it.availableQuantity > 0);
+  const highestRatedProducts = sortProducts(availableProducts, 'rating').slice(
+    0,
+    10
+  );
+  const saleProducts = sortProducts(availableProducts, 'discount').slice(0, 10);
   const navigate = useNavigate();
   const [ww] = useWindowSize();
 

@@ -2,10 +2,12 @@
     
 .catalog-item
     position: relative
+    display: flex
+    flex-direction: column
+    width: calc(25% - 1em)
     font-size: 14px
     margin-right: 1em
     margin-bottom: 2em
-    width: 18em
     border-radius: 1em
     background: #eefef665
     box-shadow: 0px 0px 4em -0.8em $main-color-grey
@@ -35,10 +37,6 @@
         right: 1em
         color: $main-color-red
         border: 1px solid $main-color-red
-    
-
-    &.medium
-        font-size: 13px
 
     &:hover
         box-shadow: 0px 0px 6em -1.6em $main-color-turquoise
@@ -46,8 +44,12 @@
     &_visual
         position: relative
         width: 100%
-        height: 18em
+        //height: 18em
+
+        height: auto
+        aspect-ratio: 1/1
         a
+            width: 100%
             .progressive-image-container
                 border-top-left-radius: 1em
                 border-top-right-radius: 1em
@@ -87,8 +89,10 @@
             align-self: center
 
     &_info
+        display: flex
+        flex-direction: column
+        flex-grow: 1
         padding: 0.6em
-
         &_rating
             display: flex
             flex-direction: row
@@ -111,13 +115,23 @@
 
 
         &_title
+            display: -webkit-box
+            -webkit-line-clamp: 2
+            -webkit-box-orient: vertical
+            overflow: hidden
             font-size: 1em
             font-weight: 700
-            height: 2em
-            margin-bottom: 0.8em
+            line-height: 1.2em
+            height: 2.4em
+            margin-bottom: 0.5em
             &:hover
                 color: $main-color-grey
                 
+        &_price-with-ui-container
+            display: flex
+            flex-direction: column
+            flex-grow: 1
+            justify-content: flex-end
         &_price
             border-top: 1px solid #4f4a5728
             padding-top: 0.6em
@@ -151,13 +165,18 @@
                 display: flex
                 justify-content: center
                 align-items: center
+
+                width: auto
+                flex-grow: 1
+                padding: 0 0.5em
+                margin-right: 1em
+
                 font-size: 0.8em
                 user-select: none
                 opacity: 0.8
                 cursor: pointer
                 font-weight: 600
                 color: $main-color-biscuit
-                width: 16em
                 height: 3.2em
                 background: $main-color-turquoise
                 border-radius: 2em
@@ -171,10 +190,9 @@
                     transform: scale(0.97)
                 > span
                     display: flex
-                    align-items: flex-end
+                    align-items: center
                     svg
                         margin-right: 0.5em
-                        vertical-align: sub
                         width: 1.5em
                         height: auto
                     // стилизация лоадера для кнопки корзины
@@ -234,53 +252,39 @@
                 background: #6c6c6c1e
                 border-radius: 2em
                 opacity: 0.8
-@media (max-width: 1215px) 
+
+@media (max-width: 1300px) 
+    .catalog-item
+        width: calc(33.333333% - 1em)
+
+@media (max-width: 1200px) 
     .catalog-item
         font-size: 13px
 
-@media (max-width: 1115px) 
+@media (max-width: 992px) 
     .catalog-item
         font-size: 12px
 
-@media (max-width: 1060px) 
+@media (max-width: 920px) 
     .catalog-item
-        font-size: 11px
+        width: calc(50% - 1em)
 
-@media (max-width: 1000px) 
+@media (max-width: 768px) 
     .catalog-item
-        font-size: 10px
+        width: calc(33.333333% - 1em)
+
+@media (max-width: 630px)
+    .catalog-item
+        width: calc(50% - 1em)
+
 @media (max-width: 480px)
     .catalog-item
-        display: flex
-        flex-direction: column
-        //margin-right: 1em
+        font-size: 10px
         margin-right: 0
         width: calc(50% - 0.5em)
-        &_visual
-            height: auto
-            aspect-ratio: 1/1
-            a
-                width: 100%
-                img
-                    object-fit: cover
         &_info
-            display: flex
-            flex-direction: column
-            flex-grow: 1
             &_title
-                margin-bottom: 0.25em
                 height: auto
-            &_price-with-ui-container
-                display: flex
-                flex-direction: column
-                flex-grow: 1
-                justify-content: space-between
-            &_ui
-                &_add-to-cart-button, &_open-cart-button, &_sold-out
-                    width: auto
-                    flex-grow: 1
-                    padding: 0 0.5em
-                    margin-right: 1em
 
 .catalog-page .catalog-item_admin-edit,
 .catalog-page .catalog-item_admin-delete, 

@@ -4,15 +4,17 @@
     margin: 2em 0
     display: flex
     flex-wrap: wrap
+
+
     &_admin-add-product
         display: none
         cursor: pointer
         align-items: center
         justify-content: center
+        width: calc(25% - 1em)
         font-size: 14px
         margin-right: 1em
         margin-bottom: 2em
-        width: 18em
         border-radius: 1em
         border: 0.4em solid
         opacity: 0.5
@@ -24,31 +26,42 @@
 .catalog-page .catalog_admin-add-product
     display: flex
 
-@media (max-width: 1215px) 
+@media (max-width: 1300px) 
+    .catalog
+        &_admin-add-product
+            width: calc(33.333333% - 1em)
+
+@media (max-width: 1200px) 
     .catalog
         &_admin-add-product
             font-size: 13px
 
-@media (max-width: 1115px) 
+@media (max-width: 992px) 
     .catalog
         &_admin-add-product
             font-size: 12px
 
-@media (max-width: 1060px) 
+@media (max-width: 920px) 
     .catalog
         &_admin-add-product
-            font-size: 11px
+            width: calc(50% - 1em)
 
-@media (max-width: 1000px) 
+@media (max-width: 768px) 
     .catalog
         &_admin-add-product
-            font-size: 10px
+            width: calc(33.333333% - 1em)
+
+@media (max-width: 630px) 
+    .catalog
+        &_admin-add-product
+            width: calc(50% - 1em)
+
 @media (max-width: 480px)
     .catalog
         justify-content: space-between
         &_admin-add-product
+            font-size: 10px
             display: flex
             flex-direction: column
-            //margin-right: 1em
             margin-right: 0
             width: calc(50% - 0.5em)
