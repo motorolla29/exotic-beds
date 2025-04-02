@@ -49,6 +49,48 @@
                 & .MuiFormHelperText-root
                     font-size: 0.75em
                     margin: 0.2em 0.75em 0 0.75em
+                & .MuiInputBase-root
+                    padding-right: 0
+                & .password-field-eye-container
+                    position: relative
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    height: 100%
+                    width: fit-content
+                    aspect-ratio: 1/1
+                & .password-field-eye
+                    cursor: pointer
+                    position: relative
+                    height: 60%
+                    width: auto
+                    aspect-ratio: 1/1
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    border-radius: 15%
+                    transition: background 0.2s ease
+                    svg
+                        position: absolute
+                        width: 60%
+                        height: auto
+                        transition: color 0.2s ease, opacity 0.2s ease
+                        &.hidden-icon
+                            opacity: 0
+                        &.visible-icon
+                            opacity: 1
+                    &.hidden
+                        svg
+                            color: #afafaf
+                        &:hover
+                            background: #cccccc20
+                    &.visible
+                        background: #00475715
+                        svg
+                            color: $main-color-turquoise
+
+
+
             &_forgot-password-button
                 margin: 0 0.5625em 1em 0.5625em
                 span
@@ -60,6 +102,7 @@
                     &:hover
                         opacity: 0.9
         &_sign-in-button, &_registration-button
+            user-select: none
             font-size: 0.875em
             display: flex
             justify-content: center
@@ -103,10 +146,12 @@
                     height: 0.75em !important
 
         > p
+            user-select: none
             color: $main-color-grey
             font-weight: 600
             margin: 5px 0
         > p.login-modals_sign-in-inner_to-register-switch
+            user-select: none
             cursor: pointer
             margin: 0
             color: $main-color-turquoise
@@ -121,6 +166,7 @@
             margin: 0 0 1.5em 0
         &_textfields
         &_submit
+            user-select: none
             margin: 0.5em 0 0.75em 0
             align-self: center
             font-size: 0.875em
@@ -158,6 +204,7 @@
         p
             margin: 0.5em 0
         &_button
+            user-select: none
             margin: 0.5em 0
             align-self: center
             font-size: 0.875em
@@ -241,6 +288,7 @@
         margin-bottom: 0.5em
         color: $main-color-grey
     &_button
+        user-select: none
         font-size: 0.8em
         color: $main-color-white
         background: $main-color-turquoise-transparent

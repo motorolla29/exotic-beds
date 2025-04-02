@@ -13,6 +13,14 @@ import {
   setUser,
 } from '../../store/action';
 import ErrorIcon from '@mui/icons-material/Error';
+// import { BsEye } from 'react-icons/bs';
+// import { BsEyeSlash } from 'react-icons/bs';
+// import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+// import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+// import { IoEyeOutline } from 'react-icons/io5';
+// import { IoEyeOffOutline } from 'react-icons/io5';
+import { TbEye } from 'react-icons/tb';
+import { TbEyeOff } from 'react-icons/tb';
 import useWindowSize from '../../hooks/use-window-size';
 import { getLovelist } from '../../api/lovelistAPI';
 import { getBasket } from '../../api/basketAPI';
@@ -25,6 +33,7 @@ const SignInModal = ({ setRegistrated, onForgotPassword }) => {
   const [signInClicked, setSignInClicked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -112,10 +121,54 @@ const SignInModal = ({ setRegistrated, onForgotPassword }) => {
           fullWidth
           label="Password"
           variant="outlined"
-          type="password"
+          type={passwordVisible ? 'text' : 'password'}
           error={!!signInClicked && !!passwordError}
           helperText={signInClicked && passwordError ? passwordError : false}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <div className="password-field-eye-container">
+                  <div
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                    className={`password-field-eye ${
+                      passwordVisible ? 'visible' : 'hidden'
+                    }`}
+                  >
+                    <TbEyeOff
+                      className={`${
+                        passwordVisible ? 'visible-icon' : 'hidden-icon'
+                      }`}
+                    />
+                    <TbEye
+                      className={`${
+                        passwordVisible ? 'hidden-icon' : 'visible-icon'
+                      }`}
+                    />
+                  </div>
+                </div>
+              ),
+            },
+          }}
         />
+        {/* <div className="password-field-eye-container">
+            <div
+              onClick={() => setPasswordVisible(!passwordVisible)}
+              className={`password-field-eye ${
+                passwordVisible ? 'visible' : 'hidden'
+              }`}
+            >
+              <TbEyeOff
+                className={`${
+                  passwordVisible ? 'visible-icon' : 'hidden-icon'
+                }`}
+              />
+              <TbEye
+                className={`${
+                  passwordVisible ? 'hidden-icon' : 'visible-icon'
+                }`}
+              />
+            </div>
+        </div> */}
         {signInClicked && !emailError && passwordError && (
           <div className="login-modals_sign-in-inner_textfields_forgot-password-button">
             <span onClick={() => onForgotPassword(email)}>
