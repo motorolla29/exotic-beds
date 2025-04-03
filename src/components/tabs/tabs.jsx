@@ -7,31 +7,34 @@ import { ReactComponent as CribIcon } from '../../images/categories-icons/crib.s
 import { ReactComponent as PoufIcon } from '../../images/categories-icons/pouf.svg';
 
 import './tabs.sass';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const Tabs = () => {
   return (
-    <div className="tabs">
-      <NavLink className="tabs_link" to="/beds">
-        <BedIcon className="tabs_link_bed" />
-        <p className="tabs_link_title">Beds</p>
-      </NavLink>
-      <NavLink className="tabs_link" to="/sofas">
-        <SofaIcon className="tabs_link_sofa" />
-        <p className="tabs_link_title">Sofas</p>
-      </NavLink>
-      <NavLink className="tabs_link" to="/armchairs">
-        <ArmchairIcon className="tabs_link_armchair" />
-        <p className="tabs_link_title">Armchairs</p>
-      </NavLink>
-      <NavLink className="tabs_link" to="/kids">
-        <CribIcon className="tabs_link_crib" />
-        <p className="tabs_link_title">Kids</p>
-      </NavLink>
-      <NavLink className="tabs_link" to="/poufs">
-        <PoufIcon className="tabs_link_pouf" />
-        <p className="tabs_link_title">Poufs</p>
-      </NavLink>
-    </div>
+    <OverlayScrollbarsComponent className="tabs-scrollbar" defer>
+      <div className="tabs">
+        <NavLink className="tabs_link" to="/beds">
+          <BedIcon className="tabs_link_bed" />
+          <p className="tabs_link_title">Beds</p>
+        </NavLink>
+        <NavLink className="tabs_link" to="/sofas">
+          <SofaIcon className="tabs_link_sofa" />
+          <p className="tabs_link_title">Sofas</p>
+        </NavLink>
+        <NavLink className="tabs_link" to="/armchairs">
+          <ArmchairIcon className="tabs_link_armchair" />
+          <p className="tabs_link_title">Armchairs</p>
+        </NavLink>
+        <NavLink className="tabs_link" to="/kids">
+          <CribIcon className="tabs_link_crib" />
+          <p className="tabs_link_title">Kids</p>
+        </NavLink>
+        <NavLink className="tabs_link" to="/poufs">
+          <PoufIcon className="tabs_link_pouf" />
+          <p className="tabs_link_title">Poufs</p>
+        </NavLink>
+      </div>
+    </OverlayScrollbarsComponent>
   );
 };
 

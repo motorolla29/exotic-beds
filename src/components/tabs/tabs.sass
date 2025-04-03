@@ -1,6 +1,7 @@
 @import 'src/styles/variables'
 
 .tabs
+    position: relative
     user-select: none
     display: flex
     align-items: flex-end
@@ -8,13 +9,14 @@
     font-size: 16px
     margin-bottom: 1em
     height: 6em
-
+    
     &_link
         position: relative
         display: flex
         flex-direction: column
         align-items: center
-        margin: 0 2em
+        &:not(:last-child)
+            margin: 0 4em 0 0
 
         &:before
             display: block
@@ -53,6 +55,7 @@
             font-weight: 900
             font-style: italic
 
+
 @media (max-width: 1200px) 
     .tabs
         font-size: 14px
@@ -63,23 +66,45 @@
 
 @media (max-width: 768px) 
     .tabs
-        font-size: 8px
+        margin: 0.5em 0 2em 0
+
+@media (max-width: 603px) 
+    .tabs
+        justify-content: flex-start
+        white-space: nowrap
         margin-bottom: 2em
-        &_link::before
-            height: 2px
+        &_link
+            margin: 0 4em 0 0
+            &::before
+                top: 107%
+                border-radius: 1em
+    .tabs-scrollbar
+        margin-bottom: 1em
+        & .os-scrollbar.os-scrollbar-horizontal
+            box-sizing: border-box
+            --os-size: 4px
+            --os-padding-perpendicular: 0
+            --os-padding-axis: 0
+            --os-handle-interactive-area-offset: 0
+            background: #00475730
+            border-radius: 10px
+            & .os-scrollbar-handle
+                border-radius: 10px
+                background: #004757
 
 @media (max-width: 480px)
+    .tabs-scrollbar
+        & .os-scrollbar.os-scrollbar-horizontal
+            --os-size: 3px
     .tabs
-        font-size: 6px
+        font-size: 10px
+        &_link
+            &::before
+                height: 2px 
 
-@media (max-width: 360px)
+@media (max-width: 320px)
     .tabs
-        font-size: 5px
-
-@media (max-width: 300px)
-    .tabs
-        font-size: 4px
+        font-size: 8px
 
 
 
-    
