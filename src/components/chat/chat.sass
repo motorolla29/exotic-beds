@@ -72,12 +72,26 @@
         &_message-input
             resize: none
             height: 120px
+            &::-webkit-scrollbar
+                width: 8px
+                height: 8px
+            &::-webkit-scrollbar-track
+                cursor: default
+                background: transparent
+            &::-webkit-scrollbar-thumb
+                cursor: default
+                background-color: lightgrey
+                border-radius: 10px
+                border: 2px solid transparent
+                background-clip: content-box
+                &:active
+                    background-color: darkgrey
 
         &_error
-            margin-top: 1px 
+            margin: 3px 0 0 10px 
             color: red
-            width: 250px
-            font-size: 12px
+            width: 240px
+            font-size: 11px
         &_submit-button
             cursor: pointer
             display: flex
@@ -158,10 +172,9 @@
                 width: 170px
             &_message-input
                 height: 60px
+                
 
             &_error
-                margin-top: 1px 
-                color: red
                 width: 170px
                 font-size: 10px
             &_submit-button
