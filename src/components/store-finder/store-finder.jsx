@@ -120,7 +120,7 @@ const StoreFinder = () => {
       ) : null}
 
       <div className="store-finder_locator">
-        {ww >= 768 || locatorView === 'list' ? (
+        {ww > 768 || locatorView === 'list' ? (
           <OverlayScrollbarsComponent
             className="store-finder_locator_list"
             defer
@@ -160,7 +160,7 @@ const StoreFinder = () => {
             </div>
           </OverlayScrollbarsComponent>
         ) : null}
-        {ww >= 768 || locatorView === 'map' ? (
+        {ww > 768 || locatorView === 'map' ? (
           <div className="store-finder_locator_map">
             <StoreFinderMap
               onMapClick={onMapClick}

@@ -36,9 +36,11 @@ const StoreInfoItem = ({ item, activeStoreId, onStoreItemClick }) => {
         activeStoreId === item.properties.id ? 'active' : ''
       }`}
     >
-      <div className="store-info-item_name">
-        <p>{item.properties.name}</p>
-        <p>{(storeDistance / 1000).toFixed(2)} km</p>
+      <div className="store-info-item_title">
+        <p className="store-info-item_title_name">{item.properties.name}</p>
+        <p className="store-info-item_title_distance">
+          {(storeDistance / 1000).toFixed(2)} km
+        </p>
       </div>
       <p className="store-info-item_address">{item.properties.address}</p>
       <p className="store-info-item_address">
