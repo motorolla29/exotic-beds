@@ -193,7 +193,7 @@
     .highest-rated-items-block, .sales-items-block
         font-size: 8px
     .sale-items-carousel, .highest-rated-items-carousel
-        width: 100%
+        width: calc(100% - 30px)
         margin-bottom: 0
         & .slick-list
             display: flex
@@ -238,14 +238,7 @@
             font-size: 20px
 
 @media (max-width: 360px) 
-    .highest-rated-items-block, .sales-items-block
-        margin-top: 1em
     .sale-items-carousel, .highest-rated-items-carousel
-        width: calc(100% - 30px)
-        & .slick-prev // левая стрелка
-            left: -22px
-        & .slick-next // правая стрелка
-            right: -22px
         & .slick-slide
             padding: 0 4px
 

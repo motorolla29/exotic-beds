@@ -25,7 +25,7 @@
         border: 1px solid $main-color-grey-transparent
         border-radius: 1em
         margin-bottom: 2em
-        max-height: 300px
+        max-height: 400px
         &_rating
             display: flex
             flex-direction: column
@@ -50,17 +50,15 @@
             position: relative
             width: 95%
             &_textarea
+                position: relative
                 width: 100%
-                resize: none
                 background-color: $main-color-white
                 border-radius: 0.5em
-                border: none
-                outline: none
-                padding: 0.5em
+                overflow: hidden
                 font-size: 1em
                 margin-bottom: 1em
                 opacity: 0.8
-                &:focus
+                &:focus-within
                     opacity: 1
                 &.error
                     outline: 1px solid #cc0000
@@ -68,8 +66,43 @@
                     font-size: 0.75em
                     color: $main-color-red
                     position: absolute
-                    bottom: 0
-                    left: 0
+                    bottom: -0.25em
+                    left: 0            
+                textarea
+                    font-size: inherit
+                    display: flex
+                    width: 100%
+                    height: 100%
+                    resize: none
+                    border: none
+                    outline: none
+                    padding: 0 0.5em
+                    margin: 0.5em 0 1.5em 0
+                    background: transparent
+                    &::-webkit-scrollbar
+                        width: 8px
+                        height: 8px
+                    &::-webkit-scrollbar-track
+                        cursor: default
+                        background: transparent
+                    &::-webkit-scrollbar-thumb
+                        cursor: default
+                        background-color: lightgrey
+                        border-radius: 10px
+                        border: 2px solid transparent
+                        background-clip: content-box
+                        &:hover
+                            background-color: darkgrey
+                        &:active
+                            background-color: grey
+                &_counter
+                    font-size: 0.75em
+                    font-weight: 600
+                    position: absolute
+                    right: 0.75em
+                    bottom: 0.25em
+                    &.limit
+                        color: $main-color-red
         &_send-button
             margin: 1em 0
             align-self: center
@@ -230,7 +263,8 @@
         &_form
             &_comment
                 &_textarea 
-                    height: 8em
+                    textarea
+                        height: 8em
 
 @media (max-width: 480px) 
     .reviews
@@ -238,7 +272,8 @@
         &_form
             &_comment
                 &_textarea 
-                    height: 10em
+                    textarea
+                        height: 11em
             &_send-button
                 font-size: 10px
         &_list

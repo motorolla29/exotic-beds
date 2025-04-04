@@ -35,12 +35,15 @@ const SearchPanel = () => {
         type="search"
         name="search"
         value={search}
+        maxLength={100}
         onChange={(e) => setSearch(e.target.value)}
         className="search-form_input"
       ></input>
-      <button type="submit" className="search-form_button">
-        <SearchIcon />
-      </button>
+      <div className="search-form_submit">
+        <button type="submit">
+          <SearchIcon />
+        </button>
+      </div>
     </form>
   );
 };

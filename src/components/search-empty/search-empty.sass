@@ -2,31 +2,35 @@
     
 .search-empty
     user-select: none
-    margin-top: 50px
+    margin: 4em 0
     display: flex
     flex-direction: column
-    justify-content: center
+    justify-content: space-between
     align-items: center
     align-self: center
     width: 34em
-    height: 10em
+    min-height: 9em
+    max-width: 80%
     color: $main-color-turquoise
     border-radius: 2em
     background: $main-color-white-transparent
-    padding: 2em
+    padding: 1.5em 2em
 
     &_description
         color: $main-color-grey
         text-align: center
         font-size: 1em
-        margin-bottom: 1.4em
+        padding: 0.5em 0 1.5em 0
     
     &_home
+        font-size: 0.875em
         width: 6em
+        height: 3em
+        line-height: 1
         opacity: 0.8
         cursor: pointer
         display: flex
-        align-self: center
+        align-items: center
         justify-content: center
         font-weight: 600
         padding: 1em 2em

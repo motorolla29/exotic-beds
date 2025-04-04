@@ -9,7 +9,6 @@
     font-size: 16px
     margin-bottom: 1em
     height: 6em
-    
     &_link
         position: relative
         display: flex
@@ -55,7 +54,6 @@
             font-weight: 900
             font-style: italic
 
-
 @media (max-width: 1200px) 
     .tabs
         font-size: 14px
@@ -80,17 +78,28 @@
                 border-radius: 1em
     .tabs-scrollbar
         margin-bottom: 1em
+        overflow: visible
         & .os-scrollbar.os-scrollbar-horizontal
             box-sizing: border-box
             --os-size: 4px
             --os-padding-perpendicular: 0
             --os-padding-axis: 0
-            --os-handle-interactive-area-offset: 0
+            --os-handle-interactive-area-offset: 20px
             background: #00475730
             border-radius: 10px
             & .os-scrollbar-handle
+                cursor: grab
                 border-radius: 10px
                 background: #004757
+                &::before 
+                    content: ''
+                    position: absolute
+                    width: 100%
+                    top: -8px
+                    bottom: -14px
+                    left: 0px
+                    right: 0px
+                    background: transparent
 
 @media (max-width: 480px)
     .tabs-scrollbar
@@ -103,6 +112,11 @@
                 height: 2px 
 
 @media (max-width: 320px)
+    .tabs-scrollbar
+        & .os-scrollbar.os-scrollbar-horizontal
+            & .os-scrollbar-handle
+                &::before 
+                    top: -4px
     .tabs
         font-size: 8px
 

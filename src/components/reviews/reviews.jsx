@@ -139,6 +139,7 @@ import './reviews.sass';
 // ];
 
 const Reviews = ({ product }) => {
+  const MAX_COMMENT_LENGTH = 500;
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -193,8 +194,9 @@ const Reviews = ({ product }) => {
   });
 
   const onCommentChange = (e) => {
+    const newValue = e.target.value.slice(0, MAX_COMMENT_LENGTH);
     setCommentError(null);
-    setComment(e.target.value);
+    setComment(newValue);
   };
 
   const onSendReviewButtonClick = async () => {
@@ -272,15 +274,25 @@ const Reviews = ({ product }) => {
                 </span>
               </div>
               <div className="reviews_form_comment">
-                <textarea
-                  rows={4}
+                <div
                   className={`reviews_form_comment_textarea ${
                     commentError ? 'error' : ''
                   }`}
-                  value={comment}
-                  onChange={onCommentChange}
-                  placeholder="Describe your impressions of this product..."
-                />
+                >
+                  <textarea
+                    rows={4}
+                    value={comment}
+                    onChange={onCommentChange}
+                    placeholder="Describe your impressions of this product..."
+                  />
+                  <span
+                    className={`reviews_form_comment_textarea_counter ${
+                      comment.length === MAX_COMMENT_LENGTH ? 'limit' : ''
+                    }`}
+                  >
+                    {comment.length} / {MAX_COMMENT_LENGTH}
+                  </span>
+                </div>
                 {commentError && (
                   <span className="reviews_form_comment_textarea_error">
                     {commentError}
