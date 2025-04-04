@@ -126,9 +126,11 @@ const StoreFinder = () => {
             defer
           >
             <div className="store-finder_locator_list_header">
-              <p className="store-finder_locator_list_header_counter">
-                {storesSortedByProximity.length} Stores Near You
-              </p>
+              <div className="store-finder_locator_list_header_inner">
+                <p className="store-finder_locator_list_header_inner_counter">
+                  {storesSortedByProximity.length} Stores Near You
+                </p>
+              </div>
             </div>
             <div className="store-finder_locator_list_store-info-items">
               {storesSortedByProximity.map((it) => {
