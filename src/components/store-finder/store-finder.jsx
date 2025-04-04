@@ -32,7 +32,7 @@ const StoreFinder = () => {
 
   const onGeocoderItemPick = (event) => {
     if (event) {
-      storeFinderMap.flyTo({
+      storeFinderMap?.flyTo({
         center: { lat: event.center[1], lng: event.center[0] },
         zoom: 10,
         essential: true,
