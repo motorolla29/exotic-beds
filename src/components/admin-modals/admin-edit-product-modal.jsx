@@ -16,6 +16,7 @@ import { HiOutlineCamera } from 'react-icons/hi';
 import SyncLoader from 'react-spinners/SyncLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
 import DoneIcon from '@mui/icons-material/Done';
+import ErrorIcon from '@mui/icons-material/Error';
 
 import validateProductData from './validate-product-data';
 import { categoriesIds, scrollController } from '../../utils';
@@ -24,7 +25,6 @@ import { getAllProducts, updateProduct } from '../../api/productAPI';
 import {
   setNotificationModal,
   setProducts,
-  setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
 import {
@@ -106,10 +106,8 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
           navigate(`/${updatedProduct.id}`, { replace: true });
         }
 
-        dispatch(setProductsLoaded(false));
         const updatedProducts = await getAllProducts();
         dispatch(setProducts(updatedProducts.rows));
-        dispatch(setProductsLoaded(true));
         onClose();
         dispatch(
           setSnackbar({
@@ -126,7 +124,15 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
           }
         }
       } catch (error) {
-        console.log(error);
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: 'Failed to update product',
+            description: error.response?.data?.message || error.message,
+          })
+        );
+        console.error('Error updating product:', error);
       } finally {
         setSubmitting(false);
       }
@@ -185,6 +191,14 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
         photo: response.name,
       }));
     } catch (error) {
+      dispatch(
+        setNotificationModal({
+          open: true,
+          icon: <ErrorIcon />,
+          title: 'Failed to upload image',
+          description: error.response?.data?.message || error.message,
+        })
+      );
       console.error('Error uploading image:', error);
     } finally {
       setPhotoLoading(false);

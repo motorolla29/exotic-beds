@@ -15,13 +15,14 @@ import { HiOutlineCamera } from 'react-icons/hi';
 import SyncLoader from 'react-spinners/SyncLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
 import DoneIcon from '@mui/icons-material/Done';
+import ErrorIcon from '@mui/icons-material/Error';
 
 import validateProductData from './validate-product-data';
 import useWindowSize from '../../hooks/use-window-size';
 import { categoriesIds, scrollController } from '../../utils';
 import {
+  setNotificationModal,
   setProducts,
-  setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
 import { createProduct, getAllProducts } from '../../api/productAPI';
@@ -91,10 +92,8 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
 
         await createProduct(adaptedData);
 
-        dispatch(setProductsLoaded(false));
         const updatedProducts = await getAllProducts();
         dispatch(setProducts(updatedProducts.rows));
-        dispatch(setProductsLoaded(true));
 
         onClose();
 
@@ -106,6 +105,14 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
           })
         );
       } catch (error) {
+        dispatch(
+          setNotificationModal({
+            open: true,
+            icon: <ErrorIcon />,
+            title: 'Failed to create product',
+            description: error.response?.data?.message || error.message,
+          })
+        );
         console.error('Error creating product:', error);
       } finally {
         setSubmitting(false);
@@ -161,6 +168,14 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
         photo: response.name,
       }));
     } catch (error) {
+      dispatch(
+        setNotificationModal({
+          open: true,
+          icon: <ErrorIcon />,
+          title: 'Failed to upload image',
+          description: error.response?.data?.message || error.message,
+        })
+      );
       console.error('Error uploading image:', error);
     } finally {
       setPhotoLoading(false);
