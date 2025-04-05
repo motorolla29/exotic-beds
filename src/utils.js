@@ -307,26 +307,18 @@ const sortProducts = (products, sortBy) => {
 
   switch (sortBy) {
     case 'relevance':
-      sortedProducts = products.slice().sort((a, b) => {
-        const getDate = (item) =>
-          item.createdAt
-            ? new Date(item.createdAt)
-            : item.updatedAt
-            ? new Date(item.updatedAt)
-            : null;
-
-        const dateA = getDate(a);
-        const dateB = getDate(b);
-
-        // Если обе даты есть
-        if (dateA && dateB) return dateB - dateA;
-
-        // Если только у одного нет даты — ставь его в конец
-        if (!dateA && dateB) return 1;
-        if (dateA && !dateB) return -1;
-
-        // Если у обоих нет даты — сохраняй порядок
-        return 0;
+      sortedProducts = sortedProducts = products.slice().sort((a, b) => {
+        const dateA = a.createdAt
+          ? new Date(a.createdAt)
+          : a.updatedAt
+          ? new Date(a.updatedAt)
+          : new Date(0);
+        const dateB = b.createdAt
+          ? new Date(b.createdAt)
+          : b.updatedAt
+          ? new Date(b.updatedAt)
+          : new Date(0);
+        return dateB - dateA;
       });
       break;
     case 'price_asc':
@@ -374,26 +366,18 @@ const sortProducts = (products, sortBy) => {
       });
       break;
     default:
-      sortedProducts = products.slice().sort((a, b) => {
-        const getDate = (item) =>
-          item.createdAt
-            ? new Date(item.createdAt)
-            : item.updatedAt
-            ? new Date(item.updatedAt)
-            : null;
-
-        const dateA = getDate(a);
-        const dateB = getDate(b);
-
-        // Если обе даты есть
-        if (dateA && dateB) return dateB - dateA;
-
-        // Если только у одного нет даты — ставь его в конец
-        if (!dateA && dateB) return 1;
-        if (dateA && !dateB) return -1;
-
-        // Если у обоих нет даты — сохраняй порядок
-        return 0;
+      sortedProducts = sortedProducts = products.slice().sort((a, b) => {
+        const dateA = a.createdAt
+          ? new Date(a.createdAt)
+          : a.updatedAt
+          ? new Date(a.updatedAt)
+          : new Date(0);
+        const dateB = b.createdAt
+          ? new Date(b.createdAt)
+          : b.updatedAt
+          ? new Date(b.updatedAt)
+          : new Date(0);
+        return dateB - dateA;
       });
   }
 
