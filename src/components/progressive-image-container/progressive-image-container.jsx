@@ -55,7 +55,7 @@ const ProgressiveImageContainer = ({
               className="progressive-image full"
               alt={alt}
               src={src}
-              zoomScale={1.5}
+              zoomScale={1}
             />
           ) : (
             <img
