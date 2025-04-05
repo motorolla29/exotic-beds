@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import useIntersectionObserver from '../../hooks/use-intersection-observer';
 import InnerImageZoom from 'react-inner-image-zoom';
+import { isMobile } from 'detect-mobile';
 
 import './progressive-image-container.sass';
 
@@ -15,11 +16,38 @@ const ProgressiveImageContainer = ({
   const ref = useRef();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1);
 
   useEffect(() => {
-    setIsLoaded(false);
-    //
-  }, [src]);
+    if (withInnerZoom) {
+      const isMobileDevice = isMobile();
+      setIsLoaded(false);
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        const { naturalWidth, naturalHeight } = img;
+        const ratio =
+          Math.min(naturalWidth, naturalHeight) /
+          Math.max(naturalWidth, naturalHeight);
+        let newZoom = Math.pow(ratio, 2);
+
+        if (isMobileDevice) {
+          // Ограничиваем зум, чтобы он входил в пределы экрана
+          const maxZoomX = naturalWidth / window.innerWidth;
+          const minZoomY = window.innerHeight / naturalHeight;
+
+          if (naturalWidth > naturalHeight) {
+            newZoom = Math.max(newZoom, minZoomY);
+          } else {
+            newZoom = Math.min(newZoom, maxZoomX);
+          }
+        }
+
+        setZoomScale(newZoom);
+        setIsLoaded(true);
+      };
+    }
+  }, [src, withInnerZoom]);
 
   useIntersectionObserver({
     target: ref,
@@ -55,7 +83,7 @@ const ProgressiveImageContainer = ({
               className="progressive-image full"
               alt={alt}
               src={src}
-              zoomScale={1}
+              zoomScale={zoomScale}
             />
           ) : (
             <img
