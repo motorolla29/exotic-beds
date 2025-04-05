@@ -24,7 +24,6 @@ import {
   setConfirmationModal,
   setLovelist,
   setProducts,
-  setProductsLoaded,
   setSnackbar,
 } from '../../../store/action';
 import { addToBasket } from '../../../api/basketAPI';
@@ -144,10 +143,8 @@ const ProductPage = () => {
       } else {
         navigate('/beds', { replace: true });
       }
-      dispatch(setProductsLoaded(false));
       const productData = await getAllProducts();
       dispatch(setProducts(productData.rows));
-      dispatch(setProductsLoaded(true));
       dispatch(
         setSnackbar({
           open: true,

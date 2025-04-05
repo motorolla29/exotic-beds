@@ -10,7 +10,6 @@ import {
   setConfirmationModal,
   setLovelist,
   setProducts,
-  setProductsLoaded,
   setSnackbar,
 } from '../../store/action';
 import HeartIcon from '../heart-icon/heart-icon';
@@ -141,10 +140,8 @@ const CatalogItem = ({ item }) => {
           console.error('Error deleting previous image:', error);
         }
       }
-      dispatch(setProductsLoaded(false));
       const productData = await getAllProducts();
       dispatch(setProducts(productData.rows));
-      dispatch(setProductsLoaded(true));
       dispatch(
         setSnackbar({
           open: true,
