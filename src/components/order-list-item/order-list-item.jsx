@@ -68,9 +68,9 @@ const OrderListItem = ({ order }) => {
               <div>
                 <ProgressiveImageContainer
                   thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
-                  src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
+                  src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-150`}
                   defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
-                  defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
+                  defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-150"
                   alt="order-item-image"
                 />
               </div>

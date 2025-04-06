@@ -54,9 +54,8 @@ const ProgressiveImageContainer = ({
           }
         } else {
           // Мобильные устройства: размеры экрана
-          const headerOffset = 50;
           const screenWidth = window.innerWidth;
-          const screenHeight = window.innerHeight + headerOffset;
+          const screenHeight = window.innerHeight;
 
           // Если изображение меньше экрана, масштабируем, чтобы заполнить его по наибольшему соотношению
           if (naturalWidth < screenWidth || naturalHeight < screenHeight) {
