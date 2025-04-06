@@ -31,7 +31,7 @@ const LoginModals = () => {
   useEffect(() => {
     if (isOpen) {
       setRegistrated(true);
-      setForgotPasswordStage('success');
+      setForgotPasswordStage(null);
       if (!isCartOpen && !overlayLoading) scrollController.disabledScroll();
     } else {
       if (!isCartOpen && !overlayLoading) scrollController.enabledScroll();
@@ -122,7 +122,6 @@ const LoginModals = () => {
                     },
                   }}
                   onMouseDown={(e) => e.stopPropagation()}
-                  onClick={() => dispatch(loginModalsOpen(false))}
                   className="email-confirm-notification-div"
                 >
                   <LuMailCheck />
@@ -133,7 +132,10 @@ const LoginModals = () => {
                     We have sent you an email with a link to confirm your email.
                     Please check your email and follow the instructions.
                   </div>
-                  <button className="email-confirm-notification-div_button">
+                  <button
+                    onClick={() => dispatch(loginModalsOpen(false))}
+                    className="email-confirm-notification-div_button"
+                  >
                     Ok
                   </button>
                 </motion.div>
