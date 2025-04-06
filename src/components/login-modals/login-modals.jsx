@@ -31,7 +31,7 @@ const LoginModals = () => {
   useEffect(() => {
     if (isOpen) {
       setRegistrated(true);
-      setForgotPasswordStage(null);
+      setForgotPasswordStage('success');
       if (!isCartOpen && !overlayLoading) scrollController.disabledScroll();
     } else {
       if (!isCartOpen && !overlayLoading) scrollController.enabledScroll();
