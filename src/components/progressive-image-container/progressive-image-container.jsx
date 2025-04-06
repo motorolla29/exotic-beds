@@ -71,12 +71,12 @@ const ProgressiveImageContainer = ({
             newZoom = Math.pow(ratio, 2);
 
             // Ограничиваем зум, чтобы изображение не выходило за пределы экрана
-            const maxZoomX = naturalWidth / screenWidth;
+            const minZoomX = screenWidth / naturalWidth;
             const minZoomY = screenHeight / naturalHeight;
             if (naturalWidth > naturalHeight) {
               newZoom = Math.max(newZoom, minZoomY);
             } else {
-              newZoom = Math.min(newZoom, maxZoomX);
+              newZoom = Math.max(newZoom, minZoomX);
             }
           }
         }
