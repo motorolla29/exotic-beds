@@ -20,26 +20,64 @@ const ProgressiveImageContainer = ({
 
   useEffect(() => {
     if (withInnerZoom) {
-      const isMobileDevice = isMobile();
       setIsLoaded(false);
+      const isMobileDevice = isMobile();
       const img = new Image();
       img.src = src;
       img.onload = () => {
         const { naturalWidth, naturalHeight } = img;
-        const ratio =
-          Math.min(naturalWidth, naturalHeight) /
-          Math.max(naturalWidth, naturalHeight);
-        let newZoom = Math.pow(ratio, 2);
+        let newZoom = 1;
 
-        if (isMobileDevice) {
-          // Ограничиваем зум, чтобы он входил в пределы экрана
-          const maxZoomX = naturalWidth / window.innerWidth;
-          const minZoomY = window.innerHeight / naturalHeight;
+        if (!isMobileDevice) {
+          // ПК: используем размеры контейнера (ref.current)
+          if (ref.current) {
+            const containerWidth = ref.current.offsetWidth;
+            const containerHeight = ref.current.offsetHeight;
 
-          if (naturalWidth > naturalHeight) {
-            newZoom = Math.max(newZoom, minZoomY);
+            // Если изображение меньше контейнера по любой из осей,
+            // вычисляем масштаб, чтобы заполнить контейнер по наибольшему соотношению.
+            if (
+              naturalWidth < containerWidth ||
+              naturalHeight < containerHeight
+            ) {
+              newZoom = Math.max(
+                containerWidth / naturalWidth,
+                containerHeight / naturalHeight
+              );
+            } else {
+              // Если изображение больше или равно контейнеру, используем логику зума по соотношению сторон
+              const ratio =
+                Math.min(naturalWidth, naturalHeight) /
+                Math.max(naturalWidth, naturalHeight);
+              newZoom = Math.pow(ratio, 2);
+            }
+          }
+        } else {
+          // Мобильные устройства: размеры экрана
+          const screenWidth = window.innerWidth;
+          const screenHeight = window.innerHeight;
+
+          // Если изображение меньше экрана, масштабируем, чтобы заполнить его по наибольшему соотношению
+          if (naturalWidth < screenWidth || naturalHeight < screenHeight) {
+            newZoom = Math.max(
+              screenWidth / naturalWidth,
+              screenHeight / naturalHeight
+            );
           } else {
-            newZoom = Math.min(newZoom, maxZoomX);
+            // Если изображение больше экрана, используем исходную логику, с дополнительными ограничениями
+            const ratio =
+              Math.min(naturalWidth, naturalHeight) /
+              Math.max(naturalWidth, naturalHeight);
+            newZoom = Math.pow(ratio, 2);
+
+            // Ограничиваем зум, чтобы изображение не выходило за пределы экрана
+            const maxZoomX = naturalWidth / screenWidth;
+            const minZoomY = screenHeight / naturalHeight;
+            if (naturalWidth > naturalHeight) {
+              newZoom = Math.max(newZoom, minZoomY);
+            } else {
+              newZoom = Math.min(newZoom, maxZoomX);
+            }
           }
         }
 
