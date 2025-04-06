@@ -396,8 +396,11 @@ const sortProductsForSearch = (products, searchArray) => {
   });
 };
 
-const findCheapestProductObj = (products) =>
-  products.reduce((x, y) => {
+const findCheapestProductObj = (products) => {
+  if (!products || !products.length) {
+    return null;
+  }
+  return products.reduce((x, y) => {
     if (+x.sale && +y.sale && +x.sale < +y.sale) {
       return x;
     }
@@ -412,9 +415,13 @@ const findCheapestProductObj = (products) =>
     }
     return y;
   });
+};
 
-const findMostExpensiveProductObj = (products) =>
-  products.reduce((x, y) => {
+const findMostExpensiveProductObj = (products) => {
+  if (!products || !products.length) {
+    return null;
+  }
+  return products.reduce((x, y) => {
     if (+x.sale && +y.sale && +x.sale > +y.sale) {
       return x;
     }
@@ -429,6 +436,7 @@ const findMostExpensiveProductObj = (products) =>
     }
     return y;
   });
+};
 
 const getStoreWorkStatus = (calendar) => {
   const day = new Date().getDay();

@@ -159,10 +159,10 @@ const ProductPage = () => {
   };
 
   useEffect(() => {
-    if (!product) {
+    if (products.length && !product) {
       return navigate('/not-found');
     }
-  }, [navigate, product]);
+  }, [navigate, product, products]);
 
   useEffect(() => window.scrollTo(0, 0), [id]);
 

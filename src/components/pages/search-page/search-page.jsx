@@ -32,11 +32,11 @@ const SearchPage = () => {
   const [ww] = useWindowSize();
 
   const highestPrice =
-    findMostExpensiveProductObj(products).sale ||
-    findMostExpensiveProductObj(products).price;
+    findMostExpensiveProductObj(products)?.sale ||
+    findMostExpensiveProductObj(products)?.price;
   const lowestPrice =
-    findCheapestProductObj(products).sale ||
-    findCheapestProductObj(products).price;
+    findCheapestProductObj(products)?.sale ||
+    findCheapestProductObj(products)?.price;
 
   const categoryArray = searchParams.getAll('category');
   const minPrice = +searchParams.get('minPrice') || lowestPrice;
