@@ -14,10 +14,12 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
 import { resendActivationMail, updateContactData } from '../../api/userAPI';
 import { nullAndUndefinedToEmptyString } from '../../utils';
+import useWindowSize from '../../hooks/use-window-size';
 
 import './profile-page-contact-details.sass';
 
 const ProfilePageContactDetails = () => {
+  const [ww] = useWindowSize();
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
@@ -223,6 +225,7 @@ const ProfilePageContactDetails = () => {
           variant="outlined"
           value={email}
           onChange={handleEmailChange}
+          size={ww > 480 ? 'normal' : 'small'}
           error={emailErrorCondition}
           helperText={
             saveChangesClicked && (emailError || !emailValid)
@@ -272,6 +275,7 @@ const ProfilePageContactDetails = () => {
           variant="outlined"
           value={`+${phone}`}
           onChange={handlePhoneChange}
+          size={ww > 480 ? 'normal' : 'small'}
           error={saveChangesClicked && (phoneError || !phoneValid)}
           helperText={
             saveChangesClicked && (phoneError || !phoneValid)

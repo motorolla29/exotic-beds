@@ -324,6 +324,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
           <TextField
             value={deliveryData.email}
             onChange={handleEmailChange}
+            size={ww > 480 ? 'normal' : 'small'}
             error={emailError && payButtonClicked}
             helperText={
               payButtonClicked && emailError
@@ -428,6 +429,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.name}
                   onChange={handleNameChange}
+                  size={ww > 480 ? 'normal' : 'small'}
                   error={nameError && payButtonClicked}
                   helperText={
                     payButtonClicked && nameError
@@ -443,6 +445,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.surname}
                   onChange={handleSurameChange}
+                  size={ww > 480 ? 'normal' : 'small'}
                 />
               </Grid>
 
@@ -453,6 +456,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.company}
                   onChange={handleCompanyChange}
+                  size={ww > 480 ? 'normal' : 'small'}
                 />
               </Grid>
 
@@ -474,6 +478,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   }}
                   value={deliveryData.address}
                   onChange={(e) => handleAddressChange(e.target.value)}
+                  size={ww > 480 ? 'normal' : 'small'}
                   error={addressError && payButtonClicked}
                   helperText={
                     payButtonClicked && addressError
@@ -513,6 +518,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.apartment}
                   onChange={handleApartmentChange}
+                  size={ww > 480 ? 'normal' : 'small'}
                 />
               </Grid>
 
@@ -523,6 +529,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.city}
                   onChange={(e) => handleCityChange(e.target.value)}
+                  size={ww > 480 ? 'normal' : 'small'}
                   error={cityError && payButtonClicked}
                   helperText={
                     payButtonClicked && cityError
@@ -538,6 +545,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.postalCode}
                   onChange={(e) => handlePostalCodeChange(e.target.value)}
+                  size={ww > 480 ? 'normal' : 'small'}
                   error={postalCodeError && payButtonClicked}
                   helperText={
                     payButtonClicked && postalCodeError
@@ -554,6 +562,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                   fullWidth
                   value={deliveryData.phoneNumber}
                   onChange={handlePhoneNumberChange}
+                  size={ww > 480 ? 'normal' : 'small'}
                   error={phoneNumberError && payButtonClicked}
                   helperText={
                     payButtonClicked && phoneNumberError

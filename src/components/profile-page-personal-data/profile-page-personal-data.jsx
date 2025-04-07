@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -14,11 +14,13 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { updatePersonalData } from '../../api/userAPI';
 import { setNotificationModal, setSnackbar, setUser } from '../../store/action';
 import { nullAndUndefinedToEmptyString, areDatesEqual } from '../../utils';
+import useWindowSize from '../../hooks/use-window-size';
 
 import './profile-page-personal-data.sass';
 
 const ProfilePagePersonalData = () => {
   const dispatch = useDispatch();
+  const [ww] = useWindowSize();
   const user = useSelector((state) => state.user);
 
   const [saveChangesClicked, setSaveChangesClicked] = useState(false);
@@ -160,6 +162,7 @@ const ProfilePagePersonalData = () => {
           className="profile-page_user-info_personal-data_full-name_field"
           label="Name"
           variant="outlined"
+          size={ww > 480 ? 'normal' : 'small'}
           value={name}
           error={saveChangesClicked && !nameValid}
           helperText={
@@ -173,6 +176,7 @@ const ProfilePagePersonalData = () => {
           className="profile-page_user-info_personal-data_full-name_field"
           label="Surname"
           variant="outlined"
+          size={ww > 480 ? 'normal' : 'small'}
           value={surname}
           error={saveChangesClicked && !surnameValid}
           helperText={
@@ -186,6 +190,7 @@ const ProfilePagePersonalData = () => {
           className="profile-page_user-info_personal-data_full-name_field"
           label="Patronymic"
           variant="outlined"
+          size={ww > 480 ? 'normal' : 'small'}
           value={patronymic}
           error={saveChangesClicked && !patronymicValid}
           helperText={
@@ -205,6 +210,11 @@ const ProfilePagePersonalData = () => {
             value={dateOfBirth}
             format="DD.MM.YYYY"
             onChange={onDateChange}
+            slotProps={{
+              textField: {
+                size: ww > 480 ? 'normal' : 'small',
+              },
+            }}
             sx={{
               // Переопределяем стили Mui-error с высоким приоритетом, т.к тут не получается стандартное управление объектом ошибки
               '&.MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root': {

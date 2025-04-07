@@ -31,6 +31,7 @@
                 color: $main-color-turquoise-transparent
 
     &_save-button
+        font-size: 0.875em
         font-weight: 600
         color: $main-color-biscuit
         background-color: $main-color-turquoise
@@ -48,7 +49,15 @@
             cursor: default
             opacity: 0.25
 
-
+@media (max-width: 480px) 
+    .profile-page_user-info_personal-data
+        &_full-name
+            &_field.MuiTextField-root
+                margin-bottom: 1.25em
+        &_date-of-birth
+            &_field
+                input
+                    width: 70px
 @media (max-width: 360px) 
     .profile-page_user-info_personal-data
         &_full-name

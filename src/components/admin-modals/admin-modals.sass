@@ -26,6 +26,9 @@
         background: $main-color-white
         border-radius: 1em
         z-index: 1001
+        & .MuiFormControl-root
+            & .MuiInputLabel-root, & .MuiInputBase-root
+                font-size: 16px
         &_photo-container
             position: relative
             display: flex
@@ -36,16 +39,20 @@
                 color: $main-color-red
                 margin-left: 1em
         &_category-select
+            font-size: 16px
             margin-bottom: 1.5em
-            > label
+            > .MuiFormLabel-root
+                font-size: 0.875em
                 color: rgba(0, 0, 0, 0.6)
             > .MuiSelect-root
+                font-size: 1em
                 background: $main-color-white-transparent
                 border-color: rgba(0, 0, 0, 0.2)
                 &:hover
                     background: $main-color-white-transparent
                     border-color: rgba(0, 0, 0, 0.87)
             > .MuiSelect-listbox
+                font-size: 1em
                 background: #EEFEF6
                 z-index: 3
 
@@ -144,6 +151,26 @@
                         box-shadow: 0 0 0 0.4em #cfb74b2c
                     &:active, &.Mui-active
                         box-shadow: 0 0 0 0.6em #cfb74b2c
+        &_description
+            > .MuiInputBase-root
+                > textarea
+                    &::-webkit-scrollbar
+                        width: 8px
+                        height: 8px
+                    &::-webkit-scrollbar-track
+                        cursor: default
+                        background: transparent
+                    &::-webkit-scrollbar-thumb
+                        cursor: default
+                        background-color: lightgrey
+                        border-radius: 10px
+                        border: 2px solid transparent
+                        background-clip: content-box
+                        &:active
+                            background-color: darkgrey
+        & .MuiFormHelperText-root
+            margin-top: 0
+            font-size: 11px
         &_submit-button
             font-size: 1em
             margin: 1em 0
@@ -181,6 +208,21 @@
         font-size: 10px
                 
 @media (max-width: 480px)
+    .admin-add-product-modal, .admin-edit-product-modal
+        &_content
+            &_name, &_description, &_price, &_sale
+                &.MuiTextField-root
+                    margin-bottom: 1.5em
+            & .MuiFormControl-root
+                & .MuiInputLabel-root, & .MuiInputBase-root
+                    font-size: 14px
+                > .MuiInputLabel-root.MuiInputLabel-shrink
+                    line-height: 1.7em
+            & .MuiFormHelperText-root
+                font-size: 10px
+            &_category-select
+                font-size: 14px
+
     .admin-add-product-modal
         &_content
             &_add-button
@@ -189,3 +231,16 @@
                 span
                     height: 1.2em !important
                     width: 1.2em !important
+
+@media (max-width: 320px)
+    .admin-add-product-modal, .admin-edit-product-modal
+        &_content
+            & .MuiFormControl-root
+                & .MuiInputLabel-root, & .MuiInputBase-root
+                    font-size: 12px
+                > .MuiInputLabel-root.MuiInputLabel-shrink
+                    line-height: 2em
+            & .MuiFormHelperText-root
+                font-size: 8px
+            &_category-select
+                font-size: 12px

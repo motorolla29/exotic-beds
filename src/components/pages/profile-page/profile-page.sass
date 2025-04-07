@@ -1,10 +1,30 @@
 @import 'src/styles/variables'
     
 .profile-page
+    & .MuiFormGroup-root
+        & .MuiFormControlLabel-root
+            & .MuiRadio-root
+                padding: 0.5em
+                & .MuiSvgIcon-root
+                    font-size: 1.5em
+            & .MuiButtonBase-root
+            & .MuiTypography-root
+                font-size: 1em
+
     & .MuiFormControl-root
         font-size: 1em
-        & .MuiInputBase-root
+        > .MuiFormLabel-root, & .MuiInputBase-root
+            font-size: 1em
+        > .MuiInputBase-root
             color: $main-color-grey // цвет текста в инпуте
+            & .MuiInputAdornment-root
+                font-size: 1.5em
+                > .MuiButtonBase-root
+                    font-size: 1em    
+                & .MuiSvgIcon-root
+                    font-size: 1em
+                    
+
         & .MuiFormHelperText-root
             font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif
             font-size: 0.9em
@@ -31,9 +51,33 @@
             &:hover
                 opacity: 0.6
 
-
+@media (max-width: 1200px)
+    .profile-page
+        & .MuiFormControl-root
+            & .MuiFormControl-root
+            > .MuiFormLabel-root.MuiInputLabel-shrink
+                line-height: 1.7em
+@media (max-width: 998px)
+    .profile-page
+        & .MuiFormControl-root
+            > .MuiFormLabel-root.MuiInputLabel-shrink
+                line-height: 1.8em
+@media (max-width: 768px)
+    .profile-page
+        & .MuiFormControl-root
+            > .MuiFormLabel-root.MuiInputLabel-shrink
+                line-height: 2em
+@media (max-width: 480px)
+    .profile-page
+        & .MuiFormGroup-root
+            & .MuiFormControlLabel-root
+                & .MuiRadio-root
+                    padding: 5px  
 @media (max-width: 360px) 
     .profile-page
+        & .MuiFormControl-root
+            > .MuiFormLabel-root.MuiInputLabel-shrink
+                line-height: 2.2em
         &_heading
             flex-direction: column
             &_photo-container
@@ -55,3 +99,9 @@
             display: flex
             justify-content: center
             margin-top: 0
+
+@media (max-width: 320px) 
+    .profile-page
+        & .MuiFormControl-root
+            > .MuiFormLabel-root.MuiInputLabel-shrink
+                line-height: 2.4em

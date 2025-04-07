@@ -20,6 +20,9 @@ const validateProductData = (formData) => {
   if (!formData.description.trim()) {
     errors.description = 'Description is required';
     isValid = false;
+  } else if (formData.description.length > 250) {
+    errors.description = 'Description is too long';
+    isValid = false;
   }
 
   // Проверка price (должно быть числом и неотрицательным)
@@ -34,10 +37,10 @@ const validateProductData = (formData) => {
   // Проверка sale (если заполнено, должно быть числом и неотрицательным)
   if (formData.sale !== '') {
     if (isNaN(Number(formData.sale))) {
-      errors.sale = 'Sale must be a valid number';
+      errors.sale = 'Sale Price must be a valid number';
       isValid = false;
     } else if (Number(formData.sale) < 0) {
-      errors.sale = 'Sale cannot be negative';
+      errors.sale = 'Sale Price cannot be negative';
       isValid = false;
     }
   }
