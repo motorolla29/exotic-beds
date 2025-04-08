@@ -1,7 +1,14 @@
 @import 'src/styles/variables'
 
 .admin-add-product-modal, .admin-edit-product-modal
-    font-size: 14px
+    font-size: 16px
+    &_content-container
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100vw
+        height: 100vh
+        min-height: fit-content
     &_shadow
         display: flex
         justify-content: center
@@ -15,31 +22,34 @@
         overflow: hidden auto 
     &_content
         display: flex
+        justify-self: center
         flex-direction: column
         padding: 1em
         height: fit-content
         margin: 2em 1em
         display: flex
         overflow: hidden
-        width: 30em
+        width: 26em
         max-width: 75vw
         background: $main-color-white
         border-radius: 1em
         z-index: 1001
         & .MuiFormControl-root
+            font-size: 1em
             & .MuiInputLabel-root, & .MuiInputBase-root
-                font-size: 16px
+                font-size: 1em
         &_photo-container
             position: relative
             display: flex
             flex-direction: row
             align-items: flex-end
-            margin-bottom: 1em
+            margin-bottom: 0.75em
             & .error
+                font-size: 0.7em
                 color: $main-color-red
                 margin-left: 1em
         &_category-select
-            font-size: 16px
+            font-size: 1em
             margin-bottom: 1.5em
             > .MuiFormLabel-root
                 font-size: 0.875em
@@ -64,14 +74,15 @@
             border-radius: 0.25em
             border: 2px solid $main-color-green-light
             overflow: hidden
-            width: 7em
-            height: 7em
+            width: 6em
+            height: 6em
             background: $main-color-white-transparent
             img
                 display: flex
                 width: 100%
                 height: 100%
                 object-fit: contain
+                z-index: 2
             label
                 cursor: pointer
                 position: absolute
@@ -79,7 +90,7 @@
                 height: 100%
                 border-radius: 0.25em
                 overflow: hidden
-                z-index: 1
+                z-index: 2
                 input
                     visibility: hidden
             &_background
@@ -96,23 +107,24 @@
                     height: auto
                     color: $main-color-green-light
                     &.camera
-                        z-index: -1
+                        z-index: 1
                 //////стилизация для SyncLoader
                 & > span
+                    z-index: 2
                     & > span
                         opacity: 0.8
                         background-color: $main-color-green-light !important
-                        margin: 0.25em !important
-                        width: 0.75em !important
-                        height: 0.75em !important
+                        margin: 0.125em !important
+                        width: 0.5em !important
+                        height: 0.5em !important
         &_title
             display: flex
             justify-content: space-between
             align-items: center
             padding: 0 0 0.5em 0
             margin: 0 0 1em 0
+            font-size: 0.9em
             border-bottom: 1px solid
-            h2
             svg
                 cursor: pointer
                 width: 1.5em
@@ -131,7 +143,7 @@
             &.MuiTextField-root
                 margin-bottom: 1em
         &_rating
-            margin: 1em 0
+            margin: 0.75em 0
             &_input
                 &.MuiTextField-root
                     margin-bottom: 0.5em
@@ -170,9 +182,10 @@
                             background-color: darkgrey
         & .MuiFormHelperText-root
             margin-top: 0
-            font-size: 11px
+            font-size: 0.7em
+
         &_submit-button
-            font-size: 1em
+            font-size: 0.8em
             margin: 1em 0
             align-self: center
             padding: 0.25em 0.5em
@@ -196,51 +209,22 @@
             ///стилизация для ClipLoader   
             > span
                 vertical-align: sub
-                height: 1.75em !important
-                width: 1.75em !important
+                height: 1.5em !important
+                width: 1.5em !important
 
-@media (max-width: 1200px)
-    .admin-add-product-modal, .admin-edit-product-modal
-        font-size: 12px
-
-@media (max-width: 992px)
-    .admin-add-product-modal, .admin-edit-product-modal
-        font-size: 10px
-                
 @media (max-width: 480px)
     .admin-add-product-modal, .admin-edit-product-modal
+        font-size: 14px
         &_content
-            &_name, &_description, &_price, &_sale
-                &.MuiTextField-root
-                    margin-bottom: 1.5em
+            margin-bottom: 4em
             & .MuiFormControl-root
-                & .MuiInputLabel-root, & .MuiInputBase-root
-                    font-size: 14px
                 > .MuiInputLabel-root.MuiInputLabel-shrink
                     line-height: 1.7em
-            & .MuiFormHelperText-root
-                font-size: 10px
-            &_category-select
-                font-size: 14px
 
-    .admin-add-product-modal
-        &_content
-            &_add-button
-                width: 100%
-                height: 3em
-                span
-                    height: 1.2em !important
-                    width: 1.2em !important
-
-@media (max-width: 320px)
+@media (max-width: 360px)
     .admin-add-product-modal, .admin-edit-product-modal
+        font-size: 12px
         &_content
             & .MuiFormControl-root
-                & .MuiInputLabel-root, & .MuiInputBase-root
-                    font-size: 12px
                 > .MuiInputLabel-root.MuiInputLabel-shrink
                     line-height: 2em
-            & .MuiFormHelperText-root
-                font-size: 8px
-            &_category-select
-                font-size: 12px

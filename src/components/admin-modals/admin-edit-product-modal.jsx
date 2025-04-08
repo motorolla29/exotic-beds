@@ -33,6 +33,7 @@ import {
 } from '../../api/imagekitAPI';
 
 import './admin-modals.sass';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const AdminEditProductModal = ({ isOpen, onClose, item }) => {
   const overlayLoading = useSelector((state) => state.overlayLoader);
@@ -136,8 +137,6 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
       } finally {
         setSubmitting(false);
       }
-    } else {
-      console.log('Validation errors');
     }
   };
 
@@ -227,191 +226,204 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
         exit={{ opacity: 0 }}
         className="admin-edit-product-modal_shadow"
       >
-        <motion.div
-          key="admin-add-product-modal-content"
-          initial={{ scale: 0.1 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 0.1 }}
-          className="admin-edit-product-modal_content"
-        >
-          <div className="admin-edit-product-modal_content_title">
-            <h2>Edit Product</h2>
-            <IoCloseOutline onClick={handleCloseModal} />
-          </div>
-          <div className="admin-edit-product-modal_content_photo-container">
-            <div className="admin-edit-product-modal_content_photo">
-              {productData.photo && (
-                <img
-                  alt="product_photo"
-                  src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${productData.photo}?tr=w-150`}
-                />
-              )}
-              <label htmlFor="avatar_load">
-                <input
-                  id="avatar_load"
-                  type="file"
-                  className="profile-page_heading_photo"
-                  onChange={handleImageUpload}
-                  disabled={photoLoading}
-                />
-              </label>
-              <div className="admin-edit-product-modal_content_photo_background">
-                {photoLoading ? (
-                  <SyncLoader speedMultiplier={0.9} />
+        <OverlayScrollbarsComponent defer>
+          <div className="admin-add-product-modal_content-container">
+            <motion.div
+              key="admin-add-product-modal-content"
+              initial={{ scale: 0.1 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.1 }}
+              className="admin-edit-product-modal_content"
+            >
+              <div className="admin-edit-product-modal_content_title">
+                <h2>Edit Product</h2>
+                <IoCloseOutline onClick={handleCloseModal} />
+              </div>
+              <div className="admin-edit-product-modal_content_photo-container">
+                <div className="admin-edit-product-modal_content_photo">
+                  {productData.photo && (
+                    <img
+                      alt="product_photo"
+                      src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${productData.photo}?tr=w-150`}
+                    />
+                  )}
+                  <label htmlFor="avatar_load">
+                    <input
+                      id="avatar_load"
+                      type="file"
+                      className="profile-page_heading_photo"
+                      onChange={handleImageUpload}
+                      disabled={photoLoading}
+                    />
+                  </label>
+                  <div className="admin-edit-product-modal_content_photo_background">
+                    {photoLoading ? (
+                      <SyncLoader speedMultiplier={0.9} />
+                    ) : (
+                      <HiOutlineCamera className="camera" />
+                    )}
+                  </div>
+                </div>
+                {error.photo ? (
+                  <span className="error">{error.photo}</span>
                 ) : (
-                  <HiOutlineCamera className="camera" />
+                  ''
                 )}
               </div>
-            </div>
-            {error.photo ? <span className="error">{error.photo}</span> : ''}
-          </div>
-          <JoyFormControl className="admin-edit-product-modal_content_category-select">
-            <JoyFormLabel
-              id="category-select-label"
-              htmlFor="category-select-id"
-            >
-              Category
-            </JoyFormLabel>
-            <JoySelect
-              id="category-select-id"
-              name="category"
-              value={productData.category}
-              onChange={(event, newValue) =>
-                handleChange({
-                  target: { name: 'category', value: newValue },
-                })
-              }
-              slotProps={{
-                listbox: {
-                  disablePortal: true,
-                },
-                button: {
-                  id: 'category-select-id',
-                  'aria-labelledby': 'category-select-label category-select-id',
-                },
-              }}
-              renderValue={(selected) => {
-                const selectedCategory = Object.keys(categoriesIds).find(
-                  (category) => category === selected.value
-                );
-                return selectedCategory ? selectedCategory : 'Select category';
-              }}
-            >
-              {Object.keys(categoriesIds).map((category) => (
-                <JoyOption key={category} value={category}>
-                  {category}
-                </JoyOption>
-              ))}
-            </JoySelect>
-          </JoyFormControl>
-          <TextField
-            className="admin-edit-product-modal_content_name"
-            label="Product Name"
-            name="title"
-            size={ww > 480 ? 'normal' : 'small'}
-            error={submitClicked && !!error.title}
-            helperText={submitClicked && error.title ? error.title : ''}
-            value={productData.title}
-            onChange={handleChange}
-            fullWidth
-          />
-          <TextField
-            className="admin-edit-product-modal_content_description"
-            label="Description"
-            placeholder="Write something about this product..."
-            name="description"
-            size={ww > 480 ? 'normal' : 'small'}
-            error={submitClicked && !!error.description}
-            helperText={
-              submitClicked && error.description ? error.description : ''
-            }
-            value={productData.description}
-            onChange={handleChange}
-            fullWidth
-            multiline
-            rows={3}
-          />
-          <TextField
-            className="admin-edit-product-modal_content_price"
-            label="Price (€)"
-            name="price"
-            size={ww > 480 ? 'normal' : 'small'}
-            error={submitClicked && !!error.price}
-            helperText={submitClicked && error.price ? error.price : ''}
-            type="text"
-            value={productData.price}
-            onChange={handleChange}
-            fullWidth
-          />
-          <TextField
-            className="admin-edit-product-modal_content_sale"
-            label="Sale Price (optional)"
-            name="sale"
-            size={ww > 480 ? 'normal' : 'small'}
-            error={submitClicked && !!error.sale}
-            helperText={submitClicked && error.sale ? error.sale : ''}
-            type="text"
-            value={productData.sale}
-            onChange={handleChange}
-            fullWidth
-          />
-          <TextField
-            className="admin-edit-product-modal_content_quantity"
-            label="Quantity Available"
-            name="quantity"
-            size={ww > 480 ? 'normal' : 'small'}
-            error={submitClicked && !!error.quantity}
-            helperText={submitClicked && error.quantity ? error.quantity : ''}
-            type="text"
-            value={productData.quantity}
-            onChange={handleChange}
-            fullWidth
-          />
-          <div className="admin-edit-product-modal_content_rating">
-            <TextField
-              className="admin-edit-product-modal_content_rating_input"
-              label="Rating"
-              name="rating"
-              size={ww > 480 ? 'normal' : 'small'}
-              error={submitClicked && !!error.rating}
-              helperText={submitClicked && error.rating ? error.rating : ''}
-              type="text"
-              value={productData.rating.toString().replace(',', '.')}
-              onChange={handleChange}
-              fullWidth
-            />
-            <div className="admin-edit-product-modal_content_rating_slider-container">
-              <Slider
-                className="admin-edit-product-modal_content_rating_slider"
-                value={productData.rating}
-                name="rating"
+              <JoyFormControl className="admin-edit-product-modal_content_category-select">
+                <JoyFormLabel
+                  id="category-select-label"
+                  htmlFor="category-select-id"
+                >
+                  Category
+                </JoyFormLabel>
+                <JoySelect
+                  id="category-select-id"
+                  name="category"
+                  value={productData.category}
+                  onChange={(event, newValue) =>
+                    handleChange({
+                      target: { name: 'category', value: newValue },
+                    })
+                  }
+                  slotProps={{
+                    listbox: {
+                      disablePortal: true,
+                    },
+                    button: {
+                      id: 'category-select-id',
+                      'aria-labelledby':
+                        'category-select-label category-select-id',
+                    },
+                  }}
+                  renderValue={(selected) => {
+                    const selectedCategory = Object.keys(categoriesIds).find(
+                      (category) => category === selected.value
+                    );
+                    return selectedCategory
+                      ? selectedCategory
+                      : 'Select category';
+                  }}
+                >
+                  {Object.keys(categoriesIds).map((category) => (
+                    <JoyOption key={category} value={category}>
+                      {category}
+                    </JoyOption>
+                  ))}
+                </JoySelect>
+              </JoyFormControl>
+              <TextField
+                className="admin-edit-product-modal_content_name"
+                label="Product Name"
+                name="title"
+                size={ww > 480 ? 'normal' : 'small'}
+                error={submitClicked && !!error.title}
+                helperText={submitClicked && error.title ? error.title : ''}
+                value={productData.title}
                 onChange={handleChange}
-                min={0}
-                max={5}
-                step={0.1}
-                valueLabelDisplay="auto"
+                fullWidth
               />
-            </div>
+              <TextField
+                className="admin-edit-product-modal_content_description"
+                label="Description"
+                placeholder="Write something about this product..."
+                name="description"
+                size={ww > 480 ? 'normal' : 'small'}
+                error={submitClicked && !!error.description}
+                helperText={
+                  submitClicked && error.description ? error.description : ''
+                }
+                value={productData.description}
+                onChange={handleChange}
+                fullWidth
+                multiline
+                rows={3}
+              />
+              <TextField
+                className="admin-edit-product-modal_content_price"
+                label="Price (€)"
+                name="price"
+                size={ww > 480 ? 'normal' : 'small'}
+                error={submitClicked && !!error.price}
+                helperText={submitClicked && error.price ? error.price : ''}
+                type="text"
+                value={productData.price}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                className="admin-edit-product-modal_content_sale"
+                label="Sale Price (optional)"
+                name="sale"
+                size={ww > 480 ? 'normal' : 'small'}
+                error={submitClicked && !!error.sale}
+                helperText={submitClicked && error.sale ? error.sale : ''}
+                type="text"
+                value={productData.sale}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                className="admin-edit-product-modal_content_quantity"
+                label="Quantity Available"
+                name="quantity"
+                size={ww > 480 ? 'normal' : 'small'}
+                error={submitClicked && !!error.quantity}
+                helperText={
+                  submitClicked && error.quantity ? error.quantity : ''
+                }
+                type="text"
+                value={productData.quantity}
+                onChange={handleChange}
+                fullWidth
+              />
+              <div className="admin-edit-product-modal_content_rating">
+                <TextField
+                  className="admin-edit-product-modal_content_rating_input"
+                  label="Rating"
+                  name="rating"
+                  size={ww > 480 ? 'normal' : 'small'}
+                  error={submitClicked && !!error.rating}
+                  helperText={submitClicked && error.rating ? error.rating : ''}
+                  type="text"
+                  value={productData.rating.toString().replace(',', '.')}
+                  onChange={handleChange}
+                  fullWidth
+                />
+                <div className="admin-edit-product-modal_content_rating_slider-container">
+                  <Slider
+                    className="admin-edit-product-modal_content_rating_slider"
+                    value={productData.rating}
+                    name="rating"
+                    onChange={handleChange}
+                    min={0}
+                    max={5}
+                    step={0.1}
+                    valueLabelDisplay="auto"
+                  />
+                </div>
+              </div>
+              <button
+                onClick={handleSubmit}
+                className="admin-edit-product-modal_content_submit-button"
+                disabled={
+                  submitting ||
+                  (item.photo === productData.photo &&
+                    item.categoryId === categoriesIds[productData.category] &&
+                    item.title === productData.title &&
+                    item.description === productData.description &&
+                    item.price === Number(productData.price) &&
+                    (item.sale === Number(productData.sale) ||
+                      (item.sale === null && !!productData.sale === false)) &&
+                    item.availableQuantity === Number(productData.quantity) &&
+                    item.rating === Number(productData.rating))
+                }
+              >
+                {submitting ? <ClipLoader color="#e9d5be" /> : 'Save Changes'}
+              </button>
+            </motion.div>
           </div>
-          <button
-            onClick={handleSubmit}
-            className="admin-edit-product-modal_content_submit-button"
-            disabled={
-              submitting ||
-              (item.photo === productData.photo &&
-                item.categoryId === categoriesIds[productData.category] &&
-                item.title === productData.title &&
-                item.description === productData.description &&
-                item.price === Number(productData.price) &&
-                (item.sale === Number(productData.sale) ||
-                  (item.sale === null && !!productData.sale === false)) &&
-                item.availableQuantity === Number(productData.quantity) &&
-                item.rating === Number(productData.rating))
-            }
-          >
-            {submitting ? <ClipLoader color="#e9d5be" /> : 'Save Changes'}
-          </button>
-        </motion.div>
+        </OverlayScrollbarsComponent>
       </motion.div>
     </div>
   );
