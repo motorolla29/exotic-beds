@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Lovelist from '../../lovelist/lovelist';
 import LovelistEmpty from '../../lovelist-empty/lovelist-empty';
@@ -40,6 +41,9 @@ const LovelistPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>My Lovelist</title>
+      </Helmet>
       <Breadcrumbs />
       <div className="lovelist-page">
         {isAuth ? (

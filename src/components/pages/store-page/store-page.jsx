@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import Map, { Marker, NavigationControl } from 'react-map-gl/maplibre';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { OverlayScrollbars } from 'overlayscrollbars';
+import { Helmet } from 'react-helmet';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import stores from '../../../data/exotic-beds-stores';
@@ -19,18 +19,21 @@ import './store-page.sass';
 
 const StorePage = () => {
   const { id } = useParams();
+
   const store = stores.features.find((it) => it.properties.id === id);
 
-  const localStoreMapRef = useRef();
-
-  const nearbyStores = sortStoresByProximity(stores.features, {
-    latitude: store.geometry.coordinates[1],
-    longitude: store.geometry.coordinates[0],
-  })
-    .filter((it) => it.properties.id !== id)
-    .slice(0, 3);
-
   const dayNumber = new Date().getDay();
+  const localStoreMapRef = useRef();
+  const nearbyStoresScrollbarRef = useRef(null);
+
+  const nearbyStores = store?.geometry
+    ? sortStoresByProximity(stores.features, {
+        latitude: store?.geometry?.coordinates[1],
+        longitude: store?.geometry?.coordinates[0],
+      })
+        .filter((it) => it.properties.id !== id)
+        .slice(0, 3)
+    : [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,17 +44,28 @@ const StorePage = () => {
       duration: 500,
     });
 
-    OverlayScrollbars(document.getElementById('nearby-stores-scrollbar'), {})
-      .elements()
-      .viewport.scroll(0, 0); // сброс скролла в блоке с ближайшими магазинами
+    if (nearbyStoresScrollbarRef.current) {
+      const instance = nearbyStoresScrollbarRef.current.osInstance();
+      instance?.elements().viewport.scroll(0, 0);
+    } // сброс скролла в блоке с ближайшими магазинами
   }, [store]);
+
+  if (!store?.geometry || !store?.properties) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   return (
     <>
+      <Helmet>
+        <title>
+          {store.properties.name ? store.properties.name : ''}{' '}
+          {store.properties.city ? store.properties.city : ''}
+        </title>
+      </Helmet>
       <Breadcrumbs
         last={`${store.properties.name}, ${store.properties.address}, ${store.properties.city}`}
       />
-      <div className="store-page">
+      <div className="store-page" key={store.properties.id}>
         <div className="store-page_store-image">
           <ProgressiveImageContainer
             thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${store.properties.photo}?tr=w-60`}
@@ -175,7 +189,11 @@ const StorePage = () => {
         </div>
         <div className="store-page_nearby-stores">
           <h1 className="store-page_nearby-stores_title">Nearby Stores</h1>
-          <OverlayScrollbarsComponent id="nearby-stores-scrollbar" defer>
+          <OverlayScrollbarsComponent
+            id="nearby-stores-scrollbar"
+            ref={nearbyStoresScrollbarRef}
+            defer
+          >
             <div className="store-page_nearby-stores_items">
               {nearbyStores.map((it) => {
                 return (

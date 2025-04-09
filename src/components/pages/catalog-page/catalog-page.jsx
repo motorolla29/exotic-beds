@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
 import CatalogFilters from '../../catalog-filters/catalog-filters';
@@ -97,6 +99,11 @@ const CatalogPage = ({ category }) => {
   return (
     products.length && (
       <>
+        <Helmet>
+          <title>
+            {category ? `${getUcFirstNoDashStr(category)} Catalog` : 'Catalog'}
+          </title>
+        </Helmet>
         {ww <= 768 ? <SearchPanel /> : null}
         <Tabs />
         <Breadcrumbs />

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
@@ -169,6 +170,9 @@ const ProductPage = () => {
   return (
     product && (
       <>
+        <Helmet>
+          <title>{product.title}</title>
+        </Helmet>
         <Breadcrumbs category={PRODUCT_CATEGORIES[product.categoryId - 1]} />
         <div className="product-page">
           <div className="product-page_visual">

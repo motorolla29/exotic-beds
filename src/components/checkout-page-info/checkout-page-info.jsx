@@ -47,6 +47,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
   const selectRef = useRef();
   const [ww] = useWindowSize();
   const user = useSelector((state) => state.user);
+  const loading = useSelector((state) => state.overlayLoader);
   const [payButtonClicked, setPayButtonClicked] = useState(false);
   const [payButtonLoading, setPayButtonLoading] = useState(false);
   const [orderBodyVisible, setOrderBodyVisible] = useState(false);
@@ -644,7 +645,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                 </span>
               )}
             </div>
-            {orderBodyVisible && (
+            {orderBodyVisible && !loading && (
               <CheckoutPageOrderedItems items={orderedItems} />
             )}
             <CheckoutPageCounting

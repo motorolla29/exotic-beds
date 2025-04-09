@@ -1,16 +1,19 @@
-import { useEffect } from 'react';
-import { getOrder } from '../../../api/orderAPI';
-import { useState } from 'react';
-import { IoIosArrowBack } from 'react-icons/io';
-import './order-page.sass';
-import useWindowSize from '../../../hooks/use-window-size';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setNotificationModal } from '../../../store/action';
-import ErrorIcon from '@mui/icons-material/Error';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import dayjs from 'dayjs';
+
+import { IoIosArrowBack } from 'react-icons/io';
+import useWindowSize from '../../../hooks/use-window-size';
+import ErrorIcon from '@mui/icons-material/Error';
+
+import { getOrder } from '../../../api/orderAPI';
+import { setNotificationModal } from '../../../store/action';
 import { getCurrencySymbol } from '../../../utils';
 import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
+
+import './order-page.sass';
 
 const OrderPage = () => {
   const [order, setOrder] = useState({});
@@ -59,9 +62,12 @@ const OrderPage = () => {
 
   return (
     <div className="order-page">
+      <Helmet>
+        <title>Shop Order</title>
+      </Helmet>
       <Link className="order-page_back-link" to="/account/orders">
         <IoIosArrowBack />
-        Back
+        <span>Back</span>
       </Link>
       <h1 className="order-page_title">
         Order №{order.id}{' '}

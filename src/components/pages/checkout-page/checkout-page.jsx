@@ -10,11 +10,13 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import './checkout-page.sass';
+import { Helmet } from 'react-helmet';
 
 const CheckoutPage = () => {
   const [ww] = useWindowSize();
   const [topOrderSummaryVisible, setTopOrderSummaryVisible] = useState(false);
 
+  const loading = useSelector((state) => state.overlayLoader);
   const orderedItems = useSelector((state) =>
     state.cartProducts.filter((item) => item.availableQuantity > 0)
   );
@@ -23,6 +25,9 @@ const CheckoutPage = () => {
 
   return (
     <div className="checkout-page">
+      <Helmet>
+        <title>Checkout</title>
+      </Helmet>
       <div className="checkout-page_header">
         <Link className="checkout-page_header_logo" to="/">
           <img
@@ -50,17 +55,18 @@ const CheckoutPage = () => {
                   </span>
                 </span>
                 <p className="checkout-page_main_sm-top-order_heading_inner_total">
-                  €
-                  {(
-                    countedBasket.total -
-                    (promocode.name
-                      ? countedBasket.total * PROMOCODES[promocode.name]
-                      : 0)
-                  ).toFixed(2)}
+                  {loading
+                    ? '€0.00'
+                    : `€${(
+                        countedBasket.total -
+                        (promocode.name
+                          ? countedBasket.total * PROMOCODES[promocode.name]
+                          : 0)
+                      ).toFixed(2)}`}
                 </p>
               </div>
             </div>
-            {topOrderSummaryVisible && (
+            {topOrderSummaryVisible && !loading && (
               <CheckoutPageOrder
                 orderedItems={orderedItems}
                 countedBasket={countedBasket}
@@ -76,6 +82,7 @@ const CheckoutPage = () => {
         />
         {ww > 992 && (
           <CheckoutPageOrder
+            loading={loading}
             orderedItems={orderedItems}
             countedBasket={countedBasket}
             promocode={promocode}

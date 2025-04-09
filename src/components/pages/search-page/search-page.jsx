@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
@@ -112,6 +113,11 @@ const SearchPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${
+          searchQuery ? `${searchQuery} - buy on Exotic Beds` : 'Search'
+        }`}</title>
+      </Helmet>
       {ww <= 768 ? <SearchPanel /> : null}
       <Tabs />
       <Breadcrumbs />

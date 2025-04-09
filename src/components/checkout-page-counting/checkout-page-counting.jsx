@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { animate } from 'framer-motion';
 import { PROMOCODES } from '../../data/promocodes';
 import { setAppliedPromocode } from '../../store/action';
@@ -8,6 +8,7 @@ import './checkout-page-counting.sass';
 
 const CheckoutPageCounting = ({ items, countedBasket, promocode }) => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.overlayLoader);
   const [promocodeInput, setPromocodeInput] = useState('');
 
   const onApplyPromocodeClick = () => {
@@ -98,7 +99,11 @@ const CheckoutPageCounting = ({ items, countedBasket, promocode }) => {
             items
           </span>
           <span>
-            €{(countedBasket.subtotal - countedBasket.savings).toFixed(2)}
+            {loading
+              ? '€0.00'
+              : `€${(countedBasket.subtotal - countedBasket.savings).toFixed(
+                  2
+                )}`}
           </span>
         </div>
         {promocode.name && (
@@ -116,29 +121,38 @@ const CheckoutPageCounting = ({ items, countedBasket, promocode }) => {
               )
             </span>
             <span>
-              - €{(countedBasket.total * PROMOCODES[promocode.name]).toFixed(2)}
+              {loading
+                ? '- €0.00'
+                : `- €${(
+                    countedBasket.total * PROMOCODES[promocode.name]
+                  ).toFixed(2)}`}
             </span>
           </div>
         )}
         <div className="checkout-page-counting_count_delivery">
           <span>Shipping</span>
           <span>
-            {typeof countedBasket.delivery === 'number' ? '€' : ''}
-            {typeof countedBasket.delivery === 'number'
-              ? countedBasket.delivery.toFixed(2)
-              : countedBasket.delivery}
+            {loading
+              ? '€0.00'
+              : `${typeof countedBasket.delivery === 'number' ? '€' : ''}
+            ${
+              typeof countedBasket.delivery === 'number'
+                ? countedBasket.delivery.toFixed(2)
+                : countedBasket.delivery
+            }`}
           </span>
         </div>
         <div className="checkout-page-counting_count_total">
           <span>Total</span>
           <span>
-            €
-            {(
-              countedBasket.total -
-              (promocode.name
-                ? countedBasket.total * PROMOCODES[promocode.name]
-                : 0)
-            ).toFixed(2)}
+            {loading
+              ? '€0.00'
+              : `€${(
+                  countedBasket.total -
+                  (promocode.name
+                    ? countedBasket.total * PROMOCODES[promocode.name]
+                    : 0)
+                ).toFixed(2)}`}
           </span>
         </div>
       </div>

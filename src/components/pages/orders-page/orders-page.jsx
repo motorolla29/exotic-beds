@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { getOrders } from '../../../api/orderAPI';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
+
 import { BiError } from 'react-icons/bi';
 import OrderListItem from '../../order-list-item/order-list-item';
 
@@ -23,6 +25,9 @@ const OrdersPage = () => {
   if (loading) {
     return (
       <div className="orders-page">
+        <Helmet>
+          <title>My Orders</title>
+        </Helmet>
         <p className="orders-page_loading">Loading orders...</p>
       </div>
     );
@@ -31,6 +36,9 @@ const OrdersPage = () => {
   if (error) {
     return (
       <div className="orders-page">
+        <Helmet>
+          <title>My Orders</title>
+        </Helmet>
         <div className="orders-page_error">
           <p>
             <BiError />
@@ -44,6 +52,9 @@ const OrdersPage = () => {
   if (orders.length === 0)
     return (
       <div className="orders-page">
+        <Helmet>
+          <title>My Orders</title>
+        </Helmet>
         <p className="orders-page_nothing">
           You haven't made any orders yet...
         </p>
@@ -52,6 +63,9 @@ const OrdersPage = () => {
 
   return (
     <div className="orders-page">
+      <Helmet>
+        <title>My Orders</title>
+      </Helmet>
       <div className="orders-page_orders-list">
         {orders.map((order) => (
           <OrderListItem key={order.id} order={order} />
