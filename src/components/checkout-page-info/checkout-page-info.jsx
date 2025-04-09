@@ -348,7 +348,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
           <Box className="checkout-page_main_info_inner_delivery_container">
             <Box
               sx={{
-                mb: 4,
+                mb: ww > 480 ? 4 : 3,
               }}
             >
               <JoyFormControl>
@@ -420,7 +420,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
                 </JoySelect>
               </JoyFormControl>
             </Box>
-            <Grid container spacing={2.5}>
+            <Grid container spacing={ww > 480 ? 2.5 : 2}>
               <Grid item xs={12} md={6}>
                 <TextField
                   label="Name"
