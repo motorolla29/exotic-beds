@@ -335,11 +335,10 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
             variant="outlined"
           />
           <div className="checkout-page_main_info_inner_contact_mailing-consent">
-            <FormControlLabel
-              control={<Checkbox />}
-              label="Email me with news and offers"
-              labelPlacement="end"
-            />
+            <Checkbox disableRipple />
+            <span className="checkout-page_main_info_inner_contact_mailing-consent_label">
+              Email me with news and offers
+            </span>
           </div>
         </div>
         <div className="checkout-page_main_info_inner_delivery">

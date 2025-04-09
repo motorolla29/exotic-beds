@@ -29,19 +29,23 @@
                 width: 100%
         &_contact
             &_mailing-consent
+                width: fit-content
                 display: flex
-                & .MuiFormControlLabel-root
-                    margin: 0 0 0 -0.25em
-                    & .MuiCheckbox-root
-                        color: $main-color-turquoise-transparent
-                        padding: 0.5em
-                        > .MuiSvgIcon-root
-                            font-size: 1.5em
-                        &.Mui-checked
-                            color: $main-color-turquoise-transparent
-                    & > .MuiTypography-root.MuiFormControlLabel-label
-                        font-size: 0.75em
-                        opacity: 0.8
+                justify-content: center
+                align-items: center
+                opacity: 0.8
+                margin: 0.5em 0 0 0
+                &_label
+                    margin-left: 0.375em
+                    font-size: 1em
+                    line-height: 1
+                & .MuiCheckbox-root
+                    padding: 0
+                    color: $main-color-turquoise
+                    > .MuiSvgIcon-root
+                        font-size: 1.5em
+                    &.Mui-checked
+                        color: $main-color-turquoise
         &_delivery
             &_container
                 padding: 2em
