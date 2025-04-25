@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
+
+import { $authHost } from '../../../api';
+import { setCart } from '../../../store/action';
+
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import { ReactComponent as SuccessIcon } from '../../../images/success.svg';
 import { BiError } from 'react-icons/bi';
 import { BiErrorCircle } from 'react-icons/bi';
-import { setCart } from '../../../store/action';
 
 import './payment-success-page.sass';
-import { $authHost } from '../../../api';
 
 const PaymentSuccessPage = () => {
   const dispatch = useDispatch();
