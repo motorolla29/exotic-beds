@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Map, { Marker, NavigationControl } from 'react-map-gl/maplibre';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import stores from '../../../data/exotic-beds-stores';

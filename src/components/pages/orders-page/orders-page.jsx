@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getOrders } from '../../../api/orderAPI';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import { BiError } from 'react-icons/bi';
 import OrderListItem from '../../order-list-item/order-list-item';

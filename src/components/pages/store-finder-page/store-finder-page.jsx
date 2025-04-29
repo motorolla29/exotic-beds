@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { MapProvider } from 'react-map-gl/maplibre';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import StoreFinder from '../../store-finder/store-finder';

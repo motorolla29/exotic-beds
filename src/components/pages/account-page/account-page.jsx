@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
+import { Helmet } from 'react-helmet-async';
 
 import './account-page.sass';
 

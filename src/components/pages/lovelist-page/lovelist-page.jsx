@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Lovelist from '../../lovelist/lovelist';
 import LovelistEmpty from '../../lovelist-empty/lovelist-empty';
