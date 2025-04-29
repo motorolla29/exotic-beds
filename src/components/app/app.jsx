@@ -105,7 +105,7 @@ const App = () => {
               getBasket(),
               getLovelist(),
             ]);
-            console.timeEnd('getBasket.Lovelist');
+            console.timeEnd('getBasket/Lovelist');
             dispatch(setCart(basket));
             dispatch(setLovelist(lovelist));
           } catch (authError) {
