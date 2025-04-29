@@ -65,7 +65,9 @@ const App = () => {
         dispatch(setDeviceId(storedDeviceId));
 
         // Загрузка продуктов
+        console.time('getAllProducts');
         const productData = await getAllProducts();
+        console.timeEnd('getAllProducts');
         dispatch(setProducts(productData.rows));
         dispatch(setProductsLoaded(true));
 
@@ -87,7 +89,9 @@ const App = () => {
         if (token) {
           // Проверка токена
           try {
+            console.time('checkAuth');
             const user = await checkAuth();
+            console.timeEnd('checkAuth');
             dispatch(setUser(user));
             dispatch(setIsAuth(true));
 
