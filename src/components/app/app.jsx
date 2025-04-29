@@ -59,8 +59,10 @@ const App = () => {
         // Генерация deviceId
         let storedDeviceId = localStorage.getItem('deviceId');
         if (!storedDeviceId) {
+          console.time('generateDeviceId');
           storedDeviceId = await generateDeviceIdWithUserAgentAndClientHints();
           localStorage.setItem('deviceId', storedDeviceId);
+          console.timeEnd('generateDeviceId');
         }
         dispatch(setDeviceId(storedDeviceId));
 
@@ -74,10 +76,12 @@ const App = () => {
         // Обновление локальной корзины
         const cartFromStorage = JSON.parse(localStorage.getItem('cart'));
         if (cartFromStorage) {
+          console.time('updateQuantities');
           const updatedCart = updateLocalStorageBasketItemsQuantity(
             cartFromStorage,
             productData.rows
           );
+          console.timeEnd('updateQuantities');
           localStorage.setItem('cart', JSON.stringify(updatedCart));
           dispatch(setCart(updatedCart));
         }
@@ -96,10 +100,12 @@ const App = () => {
             dispatch(setIsAuth(true));
 
             // Параллельная загрузка корзины и списка желаемого
+            console.time('getBasket/Lovelist');
             const [basket, lovelist] = await Promise.all([
               getBasket(),
               getLovelist(),
             ]);
+            console.timeEnd('getBasket.Lovelist');
             dispatch(setCart(basket));
             dispatch(setLovelist(lovelist));
           } catch (authError) {
