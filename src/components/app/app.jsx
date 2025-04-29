@@ -66,16 +66,31 @@ const App = () => {
         }
         dispatch(setDeviceId(storedDeviceId));
 
-        // Загрузка продуктов
-        console.time('getAllProducts');
-        const productData = await getAllProducts();
-        console.timeEnd('getAllProducts');
+        // 2. Prepare promises for products and auth
+        const token = localStorage.getItem('token');
+        console.time('fetchProductsAndAuth');
+        const productsPromise = getAllProducts();
+        const authPromise = token
+          ? checkAuth().catch((err) => {
+              console.warn('Auth failed:', err);
+              return null;
+            })
+          : Promise.resolve(null);
+        const [productData, user] = await Promise.all([
+          productsPromise,
+          authPromise,
+        ]);
+        console.timeEnd('fetchProductsAndAuth');
+
+        // 3. Dispatch products
         dispatch(setProducts(productData.rows));
         dispatch(setProductsLoaded(true));
 
-        // Обновление локальной корзины
-        const cartFromStorage = JSON.parse(localStorage.getItem('cart'));
-        if (cartFromStorage) {
+        // 4. Update local cart quantities if exists
+        const cartFromStorage = JSON.parse(
+          localStorage.getItem('cart') || '[]'
+        );
+        if (cartFromStorage.length) {
           console.time('updateQuantities');
           const updatedCart = updateLocalStorageBasketItemsQuantity(
             cartFromStorage,
@@ -86,42 +101,30 @@ const App = () => {
           dispatch(setCart(updatedCart));
         }
 
-        // Начало процесса авторизации
+        // 5. Begin auth process
         dispatch(setAuthProcess(true));
 
-        const token = localStorage.getItem('token');
-        if (token) {
-          // Проверка токена
-          try {
-            console.time('checkAuth');
-            const user = await checkAuth();
-            console.timeEnd('checkAuth');
-            dispatch(setUser(user));
-            dispatch(setIsAuth(true));
+        if (user) {
+          dispatch(setUser(user));
+          dispatch(setIsAuth(true));
 
-            // Параллельная загрузка корзины и списка желаемого
-            console.time('getBasket/Lovelist');
-            const [basket, lovelist] = await Promise.all([
-              getBasket(),
-              getLovelist(),
-            ]);
-            console.timeEnd('getBasket/Lovelist');
-            dispatch(setCart(basket));
-            dispatch(setLovelist(lovelist));
-          } catch (authError) {
-            if (!isAuth) {
-              const cart = JSON.parse(localStorage.getItem('cart')) || [];
-              dispatch(setCart(cart));
-              dispatch(setLovelist([]));
-            }
-          }
+          // 6. Parallel fetch basket and lovelist
+          console.time('fetchBasketAndLovelist');
+          const [basket, lovelist] = await Promise.all([
+            getBasket(),
+            getLovelist(),
+          ]);
+          console.timeEnd('fetchBasketAndLovelist');
+          dispatch(setCart(basket));
+          dispatch(setLovelist(lovelist));
         } else {
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          dispatch(setCart(cart));
+          // guest
+          const guestCart = JSON.parse(localStorage.getItem('cart') || '[]');
+          dispatch(setCart(guestCart));
           dispatch(setLovelist([]));
         }
       } catch (error) {
-        console.error('Error loading app data:', error.message);
+        console.error('Error loading app data:', error);
         dispatch(
           setNotificationModal({
             open: true,
@@ -132,11 +135,82 @@ const App = () => {
           })
         );
       } finally {
-        // Завершаем процесс загрузки
         dispatch(setAuthProcess(false));
         dispatch(setOverlayLoader(false));
       }
     };
+
+    // // Загрузка продуктов
+    // console.time('getAllProducts');
+    // const productData = await getAllProducts();
+    // console.timeEnd('getAllProducts');
+    // dispatch(setProducts(productData.rows));
+    // dispatch(setProductsLoaded(true));
+
+    // // Обновление локальной корзины
+    // const cartFromStorage = JSON.parse(localStorage.getItem('cart'));
+    // if (cartFromStorage) {
+    //   console.time('updateQuantities');
+    //   const updatedCart = updateLocalStorageBasketItemsQuantity(
+    //     cartFromStorage,
+    //     productData.rows
+    //   );
+    //   console.timeEnd('updateQuantities');
+    //   localStorage.setItem('cart', JSON.stringify(updatedCart));
+    //   dispatch(setCart(updatedCart));
+    // }
+
+    //     // Начало процесса авторизации
+    //     dispatch(setAuthProcess(true));
+
+    //     const token = localStorage.getItem('token');
+    //     if (token) {
+    //       // Проверка токена
+    //       try {
+    //         console.time('checkAuth');
+    //         const user = await checkAuth();
+    //         console.timeEnd('checkAuth');
+    //         dispatch(setUser(user));
+    //         dispatch(setIsAuth(true));
+
+    //         // Параллельная загрузка корзины и списка желаемого
+    //         console.time('getBasket/Lovelist');
+    //         const [basket, lovelist] = await Promise.all([
+    //           getBasket(),
+    //           getLovelist(),
+    //         ]);
+    //         console.timeEnd('getBasket/Lovelist');
+    //         dispatch(setCart(basket));
+    //         dispatch(setLovelist(lovelist));
+    //       } catch (authError) {
+    //         if (!isAuth) {
+    //           const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    //           dispatch(setCart(cart));
+    //           dispatch(setLovelist([]));
+    //         }
+    //       }
+    //     } else {
+    //       const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    //       dispatch(setCart(cart));
+    //       dispatch(setLovelist([]));
+    //     }
+    //   } catch (error) {
+    //     console.error('Error loading app data:', error.message);
+    //     dispatch(
+    //       setNotificationModal({
+    //         open: true,
+    //         icon: <ErrorIcon />,
+    //         title: error.message,
+    //         description:
+    //           'Failed to load application data, please try again later',
+    //       })
+    //     );
+    //   } finally {
+    //     // Завершаем процесс загрузки
+    //     dispatch(setAuthProcess(false));
+    //     dispatch(setOverlayLoader(false));
+    //   }
+    // };
     initApp();
   }, [isAuth, dispatch]);
 
