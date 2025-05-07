@@ -40,10 +40,6 @@ const loadProducts = createAction(`LOAD_PRODUCTS`, (products) => ({
   payload: products,
 }));
 
-const productsAreLoaded = createAction(`PRODUCTS_LOADED`, (bool) => ({
-  payload: bool,
-}));
-
 const cartOpen = createAction(`SET_IS_CART_OPEN`, (bool) => ({
   payload: bool,
 }));
@@ -105,7 +101,6 @@ export {
   setCart,
   setLovelist,
   loadProducts,
-  productsAreLoaded,
   cartOpen,
   loginModalsOpen,
   setNotificationModal,

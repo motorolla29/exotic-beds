@@ -33,7 +33,7 @@ import ProgressiveImageContainer from '../../progressive-image-container/progres
 import { PRODUCT_CATEGORIES } from '../../../const';
 import Reviews from '../../reviews/reviews';
 import { deleteImageFromImagekit } from '../../../api/imagekitAPI';
-import { deleteProduct, getAllProducts } from '../../../api/productAPI';
+import { deleteProduct, getProducts } from '../../../api/productAPI';
 import AdminEditProductModal from '../../admin-modals/admin-edit-product-modal';
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
@@ -144,7 +144,7 @@ const ProductPage = () => {
       } else {
         navigate('/beds', { replace: true });
       }
-      const productData = await getAllProducts();
+      const productData = await getProducts();
       dispatch(setProducts(productData.rows));
       dispatch(
         setSnackbar({

@@ -1,147 +1,109 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
 import Tabs from '../../tabs/tabs';
 import CatalogFilters from '../../catalog-filters/catalog-filters';
 import Catalog from '../../catalog/catalog';
-import {
-  categoriesIds,
-  findCheapestProductObj,
-  findMostExpensiveProductObj,
-  getUcFirstNoDashStr,
-  sortProducts,
-} from '../../../utils';
+import { categoriesIds, getUcFirstNoDashStr } from '../../../utils';
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 import CatalogEmpty from '../../catalog-empty/catalog-empty';
 import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
+import { getProducts } from '../../../api/productAPI';
+import { setProducts } from '../../../store/action';
 
 import './catalog-page.sass';
 
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
-  const user = useSelector((state) => state.user);
-  const products = useSelector((state) => state.products);
-
+  const dispatch = useDispatch();
   const [ww] = useWindowSize();
+  const {
+    items,
+    total,
+    page,
+    pageSize,
+    minPrice,
+    maxPrice,
+    filterCounts = {},
+  } = useSelector((state) => state.products);
 
-  const highestPrice =
-    findMostExpensiveProductObj(products)?.sale ||
-    findMostExpensiveProductObj(products)?.price;
-  const lowestPrice =
-    findCheapestProductObj(products)?.sale ||
-    findCheapestProductObj(products)?.price;
-
-  const minPrice = +searchParams.get('minPrice') || lowestPrice;
-  const maxPrice = +searchParams.get('maxPrice') || highestPrice;
-  const minRating = +searchParams.get('minRating') || 0;
-  const seriesArray = searchParams.getAll('series');
-  const topRated = searchParams.get('top-rated');
-  const onSale = searchParams.get('sale');
-  const isNew = searchParams.get('new');
-  const limit = searchParams.get('limit') || 24;
-  const sort = searchParams.get('sortBy');
-
-  const currentCategoryProducts = products.filter(
-    (it) => it.categoryId === categoriesIds[category]
-  );
-
-  let filteredProducts = currentCategoryProducts.filter((product) => {
-    const priceToUse = product.sale ? product.sale : product.price;
-    if (
-      priceToUse >= minPrice &&
-      priceToUse <= maxPrice &&
-      product.rating >= minRating &&
-      (seriesArray.some((series) =>
-        product.title.toLowerCase().includes(`${series.toLowerCase()} series`)
-      ) ||
-        !seriesArray.length) &&
-      (product.rating >= 4.9 || !topRated) &&
-      (product.sale || !onSale) &&
-      (product.isNew || !isNew)
-    ) {
-      return true;
-    }
-    return false;
-  });
-
-  if (!user || user.role !== 'ADMIN') {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.availableQuantity > 0
-    );
-  }
-
-  let sortedProducts = sortProducts(filteredProducts, sort);
-
-  if (user && user.role === 'ADMIN') {
-    const availableProducts = sortedProducts.filter(
-      (product) => product.availableQuantity > 0
-    );
-    const outOfStockProducts = sortedProducts.filter(
-      (product) => product.availableQuantity === 0
-    );
-    sortedProducts = [...availableProducts, ...outOfStockProducts];
-  }
-
-  const limitedSortedProducts = sortedProducts.slice(
-    ((+searchParams.get('page') || 1) - 1) * limit,
-    (+searchParams.get('page') || 1) * limit
+  const params = useMemo(
+    () => ({
+      categoryId: category && categoriesIds[category],
+      page: +searchParams.get('page') || 1,
+      limit: +searchParams.get('limit') || pageSize,
+      minPrice: searchParams.get('minPrice'),
+      maxPrice: searchParams.get('maxPrice'),
+      minRating: searchParams.get('minRating'),
+      series: searchParams.getAll('series'),
+      topRated: searchParams.get('top-rated'),
+      sale: searchParams.get('sale'),
+      isNew: searchParams.get('new'),
+      sortBy: searchParams.get('sortBy'),
+    }),
+    [category, searchParams, pageSize]
   );
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
-    products.length && (
-      <>
-        <Helmet>
-          <title>
-            {category ? `${getUcFirstNoDashStr(category)} Catalog` : 'Catalog'}
-          </title>
-        </Helmet>
-        {ww <= 768 ? <SearchPanel /> : null}
-        <Tabs />
-        <Breadcrumbs />
-        <div className="catalog-page">
-          {ww > 768 ? (
-            <CatalogFilters
-              products={currentCategoryProducts}
-              category={category}
-            />
-          ) : null}
-          <div className="catalog-container">
-            <h1 className="catalog-container_title">
-              {getUcFirstNoDashStr(category)}
-            </h1>
+  useEffect(() => {
+    (async () => {
+      const data = await getProducts(params);
+      dispatch(setProducts(data));
+    })();
+  }, [dispatch, params]);
 
-            {sortedProducts.length ? (
-              <>
-                <CatalogTopToolbar
-                  products={currentCategoryProducts}
-                  category={category}
-                  sortedProducts={sortedProducts}
-                  limitedSortedProducts={limitedSortedProducts}
-                />
-                {sortedProducts.length > 24 && (
-                  <CatalogPagination products={sortedProducts} limit={limit} />
-                )}
-                <Catalog products={limitedSortedProducts} category={category} />
-                {sortedProducts.length > 24 && (
-                  <CatalogPagination products={sortedProducts} limit={limit} />
-                )}
-              </>
-            ) : (
-              <CatalogEmpty />
-            )}
-          </div>
+  return (
+    <>
+      <Helmet>
+        <title>
+          {category ? `${getUcFirstNoDashStr(category)} Catalog` : 'Catalog'}
+        </title>
+      </Helmet>
+      {ww <= 768 ? <SearchPanel /> : null}
+      <Tabs />
+      <Breadcrumbs />
+      <div className="catalog-page">
+        {ww > 768 ? (
+          <CatalogFilters
+            category={category}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            filterCounts={filterCounts}
+          />
+        ) : null}
+        <div className="catalog-container">
+          <h1 className="catalog-container_title">
+            {getUcFirstNoDashStr(category)}
+          </h1>
+
+          {items.length ? (
+            <>
+              <CatalogTopToolbar
+                total={total}
+                category={category}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                filterCounts={filterCounts}
+              />
+              <CatalogPagination total={total} page={page} limit={pageSize} />
+              <Catalog products={items} category={category} />
+
+              <CatalogPagination total={total} page={page} limit={pageSize} />
+            </>
+          ) : (
+            <CatalogEmpty />
+          )}
         </div>
-      </>
-    )
+      </div>
+    </>
   );
 };
 

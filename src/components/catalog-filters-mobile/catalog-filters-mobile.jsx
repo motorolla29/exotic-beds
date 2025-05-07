@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { motion } from 'framer-motion';
@@ -8,58 +8,52 @@ import PriceFilter from '../filter-components/price-filter/price-filter';
 import RatingFilter from '../filter-components/rating-filter/rating-filter';
 import SeriesFilter from '../filter-components/series-filter/series-filter';
 import FilterSwitchers from '../filter-components/filter-switchers/filter-switchers';
-import {
-  findCheapestProductObj,
-  findMostExpensiveProductObj,
-  scrollController,
-} from '../../utils';
+import { scrollController } from '../../utils';
 
 import './catalog-filters-mobile.sass';
 
+const filterKeysMobile = [
+  'category',
+  'series',
+  'minRating',
+  'minPrice',
+  'maxPrice',
+  'top-rated',
+  'sale',
+  'new',
+  'q',
+];
+
 const CatalogFiltersMobile = ({
   closeFilters,
-  products,
   category,
-  sortedProducts,
+  total,
+  minPrice,
+  maxPrice,
+  filterCounts,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const isFilterParams =
-    searchParams.has('category') ||
-    searchParams.has('series') ||
-    searchParams.has('minRating') ||
-    searchParams.has('minPrice') ||
-    searchParams.has('maxPrice') ||
-    searchParams.has('top-rated') ||
-    searchParams.has('sale') ||
-    searchParams.has('new');
+  const isFilterParams = useMemo(
+    () => filterKeysMobile.some((key) => searchParams.has(key)),
+    [searchParams]
+  );
 
-  const onClearButtonHandler = () => {
-    searchParams.delete('category');
-    searchParams.delete('series');
-    searchParams.delete('minRating');
-    searchParams.delete('minPrice');
-    searchParams.delete('maxPrice');
-    searchParams.delete('top-rated');
-    searchParams.delete('sale');
-    searchParams.delete('new');
+  const clearFilters = () => {
+    filterKeysMobile.forEach((key) => searchParams.delete(key));
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
 
   useEffect(() => {
     scrollController.disabledScroll();
     return () => scrollController.enabledScroll();
-  });
+  }, []);
 
   useEffect(() => {
-    window.addEventListener(
-      'popstate',
-      (e) => {
-        closeFilters();
-      },
-      { once: 'true' }
-    );
-  });
+    const onPop = () => closeFilters();
+    window.addEventListener('popstate', onPop, { once: 'true' });
+  }, [closeFilters]);
 
   return (
     <motion.div exit={{ opacity: 0 }}>
@@ -78,36 +72,29 @@ const CatalogFiltersMobile = ({
             <h3 className="catalog-filters-mobile_header_main-title">
               Filter By
             </h3>
-            {isFilterParams ? (
+            {isFilterParams && (
               <button
-                onClick={onClearButtonHandler}
+                onClick={clearFilters}
                 className="catalog-filters-mobile_header_clear-button"
               >
-                {' '}
                 Clear all
               </button>
-            ) : null}
+            )}
           </div>
-          {category ? null : <CategoryFilter products={products} />}
-          <PriceFilter
-            minPrice={
-              findCheapestProductObj(products).sale ||
-              findCheapestProductObj(products).price
-            }
-            maxPrice={
-              findMostExpensiveProductObj(products).sale ||
-              findMostExpensiveProductObj(products).price
-            }
+          {!category && <CategoryFilter counts={filterCounts.categoryCounts} />}
+          <PriceFilter minPrice={minPrice} maxPrice={maxPrice} />
+          <RatingFilter counts={filterCounts.ratingCounts} />
+          <SeriesFilter counts={filterCounts.seriesCounts} />
+          <FilterSwitchers
+            newCount={filterCounts.newCount}
+            saleCount={filterCounts.saleCount}
+            topRatedCount={filterCounts.topRatedCount}
           />
-          <RatingFilter products={products} />
-          <SeriesFilter products={products} />
-          <FilterSwitchers />
           <div className="catalog-filters-mobile_show-products-button">
             <button onClick={closeFilters}>
-              Show {sortedProducts.length}{' '}
-              {sortedProducts.length === 1 ? 'product' : 'products'}
+              Show {total} {total === 1 ? 'product' : 'products'}
             </button>
-          </div>{' '}
+          </div>
         </motion.div>
       </OverlayScrollbarsComponent>
     </motion.div>

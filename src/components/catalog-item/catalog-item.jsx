@@ -30,7 +30,7 @@ import { MdOutlineEdit } from 'react-icons/md';
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AdminEditProductModal from '../admin-modals/admin-edit-product-modal';
-import { deleteProduct, getAllProducts } from '../../api/productAPI';
+import { deleteProduct, getProducts } from '../../api/productAPI';
 import { deleteImageFromImagekit } from '../../api/imagekitAPI';
 
 import './catalog-item.sass';
@@ -140,7 +140,7 @@ const CatalogItem = ({ item }) => {
           console.error('Error deleting previous image:', error);
         }
       }
-      const productData = await getAllProducts();
+      const productData = await getProducts();
       dispatch(setProducts(productData.rows));
       dispatch(
         setSnackbar({

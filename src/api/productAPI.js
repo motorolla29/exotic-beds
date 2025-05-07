@@ -1,7 +1,7 @@
-import { $authHost, $host } from './index';
+import { $authHost } from './index';
 
-export const getAllProducts = async () => {
-  const { data } = await $host.get('api/product');
+export const getProducts = async (params) => {
+  const { data } = await $authHost.get('api/product', { params });
   return data;
 };
 

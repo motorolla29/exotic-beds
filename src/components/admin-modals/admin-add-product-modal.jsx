@@ -26,7 +26,7 @@ import {
   setProducts,
   setSnackbar,
 } from '../../store/action';
-import { createProduct, getAllProducts } from '../../api/productAPI';
+import { createProduct, getProducts } from '../../api/productAPI';
 import {
   getImagekitAuth,
   deleteImageFromImagekit,
@@ -93,7 +93,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
 
         await createProduct(adaptedData);
 
-        const updatedProducts = await getAllProducts();
+        const updatedProducts = await getProducts();
         dispatch(setProducts(updatedProducts.rows));
 
         onClose();

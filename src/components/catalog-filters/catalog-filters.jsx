@@ -1,40 +1,39 @@
 import { useSearchParams } from 'react-router-dom';
 import StickyBox from 'react-sticky-box';
+import { useMemo } from 'react';
 
 import CategoryFilter from '../filter-components/category-filter/category-filter';
 import PriceFilter from '../filter-components/price-filter/price-filter';
 import RatingFilter from '../filter-components/rating-filter/rating-filter';
 import SeriesFilter from '../filter-components/series-filter/series-filter';
 import FilterSwitchers from '../filter-components/filter-switchers/filter-switchers';
-import {
-  findCheapestProductObj,
-  findMostExpensiveProductObj,
-} from '../../utils';
 
 import './catalog-filters.sass';
 
-const CatalogFilters = ({ products, category }) => {
+const filterKeys = [
+  'category',
+  'series',
+  'minRating',
+  'minPrice',
+  'maxPrice',
+  'top-rated',
+  'sale',
+  'new',
+  'q',
+];
+
+const CatalogFilters = ({ category, minPrice, maxPrice, filterCounts }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const isFilterParams =
-    searchParams.has('category') ||
-    searchParams.has('series') ||
-    searchParams.has('minRating') ||
-    searchParams.has('minPrice') ||
-    searchParams.has('maxPrice') ||
-    searchParams.has('top-rated') ||
-    searchParams.has('sale') ||
-    searchParams.has('new');
+  // Есть ли активные фильтры
+  const isFilterParams = useMemo(
+    () => filterKeys.some((key) => searchParams.has(key)),
+    [searchParams]
+  );
 
-  const onClearButtonHandler = () => {
-    searchParams.delete('category');
-    searchParams.delete('series');
-    searchParams.delete('minRating');
-    searchParams.delete('minPrice');
-    searchParams.delete('maxPrice');
-    searchParams.delete('top-rated');
-    searchParams.delete('sale');
-    searchParams.delete('new');
+  const clearFilters = () => {
+    filterKeys.forEach((key) => searchParams.delete(key));
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
 
@@ -44,7 +43,7 @@ const CatalogFilters = ({ products, category }) => {
         <h3 className="catalog-filters_header_main-title">Filter By</h3>
         {isFilterParams ? (
           <button
-            onClick={onClearButtonHandler}
+            onClick={clearFilters}
             className="catalog-filters_header_clear-button"
           >
             {' '}
@@ -52,30 +51,25 @@ const CatalogFilters = ({ products, category }) => {
           </button>
         ) : null}
       </div>
-      {category ? null : (
+      {!category && (
         <div className="catalog-filters_filter">
-          <CategoryFilter products={products} />
+          <CategoryFilter counts={filterCounts.categoryCounts} />
         </div>
       )}
       <div className="catalog-filters_filter">
-        <PriceFilter
-          minPrice={
-            findCheapestProductObj(products).sale ||
-            findCheapestProductObj(products).price
-          }
-          maxPrice={
-            findMostExpensiveProductObj(products).sale ||
-            findMostExpensiveProductObj(products).price
-          }
-        />
+        <PriceFilter minPrice={minPrice} maxPrice={maxPrice} />
       </div>
       <div className="catalog-filters_filter">
-        <RatingFilter products={products} />
+        <RatingFilter counts={filterCounts.ratingCounts} />
       </div>
       <div className="catalog-filters_filter">
-        <SeriesFilter products={products} />
+        <SeriesFilter counts={filterCounts.seriesCounts} />
       </div>
-      <FilterSwitchers />
+      <FilterSwitchers
+        newCount={filterCounts.newCount}
+        saleCount={filterCounts.saleCount}
+        topRatedCount={filterCounts.topRatedCount}
+      />
     </StickyBox>
   );
 };

@@ -9,7 +9,6 @@ import {
   setUser,
   setProducts,
   loadProducts,
-  productsAreLoaded,
   cartOpen,
   setCart,
   setLovelist,
@@ -22,23 +21,21 @@ import {
   setAppliedPromocode,
 } from './action';
 
-// import {
-//   getCartWithAddedProduct,
-//   getCartWithIncreasedProduct,
-//   getCartWithDecreasedProduct,
-//   updateLovelist,
-// } from '../utils';
-
-//import PRODUCTS from '../data/products';
-
 const initialState = {
   overlayLoader: true,
-  productsLoaded: false,
   authProcess: true,
   isAuth: false,
   deviceId: null,
   user: {},
-  products: [],
+  products: {
+    items: [],
+    total: 0,
+    page: 1,
+    pageSize: 24,
+    minPrice: 0,
+    maxPrice: 0,
+    filterCounts: {},
+  },
   isCartOpen: false,
   isLoginModalsOpen: false,
   confirmationModal: {},
@@ -82,13 +79,10 @@ const reducer = createReducer(initialState, (builder) => {
       state.user = action.payload;
     })
     .addCase(setProducts, (state, action) => {
-      state.products = action.payload.slice();
+      state.products = action.payload;
     })
     .addCase(loadProducts, (state, action) => {
       state.products = action.payload;
-    })
-    .addCase(productsAreLoaded, (state, action) => {
-      state.productsAreLoaded = action.payload;
     })
     .addCase(cartOpen, (state, action) => {
       state.isCartOpen = action.payload;

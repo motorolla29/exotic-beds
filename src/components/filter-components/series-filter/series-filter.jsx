@@ -2,19 +2,27 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { PRODUCT_SERIES } from '../../../const';
-
 import './series-filter.sass';
 
-const SeriesFilter = ({ products }) => {
+const SeriesFilter = ({ counts = {} }) => {
   const [open, setOpen] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const isSerialProducts = products.find((it) =>
-    it.title.toLowerCase().includes('series')
-  );
+
+  const hasAnySeries = Object.values(counts).some((count) => count > 0);
+
+  const handleChange = (evt) => {
+    const { name } = evt.target;
+    if (searchParams.has('series', name)) {
+      searchParams.delete('series', name);
+    } else {
+      searchParams.append('series', name);
+    }
+    searchParams.set('page', 1);
+    setSearchParams(searchParams);
+  };
 
   return (
-    isSerialProducts && (
+    (hasAnySeries || !!searchParams.has('series')) && (
       <div className="series-filter">
         <h5
           onClick={() => setOpen(!open)}
@@ -31,48 +39,32 @@ const SeriesFilter = ({ products }) => {
               exit={{ height: 0 }}
               className="series-filter_options"
             >
-              {PRODUCT_SERIES.map((series) => {
-                const count = products.filter((it) =>
-                  it.title
-                    .toLowerCase()
-                    .includes(`${series.toLowerCase()} series`)
-                ).length;
-
-                return (
-                  <div key={series}>
-                    {count ? (
-                      <div className="series-filter_options_option">
-                        <input
-                          id={`series-${series}`}
-                          type="checkbox"
-                          name={series}
-                          checked={searchParams.has('series', `${series}`)}
-                          onChange={(evt) => {
-                            searchParams.has('series', `${series}`)
-                              ? searchParams.delete(
-                                  'series',
-                                  `${evt.target.name}`
-                                )
-                              : searchParams.append(
-                                  'series',
-                                  `${evt.target.name}`
-                                );
-                            searchParams.set('page', 1);
-                            setSearchParams(searchParams);
-                          }}
-                          className="main-checkbox series-filter_options_option_input"
-                        ></input>
-                        <label htmlFor={`series-${series}`} />
-                        <span className="series-filter_options_option_name">
-                          {series}
-                        </span>
-                        <span className="series-filter_options_option_amount">
-                          ({count})
-                        </span>
-                      </div>
-                    ) : null}
-                  </div>
-                );
+              {Object.entries(counts).map(([series, count]) => {
+                const isChecked = searchParams
+                  .getAll('series')
+                  .includes(series);
+                if (count > 0 || isChecked) {
+                  return (
+                    <div key={series} className="series-filter_options_option">
+                      <input
+                        id={`series-${series}`}
+                        type="checkbox"
+                        name={series}
+                        checked={searchParams.getAll('series').includes(series)}
+                        onChange={handleChange}
+                        className="main-checkbox series-filter_options_option_input"
+                      />
+                      <label htmlFor={`series-${series}`} />
+                      <span className="series-filter_options_option_name">
+                        {series}
+                      </span>
+                      <span className="series-filter_options_option_amount">
+                        ({count})
+                      </span>
+                    </div>
+                  );
+                }
+                return null;
               })}
             </motion.div>
           )}

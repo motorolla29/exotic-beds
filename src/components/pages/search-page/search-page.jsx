@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -20,125 +20,84 @@ import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
 
 import './search-page.sass';
+import { useEffect, useMemo } from 'react';
+import { setProducts } from '../../../store/action';
+import { getProducts } from '../../../api/productAPI';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
-  const user = useSelector((state) => state.user);
-  const products = useSelector((state) => state.products);
-
-  const searchQuery = (searchParams.get('q') || '').trim().toLowerCase();
-
-  const searchArray = searchQuery.split(/\s+/).filter(Boolean);
-
+  const dispatch = useDispatch();
   const [ww] = useWindowSize();
+  const {
+    items,
+    total,
+    page,
+    pageSize,
+    minPrice,
+    maxPrice,
+    filterCounts = {},
+  } = useSelector((state) => state.products);
 
-  const highestPrice =
-    findMostExpensiveProductObj(products)?.sale ||
-    findMostExpensiveProductObj(products)?.price;
-  const lowestPrice =
-    findCheapestProductObj(products)?.sale ||
-    findCheapestProductObj(products)?.price;
-
-  const categoryArray = searchParams.getAll('category');
-  const minPrice = +searchParams.get('minPrice') || lowestPrice;
-  const maxPrice = +searchParams.get('maxPrice') || highestPrice;
-  const minRating = +searchParams.get('minRating') || 0;
-  const seriesArray = searchParams.getAll('series');
-  const topRated = searchParams.get('top-rated');
-  const onSale = searchParams.get('sale');
-  const isNew = searchParams.get('new');
-  const limit = searchParams.get('limit') || 24;
-  const sort = searchParams.get('sortBy');
-
-  const foundedProducts = products.filter((product) => {
-    // Если запрос пустой, возвращаем все товары
-    if (!searchArray.length) return true;
-
-    const title = product.title ? product.title.trim().toLowerCase() : '';
-
-    // Требуем, чтобы каждый непустой поисковой запрос встречался в названии
-    return searchArray.every((q) => title.includes(q));
-  });
-
-  let filteredProducts = foundedProducts.filter((product) => {
-    const priceToUse = product.sale ? product.sale : product.price;
-    if (
-      (categoryArray.some(
-        (category) =>
-          categoriesIds[category.toLowerCase()] === product.categoryId
-      ) ||
-        !categoryArray.length) &&
-      priceToUse >= minPrice &&
-      priceToUse <= maxPrice &&
-      product.rating >= minRating &&
-      (seriesArray.some((series) =>
-        product.title.toLowerCase().includes(`${series.toLowerCase()} series`)
-      ) ||
-        !seriesArray.length) &&
-      (product.rating >= 4.9 || !topRated) &&
-      (product.sale || !onSale) &&
-      (product.isNew || !isNew)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-
-  if (!user || user.role !== 'ADMIN') {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.availableQuantity > 0
-    );
-  }
-
-  let sortedProducts =
-    sort === 'relevance' || !sort
-      ? sortProductsForSearch(filteredProducts, searchArray)
-      : sortProducts(filteredProducts, sort);
-
-  if (user && user.role === 'ADMIN') {
-    const availableProducts = sortedProducts.filter(
-      (product) => product.availableQuantity > 0
-    );
-    const outOfStockProducts = sortedProducts.filter(
-      (product) => product.availableQuantity === 0
-    );
-    sortedProducts = [...availableProducts, ...outOfStockProducts];
-  }
-
-  const limitedSortedProducts = sortedProducts.slice(
-    ((+searchParams.get('page') || 1) - 1) * limit,
-    (+searchParams.get('page') || 1) * limit
+  const params = useMemo(
+    () => ({
+      q: searchParams.get('q') || '',
+      categoryId: searchParams
+        .getAll('category')
+        .map((cat) => categoriesIds[cat.toLowerCase()]),
+      page: +searchParams.get('page') || 1,
+      limit: +searchParams.get('limit') || pageSize,
+      minPrice: searchParams.get('minPrice'),
+      maxPrice: searchParams.get('maxPrice'),
+      minRating: searchParams.get('minRating'),
+      series: searchParams.getAll('series'),
+      topRated: searchParams.get('top-rated'),
+      sale: searchParams.get('sale'),
+      isNew: searchParams.get('new'),
+      sortBy: searchParams.get('sortBy'),
+    }),
+    [searchParams, pageSize]
   );
+
+  useEffect(() => {
+    (async () => {
+      const data = await getProducts(params);
+      dispatch(setProducts(data));
+      window.scrollTo(0, 0);
+    })();
+  }, [dispatch, params]);
 
   return (
     <>
       <Helmet>
         <title>{`${
-          searchQuery ? `${searchQuery} - buy on Exotic Beds` : 'Search'
+          params.q.length ? `${params.q} - buy on Exotic Beds` : 'Search'
         }`}</title>
       </Helmet>
       {ww <= 768 ? <SearchPanel /> : null}
       <Tabs />
       <Breadcrumbs />
       <div className="search-page">
-        {sortedProducts.length && ww > 768 ? (
-          <CatalogFilters products={foundedProducts} />
-        ) : null}
+        {ww > 768 && total > 0 && (
+          <CatalogFilters
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            filterCounts={filterCounts}
+          />
+        )}
         <div className="catalog-container">
           <h1 className="catalog-container_title">
-            Search results for: '{searchQuery}'
+            Search results for: '{params.q}'
           </h1>
-          {sortedProducts.length ? (
+          {items.length ? (
             <>
               <CatalogTopToolbar
-                products={foundedProducts}
-                sortedProducts={sortedProducts}
-                limitedSortedProducts={limitedSortedProducts}
+                total={total}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
               />
-              <CatalogPagination products={sortedProducts} limit={limit} />
-              <Catalog products={limitedSortedProducts} />
-              <CatalogPagination products={sortedProducts} limit={limit} />
+              <CatalogPagination total={total} page={page} limit={pageSize} />
+              <Catalog products={items} />
+              <CatalogPagination total={total} page={page} limit={pageSize} />
             </>
           ) : (
             <SearchEmpty />

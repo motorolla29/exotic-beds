@@ -4,30 +4,27 @@ import { useSearchParams } from 'react-router-dom';
 
 import './catalog-pagination.sass';
 
-const CatalogPagination = ({ products, limit }) => {
+const CatalogPagination = ({ total, page, limit }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const pagesCount = Math.ceil(total / limit);
 
-  const handleChange = (event, value) => {
+  const handleChange = (_, value) => {
     searchParams.set('page', value);
     setSearchParams(searchParams);
-    window.scrollTo({
-      top: 0,
-      left: 0,
-    });
+    window.scrollTo(0, 0);
   };
 
   return (
     <div className="catalog-pagination">
       <Stack spacing={2}>
         <Pagination
-          key={products}
-          count={Math.ceil(products.length / limit)}
-          size="large"
-          variant="outlined"
-          page={+searchParams.get('page') || 1}
+          count={pagesCount}
+          page={page}
           onChange={handleChange}
           hidePrevButton
           hideNextButton
+          size="large"
+          variant="outlined"
         />
       </Stack>
     </div>

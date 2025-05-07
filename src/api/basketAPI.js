@@ -1,4 +1,4 @@
-import { $authHost } from './index';
+import { $authHost, $host } from './index';
 
 export const getBasket = async () => {
   const { data } = await $authHost.get('api/basket');
@@ -17,5 +17,10 @@ export const decrementBasketProduct = async (product) => {
 
 export const removeBasketProduct = async (product) => {
   const { data } = await $authHost.post('api/basket/remove', product);
+  return data;
+};
+
+export const syncGuestCart = async (cartItems) => {
+  const { data } = await $host.post('api/basket/sync-guest-cart', cartItems);
   return data;
 };

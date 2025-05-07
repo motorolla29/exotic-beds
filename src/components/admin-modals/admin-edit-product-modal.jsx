@@ -21,7 +21,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import validateProductData from './validate-product-data';
 import { categoriesIds, scrollController } from '../../utils';
 import useWindowSize from '../../hooks/use-window-size';
-import { getAllProducts, updateProduct } from '../../api/productAPI';
+import { getProducts, updateProduct } from '../../api/productAPI';
 import {
   setNotificationModal,
   setProducts,
@@ -107,7 +107,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
           navigate(`/${updatedProduct.id}`, { replace: true });
         }
 
-        const updatedProducts = await getAllProducts();
+        const updatedProducts = await getProducts();
         dispatch(setProducts(updatedProducts.rows));
         onClose();
         dispatch(

@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Slider from 'react-slick';
 
+import { getProducts } from '../../../api/productAPI';
 import CatalogItem from '../../catalog-item/catalog-item';
 import Tabs from '../../tabs/tabs';
-import { sortProducts } from '../../../utils';
 import useWindowSize from '../../../hooks/use-window-size';
 import SearchPanel from '../../search-panel/search-panel';
 
@@ -20,15 +20,37 @@ import 'slick-carousel/slick/slick-theme.css';
 import './main-page.sass';
 
 const MainPage = () => {
-  const products = useSelector((state) => state.products);
-  const availableProducts = products.filter((it) => it.availableQuantity > 0);
-  const highestRatedProducts = sortProducts(availableProducts, 'rating').slice(
-    0,
-    10
-  );
-  const saleProducts = sortProducts(availableProducts, 'discount').slice(0, 10);
+  const [highestRatedProducts, setHighestRatedProducts] = useState([]);
+  const [saleProducts, setSaleProducts] = useState([]);
+
   const navigate = useNavigate();
   const [ww] = useWindowSize();
+
+  useEffect(() => {
+    const fetchSliderProducts = async () => {
+      try {
+        // Запрос 1: по рейтингу
+        const topRatedProducts = await getProducts({
+          page: 1,
+          limit: 10,
+          sortBy: 'rating',
+        });
+        setHighestRatedProducts(topRatedProducts.items);
+
+        // Запрос 2: по скидке
+        const saleProducts = await getProducts({
+          page: 1,
+          limit: 10,
+          sortBy: 'discount',
+        });
+        setSaleProducts(saleProducts.items);
+      } catch (err) {
+        console.error('Error loading products for slider:', err);
+      }
+    };
+
+    fetchSliderProducts();
+  }, []);
 
   const getSlidesQty = (ww) => {
     if (ww >= 1600) {
@@ -98,18 +120,20 @@ const MainPage = () => {
           <h1 className="highest-rated-items-block_title">
             Check our highest rated <span>exotic furniture</span>
           </h1>
-          <Slider
-            dots={ww > 480 ? true : false}
-            infinite={true}
-            slidesToShow={getSlidesQty(ww)}
-            className="highest-rated-items-carousel"
-          >
-            {highestRatedProducts.map((it) => {
-              return (
-                <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
-              );
-            })}
-          </Slider>
+          {highestRatedProducts.length && (
+            <Slider
+              dots={ww > 480 ? true : false}
+              infinite={true}
+              slidesToShow={getSlidesQty(ww)}
+              className="highest-rated-items-carousel"
+            >
+              {highestRatedProducts.map((it) => {
+                return (
+                  <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
+                );
+              })}
+            </Slider>
+          )}
         </div>
         <Link to={'/beds?sale=true'}>
           <div className="promo-sales"></div>
@@ -118,18 +142,20 @@ const MainPage = () => {
           <h1 className="sales-items-block_title">
             Hurry to buy at <span>epic sales</span>
           </h1>
-          <Slider
-            dots={ww > 480 ? true : false}
-            infinite={true}
-            slidesToShow={getSlidesQty(ww)}
-            className="sale-items-carousel"
-          >
-            {saleProducts.map((it) => {
-              return (
-                <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
-              );
-            })}
-          </Slider>
+          {saleProducts.length && (
+            <Slider
+              dots={ww > 480 ? true : false}
+              infinite={true}
+              slidesToShow={getSlidesQty(ww)}
+              className="sale-items-carousel"
+            >
+              {saleProducts.map((it) => {
+                return (
+                  <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
+                );
+              })}
+            </Slider>
+          )}
         </div>
       </div>
     </>

@@ -15,48 +15,54 @@ import { ReactComponent as FiltersIcon } from '../../images/ui-icons/filters-ico
 import './catalog-top-toolbar.sass';
 
 const CatalogTopToolbar = ({
-  products,
+  total,
   category,
-  sortedProducts,
-  limitedSortedProducts,
-  noFilter,
+  minPrice,
+  maxPrice,
+  filterCounts,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get('page') || 1;
-  const [limit, setLimit] = useState(searchParams.get('limit') || 24);
+  const [limit, setLimit] = useState(+searchParams.get('limit') || 24);
   const [sort, setSort] = useState(searchParams.get('sortBy') || 'relevance');
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [ww] = useWindowSize();
+  const page = +searchParams.get('page') || 1;
+  const pagesCount = Math.ceil(total / limit);
 
-  const handleLimitChange = (event) => {
-    setLimit(event.target.value);
-    searchParams.set('limit', event.target.value);
-    searchParams.set('page', 1);
+  const handleChangeParam = (key, value) => {
+    if (value != null) {
+      searchParams.set(key, value);
+    } else {
+      searchParams.delete(key);
+    }
+    if (key !== 'page') searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
-  const handleSortChange = (event) => {
-    setSort(event.target.value);
-    searchParams.set('sortBy', event.target.value);
-    searchParams.set('page', 1);
-    setSearchParams(searchParams);
+
+  const handleLimitChange = (e) => {
+    setLimit(+e.target.value);
+    handleChangeParam('limit', e.target.value);
+  };
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+    handleChangeParam('sortBy', e.target.value);
   };
 
   useEffect(() => {
-    setLimit(searchParams.get('limit') || 24);
+    setLimit(+searchParams.get('limit') || 24);
     setSort(searchParams.get('sortBy') || 'relevance');
   }, [searchParams]);
+
+  const start = (page - 1) * limit + 1;
+  const end = Math.min(page * limit, total);
 
   return (
     <div className="top-toolbar">
       <div className="top-toolbar_counter">
-        Items {(page - 1) * limit + 1} -{' '}
-        {sortedProducts.length -
-          (sortedProducts.length -
-            (+page === Math.ceil(sortedProducts.length / limit)
-              ? sortedProducts.length
-              : limitedSortedProducts.length * page))}{' '}
-        of {sortedProducts.length}
+        Items {start} - {end} of {total}
       </div>
+
       <div className="top-toolbar_panel">
         <div className="top-toolbar_panel_sorting">
           <div className="top-toolbar_panel_sorting_limiter">
@@ -86,6 +92,7 @@ const CatalogTopToolbar = ({
               </FormControl>
             </Box>
           </div>
+
           <div className="top-toolbar_panel_sorting_sorter">
             <Box className="top-toolbar_panel_sorting_sorter_box">
               <FormControl
@@ -117,29 +124,32 @@ const CatalogTopToolbar = ({
             </Box>
           </div>
         </div>
-        {ww <= 768 && !noFilter ? (
+
+        {ww <= 768 && (
           <div
             onClick={() => {
               setFiltersVisible(true);
-              window.scrollTo(0, 0);
             }}
             className="top-toolbar_panel_filter"
           >
             <FiltersIcon />
           </div>
-        ) : null}
+        )}
       </div>
+
       <AnimatePresence>
-        {ww <= 768 && filtersVisible ? (
+        {ww <= 768 && filtersVisible && (
           <CatalogFiltersMobile
             closeFilters={() => {
               setFiltersVisible(false);
             }}
-            products={products}
             category={category}
-            sortedProducts={sortedProducts}
+            total={total}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            filterCounts={filterCounts}
           />
-        ) : null}
+        )}
       </AnimatePresence>
     </div>
   );

@@ -10,84 +10,44 @@ function valuetext(value) {
   return `€${value}`;
 }
 
-const PriceFilter = ({ minPrice, maxPrice }) => {
+const PriceFilter = ({ minPrice = 0, maxPrice = 99999 }) => {
   const [open, setOpen] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [rangeValue, setRangeValue] = useState([
-    searchParams.get('minPrice') || minPrice,
-    searchParams.get('maxPrice') || maxPrice,
-  ]);
+  const [rangeValue, setRangeValue] = useState([minPrice, maxPrice]);
 
   useEffect(() => {
     setRangeValue([
-      searchParams.get('minPrice') || minPrice,
-      searchParams.get('maxPrice') || maxPrice,
+      +searchParams.get('minPrice') || minPrice,
+      +searchParams.get('maxPrice') || maxPrice,
     ]);
   }, [searchParams, minPrice, maxPrice]);
 
-  const handleRangeChange = (evt, newValue) => {
+  const handleRangeChange = (_, newValue) => {
     setRangeValue(newValue);
   };
 
-  const setValidatedPriceRangeParams = (currentValue, minValue, maxValue) => {
-    let min = +minValue;
-    let max = +maxValue;
-    let value = +currentValue;
+  const validateRange = ([minVal, maxVal]) => {
+    let min = Math.max(minPrice, Math.min(maxPrice, +minVal));
+    let max = Math.max(minPrice, Math.min(maxPrice, +maxVal));
+    if (min > max) [min, max] = [max, min];
+    return [min, max];
+  };
 
-    if (min < minPrice) {
-      min = minPrice;
-    } else if (min > maxPrice) {
-      min = max;
-    } else if (max < minPrice) {
-      max = min;
-    } else if (max > maxPrice) {
-      max = maxPrice;
-    } else if (value === min && value > max) {
-      max = min;
-    } else if (value === max && value < min) {
-      min = max;
-    }
-
+  const commitRangeChange = (_, newValue) => {
+    const [min, max] = validateRange(newValue);
     searchParams.set('minPrice', min);
     searchParams.set('maxPrice', max);
-    searchParams.set('page', 1);
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
 
-  const handleRangeChangeCommited = (evt, newValue) => {
-    setValidatedPriceRangeParams(evt.target.value, newValue[0], newValue[1]);
-  };
-
-  const onInputMinPriceChange = (evt) => {
-    setRangeValue([evt.target.value, rangeValue[1]]);
-  };
-
-  const onInputMaxPriceChange = (evt) => {
-    setRangeValue([rangeValue[0], evt.target.value]);
-  };
-
-  const handleBlur = (currentValue) => {
-    const value = +currentValue;
-    const minValue = +rangeValue[0];
-    const maxValue = +rangeValue[1];
-
-    setRangeValue([+rangeValue[0], +rangeValue[1]]);
-
-    if (minValue < minPrice) {
-      setRangeValue([minPrice, maxValue]);
-    } else if (minValue > maxPrice) {
-      setRangeValue([maxValue, rangeValue[1]]);
-    } else if (maxValue < minPrice) {
-      setRangeValue([minValue, minValue]);
-    } else if (maxValue > maxPrice) {
-      setRangeValue([minValue, maxPrice]);
-    } else if (value === minValue && value > maxValue) {
-      setRangeValue([minValue, minValue]);
-    } else if (value === maxValue && value < minValue) {
-      setRangeValue([maxValue, maxValue]);
-    }
-
-    setValidatedPriceRangeParams(currentValue, rangeValue[0], rangeValue[1]);
+  const handleBlur = () => {
+    const [min, max] = validateRange(rangeValue);
+    setRangeValue([min, max]);
+    searchParams.set('minPrice', min);
+    searchParams.set('maxPrice', max);
+    searchParams.set('page', '1');
+    setSearchParams(searchParams);
   };
 
   return (
@@ -114,19 +74,14 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
                 <input
                   type="number"
                   min={minPrice}
-                  onChange={onInputMinPriceChange}
-                  onBlur={(evt) => handleBlur(evt.target.value)}
-                  onKeyDown={(evt) => {
-                    if (evt.key === 'Enter') {
-                      handleBlur(evt.target.value);
-                      setValidatedPriceRangeParams(
-                        evt.target.value,
-                        evt.target.value,
-                        rangeValue[1]
-                      );
-                    }
-                  }}
                   value={rangeValue[0]}
+                  onChange={(e) =>
+                    setRangeValue([+e.target.value, rangeValue[1]])
+                  }
+                  onBlur={handleBlur}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleBlur();
+                  }}
                   className="price-filter_inputs_input-container_number-input"
                 />
               </div>
@@ -137,19 +92,14 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
                 <input
                   type="number"
                   max={maxPrice}
-                  onChange={onInputMaxPriceChange}
-                  onBlur={(evt) => handleBlur(evt.target.value)}
-                  onKeyDown={(evt) => {
-                    if (evt.key === 'Enter') {
-                      handleBlur(evt.target.value);
-                      setValidatedPriceRangeParams(
-                        evt.target.value,
-                        rangeValue[0],
-                        evt.target.value
-                      );
-                    }
-                  }}
                   value={rangeValue[1]}
+                  onChange={(e) =>
+                    setRangeValue([rangeValue[0], +e.target.value])
+                  }
+                  onBlur={handleBlur}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleBlur();
+                  }}
                   className="price-filter_inputs_input-container_number-input"
                 />
               </div>
@@ -158,13 +108,13 @@ const PriceFilter = ({ minPrice, maxPrice }) => {
               <Slider
                 min={minPrice}
                 max={maxPrice}
-                className="slider"
-                getAriaLabel={() => 'Price range'}
                 value={rangeValue}
                 onChange={handleRangeChange}
-                onChangeCommitted={handleRangeChangeCommited}
-                valueLabelDisplay="auto"
+                onChangeCommitted={commitRangeChange}
+                getAriaLabel={() => 'Price range'}
                 getAriaValueText={valuetext}
+                valueLabelDisplay="auto"
+                className="slider"
               />
             </Box>
           </motion.div>
