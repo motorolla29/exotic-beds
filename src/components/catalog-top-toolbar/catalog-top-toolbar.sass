@@ -22,8 +22,7 @@
                 margin-left: 1em
                 &_control
                     &_select
-                        min-width: 5em
-
+                        min-width: 6em
 
             &_sorter
                 display: flex
@@ -52,18 +51,15 @@
                 
     & .MuiBox-root
         & .MuiFormControl-root
-
             & .MuiFormLabel-root 
+                font-size: 1em
                 color: $main-color-turquoise // цвет лейбла
-
                 &.Mui-focused 
                     color: $main-color-grey // цвет лейбла на фокусе
-
             & .MuiInputBase-colorPrimary 
                 color: $main-color-grey // цвет текста в инпуте      
-
             & .MuiInputBase-root
-
+                font-size: 1em
                 &:hover
                     & .MuiOutlinedInput-notchedOutline
                         border-color: $main-color-grey // цвет бордера при наведении
@@ -81,18 +77,20 @@
         &.MuiMenuItem-root
             color: $main-color-turquoise // цвет текста в опциях попапа
             
-@media (max-width: 480px) 
+
+
+@media (max-width: 1200px) 
     .top-toolbar
         & .MuiBox-root
-            & .MuiInputBase-root
-                font-size: 0.5rem
-                & .MuiSvgIcon-root
-                    font-size: 0.75rem
             & .MuiFormControl-root
-                & .MuiFormLabel-root 
-                    font-size: 0.5rem
-                    line-height: 2.875
-
+                > .MuiFormLabel-root.MuiInputLabel-shrink
+                    line-height: 1.6em
+@media (max-width: 998px) 
+    .top-toolbar
+        & .MuiBox-root
+            & .MuiFormControl-root
+                > .MuiFormLabel-root.MuiInputLabel-shrink
+                    line-height: 1.7em
 @media (max-width: 768px) 
     .top-toolbar
         display: block
@@ -102,7 +100,21 @@
         &_panel
             &_sorting
                 &_limiter
-                    margin-left: 0 
+                    margin-left: 0
+        & .MuiBox-root
+            & .MuiFormControl-root
+                > .MuiFormLabel-root.MuiInputLabel-shrink
+                    line-height: 1.9em
+@media (max-width: 480px)
+    .top-toolbar
+        & .MuiBox-root
+            & .MuiFormControl-root
+                > .MuiFormLabel-root.MuiInputLabel-shrink
+                    line-height: 2.3em
 @media (max-width: 320px) 
     .top-toolbar
         font-size: 8px
+        & .MuiBox-root
+            & .MuiFormControl-root
+                > .MuiFormLabel-root.MuiInputLabel-shrink
+                    line-height: 3em
