@@ -57,17 +57,19 @@ const LovelistPage = () => {
             </h1>
             {sortedProducts.length ? (
               <>
-                <CatalogTopToolbar
-                  sortedProducts={sortedProducts}
-                  limitedSortedProducts={limitedSortedProducts}
-                  noFilter
-                />
+                <CatalogTopToolbar total={lovedProducts.length} />
                 {sortedProducts.length > 24 && (
-                  <CatalogPagination products={sortedProducts} limit={limit} />
+                  <CatalogPagination
+                    total={lovedProducts.length}
+                    limit={limit}
+                  />
                 )}
                 <Lovelist items={limitedSortedProducts} />
                 {sortedProducts.length > 24 && (
-                  <CatalogPagination products={sortedProducts} limit={limit} />
+                  <CatalogPagination
+                    total={lovedProducts.length}
+                    limit={limit}
+                  />
                 )}
               </>
             ) : (

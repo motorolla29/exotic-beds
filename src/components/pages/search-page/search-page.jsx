@@ -8,21 +8,16 @@ import CatalogFilters from '../../catalog-filters/catalog-filters';
 import Catalog from '../../catalog/catalog';
 import SearchEmpty from '../../search-empty/search-empty';
 import CatalogTopToolbar from '../../catalog-top-toolbar/catalog-top-toolbar';
-import {
-  categoriesIds,
-  findCheapestProductObj,
-  findMostExpensiveProductObj,
-  sortProducts,
-  sortProductsForSearch,
-} from '../../../utils';
+import { categoriesIds } from '../../../utils';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
 
 import './search-page.sass';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { setProducts } from '../../../store/action';
 import { getProducts } from '../../../api/productAPI';
+import CatalogLogoSpinner from '../../catalog-logo-spinner/catalog-logo-spinner';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
@@ -37,6 +32,8 @@ const SearchPage = () => {
     maxPrice,
     filterCounts = {},
   } = useSelector((state) => state.products);
+
+  const [loading, setLoading] = useState(false);
 
   const params = useMemo(
     () => ({
@@ -60,9 +57,13 @@ const SearchPage = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await getProducts(params);
-      dispatch(setProducts(data));
-      window.scrollTo(0, 0);
+      setLoading(true);
+      try {
+        const data = await getProducts(params);
+        dispatch(setProducts(data));
+      } finally {
+        setLoading(false);
+      }
     })();
   }, [dispatch, params]);
 
@@ -77,7 +78,7 @@ const SearchPage = () => {
       <Tabs />
       <Breadcrumbs />
       <div className="search-page">
-        {ww > 768 && total > 0 && (
+        {ww > 768 && (
           <CatalogFilters
             minPrice={minPrice}
             maxPrice={maxPrice}
@@ -94,10 +95,21 @@ const SearchPage = () => {
                 total={total}
                 minPrice={minPrice}
                 maxPrice={maxPrice}
+                filterCounts={filterCounts}
               />
               <CatalogPagination total={total} page={page} limit={pageSize} />
-              <Catalog products={items} />
-              <CatalogPagination total={total} page={page} limit={pageSize} />
+              {loading ? (
+                <div className="search-page_loader">
+                  <div className="search-page_loader_logo-spinner">
+                    <CatalogLogoSpinner />
+                  </div>
+                </div>
+              ) : (
+                <Catalog products={items} />
+              )}
+              {!loading && (
+                <CatalogPagination total={total} page={page} limit={pageSize} />
+              )}
             </>
           ) : (
             <SearchEmpty />

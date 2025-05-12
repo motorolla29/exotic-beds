@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
@@ -15,6 +15,7 @@ import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
 import { getProducts } from '../../../api/productAPI';
 import { setProducts } from '../../../store/action';
+import CatalogLogoSpinner from '../../catalog-logo-spinner/catalog-logo-spinner';
 
 import './catalog-page.sass';
 
@@ -31,6 +32,8 @@ const CatalogPage = ({ category }) => {
     maxPrice,
     filterCounts = {},
   } = useSelector((state) => state.products);
+
+  const [loading, setLoading] = useState(false);
 
   const params = useMemo(
     () => ({
@@ -54,9 +57,14 @@ const CatalogPage = ({ category }) => {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     (async () => {
-      const data = await getProducts(params);
-      dispatch(setProducts(data));
+      try {
+        const data = await getProducts(params);
+        dispatch(setProducts(data));
+      } finally {
+        setLoading(false);
+      }
     })();
   }, [dispatch, params]);
 
@@ -83,7 +91,6 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
-
           {items.length ? (
             <>
               <CatalogTopToolbar
@@ -94,9 +101,18 @@ const CatalogPage = ({ category }) => {
                 filterCounts={filterCounts}
               />
               <CatalogPagination total={total} page={page} limit={pageSize} />
-              <Catalog products={items} category={category} />
-
-              <CatalogPagination total={total} page={page} limit={pageSize} />
+              {loading ? (
+                <div className="catalog-page_loader">
+                  <div className="catalog-page_loader_logo-spinner">
+                    <CatalogLogoSpinner />
+                  </div>
+                </div>
+              ) : (
+                <Catalog products={items} category={category} />
+              )}
+              {!loading && (
+                <CatalogPagination total={total} page={page} limit={pageSize} />
+              )}
             </>
           ) : (
             <CatalogEmpty />

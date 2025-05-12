@@ -3,11 +3,20 @@
 .search-page
     display: flex
     margin-top: 2em
+    &_loader
+        position: sticky
+        top: 0
+        width: 100%
+        display: flex
+        justify-content: center
+        &_logo-spinner
+            margin: 20vh 0 30vh 0
     & .catalog-container
         &_title
             max-width: 100%
             margin-bottom: 0.5em
             overflow-wrap: break-word
+    
 
 @media (max-width: 1200px) 
     .search-page
