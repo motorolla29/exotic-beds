@@ -1,4 +1,9 @@
-import { $authHost } from './index';
+import { $authHost, $host } from './index';
+
+export const getProduct = async (id) => {
+  const { data } = await $host.get(`api/product/${id}`);
+  return data;
+};
 
 export const getProducts = async (params) => {
   const { data } = await $authHost.get('api/product', { params });

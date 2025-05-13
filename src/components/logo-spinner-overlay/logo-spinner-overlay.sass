@@ -1,0 +1,35 @@
+@import 'src/styles/variables'
+    
+.logo-spinner-overlay
+    font-size: 24px
+    display: flex
+    align-items: center
+    flex-direction: column
+
+    &_shadow
+        display: flex
+        align-items: center
+        justify-content: center
+        position: fixed
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+        background: #4f4a57ac
+        z-index: 1000
+    & .logo-spinner
+        animation: none
+
+@media (max-width: 1600px) 
+    .logo-spinner-overlay
+        font-size: 20px
+@media (max-width: 998px) 
+    .logo-spinner-overlay
+        font-size: 16px
+@media (max-width: 480px) 
+    .logo-spinner-overlay
+        font-size: 12px
+    
+
+
+    

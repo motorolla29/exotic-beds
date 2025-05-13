@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import imagekit from '../../imagekit';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import { TextField, Slider } from '@mui/material';
 import JoyFormControl from '@mui/joy/FormControl';
@@ -33,10 +34,11 @@ import {
 } from '../../api/imagekitAPI';
 
 import './admin-modals.sass';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const AdminEditProductModal = ({ isOpen, onClose, item }) => {
+  const [searchParams] = useSearchParams();
   const overlayLoading = useSelector((state) => state.overlayLoader);
+  const { pageSize } = useSelector((s) => s.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -67,6 +69,23 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
     rating: '',
     photo: '',
   });
+
+  const params = useMemo(
+    () => ({
+      categoryId: productData.category && categoriesIds[productData.category],
+      page: +searchParams.get('page') || 1,
+      limit: +searchParams.get('limit') || pageSize,
+      minPrice: searchParams.get('minPrice'),
+      maxPrice: searchParams.get('maxPrice'),
+      minRating: searchParams.get('minRating'),
+      series: searchParams.getAll('series'),
+      topRated: searchParams.get('top-rated'),
+      sale: searchParams.get('sale'),
+      isNew: searchParams.get('new'),
+      sortBy: searchParams.get('sortBy'),
+    }),
+    [productData.category, searchParams, pageSize]
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,8 +126,9 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
           navigate(`/${updatedProduct.id}`, { replace: true });
         }
 
-        const updatedProducts = await getProducts();
-        dispatch(setProducts(updatedProducts.rows));
+        const updatedProducts = await getProducts(params);
+        dispatch(setProducts(updatedProducts));
+
         onClose();
         dispatch(
           setSnackbar({

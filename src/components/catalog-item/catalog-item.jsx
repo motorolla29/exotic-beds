@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
 import RatingStars from '../rating-stars/rating-stars';
-import { randomInteger } from '../../utils';
+import { categoriesIds, randomInteger } from '../../utils';
 import {
   cartOpen,
   loginModalsOpen,
@@ -20,7 +20,7 @@ import { TbShoppingCartCheck } from 'react-icons/tb';
 import useWindowSize from '../../hooks/use-window-size';
 import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 import { addToBasket } from '../../api/basketAPI';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { AddShoppingCartRounded } from '@mui/icons-material';
 import { toggleProductInLovelist } from '../../api/lovelistAPI';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -35,13 +35,16 @@ import { deleteImageFromImagekit } from '../../api/imagekitAPI';
 
 import './catalog-item.sass';
 
-const CatalogItem = ({ item }) => {
+const CatalogItem = ({ item, category }) => {
+  const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
   const location = useLocation();
   const [ww] = useWindowSize();
 
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
+  const { pageSize } = useSelector((state) => state.products);
+
   const [addToBasketLoading, setAddToBasketLoading] = useState(false);
   const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
   const [adminModalOpen, setAdminModalOpen] = useState(false);
@@ -57,6 +60,23 @@ const CatalogItem = ({ item }) => {
     { opacity: 0, y: -25 },
     { opacity: 0, y: 25 },
   ];
+
+  const params = useMemo(
+    () => ({
+      categoryId: category && categoriesIds[category],
+      page: +searchParams.get('page') || 1,
+      limit: +searchParams.get('limit') || pageSize,
+      minPrice: searchParams.get('minPrice'),
+      maxPrice: searchParams.get('maxPrice'),
+      minRating: searchParams.get('minRating'),
+      series: searchParams.getAll('series'),
+      topRated: searchParams.get('top-rated'),
+      sale: searchParams.get('sale'),
+      isNew: searchParams.get('new'),
+      sortBy: searchParams.get('sortBy'),
+    }),
+    [category, searchParams, pageSize]
+  );
 
   const onHeartIconClick = () => {
     if (isAuth) {
@@ -140,8 +160,9 @@ const CatalogItem = ({ item }) => {
           console.error('Error deleting previous image:', error);
         }
       }
-      const productData = await getProducts();
-      dispatch(setProducts(productData.rows));
+      const productData = await getProducts(params);
+      dispatch(setProducts(productData));
+
       dispatch(
         setSnackbar({
           open: true,

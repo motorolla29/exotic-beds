@@ -17,7 +17,7 @@ import './search-page.sass';
 import { useEffect, useMemo, useState } from 'react';
 import { setProducts } from '../../../store/action';
 import { getProducts } from '../../../api/productAPI';
-import CatalogLogoSpinner from '../../catalog-logo-spinner/catalog-logo-spinner';
+import LogoSpinner from '../../logo-spinner/logo-spinner';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
@@ -101,7 +101,7 @@ const SearchPage = () => {
               {loading ? (
                 <div className="search-page_loader">
                   <div className="search-page_loader_logo-spinner">
-                    <CatalogLogoSpinner />
+                    <LogoSpinner />
                   </div>
                 </div>
               ) : (

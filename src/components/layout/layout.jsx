@@ -5,15 +5,15 @@ import { OverlayScrollbars } from 'overlayscrollbars';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Cart from '../cart/cart';
-import LogoSpinner from '../logo-spinner/logo-spinner';
+import LogoSpinnerOverlay from '../logo-spinner-overlay/logo-spinner-overlay';
 import { MainSnackbar } from '../main-snackbar/main-snackbar';
 import Chat from '../chat/chat';
 import LoginModals from '../login-modals/login-modals';
+import NotificationModal from '../notification-modal/notification-modal';
+import ConfirmationModal from '../confirmation-modal/confirmation-modal';
 
 import 'overlayscrollbars/overlayscrollbars.css';
 import './layout.sass';
-import NotificationModal from '../notification-modal/notification-modal';
-import ConfirmationModal from '../confirmation-modal/confirmation-modal';
 
 const Layout = () => {
   const cartOpen = useSelector((state) => state.isCartOpen);
@@ -35,7 +35,7 @@ const Layout = () => {
         <div className="main">
           <Outlet />
           <Cart />
-          <LogoSpinner />
+          <LogoSpinnerOverlay />
           <MainSnackbar />
           <LoginModals />
           <NotificationModal />

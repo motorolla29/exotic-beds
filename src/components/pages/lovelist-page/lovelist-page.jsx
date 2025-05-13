@@ -20,6 +20,7 @@ const LovelistPage = () => {
   const isAuth = useSelector((state) => state.isAuth);
   const [displayedLovelistItems, setDisplayedLovelistItems] = useState([]);
 
+  const page = +searchParams.get('page') || 1;
   const limit = +searchParams.get('limit') || 24;
   const sort = searchParams.get('sortBy');
 
@@ -61,6 +62,7 @@ const LovelistPage = () => {
                 {sortedProducts.length > 24 && (
                   <CatalogPagination
                     total={lovedProducts.length}
+                    page={page}
                     limit={limit}
                   />
                 )}
@@ -68,6 +70,7 @@ const LovelistPage = () => {
                 {sortedProducts.length > 24 && (
                   <CatalogPagination
                     total={lovedProducts.length}
+                    page={page}
                     limit={limit}
                   />
                 )}

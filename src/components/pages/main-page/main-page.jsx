@@ -120,7 +120,7 @@ const MainPage = () => {
           <h1 className="highest-rated-items-block_title">
             Check our highest rated <span>exotic furniture</span>
           </h1>
-          {highestRatedProducts.length && (
+          {highestRatedProducts.length > 0 && (
             <Slider
               dots={ww > 480 ? true : false}
               infinite={true}
@@ -142,7 +142,7 @@ const MainPage = () => {
           <h1 className="sales-items-block_title">
             Hurry to buy at <span>epic sales</span>
           </h1>
-          {saleProducts.length && (
+          {saleProducts.length > 0 && (
             <Slider
               dots={ww > 480 ? true : false}
               infinite={true}

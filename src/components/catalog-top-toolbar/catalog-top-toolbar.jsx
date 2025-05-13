@@ -84,6 +84,7 @@ const CatalogTopToolbar = ({
                   value={limit}
                   label="Per Page"
                   onChange={handleLimitChange}
+                  MenuProps={{ disablePortal: true }}
                 >
                   <MenuItem value={24}>24</MenuItem>
                   <MenuItem value={48}>48</MenuItem>
@@ -112,6 +113,7 @@ const CatalogTopToolbar = ({
                   value={sort}
                   label="Sort By"
                   onChange={handleSortChange}
+                  MenuProps={{ disablePortal: true }}
                 >
                   <MenuItem value={'relevance'}>Most relevant</MenuItem>
                   <MenuItem value={'price_asc'}>Price - Low to high</MenuItem>

@@ -5,15 +5,12 @@
     display: flex
     align-items: center
     margin-top: 0.5em
-
     &_counter
         border-right: 1px solid $main-color-turquoise-transparent
         padding-right: 1em
-        
     &_panel
         display: flex
         justify-content: space-between
-        
         &_sorting
             display: flex
             &_limiter
@@ -23,7 +20,6 @@
                 &_control
                     &_select
                         min-width: 6em
-
             &_sorter
                 display: flex
                 align-items: center
@@ -31,7 +27,6 @@
                 &_control
                     &_select
                         min-width: 12em
-
         &_filter
             width: 3.5em
             cursor: pointer
@@ -70,12 +65,18 @@
             & .Mui-focused .MuiOutlinedInput-notchedOutline
                 border-color: $main-color-turquoise // цвет бордера в фокусе    
 
-.MuiPopover-root .MuiPaper-root
-    background-color: $main-color-green-light // цвет бэкграунда попапа
-
-    & .MuiButtonBase-root
-        &.MuiMenuItem-root
-            color: $main-color-turquoise // цвет текста в опциях попапа
+    & .MuiPopover-root
+        cursor: default
+        & .MuiPaper-root
+            font-size: 1em
+            background-color: $main-color-green-light // цвет бэкграунда попапа
+            & .MuiButtonBase-root
+                font-size: 1em
+                min-height: auto
+                &.MuiMenuItem-root
+                    padding-top: 0.75em
+                    padding-bottom: 0.75em
+                    color: $main-color-turquoise // цвет текста в опциях попапа
             
 
 

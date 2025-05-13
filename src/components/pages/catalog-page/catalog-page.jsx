@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
@@ -15,7 +15,7 @@ import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
 import { getProducts } from '../../../api/productAPI';
 import { setProducts } from '../../../store/action';
-import CatalogLogoSpinner from '../../catalog-logo-spinner/catalog-logo-spinner';
+import LogoSpinner from '../../logo-spinner/logo-spinner';
 
 import './catalog-page.sass';
 
@@ -33,7 +33,7 @@ const CatalogPage = ({ category }) => {
     filterCounts = {},
   } = useSelector((state) => state.products);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const params = useMemo(
     () => ({
@@ -56,7 +56,8 @@ const CatalogPage = ({ category }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
+  // useLayoutEffect для предотвращения мигания кнопки добавления товара при уходе с 1 страницы каталога (админ)
+  useLayoutEffect(() => {
     setLoading(true);
     (async () => {
       try {
@@ -104,7 +105,7 @@ const CatalogPage = ({ category }) => {
               {loading ? (
                 <div className="catalog-page_loader">
                   <div className="catalog-page_loader_logo-spinner">
-                    <CatalogLogoSpinner />
+                    <LogoSpinner />
                   </div>
                 </div>
               ) : (
@@ -115,7 +116,7 @@ const CatalogPage = ({ category }) => {
               )}
             </>
           ) : (
-            <CatalogEmpty />
+            !loading && <CatalogEmpty />
           )}
         </div>
       </div>

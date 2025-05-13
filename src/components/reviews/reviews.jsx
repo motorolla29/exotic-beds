@@ -247,11 +247,11 @@ const Reviews = ({ product }) => {
       <div className="reviews_title">
         Reviews<span className="reviews_title_count">{reviews.length}</span>
       </div>
-      {isAuth && (
+      {isAuth && !reviewsLoading && (
         <AnimatePresence>
           {!hasUserReviewed && (
             <motion.div
-              initial={reviewsLoading ? { opacity: 0, scale: 0 } : false}
+              initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{
                 opacity: 0,

@@ -1,12 +1,13 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
 import CatalogItem from '../catalog-item/catalog-item';
+import AdminAddProductModal from '../admin-modals/admin-add-product-modal';
 import { BsPlusLg } from 'react-icons/bs';
 
 import './catalog.sass';
-import { useState } from 'react';
-import AdminAddProductModal from '../admin-modals/admin-add-product-modal';
-import { AnimatePresence } from 'framer-motion';
-import { useSearchParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const Catalog = ({ products, category }) => {
   const isAuth = useSelector((state) => state.isAuth);
@@ -26,7 +27,13 @@ const Catalog = ({ products, category }) => {
         </div>
       )}
       {products?.map((it) => {
-        return <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />;
+        return (
+          <CatalogItem
+            key={it.id}
+            item={{ ...it, productId: it.id }}
+            category={category}
+          />
+        );
       })}
       <AnimatePresence>
         {adminModalOpen && (
