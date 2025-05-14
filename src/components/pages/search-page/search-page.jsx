@@ -107,7 +107,7 @@ const SearchPage = () => {
                 <div
                   className="search-page_loader-container"
                   style={{
-                    height: catalogHeight ? catalogHeight + 70 : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
+                    height: catalogHeight ? catalogHeight : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
                   }}
                 >
                   <div className="search-page_loader">
@@ -121,9 +121,7 @@ const SearchPage = () => {
                   <Catalog products={items} />
                 </div>
               )}
-              {!loading && (
-                <CatalogPagination total={total} page={page} limit={pageSize} />
-              )}
+              <CatalogPagination total={total} page={page} limit={pageSize} />
             </>
           ) : (
             <SearchEmpty />

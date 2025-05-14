@@ -22,6 +22,9 @@ import './main-page.sass';
 const MainPage = () => {
   const [highestRatedProducts, setHighestRatedProducts] = useState([]);
   const [saleProducts, setSaleProducts] = useState([]);
+  const [loadingHighestRatedProducts, setLoadingHighestRatedProducts] =
+    useState(true);
+  const [loadingSaleProducts, setLoadingSaleProducts] = useState(true);
 
   const navigate = useNavigate();
   const [ww] = useWindowSize();
@@ -30,20 +33,35 @@ const MainPage = () => {
     const fetchSliderProducts = async () => {
       try {
         // Запрос 1: по рейтингу
-        const topRatedProducts = await getProducts({
-          page: 1,
-          limit: 10,
-          sortBy: 'rating',
-        });
-        setHighestRatedProducts(topRatedProducts.items);
+        try {
+          setLoadingHighestRatedProducts(true);
+          const topRatedProducts = await getProducts({
+            page: 1,
+            limit: 10,
+            sortBy: 'rating',
+          });
+          setHighestRatedProducts(topRatedProducts.items);
+          setLoadingHighestRatedProducts(true);
+        } catch (err) {
+          console.error('Error loading top rated slider:', err);
+        } finally {
+          setLoadingHighestRatedProducts(false);
+        }
 
         // Запрос 2: по скидке
-        const saleProducts = await getProducts({
-          page: 1,
-          limit: 10,
-          sortBy: 'discount',
-        });
-        setSaleProducts(saleProducts.items);
+        try {
+          setLoadingSaleProducts(true);
+          const saleProducts = await getProducts({
+            page: 1,
+            limit: 10,
+            sortBy: 'discount',
+          });
+          setSaleProducts(saleProducts.items);
+        } catch (err) {
+          console.error('Error loading sale slider:', err);
+        } finally {
+          setLoadingSaleProducts(false);
+        }
       } catch (err) {
         console.error('Error loading products for slider:', err);
       }
@@ -120,20 +138,37 @@ const MainPage = () => {
           <h1 className="highest-rated-items-block_title">
             Check our highest rated <span>exotic furniture</span>
           </h1>
-          {highestRatedProducts.length > 0 && (
-            <Slider
-              dots={ww > 480 ? true : false}
-              infinite={true}
-              slidesToShow={getSlidesQty(ww)}
-              className="highest-rated-items-carousel"
-            >
-              {highestRatedProducts.map((it) => {
-                return (
-                  <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
-                );
-              })}
-            </Slider>
-          )}
+          <Slider
+            dots={ww > 480 ? true : false}
+            infinite={true}
+            slidesToShow={getSlidesQty(ww)}
+            className="highest-rated-items-carousel"
+          >
+            {loadingHighestRatedProducts
+              ? Array.from({ length: 5 }).map((_, i) => (
+                  <div key={`skeleton-${i}`} className="skeleton-card">
+                    <div className="skeleton-card_1" />
+                    <div className="skeleton-card_2" />
+                    <div className="skeleton-card_3">
+                      <div className="skeleton-card_3_1" />
+                      <div className="skeleton-card_3_2" />
+                      <div className="skeleton-card_3_3" />
+                    </div>
+                    <div className="skeleton-card_4">
+                      <div className="skeleton-card_4_1" />
+                      <div className="skeleton-card_4_2" />
+                    </div>
+                  </div>
+                ))
+              : highestRatedProducts.map((it) => {
+                  return (
+                    <CatalogItem
+                      key={it.id}
+                      item={{ ...it, productId: it.id }}
+                    />
+                  );
+                })}
+          </Slider>
         </div>
         <Link to={'/beds?sale=true'}>
           <div className="promo-sales"></div>
@@ -142,20 +177,37 @@ const MainPage = () => {
           <h1 className="sales-items-block_title">
             Hurry to buy at <span>epic sales</span>
           </h1>
-          {saleProducts.length > 0 && (
-            <Slider
-              dots={ww > 480 ? true : false}
-              infinite={true}
-              slidesToShow={getSlidesQty(ww)}
-              className="sale-items-carousel"
-            >
-              {saleProducts.map((it) => {
-                return (
-                  <CatalogItem key={it.id} item={{ ...it, productId: it.id }} />
-                );
-              })}
-            </Slider>
-          )}
+          <Slider
+            dots={ww > 480 ? true : false}
+            infinite={true}
+            slidesToShow={getSlidesQty(ww)}
+            className="sale-items-carousel"
+          >
+            {loadingSaleProducts
+              ? Array.from({ length: 5 }).map((_, i) => (
+                  <div key={`skeleton-${i}`} className="skeleton-card">
+                    <div className="skeleton-card_1" />
+                    <div className="skeleton-card_2" />
+                    <div className="skeleton-card_3">
+                      <div className="skeleton-card_3_1" />
+                      <div className="skeleton-card_3_2" />
+                      <div className="skeleton-card_3_3" />
+                    </div>
+                    <div className="skeleton-card_4">
+                      <div className="skeleton-card_4_1" />
+                      <div className="skeleton-card_4_2" />
+                    </div>
+                  </div>
+                ))
+              : saleProducts.map((it) => {
+                  return (
+                    <CatalogItem
+                      key={it.id}
+                      item={{ ...it, productId: it.id }}
+                    />
+                  );
+                })}
+          </Slider>
         </div>
       </div>
     </>

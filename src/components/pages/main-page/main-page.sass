@@ -119,6 +119,60 @@
         box-shadow: 0px 0px 14px 4px $main-color-grey-transparent
         &:hover
             box-shadow: 0px 0px 20px -4px $main-color-turquoise-transparent
+    
+    & .skeleton-card
+        display: flex
+        flex-direction: column
+        margin: 2em 0
+        &:focus-visible
+            outline: none
+        &_1, &_2
+            background: linear-gradient(90deg,#eefef630 25%,#eefef650 50%,#eefef630 75%)
+            background-size: 200% 100%
+            animation: skeleton-shine 1.5s ease-in-out infinite
+            animation-delay: 0s
+        &_1
+            width: 15em
+            margin-bottom: 1em
+            border-radius: 1em
+            aspect-ratio: 1 / 1
+        &_2
+            height: 1.5em
+            margin-bottom: 1em
+            border-radius: 1em
+        &_3
+            display: flex
+            justify-content: flex-start
+            height: 1.5em
+            width: 100%
+            margin-bottom: 1em
+            border-radius: 1em
+            &_1, &_2
+                background: linear-gradient(90deg,#eefef630 25%,#eefef650 50%,#eefef630 75%)
+                background-size: 200% 100%
+                animation: skeleton-shine 1.5s ease-in-out infinite
+                animation-delay: 0s
+                margin-right: 1em
+                border-radius: 1em
+                width: 30%
+            
+        &_4
+            display: flex
+            &_1, &_2
+                height: 2.5em
+                width: 100%
+                border-radius: 0.5em
+                background: linear-gradient(90deg,#eefef630 25%,#eefef650 50%,#eefef630 75%)
+                background-size: 200% 100%
+                animation: skeleton-shine 1.5s ease-in-out infinite
+                animation-delay: 0s
+            &_1
+                border-radius: 2em
+            &_2
+                margin-left: 1em
+                border-radius: 50%
+                width: 2.5em
+                aspect-ratio: 1/1
         
 @media (max-width: 1320px) 
     .highest-rated-items-block, .sales-items-block
@@ -214,6 +268,11 @@
             > div
                 height: 100%
                 width: 100%
+                & .skeleton-card
+                    padding: 0 0.5em
+                    &_1
+                        width: 100%
+                        
                 & .catalog-item
                     display: flex
                     margin: 0
@@ -242,7 +301,10 @@
         & .slick-slide
             padding: 0 4px
 
-
-        
+@keyframes skeleton-shine
+  0% 
+    background-position: -200% 0
+  100% 
+    background-position: 200% 0
 
 

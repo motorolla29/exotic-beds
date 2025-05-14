@@ -60,6 +60,7 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
 
   const [addressSuggestions, setAddressSuggestions] = useState([]);
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [mailingConsent, setMailingConsent] = useState(false);
   const [deliveryData, setDeliveryData] = useState({
     country: 'US',
     city: '',
@@ -335,8 +336,15 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
             variant="outlined"
           />
           <div className="checkout-page_main_info_inner_contact_mailing-consent">
-            <Checkbox disableRipple />
-            <span className="checkout-page_main_info_inner_contact_mailing-consent_label">
+            <Checkbox
+              onClick={() => setMailingConsent(!mailingConsent)}
+              checked={mailingConsent}
+              disableRipple
+            />
+            <span
+              onClick={() => setMailingConsent(!mailingConsent)}
+              className="checkout-page_main_info_inner_contact_mailing-consent_label"
+            >
               Email me with news and offers
             </span>
           </div>

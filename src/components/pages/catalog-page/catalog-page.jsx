@@ -111,7 +111,7 @@ const CatalogPage = ({ category }) => {
                 <div
                   className="catalog-page_loader-container"
                   style={{
-                    height: catalogHeight ? catalogHeight + 70 : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
+                    height: catalogHeight ? catalogHeight : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
                   }}
                 >
                   <div className="catalog-page_loader">
@@ -125,9 +125,7 @@ const CatalogPage = ({ category }) => {
                   <Catalog products={items} category={category} />
                 </div>
               )}
-              {!loading && (
-                <CatalogPagination total={total} page={page} limit={pageSize} />
-              )}
+              <CatalogPagination total={total} page={page} limit={pageSize} />
             </>
           ) : (
             !loading && <CatalogEmpty />
