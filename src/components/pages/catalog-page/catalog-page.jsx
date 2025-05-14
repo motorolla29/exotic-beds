@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import Breadcrumbs from '../../breadcrumbs/breadcrumbs';
@@ -34,6 +34,8 @@ const CatalogPage = ({ category }) => {
   } = useSelector((state) => state.products);
 
   const [loading, setLoading] = useState(true);
+  const catalogRef = useRef(null);
+  const [catalogHeight, setCatalogHeight] = useState(0);
 
   const params = useMemo(
     () => ({
@@ -58,6 +60,9 @@ const CatalogPage = ({ category }) => {
 
   // useLayoutEffect для предотвращения мигания кнопки добавления товара при уходе с 1 страницы каталога (админ)
   useLayoutEffect(() => {
+    if (catalogRef.current) {
+      setCatalogHeight(catalogRef.current.clientHeight);
+    }
     setLoading(true);
     (async () => {
       try {
@@ -103,13 +108,22 @@ const CatalogPage = ({ category }) => {
               />
               <CatalogPagination total={total} page={page} limit={pageSize} />
               {loading ? (
-                <div className="catalog-page_loader">
-                  <div className="catalog-page_loader_logo-spinner">
-                    <LogoSpinner />
+                <div
+                  className="catalog-page_loader-container"
+                  style={{
+                    height: catalogHeight ? catalogHeight + 70 : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
+                  }}
+                >
+                  <div className="catalog-page_loader">
+                    <div className="catalog-page_loader_logo-spinner">
+                      <LogoSpinner />
+                    </div>
                   </div>
                 </div>
               ) : (
-                <Catalog products={items} category={category} />
+                <div ref={catalogRef}>
+                  <Catalog products={items} category={category} />
+                </div>
               )}
               {!loading && (
                 <CatalogPagination total={total} page={page} limit={pageSize} />

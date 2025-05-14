@@ -2,17 +2,18 @@
     
 .catalog-filters-mobile
     font-size: 16px
-    position: absolute
+    position: fixed
     top: 0
     left: 0
+    width: 100%
+    height: 100dvh
     min-height: 100%
     max-height: 100%
     padding: 2em 
     flex-direction: column
-    background: $main-color-green-light
-    height: fit-content
-    width: 100%
+    overflow: auto
     z-index: 999
+    background: $main-color-green-light
 
     &_header
         display: flex
@@ -31,8 +32,13 @@
             left: 0
 
         &_clear-button
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 5.5em
+            height: 2.5em
+            line-height: 1
             cursor: pointer
-            padding: 0.5em
             background: none
             border: 1px solid $main-color-grey-transparent
             border-radius: 1em

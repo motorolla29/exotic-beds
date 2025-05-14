@@ -3,6 +3,9 @@
 .catalog-page
     display: flex
     margin-top: 2em
+    &_loader-container
+        height: 100%
+        width: 100%
     &_loader
         position: sticky
         top: 0
@@ -11,11 +14,10 @@
         justify-content: center
         &_logo-spinner
             margin: 20vh 0 30vh 0
-
-.catalog-container
-    width: 100%
-    display: flex
-    flex-direction: column
+    & .catalog-container
+        width: 100%
+        display: flex
+        flex-direction: column
 @media (max-width: 1200px) 
     .catalog-page
         font-size: 14px

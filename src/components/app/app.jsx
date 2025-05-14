@@ -52,10 +52,8 @@ const App = () => {
         // 1. deviceId
         let storedDeviceId = localStorage.getItem('deviceId');
         if (!storedDeviceId) {
-          console.time('generateDeviceId');
           storedDeviceId = await generateDeviceIdWithUserAgentAndClientHints();
           localStorage.setItem('deviceId', storedDeviceId);
-          console.timeEnd('generateDeviceId');
         }
         dispatch(setDeviceId(storedDeviceId));
 
@@ -65,9 +63,7 @@ const App = () => {
         let user = null;
         if (token) {
           try {
-            console.time('auth');
             user = await checkAuth();
-            console.timeEnd('auth');
           } catch (e) {
             user = null;
           }

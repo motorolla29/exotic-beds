@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -12,12 +13,11 @@ import { categoriesIds } from '../../../utils';
 import CatalogPagination from '../../catalog-pagination/catalog-pagination';
 import SearchPanel from '../../search-panel/search-panel';
 import useWindowSize from '../../../hooks/use-window-size';
-
-import './search-page.sass';
-import { useEffect, useMemo, useState } from 'react';
 import { setProducts } from '../../../store/action';
 import { getProducts } from '../../../api/productAPI';
 import LogoSpinner from '../../logo-spinner/logo-spinner';
+
+import './search-page.sass';
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
@@ -34,6 +34,8 @@ const SearchPage = () => {
   } = useSelector((state) => state.products);
 
   const [loading, setLoading] = useState(false);
+  const catalogRef = useRef(null);
+  const [catalogHeight, setCatalogHeight] = useState(0);
 
   const params = useMemo(
     () => ({
@@ -56,8 +58,11 @@ const SearchPage = () => {
   );
 
   useEffect(() => {
+    if (catalogRef.current) {
+      setCatalogHeight(catalogRef.current.clientHeight);
+    }
+    setLoading(true);
     (async () => {
-      setLoading(true);
       try {
         const data = await getProducts(params);
         dispatch(setProducts(data));
@@ -99,13 +104,22 @@ const SearchPage = () => {
               />
               <CatalogPagination total={total} page={page} limit={pageSize} />
               {loading ? (
-                <div className="search-page_loader">
-                  <div className="search-page_loader_logo-spinner">
-                    <LogoSpinner />
+                <div
+                  className="search-page_loader-container"
+                  style={{
+                    height: catalogHeight ? catalogHeight + 70 : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
+                  }}
+                >
+                  <div className="search-page_loader">
+                    <div className="search-page_loader_logo-spinner">
+                      <LogoSpinner />
+                    </div>
                   </div>
                 </div>
               ) : (
-                <Catalog products={items} />
+                <div ref={catalogRef}>
+                  <Catalog products={items} />
+                </div>
               )}
               {!loading && (
                 <CatalogPagination total={total} page={page} limit={pageSize} />
