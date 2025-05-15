@@ -116,8 +116,8 @@ const CatalogPage = ({ category }) => {
                   />
                   <CatalogPagination
                     total={total}
-                    page={page}
                     limit={pageSize}
+                    loading={loading}
                   />
                   {loading ? (
                     <div
@@ -139,8 +139,8 @@ const CatalogPage = ({ category }) => {
                   )}
                   <CatalogPagination
                     total={total}
-                    page={page}
                     limit={pageSize}
+                    loading={loading}
                   />
                 </>
               ) : (

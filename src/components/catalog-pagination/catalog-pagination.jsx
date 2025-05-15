@@ -4,10 +4,11 @@ import { useSearchParams } from 'react-router-dom';
 
 import './catalog-pagination.sass';
 
-const CatalogPagination = ({ total, page, limit }) => {
+const CatalogPagination = ({ total, limit, loading }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pagesCount = Math.ceil(total / limit);
 
+  const pageParam = +searchParams.get('page') || 1;
   const handleChange = (_, value) => {
     searchParams.set('page', value);
     setSearchParams(searchParams);
@@ -19,12 +20,13 @@ const CatalogPagination = ({ total, page, limit }) => {
       <Stack spacing={2}>
         <Pagination
           count={pagesCount}
-          page={page}
+          page={pageParam}
           onChange={handleChange}
           hidePrevButton
           hideNextButton
           size="large"
           variant="outlined"
+          disabled={loading}
         />
       </Stack>
     </div>
