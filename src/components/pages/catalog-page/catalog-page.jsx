@@ -97,7 +97,7 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
-          {!items ? (
+          {!items.length && loading ? (
             <div className="catalog-page_loader">
               <div className="catalog-page_loader_logo-spinner">
                 <LogoSpinner />

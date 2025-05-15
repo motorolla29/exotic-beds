@@ -94,7 +94,7 @@ const SearchPage = () => {
           <h1 className="catalog-container_title">
             Search results for: '{params.q}'
           </h1>
-          {!items ? (
+          {!items.length && loading ? (
             <div className="search-page_loader">
               <div className="search-page_loader_logo-spinner">
                 <LogoSpinner />
