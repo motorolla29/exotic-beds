@@ -94,37 +94,55 @@ const SearchPage = () => {
           <h1 className="catalog-container_title">
             Search results for: '{params.q}'
           </h1>
-          {items.length ? (
-            <>
-              <CatalogTopToolbar
-                total={total}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                filterCounts={filterCounts}
-              />
-              <CatalogPagination total={total} page={page} limit={pageSize} />
-              {loading ? (
-                <div
-                  className="search-page_loader-container"
-                  style={{
-                    height: catalogHeight ? catalogHeight : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
-                  }}
-                >
-                  <div className="search-page_loader">
-                    <div className="search-page_loader_logo-spinner">
-                      <LogoSpinner />
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div ref={catalogRef}>
-                  <Catalog products={items} />
-                </div>
-              )}
-              <CatalogPagination total={total} page={page} limit={pageSize} />
-            </>
+          {!items ? (
+            <div className="search-page_loader">
+              <div className="search-page_loader_logo-spinner">
+                <LogoSpinner />
+              </div>
+            </div>
           ) : (
-            <SearchEmpty />
+            <>
+              {items.length > 0 ? (
+                <>
+                  <CatalogTopToolbar
+                    total={total}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    filterCounts={filterCounts}
+                  />
+                  <CatalogPagination
+                    total={total}
+                    page={page}
+                    limit={pageSize}
+                  />
+                  {loading ? (
+                    <div
+                      className="search-page_loader-container"
+                      style={{
+                        height: catalogHeight ? catalogHeight : '100%', // высота для лоадера для избежания подскакивания стикибокса с фильтрами во время загрузки
+                      }}
+                    >
+                      <div className="search-page_loader">
+                        <div className="search-page_loader_logo-spinner">
+                          <LogoSpinner />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div ref={catalogRef}>
+                      <Catalog products={items} />
+                    </div>
+                  )}
+                  <CatalogPagination
+                    total={total}
+                    page={page}
+                    limit={pageSize}
+                  />
+                </>
+              ) : (
+                <SearchEmpty />
+              )}
+            </>
           )}
         </div>
       </div>

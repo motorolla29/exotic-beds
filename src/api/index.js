@@ -26,6 +26,7 @@ $authHost.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (
+      error.response &&
       error.response.status == 401 &&
       error.config &&
       !error.config._isRetry
