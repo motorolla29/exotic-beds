@@ -27,7 +27,6 @@ const CatalogTopToolbar = ({
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [ww] = useWindowSize();
   const page = +searchParams.get('page') || 1;
-  const pagesCount = Math.ceil(total / limit);
 
   const handleChangeParam = (key, value) => {
     if (value != null) {

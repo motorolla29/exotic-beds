@@ -335,16 +335,12 @@ const CheckoutPageInfo = ({ orderedItems, countedBasket, promocode }) => {
             label="Email"
             variant="outlined"
           />
-          <div className="checkout-page_main_info_inner_contact_mailing-consent">
-            <Checkbox
-              onClick={() => setMailingConsent(!mailingConsent)}
-              checked={mailingConsent}
-              disableRipple
-            />
-            <span
-              onClick={() => setMailingConsent(!mailingConsent)}
-              className="checkout-page_main_info_inner_contact_mailing-consent_label"
-            >
+          <div
+            onClick={() => setMailingConsent(!mailingConsent)}
+            className="checkout-page_main_info_inner_contact_mailing-consent"
+          >
+            <Checkbox checked={mailingConsent} disableRipple />
+            <span className="checkout-page_main_info_inner_contact_mailing-consent_label">
               Email me with news and offers
             </span>
           </div>

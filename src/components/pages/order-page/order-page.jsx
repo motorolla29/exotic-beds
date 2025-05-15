@@ -187,18 +187,29 @@ const OrderPage = () => {
                     className="order-page_main_items_inner_item"
                   >
                     <div>
-                      <div className="order-page_main_items_inner_item_visual">
-                        <ProgressiveImageContainer
-                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
-                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
-                          defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
-                          defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
-                          alt="order-item-image"
-                        />
-                      </div>
-                      <p className="order-page_main_items_inner_item_title">
-                        {item.title}
-                      </p>
+                      <Link
+                        className="order-page_main_items_inner_item_link"
+                        to={`/${item.productId}`}
+                      >
+                        <div className="order-page_main_items_inner_item_visual">
+                          <ProgressiveImageContainer
+                            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
+                            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
+                            defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
+                            defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
+                            alt="order-item-image"
+                          />
+                        </div>
+                      </Link>
+
+                      <Link
+                        className="order-page_main_items_inner_item_link"
+                        to={`/${item.productId}`}
+                      >
+                        <p className="order-page_main_items_inner_item_title">
+                          {item.title}
+                        </p>
+                      </Link>
                     </div>
                     <div>
                       <p className="order-page_main_items_inner_item_price-each">
@@ -220,19 +231,29 @@ const OrderPage = () => {
                     key={item.id}
                     className="order-page_main_items_inner_item-sm"
                   >
-                    <div className="order-page_main_items_inner_item-sm_visual">
-                      <ProgressiveImageContainer
-                        thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
-                        src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
-                        defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
-                        defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
-                        alt="order-item-image"
-                      />
-                    </div>
+                    <Link
+                      className="order-page_main_items_inner_item-sm_link"
+                      to={`/${item.productId}`}
+                    >
+                      <div className="order-page_main_items_inner_item-sm_visual">
+                        <ProgressiveImageContainer
+                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
+                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
+                          defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
+                          defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
+                          alt="order-item-image"
+                        />
+                      </div>
+                    </Link>
                     <div>
-                      <p className="order-page_main_items_inner_item-sm_title">
-                        {item.title}
-                      </p>
+                      <Link
+                        className="order-page_main_items_inner_item-sm_link"
+                        to={`/${item.productId}`}
+                      >
+                        <p className="order-page_main_items_inner_item-sm_title">
+                          {item.title}
+                        </p>
+                      </Link>
                       <p className="order-page_main_items_inner_item-sm_price-each">
                         {getCurrencySymbol(order.originalCurrency)}
                         {(item.sale || item.price).toFixed(2)} each

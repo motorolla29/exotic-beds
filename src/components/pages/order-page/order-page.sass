@@ -88,11 +88,13 @@
                     max-width: 100%
                     &:not(:last-child)
                         padding-bottom: 1.5em
-                        
                     > div
                         display: flex
-
+                    &_link
+                        display: flex
+                        height: fit-content
                     &_visual
+                        cursor: pointer
                         user-select: none
                         display: flex
                         min-width: 3.5em
@@ -102,6 +104,8 @@
                         border-radius: 5px
                         overflow: hidden
                         background: $main-color-green-light
+                        &:hover
+                            opacity: 0.8
                         & .progressive-image-container
                             & .progressive-image
                                 object-position: center
@@ -118,8 +122,12 @@
                     &_title, &_price-total
                         font-weight: 600
                     &_title
+                        cursor: pointer
                         margin-left: 0.6em
                         max-width: 20em
+                        height: fit-content
+                        &:hover
+                            opacity: 0.8
                     &_price-each
                         width: 8em
                     &_price-total
@@ -134,7 +142,11 @@
                     &:not(:last-child)
                         padding-bottom: 1em
                         border-bottom: 1px solid #acacac
+                    &_link
+                        display: flex
+                        height: fit-content
                     &_visual
+                        cursor: pointer
                         position: relative
                         user-select: none
                         display: flex
@@ -146,7 +158,10 @@
                         border-radius: 5px
                         overflow: hidden
                         background: $main-color-green-light
+                        &:hover
+                            opacity: 0.8
                         & .progressive-image-container
+                            
                             & .progressive-image
                                 object-position: center
                                 &.thumb
@@ -165,6 +180,10 @@
                         font-weight: 600
                     &_price-total
                         font-size: 1.05em
+                    &_title
+                        cursor: pointer
+                        &:hover
+                            opacity: 0.5
 
 
         &_count

@@ -30,6 +30,8 @@ const MainPage = () => {
   const [ww] = useWindowSize();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchSliderProducts = async () => {
       try {
         // Запрос 1: по рейтингу
