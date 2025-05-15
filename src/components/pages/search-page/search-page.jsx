@@ -26,7 +26,6 @@ const SearchPage = () => {
   const {
     items,
     total,
-    page,
     pageSize,
     minPrice,
     maxPrice,
@@ -88,6 +87,7 @@ const SearchPage = () => {
             minPrice={minPrice}
             maxPrice={maxPrice}
             filterCounts={filterCounts}
+            loading={!items.length && loading}
           />
         )}
         <div className="catalog-container">

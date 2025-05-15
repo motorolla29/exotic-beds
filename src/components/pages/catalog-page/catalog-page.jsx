@@ -26,7 +26,6 @@ const CatalogPage = ({ category }) => {
   const {
     items,
     total,
-    page,
     pageSize,
     minPrice,
     maxPrice,
@@ -91,6 +90,7 @@ const CatalogPage = ({ category }) => {
             minPrice={minPrice}
             maxPrice={maxPrice}
             filterCounts={filterCounts}
+            loading={!items.length && loading}
           />
         ) : null}
         <div className="catalog-container">

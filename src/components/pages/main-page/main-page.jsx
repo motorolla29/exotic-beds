@@ -33,40 +33,28 @@ const MainPage = () => {
     window.scrollTo(0, 0);
 
     const fetchSliderProducts = async () => {
-      try {
-        // Запрос 1: по рейтингу
-        try {
-          setLoadingHighestRatedProducts(true);
-          const topRatedProducts = await getProducts({
-            page: 1,
-            limit: 10,
-            sortBy: 'rating',
-          });
-          setHighestRatedProducts(topRatedProducts.items);
-          setLoadingHighestRatedProducts(true);
-        } catch (err) {
-          console.error('Error loading top rated slider:', err);
-        } finally {
-          setLoadingHighestRatedProducts(false);
-        }
+      setLoadingHighestRatedProducts(true);
+      setLoadingSaleProducts(true);
 
-        // Запрос 2: по скидке
-        try {
-          setLoadingSaleProducts(true);
-          const saleProducts = await getProducts({
-            page: 1,
-            limit: 10,
-            sortBy: 'discount',
-          });
-          setSaleProducts(saleProducts.items);
-        } catch (err) {
-          console.error('Error loading sale slider:', err);
-        } finally {
-          setLoadingSaleProducts(false);
-        }
-      } catch (err) {
-        console.error('Error loading products for slider:', err);
+      const [topRes, saleRes] = await Promise.allSettled([
+        getProducts({ page: 1, limit: 10, sortBy: 'rating' }),
+        getProducts({ page: 1, limit: 10, sortBy: 'discount' }),
+      ]);
+
+      if (topRes.status === 'fulfilled') {
+        setHighestRatedProducts(topRes.value.items);
+      } else {
+        console.error('Error loading top rated slider:', topRes.reason);
       }
+
+      if (saleRes.status === 'fulfilled') {
+        setSaleProducts(saleRes.value.items);
+      } else {
+        console.error('Error loading sale slider:', saleRes.reason);
+      }
+
+      setLoadingHighestRatedProducts(false);
+      setLoadingSaleProducts(false);
     };
 
     fetchSliderProducts();
@@ -146,7 +134,7 @@ const MainPage = () => {
             slidesToShow={getSlidesQty(ww)}
             className="highest-rated-items-carousel"
           >
-            {loadingHighestRatedProducts
+            {loadingHighestRatedProducts || highestRatedProducts.length === 0
               ? Array.from({ length: 5 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="skeleton-card">
                     <div className="skeleton-card_1" />
@@ -185,7 +173,7 @@ const MainPage = () => {
             slidesToShow={getSlidesQty(ww)}
             className="sale-items-carousel"
           >
-            {loadingSaleProducts
+            {loadingSaleProducts || saleProducts.length === 0
               ? Array.from({ length: 5 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="skeleton-card">
                     <div className="skeleton-card_1" />
