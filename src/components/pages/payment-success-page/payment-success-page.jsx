@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { $authHost } from '../../../api';
 import { setCart } from '../../../store/action';
@@ -20,12 +20,14 @@ const PaymentSuccessPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pollingAttempts, setPollingAttempts] = useState(0);
+  const navigate = useNavigate();
 
   //примерно 30 секунд при интервале 3 секунды
   const maxPollingAttempts = 10;
 
   const [searchParams] = useSearchParams();
   const orderId = searchParams.get('orderId');
+  const token = searchParams.get('token');
 
   useEffect(() => {
     if (!orderId) {
@@ -36,7 +38,7 @@ const PaymentSuccessPage = () => {
 
     const intervalId = setInterval(() => {
       $authHost
-        .get(`/api/orders/${orderId}`)
+        .get(`/api/orders/${orderId}`, { params: { token } })
         .then(({ data }) => {
           setOrder(data);
           setPollingAttempts((prev) => prev + 1);
@@ -60,13 +62,17 @@ const PaymentSuccessPage = () => {
         .catch((err) => {
           console.error('Error when polling an order:', err);
           clearInterval(intervalId);
+          const status = err.response?.status;
+          if (status === 404) {
+            return navigate('/not-found', { replace: true });
+          }
           setError('Error checking order status');
           setLoading(false);
         });
     }, 3000);
 
     return () => clearInterval(intervalId);
-  }, [orderId, pollingAttempts, dispatch, isAuth]);
+  }, [orderId, pollingAttempts, dispatch, isAuth, navigate]);
 
   if (loading) {
     return (
