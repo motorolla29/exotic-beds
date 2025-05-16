@@ -1,0 +1,95 @@
+@import 'src/styles/variables'
+    
+.catalog-filters-skeleton-shine
+    background: linear-gradient(90deg,#d4edde6d 25%,#d4eddebe 50%,#d4edde6d 75%)
+    background-size: 200% 100%
+    animation: skeleton-shine 1.5s ease-in-out infinite
+    animation-delay: 0s
+.catalog-filters-skeleton
+    display: flex
+    flex-direction: column
+    border-radius: 2em
+    margin-right: 2em
+    padding: 1em
+    background: $main-color-green-light
+    height: fit-content
+    width: 20em
+    min-width: 20em
+    min-height: fit-content
+    & .cf-skel-header
+        display: flex
+        justify-content: flex-start
+        border-radius: 2em
+        margin-bottom: 3em
+        height: 2em
+        width: 35%
+    & .cf-skel-filter
+        border-radius: 1em
+        height: 2.5em
+        margin-bottom: 1em
+        &_1
+            margin-bottom: 1.5em
+            &_title
+                border-radius: 1em
+                width: 20%
+                height: 1.25em
+                margin-bottom: 2.5em
+            &_body
+                &_1
+                    display: flex
+                    justify-content: space-between
+                    margin-bottom: 2em
+                    &_1, &_2
+                        border-radius: 0.5em
+                        height: 2.5em
+                        width: 45%
+                &_2
+                    width: 90%
+                    justify-self: center
+                    height: 0.75em
+                    border-radius: 2em
+                    margin-bottom: 1.5em
+        &_2
+            margin-bottom: 0.75em
+            &_title
+                border-radius: 1em
+                width: 20%
+                height: 1.25em
+                margin-bottom: 1.5em
+            &_body
+                &_1, &_2, &_3, &_4, &_5
+                    border-radius: 1em
+                    width: 100%
+                    height: 1.5em
+                    margin-bottom: 1em
+        &_3
+            &_title
+                border-radius: 1em
+                width: 20%
+                height: 1.25em
+                margin-bottom: 1.5em
+
+        &_3
+            &_1, &_2
+               margin-bottom: 1em
+            &_1, &_2, &_3
+                display: flex
+                justify-content: space-between
+                padding-bottom: 0.25em
+                &_1, &_2
+                    border-radius: 1em
+                    height: 1.5em
+                &_2
+                    width: 3em
+            &_1_1
+                width: 44%
+            &_2_1
+                width: 34%
+            &_3_1
+                width: 30%
+                
+@keyframes skeleton-shine
+  0% 
+    background-position: -200% 0
+  100% 
+    background-position: 200% 0
