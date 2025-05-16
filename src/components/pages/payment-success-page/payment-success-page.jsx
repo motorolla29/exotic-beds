@@ -72,7 +72,7 @@ const PaymentSuccessPage = () => {
     }, 3000);
 
     return () => clearInterval(intervalId);
-  }, [orderId, pollingAttempts, dispatch, isAuth, navigate]);
+  }, [orderId, pollingAttempts, dispatch, isAuth, navigate, token]);
 
   if (loading) {
     return (
