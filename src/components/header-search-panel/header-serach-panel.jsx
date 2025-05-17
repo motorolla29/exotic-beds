@@ -18,14 +18,13 @@ const HeaderSearchPanel = () => {
 
   const formHandleSubmit = (e) => {
     e.preventDefault();
-    const query = search.trim();
-    if (!query) return;
 
-    inputRef.current?.blur();
+    const query = e.target.search.value;
 
-    requestAnimationFrame(() => {
+    if (query) {
+      inputRef.current?.blur();
       navigate(`/search?q=${query}`);
-    });
+    }
   };
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const HeaderSearchPanel = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         className="header-search-form_input"
-      ></input>
+      />
     </form>
   );
 };

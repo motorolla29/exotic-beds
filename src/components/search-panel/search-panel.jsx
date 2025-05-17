@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { ReactComponent as SearchIcon } from '../../images/ui-icons/search-icon.svg';
@@ -10,6 +10,8 @@ const SearchPanel = () => {
 
   const [searchParams] = useSearchParams();
 
+  const inputRef = useRef(null);
+
   const q = searchParams.get('q') || '';
 
   const [search, setSearch] = useState(q);
@@ -17,9 +19,10 @@ const SearchPanel = () => {
   const formHandleSubmit = (e) => {
     e.preventDefault();
 
-    const form = e.target;
-    const query = form.search.value;
+    const query = e.target.search.value;
+
     if (query) {
+      inputRef.current?.blur();
       navigate(`/search?q=${query}`);
     }
   };
@@ -32,6 +35,7 @@ const SearchPanel = () => {
     <form onSubmit={formHandleSubmit} className="search-form">
       <input
         placeholder="Find something Exotic..."
+        ref={inputRef}
         type="search"
         name="search"
         value={search}
