@@ -23,7 +23,9 @@ const HeaderSearchPanel = () => {
 
     inputRef.current?.blur();
 
-    navigate(`/search?q=${query}`);
+    requestAnimationFrame(() => {
+      navigate(`/search?q=${query}`);
+    });
   };
 
   useEffect(() => {
