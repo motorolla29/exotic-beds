@@ -17,7 +17,6 @@ import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 import HeartBrokenOutlined from '@mui/icons-material/HeartBrokenOutlined';
 import { TbShoppingCart } from 'react-icons/tb';
 import { TbShoppingCartCheck } from 'react-icons/tb';
-import useWindowSize from '../../hooks/use-window-size';
 import ProgressiveImageContainer from '../progressive-image-container/progressive-image-container';
 import { addToBasket } from '../../api/basketAPI';
 import { useMemo, useState } from 'react';
@@ -39,7 +38,6 @@ const CatalogItem = ({ item, category }) => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
   const location = useLocation();
-  const [ww] = useWindowSize();
 
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
@@ -220,31 +218,27 @@ const CatalogItem = ({ item, category }) => {
             thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-50,w-50,cm-scale`}
             src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-350,w-350,cm-scale`}
           />
-          {ww > 360 && (
-            <>
-              {item.isNew ? (
-                <img
-                  alt="new"
-                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/new.png?tr=w-150"
-                  className="catalog-item_visual_new"
-                />
-              ) : null}
-              {item.rating >= 4.9 ? (
-                <img
-                  alt="top"
-                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/top-rated.png?tr=w-100"
-                  className="catalog-item_visual_top-rated"
-                />
-              ) : null}
-              {item.sale ? (
-                <img
-                  alt="sale"
-                  src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sale.png?tr=w-150"
-                  className="catalog-item_visual_sale"
-                />
-              ) : null}
-            </>
-          )}
+          {item.isNew ? (
+            <img
+              alt="new"
+              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/new.png?tr=w-150"
+              className="catalog-item_visual_new"
+            />
+          ) : null}
+          {item.rating >= 4.9 ? (
+            <img
+              alt="top"
+              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/top-rated.png?tr=w-100"
+              className="catalog-item_visual_top-rated"
+            />
+          ) : null}
+          {item.sale ? (
+            <img
+              alt="sale"
+              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sale.png?tr=w-150"
+              className="catalog-item_visual_sale"
+            />
+          ) : null}
           {item.availableQuantity === 0 && (
             <img
               className="catalog-item_visual_sold-out"
@@ -259,11 +253,9 @@ const CatalogItem = ({ item, category }) => {
           <div className="catalog-item_info_rating_stars">
             <RatingStars id={item.productId} rating={Number(item.rating)} />
           </div>
-          {ww > 385 && (
-            <span className="catalog-item_info_rating_mark">
-              Rating: {Number(item.rating).toFixed(1)}
-            </span>
-          )}
+          <span className="catalog-item_info_rating_mark">
+            Rating: {Number(item.rating).toFixed(1)}
+          </span>
         </div>
 
         <Link to={`/${item.productId}`}>
@@ -278,11 +270,9 @@ const CatalogItem = ({ item, category }) => {
               <span className="catalog-item_info_price_first">
                 €{item.price}
               </span>
-              {ww > 360 && (
-                <span className="catalog-item_info_price_save">
-                  Save €{item.price - item.sale}
-                </span>
-              )}
+              <span className="catalog-item_info_price_save">
+                Save €{item.price - item.sale}
+              </span>
             </div>
           ) : (
             <div className="catalog-item_info_price">
@@ -304,7 +294,7 @@ const CatalogItem = ({ item, category }) => {
                   >
                     <span>
                       <TbShoppingCartCheck />
-                      {ww > 360 && 'In the basket'}
+                      <p className="sign">'In the basket'</p>
                     </span>
                   </button>
                 ) : (
@@ -320,7 +310,7 @@ const CatalogItem = ({ item, category }) => {
                       ) : (
                         <TbShoppingCart />
                       )}
-                      {ww > 360 && 'Add to basket'}
+                      <p className="sign">Add to basket</p>
                     </span>
                   </button>
                 )}
