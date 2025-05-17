@@ -19,8 +19,7 @@ const HeaderSearchPanel = () => {
   const formHandleSubmit = (e) => {
     e.preventDefault();
 
-    const form = e.target;
-    const query = form.search.value;
+    const query = e.target.search.value;
     if (query) {
       inputRef.current?.blur();
       navigate(`/search?q=${query}`);
