@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { ReactComponent as SearchIcon } from '../../images/ui-icons/search-icon.svg';
@@ -10,6 +10,8 @@ const HeaderSearchPanel = () => {
 
   const [searchParams] = useSearchParams();
 
+  const inputRef = useRef(null);
+
   const q = searchParams.get('q') || '';
 
   const [search, setSearch] = useState(q);
@@ -20,6 +22,7 @@ const HeaderSearchPanel = () => {
     const form = e.target;
     const query = form.search.value;
     if (query) {
+      inputRef.current?.blur();
       navigate(`/search?q=${query}`);
     }
   };
@@ -34,6 +37,7 @@ const HeaderSearchPanel = () => {
         <SearchIcon />
       </button>
       <input
+        ref={inputRef}
         type="search"
         name="search"
         value={search}
