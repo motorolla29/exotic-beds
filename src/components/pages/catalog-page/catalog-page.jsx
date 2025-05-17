@@ -26,7 +26,6 @@ const CatalogPage = ({ category }) => {
   const {
     items,
     total,
-    pageSize,
     minPrice,
     maxPrice,
     filterCounts = {},
@@ -40,7 +39,7 @@ const CatalogPage = ({ category }) => {
     () => ({
       categoryId: category && categoriesIds[category],
       page: +searchParams.get('page') || 1,
-      limit: +searchParams.get('limit') || pageSize,
+      limit: +searchParams.get('limit') || 24,
       minPrice: searchParams.get('minPrice'),
       maxPrice: searchParams.get('maxPrice'),
       minRating: searchParams.get('minRating'),
@@ -50,7 +49,7 @@ const CatalogPage = ({ category }) => {
       isNew: searchParams.get('new'),
       sortBy: searchParams.get('sortBy'),
     }),
-    [category, searchParams, pageSize]
+    [category, searchParams]
   );
 
   useEffect(() => {
@@ -116,7 +115,7 @@ const CatalogPage = ({ category }) => {
                   />
                   <CatalogPagination
                     total={total}
-                    limit={pageSize}
+                    limit={params.limit}
                     loading={loading}
                   />
                   {loading ? (
@@ -139,7 +138,7 @@ const CatalogPage = ({ category }) => {
                   )}
                   <CatalogPagination
                     total={total}
-                    limit={pageSize}
+                    limit={params.limit}
                     loading={loading}
                   />
                 </>

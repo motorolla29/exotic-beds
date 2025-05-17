@@ -41,7 +41,6 @@ const CatalogItem = ({ item, category }) => {
 
   const isAuth = useSelector((state) => state.isAuth);
   const user = useSelector((state) => state.user);
-  const { pageSize } = useSelector((state) => state.products);
 
   const [addToBasketLoading, setAddToBasketLoading] = useState(false);
   const [addToLovelistLoading, setAddToLovelistLoading] = useState(false);
@@ -63,7 +62,7 @@ const CatalogItem = ({ item, category }) => {
     () => ({
       categoryId: category && categoriesIds[category],
       page: +searchParams.get('page') || 1,
-      limit: +searchParams.get('limit') || pageSize,
+      limit: +searchParams.get('limit') || 24,
       minPrice: searchParams.get('minPrice'),
       maxPrice: searchParams.get('maxPrice'),
       minRating: searchParams.get('minRating'),
@@ -73,7 +72,7 @@ const CatalogItem = ({ item, category }) => {
       isNew: searchParams.get('new'),
       sortBy: searchParams.get('sortBy'),
     }),
-    [category, searchParams, pageSize]
+    [category, searchParams]
   );
 
   const onHeartIconClick = () => {
