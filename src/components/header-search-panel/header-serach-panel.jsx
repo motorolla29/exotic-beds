@@ -18,12 +18,12 @@ const HeaderSearchPanel = () => {
 
   const formHandleSubmit = (e) => {
     e.preventDefault();
+    const query = search.trim();
+    if (!query) return;
 
-    const query = e.target.search.value;
-    if (query) {
-      inputRef.current?.blur();
-      navigate(`/search?q=${query}`);
-    }
+    inputRef.current?.blur();
+
+    navigate(`/search?q=${query}`);
   };
 
   useEffect(() => {
