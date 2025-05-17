@@ -20,7 +20,6 @@ const filterKeys = [
   'top-rated',
   'sale',
   'new',
-  'q',
 ];
 
 const CatalogFilters = ({

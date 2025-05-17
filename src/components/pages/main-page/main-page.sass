@@ -286,16 +286,26 @@
                         a
                             img
                                 object-fit: contain
-
-                    &_info
-                        &_price
-                        &_ui
-                            &_add-to-cart-button, &_open-cart-button
-                        
-
         & .slick-arrow::before
             font-size: 20px
-
+@media (max-width: 400px) 
+    .sale-items-carousel, .highest-rated-items-carousel
+        & .catalog-item
+            &_visual
+                &_new, &_top-rated, &_sale
+                    display: none
+            &_info
+                &_price
+                    &_save
+                        display: none
+                &_rating
+                    &_mark
+                        display: none
+                &_ui
+                    &_add-to-cart-button, &_open-cart-button
+                        span
+                            p.sign
+                                display: none
 @media (max-width: 360px) 
     .sale-items-carousel, .highest-rated-items-carousel
         & .slick-slide

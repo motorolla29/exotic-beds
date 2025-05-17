@@ -19,7 +19,7 @@ const SearchPanel = () => {
   const formHandleSubmit = (e) => {
     e.preventDefault();
 
-    const query = e.target.search.value;
+    const query = e.target.search.value.trim();
 
     if (query) {
       inputRef.current?.blur();

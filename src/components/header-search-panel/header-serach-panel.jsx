@@ -19,7 +19,7 @@ const HeaderSearchPanel = () => {
   const formHandleSubmit = (e) => {
     e.preventDefault();
 
-    const query = e.target.search.value;
+    const query = e.target.search.value.trim();
 
     if (query) {
       inputRef.current?.blur();
@@ -42,7 +42,9 @@ const HeaderSearchPanel = () => {
         name="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="header-search-form_input"
+        className={`header-search-form_input ${
+          search.trim() ? 'expanded' : ''
+        }`}
       />
     </form>
   );

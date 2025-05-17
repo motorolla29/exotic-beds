@@ -21,7 +21,6 @@ const filterKeysMobile = [
   'top-rated',
   'sale',
   'new',
-  'q',
 ];
 
 const CatalogFiltersMobile = ({
