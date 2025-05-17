@@ -20,6 +20,7 @@ const CatalogTopToolbar = ({
   minPrice,
   maxPrice,
   filterCounts,
+  noFilter,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [limit, setLimit] = useState(+searchParams.get('limit') || 24);
@@ -125,8 +126,7 @@ const CatalogTopToolbar = ({
             </Box>
           </div>
         </div>
-
-        {ww <= 768 && (
+        {ww <= 768 && !noFilter && (
           <div
             onClick={() => {
               setFiltersVisible(true);

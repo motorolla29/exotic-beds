@@ -58,7 +58,7 @@ const LovelistPage = () => {
             </h1>
             {sortedProducts.length ? (
               <>
-                <CatalogTopToolbar total={lovedProducts.length} />
+                <CatalogTopToolbar total={lovedProducts.length} noFilter />
                 {sortedProducts.length > 24 && (
                   <CatalogPagination
                     total={lovedProducts.length}
