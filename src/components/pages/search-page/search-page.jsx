@@ -22,6 +22,7 @@ import './search-page.sass';
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const authProcess = useSelector((state) => state.authProcess);
   const [ww] = useWindowSize();
   const {
     items,
@@ -56,6 +57,7 @@ const SearchPage = () => {
   );
 
   useEffect(() => {
+    if (authProcess) return;
     if (catalogRef.current) {
       setCatalogHeight(catalogRef.current.clientHeight);
     }
@@ -68,7 +70,7 @@ const SearchPage = () => {
         setLoading(false);
       }
     })();
-  }, [dispatch, params]);
+  }, [dispatch, params, authProcess]);
 
   return (
     <>
@@ -93,7 +95,7 @@ const SearchPage = () => {
           <h1 className="catalog-container_title">
             Search results for: '{params.q}'
           </h1>
-          {!items.length && loading ? (
+          {!items.length && (loading || authProcess) ? (
             <div className="search-page_loader">
               <div className="search-page_loader_logo-spinner">
                 <LogoSpinner />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -26,10 +27,13 @@ const MainPage = () => {
     useState(true);
   const [loadingSaleProducts, setLoadingSaleProducts] = useState(true);
 
+  const authProcess = useSelector((state) => state.authProcess);
   const navigate = useNavigate();
   const [ww] = useWindowSize();
 
   useEffect(() => {
+    if (authProcess) return;
+
     window.scrollTo(0, 0);
 
     const fetchSliderProducts = async () => {
@@ -58,7 +62,7 @@ const MainPage = () => {
     };
 
     fetchSliderProducts();
-  }, []);
+  }, [authProcess]);
 
   const getSlidesQty = (ww) => {
     if (ww >= 1600) {
@@ -134,7 +138,9 @@ const MainPage = () => {
             slidesToShow={getSlidesQty(ww)}
             className="highest-rated-items-carousel"
           >
-            {loadingHighestRatedProducts || highestRatedProducts.length === 0
+            {authProcess ||
+            loadingHighestRatedProducts ||
+            highestRatedProducts.length === 0
               ? Array.from({ length: 5 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="skeleton-card">
                     <div className="skeleton-card_1" />
@@ -173,7 +179,7 @@ const MainPage = () => {
             slidesToShow={getSlidesQty(ww)}
             className="sale-items-carousel"
           >
-            {loadingSaleProducts || saleProducts.length === 0
+            {authProcess || loadingSaleProducts || saleProducts.length === 0
               ? Array.from({ length: 5 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="skeleton-card">
                     <div className="skeleton-card_1" />

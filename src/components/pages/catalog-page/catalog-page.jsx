@@ -22,6 +22,7 @@ import './catalog-page.sass';
 const CatalogPage = ({ category }) => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const authProcess = useSelector((state) => state.authProcess);
   const [ww] = useWindowSize();
   const {
     items,
@@ -58,6 +59,7 @@ const CatalogPage = ({ category }) => {
 
   // useLayoutEffect для предотвращения мигания кнопки добавления товара при уходе с 1 страницы каталога (админ)
   useLayoutEffect(() => {
+    if (authProcess) return;
     if (catalogRef.current) {
       setCatalogHeight(catalogRef.current.clientHeight);
     }
@@ -70,7 +72,7 @@ const CatalogPage = ({ category }) => {
         setLoading(false);
       }
     })();
-  }, [dispatch, params]);
+  }, [dispatch, params, authProcess]);
 
   return (
     <>
@@ -96,7 +98,7 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
-          {!items.length && loading ? (
+          {!items.length && (loading || authProcess) ? (
             <div className="catalog-page_loader">
               <div className="catalog-page_loader_logo-spinner">
                 <LogoSpinner />
