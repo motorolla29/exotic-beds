@@ -119,12 +119,14 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
 
         const updatedProduct = await updateProduct(item.id, adaptedData);
 
-        const updatedProducts = await getProducts(params);
-        dispatch(setProducts(updatedProducts));
+        if (onSave) {
+          onSave(updatedProduct);
+        } else {
+          const updatedProducts = await getProducts(params);
+          dispatch(setProducts(updatedProducts));
+        }
 
         onClose();
-
-        onSave(updatedProduct);
 
         dispatch(
           setSnackbar({
