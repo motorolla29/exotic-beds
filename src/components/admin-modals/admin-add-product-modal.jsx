@@ -186,6 +186,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
         ...prev,
         photo: response.name,
       }));
+      setError({ ...error, photo: '' });
     } catch (error) {
       dispatch(
         setNotificationModal({

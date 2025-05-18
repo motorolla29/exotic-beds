@@ -209,6 +209,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
         ...prev,
         photo: response.name,
       }));
+      setError({ ...error, photo: '' });
     } catch (error) {
       dispatch(
         setNotificationModal({
