@@ -291,9 +291,6 @@
 @media (max-width: 400px) 
     .sale-items-carousel, .highest-rated-items-carousel
         & .catalog-item
-            &_visual
-                &_new, &_top-rated, &_sale
-                    display: none
             &_info
                 &_price
                     &_save
@@ -308,6 +305,10 @@
                                 display: none
 @media (max-width: 360px) 
     .sale-items-carousel, .highest-rated-items-carousel
+        & .catalog-item
+            &_visual
+                &_new, &_top-rated, &_sale
+                    display: none
         & .slick-slide
             padding: 0 4px
 
