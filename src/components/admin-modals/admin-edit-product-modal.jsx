@@ -35,7 +35,7 @@ import {
 
 import './admin-modals.sass';
 
-const AdminEditProductModal = ({ isOpen, onClose, item }) => {
+const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
   const [searchParams] = useSearchParams();
   const overlayLoading = useSelector((state) => state.overlayLoader);
   const { pageSize } = useSelector((s) => s.products);
@@ -119,17 +119,13 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
 
         const updatedProduct = await updateProduct(item.id, adaptedData);
 
-        if (
-          updatedProduct.id !== item.id &&
-          location.pathname === `/${item.id}`
-        ) {
-          navigate(`/${updatedProduct.id}`, { replace: true });
-        }
-
         const updatedProducts = await getProducts(params);
         dispatch(setProducts(updatedProducts));
 
         onClose();
+
+        onSave(updatedProduct);
+
         dispatch(
           setSnackbar({
             open: true,
@@ -137,6 +133,14 @@ const AdminEditProductModal = ({ isOpen, onClose, item }) => {
             decorator: <DoneIcon />,
           })
         );
+
+        if (
+          updatedProduct.id !== item.id &&
+          location.pathname === `/${item.id}`
+        ) {
+          navigate(`/${updatedProduct.id}`, { replace: true });
+        }
+
         if (previousPhoto && previousPhoto !== adaptedData.photo) {
           try {
             await deleteImageFromImagekit(previousPhoto);

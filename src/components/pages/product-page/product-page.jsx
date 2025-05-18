@@ -324,6 +324,7 @@ const ProductPage = () => {
               isOpen={adminModalOpen}
               onClose={() => setAdminModalOpen(false)}
               item={product}
+              onSave={(updatedProduct) => setProduct(updatedProduct)}
             />
           )}
         </AnimatePresence>
