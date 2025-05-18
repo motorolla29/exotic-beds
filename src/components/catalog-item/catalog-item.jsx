@@ -256,10 +256,9 @@ const CatalogItem = ({ item, category }) => {
             Rating: {Number(item.rating).toFixed(1)}
           </span>
         </div>
-
-        <Link to={`/${item.productId}`}>
-          <p className="catalog-item_info_title">{item.title}</p>
-        </Link>
+        <p className="catalog-item_info_title">
+          <Link to={`/${item.productId}`}>{item.title}</Link>
+        </p>
         <div className="catalog-item_info_price-with-ui-container">
           {item.sale ? (
             <div className="catalog-item_info_price">
