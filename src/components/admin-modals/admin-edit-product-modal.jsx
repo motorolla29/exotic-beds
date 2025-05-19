@@ -72,7 +72,10 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
 
   const params = useMemo(
     () => ({
-      categoryId: productData.category && categoriesIds[productData.category],
+      q: searchParams.get('q') || '',
+      categoryId: searchParams
+        .getAll('category')
+        .map((cat) => categoriesIds[cat.toLowerCase()]),
       page: +searchParams.get('page') || 1,
       limit: +searchParams.get('limit') || pageSize,
       minPrice: searchParams.get('minPrice'),
@@ -84,7 +87,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
       isNew: searchParams.get('new'),
       sortBy: searchParams.get('sortBy'),
     }),
-    [productData.category, searchParams, pageSize]
+    [searchParams, pageSize]
   );
 
   const handleChange = (e) => {
