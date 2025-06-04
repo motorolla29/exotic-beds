@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# 🏷️ Exotic Beds — Интернет-магазин необычной мебели
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## 🔍 Описание проекта
 
-In the project directory, you can run:
+**Exotic Beds** — это это full-stack проект, представляющий собой интернет-магазин «экзотической» мебели. Идея в том, чтобы позволить пользователю найти и купить кровати, диваны, кресла, детскую мебель или пуфы, выполненные в стиле:
 
-### `npm start`
+- 🐱 Кошки
+- 🦊 Других животных (лисички, панды, совы и т. д.)
+- 🚗 Персонажа из мультфильмов, машинки
+- 🎭 Разных фантазийных форм
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Все изображения товаров генерировались в нейросетях Midjourney и DALL·E 3, что делает ассортимент действительно «экзотичным» и уникальным. А данные по сети локальных магазинов получены и обработаны GPT-3/4.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 💡 Основной функционал
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Каталог товаров**
 
-### `npm run build`
+   - Разделение на 5 категорий:
+     1. Кровати
+     2. Диваны
+     3. Кресла
+     4. Детская мебель
+     5. Пуфы
+   - Каждая карточка товара содержит:
+     - Картинку (генерация через нейросети)
+     - Рейтинг товара
+     - Название
+     - Описание
+     - Цена / Цена по скидке
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Поиск и фильтрация** 🔎
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - Полнотекстовый поиск по всем товарам
+   - Фильтрация по любым параметрам: цена, категория, серия, флаги типа только со скидкой и т. д.
+   - Сортировка: по цене (возрастание/убывание), новизне, популярности, скидке
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Страница «Найти магазин»** 🗺️
 
-### `npm run eject`
+   - Сбор данных о 1000 магазинах по всему миру (GPT-3/4)
+   - Отображение на карте с помощью MapLibre GL React
+   - Кластеризация маркеров
+   - Возможность:
+     - Кликнуть на кластер или маркер → перейти на страницу конкретного магазина
+     - Построить маршрут до выбранного магазина
+   - Информация у каждого магазина:
+     - Название
+     - Фото
+     - График работы
+     - Адрес и контакты
+     - Блок «3 ближайших магазина»
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Личный кабинет** 👤
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - Регистрация/авторизация (email + пароль)
+   - Загрузка аватарки через Cloudinary
+   - Просмотр личных данных (ФИО, дата рождения, пол, email, телефон и прочее)
+   - Возможность подтвердить аккаунт через email
+   - Возможность сменить пароль по коду отправляемому на email
+   - Раздел «Мои заказы»:
+     - Список заказов
+     - Статус (paid)
+     - Предполагаемая дата доставки
+     - Количество товаров
+     - Переход на страницу заказа с подробной информацией
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Избранные товары** ⭐
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   - Возможность добавить товар в «Lovelist» (хранится в локальном хранилище или под аккаунтом пользователя)
 
-## Learn More
+6. **Корзина и оформление заказа** 🛒
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - Добавление/удаление товаров, изменение количества
+   - Расчёт итоговой суммы и стоимости доставки
+   - Оформление заказов:
+     - Для авторизованных и неавторизованных пользователей
+     - Данные покупателя: имя, email, телефон, адрес доставки
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7. **Оплата через провайдеры (песочница) 💳**
 
-### Code Splitting
+   - YooKassa
+   - Mollie
+   - Stripe
+   - После успешной оплаты заказ получает статус **Paid**
+   - Информация о заказе отправляется на email с помощью NodeSender
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+8. **Админ-панель** 🔧
 
-### Analyzing the Bundle Size
+   - Доступна только пользователям с ролью `admin`
+   - CRUD-операции над товарами:
+     - Добавление новых товаров (с генерацией или загрузкой изображения)
+     - Редактирование параметров товара (цена, категория, описание и т. д.)
+     - Удаление товаров
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+9. **Анимации** ✨
+   - Framer Motion для плавных переходов и интерактивных эффектов
+   - React Transition Group
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🏗️ Технологический стек
 
-### Advanced Configuration
+- **Фронтенд:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  - React (включая функциональные компоненты и хуки)
+  - React Router (для роутинга)
+  - MapLibre GL React (для карт и кластеров)
+  - Framer Motion (анимации)
+  - SASS (стилизация)
+  - Cloudinary, Imagekit (хранение аватарок и картинок магазинов)
+  - Redux (стейт менеджер)
 
-### Deployment
+- **Бэкенд:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  - Node.js + Express.js
+  - PostgreSQL (реляционная БД)
+  - Sequelize (ORM для работы с БД)
+  - NodeSender (отправка email с деталями заказа)
+  - JWT (JSON Web Token) или сессии (для авторизации)
+  - Cloudinary SDK, Imagekit (для загрузки файлов)
 
-### `npm run build` fails to minify
+- **Платёжные провайдеры (песочница):**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  - YooKassa
+  - Mollie
+  - Stripe
+
+- **Хостинг и деплоймент:**
+  - Vercel
