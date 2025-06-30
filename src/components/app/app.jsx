@@ -78,15 +78,19 @@ const App = () => {
 
         // 3. basket and lovelist
         let localCart = JSON.parse(localStorage.getItem('cart') || '[]');
-        let basket = [];
+
         if (user) {
-          basket = await getBasket();
+          const [basket, lovelistItems] = await Promise.all([
+            getBasket(),
+            getLovelist(),
+          ]);
+
           dispatch(setCart(basket));
+          dispatch(setLovelist(lovelistItems));
         } else {
           dispatch(setCart(localCart));
+          dispatch(setLovelist([]));
         }
-        const lovelistItems = user ? await getLovelist() : [];
-        dispatch(setLovelist(lovelistItems));
 
         // 4. sync availability for guest cart
         if (!user) {
