@@ -6,8 +6,31 @@ export const getProduct = async (id) => {
 };
 
 export const getProducts = async (params) => {
-  const { data } = await $authHost.get('api/product', { params });
-  return data;
+  const token = localStorage.getItem('token');
+
+  // Если токена нет — сразу гость
+  if (!token) {
+    const { data } = await $host.get('api/product', { params });
+    return data;
+  }
+
+  // Токен есть — идём по authHost. Здесь interceptor сам обновит access
+  // или пробросит 401, когда и refresh протухнет.
+  try {
+    const { data } = await $authHost.get('api/product', { params });
+    return data;
+  } catch (err) {
+    // Если interceptor пробросил 401 — значит и access, и refresh не живы.
+    if (err.response?.status === 401) {
+      // чисто на будущее: удаляем неработающий токен
+      localStorage.removeItem('token');
+      // и сразу гостевой запрос
+      const { data } = await $host.get('api/product', { params });
+      return data;
+    }
+    // любая другая ошибка — просто дальше бросаем
+    throw err;
+  }
 };
 
 export const createProduct = async (productData) => {
