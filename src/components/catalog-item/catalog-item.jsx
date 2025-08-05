@@ -292,7 +292,7 @@ const CatalogItem = ({ item, category }) => {
                   >
                     <span>
                       <TbShoppingCartCheck />
-                      <p className="sign">'In the basket'</p>
+                      <p className="sign">In the basket</p>
                     </span>
                   </button>
                 ) : (
