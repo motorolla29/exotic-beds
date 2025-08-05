@@ -98,6 +98,14 @@ const CatalogPage = ({ category }) => {
           <h1 className="catalog-container_title">
             {getUcFirstNoDashStr(category)}
           </h1>
+          <CatalogTopToolbar
+            total={total}
+            category={category}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            filterCounts={filterCounts}
+            itemsLength={items.length}
+          />
           {!items.length && (loading || authProcess) ? (
             <div className="catalog-page_loader">
               <div className="catalog-page_loader_logo-spinner">
@@ -108,13 +116,6 @@ const CatalogPage = ({ category }) => {
             <>
               {items.length > 0 ? (
                 <>
-                  <CatalogTopToolbar
-                    total={total}
-                    category={category}
-                    minPrice={minPrice}
-                    maxPrice={maxPrice}
-                    filterCounts={filterCounts}
-                  />
                   <CatalogPagination
                     total={total}
                     limit={params.limit}

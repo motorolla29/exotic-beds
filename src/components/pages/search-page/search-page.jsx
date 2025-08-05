@@ -95,6 +95,13 @@ const SearchPage = () => {
           <h1 className="catalog-container_title">
             Search results for: '{params.q}'
           </h1>
+          <CatalogTopToolbar
+            total={total}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            filterCounts={filterCounts}
+            itemsLength={items.length}
+          />
           {!items.length && (loading || authProcess) ? (
             <div className="search-page_loader">
               <div className="search-page_loader_logo-spinner">
@@ -105,12 +112,6 @@ const SearchPage = () => {
             <>
               {items.length > 0 ? (
                 <>
-                  <CatalogTopToolbar
-                    total={total}
-                    minPrice={minPrice}
-                    maxPrice={maxPrice}
-                    filterCounts={filterCounts}
-                  />
                   <CatalogPagination
                     total={total}
                     limit={params.limit}
