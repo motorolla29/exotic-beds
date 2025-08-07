@@ -104,7 +104,6 @@ const CatalogPage = ({ category }) => {
             minPrice={minPrice}
             maxPrice={maxPrice}
             filterCounts={filterCounts}
-            itemsLength={items.length}
           />
           {!items.length && (loading || authProcess) ? (
             <div className="catalog-page_loader">

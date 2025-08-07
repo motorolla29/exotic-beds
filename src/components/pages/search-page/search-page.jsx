@@ -100,7 +100,6 @@ const SearchPage = () => {
             minPrice={minPrice}
             maxPrice={maxPrice}
             filterCounts={filterCounts}
-            itemsLength={items.length}
           />
           {!items.length && (loading || authProcess) ? (
             <div className="search-page_loader">

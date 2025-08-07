@@ -21,7 +21,6 @@ const CatalogTopToolbar = ({
   maxPrice,
   filterCounts,
   noFilter,
-  itemsLength,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [limit, setLimit] = useState(+searchParams.get('limit') || 24);
@@ -55,7 +54,7 @@ const CatalogTopToolbar = ({
     setSort(searchParams.get('sortBy') || 'relevance');
   }, [searchParams]);
 
-  const start = itemsLength > 0 ? (page - 1) * limit + 1 : 0;
+  const start = total > 0 ? (page - 1) * limit + 1 : 0;
   const end = Math.min(page * limit, total);
 
   return (
