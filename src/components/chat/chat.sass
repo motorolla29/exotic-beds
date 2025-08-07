@@ -1,13 +1,5 @@
 @import 'src/styles/variables'
     
-.chat-container
-    position: fixed
-    pointer-events: none
-    top: 0
-    left: 0
-    width: 100vw
-    height: 100vh
-    z-index: 990
 .chat
     cursor: pointer
     display: flex
@@ -16,9 +8,9 @@
     width: 75px
     height: 75px
     border-radius: 50%
-    position: absolute
-    right: calc(45px + env(safe-area-inset-right))
-    bottom: calc(35px + env(safe-area-inset-bottom))
+    position: fixed
+    right: 45px
+    bottom: 35px
     background: #eefef6c9
     pointer-events: auto
     z-index: 990

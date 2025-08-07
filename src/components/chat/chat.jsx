@@ -96,7 +96,7 @@ const Chat = () => {
   });
 
   return (
-    <div className="chat-container">
+    <>
       {interacted && (
         <motion.div
           ref={chatRef}
@@ -296,7 +296,7 @@ const Chat = () => {
           </AnimatePresence>
         </motion.div>
       )}
-    </div>
+    </>
   );
 };
 
