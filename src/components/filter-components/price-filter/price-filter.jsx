@@ -14,16 +14,23 @@ const PriceFilter = ({ minPrice = 0, maxPrice = 99999 }) => {
   const [open, setOpen] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [rangeValue, setRangeValue] = useState([minPrice, maxPrice]);
+  const [rawInput, setRawInput] = useState([
+    String(minPrice),
+    String(maxPrice),
+  ]);
 
   useEffect(() => {
-    setRangeValue([
+    const newRange = [
       +searchParams.get('minPrice') || minPrice,
       +searchParams.get('maxPrice') || maxPrice,
-    ]);
+    ];
+    setRangeValue(newRange);
+    setRawInput([String(newRange[0]), String(newRange[1])]);
   }, [searchParams, minPrice, maxPrice]);
 
   const handleRangeChange = (_, newValue) => {
     setRangeValue(newValue);
+    setRawInput([String(newValue[0]), String(newValue[1])]);
   };
 
   const validateRange = ([minVal, maxVal]) => {
@@ -35,15 +42,21 @@ const PriceFilter = ({ minPrice = 0, maxPrice = 99999 }) => {
 
   const commitRangeChange = (_, newValue) => {
     const [min, max] = validateRange(newValue);
+    setRangeValue([min, max]);
+    setRawInput([String(min), String(max)]);
     searchParams.set('minPrice', min);
     searchParams.set('maxPrice', max);
     searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
 
-  const handleBlur = () => {
-    const [min, max] = validateRange(rangeValue);
+  const handleBlur = (input) => {
+    const [minRaw, maxRaw] = input;
+    const minParsed = parseInt(minRaw || '0', 10);
+    const maxParsed = parseInt(maxRaw || '0', 10);
+    const [min, max] = validateRange([minParsed, maxParsed]);
     setRangeValue([min, max]);
+    setRawInput([String(min), String(max)]);
     searchParams.set('minPrice', min);
     searchParams.set('maxPrice', max);
     searchParams.set('page', '1');
@@ -74,13 +87,16 @@ const PriceFilter = ({ minPrice = 0, maxPrice = 99999 }) => {
                 <input
                   type="number"
                   min={minPrice}
-                  value={rangeValue[0]}
-                  onChange={(e) =>
-                    setRangeValue([+e.target.value, rangeValue[1]])
-                  }
-                  onBlur={handleBlur}
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={rawInput[0]}
+                  onChange={(e) => setRawInput([e.target.value, rawInput[1]])}
+                  onBlur={() => handleBlur([rawInput[0], rawInput[1]])}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleBlur();
+                    if (e.key === 'Enter') {
+                      e.target.blur();
+                      handleBlur([rawInput[0], rawInput[1]]);
+                    }
                   }}
                   className="price-filter_inputs_input-container_number-input"
                 />
@@ -92,13 +108,16 @@ const PriceFilter = ({ minPrice = 0, maxPrice = 99999 }) => {
                 <input
                   type="number"
                   max={maxPrice}
-                  value={rangeValue[1]}
-                  onChange={(e) =>
-                    setRangeValue([rangeValue[0], +e.target.value])
-                  }
-                  onBlur={handleBlur}
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={rawInput[1]}
+                  onChange={(e) => setRawInput([rawInput[0], e.target.value])}
+                  onBlur={() => handleBlur([rawInput[0], rawInput[1]])}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleBlur();
+                    if (e.key === 'Enter') {
+                      e.target.blur();
+                      handleBlur([rawInput[0], rawInput[1]]);
+                    }
                   }}
                   className="price-filter_inputs_input-container_number-input"
                 />
