@@ -16,8 +16,8 @@
     height: 75px
     border-radius: 50%
     position: absolute
-    right: 45px
-    bottom: 35px
+    right: calc(45px + env(safe-area-inset-right))
+    bottom: calc(35px + env(safe-area-inset-bottom))
     background: #eefef6c9
     pointer-events: auto
     z-index: 990
