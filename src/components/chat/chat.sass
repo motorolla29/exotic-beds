@@ -1,5 +1,12 @@
 @import 'src/styles/variables'
     
+.chat-container
+    position: fixed
+    pointer-events: none
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
 .chat
     cursor: pointer
     display: flex
@@ -8,10 +15,11 @@
     width: 75px
     height: 75px
     border-radius: 50%
-    position: fixed
+    position: absolute
     right: 45px
     bottom: 35px
     background: #eefef6c9
+    pointer-events: auto
     z-index: 990
     svg.cross-icon
         width: 40%
