@@ -28,9 +28,11 @@ const StoreFinderPage = () => {
         <title>Store Finder</title>
       </Helmet>
       <Breadcrumbs />
-      <MapProvider>
-        <StoreFinder />
-      </MapProvider>
+      <div>
+        <MapProvider>
+          <StoreFinder />
+        </MapProvider>
+      </div>
     </div>
   );
 };
