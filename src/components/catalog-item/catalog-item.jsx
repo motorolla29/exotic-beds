@@ -30,7 +30,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AdminEditProductModal from '../admin-modals/admin-edit-product-modal';
 import { deleteProduct, getProducts } from '../../api/productAPI';
-import { deleteImageFromImagekit } from '../../api/imagekitAPI';
+import { deleteImageFromCloud } from '../../api/cloudAPI';
 
 import './catalog-item.sass';
 
@@ -72,7 +72,7 @@ const CatalogItem = ({ item, category }) => {
       isNew: searchParams.get('new'),
       sortBy: searchParams.get('sortBy'),
     }),
-    [category, searchParams]
+    [category, searchParams],
   );
 
   const onHeartIconClick = () => {
@@ -88,7 +88,7 @@ const CatalogItem = ({ item, category }) => {
                   decorator: <HeartBrokenOutlined />,
                   text: 'Product is not loved anymore :(',
                   id: item.productId,
-                })
+                }),
               )
             : dispatch(
                 setSnackbar({
@@ -96,7 +96,7 @@ const CatalogItem = ({ item, category }) => {
                   decorator: <FavoriteBorderOutlined />,
                   text: 'Product is loved now :)',
                   id: item.productId,
-                })
+                }),
               );
         })
         .catch((err) => console.log(err.message))
@@ -118,7 +118,7 @@ const CatalogItem = ({ item, category }) => {
               decorator: <AddShoppingCartRounded />,
               text: 'Product added to basket',
               id: item.productId,
-            })
+            }),
           );
         })
         .catch((err) => console.log(err.message))
@@ -126,7 +126,7 @@ const CatalogItem = ({ item, category }) => {
     } else {
       const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
       const localStorageCartItem = localStorageCart.find(
-        (it) => it.productId === item.productId
+        (it) => it.productId === item.productId,
       );
       if (localStorageCartItem) {
         localStorageCartItem.quantity++;
@@ -141,7 +141,7 @@ const CatalogItem = ({ item, category }) => {
             decorator: <AddShoppingCartRounded />,
             text: 'Product added to basket',
             id: item.productId,
-          })
+          }),
         );
       }
     }
@@ -152,7 +152,7 @@ const CatalogItem = ({ item, category }) => {
       await deleteProduct(item.id); // Ожидаем удаления продукта
       if (item.photo) {
         try {
-          await deleteImageFromImagekit(item.photo);
+          await deleteImageFromCloud(item.photo);
         } catch (error) {
           console.error('Error deleting previous image:', error);
         }
@@ -165,7 +165,7 @@ const CatalogItem = ({ item, category }) => {
           open: true,
           text: 'Product successfully deleted',
           decorator: <DoneIcon />,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -201,7 +201,7 @@ const CatalogItem = ({ item, category }) => {
                   yesBtnText: 'Delete',
                   noBtnText: 'Cancel',
                   action: onDeleteProductConfirm,
-                })
+                }),
               );
             }}
             className="catalog-item_admin-delete"
@@ -214,34 +214,34 @@ const CatalogItem = ({ item, category }) => {
         <Link to={`/${item.productId}`} state={{ from: location.pathname }}>
           <ProgressiveImageContainer
             alt="product_picture"
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-50,w-50,cm-scale`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=h-350,w-350,cm-scale`}
+            thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${item.photo}`}
+            src={`https://exotic-beds.s3.cloud.ru/catalog/md__${item.photo}`}
           />
           {item.isNew ? (
             <img
               alt="new"
-              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/new.png?tr=w-150"
+              src="https://exotic-beds.s3.cloud.ru/card-icons/sm__new.png"
               className="catalog-item_visual_new"
             />
           ) : null}
           {item.rating >= 4.9 ? (
             <img
               alt="top"
-              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/top-rated.png?tr=w-100"
+              src="https://exotic-beds.s3.cloud.ru/card-icons/sm__top-rated.png"
               className="catalog-item_visual_top-rated"
             />
           ) : null}
           {item.sale ? (
             <img
               alt="sale"
-              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sale.png?tr=w-150"
+              src="https://exotic-beds.s3.cloud.ru/card-icons/sm__sale.png"
               className="catalog-item_visual_sale"
             />
           ) : null}
           {item.availableQuantity === 0 && (
             <img
               className="catalog-item_visual_sold-out"
-              src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png,w-350"
+              src="https://exotic-beds.s3.cloud.ru/card-icons/sm__sold-out.png"
               alt="sold-out"
             />
           )}

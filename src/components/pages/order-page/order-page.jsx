@@ -26,7 +26,7 @@ const OrderPage = () => {
   const navigate = useNavigate();
   const itemsCount = order.items?.reduce(
     (acc, currentValue) => acc + currentValue.quantity,
-    0
+    0,
   );
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const OrderPage = () => {
           icon: <ErrorIcon />,
           title: error,
           description: `Error loading order №${id}`,
-        })
+        }),
       );
       navigate('/account/orders');
     }
@@ -193,10 +193,10 @@ const OrderPage = () => {
                       >
                         <div className="order-page_main_items_inner_item_visual">
                           <ProgressiveImageContainer
-                            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
-                            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
-                            defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
-                            defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
+                            thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${item.photo}`}
+                            src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${item.photo}`}
+                            defaultThumbSrc="https://exotic-beds.s3.cloud.ru/catalog/xs__EB-LOGO-SHAPE-DEFAULT_IMG.png"
+                            defaultSrc="https://exotic-beds.s3.cloud.ru/catalog/sm__EB-LOGO-SHAPE-DEFAULT_IMG.png"
                             alt="order-item-image"
                           />
                         </div>
@@ -237,10 +237,10 @@ const OrderPage = () => {
                     >
                       <div className="order-page_main_items_inner_item-sm_visual">
                         <ProgressiveImageContainer
-                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
-                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-100`}
-                          defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
-                          defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-100"
+                          thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${item.photo}`}
+                          src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${item.photo}`}
+                          defaultThumbSrc="https://exotic-beds.s3.cloud.ru/catalog/xs__EB-LOGO-SHAPE-DEFAULT_IMG.png"
+                          defaultSrc="https://exotic-beds.s3.cloud.ru/catalog/sm__EB-LOGO-SHAPE-DEFAULT_IMG.png"
                           alt="order-item-image"
                         />
                       </div>
@@ -262,7 +262,7 @@ const OrderPage = () => {
                         <p className="order-page_main_items_inner_item-sm_price-total">
                           {getCurrencySymbol(order.originalCurrency)}
                           {((item.sale || item.price) * item.quantity).toFixed(
-                            2
+                            2,
                           )}
                         </p>
                         <p className="order-page_main_items_inner_item-sm_count">

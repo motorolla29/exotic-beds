@@ -18,7 +18,7 @@ const CheckoutPage = () => {
 
   const loading = useSelector((state) => state.overlayLoader);
   const orderedItems = useSelector((state) =>
-    state.cartProducts.filter((item) => item.availableQuantity > 0)
+    state.cartProducts.filter((item) => item.availableQuantity > 0),
   );
   const countedBasket = countTheBasket(orderedItems);
   const promocode = useSelector((state) => state.appliedPromocode);
@@ -32,7 +32,7 @@ const CheckoutPage = () => {
         <Link className="checkout-page_header_logo" to="/">
           <img
             alt="logo"
-            src="https://ik.imagekit.io/motorolla29/exotic-beds/logo/EB-LOGO-HD.png"
+            src="https://exotic-beds.s3.cloud.ru/logo/EB-LOGO-HD.png"
           />
         </Link>
       </div>

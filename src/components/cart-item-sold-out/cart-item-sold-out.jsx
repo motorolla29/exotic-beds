@@ -42,7 +42,7 @@ const CartItemSoldOut = ({ item }) => {
                   decorator: <HeartBrokenOutlined />,
                   text: 'Product is not loved anymore :(',
                   id: item.productId,
-                })
+                }),
               )
             : dispatch(
                 setSnackbar({
@@ -50,7 +50,7 @@ const CartItemSoldOut = ({ item }) => {
                   decorator: <FavoriteBorderOutlined />,
                   text: 'Product is loved now :)',
                   id: item.productId,
-                })
+                }),
               );
         })
         .catch((err) => console.log(err.message))
@@ -71,14 +71,14 @@ const CartItemSoldOut = ({ item }) => {
               decorator: <RemoveShoppingCartRounded />,
               text: 'Product removed from basket',
               id: item.productId,
-            })
+            }),
           );
         })
         .catch((err) => console.log(err.message));
     } else {
       const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
       const newCart = localStorageCart.filter(
-        (it) => it.productId !== item.productId
+        (it) => it.productId !== item.productId,
       );
       localStorage.setItem('cart', JSON.stringify(newCart));
       dispatch(setCart(newCart));
@@ -88,7 +88,7 @@ const CartItemSoldOut = ({ item }) => {
           decorator: <RemoveShoppingCartRounded />,
           text: 'Product removed from basket',
           id: item.productId,
-        })
+        }),
       );
     }
   };
@@ -97,13 +97,13 @@ const CartItemSoldOut = ({ item }) => {
     <div className="cart-item-sold-out" key={item.productId}>
       <div className="cart-item-sold-out_photo">
         <ProgressiveImageContainer
-          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-20`}
-          src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-150`}
+          thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${item.photo}`}
+          src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${item.photo}`}
           alt="cart-item-sold-out-image"
         />
         <img
           className="cart-item-sold-out_photo_sign"
-          src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png"
+          src="https://exotic-beds.s3.cloud.ru/card-icons/sm__sold-out.png"
           alt="sold-out-sign"
         />
       </div>
@@ -137,7 +137,7 @@ const CartItemSoldOut = ({ item }) => {
                     yesBtnText: 'Yes, remove it',
                     noBtnText: 'Cancel',
                     action: onRemoveConfirmButton,
-                  })
+                  }),
                 )
               }
               className="cart-item-sold-out_body_ui_right-side_remove"

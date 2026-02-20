@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import imagekit from '../../imagekit';
 import { motion } from 'framer-motion';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useSearchParams } from 'react-router-dom';
@@ -28,10 +26,7 @@ import {
   setSnackbar,
 } from '../../store/action';
 import { createProduct, getProducts } from '../../api/productAPI';
-import {
-  getImagekitAuth,
-  deleteImageFromImagekit,
-} from '../../api/imagekitAPI';
+import { uploadCatalogImage, deleteCatalogImage } from '../../api/mediaAPI';
 
 import './admin-modals.sass';
 
@@ -80,7 +75,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
       isNew: searchParams.get('new'),
       sortBy: searchParams.get('sortBy'),
     }),
-    [category, searchParams, pageSize]
+    [category, searchParams, pageSize],
   );
 
   const handleChange = (e) => {
@@ -123,7 +118,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
             open: true,
             text: 'Product successfully added',
             decorator: <DoneIcon />,
-          })
+          }),
         );
       } catch (error) {
         dispatch(
@@ -132,7 +127,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
             icon: <ErrorIcon />,
             title: 'Failed to create product',
             description: error.response?.data?.message || error.message,
-          })
+          }),
         );
         console.error('Error creating product:', error);
       } finally {
@@ -165,18 +160,12 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
     try {
       setPhotoLoading(true);
 
-      const authData = await getImagekitAuth();
+      // Новый универсальный загрузчик на cloud.ru
+      const response = await uploadCatalogImage(file);
 
-      const response = await imagekit.upload({
-        file,
-        fileName: uuidv4(),
-        folder: '/exotic-beds/catalog',
-        ...authData,
-      });
-
-      if (productData.photo && productData.photo !== response.name) {
+      if (productData.photo && productData.photo !== response.fileName) {
         try {
-          await deleteImageFromImagekit(productData.photo);
+          await deleteCatalogImage(productData.photo);
         } catch (error) {
           console.error('Error deleting old image:', error);
         }
@@ -184,7 +173,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
 
       setProductData((prev) => ({
         ...prev,
-        photo: response.name,
+        photo: response.fileName,
       }));
       setError({ ...error, photo: '' });
     } catch (error) {
@@ -194,7 +183,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
           icon: <ErrorIcon />,
           title: 'Failed to upload image',
           description: error.response?.data?.message || error.message,
-        })
+        }),
       );
       console.error('Error uploading image:', error);
     } finally {
@@ -205,7 +194,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
   const handleCloseModal = async () => {
     if (productData.photo) {
       try {
-        deleteImageFromImagekit(productData.photo).catch((deleteError) => {
+        deleteCatalogImage(productData.photo).catch((deleteError) => {
           console.error('Error deleting uploaded photo:', deleteError);
         });
       } catch (deleteError) {
@@ -242,7 +231,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
                   {productData.photo && (
                     <img
                       alt="product_photo"
-                      src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${productData.photo}?tr=w-150`}
+                      src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${productData.photo}`}
                     />
                   )}
                   <label htmlFor="avatar_load">
@@ -296,7 +285,7 @@ const AdminAddProductModal = ({ isOpen, onClose, category }) => {
                   }}
                   renderValue={(selected) => {
                     const selectedCategory = Object.keys(categoriesIds).find(
-                      (category) => category === selected.value
+                      (category) => category === selected.value,
                     );
                     return selectedCategory
                       ? selectedCategory

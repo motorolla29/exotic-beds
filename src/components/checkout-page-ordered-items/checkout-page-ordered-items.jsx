@@ -12,8 +12,8 @@ const CheckoutPageOrderedItems = ({ items }) => {
               <div className="checkout-page-ordered-items_item_info_visual">
                 <div>
                   <ProgressiveImageContainer
-                    thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${it.photo}?tr=w-20`}
-                    src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${it.photo}?tr=w-150`}
+                    thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${it.photo}`}
+                    src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${it.photo}`}
                     alt="order-item-image"
                   />
                 </div>

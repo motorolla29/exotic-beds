@@ -2,8 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { v4 as uuidv4 } from 'uuid';
-import imagekit from '../../imagekit';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import { TextField, Slider } from '@mui/material';
@@ -28,10 +26,7 @@ import {
   setProducts,
   setSnackbar,
 } from '../../store/action';
-import {
-  getImagekitAuth,
-  deleteImageFromImagekit,
-} from '../../api/imagekitAPI';
+import { uploadCatalogImage, deleteCatalogImage } from '../../api/mediaAPI';
 
 import './admin-modals.sass';
 
@@ -49,7 +44,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
 
   const [productData, setProductData] = useState({
     category: Object.keys(categoriesIds).find(
-      (key) => categoriesIds[key] === item.categoryId
+      (key) => categoriesIds[key] === item.categoryId,
     ),
     photo: item.photo,
     title: item.title,
@@ -87,7 +82,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
       isNew: searchParams.get('new'),
       sortBy: searchParams.get('sortBy'),
     }),
-    [searchParams, pageSize]
+    [searchParams, pageSize],
   );
 
   const handleChange = (e) => {
@@ -136,7 +131,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
             open: true,
             text: 'Product successfully updated',
             decorator: <DoneIcon />,
-          })
+          }),
         );
 
         if (
@@ -148,7 +143,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
 
         if (previousPhoto && previousPhoto !== adaptedData.photo) {
           try {
-            await deleteImageFromImagekit(previousPhoto);
+            await deleteCatalogImage(previousPhoto);
           } catch (error) {
             console.error('Error deleting old image:', error);
           }
@@ -160,7 +155,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
             icon: <ErrorIcon />,
             title: 'Failed to update product',
             description: error.response?.data?.message || error.message,
-          })
+          }),
         );
         console.error('Error updating product:', error);
       } finally {
@@ -193,22 +188,16 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
     try {
       setPhotoLoading(true);
 
-      const authData = await getImagekitAuth();
-
-      const response = await imagekit.upload({
-        file,
-        fileName: uuidv4(),
-        folder: '/exotic-beds/catalog',
-        ...authData,
-      });
+      // Новый универсальный загрузчик на cloud.ru
+      const response = await uploadCatalogImage(file);
 
       if (
         productData.photo &&
-        productData.photo !== response.name &&
+        productData.photo !== response.fileName &&
         productData.photo !== item.photo
       ) {
         try {
-          await deleteImageFromImagekit(productData.photo);
+          await deleteCatalogImage(productData.photo);
         } catch (error) {
           console.error('Error deleting old image:', error);
         }
@@ -216,7 +205,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
 
       setProductData((prev) => ({
         ...prev,
-        photo: response.name,
+        photo: response.fileName,
       }));
       setError({ ...error, photo: '' });
     } catch (error) {
@@ -226,7 +215,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
           icon: <ErrorIcon />,
           title: 'Failed to upload image',
           description: error.response?.data?.message || error.message,
-        })
+        }),
       );
       console.error('Error uploading image:', error);
     } finally {
@@ -238,7 +227,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
     onClose();
     if (productData.photo && productData.photo !== item.photo) {
       try {
-        deleteImageFromImagekit(productData.photo).catch((deleteError) => {
+        deleteCatalogImage(productData.photo).catch((deleteError) => {
           console.error('Error deleting uploaded photo:', deleteError);
         });
       } catch (deleteError) {
@@ -274,7 +263,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
                   {productData.photo && (
                     <img
                       alt="product_photo"
-                      src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${productData.photo}?tr=w-150`}
+                      src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${productData.photo}`}
                     />
                   )}
                   <label htmlFor="avatar_load">
@@ -328,7 +317,7 @@ const AdminEditProductModal = ({ isOpen, onClose, item, onSave }) => {
                   }}
                   renderValue={(selected) => {
                     const selectedCategory = Object.keys(categoriesIds).find(
-                      (category) => category === selected.value
+                      (category) => category === selected.value,
                     );
                     return selectedCategory
                       ? selectedCategory

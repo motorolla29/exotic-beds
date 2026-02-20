@@ -31,7 +31,7 @@ import { toggleProductInLovelist } from '../../../api/lovelistAPI';
 import ProgressiveImageContainer from '../../progressive-image-container/progressive-image-container';
 import { PRODUCT_CATEGORIES } from '../../../const';
 import Reviews from '../../reviews/reviews';
-import { deleteImageFromImagekit } from '../../../api/imagekitAPI';
+import { deleteImageFromCloud } from '../../../api/cloudAPI';
 import { deleteProduct, getProduct } from '../../../api/productAPI';
 import AdminEditProductModal from '../../admin-modals/admin-edit-product-modal';
 
@@ -96,7 +96,7 @@ const ProductPage = () => {
                 ? 'Product removed from lovelist'
                 : 'Product added to lovelist',
               id: product.id,
-            })
+            }),
           );
         })
         .catch((err) => console.log(err.message))
@@ -119,7 +119,7 @@ const ProductPage = () => {
               decorator: <AddShoppingCartRounded />,
               text: 'Product added to basket',
               id: product.id,
-            })
+            }),
           );
         })
         .catch((err) => console.log(err.message))
@@ -139,7 +139,7 @@ const ProductPage = () => {
             decorator: <AddShoppingCartRounded />,
             text: 'Product added to basket',
             id: product.id,
-          })
+          }),
         );
       }
     }
@@ -151,7 +151,7 @@ const ProductPage = () => {
       await deleteProduct(product.id); // Ожидаем удаления продукта
       if (product.photo) {
         try {
-          await deleteImageFromImagekit(product.photo);
+          await deleteImageFromCloud(product.photo);
         } catch (error) {
           console.error('Error deleting previous image:', error);
         }
@@ -162,7 +162,7 @@ const ProductPage = () => {
           open: true,
           text: 'Product successfully deleted',
           decorator: <DoneIcon />,
-        })
+        }),
       );
     } catch (error) {
       console.log(error);
@@ -180,15 +180,15 @@ const ProductPage = () => {
         <div className="product-page_visual">
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <ProgressiveImageContainer
-              thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${product.photo}?tr=w-60`}
-              src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${product.photo}`}
+              thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${product.photo}`}
+              src={`https://exotic-beds.s3.cloud.ru/catalog/${product.photo}`}
               alt="product-image"
               withInnerZoom
             />
             {product.availableQuantity === 0 && (
               <img
                 className="product-page_visual_sold-out"
-                src="https://ik.imagekit.io/motorolla29/exotic-beds/card-icons/sold-out.svg?tr=f-png"
+                src="https://exotic-beds.s3.cloud.ru/card-icons/sold-out.png"
                 alt="sold-out"
               />
             )}
@@ -212,7 +212,7 @@ const ProductPage = () => {
                         yesBtnText: 'Delete',
                         noBtnText: 'Cancel',
                         action: onDeleteProductConfirm,
-                      })
+                      }),
                     );
                   }}
                   className="product-page_visual_admin-delete"

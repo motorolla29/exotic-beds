@@ -93,8 +93,8 @@ const ProfilePage = () => {
           <AvatarModal
             avatarSrc={
               user.photo
-                ? `https://res.cloudinary.com/ddprwf1qr/image/upload/user-avatars/${user.photo}`
-                : 'https://res.cloudinary.com/ddprwf1qr/image/upload/v1734006782/default-avatar.jpg'
+                ? `https://exotic-beds.s3.cloud.ru/user-avatars/${user.photo}`
+                : 'https://exotic-beds.s3.cloud.ru/user-avatars/default-avatar.jpg'
             }
             onAvatarShadowClick={() => setAvatarModalOpen(false)}
           />

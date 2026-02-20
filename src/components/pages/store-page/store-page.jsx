@@ -68,8 +68,8 @@ const StorePage = () => {
       <div className="store-page" key={store.properties.id}>
         <div className="store-page_store-image">
           <ProgressiveImageContainer
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${store.properties.photo}?tr=w-60`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${store.properties.photo}`}
+            thumb={`https://exotic-beds.s3.cloud.ru/stores/sm__${store.properties.photo}`}
+            src={`https://exotic-beds.s3.cloud.ru/stores/${store.properties.photo}`}
             alt="store-image"
           />
         </div>
@@ -92,7 +92,7 @@ const StorePage = () => {
               <span className="store-page_info_header_work_description">
                 {getStoreWorkDescription(
                   getStoreWorkStatus(store.properties.workCalendar),
-                  store.properties.workCalendar
+                  store.properties.workCalendar,
                 )}
               </span>
             </div>
@@ -179,7 +179,7 @@ const StorePage = () => {
                 >
                   <img
                     style={{ width: '60px' }}
-                    src="https://ik.imagekit.io/motorolla29/exotic-beds/logo/EB-LOGO-NO-TEXT-HD.png"
+                    src="https://exotic-beds.s3.cloud.ru/logo/EB-LOGO-NO-TEXT-HD.png"
                     alt="logo_pin"
                   />
                 </Marker>
@@ -204,8 +204,8 @@ const StorePage = () => {
                     <Link to={`/store-finder/${it.properties.id}`}>
                       <div className="store-page_nearby-stores_items_item_image">
                         <ProgressiveImageContainer
-                          thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${it.properties.photo}?tr=w-40`}
-                          src={`https://ik.imagekit.io/motorolla29/exotic-beds/stores/${it.properties.photo}?tr=w-500`}
+                          thumb={`https://exotic-beds.s3.cloud.ru/stores/sm__${it.properties.photo}`}
+                          src={`https://exotic-beds.s3.cloud.ru/stores/${it.properties.photo}`}
                           alt="store-image"
                         />
                       </div>
@@ -228,7 +228,7 @@ const StorePage = () => {
                         <span className="store-page_nearby-stores_items_item_work_description">
                           {getStoreWorkDescription(
                             getStoreWorkStatus(it.properties.workCalendar),
-                            it.properties.workCalendar
+                            it.properties.workCalendar,
                           )}
                         </span>
                       </div>

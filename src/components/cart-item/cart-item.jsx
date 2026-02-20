@@ -52,7 +52,7 @@ const CartItem = ({ item }) => {
                   decorator: <HeartBrokenOutlined />,
                   text: 'Product is not loved anymore :(',
                   id: item.productId,
-                })
+                }),
               )
             : dispatch(
                 setSnackbar({
@@ -60,7 +60,7 @@ const CartItem = ({ item }) => {
                   decorator: <FavoriteBorderOutlined />,
                   text: 'Product is loved now :)',
                   id: item.productId,
-                })
+                }),
               );
         })
         .catch((err) => console.log(err.message))
@@ -84,7 +84,7 @@ const CartItem = ({ item }) => {
       } else {
         const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
         const localStorageCartItem = localStorageCart.find(
-          (it) => item.productId === it.productId
+          (it) => item.productId === it.productId,
         );
         localStorageCartItem.quantity--;
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
@@ -106,7 +106,7 @@ const CartItem = ({ item }) => {
       } else {
         const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
         const localStorageCartItem = localStorageCart.find(
-          (it) => it.productId === item.productId
+          (it) => it.productId === item.productId,
         );
         localStorageCartItem.quantity++;
         localStorage.setItem('cart', JSON.stringify(localStorageCart));
@@ -128,14 +128,14 @@ const CartItem = ({ item }) => {
               decorator: <RemoveShoppingCartRounded />,
               text: 'Product removed from basket',
               id: item.productId,
-            })
+            }),
           );
         })
         .catch((err) => console.log(err.message));
     } else {
       const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
       const newCart = localStorageCart.filter(
-        (it) => it.productId !== item.productId
+        (it) => it.productId !== item.productId,
       );
       localStorage.setItem('cart', JSON.stringify(newCart));
       dispatch(setCart(newCart));
@@ -145,7 +145,7 @@ const CartItem = ({ item }) => {
           decorator: <RemoveShoppingCartRounded />,
           text: 'Product removed from basket',
           id: item.productId,
-        })
+        }),
       );
     }
   };
@@ -155,8 +155,8 @@ const CartItem = ({ item }) => {
       <Link onClick={() => dispatch(cartOpen(false))} to={`/${item.productId}`}>
         <div className="cart-item_photo">
           <ProgressiveImageContainer
-            thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-20`}
-            src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-150`}
+            thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${item.photo}`}
+            src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${item.photo}`}
             alt="cart-item-image"
           />
         </div>
@@ -211,7 +211,7 @@ const CartItem = ({ item }) => {
                     yesBtnText: 'Yes, remove it',
                     noBtnText: 'Cancel',
                     action: onRemoveConfirmButton,
-                  })
+                  }),
                 )
               }
             >

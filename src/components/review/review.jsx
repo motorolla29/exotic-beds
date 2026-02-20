@@ -60,8 +60,8 @@ const Review = ({ review }) => {
               alt="user_avatar"
               src={
                 review.user.photo
-                  ? `https://res.cloudinary.com/ddprwf1qr/image/upload/f_auto,q_auto,w_150/user-avatars/${review.user.photo}`
-                  : 'https://res.cloudinary.com/ddprwf1qr/image/upload/f_auto,q_auto,w_150/default-avatar.jpg'
+                  ? `https://exotic-beds.s3.cloud.ru/user-avatars/sm__${review.user.photo}`
+                  : 'https://exotic-beds.s3.cloud.ru/user-avatars/sm__default-avatar.jpg'
               }
             />
           </div>

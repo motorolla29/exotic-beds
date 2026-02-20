@@ -23,7 +23,7 @@ const OrderListItem = ({ order }) => {
   const [orderItemsVisibleCount, setOrderItemsVisibleCount] = useState(0);
   const itemsTotal = order.items.reduce(
     (acc, currentValue) => acc + currentValue.quantity,
-    0
+    0,
   );
   useEffect(() => {
     setOrderItemsVisibleCount(getVisibleOrderItemsCount(ww));
@@ -61,16 +61,16 @@ const OrderListItem = ({ order }) => {
           .slice(
             order.items.length === orderItemsVisibleCount
               ? -orderItemsVisibleCount
-              : -orderItemsVisibleCount + 1
+              : -orderItemsVisibleCount + 1,
           )
           .map((item) => (
             <div key={item.id} className="order-list-item_visual_icon">
               <div>
                 <ProgressiveImageContainer
-                  thumb={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-25`}
-                  src={`https://ik.imagekit.io/motorolla29/exotic-beds/catalog/${item.photo}?tr=w-150`}
-                  defaultThumbSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-25"
-                  defaultSrc="https://ik.imagekit.io/motorolla29/exotic-beds/catalog/EB-LOGO-SHAPE-DEFAULT_IMG.png?tr=w-150"
+                  thumb={`https://exotic-beds.s3.cloud.ru/catalog/xs__${item.photo}`}
+                  src={`https://exotic-beds.s3.cloud.ru/catalog/sm__${item.photo}`}
+                  defaultThumbSrc="https://exotic-beds.s3.cloud.ru/catalog/xs__EB-LOGO-SHAPE-DEFAULT_IMG.png"
+                  defaultSrc="https://exotic-beds.s3.cloud.ru/catalog/sm__EB-LOGO-SHAPE-DEFAULT_IMG.png"
                   alt="order-item-image"
                 />
               </div>

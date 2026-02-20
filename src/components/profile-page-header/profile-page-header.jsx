@@ -50,7 +50,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             open: true,
             text: 'You have been logged out of your account',
             decorator: <LogoutIcon />,
-          })
+          }),
         );
         navigate('/');
       })
@@ -61,7 +61,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             icon: <ErrorIcon />,
             title: error.message,
             description: 'Failed to log out. Please try again.',
-          })
+          }),
         );
         console.error('Logout error:', error);
       });
@@ -91,7 +91,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             open: true,
             text: 'You successfully deleted your avatar',
             decorator: <DeleteIcon />,
-          })
+          }),
         );
       })
       .catch((err) => {
@@ -101,7 +101,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             icon: <ErrorIcon />,
             title: 'Avatar deletion failed',
             description: err.response.data.message || err.message,
-          })
+          }),
         );
       })
       .finally(() => setLoading(false));
@@ -130,7 +130,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             icon: <ErrorIcon />,
             title: 'File size too large',
             description: 'Please upload a file smaller than 4.5 MB.',
-          })
+          }),
         );
         setLoading(false);
         return;
@@ -156,7 +156,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
               open: true,
               text: 'Avatar successfully uploaded',
               decorator: <AccountCircleIcon />,
-            })
+            }),
           );
         })
         .catch((err) => {
@@ -166,7 +166,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
               icon: <ErrorIcon />,
               title: 'Avatar loading failed',
               description: err.response.data.message || err.message,
-            })
+            }),
           );
         })
         .finally(() => setLoading(false));
@@ -178,7 +178,7 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
           icon: <ErrorIcon />,
           title: 'Avatar loading failed',
           description: 'Error processing image before upload.',
-        })
+        }),
       );
       setLoading(false);
     }
@@ -193,8 +193,8 @@ const ProfilePageHeader = ({ setAvatarModalOpen }) => {
             alt="user_photo"
             src={
               user.photo
-                ? `https://res.cloudinary.com/ddprwf1qr/image/upload/user-avatars/${user.photo}`
-                : 'https://res.cloudinary.com/ddprwf1qr/image/upload/default-avatar.jpg'
+                ? `https://exotic-beds.s3.cloud.ru/user-avatars/sm__${user.photo}`
+                : 'https://exotic-beds.s3.cloud.ru/user-avatars/sm__default-avatar.jpg'
             }
           />
           <label

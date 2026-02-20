@@ -20,15 +20,15 @@ const Header = () => {
   const lovelistLength = useSelector((state) => state.lovelistProducts.length);
   const cartItems = useSelector((state) => state.cartProducts);
   const availableCartItems = cartItems.filter(
-    (item) => item.availableQuantity > 0
+    (item) => item.availableQuantity > 0,
   );
   const soldOutCartItems = cartItems.filter(
-    (item) => item.availableQuantity === 0
+    (item) => item.availableQuantity === 0,
   );
   const basketLength =
     availableCartItems.reduce(
       (acc, currentValue) => acc + currentValue.quantity,
-      0
+      0,
     ) + soldOutCartItems.length;
 
   const [ww] = useWindowSize();
@@ -40,7 +40,7 @@ const Header = () => {
           <Link className="header_left-side_logo" to="/">
             <img
               alt="logo"
-              src="https://ik.imagekit.io/motorolla29/exotic-beds/logo/EB-LOGO-HD.png"
+              src="https://exotic-beds.s3.cloud.ru/logo/EB-LOGO-HD.png"
             />
           </Link>
           {ww > 768 ? <HeaderSearchPanel /> : null}
@@ -53,8 +53,8 @@ const Header = () => {
                   <img
                     src={
                       user.photo
-                        ? `https://res.cloudinary.com/ddprwf1qr/image/upload/user-avatars/${user.photo}`
-                        : 'https://res.cloudinary.com/ddprwf1qr/image/upload/default-avatar.jpg'
+                        ? `https://exotic-beds.s3.cloud.ru/user-avatars/xs__${user.photo}`
+                        : 'https://exotic-beds.s3.cloud.ru/user-avatars/xs__default-avatar.jpg'
                     }
                     alt="user_photo"
                   />
