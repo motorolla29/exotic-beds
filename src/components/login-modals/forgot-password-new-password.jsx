@@ -68,7 +68,7 @@ const ForgotPasswordNewPassword = ({ email, code, setForgotPasswordStage }) => {
             icon: <ErrorIcon />,
             title: 'Failed to reset password',
             description: e.response.data.message || e.message,
-          })
+          }),
         );
         console.log(e);
       }
@@ -89,6 +89,7 @@ const ForgotPasswordNewPassword = ({ email, code, setForgotPasswordStage }) => {
         <TextField
           required
           onChange={onPasswordChange}
+          onKeyDown={handleEnterPress}
           size={ww > 480 ? 'normal' : 'small'}
           value={password}
           fullWidth
@@ -105,6 +106,7 @@ const ForgotPasswordNewPassword = ({ email, code, setForgotPasswordStage }) => {
         <TextField
           required
           onChange={onConfirmPasswordChange}
+          onKeyDown={handleEnterPress}
           size={ww > 480 ? 'normal' : 'small'}
           value={confirmPassword}
           fullWidth

@@ -7,11 +7,11 @@ const ForgotPasswordCode = ({
   setForgotPasswordStage,
   setResetCode,
 }) => {
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const verifyCode = async (code) => {
-    setLoading(true);
+    //setLoading(true);
     try {
       await verifyPasswordResetCode({ email, inputCode: +code });
       setResetCode(code);
@@ -20,7 +20,7 @@ const ForgotPasswordCode = ({
       console.error('Wrong code', err);
       setError(true);
     } finally {
-      setLoading(false);
+      //setLoading(false);
     }
   };
 
